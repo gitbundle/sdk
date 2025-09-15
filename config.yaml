@@ -1,0 +1,9 @@
+generatorName: rust
+inputSpec: openapi.json
+
+packageName: gitbundle-sdk
+packageVersion: 3.0.0
+gitUserId: gitbundle
+gitRepoId: sdk-rust
+
+mockall: true
