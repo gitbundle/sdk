@@ -1,0 +1,17 @@
+# TokenType
+
+## Enum
+
+
+* `SESSION` (value: `"session"`)
+
+* `TWO_FACTOR` (value: `"two_factor"`)
+
+* `PAT` (value: `"pat"`)
+
+* `SAT` (value: `"sat"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

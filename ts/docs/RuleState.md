@@ -1,0 +1,12 @@
+# RuleState
+
+
+## Enum
+
+* `Disabled` (value: `'disabled'`)
+
+* `Active` (value: `'active'`)
+
+* `Monitor` (value: `'monitor'`)
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
