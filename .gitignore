@@ -1,6 +1,2 @@
-/target/
-**/*.rs.bk
-Cargo.lock
-
 /openapi.yaml
 /openapi.json
