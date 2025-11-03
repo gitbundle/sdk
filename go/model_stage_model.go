@@ -23,10 +23,8 @@ var _ MappedNullable = &StageModel{}
 type StageModel struct {
 	Arch string `json:"arch"`
 	Created int64 `json:"created"`
-	DependsOn interface{} `json:"depends_on"`
 	Errignore bool `json:"errignore"`
 	Error string `json:"error"`
-	ExecutionId int64 `json:"execution_id"`
 	ExitCode int64 `json:"exit_code"`
 	Id int64 `json:"id"`
 	Kernel string `json:"kernel"`
@@ -36,11 +34,13 @@ type StageModel struct {
 	LimitRepo int64 `json:"limit_repo"`
 	Machine string `json:"machine"`
 	Name string `json:"name"`
+	Needs interface{} `json:"needs"`
 	Number int64 `json:"number"`
 	OnFailure bool `json:"on_failure"`
 	OnSuccess bool `json:"on_success"`
 	Os string `json:"os"`
 	ParentGroupId int64 `json:"parent_group_id"`
+	ParentId NullableInt64 `json:"parent_id,omitempty"`
 	RepoId int64 `json:"repo_id"`
 	Started NullableInt64 `json:"started,omitempty"`
 	Status CIStatus `json:"status"`
@@ -49,6 +49,9 @@ type StageModel struct {
 	Updated int64 `json:"updated"`
 	Variant string `json:"variant"`
 	Version int64 `json:"version"`
+	WorkflowId int64 `json:"workflow_id"`
+	YamlProvider YamlProvider `json:"yaml_provider"`
+	YamlResolved string `json:"yaml_resolved"`
 }
 
 type _StageModel StageModel
@@ -57,14 +60,12 @@ type _StageModel StageModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageModel(arch string, created int64, dependsOn interface{}, errignore bool, error_ string, executionId int64, exitCode int64, id int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64) *StageModel {
+func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string) *StageModel {
 	this := StageModel{}
 	this.Arch = arch
 	this.Created = created
-	this.DependsOn = dependsOn
 	this.Errignore = errignore
 	this.Error = error_
-	this.ExecutionId = executionId
 	this.ExitCode = exitCode
 	this.Id = id
 	this.Kernel = kernel
@@ -74,6 +75,7 @@ func NewStageModel(arch string, created int64, dependsOn interface{}, errignore 
 	this.LimitRepo = limitRepo
 	this.Machine = machine
 	this.Name = name
+	this.Needs = needs
 	this.Number = number
 	this.OnFailure = onFailure
 	this.OnSuccess = onSuccess
@@ -85,6 +87,9 @@ func NewStageModel(arch string, created int64, dependsOn interface{}, errignore 
 	this.Updated = updated
 	this.Variant = variant
 	this.Version = version
+	this.WorkflowId = workflowId
+	this.YamlProvider = yamlProvider
+	this.YamlResolved = yamlResolved
 	return &this
 }
 
@@ -144,32 +149,6 @@ func (o *StageModel) SetCreated(v int64) {
 	o.Created = v
 }
 
-// GetDependsOn returns the DependsOn field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StageModel) GetDependsOn() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.DependsOn
-}
-
-// GetDependsOnOk returns a tuple with the DependsOn field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageModel) GetDependsOnOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.DependsOn) {
-		return nil, false
-	}
-	return &o.DependsOn, true
-}
-
-// SetDependsOn sets field value
-func (o *StageModel) SetDependsOn(v interface{}) {
-	o.DependsOn = v
-}
-
 // GetErrignore returns the Errignore field value
 func (o *StageModel) GetErrignore() bool {
 	if o == nil {
@@ -216,30 +195,6 @@ func (o *StageModel) GetErrorOk() (*string, bool) {
 // SetError sets field value
 func (o *StageModel) SetError(v string) {
 	o.Error = v
-}
-
-// GetExecutionId returns the ExecutionId field value
-func (o *StageModel) GetExecutionId() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.ExecutionId
-}
-
-// GetExecutionIdOk returns a tuple with the ExecutionId field value
-// and a boolean to check if the value has been set.
-func (o *StageModel) GetExecutionIdOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ExecutionId, true
-}
-
-// SetExecutionId sets field value
-func (o *StageModel) SetExecutionId(v int64) {
-	o.ExecutionId = v
 }
 
 // GetExitCode returns the ExitCode field value
@@ -458,6 +413,32 @@ func (o *StageModel) SetName(v string) {
 	o.Name = v
 }
 
+// GetNeeds returns the Needs field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *StageModel) GetNeeds() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Needs
+}
+
+// GetNeedsOk returns a tuple with the Needs field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StageModel) GetNeedsOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Needs) {
+		return nil, false
+	}
+	return &o.Needs, true
+}
+
+// SetNeeds sets field value
+func (o *StageModel) SetNeeds(v interface{}) {
+	o.Needs = v
+}
+
 // GetNumber returns the Number field value
 func (o *StageModel) GetNumber() int64 {
 	if o == nil {
@@ -576,6 +557,48 @@ func (o *StageModel) GetParentGroupIdOk() (*int64, bool) {
 // SetParentGroupId sets field value
 func (o *StageModel) SetParentGroupId(v int64) {
 	o.ParentGroupId = v
+}
+
+// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StageModel) GetParentId() int64 {
+	if o == nil || IsNil(o.ParentId.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.ParentId.Get()
+}
+
+// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StageModel) GetParentIdOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParentId.Get(), o.ParentId.IsSet()
+}
+
+// HasParentId returns a boolean if a field has been set.
+func (o *StageModel) HasParentId() bool {
+	if o != nil && o.ParentId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParentId gets a reference to the given NullableInt64 and assigns it to the ParentId field.
+func (o *StageModel) SetParentId(v int64) {
+	o.ParentId.Set(&v)
+}
+// SetParentIdNil sets the value for ParentId to be an explicit nil
+func (o *StageModel) SetParentIdNil() {
+	o.ParentId.Set(nil)
+}
+
+// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
+func (o *StageModel) UnsetParentId() {
+	o.ParentId.Unset()
 }
 
 // GetRepoId returns the RepoId field value
@@ -806,6 +829,78 @@ func (o *StageModel) SetVersion(v int64) {
 	o.Version = v
 }
 
+// GetWorkflowId returns the WorkflowId field value
+func (o *StageModel) GetWorkflowId() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.WorkflowId
+}
+
+// GetWorkflowIdOk returns a tuple with the WorkflowId field value
+// and a boolean to check if the value has been set.
+func (o *StageModel) GetWorkflowIdOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WorkflowId, true
+}
+
+// SetWorkflowId sets field value
+func (o *StageModel) SetWorkflowId(v int64) {
+	o.WorkflowId = v
+}
+
+// GetYamlProvider returns the YamlProvider field value
+func (o *StageModel) GetYamlProvider() YamlProvider {
+	if o == nil {
+		var ret YamlProvider
+		return ret
+	}
+
+	return o.YamlProvider
+}
+
+// GetYamlProviderOk returns a tuple with the YamlProvider field value
+// and a boolean to check if the value has been set.
+func (o *StageModel) GetYamlProviderOk() (*YamlProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlProvider, true
+}
+
+// SetYamlProvider sets field value
+func (o *StageModel) SetYamlProvider(v YamlProvider) {
+	o.YamlProvider = v
+}
+
+// GetYamlResolved returns the YamlResolved field value
+func (o *StageModel) GetYamlResolved() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlResolved
+}
+
+// GetYamlResolvedOk returns a tuple with the YamlResolved field value
+// and a boolean to check if the value has been set.
+func (o *StageModel) GetYamlResolvedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlResolved, true
+}
+
+// SetYamlResolved sets field value
+func (o *StageModel) SetYamlResolved(v string) {
+	o.YamlResolved = v
+}
+
 func (o StageModel) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -818,12 +913,8 @@ func (o StageModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["arch"] = o.Arch
 	toSerialize["created"] = o.Created
-	if o.DependsOn != nil {
-		toSerialize["depends_on"] = o.DependsOn
-	}
 	toSerialize["errignore"] = o.Errignore
 	toSerialize["error"] = o.Error
-	toSerialize["execution_id"] = o.ExecutionId
 	toSerialize["exit_code"] = o.ExitCode
 	toSerialize["id"] = o.Id
 	toSerialize["kernel"] = o.Kernel
@@ -833,11 +924,17 @@ func (o StageModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["limit_repo"] = o.LimitRepo
 	toSerialize["machine"] = o.Machine
 	toSerialize["name"] = o.Name
+	if o.Needs != nil {
+		toSerialize["needs"] = o.Needs
+	}
 	toSerialize["number"] = o.Number
 	toSerialize["on_failure"] = o.OnFailure
 	toSerialize["on_success"] = o.OnSuccess
 	toSerialize["os"] = o.Os
 	toSerialize["parent_group_id"] = o.ParentGroupId
+	if o.ParentId.IsSet() {
+		toSerialize["parent_id"] = o.ParentId.Get()
+	}
 	toSerialize["repo_id"] = o.RepoId
 	if o.Started.IsSet() {
 		toSerialize["started"] = o.Started.Get()
@@ -850,6 +947,9 @@ func (o StageModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated"] = o.Updated
 	toSerialize["variant"] = o.Variant
 	toSerialize["version"] = o.Version
+	toSerialize["workflow_id"] = o.WorkflowId
+	toSerialize["yaml_provider"] = o.YamlProvider
+	toSerialize["yaml_resolved"] = o.YamlResolved
 	return toSerialize, nil
 }
 
@@ -860,10 +960,8 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"arch",
 		"created",
-		"depends_on",
 		"errignore",
 		"error",
-		"execution_id",
 		"exit_code",
 		"id",
 		"kernel",
@@ -873,6 +971,7 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 		"limit_repo",
 		"machine",
 		"name",
+		"needs",
 		"number",
 		"on_failure",
 		"on_success",
@@ -884,6 +983,9 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 		"updated",
 		"variant",
 		"version",
+		"workflow_id",
+		"yaml_provider",
+		"yaml_resolved",
 	}
 
 	allProperties := make(map[string]interface{})

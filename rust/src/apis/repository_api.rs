@@ -74,6 +74,20 @@ pub enum DeleteReleaseError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`delete_repository_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DeleteRepositoryVariableError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`delete_tag`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -107,20 +121,6 @@ pub enum GeneralUpdateError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetArchiveError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_blame`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetBlameError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -229,52 +229,10 @@ pub enum GetCommitsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_content`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetContentError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`get_contributors`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetContributorsError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_diff_stats`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetDiffStatsError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_diffs`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetDiffsError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -331,20 +289,6 @@ pub enum GetHasStarredError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetImportProgressError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_paths`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetPathsError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -439,6 +383,34 @@ pub enum GetRepositoryStatsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_repository_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetRepositoryVariableError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_repository_variables`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetRepositoryVariablesError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_security`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -485,6 +457,20 @@ pub enum GetTagsError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PatchRepoError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`patch_repository_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PatchRepositoryVariableError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -552,38 +538,10 @@ pub enum PostDefaultBranchError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`post_diffs`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum PostDiffsError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`post_merge_check`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostMergeCheckError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`post_path_details`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum PostPathDetailsError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -655,6 +613,20 @@ pub enum PostRepositoryMoveError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostRepositoryPurgeError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`post_repository_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PostRepositoryVariableError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -916,6 +888,46 @@ pub async fn delete_release(configuration: &configuration::Configuration, repo_r
     }
 }
 
+pub async fn delete_repository_variable(configuration: &configuration::Configuration, repo_ref: &str, variable_identifier: &str) -> Result<(), Error<DeleteRepositoryVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_variable_identifier = variable_identifier;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/variables/{variable_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DeleteRepositoryVariableError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 pub async fn delete_tag(configuration: &configuration::Configuration, repo_ref: &str, tag_name: &str, bypass_rules: Option<bool>) -> Result<(), Error<DeleteTagError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -1082,69 +1094,6 @@ pub async fn get_archive(configuration: &configuration::Configuration, repo_ref:
     } else {
         let content = resp.text().await?;
         let entity: Option<GetArchiveError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_blame(configuration: &configuration::Configuration, repo_ref: &str, path: &str, git_ref: Option<&str>, line_from: Option<i64>, line_to: Option<i64>) -> Result<Vec<models::BlamePart>, Error<GetBlameError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_git_ref = git_ref;
-    let p_line_from = line_from;
-    let p_line_to = line_to;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/blame/{path}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), path=crate::apis::urlencode(p_path));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_git_ref {
-        req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_line_from {
-        req_builder = req_builder.query(&[("line_from", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_line_to {
-        req_builder = req_builder.query(&[("line_to", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::BlamePart&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::BlamePart&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetBlameError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -1569,65 +1518,6 @@ pub async fn get_commits(configuration: &configuration::Configuration, repo_ref:
     }
 }
 
-pub async fn get_content(configuration: &configuration::Configuration, repo_ref: &str, path: &str, git_ref: Option<&str>, include_commit: Option<bool>) -> Result<models::RepoContentOutput, Error<GetContentError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_git_ref = git_ref;
-    let p_include_commit = include_commit;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/content/{path}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), path=crate::apis::urlencode(p_path));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_git_ref {
-        req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_include_commit {
-        req_builder = req_builder.query(&[("include_commit", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RepoContentOutput`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RepoContentOutput`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetContentError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 pub async fn get_contributors(configuration: &configuration::Configuration, repo_ref: &str, git_ref: Option<&str>, since: Option<i64>, until: Option<i64>) -> Result<Vec<models::Contributor>, Error<GetContributorsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -1686,108 +1576,6 @@ pub async fn get_contributors(configuration: &configuration::Configuration, repo
     } else {
         let content = resp.text().await?;
         let entity: Option<GetContributorsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_diff_stats(configuration: &configuration::Configuration, repo_ref: &str, path: &str) -> Result<models::DiffStats, Error<GetDiffStatsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/diff-stats/{path}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), path=crate::apis::urlencode(p_path));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::DiffStats`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::DiffStats`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetDiffStatsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_diffs(configuration: &configuration::Configuration, repo_ref: &str, path: &str) -> Result<String, Error<GetDiffsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/diff/{path}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), path=crate::apis::urlencode(p_path));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `String`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `String`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetDiffsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -2008,64 +1796,6 @@ pub async fn get_import_progress(configuration: &configuration::Configuration, r
     } else {
         let content = resp.text().await?;
         let entity: Option<GetImportProgressError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_paths(configuration: &configuration::Configuration, repo_ref: &str, git_ref: Option<&str>, include_directories: Option<bool>) -> Result<models::RepoPathsOutput, Error<GetPathsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_git_ref = git_ref;
-    let p_include_directories = include_directories;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/paths", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_git_ref {
-        req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_include_directories {
-        req_builder = req_builder.query(&[("include_directories", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RepoPathsOutput`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RepoPathsOutput`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetPathsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -2396,6 +2126,134 @@ pub async fn get_repository_stats(configuration: &configuration::Configuration, 
     }
 }
 
+pub async fn get_repository_variable(configuration: &configuration::Configuration, repo_ref: &str, variable_identifier: &str) -> Result<models::VariableModel, Error<GetRepositoryVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_variable_identifier = variable_identifier;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/variables/{variable_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetRepositoryVariableError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_repository_variables(configuration: &configuration::Configuration, repo_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, types: Option<Vec<models::VariableType>>, sort: Option<models::VariableSort>, order: Option<models::OrderOption>) -> Result<Vec<models::VariableGroup>, Error<GetRepositoryVariablesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_page = page;
+    let p_size = size;
+    let p_query = query;
+    let p_types = types;
+    let p_sort = sort;
+    let p_order = order;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/variables", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_size {
+        req_builder = req_builder.query(&[("size", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query {
+        req_builder = req_builder.query(&[("query", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_types {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref param_value) = p_sort {
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_order {
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::VariableGroup&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::VariableGroup&gt;`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetRepositoryVariablesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 pub async fn get_security(configuration: &configuration::Configuration, repo_ref: &str) -> Result<models::SecuritySettings, Error<GetSecurityError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -2634,6 +2492,59 @@ pub async fn patch_repo(configuration: &configuration::Configuration, repo_ref: 
     }
 }
 
+pub async fn patch_repository_variable(configuration: &configuration::Configuration, repo_ref: &str, variable_identifier: &str, variable_patch_input: models::VariablePatchInput) -> Result<models::VariableModel, Error<PatchRepositoryVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_variable_identifier = variable_identifier;
+    let p_variable_patch_input = variable_patch_input;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/variables/{variable_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_variable_patch_input);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PatchRepositoryVariableError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 pub async fn patch_security(configuration: &configuration::Configuration, repo_ref: &str, security_settings: models::SecuritySettings) -> Result<models::SecuritySettings, Error<PatchSecurityError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -2842,61 +2753,6 @@ pub async fn post_default_branch(configuration: &configuration::Configuration, r
     }
 }
 
-pub async fn post_diffs(configuration: &configuration::Configuration, repo_ref: &str, path: &str, path2: &str, commit_diff_file: Vec<models::CommitDiffFile>) -> Result<Vec<i32>, Error<PostDiffsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_path = path2;
-    let p_commit_diff_file = commit_diff_file;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/diff/{path}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), path=crate::apis::urlencode(p_path));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    req_builder = req_builder.query(&[("path", &p_path.to_string())]);
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_commit_diff_file);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;i32&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;i32&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<PostDiffsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 pub async fn post_merge_check(configuration: &configuration::Configuration, repo_ref: &str, path: &str, repo_merge_check_input: models::RepoMergeCheckInput) -> Result<models::RepoMergeCheckOutput, Error<PostMergeCheckError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -2946,62 +2802,6 @@ pub async fn post_merge_check(configuration: &configuration::Configuration, repo
     } else {
         let content = resp.text().await?;
         let entity: Option<PostMergeCheckError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn post_path_details(configuration: &configuration::Configuration, repo_ref: &str, request_body: Vec<String>, git_ref: Option<&str>) -> Result<Vec<models::PathDetails>, Error<PostPathDetailsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_request_body = request_body;
-    let p_git_ref = git_ref;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/path-details", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref param_value) = p_git_ref {
-        req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_request_body);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::PathDetails&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::PathDetails&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<PostPathDetailsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -3247,6 +3047,58 @@ pub async fn post_repository_purge(configuration: &configuration::Configuration,
     } else {
         let content = resp.text().await?;
         let entity: Option<PostRepositoryPurgeError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn post_repository_variable(configuration: &configuration::Configuration, repo_ref: &str, variable_create_input: models::VariableCreateInput) -> Result<models::VariableModel, Error<PostRepositoryVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_variable_create_input = variable_create_input;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/variables", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_variable_create_input);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PostRepositoryVariableError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

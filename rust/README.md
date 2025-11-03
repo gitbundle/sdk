@@ -32,54 +32,37 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**post_register**](docs/AccountsApi.md#post_register) | **POST** /account/register | 
 *AccountsApi* | [**post_two_factor_passcode**](docs/AccountsApi.md#post_two_factor_passcode) | **POST** /account/two_factor | 
 *AccountsApi* | [**post_two_factor_scratch_token**](docs/AccountsApi.md#post_two_factor_scratch_token) | **POST** /account/two_factor/scratch | 
-*ActionsApi* | [**cancel_execution**](docs/ActionsApi.md#cancel_execution) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/cancel | 
+*ActionsApi* | [**cancel_workflow**](docs/ActionsApi.md#cancel_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel | 
 *ActionsApi* | [**delete_action**](docs/ActionsApi.md#delete_action) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier} | 
-*ActionsApi* | [**delete_execution**](docs/ActionsApi.md#delete_execution) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-*ActionsApi* | [**delete_trigger**](docs/ActionsApi.md#delete_trigger) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
+*ActionsApi* | [**delete_workflow**](docs/ActionsApi.md#delete_workflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
 *ActionsApi* | [**get_action**](docs/ActionsApi.md#get_action) | **GET** /repos/{repo_ref}/+/actions/{action_identifier} | 
 *ActionsApi* | [**get_actions**](docs/ActionsApi.md#get_actions) | **GET** /repos/{repo_ref}/+/actions | 
-*ActionsApi* | [**get_execution**](docs/ActionsApi.md#get_execution) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-*ActionsApi* | [**get_executions**](docs/ActionsApi.md#get_executions) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions | 
-*ActionsApi* | [**get_step_log_stream**](docs/ActionsApi.md#get_step_log_stream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}/stream | 
-*ActionsApi* | [**get_step_logs**](docs/ActionsApi.md#get_step_logs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number} | 
-*ActionsApi* | [**get_trigger**](docs/ActionsApi.md#get_trigger) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
-*ActionsApi* | [**get_triggers**](docs/ActionsApi.md#get_triggers) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | 
+*ActionsApi* | [**get_step_log_stream**](docs/ActionsApi.md#get_step_log_stream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream | 
+*ActionsApi* | [**get_step_logs**](docs/ActionsApi.md#get_step_logs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number} | 
+*ActionsApi* | [**get_workflow**](docs/ActionsApi.md#get_workflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
+*ActionsApi* | [**get_workflows**](docs/ActionsApi.md#get_workflows) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *ActionsApi* | [**patch_action**](docs/ActionsApi.md#patch_action) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier} | 
-*ActionsApi* | [**patch_execution**](docs/ActionsApi.md#patch_execution) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-*ActionsApi* | [**patch_stage**](docs/ActionsApi.md#patch_stage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | 
-*ActionsApi* | [**patch_step**](docs/ActionsApi.md#patch_step) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number} | 
-*ActionsApi* | [**patch_trigger**](docs/ActionsApi.md#patch_trigger) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
+*ActionsApi* | [**patch_stage**](docs/ActionsApi.md#patch_stage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
+*ActionsApi* | [**patch_step**](docs/ActionsApi.md#patch_step) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number} | 
+*ActionsApi* | [**patch_workflow**](docs/ActionsApi.md#patch_workflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
 *ActionsApi* | [**post_action**](docs/ActionsApi.md#post_action) | **POST** /repos/{repo_ref}/+/actions | 
-*ActionsApi* | [**post_execution**](docs/ActionsApi.md#post_execution) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions | 
-*ActionsApi* | [**post_stage**](docs/ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages | 
-*ActionsApi* | [**post_step**](docs/ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | 
-*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}/logs | 
-*ActionsApi* | [**post_trigger**](docs/ActionsApi.md#post_trigger) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | 
-*AdminApi* | [**delete_group**](docs/AdminApi.md#delete_group) | **DELETE** /admin/groups/{group_ref} | 
-*AdminApi* | [**delete_user**](docs/AdminApi.md#delete_user) | **DELETE** /admin/users/{user_identifier} | 
-*AdminApi* | [**get_groups**](docs/AdminApi.md#get_groups) | **GET** /admin/groups | 
-*AdminApi* | [**get_stats**](docs/AdminApi.md#get_stats) | **GET** /admin/stats | 
-*AdminApi* | [**get_user**](docs/AdminApi.md#get_user) | **GET** /admin/users/{user_identifier} | 
-*AdminApi* | [**get_users**](docs/AdminApi.md#get_users) | **GET** /admin/users | 
-*AdminApi* | [**patch_user**](docs/AdminApi.md#patch_user) | **PATCH** /admin/users/{user_identifier} | 
-*AdminApi* | [**patch_user_admin**](docs/AdminApi.md#patch_user_admin) | **PATCH** /admin/users/{user_identifier}/admin | 
-*AdminApi* | [**post_user**](docs/AdminApi.md#post_user) | **POST** /admin/users | 
-*BootstrapApi* | [**get_bootstrap**](docs/BootstrapApi.md#get_bootstrap) | **GET** /bootstrap/{bootstrap_ref}/+/{path} | 
-*ConnectorsApi* | [**delete_connector**](docs/ConnectorsApi.md#delete_connector) | **DELETE** /connectors/{connector_ref} | 
-*ConnectorsApi* | [**get_connector**](docs/ConnectorsApi.md#get_connector) | **GET** /connectors/{connector_ref} | 
-*ConnectorsApi* | [**patch_connector**](docs/ConnectorsApi.md#patch_connector) | **PATCH** /connectors/{connector_ref} | 
-*ConnectorsApi* | [**post_connector**](docs/ConnectorsApi.md#post_connector) | **POST** /connectors | 
+*ActionsApi* | [**post_stage**](docs/ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages | 
+*ActionsApi* | [**post_step**](docs/ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
+*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs | 
+*ActionsApi* | [**post_workflow**](docs/ActionsApi.md#post_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *GroupsApi* | [**delete_member**](docs/GroupsApi.md#delete_member) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | 
+*GroupsApi* | [**delete_variable**](docs/GroupsApi.md#delete_variable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsApi* | [**get_connectors**](docs/GroupsApi.md#get_connectors) | **GET** /groups/{group_ref}/+/connectors | 
-*GroupsApi* | [**get_events**](docs/GroupsApi.md#get_events) | **GET** /groups/{group_ref}/+/events | 
 *GroupsApi* | [**get_group**](docs/GroupsApi.md#get_group) | **GET** /groups/{group_ref}/+ | 
 *GroupsApi* | [**get_members**](docs/GroupsApi.md#get_members) | **GET** /groups/{group_ref}/+/members | 
 *GroupsApi* | [**get_repos**](docs/GroupsApi.md#get_repos) | **GET** /groups/{group_ref}/+/repos | 
-*GroupsApi* | [**get_secrets**](docs/GroupsApi.md#get_secrets) | **GET** /groups/{group_ref}/+/secrets | 
 *GroupsApi* | [**get_service_accounts**](docs/GroupsApi.md#get_service_accounts) | **GET** /groups/{group_ref}/+/service-accounts | 
 *GroupsApi* | [**get_sub_groups**](docs/GroupsApi.md#get_sub_groups) | **GET** /groups/{group_ref}/+/groups | 
+*GroupsApi* | [**get_variable**](docs/GroupsApi.md#get_variable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | 
+*GroupsApi* | [**get_variables**](docs/GroupsApi.md#get_variables) | **GET** /groups/{group_ref}/+/variables | 
 *GroupsApi* | [**patch_group**](docs/GroupsApi.md#patch_group) | **PATCH** /groups/{group_ref}/+ | 
 *GroupsApi* | [**patch_member**](docs/GroupsApi.md#patch_member) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | 
+*GroupsApi* | [**patch_variable**](docs/GroupsApi.md#patch_variable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsApi* | [**post_group**](docs/GroupsApi.md#post_group) | **POST** /groups | 
 *GroupsApi* | [**post_import**](docs/GroupsApi.md#post_import) | **POST** /groups/import | 
 *GroupsApi* | [**post_import_repos**](docs/GroupsApi.md#post_import_repos) | **POST** /groups/{group_ref}/+/import | 
@@ -87,6 +70,7 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**post_move**](docs/GroupsApi.md#post_move) | **POST** /groups/{group_ref}/+/move | 
 *GroupsApi* | [**post_purge**](docs/GroupsApi.md#post_purge) | **POST** /groups/{group_ref}/+/purge | 
 *GroupsApi* | [**post_restore**](docs/GroupsApi.md#post_restore) | **POST** /groups/{group_ref}/+/restore | 
+*GroupsApi* | [**post_variable**](docs/GroupsApi.md#post_variable) | **POST** /groups/{group_ref}/+/variables | 
 *GroupsApi* | [**soft_delete**](docs/GroupsApi.md#soft_delete) | **DELETE** /groups/{group_ref}/+ | 
 *KeywordSearchApi* | [**search**](docs/KeywordSearchApi.md#search) | **POST** /search | 
 *PullRequestApi* | [**delete_comment**](docs/PullRequestApi.md#delete_comment) | **DELETE** /repos/{repo_ref}/+/pullreq/{pullreq_number}/comments/{pullreq_comment_id} | 
@@ -124,10 +108,10 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**commits_calculate_divergence**](docs/RepositoryApi.md#commits_calculate_divergence) | **POST** /repos/{repo_ref}/+/commits/calculate-divergence | 
 *RepositoryApi* | [**delete_branch**](docs/RepositoryApi.md#delete_branch) | **DELETE** /repos/{repo_ref}/+/branches/{branch_name} | 
 *RepositoryApi* | [**delete_release**](docs/RepositoryApi.md#delete_release) | **DELETE** /repos/{repo_ref}/+/releases/{tag_ref} | 
+*RepositoryApi* | [**delete_repository_variable**](docs/RepositoryApi.md#delete_repository_variable) | **DELETE** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 *RepositoryApi* | [**delete_tag**](docs/RepositoryApi.md#delete_tag) | **DELETE** /repos/{repo_ref}/+/tags/{tag_name} | 
 *RepositoryApi* | [**general_update**](docs/RepositoryApi.md#general_update) | **PATCH** /repos/{repo_ref}/+/settings/general | 
 *RepositoryApi* | [**get_archive**](docs/RepositoryApi.md#get_archive) | **GET** /repos/{repo_ref}/+/archive/{archive_ref} | 
-*RepositoryApi* | [**get_blame**](docs/RepositoryApi.md#get_blame) | **GET** /repos/{repo_ref}/+/blame/{path} | 
 *RepositoryApi* | [**get_branch**](docs/RepositoryApi.md#get_branch) | **GET** /repos/{repo_ref}/+/branches/{branch_name} | 
 *RepositoryApi* | [**get_branches**](docs/RepositoryApi.md#get_branches) | **GET** /repos/{repo_ref}/+/branches | 
 *RepositoryApi* | [**get_codeowners_validate**](docs/RepositoryApi.md#get_codeowners_validate) | **GET** /repos/{repo_ref}/+/codeowners/validate | 
@@ -135,37 +119,35 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**get_commit_diff**](docs/RepositoryApi.md#get_commit_diff) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/diff | 
 *RepositoryApi* | [**get_commit_file_content**](docs/RepositoryApi.md#get_commit_file_content) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/content | 
 *RepositoryApi* | [**get_commits**](docs/RepositoryApi.md#get_commits) | **GET** /repos/{repo_ref}/+/commits | 
-*RepositoryApi* | [**get_content**](docs/RepositoryApi.md#get_content) | **GET** /repos/{repo_ref}/+/content/{path} | 
 *RepositoryApi* | [**get_contributors**](docs/RepositoryApi.md#get_contributors) | **GET** /repos/{repo_ref}/+/contributors | 
-*RepositoryApi* | [**get_diff_stats**](docs/RepositoryApi.md#get_diff_stats) | **GET** /repos/{repo_ref}/+/diff-stats/{path} | 
-*RepositoryApi* | [**get_diffs**](docs/RepositoryApi.md#get_diffs) | **GET** /repos/{repo_ref}/+/diff/{path} | 
 *RepositoryApi* | [**get_forks**](docs/RepositoryApi.md#get_forks) | **GET** /repos/{repo_ref}/+/forks | 
 *RepositoryApi* | [**get_general**](docs/RepositoryApi.md#get_general) | **GET** /repos/{repo_ref}/+/settings/general | 
 *RepositoryApi* | [**get_has_starred**](docs/RepositoryApi.md#get_has_starred) | **GET** /repos/{repo_ref}/+/stars/has_starred | 
 *RepositoryApi* | [**get_import_progress**](docs/RepositoryApi.md#get_import_progress) | **GET** /repos/{repo_ref}/+/import-progress | 
-*RepositoryApi* | [**get_paths**](docs/RepositoryApi.md#get_paths) | **GET** /repos/{repo_ref}/+/paths | 
 *RepositoryApi* | [**get_raw**](docs/RepositoryApi.md#get_raw) | **GET** /repos/{repo_ref}/+/raw/{path} | 
 *RepositoryApi* | [**get_release**](docs/RepositoryApi.md#get_release) | **GET** /repos/{repo_ref}/+/releases/{tag_ref} | 
 *RepositoryApi* | [**get_releases**](docs/RepositoryApi.md#get_releases) | **GET** /repos/{repo_ref}/+/releases | 
 *RepositoryApi* | [**get_repo**](docs/RepositoryApi.md#get_repo) | **GET** /repos/{repo_ref}/+ | 
 *RepositoryApi* | [**get_repository_service_accounts**](docs/RepositoryApi.md#get_repository_service_accounts) | **GET** /repos/{repo_ref}/+/service-accounts | 
 *RepositoryApi* | [**get_repository_stats**](docs/RepositoryApi.md#get_repository_stats) | **GET** /repos/{repo_ref}/+/stats | 
+*RepositoryApi* | [**get_repository_variable**](docs/RepositoryApi.md#get_repository_variable) | **GET** /repos/{repo_ref}/+/variables/{variable_identifier} | 
+*RepositoryApi* | [**get_repository_variables**](docs/RepositoryApi.md#get_repository_variables) | **GET** /repos/{repo_ref}/+/variables | 
 *RepositoryApi* | [**get_security**](docs/RepositoryApi.md#get_security) | **GET** /repos/{repo_ref}/+/settings/security | 
 *RepositoryApi* | [**get_stars**](docs/RepositoryApi.md#get_stars) | **GET** /repos/{repo_ref}/+/stars | 
 *RepositoryApi* | [**get_tags**](docs/RepositoryApi.md#get_tags) | **GET** /repos/{repo_ref}/+/tags | 
 *RepositoryApi* | [**patch_repo**](docs/RepositoryApi.md#patch_repo) | **PATCH** /repos/{repo_ref}/+ | 
+*RepositoryApi* | [**patch_repository_variable**](docs/RepositoryApi.md#patch_repository_variable) | **PATCH** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 *RepositoryApi* | [**patch_security**](docs/RepositoryApi.md#patch_security) | **PATCH** /repos/{repo_ref}/+/settings/security | 
 *RepositoryApi* | [**patch_stars**](docs/RepositoryApi.md#patch_stars) | **PATCH** /repos/{repo_ref}/+/stars | 
 *RepositoryApi* | [**post_branch**](docs/RepositoryApi.md#post_branch) | **POST** /repos/{repo_ref}/+/branches | 
 *RepositoryApi* | [**post_default_branch**](docs/RepositoryApi.md#post_default_branch) | **POST** /repos/{repo_ref}/+/default-branch | 
-*RepositoryApi* | [**post_diffs**](docs/RepositoryApi.md#post_diffs) | **POST** /repos/{repo_ref}/+/diff/{path} | 
 *RepositoryApi* | [**post_merge_check**](docs/RepositoryApi.md#post_merge_check) | **POST** /repos/{repo_ref}/+/merge-check/{path} | 
-*RepositoryApi* | [**post_path_details**](docs/RepositoryApi.md#post_path_details) | **POST** /repos/{repo_ref}/+/path-details | 
 *RepositoryApi* | [**post_release**](docs/RepositoryApi.md#post_release) | **POST** /repos/{repo_ref}/+/releases | 
 *RepositoryApi* | [**post_repo**](docs/RepositoryApi.md#post_repo) | **POST** /repos | 
 *RepositoryApi* | [**post_repository_import**](docs/RepositoryApi.md#post_repository_import) | **POST** /repos/import | 
 *RepositoryApi* | [**post_repository_move**](docs/RepositoryApi.md#post_repository_move) | **POST** /repos/{repo_ref}/+/move | 
 *RepositoryApi* | [**post_repository_purge**](docs/RepositoryApi.md#post_repository_purge) | **POST** /repos/{repo_ref}/+/purge | 
+*RepositoryApi* | [**post_repository_variable**](docs/RepositoryApi.md#post_repository_variable) | **POST** /repos/{repo_ref}/+/variables | 
 *RepositoryApi* | [**post_tag**](docs/RepositoryApi.md#post_tag) | **POST** /repos/{repo_ref}/+/tags | 
 *RepositoryApi* | [**rename_branch**](docs/RepositoryApi.md#rename_branch) | **PATCH** /repos/{repo_ref}/+/branches | 
 *RepositoryApi* | [**repo_restore**](docs/RepositoryApi.md#repo_restore) | **POST** /repos/{repo_ref}/+/restore | 
@@ -177,10 +159,6 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**get_rules**](docs/RulesApi.md#get_rules) | **GET** /repos/{repo_ref}/+/rules | 
 *RulesApi* | [**patch_rule**](docs/RulesApi.md#patch_rule) | **PATCH** /repos/{repo_ref}/+/rules/{rule_identifier} | 
 *RulesApi* | [**post_rule**](docs/RulesApi.md#post_rule) | **POST** /repos/{repo_ref}/+/rules | 
-*SecretsApi* | [**delete_secret**](docs/SecretsApi.md#delete_secret) | **DELETE** /secrets/{secret_ref} | 
-*SecretsApi* | [**get_secret**](docs/SecretsApi.md#get_secret) | **GET** /secrets/{secret_ref} | 
-*SecretsApi* | [**patch_secret**](docs/SecretsApi.md#patch_secret) | **PATCH** /secrets/{secret_ref} | 
-*SecretsApi* | [**post_secret**](docs/SecretsApi.md#post_secret) | **POST** /secrets | 
 *ServiceAccountsApi* | [**delete_service_account**](docs/ServiceAccountsApi.md#delete_service_account) | **DELETE** /service-accounts/{sa_identifier} | 
 *ServiceAccountsApi* | [**delete_service_account_token**](docs/ServiceAccountsApi.md#delete_service_account_token) | **DELETE** /service-accounts/{sa_identifier}/tokens/{token_name} | 
 *ServiceAccountsApi* | [**get_service_account**](docs/ServiceAccountsApi.md#get_service_account) | **GET** /service-accounts/{sa_identifier} | 
@@ -223,10 +201,10 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**get_users_user**](docs/UsersApi.md#get_users_user) | **GET** /users/{identifier} | 
 *UsersApi* | [**get_users_users**](docs/UsersApi.md#get_users_users) | **GET** /users | 
 *WebhooksApi* | [**delete_webhook**](docs/WebhooksApi.md#delete_webhook) | **DELETE** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
+*WebhooksApi* | [**get_execution**](docs/WebhooksApi.md#get_execution) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
+*WebhooksApi* | [**get_executions**](docs/WebhooksApi.md#get_executions) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 *WebhooksApi* | [**get_webhook**](docs/WebhooksApi.md#get_webhook) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 *WebhooksApi* | [**get_webhooks**](docs/WebhooksApi.md#get_webhooks) | **GET** /repos/{repo_ref}/+/webhooks | 
-*WebhooksApi* | [**get_webhooks_execution**](docs/WebhooksApi.md#get_webhooks_execution) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
-*WebhooksApi* | [**get_webhooks_executions**](docs/WebhooksApi.md#get_webhooks_executions) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 *WebhooksApi* | [**patch_webhook**](docs/WebhooksApi.md#patch_webhook) | **PATCH** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 *WebhooksApi* | [**post_retrigger**](docs/WebhooksApi.md#post_retrigger) | **POST** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}/retrigger | 
 *WebhooksApi* | [**post_webhook**](docs/WebhooksApi.md#post_webhook) | **POST** /repos/{repo_ref}/+/webhooks | 
@@ -235,9 +213,9 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ActionCreateInput](docs/ActionCreateInput.md)
- - [ActionExecution](docs/ActionExecution.md)
  - [ActionModel](docs/ActionModel.md)
  - [ActionUpdateInput](docs/ActionUpdateInput.md)
+ - [ActionWorkflow](docs/ActionWorkflow.md)
  - [AdminPatchInput](docs/AdminPatchInput.md)
  - [AdminStats](docs/AdminStats.md)
  - [ArchiveAttribute](docs/ArchiveAttribute.md)
@@ -282,10 +260,6 @@ Class | Method | HTTP request | Description
  - [DefStatusChecks](docs/DefStatusChecks.md)
  - [DiffFileContent](docs/DiffFileContent.md)
  - [DiffStats](docs/DiffStats.md)
- - [ExecutionCreateInput](docs/ExecutionCreateInput.md)
- - [ExecutionModel](docs/ExecutionModel.md)
- - [ExecutionStages](docs/ExecutionStages.md)
- - [ExecutionUpdateInput](docs/ExecutionUpdateInput.md)
  - [FeedModel](docs/FeedModel.md)
  - [FeedRelations](docs/FeedRelations.md)
  - [FeedType](docs/FeedType.md)
@@ -417,10 +391,6 @@ Class | Method | HTTP request | Description
  - [RuleState](docs/RuleState.md)
  - [RuleType](docs/RuleType.md)
  - [RuleViolation](docs/RuleViolation.md)
- - [SecretCreateInput](docs/SecretCreateInput.md)
- - [SecretGroup](docs/SecretGroup.md)
- - [SecretModel](docs/SecretModel.md)
- - [SecretPatchInput](docs/SecretPatchInput.md)
  - [SecuritySettings](docs/SecuritySettings.md)
  - [ServiceAccountCreateInput](docs/ServiceAccountCreateInput.md)
  - [ServiceAccountTokenOutput](docs/ServiceAccountTokenOutput.md)
@@ -439,10 +409,7 @@ Class | Method | HTTP request | Description
  - [TokenModel](docs/TokenModel.md)
  - [TokenType](docs/TokenType.md)
  - [TriggerAction](docs/TriggerAction.md)
- - [TriggerCreateInput](docs/TriggerCreateInput.md)
  - [TriggerEvent](docs/TriggerEvent.md)
- - [TriggerModel](docs/TriggerModel.md)
- - [TriggerPatchInput](docs/TriggerPatchInput.md)
  - [TwoFactorCreateInput](docs/TwoFactorCreateInput.md)
  - [TwoFactorGetOutput](docs/TwoFactorGetOutput.md)
  - [TwoFactorPasscodeInput](docs/TwoFactorPasscodeInput.md)
@@ -453,6 +420,13 @@ Class | Method | HTTP request | Description
  - [UserPatchInput](docs/UserPatchInput.md)
  - [UserSort](docs/UserSort.md)
  - [UserType](docs/UserType.md)
+ - [VariableCreateInput](docs/VariableCreateInput.md)
+ - [VariableGroup](docs/VariableGroup.md)
+ - [VariableModel](docs/VariableModel.md)
+ - [VariablePatchInput](docs/VariablePatchInput.md)
+ - [VariableScope](docs/VariableScope.md)
+ - [VariableSort](docs/VariableSort.md)
+ - [VariableType](docs/VariableType.md)
  - [WebhookCreateInput](docs/WebhookCreateInput.md)
  - [WebhookExecutionModel](docs/WebhookExecutionModel.md)
  - [WebhookExecutionResult](docs/WebhookExecutionResult.md)
@@ -461,6 +435,11 @@ Class | Method | HTTP request | Description
  - [WebhookPatchInput](docs/WebhookPatchInput.md)
  - [WebhookSort](docs/WebhookSort.md)
  - [WebhookTrigger](docs/WebhookTrigger.md)
+ - [WorkflowCreateInput](docs/WorkflowCreateInput.md)
+ - [WorkflowModel](docs/WorkflowModel.md)
+ - [WorkflowStages](docs/WorkflowStages.md)
+ - [WorkflowUpdateInput](docs/WorkflowUpdateInput.md)
+ - [YamlProvider](docs/YamlProvider.md)
 
 
 To get access to the crate's generated documentation, use:

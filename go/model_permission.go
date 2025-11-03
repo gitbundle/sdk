@@ -43,10 +43,10 @@ const (
 	PERMISSION_ACTION_EDIT Permission = "action_edit"
 	PERMISSION_ACTION_DELETE Permission = "action_delete"
 	PERMISSION_ACTION_EXECUTE Permission = "action_execute"
-	PERMISSION_SECRET_VIEW Permission = "secret_view"
-	PERMISSION_SECRET_EDIT Permission = "secret_edit"
-	PERMISSION_SECRET_DELETE Permission = "secret_delete"
-	PERMISSION_SECRET_ACCESS Permission = "secret_access"
+	PERMISSION_VARIABLE_VIEW Permission = "variable_view"
+	PERMISSION_VARIABLE_EDIT Permission = "variable_edit"
+	PERMISSION_VARIABLE_DELETE Permission = "variable_delete"
+	PERMISSION_VARIABLE_ACCESS Permission = "variable_access"
 	PERMISSION_CONNECTOR_VIEW Permission = "connector_view"
 	PERMISSION_CONNECTOR_EDIT Permission = "connector_edit"
 	PERMISSION_CONNECTOR_DELETE Permission = "connector_delete"
@@ -82,10 +82,10 @@ var AllowedPermissionEnumValues = []Permission{
 	"action_edit",
 	"action_delete",
 	"action_execute",
-	"secret_view",
-	"secret_edit",
-	"secret_delete",
-	"secret_access",
+	"variable_view",
+	"variable_edit",
+	"variable_delete",
+	"variable_access",
 	"connector_view",
 	"connector_edit",
 	"connector_delete",

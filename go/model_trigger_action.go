@@ -27,7 +27,7 @@ const (
 	TRIGGERACTION_TAG_UPDATED TriggerAction = "tag_updated"
 	TRIGGERACTION_PULLREQ_CREATED TriggerAction = "pullreq_created"
 	TRIGGERACTION_PULLREQ_REOPENED TriggerAction = "pullreq_reopened"
-	TRIGGERACTION_PULLREQ_BRANCH_UPDATED TriggerAction = "pullreq_branch_updated"
+	TRIGGERACTION_PULLREQ_SYNCHRONIZE TriggerAction = "pullreq_synchronize"
 	TRIGGERACTION_PULLREQ_CLOSED TriggerAction = "pullreq_closed"
 	TRIGGERACTION_PULLREQ_MERGED TriggerAction = "pullreq_merged"
 )
@@ -41,7 +41,7 @@ var AllowedTriggerActionEnumValues = []TriggerAction{
 	"tag_updated",
 	"pullreq_created",
 	"pullreq_reopened",
-	"pullreq_branch_updated",
+	"pullreq_synchronize",
 	"pullreq_closed",
 	"pullreq_merged",
 }

@@ -17,14 +17,10 @@ pub struct StageModel {
     pub arch: String,
     #[serde(rename = "created")]
     pub created: i64,
-    #[serde(rename = "depends_on", deserialize_with = "Option::deserialize")]
-    pub depends_on: Option<serde_json::Value>,
     #[serde(rename = "errignore")]
     pub errignore: bool,
     #[serde(rename = "error")]
     pub error: String,
-    #[serde(rename = "execution_id")]
-    pub execution_id: i64,
     #[serde(rename = "exit_code")]
     pub exit_code: i64,
     #[serde(rename = "id")]
@@ -43,6 +39,8 @@ pub struct StageModel {
     pub machine: String,
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "needs", deserialize_with = "Option::deserialize")]
+    pub needs: Option<serde_json::Value>,
     #[serde(rename = "number")]
     pub number: i64,
     #[serde(rename = "on_failure")]
@@ -53,6 +51,8 @@ pub struct StageModel {
     pub os: String,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
+    #[serde(rename = "parent_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub parent_id: Option<Option<i64>>,
     #[serde(rename = "repo_id")]
     pub repo_id: i64,
     #[serde(rename = "started", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -69,17 +69,21 @@ pub struct StageModel {
     pub variant: String,
     #[serde(rename = "version")]
     pub version: i64,
+    #[serde(rename = "workflow_id")]
+    pub workflow_id: i64,
+    #[serde(rename = "yaml_provider")]
+    pub yaml_provider: models::YamlProvider,
+    #[serde(rename = "yaml_resolved")]
+    pub yaml_resolved: String,
 }
 
 impl StageModel {
-    pub fn new(arch: String, created: i64, depends_on: Option<serde_json::Value>, errignore: bool, error: String, execution_id: i64, exit_code: i64, id: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, repo_id: i64, status: models::CiStatus, r#type: String, updated: i64, variant: String, version: i64) -> StageModel {
+    pub fn new(arch: String, created: i64, errignore: bool, error: String, exit_code: i64, id: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, repo_id: i64, status: models::CiStatus, r#type: String, updated: i64, variant: String, version: i64, workflow_id: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageModel {
         StageModel {
             arch,
             created,
-            depends_on,
             errignore,
             error,
-            execution_id,
             exit_code,
             id,
             kernel,
@@ -89,11 +93,13 @@ impl StageModel {
             limit_repo,
             machine,
             name,
+            needs,
             number,
             on_failure,
             on_success,
             os,
             parent_group_id,
+            parent_id: None,
             repo_id,
             started: None,
             status,
@@ -102,6 +108,9 @@ impl StageModel {
             updated,
             variant,
             version,
+            workflow_id,
+            yaml_provider,
+            yaml_resolved,
         }
     }
 }

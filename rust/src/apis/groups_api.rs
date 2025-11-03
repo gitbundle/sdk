@@ -29,10 +29,10 @@ pub enum DeleteMemberError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_connectors`]
+/// struct for typed errors of method [`delete_variable`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetConnectorsError {
+pub enum DeleteVariableError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -43,10 +43,10 @@ pub enum GetConnectorsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_events`]
+/// struct for typed errors of method [`get_connectors`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetEventsError {
+pub enum GetConnectorsError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -99,20 +99,6 @@ pub enum GetReposError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_secrets`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetSecretsError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`get_service_accounts`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -141,6 +127,34 @@ pub enum GetSubGroupsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetVariableError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_variables`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetVariablesError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`patch_group`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -159,6 +173,20 @@ pub enum PatchGroupError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PatchMemberError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`patch_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PatchVariableError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -267,6 +295,20 @@ pub enum PostRestoreError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`post_variable`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PostVariableError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`soft_delete`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -318,6 +360,46 @@ pub async fn delete_member(configuration: &configuration::Configuration, group_r
     } else {
         let content = resp.text().await?;
         let entity: Option<DeleteMemberError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn delete_variable(configuration: &configuration::Configuration, group_ref: &str, variable_identifier: &str) -> Result<(), Error<DeleteVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_group_ref = group_ref;
+    let p_variable_identifier = variable_identifier;
+
+    let uri_str = format!("{}/groups/{group_ref}/+/variables/{variable_identifier}", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DeleteVariableError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -380,56 +462,6 @@ pub async fn get_connectors(configuration: &configuration::Configuration, group_
     } else {
         let content = resp.text().await?;
         let entity: Option<GetConnectorsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_events(configuration: &configuration::Configuration, group_ref: &str) -> Result<Vec<i32>, Error<GetEventsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-
-    let uri_str = format!("{}/groups/{group_ref}/+/events", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;i32&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;i32&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetEventsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -624,68 +656,6 @@ pub async fn get_repos(configuration: &configuration::Configuration, group_ref: 
     }
 }
 
-pub async fn get_secrets(configuration: &configuration::Configuration, group_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>) -> Result<Vec<models::SecretGroup>, Error<GetSecretsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-
-    let uri_str = format!("{}/groups/{group_ref}/+/secrets", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_page {
-        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_size {
-        req_builder = req_builder.query(&[("size", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query {
-        req_builder = req_builder.query(&[("query", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::SecretGroup&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::SecretGroup&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetSecretsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
 pub async fn get_service_accounts(configuration: &configuration::Configuration, group_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, sort: Option<models::UserSort>, order: Option<models::OrderOption>) -> Result<Vec<models::UserModel>, Error<GetServiceAccountsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_group_ref = group_ref;
@@ -826,6 +796,134 @@ pub async fn get_sub_groups(configuration: &configuration::Configuration, group_
     }
 }
 
+pub async fn get_variable(configuration: &configuration::Configuration, group_ref: &str, variable_identifier: &str) -> Result<models::VariableModel, Error<GetVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_group_ref = group_ref;
+    let p_variable_identifier = variable_identifier;
+
+    let uri_str = format!("{}/groups/{group_ref}/+/variables/{variable_identifier}", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetVariableError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_variables(configuration: &configuration::Configuration, group_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, types: Option<Vec<models::VariableType>>, sort: Option<models::VariableSort>, order: Option<models::OrderOption>) -> Result<Vec<models::VariableGroup>, Error<GetVariablesError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_group_ref = group_ref;
+    let p_page = page;
+    let p_size = size;
+    let p_query = query;
+    let p_types = types;
+    let p_sort = sort;
+    let p_order = order;
+
+    let uri_str = format!("{}/groups/{group_ref}/+/variables", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_size {
+        req_builder = req_builder.query(&[("size", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query {
+        req_builder = req_builder.query(&[("query", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_types {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        };
+    }
+    if let Some(ref param_value) = p_sort {
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_order {
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::VariableGroup&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::VariableGroup&gt;`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetVariablesError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
 pub async fn patch_group(configuration: &configuration::Configuration, group_ref: &str, group_patch_input: models::GroupPatchInput) -> Result<models::GroupModel, Error<PatchGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_group_ref = group_ref;
@@ -927,6 +1025,59 @@ pub async fn patch_member(configuration: &configuration::Configuration, group_re
     } else {
         let content = resp.text().await?;
         let entity: Option<PatchMemberError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn patch_variable(configuration: &configuration::Configuration, group_ref: &str, variable_identifier: &str, variable_patch_input: models::VariablePatchInput) -> Result<models::VariableModel, Error<PatchVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_group_ref = group_ref;
+    let p_variable_identifier = variable_identifier;
+    let p_variable_patch_input = variable_patch_input;
+
+    let uri_str = format!("{}/groups/{group_ref}/+/variables/{variable_identifier}", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref), variable_identifier=crate::apis::urlencode(p_variable_identifier));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_variable_patch_input);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PatchVariableError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -1248,6 +1399,58 @@ pub async fn post_restore(configuration: &configuration::Configuration, group_re
     } else {
         let content = resp.text().await?;
         let entity: Option<PostRestoreError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn post_variable(configuration: &configuration::Configuration, group_ref: &str, variable_create_input: models::VariableCreateInput) -> Result<models::VariableModel, Error<PostVariableError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_group_ref = group_ref;
+    let p_variable_create_input = variable_create_input;
+
+    let uri_str = format!("{}/groups/{group_ref}/+/variables", configuration.base_path, group_ref=crate::apis::urlencode(p_group_ref));
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_variable_create_input);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::VariableModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::VariableModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PostVariableError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

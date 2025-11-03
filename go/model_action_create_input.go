@@ -21,11 +21,10 @@ var _ MappedNullable = &ActionCreateInput{}
 
 // ActionCreateInput struct for ActionCreateInput
 type ActionCreateInput struct {
-	ConfigPath string `json:"config_path"`
-	DefaultBranch string `json:"default_branch"`
 	Description string `json:"description"`
 	Disabled bool `json:"disabled"`
 	Identifier string `json:"identifier"`
+	YamlPath string `json:"yaml_path"`
 }
 
 type _ActionCreateInput ActionCreateInput
@@ -34,13 +33,12 @@ type _ActionCreateInput ActionCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewActionCreateInput(configPath string, defaultBranch string, description string, disabled bool, identifier string) *ActionCreateInput {
+func NewActionCreateInput(description string, disabled bool, identifier string, yamlPath string) *ActionCreateInput {
 	this := ActionCreateInput{}
-	this.ConfigPath = configPath
-	this.DefaultBranch = defaultBranch
 	this.Description = description
 	this.Disabled = disabled
 	this.Identifier = identifier
+	this.YamlPath = yamlPath
 	return &this
 }
 
@@ -50,54 +48,6 @@ func NewActionCreateInput(configPath string, defaultBranch string, description s
 func NewActionCreateInputWithDefaults() *ActionCreateInput {
 	this := ActionCreateInput{}
 	return &this
-}
-
-// GetConfigPath returns the ConfigPath field value
-func (o *ActionCreateInput) GetConfigPath() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ConfigPath
-}
-
-// GetConfigPathOk returns a tuple with the ConfigPath field value
-// and a boolean to check if the value has been set.
-func (o *ActionCreateInput) GetConfigPathOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ConfigPath, true
-}
-
-// SetConfigPath sets field value
-func (o *ActionCreateInput) SetConfigPath(v string) {
-	o.ConfigPath = v
-}
-
-// GetDefaultBranch returns the DefaultBranch field value
-func (o *ActionCreateInput) GetDefaultBranch() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DefaultBranch
-}
-
-// GetDefaultBranchOk returns a tuple with the DefaultBranch field value
-// and a boolean to check if the value has been set.
-func (o *ActionCreateInput) GetDefaultBranchOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultBranch, true
-}
-
-// SetDefaultBranch sets field value
-func (o *ActionCreateInput) SetDefaultBranch(v string) {
-	o.DefaultBranch = v
 }
 
 // GetDescription returns the Description field value
@@ -172,6 +122,30 @@ func (o *ActionCreateInput) SetIdentifier(v string) {
 	o.Identifier = v
 }
 
+// GetYamlPath returns the YamlPath field value
+func (o *ActionCreateInput) GetYamlPath() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlPath
+}
+
+// GetYamlPathOk returns a tuple with the YamlPath field value
+// and a boolean to check if the value has been set.
+func (o *ActionCreateInput) GetYamlPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlPath, true
+}
+
+// SetYamlPath sets field value
+func (o *ActionCreateInput) SetYamlPath(v string) {
+	o.YamlPath = v
+}
+
 func (o ActionCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -182,11 +156,10 @@ func (o ActionCreateInput) MarshalJSON() ([]byte, error) {
 
 func (o ActionCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["config_path"] = o.ConfigPath
-	toSerialize["default_branch"] = o.DefaultBranch
 	toSerialize["description"] = o.Description
 	toSerialize["disabled"] = o.Disabled
 	toSerialize["identifier"] = o.Identifier
+	toSerialize["yaml_path"] = o.YamlPath
 	return toSerialize, nil
 }
 
@@ -195,11 +168,10 @@ func (o *ActionCreateInput) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"config_path",
-		"default_branch",
 		"description",
 		"disabled",
 		"identifier",
+		"yaml_path",
 	}
 
 	allProperties := make(map[string]interface{})

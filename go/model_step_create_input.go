@@ -30,8 +30,9 @@ type StepCreateInput struct {
 	Name string `json:"name"`
 	Number int64 `json:"number"`
 	ParentGroupId int64 `json:"parent_group_id"`
-	Schema string `json:"schema"`
 	Status CIStatus `json:"status"`
+	YamlProvider YamlProvider `json:"yaml_provider"`
+	YamlResolved string `json:"yaml_resolved"`
 }
 
 type _StepCreateInput StepCreateInput
@@ -40,7 +41,7 @@ type _StepCreateInput StepCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, schema string, status CIStatus) *StepCreateInput {
+func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, status CIStatus, yamlProvider YamlProvider, yamlResolved string) *StepCreateInput {
 	this := StepCreateInput{}
 	this.DependsOn = dependsOn
 	this.Detached = detached
@@ -51,8 +52,9 @@ func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, er
 	this.Name = name
 	this.Number = number
 	this.ParentGroupId = parentGroupId
-	this.Schema = schema
 	this.Status = status
+	this.YamlProvider = yamlProvider
+	this.YamlResolved = yamlResolved
 	return &this
 }
 
@@ -282,30 +284,6 @@ func (o *StepCreateInput) SetParentGroupId(v int64) {
 	o.ParentGroupId = v
 }
 
-// GetSchema returns the Schema field value
-func (o *StepCreateInput) GetSchema() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Schema
-}
-
-// GetSchemaOk returns a tuple with the Schema field value
-// and a boolean to check if the value has been set.
-func (o *StepCreateInput) GetSchemaOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Schema, true
-}
-
-// SetSchema sets field value
-func (o *StepCreateInput) SetSchema(v string) {
-	o.Schema = v
-}
-
 // GetStatus returns the Status field value
 func (o *StepCreateInput) GetStatus() CIStatus {
 	if o == nil {
@@ -330,6 +308,54 @@ func (o *StepCreateInput) SetStatus(v CIStatus) {
 	o.Status = v
 }
 
+// GetYamlProvider returns the YamlProvider field value
+func (o *StepCreateInput) GetYamlProvider() YamlProvider {
+	if o == nil {
+		var ret YamlProvider
+		return ret
+	}
+
+	return o.YamlProvider
+}
+
+// GetYamlProviderOk returns a tuple with the YamlProvider field value
+// and a boolean to check if the value has been set.
+func (o *StepCreateInput) GetYamlProviderOk() (*YamlProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlProvider, true
+}
+
+// SetYamlProvider sets field value
+func (o *StepCreateInput) SetYamlProvider(v YamlProvider) {
+	o.YamlProvider = v
+}
+
+// GetYamlResolved returns the YamlResolved field value
+func (o *StepCreateInput) GetYamlResolved() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlResolved
+}
+
+// GetYamlResolvedOk returns a tuple with the YamlResolved field value
+// and a boolean to check if the value has been set.
+func (o *StepCreateInput) GetYamlResolvedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlResolved, true
+}
+
+// SetYamlResolved sets field value
+func (o *StepCreateInput) SetYamlResolved(v string) {
+	o.YamlResolved = v
+}
+
 func (o StepCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -351,8 +377,9 @@ func (o StepCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["number"] = o.Number
 	toSerialize["parent_group_id"] = o.ParentGroupId
-	toSerialize["schema"] = o.Schema
 	toSerialize["status"] = o.Status
+	toSerialize["yaml_provider"] = o.YamlProvider
+	toSerialize["yaml_resolved"] = o.YamlResolved
 	return toSerialize, nil
 }
 
@@ -370,8 +397,9 @@ func (o *StepCreateInput) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"number",
 		"parent_group_id",
-		"schema",
 		"status",
+		"yaml_provider",
+		"yaml_resolved",
 	}
 
 	allProperties := make(map[string]interface{})

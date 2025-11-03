@@ -33,8 +33,6 @@ pub struct StepModel {
     pub number: i64,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
-    #[serde(rename = "schema")]
-    pub schema: String,
     #[serde(rename = "stage_id")]
     pub stage_id: i64,
     #[serde(rename = "started", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -45,10 +43,14 @@ pub struct StepModel {
     pub stopped: Option<Option<i64>>,
     #[serde(rename = "version")]
     pub version: i64,
+    #[serde(rename = "yaml_provider")]
+    pub yaml_provider: models::YamlProvider,
+    #[serde(rename = "yaml_resolved")]
+    pub yaml_resolved: String,
 }
 
 impl StepModel {
-    pub fn new(depends_on: Option<serde_json::Value>, detached: bool, errignore: bool, error: String, exit_code: i64, id: i64, image: String, name: String, number: i64, parent_group_id: i64, schema: String, stage_id: i64, status: models::CiStatus, version: i64) -> StepModel {
+    pub fn new(depends_on: Option<serde_json::Value>, detached: bool, errignore: bool, error: String, exit_code: i64, id: i64, image: String, name: String, number: i64, parent_group_id: i64, stage_id: i64, status: models::CiStatus, version: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StepModel {
         StepModel {
             depends_on,
             detached,
@@ -60,12 +62,13 @@ impl StepModel {
             name,
             number,
             parent_group_id,
-            schema,
             stage_id,
             started: None,
             status,
             stopped: None,
             version,
+            yaml_provider,
+            yaml_resolved,
         }
     }
 }

@@ -14,34 +14,58 @@ use serde::{Deserialize, Serialize};
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum TriggerEvent {
-    #[serde(rename = "cron")]
-    Cron,
-    #[serde(rename = "manual")]
-    Manual,
-    #[serde(rename = "push")]
-    Push,
-    #[serde(rename = "pull_request")]
-    PullRequest,
+    #[serde(rename = "noop")]
+    Noop,
+    #[serde(rename = "branch_protection_rule")]
+    BranchProtectionRule,
+    #[serde(rename = "check_run")]
+    CheckRun,
+    #[serde(rename = "check_suite")]
+    CheckSuite,
+    #[serde(rename = "branch")]
+    Branch,
     #[serde(rename = "tag")]
     Tag,
+    #[serde(rename = "pull_request")]
+    PullRequest,
+    #[serde(rename = "release")]
+    Release,
+    #[serde(rename = "repository")]
+    Repository,
+    #[serde(rename = "schedule")]
+    Schedule,
+    #[serde(rename = "status")]
+    Status,
+    #[serde(rename = "workflow_dispatch")]
+    WorkflowDispatch,
+    #[serde(rename = "workflow_run")]
+    WorkflowRun,
 
 }
 
 impl std::fmt::Display for TriggerEvent {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Cron => write!(f, "cron"),
-            Self::Manual => write!(f, "manual"),
-            Self::Push => write!(f, "push"),
-            Self::PullRequest => write!(f, "pull_request"),
+            Self::Noop => write!(f, "noop"),
+            Self::BranchProtectionRule => write!(f, "branch_protection_rule"),
+            Self::CheckRun => write!(f, "check_run"),
+            Self::CheckSuite => write!(f, "check_suite"),
+            Self::Branch => write!(f, "branch"),
             Self::Tag => write!(f, "tag"),
+            Self::PullRequest => write!(f, "pull_request"),
+            Self::Release => write!(f, "release"),
+            Self::Repository => write!(f, "repository"),
+            Self::Schedule => write!(f, "schedule"),
+            Self::Status => write!(f, "status"),
+            Self::WorkflowDispatch => write!(f, "workflow_dispatch"),
+            Self::WorkflowRun => write!(f, "workflow_run"),
         }
     }
 }
 
 impl Default for TriggerEvent {
     fn default() -> TriggerEvent {
-        Self::Cron
+        Self::Noop
     }
 }
 

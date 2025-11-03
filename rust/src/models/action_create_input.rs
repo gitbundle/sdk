@@ -13,26 +13,23 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ActionCreateInput {
-    #[serde(rename = "config_path")]
-    pub config_path: String,
-    #[serde(rename = "default_branch")]
-    pub default_branch: String,
     #[serde(rename = "description")]
     pub description: String,
     #[serde(rename = "disabled")]
     pub disabled: bool,
     #[serde(rename = "identifier")]
     pub identifier: String,
+    #[serde(rename = "yaml_path")]
+    pub yaml_path: String,
 }
 
 impl ActionCreateInput {
-    pub fn new(config_path: String, default_branch: String, description: String, disabled: bool, identifier: String) -> ActionCreateInput {
+    pub fn new(description: String, disabled: bool, identifier: String, yaml_path: String) -> ActionCreateInput {
         ActionCreateInput {
-            config_path,
-            default_branch,
             description,
             disabled,
             identifier,
+            yaml_path,
         }
     }
 }

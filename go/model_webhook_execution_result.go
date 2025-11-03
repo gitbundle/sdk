@@ -20,6 +20,7 @@ type WebhookExecutionResult string
 
 // List of WebhookExecutionResult
 const (
+	WEBHOOKEXECUTIONRESULT_UNKNOWN WebhookExecutionResult = "unknown"
 	WEBHOOKEXECUTIONRESULT_SUCCESS WebhookExecutionResult = "success"
 	WEBHOOKEXECUTIONRESULT_RETRIABLE_ERROR WebhookExecutionResult = "retriable_error"
 	WEBHOOKEXECUTIONRESULT_FATAL_ERROR WebhookExecutionResult = "fatal_error"
@@ -27,6 +28,7 @@ const (
 
 // All allowed values of WebhookExecutionResult enum
 var AllowedWebhookExecutionResultEnumValues = []WebhookExecutionResult{
+	"unknown",
 	"success",
 	"retriable_error",
 	"fatal_error",

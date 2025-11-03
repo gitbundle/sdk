@@ -13,23 +13,23 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ActionUpdateInput {
-    #[serde(rename = "config_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub config_path: Option<Option<String>>,
     #[serde(rename = "description", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub description: Option<Option<String>>,
     #[serde(rename = "disabled", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub disabled: Option<Option<bool>>,
     #[serde(rename = "identifier", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub identifier: Option<Option<String>>,
+    #[serde(rename = "yaml_path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub yaml_path: Option<Option<String>>,
 }
 
 impl ActionUpdateInput {
     pub fn new() -> ActionUpdateInput {
         ActionUpdateInput {
-            config_path: None,
             description: None,
             disabled: None,
             identifier: None,
+            yaml_path: None,
         }
     }
 }

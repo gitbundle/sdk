@@ -31,12 +31,13 @@ type StepModel struct {
 	Name string `json:"name"`
 	Number int64 `json:"number"`
 	ParentGroupId int64 `json:"parent_group_id"`
-	Schema string `json:"schema"`
 	StageId int64 `json:"stage_id"`
 	Started NullableInt64 `json:"started,omitempty"`
 	Status CIStatus `json:"status"`
 	Stopped NullableInt64 `json:"stopped,omitempty"`
 	Version int64 `json:"version"`
+	YamlProvider YamlProvider `json:"yaml_provider"`
+	YamlResolved string `json:"yaml_resolved"`
 }
 
 type _StepModel StepModel
@@ -45,7 +46,7 @@ type _StepModel StepModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, schema string, stageId int64, status CIStatus, version int64) *StepModel {
+func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, stageId int64, status CIStatus, version int64, yamlProvider YamlProvider, yamlResolved string) *StepModel {
 	this := StepModel{}
 	this.DependsOn = dependsOn
 	this.Detached = detached
@@ -57,10 +58,11 @@ func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ s
 	this.Name = name
 	this.Number = number
 	this.ParentGroupId = parentGroupId
-	this.Schema = schema
 	this.StageId = stageId
 	this.Status = status
 	this.Version = version
+	this.YamlProvider = yamlProvider
+	this.YamlResolved = yamlResolved
 	return &this
 }
 
@@ -314,30 +316,6 @@ func (o *StepModel) SetParentGroupId(v int64) {
 	o.ParentGroupId = v
 }
 
-// GetSchema returns the Schema field value
-func (o *StepModel) GetSchema() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Schema
-}
-
-// GetSchemaOk returns a tuple with the Schema field value
-// and a boolean to check if the value has been set.
-func (o *StepModel) GetSchemaOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Schema, true
-}
-
-// SetSchema sets field value
-func (o *StepModel) SetSchema(v string) {
-	o.Schema = v
-}
-
 // GetStageId returns the StageId field value
 func (o *StepModel) GetStageId() int64 {
 	if o == nil {
@@ -494,6 +472,54 @@ func (o *StepModel) SetVersion(v int64) {
 	o.Version = v
 }
 
+// GetYamlProvider returns the YamlProvider field value
+func (o *StepModel) GetYamlProvider() YamlProvider {
+	if o == nil {
+		var ret YamlProvider
+		return ret
+	}
+
+	return o.YamlProvider
+}
+
+// GetYamlProviderOk returns a tuple with the YamlProvider field value
+// and a boolean to check if the value has been set.
+func (o *StepModel) GetYamlProviderOk() (*YamlProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlProvider, true
+}
+
+// SetYamlProvider sets field value
+func (o *StepModel) SetYamlProvider(v YamlProvider) {
+	o.YamlProvider = v
+}
+
+// GetYamlResolved returns the YamlResolved field value
+func (o *StepModel) GetYamlResolved() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlResolved
+}
+
+// GetYamlResolvedOk returns a tuple with the YamlResolved field value
+// and a boolean to check if the value has been set.
+func (o *StepModel) GetYamlResolvedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlResolved, true
+}
+
+// SetYamlResolved sets field value
+func (o *StepModel) SetYamlResolved(v string) {
+	o.YamlResolved = v
+}
+
 func (o StepModel) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -516,7 +542,6 @@ func (o StepModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["number"] = o.Number
 	toSerialize["parent_group_id"] = o.ParentGroupId
-	toSerialize["schema"] = o.Schema
 	toSerialize["stage_id"] = o.StageId
 	if o.Started.IsSet() {
 		toSerialize["started"] = o.Started.Get()
@@ -526,6 +551,8 @@ func (o StepModel) ToMap() (map[string]interface{}, error) {
 		toSerialize["stopped"] = o.Stopped.Get()
 	}
 	toSerialize["version"] = o.Version
+	toSerialize["yaml_provider"] = o.YamlProvider
+	toSerialize["yaml_resolved"] = o.YamlResolved
 	return toSerialize, nil
 }
 
@@ -544,10 +571,11 @@ func (o *StepModel) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"number",
 		"parent_group_id",
-		"schema",
 		"stage_id",
 		"status",
 		"version",
+		"yaml_provider",
+		"yaml_resolved",
 	}
 
 	allProperties := make(map[string]interface{})

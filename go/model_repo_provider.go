@@ -21,7 +21,7 @@ var _ MappedNullable = &RepoProvider{}
 
 // RepoProvider struct for RepoProvider
 type RepoProvider struct {
-	Host NullableString `json:"host,omitempty"`
+	Origin NullableString `json:"origin,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	Type RepoProviderType `json:"type"`
 	Username NullableString `json:"username,omitempty"`
@@ -47,46 +47,46 @@ func NewRepoProviderWithDefaults() *RepoProvider {
 	return &this
 }
 
-// GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RepoProvider) GetHost() string {
-	if o == nil || IsNil(o.Host.Get()) {
+// GetOrigin returns the Origin field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RepoProvider) GetOrigin() string {
+	if o == nil || IsNil(o.Origin.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Host.Get()
+	return *o.Origin.Get()
 }
 
-// GetHostOk returns a tuple with the Host field value if set, nil otherwise
+// GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RepoProvider) GetHostOk() (*string, bool) {
+func (o *RepoProvider) GetOriginOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Host.Get(), o.Host.IsSet()
+	return o.Origin.Get(), o.Origin.IsSet()
 }
 
-// HasHost returns a boolean if a field has been set.
-func (o *RepoProvider) HasHost() bool {
-	if o != nil && o.Host.IsSet() {
+// HasOrigin returns a boolean if a field has been set.
+func (o *RepoProvider) HasOrigin() bool {
+	if o != nil && o.Origin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHost gets a reference to the given NullableString and assigns it to the Host field.
-func (o *RepoProvider) SetHost(v string) {
-	o.Host.Set(&v)
+// SetOrigin gets a reference to the given NullableString and assigns it to the Origin field.
+func (o *RepoProvider) SetOrigin(v string) {
+	o.Origin.Set(&v)
 }
-// SetHostNil sets the value for Host to be an explicit nil
-func (o *RepoProvider) SetHostNil() {
-	o.Host.Set(nil)
+// SetOriginNil sets the value for Origin to be an explicit nil
+func (o *RepoProvider) SetOriginNil() {
+	o.Origin.Set(nil)
 }
 
-// UnsetHost ensures that no value is present for Host, not even an explicit nil
-func (o *RepoProvider) UnsetHost() {
-	o.Host.Unset()
+// UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
+func (o *RepoProvider) UnsetOrigin() {
+	o.Origin.Unset()
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -207,8 +207,8 @@ func (o RepoProvider) MarshalJSON() ([]byte, error) {
 
 func (o RepoProvider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Host.IsSet() {
-		toSerialize["host"] = o.Host.Get()
+	if o.Origin.IsSet() {
+		toSerialize["origin"] = o.Origin.Get()
 	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()

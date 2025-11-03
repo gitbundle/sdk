@@ -13,8 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RepoProvider {
-    #[serde(rename = "host", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub host: Option<Option<String>>,
+    #[serde(rename = "origin", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub origin: Option<Option<String>>,
     #[serde(rename = "password", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub password: Option<Option<String>>,
     #[serde(rename = "type")]
@@ -26,7 +26,7 @@ pub struct RepoProvider {
 impl RepoProvider {
     pub fn new(r#type: models::RepoProviderType) -> RepoProvider {
         RepoProvider {
-            host: None,
+            origin: None,
             password: None,
             r#type,
             username: None,
