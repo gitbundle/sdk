@@ -25,8 +25,8 @@ type WorkflowCreateInput struct {
 	Deploy NullableString `json:"deploy,omitempty"`
 	DeployId NullableInt64 `json:"deploy_id,omitempty"`
 	Params map[string]string `json:"params,omitempty"`
-	Source NullableString `json:"source,omitempty"`
 	SourceRepoId NullableInt64 `json:"source_repo_id,omitempty"`
+	SourceSha NullableString `json:"source_sha,omitempty"`
 }
 
 type _WorkflowCreateInput WorkflowCreateInput
@@ -189,48 +189,6 @@ func (o *WorkflowCreateInput) SetParams(v map[string]string) {
 	o.Params = v
 }
 
-// GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WorkflowCreateInput) GetSource() string {
-	if o == nil || IsNil(o.Source.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Source.Get()
-}
-
-// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WorkflowCreateInput) GetSourceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Source.Get(), o.Source.IsSet()
-}
-
-// HasSource returns a boolean if a field has been set.
-func (o *WorkflowCreateInput) HasSource() bool {
-	if o != nil && o.Source.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSource gets a reference to the given NullableString and assigns it to the Source field.
-func (o *WorkflowCreateInput) SetSource(v string) {
-	o.Source.Set(&v)
-}
-// SetSourceNil sets the value for Source to be an explicit nil
-func (o *WorkflowCreateInput) SetSourceNil() {
-	o.Source.Set(nil)
-}
-
-// UnsetSource ensures that no value is present for Source, not even an explicit nil
-func (o *WorkflowCreateInput) UnsetSource() {
-	o.Source.Unset()
-}
-
 // GetSourceRepoId returns the SourceRepoId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowCreateInput) GetSourceRepoId() int64 {
 	if o == nil || IsNil(o.SourceRepoId.Get()) {
@@ -273,6 +231,48 @@ func (o *WorkflowCreateInput) UnsetSourceRepoId() {
 	o.SourceRepoId.Unset()
 }
 
+// GetSourceSha returns the SourceSha field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WorkflowCreateInput) GetSourceSha() string {
+	if o == nil || IsNil(o.SourceSha.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SourceSha.Get()
+}
+
+// GetSourceShaOk returns a tuple with the SourceSha field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkflowCreateInput) GetSourceShaOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SourceSha.Get(), o.SourceSha.IsSet()
+}
+
+// HasSourceSha returns a boolean if a field has been set.
+func (o *WorkflowCreateInput) HasSourceSha() bool {
+	if o != nil && o.SourceSha.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceSha gets a reference to the given NullableString and assigns it to the SourceSha field.
+func (o *WorkflowCreateInput) SetSourceSha(v string) {
+	o.SourceSha.Set(&v)
+}
+// SetSourceShaNil sets the value for SourceSha to be an explicit nil
+func (o *WorkflowCreateInput) SetSourceShaNil() {
+	o.SourceSha.Set(nil)
+}
+
+// UnsetSourceSha ensures that no value is present for SourceSha, not even an explicit nil
+func (o *WorkflowCreateInput) UnsetSourceSha() {
+	o.SourceSha.Unset()
+}
+
 func (o WorkflowCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -293,11 +293,11 @@ func (o WorkflowCreateInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Params) {
 		toSerialize["params"] = o.Params
 	}
-	if o.Source.IsSet() {
-		toSerialize["source"] = o.Source.Get()
-	}
 	if o.SourceRepoId.IsSet() {
 		toSerialize["source_repo_id"] = o.SourceRepoId.Get()
+	}
+	if o.SourceSha.IsSet() {
+		toSerialize["source_sha"] = o.SourceSha.Get()
 	}
 	return toSerialize, nil
 }

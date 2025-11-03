@@ -213,7 +213,6 @@ docs/TokenCreateInput.md
 docs/TokenCreateOutput.md
 docs/TokenModel.md
 docs/TokenType.md
-docs/TriggerAction.md
 docs/TriggerEvent.md
 docs/TwoFactorCreateInput.md
 docs/TwoFactorGetOutput.md

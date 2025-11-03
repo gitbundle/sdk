@@ -21,15 +21,15 @@ type YamlProvider string
 // List of YamlProvider
 const (
 	YAMLPROVIDER_UNKNOWN YamlProvider = "unknown"
-	YAMLPROVIDER_GIT_HUB YamlProvider = "git_hub"
-	YAMLPROVIDER_GIT_LAB YamlProvider = "git_lab"
+	YAMLPROVIDER_GITHUB YamlProvider = "github"
+	YAMLPROVIDER_GITLAB YamlProvider = "gitlab"
 )
 
 // All allowed values of YamlProvider enum
 var AllowedYamlProviderEnumValues = []YamlProvider{
 	"unknown",
-	"git_hub",
-	"git_lab",
+	"github",
+	"gitlab",
 }
 
 func (v *YamlProvider) UnmarshalJSON(src []byte) error {

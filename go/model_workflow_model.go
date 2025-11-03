@@ -21,7 +21,7 @@ var _ MappedNullable = &WorkflowModel{}
 
 // WorkflowModel struct for WorkflowModel
 type WorkflowModel struct {
-	Action TriggerAction `json:"action"`
+	Action NullableString `json:"action,omitempty"`
 	ActionId int64 `json:"action_id"`
 	AfterSha NullableString `json:"after_sha,omitempty"`
 	AuthorEmail string `json:"author_email"`
@@ -62,9 +62,8 @@ type _WorkflowModel WorkflowModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowModel(action TriggerAction, actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
+func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
 	this := WorkflowModel{}
-	this.Action = action
 	this.ActionId = actionId
 	this.AuthorEmail = authorEmail
 	this.AuthorName = authorName
@@ -104,28 +103,46 @@ func NewWorkflowModelWithDefaults() *WorkflowModel {
 	return &this
 }
 
-// GetAction returns the Action field value
-func (o *WorkflowModel) GetAction() TriggerAction {
-	if o == nil {
-		var ret TriggerAction
+// GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WorkflowModel) GetAction() string {
+	if o == nil || IsNil(o.Action.Get()) {
+		var ret string
 		return ret
 	}
-
-	return o.Action
+	return *o.Action.Get()
 }
 
-// GetActionOk returns a tuple with the Action field value
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowModel) GetActionOk() (*TriggerAction, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkflowModel) GetActionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Action, true
+	return o.Action.Get(), o.Action.IsSet()
 }
 
-// SetAction sets field value
-func (o *WorkflowModel) SetAction(v TriggerAction) {
-	o.Action = v
+// HasAction returns a boolean if a field has been set.
+func (o *WorkflowModel) HasAction() bool {
+	if o != nil && o.Action.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAction gets a reference to the given NullableString and assigns it to the Action field.
+func (o *WorkflowModel) SetAction(v string) {
+	o.Action.Set(&v)
+}
+// SetActionNil sets the value for Action to be an explicit nil
+func (o *WorkflowModel) SetActionNil() {
+	o.Action.Set(nil)
+}
+
+// UnsetAction ensures that no value is present for Action, not even an explicit nil
+func (o *WorkflowModel) UnsetAction() {
+	o.Action.Unset()
 }
 
 // GetActionId returns the ActionId field value
@@ -978,7 +995,9 @@ func (o WorkflowModel) MarshalJSON() ([]byte, error) {
 
 func (o WorkflowModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["action"] = o.Action
+	if o.Action.IsSet() {
+		toSerialize["action"] = o.Action.Get()
+	}
 	toSerialize["action_id"] = o.ActionId
 	if o.AfterSha.IsSet() {
 		toSerialize["after_sha"] = o.AfterSha.Get()
@@ -1027,7 +1046,6 @@ func (o *WorkflowModel) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"action",
 		"action_id",
 		"author_email",
 		"author_name",

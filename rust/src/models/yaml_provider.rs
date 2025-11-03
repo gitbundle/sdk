@@ -16,10 +16,10 @@ use serde::{Deserialize, Serialize};
 pub enum YamlProvider {
     #[serde(rename = "unknown")]
     Unknown,
-    #[serde(rename = "git_hub")]
-    GitHub,
-    #[serde(rename = "git_lab")]
-    GitLab,
+    #[serde(rename = "github")]
+    Github,
+    #[serde(rename = "gitlab")]
+    Gitlab,
 
 }
 
@@ -27,8 +27,8 @@ impl std::fmt::Display for YamlProvider {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Unknown => write!(f, "unknown"),
-            Self::GitHub => write!(f, "git_hub"),
-            Self::GitLab => write!(f, "git_lab"),
+            Self::Github => write!(f, "github"),
+            Self::Gitlab => write!(f, "gitlab"),
         }
     }
 }

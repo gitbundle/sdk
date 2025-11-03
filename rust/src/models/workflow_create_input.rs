@@ -21,10 +21,10 @@ pub struct WorkflowCreateInput {
     pub deploy_id: Option<Option<i64>>,
     #[serde(rename = "params", skip_serializing_if = "Option::is_none")]
     pub params: Option<std::collections::HashMap<String, String>>,
-    #[serde(rename = "source", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub source: Option<Option<String>>,
     #[serde(rename = "source_repo_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub source_repo_id: Option<Option<i64>>,
+    #[serde(rename = "source_sha", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub source_sha: Option<Option<String>>,
 }
 
 impl WorkflowCreateInput {
@@ -34,8 +34,8 @@ impl WorkflowCreateInput {
             deploy: None,
             deploy_id: None,
             params: None,
-            source: None,
             source_repo_id: None,
+            source_sha: None,
         }
     }
 }

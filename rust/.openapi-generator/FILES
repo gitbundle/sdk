@@ -210,7 +210,6 @@ docs/TokenCreateInput.md
 docs/TokenCreateOutput.md
 docs/TokenModel.md
 docs/TokenType.md
-docs/TriggerAction.md
 docs/TriggerEvent.md
 docs/TwoFactorCreateInput.md
 docs/TwoFactorGetOutput.md
@@ -461,7 +460,6 @@ src/models/token_create_input.rs
 src/models/token_create_output.rs
 src/models/token_model.rs
 src/models/token_type.rs
-src/models/trigger_action.rs
 src/models/trigger_event.rs
 src/models/two_factor_create_input.rs
 src/models/two_factor_get_output.rs
