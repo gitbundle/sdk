@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Arch** | **string** |  | 
-**DependsOn** | **interface{}** |  | 
 **Errignore** | **bool** |  | 
 **Error** | **string** |  | 
 **ExitCode** | **int64** |  | 
@@ -16,6 +15,7 @@ Name | Type | Description | Notes
 **LimitRepo** | **int64** |  | 
 **Machine** | **string** |  | 
 **Name** | **string** |  | 
+**Needs** | **interface{}** |  | 
 **Number** | **int64** |  | 
 **OnFailure** | **bool** |  | 
 **OnSuccess** | **bool** |  | 
@@ -26,12 +26,14 @@ Name | Type | Description | Notes
 **Stopped** | Pointer to **NullableInt64** |  | [optional] 
 **Type** | **string** |  | 
 **Variant** | **string** |  | 
+**YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
+**YamlResolved** | **string** |  | 
 
 ## Methods
 
 ### NewStageCreateInput
 
-`func NewStageCreateInput(arch string, dependsOn interface{}, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, ) *StageCreateInput`
+`func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string, ) *StageCreateInput`
 
 NewStageCreateInput instantiates a new StageCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -66,36 +68,6 @@ and a boolean to check if the value has been set.
 SetArch sets Arch field to given value.
 
 
-### GetDependsOn
-
-`func (o *StageCreateInput) GetDependsOn() interface{}`
-
-GetDependsOn returns the DependsOn field if non-nil, zero value otherwise.
-
-### GetDependsOnOk
-
-`func (o *StageCreateInput) GetDependsOnOk() (*interface{}, bool)`
-
-GetDependsOnOk returns a tuple with the DependsOn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDependsOn
-
-`func (o *StageCreateInput) SetDependsOn(v interface{})`
-
-SetDependsOn sets DependsOn field to given value.
-
-
-### SetDependsOnNil
-
-`func (o *StageCreateInput) SetDependsOnNil(b bool)`
-
- SetDependsOnNil sets the value for DependsOn to be an explicit nil
-
-### UnsetDependsOn
-`func (o *StageCreateInput) UnsetDependsOn()`
-
-UnsetDependsOn ensures that no value is present for DependsOn, not even an explicit nil
 ### GetErrignore
 
 `func (o *StageCreateInput) GetErrignore() bool`
@@ -296,6 +268,36 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetNeeds
+
+`func (o *StageCreateInput) GetNeeds() interface{}`
+
+GetNeeds returns the Needs field if non-nil, zero value otherwise.
+
+### GetNeedsOk
+
+`func (o *StageCreateInput) GetNeedsOk() (*interface{}, bool)`
+
+GetNeedsOk returns a tuple with the Needs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeeds
+
+`func (o *StageCreateInput) SetNeeds(v interface{})`
+
+SetNeeds sets Needs field to given value.
+
+
+### SetNeedsNil
+
+`func (o *StageCreateInput) SetNeedsNil(b bool)`
+
+ SetNeedsNil sets the value for Needs to be an explicit nil
+
+### UnsetNeeds
+`func (o *StageCreateInput) UnsetNeeds()`
+
+UnsetNeeds ensures that no value is present for Needs, not even an explicit nil
 ### GetNumber
 
 `func (o *StageCreateInput) GetNumber() int64`
@@ -524,6 +526,46 @@ and a boolean to check if the value has been set.
 `func (o *StageCreateInput) SetVariant(v string)`
 
 SetVariant sets Variant field to given value.
+
+
+### GetYamlProvider
+
+`func (o *StageCreateInput) GetYamlProvider() YamlProvider`
+
+GetYamlProvider returns the YamlProvider field if non-nil, zero value otherwise.
+
+### GetYamlProviderOk
+
+`func (o *StageCreateInput) GetYamlProviderOk() (*YamlProvider, bool)`
+
+GetYamlProviderOk returns a tuple with the YamlProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlProvider
+
+`func (o *StageCreateInput) SetYamlProvider(v YamlProvider)`
+
+SetYamlProvider sets YamlProvider field to given value.
+
+
+### GetYamlResolved
+
+`func (o *StageCreateInput) GetYamlResolved() string`
+
+GetYamlResolved returns the YamlResolved field if non-nil, zero value otherwise.
+
+### GetYamlResolvedOk
+
+`func (o *StageCreateInput) GetYamlResolvedOk() (*string, bool)`
+
+GetYamlResolvedOk returns a tuple with the YamlResolved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlResolved
+
+`func (o *StageCreateInput) SetYamlResolved(v string)`
+
+SetYamlResolved sets YamlResolved field to given value.
 
 
 

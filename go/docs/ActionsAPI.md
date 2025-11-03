@@ -4,35 +4,30 @@ All URIs are relative to */api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelExecution**](ActionsAPI.md#CancelExecution) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/cancel | 
+[**CancelWorkflow**](ActionsAPI.md#CancelWorkflow) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel | 
 [**DeleteAction**](ActionsAPI.md#DeleteAction) | **Delete** /repos/{repo_ref}/+/actions/{action_identifier} | 
-[**DeleteExecution**](ActionsAPI.md#DeleteExecution) | **Delete** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-[**DeleteTrigger**](ActionsAPI.md#DeleteTrigger) | **Delete** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
+[**DeleteWorkflow**](ActionsAPI.md#DeleteWorkflow) | **Delete** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
 [**GetAction**](ActionsAPI.md#GetAction) | **Get** /repos/{repo_ref}/+/actions/{action_identifier} | 
 [**GetActions**](ActionsAPI.md#GetActions) | **Get** /repos/{repo_ref}/+/actions | 
-[**GetExecution**](ActionsAPI.md#GetExecution) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-[**GetExecutions**](ActionsAPI.md#GetExecutions) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/executions | 
-[**GetStepLogStream**](ActionsAPI.md#GetStepLogStream) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}/stream | 
-[**GetStepLogs**](ActionsAPI.md#GetStepLogs) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number} | 
-[**GetTrigger**](ActionsAPI.md#GetTrigger) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
-[**GetTriggers**](ActionsAPI.md#GetTriggers) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | 
+[**GetStepLogStream**](ActionsAPI.md#GetStepLogStream) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream | 
+[**GetStepLogs**](ActionsAPI.md#GetStepLogs) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number} | 
+[**GetWorkflow**](ActionsAPI.md#GetWorkflow) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
+[**GetWorkflows**](ActionsAPI.md#GetWorkflows) | **Get** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 [**PatchAction**](ActionsAPI.md#PatchAction) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier} | 
-[**PatchExecution**](ActionsAPI.md#PatchExecution) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | 
-[**PatchStage**](ActionsAPI.md#PatchStage) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | 
-[**PatchStep**](ActionsAPI.md#PatchStep) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number} | 
-[**PatchTrigger**](ActionsAPI.md#PatchTrigger) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | 
+[**PatchStage**](ActionsAPI.md#PatchStage) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
+[**PatchStep**](ActionsAPI.md#PatchStep) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number} | 
+[**PatchWorkflow**](ActionsAPI.md#PatchWorkflow) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
 [**PostAction**](ActionsAPI.md#PostAction) | **Post** /repos/{repo_ref}/+/actions | 
-[**PostExecution**](ActionsAPI.md#PostExecution) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/executions | 
-[**PostStage**](ActionsAPI.md#PostStage) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages | 
-[**PostStep**](ActionsAPI.md#PostStep) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | 
-[**PostStepLog**](ActionsAPI.md#PostStepLog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}/logs | 
-[**PostTrigger**](ActionsAPI.md#PostTrigger) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | 
+[**PostStage**](ActionsAPI.md#PostStage) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages | 
+[**PostStep**](ActionsAPI.md#PostStep) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
+[**PostStepLog**](ActionsAPI.md#PostStepLog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs | 
+[**PostWorkflow**](ActionsAPI.md#PostWorkflow) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 
 
 
-## CancelExecution
+## CancelWorkflow
 
-> ExecutionStages CancelExecution(ctx, repoRef, actionIdentifier, executionNumber).Execute()
+> WorkflowStages CancelWorkflow(ctx, repoRef, actionIdentifier, workflowNumber).Execute()
 
 
 
@@ -51,17 +46,17 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.CancelExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
+	resp, r, err := apiClient.ActionsAPI.CancelWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.CancelExecution``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.CancelWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CancelExecution`: ExecutionStages
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.CancelExecution`: %v\n", resp)
+	// response from `CancelWorkflow`: WorkflowStages
+	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.CancelWorkflow`: %v\n", resp)
 }
 ```
 
@@ -73,11 +68,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCancelExecutionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCancelWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -88,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExecutionStages**](ExecutionStages.md)
+[**WorkflowStages**](WorkflowStages.md)
 
 ### Authorization
 
@@ -173,81 +168,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteExecution
+## DeleteWorkflow
 
-> DeleteExecution(ctx, repoRef, actionIdentifier, executionNumber).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ActionsAPI.DeleteExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.DeleteExecution``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteTrigger
-
-> DeleteTrigger(ctx, repoRef, actionIdentifier, triggerIdentifier).Execute()
+> DeleteWorkflow(ctx, repoRef, actionIdentifier, workflowNumber).Execute()
 
 
 
@@ -266,13 +189,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	triggerIdentifier := "triggerIdentifier_example" // string | Action trigger identifier
+	workflowNumber := int64(789) // int64 | Workflow number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ActionsAPI.DeleteTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).Execute()
+	r, err := apiClient.ActionsAPI.DeleteWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.DeleteTrigger``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.DeleteWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -286,11 +209,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**triggerIdentifier** | **string** | Action trigger identifier | 
+**workflowNumber** | **int64** | Workflow number | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteTriggerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -390,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## GetActions
 
-> []ActionExecution GetActions(ctx, repoRef).Page(page).Size(size).Query(query).Latest(latest).Execute()
+> []ActionWorkflow GetActions(ctx, repoRef).Page(page).Size(size).Query(query).Latest(latest).Execute()
 
 
 
@@ -420,7 +343,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetActions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetActions`: []ActionExecution
+	// response from `GetActions`: []ActionWorkflow
 	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetActions`: %v\n", resp)
 }
 ```
@@ -448,156 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ActionExecution**](ActionExecution.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetExecution
-
-> ExecutionStages GetExecution(ctx, repoRef, actionIdentifier, executionNumber).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetExecution``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetExecution`: ExecutionStages
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetExecution`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ExecutionStages**](ExecutionStages.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetExecutions
-
-> []ExecutionModel GetExecutions(ctx, repoRef, actionIdentifier).Page(page).Size(size).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	page := int64(789) // int64 |  (optional)
-	size := int64(789) // int64 |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetExecutions(context.Background(), repoRef, actionIdentifier).Page(page).Size(size).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetExecutions``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetExecutions`: []ExecutionModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetExecutions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**actionIdentifier** | **string** | Action identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetExecutionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **page** | **int64** |  | 
- **size** | **int64** |  | 
-
-### Return type
-
-[**[]ExecutionModel**](ExecutionModel.md)
+[**[]ActionWorkflow**](ActionWorkflow.md)
 
 ### Authorization
 
@@ -615,7 +389,7 @@ Name | Type | Description  | Notes
 
 ## GetStepLogStream
 
-> []LiveLogLine GetStepLogStream(ctx, repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+> []LiveLogLine GetStepLogStream(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 
 
@@ -634,13 +408,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+	resp, r, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetStepLogStream``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -658,7 +432,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 **stepNumber** | **int64** | Step number | 
 
@@ -695,7 +469,7 @@ Name | Type | Description  | Notes
 
 ## GetStepLogs
 
-> []LiveLogLine GetStepLogs(ctx, repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+> []LiveLogLine GetStepLogs(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 
 
@@ -714,13 +488,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+	resp, r, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetStepLogs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -738,7 +512,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 **stepNumber** | **int64** | Step number | 
 
@@ -773,9 +547,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTrigger
+## GetWorkflow
 
-> TriggerModel GetTrigger(ctx, repoRef, actionIdentifier, triggerIdentifier).Execute()
+> WorkflowStages GetWorkflow(ctx, repoRef, actionIdentifier, workflowNumber).Execute()
 
 
 
@@ -794,17 +568,17 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	triggerIdentifier := "triggerIdentifier_example" // string | Action trigger identifier
+	workflowNumber := int64(789) // int64 | Workflow number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).Execute()
+	resp, r, err := apiClient.ActionsAPI.GetWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetTrigger``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTrigger`: TriggerModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetTrigger`: %v\n", resp)
+	// response from `GetWorkflow`: WorkflowStages
+	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetWorkflow`: %v\n", resp)
 }
 ```
 
@@ -816,11 +590,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**triggerIdentifier** | **string** | Action trigger identifier | 
+**workflowNumber** | **int64** | Workflow number | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetTriggerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -831,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TriggerModel**](TriggerModel.md)
+[**WorkflowStages**](WorkflowStages.md)
 
 ### Authorization
 
@@ -847,9 +621,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTriggers
+## GetWorkflows
 
-> []TriggerModel GetTriggers(ctx, repoRef, actionIdentifier).Page(page).Size(size).Query(query).Execute()
+> []WorkflowModel GetWorkflows(ctx, repoRef, actionIdentifier).Page(page).Size(size).Execute()
 
 
 
@@ -870,17 +644,16 @@ func main() {
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
-	query := "query_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.GetTriggers(context.Background(), repoRef, actionIdentifier).Page(page).Size(size).Query(query).Execute()
+	resp, r, err := apiClient.ActionsAPI.GetWorkflows(context.Background(), repoRef, actionIdentifier).Page(page).Size(size).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetTriggers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.GetWorkflows``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTriggers`: []TriggerModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetTriggers`: %v\n", resp)
+	// response from `GetWorkflows`: []WorkflowModel
+	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.GetWorkflows`: %v\n", resp)
 }
 ```
 
@@ -895,7 +668,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetTriggersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkflowsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -904,11 +677,10 @@ Name | Type | Description  | Notes
 
  **page** | **int64** |  | 
  **size** | **int64** |  | 
- **query** | **string** |  | 
 
 ### Return type
 
-[**[]TriggerModel**](TriggerModel.md)
+[**[]WorkflowModel**](WorkflowModel.md)
 
 ### Authorization
 
@@ -997,85 +769,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchExecution
-
-> ExecutionModel PatchExecution(ctx, repoRef, actionIdentifier, executionNumber).ExecutionUpdateInput(executionUpdateInput).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
-	executionUpdateInput := *openapiclient.NewExecutionUpdateInput() // ExecutionUpdateInput | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PatchExecution(context.Background(), repoRef, actionIdentifier, executionNumber).ExecutionUpdateInput(executionUpdateInput).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchExecution``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PatchExecution`: ExecutionModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PatchExecution`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **executionUpdateInput** | [**ExecutionUpdateInput**](ExecutionUpdateInput.md) |  | 
-
-### Return type
-
-[**ExecutionModel**](ExecutionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PatchStage
 
-> StageModel PatchStage(ctx, repoRef, actionIdentifier, executionNumber, stageNumber).StageUpdateInput(stageUpdateInput).Execute()
+> StageModel PatchStage(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber).StageUpdateInput(stageUpdateInput).Execute()
 
 
 
@@ -1094,13 +790,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
 	stageUpdateInput := *openapiclient.NewStageUpdateInput() // StageUpdateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber).StageUpdateInput(stageUpdateInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).StageUpdateInput(stageUpdateInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchStage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1118,7 +814,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 
 ### Other Parameters
@@ -1154,7 +850,7 @@ Name | Type | Description  | Notes
 
 ## PatchStep
 
-> StageModel PatchStep(ctx, repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
+> StageModel PatchStep(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
 
 
 
@@ -1173,14 +869,14 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
 	stepUpdateInput := *openapiclient.NewStepUpdateInput() // StepUpdateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchStep``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1198,7 +894,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 **stepNumber** | **int64** | Step number | 
 
@@ -1234,9 +930,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchTrigger
+## PatchWorkflow
 
-> TriggerModel PatchTrigger(ctx, repoRef, actionIdentifier, triggerIdentifier).TriggerPatchInput(triggerPatchInput).Execute()
+> WorkflowModel PatchWorkflow(ctx, repoRef, actionIdentifier, workflowNumber).WorkflowUpdateInput(workflowUpdateInput).Execute()
 
 
 
@@ -1255,18 +951,18 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	triggerIdentifier := "triggerIdentifier_example" // string | Action trigger identifier
-	triggerPatchInput := *openapiclient.NewTriggerPatchInput() // TriggerPatchInput | 
+	workflowNumber := int64(789) // int64 | Workflow number
+	workflowUpdateInput := *openapiclient.NewWorkflowUpdateInput() // WorkflowUpdateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PatchTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).TriggerPatchInput(triggerPatchInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PatchWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).WorkflowUpdateInput(workflowUpdateInput).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchTrigger``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchTrigger`: TriggerModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PatchTrigger`: %v\n", resp)
+	// response from `PatchWorkflow`: WorkflowModel
+	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PatchWorkflow`: %v\n", resp)
 }
 ```
 
@@ -1278,11 +974,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**triggerIdentifier** | **string** | Action trigger identifier | 
+**workflowNumber** | **int64** | Workflow number | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPatchTriggerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1290,11 +986,11 @@ Name | Type | Description  | Notes
 
 
 
- **triggerPatchInput** | [**TriggerPatchInput**](TriggerPatchInput.md) |  | 
+ **workflowUpdateInput** | [**WorkflowUpdateInput**](WorkflowUpdateInput.md) |  | 
 
 ### Return type
 
-[**TriggerModel**](TriggerModel.md)
+[**WorkflowModel**](WorkflowModel.md)
 
 ### Authorization
 
@@ -1330,7 +1026,7 @@ import (
 
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
-	actionCreateInput := *openapiclient.NewActionCreateInput("ConfigPath_example", "DefaultBranch_example", "Description_example", false, "Identifier_example") // ActionCreateInput | 
+	actionCreateInput := *openapiclient.NewActionCreateInput("Description_example", false, "Identifier_example", "YamlPath_example") // ActionCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1380,82 +1076,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostExecution
-
-> ExecutionModel PostExecution(ctx, repoRef, actionIdentifier).ExecutionCreateInput(executionCreateInput).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionCreateInput := *openapiclient.NewExecutionCreateInput(false) // ExecutionCreateInput | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PostExecution(context.Background(), repoRef, actionIdentifier).ExecutionCreateInput(executionCreateInput).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostExecution``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostExecution`: ExecutionModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PostExecution`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**actionIdentifier** | **string** | Action identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **executionCreateInput** | [**ExecutionCreateInput**](ExecutionCreateInput.md) |  | 
-
-### Return type
-
-[**ExecutionModel**](ExecutionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PostStage
 
-> StageModel PostStage(ctx, repoRef, actionIdentifier, executionNumber).StageCreateInput(stageCreateInput).Execute()
+> StageModel PostStage(ctx, repoRef, actionIdentifier, workflowNumber).StageCreateInput(stageCreateInput).Execute()
 
 
 
@@ -1474,12 +1097,12 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
-	stageCreateInput := *openapiclient.NewStageCreateInput("Arch_example", interface{}(123), false, "Error_example", int64(123), "Kernel_example", "Kind_example", map[string]string{"key": "Inner_example"}, int64(123), int64(123), "Machine_example", "Name_example", int64(123), false, false, "Os_example", int64(123), openapiclient.CIStatus("pending"), "Type_example", "Variant_example") // StageCreateInput | 
+	workflowNumber := int64(789) // int64 | Workflow number
+	stageCreateInput := *openapiclient.NewStageCreateInput("Arch_example", false, "Error_example", int64(123), "Kernel_example", "Kind_example", map[string]string{"key": "Inner_example"}, int64(123), int64(123), "Machine_example", "Name_example", interface{}(123), int64(123), false, false, "Os_example", int64(123), openapiclient.CIStatus("pending"), "Type_example", "Variant_example", openapiclient.YamlProvider("unknown"), "YamlResolved_example") // StageCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, executionNumber).StageCreateInput(stageCreateInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowNumber).StageCreateInput(stageCreateInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1497,7 +1120,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 
 ### Other Parameters
 
@@ -1531,7 +1154,7 @@ Name | Type | Description  | Notes
 
 ## PostStep
 
-> StageModel PostStep(ctx, repoRef, actionIdentifier, executionNumber, stageNumber).StepCreateInput(stepCreateInput).Execute()
+> StageModel PostStep(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber).StepCreateInput(stepCreateInput).Execute()
 
 
 
@@ -1550,13 +1173,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
-	stepCreateInput := *openapiclient.NewStepCreateInput(interface{}(123), false, false, "Error_example", int64(123), "Image_example", "Name_example", int64(123), int64(123), "Schema_example", openapiclient.CIStatus("pending")) // StepCreateInput | 
+	stepCreateInput := *openapiclient.NewStepCreateInput(interface{}(123), false, false, "Error_example", int64(123), "Image_example", "Name_example", int64(123), int64(123), openapiclient.CIStatus("pending"), openapiclient.YamlProvider("unknown"), "YamlResolved_example") // StepCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber).StepCreateInput(stepCreateInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).StepCreateInput(stepCreateInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStep``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1574,7 +1197,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 
 ### Other Parameters
@@ -1610,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ## PostStepLog
 
-> PostStepLog(ctx, repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+> PostStepLog(ctx, repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 
 
@@ -1629,13 +1252,13 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	executionNumber := int64(789) // int64 | Execution number
+	workflowNumber := int64(789) // int64 | Workflow number
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStepLog``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1651,7 +1274,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **repoRef** | **string** | Repository ref | 
 **actionIdentifier** | **string** | Action identifier | 
-**executionNumber** | **int64** | Execution number | 
+**workflowNumber** | **int64** | Workflow number | 
 **stageNumber** | **int64** | Stage number | 
 **stepNumber** | **int64** | Step number | 
 
@@ -1686,9 +1309,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostTrigger
+## PostWorkflow
 
-> TriggerModel PostTrigger(ctx, repoRef, actionIdentifier).TriggerCreateInput(triggerCreateInput).Execute()
+> WorkflowModel PostWorkflow(ctx, repoRef, actionIdentifier).WorkflowCreateInput(workflowCreateInput).Execute()
 
 
 
@@ -1707,17 +1330,17 @@ import (
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
-	triggerCreateInput := *openapiclient.NewTriggerCreateInput([]openapiclient.TriggerAction{openapiclient.TriggerAction("noop")}, "Description_example", false, "Identifier_example", "Secret_example") // TriggerCreateInput | 
+	workflowCreateInput := *openapiclient.NewWorkflowCreateInput(false) // WorkflowCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PostTrigger(context.Background(), repoRef, actionIdentifier).TriggerCreateInput(triggerCreateInput).Execute()
+	resp, r, err := apiClient.ActionsAPI.PostWorkflow(context.Background(), repoRef, actionIdentifier).WorkflowCreateInput(workflowCreateInput).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostTrigger``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostTrigger`: TriggerModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PostTrigger`: %v\n", resp)
+	// response from `PostWorkflow`: WorkflowModel
+	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PostWorkflow`: %v\n", resp)
 }
 ```
 
@@ -1732,18 +1355,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostTriggerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **triggerCreateInput** | [**TriggerCreateInput**](TriggerCreateInput.md) |  | 
+ **workflowCreateInput** | [**WorkflowCreateInput**](WorkflowCreateInput.md) |  | 
 
 ### Return type
 
-[**TriggerModel**](TriggerModel.md)
+[**WorkflowModel**](WorkflowModel.md)
 
 ### Authorization
 

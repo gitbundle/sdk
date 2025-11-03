@@ -5,10 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config_path** | **string** |  | [default to undefined]
 **created** | **number** |  | [default to undefined]
 **created_by** | **number** |  | [default to undefined]
-**default_branch** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **disabled** | **boolean** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
@@ -17,6 +15,8 @@ Name | Type | Description | Notes
 **seq** | **number** |  | [default to undefined]
 **updated** | **number** |  | [default to undefined]
 **version** | **number** |  | [default to undefined]
+**yaml_path** | **string** |  | [default to undefined]
+**yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
 
 ## Example
 
@@ -24,10 +24,8 @@ Name | Type | Description | Notes
 import { ActionModel } from 'gitbundle-sdk';
 
 const instance: ActionModel = {
-    config_path,
     created,
     created_by,
-    default_branch,
     description,
     disabled,
     id,
@@ -36,6 +34,8 @@ const instance: ActionModel = {
     seq,
     updated,
     version,
+    yaml_path,
+    yaml_provider,
 };
 ```
 

@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arch** | **String** |  | 
-**depends_on** | Option<[**serde_json::Value**](.md)> |  | 
 **errignore** | **bool** |  | 
 **error** | **String** |  | 
 **exit_code** | **i64** |  | 
@@ -16,6 +15,7 @@ Name | Type | Description | Notes
 **limit_repo** | **i64** |  | 
 **machine** | **String** |  | 
 **name** | **String** |  | 
+**needs** | Option<[**serde_json::Value**](.md)> |  | 
 **number** | **i64** |  | 
 **on_failure** | **bool** |  | 
 **on_success** | **bool** |  | 
@@ -26,6 +26,8 @@ Name | Type | Description | Notes
 **stopped** | Option<**i64**> |  | [optional]
 **r#type** | **String** |  | 
 **variant** | **String** |  | 
+**yaml_provider** | [**models::YamlProvider**](YamlProvider.md) |  | 
+**yaml_resolved** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

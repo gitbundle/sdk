@@ -15,10 +15,10 @@ use crate::{apis::ResponseContent, models};
 use super::{Error, configuration, ContentType};
 
 
-/// struct for typed errors of method [`cancel_execution`]
+/// struct for typed errors of method [`cancel_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum CancelExecutionError {
+pub enum CancelWorkflowError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -43,24 +43,10 @@ pub enum DeleteActionError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`delete_execution`]
+/// struct for typed errors of method [`delete_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum DeleteExecutionError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`delete_trigger`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum DeleteTriggerError {
+pub enum DeleteWorkflowError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -99,34 +85,6 @@ pub enum GetActionsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_execution`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetExecutionError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`get_executions`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetExecutionsError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`get_step_log_stream`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -155,10 +113,10 @@ pub enum GetStepLogsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_trigger`]
+/// struct for typed errors of method [`get_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetTriggerError {
+pub enum GetWorkflowError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -169,10 +127,10 @@ pub enum GetTriggerError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`get_triggers`]
+/// struct for typed errors of method [`get_workflows`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetTriggersError {
+pub enum GetWorkflowsError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -187,20 +145,6 @@ pub enum GetTriggersError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PatchActionError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`patch_execution`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum PatchExecutionError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -239,10 +183,10 @@ pub enum PatchStepError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`patch_trigger`]
+/// struct for typed errors of method [`patch_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum PatchTriggerError {
+pub enum PatchWorkflowError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -257,20 +201,6 @@ pub enum PatchTriggerError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PostActionError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
-/// struct for typed errors of method [`post_execution`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum PostExecutionError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -323,10 +253,10 @@ pub enum PostStepLogError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`post_trigger`]
+/// struct for typed errors of method [`post_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum PostTriggerError {
+pub enum PostWorkflowError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -338,13 +268,13 @@ pub enum PostTriggerError {
 }
 
 
-pub async fn cancel_execution(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64) -> Result<models::ExecutionStages, Error<CancelExecutionError>> {
+pub async fn cancel_workflow(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64) -> Result<models::WorkflowStages, Error<CancelWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/cancel", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -380,12 +310,12 @@ pub async fn cancel_execution(configuration: &configuration::Configuration, repo
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ExecutionStages`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ExecutionStages`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::WorkflowStages`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::WorkflowStages`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<CancelExecutionError> = serde_json::from_str(&content).ok();
+        let entity: Option<CancelWorkflowError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -430,13 +360,13 @@ pub async fn delete_action(configuration: &configuration::Configuration, repo_re
     }
 }
 
-pub async fn delete_execution(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64) -> Result<(), Error<DeleteExecutionError>> {
+pub async fn delete_workflow(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64) -> Result<(), Error<DeleteWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -466,48 +396,7 @@ pub async fn delete_execution(configuration: &configuration::Configuration, repo
         Ok(())
     } else {
         let content = resp.text().await?;
-        let entity: Option<DeleteExecutionError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn delete_trigger(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, trigger_identifier: &str) -> Result<(), Error<DeleteTriggerError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_trigger_identifier = trigger_identifier;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), trigger_identifier=crate::apis::urlencode(p_trigger_identifier));
-    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-
-    if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<DeleteTriggerError> = serde_json::from_str(&content).ok();
+        let entity: Option<DeleteWorkflowError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -563,7 +452,7 @@ pub async fn get_action(configuration: &configuration::Configuration, repo_ref: 
     }
 }
 
-pub async fn get_actions(configuration: &configuration::Configuration, repo_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, latest: Option<bool>) -> Result<Vec<models::ActionExecution>, Error<GetActionsError>> {
+pub async fn get_actions(configuration: &configuration::Configuration, repo_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, latest: Option<bool>) -> Result<Vec<models::ActionWorkflow>, Error<GetActionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_page = page;
@@ -619,8 +508,8 @@ pub async fn get_actions(configuration: &configuration::Configuration, repo_ref:
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::ActionExecution&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::ActionExecution&gt;`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::ActionWorkflow&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::ActionWorkflow&gt;`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -629,126 +518,15 @@ pub async fn get_actions(configuration: &configuration::Configuration, repo_ref:
     }
 }
 
-pub async fn get_execution(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64) -> Result<models::ExecutionStages, Error<GetExecutionError>> {
+pub async fn get_step_log_stream(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, step_number: i64) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogStreamError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ExecutionStages`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ExecutionStages`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetExecutionError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_executions(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, page: Option<i64>, size: Option<i64>) -> Result<Vec<models::ExecutionModel>, Error<GetExecutionsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_page = page;
-    let p_size = size;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_page {
-        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_size {
-        req_builder = req_builder.query(&[("size", &param_value.to_string())]);
-    }
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::ExecutionModel&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::ExecutionModel&gt;`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetExecutionsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn get_step_log_stream(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, step_number: i64) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogStreamError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}/stream", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -794,15 +572,15 @@ pub async fn get_step_log_stream(configuration: &configuration::Configuration, r
     }
 }
 
-pub async fn get_step_logs(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, step_number: i64) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogsError>> {
+pub async fn get_step_logs(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, step_number: i64) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -848,13 +626,13 @@ pub async fn get_step_logs(configuration: &configuration::Configuration, repo_re
     }
 }
 
-pub async fn get_trigger(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, trigger_identifier: &str) -> Result<models::TriggerModel, Error<GetTriggerError>> {
+pub async fn get_workflow(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64) -> Result<models::WorkflowStages, Error<GetWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_trigger_identifier = trigger_identifier;
+    let p_workflow_number = workflow_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), trigger_identifier=crate::apis::urlencode(p_trigger_identifier));
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -890,25 +668,24 @@ pub async fn get_trigger(configuration: &configuration::Configuration, repo_ref:
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TriggerModel`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TriggerModel`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::WorkflowStages`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::WorkflowStages`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<GetTriggerError> = serde_json::from_str(&content).ok();
+        let entity: Option<GetWorkflowError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
-pub async fn get_triggers(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>) -> Result<Vec<models::TriggerModel>, Error<GetTriggersError>> {
+pub async fn get_workflows(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, page: Option<i64>, size: Option<i64>) -> Result<Vec<models::WorkflowModel>, Error<GetWorkflowsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
     let p_page = page;
     let p_size = size;
-    let p_query = query;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/triggers", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref param_value) = p_page {
@@ -917,9 +694,6 @@ pub async fn get_triggers(configuration: &configuration::Configuration, repo_ref
     if let Some(ref param_value) = p_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
-        req_builder = req_builder.query(&[("query", &param_value.to_string())]);
-    }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -953,12 +727,12 @@ pub async fn get_triggers(configuration: &configuration::Configuration, repo_ref
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::TriggerModel&gt;`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::TriggerModel&gt;`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::WorkflowModel&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::WorkflowModel&gt;`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<GetTriggersError> = serde_json::from_str(&content).ok();
+        let entity: Option<GetWorkflowsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -1016,69 +790,15 @@ pub async fn patch_action(configuration: &configuration::Configuration, repo_ref
     }
 }
 
-pub async fn patch_execution(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, execution_update_input: models::ExecutionUpdateInput) -> Result<models::ExecutionModel, Error<PatchExecutionError>> {
+pub async fn patch_stage(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, stage_update_input: models::StageUpdateInput) -> Result<models::StageModel, Error<PatchStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
-    let p_execution_update_input = execution_update_input;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number);
-    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_execution_update_input);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ExecutionModel`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ExecutionModel`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<PatchExecutionError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn patch_stage(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, stage_update_input: models::StageUpdateInput) -> Result<models::StageModel, Error<PatchStageError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_stage_update_input = stage_update_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1125,16 +845,16 @@ pub async fn patch_stage(configuration: &configuration::Configuration, repo_ref:
     }
 }
 
-pub async fn patch_step(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, step_number: i64, step_update_input: models::StepUpdateInput) -> Result<models::StageModel, Error<PatchStepError>> {
+pub async fn patch_step(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, step_number: i64, step_update_input: models::StepUpdateInput) -> Result<models::StageModel, Error<PatchStepError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
     let p_step_update_input = step_update_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1181,14 +901,14 @@ pub async fn patch_step(configuration: &configuration::Configuration, repo_ref: 
     }
 }
 
-pub async fn patch_trigger(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, trigger_identifier: &str, trigger_patch_input: models::TriggerPatchInput) -> Result<models::TriggerModel, Error<PatchTriggerError>> {
+pub async fn patch_workflow(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, workflow_update_input: models::WorkflowUpdateInput) -> Result<models::WorkflowModel, Error<PatchWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_trigger_identifier = trigger_identifier;
-    let p_trigger_patch_input = trigger_patch_input;
+    let p_workflow_number = workflow_number;
+    let p_workflow_update_input = workflow_update_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), trigger_identifier=crate::apis::urlencode(p_trigger_identifier));
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number);
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1208,7 +928,7 @@ pub async fn patch_trigger(configuration: &configuration::Configuration, repo_re
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_trigger_patch_input);
+    req_builder = req_builder.json(&p_workflow_update_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1225,12 +945,12 @@ pub async fn patch_trigger(configuration: &configuration::Configuration, repo_re
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TriggerModel`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TriggerModel`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::WorkflowModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::WorkflowModel`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<PatchTriggerError> = serde_json::from_str(&content).ok();
+        let entity: Option<PatchWorkflowError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -1287,67 +1007,14 @@ pub async fn post_action(configuration: &configuration::Configuration, repo_ref:
     }
 }
 
-pub async fn post_execution(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_create_input: models::ExecutionCreateInput) -> Result<models::ExecutionModel, Error<PostExecutionError>> {
+pub async fn post_stage(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_create_input: models::StageCreateInput) -> Result<models::StageModel, Error<PostStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_create_input = execution_create_input;
-
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
-    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_execution_create_input);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ExecutionModel`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ExecutionModel`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<PostExecutionError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent { status, content, entity }))
-    }
-}
-
-pub async fn post_stage(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_create_input: models::StageCreateInput) -> Result<models::StageModel, Error<PostStageError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_create_input = stage_create_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1394,15 +1061,15 @@ pub async fn post_stage(configuration: &configuration::Configuration, repo_ref: 
     }
 }
 
-pub async fn post_step(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, step_create_input: models::StepCreateInput) -> Result<models::StageModel, Error<PostStepError>> {
+pub async fn post_step(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, step_create_input: models::StepCreateInput) -> Result<models::StageModel, Error<PostStepError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_step_create_input = step_create_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1449,15 +1116,15 @@ pub async fn post_step(configuration: &configuration::Configuration, repo_ref: &
     }
 }
 
-pub async fn post_step_log(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, execution_number: i64, stage_number: i64, step_number: i64) -> Result<(), Error<PostStepLogError>> {
+pub async fn post_step_log(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_number: i64, stage_number: i64, step_number: i64) -> Result<(), Error<PostStepLogError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_execution_number = execution_number;
+    let p_workflow_number = workflow_number;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), execution_number=p_execution_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1492,13 +1159,13 @@ pub async fn post_step_log(configuration: &configuration::Configuration, repo_re
     }
 }
 
-pub async fn post_trigger(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, trigger_create_input: models::TriggerCreateInput) -> Result<models::TriggerModel, Error<PostTriggerError>> {
+pub async fn post_workflow(configuration: &configuration::Configuration, repo_ref: &str, action_identifier: &str, workflow_create_input: models::WorkflowCreateInput) -> Result<models::WorkflowModel, Error<PostWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_trigger_create_input = trigger_create_input;
+    let p_workflow_create_input = workflow_create_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/triggers", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1518,7 +1185,7 @@ pub async fn post_trigger(configuration: &configuration::Configuration, repo_ref
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_trigger_create_input);
+    req_builder = req_builder.json(&p_workflow_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1535,12 +1202,12 @@ pub async fn post_trigger(configuration: &configuration::Configuration, repo_ref
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TriggerModel`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TriggerModel`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::WorkflowModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::WorkflowModel`")))),
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<PostTriggerError> = serde_json::from_str(&content).ok();
+        let entity: Option<PostWorkflowError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

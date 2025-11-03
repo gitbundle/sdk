@@ -13,14 +13,10 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ActionModel {
-    #[serde(rename = "config_path")]
-    pub config_path: String,
     #[serde(rename = "created")]
     pub created: i64,
     #[serde(rename = "created_by")]
     pub created_by: i64,
-    #[serde(rename = "default_branch")]
-    pub default_branch: String,
     #[serde(rename = "description")]
     pub description: String,
     #[serde(rename = "disabled")]
@@ -37,15 +33,17 @@ pub struct ActionModel {
     pub updated: i64,
     #[serde(rename = "version")]
     pub version: i64,
+    #[serde(rename = "yaml_path")]
+    pub yaml_path: String,
+    #[serde(rename = "yaml_provider")]
+    pub yaml_provider: models::YamlProvider,
 }
 
 impl ActionModel {
-    pub fn new(config_path: String, created: i64, created_by: i64, default_branch: String, description: String, disabled: bool, id: i64, name: String, repo_id: i64, seq: i64, updated: i64, version: i64) -> ActionModel {
+    pub fn new(created: i64, created_by: i64, description: String, disabled: bool, id: i64, name: String, repo_id: i64, seq: i64, updated: i64, version: i64, yaml_path: String, yaml_provider: models::YamlProvider) -> ActionModel {
         ActionModel {
-            config_path,
             created,
             created_by,
-            default_branch,
             description,
             disabled,
             id,
@@ -54,6 +52,8 @@ impl ActionModel {
             seq,
             updated,
             version,
+            yaml_path,
+            yaml_provider,
         }
     }
 }

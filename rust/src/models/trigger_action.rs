@@ -28,8 +28,8 @@ pub enum TriggerAction {
     PullreqCreated,
     #[serde(rename = "pullreq_reopened")]
     PullreqReopened,
-    #[serde(rename = "pullreq_branch_updated")]
-    PullreqBranchUpdated,
+    #[serde(rename = "pullreq_synchronize")]
+    PullreqSynchronize,
     #[serde(rename = "pullreq_closed")]
     PullreqClosed,
     #[serde(rename = "pullreq_merged")]
@@ -47,7 +47,7 @@ impl std::fmt::Display for TriggerAction {
             Self::TagUpdated => write!(f, "tag_updated"),
             Self::PullreqCreated => write!(f, "pullreq_created"),
             Self::PullreqReopened => write!(f, "pullreq_reopened"),
-            Self::PullreqBranchUpdated => write!(f, "pullreq_branch_updated"),
+            Self::PullreqSynchronize => write!(f, "pullreq_synchronize"),
             Self::PullreqClosed => write!(f, "pullreq_closed"),
             Self::PullreqMerged => write!(f, "pullreq_merged"),
         }

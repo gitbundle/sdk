@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
-**schema** | **string** |  | [default to undefined]
 **stage_id** | **number** |  | [default to undefined]
 **started** | **number** |  | [optional] [default to undefined]
 **status** | [**CIStatus**](CIStatus.md) |  | [default to undefined]
 **stopped** | **number** |  | [optional] [default to undefined]
 **version** | **number** |  | [default to undefined]
+**yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
+**yaml_resolved** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -38,12 +39,13 @@ const instance: StepModel = {
     name,
     number,
     parent_group_id,
-    schema,
     stage_id,
     started,
     status,
     stopped,
     version,
+    yaml_provider,
+    yaml_resolved,
 };
 ```
 

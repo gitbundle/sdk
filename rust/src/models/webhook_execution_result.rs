@@ -14,6 +14,8 @@ use serde::{Deserialize, Serialize};
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum WebhookExecutionResult {
+    #[serde(rename = "unknown")]
+    Unknown,
     #[serde(rename = "success")]
     Success,
     #[serde(rename = "retriable_error")]
@@ -26,6 +28,7 @@ pub enum WebhookExecutionResult {
 impl std::fmt::Display for WebhookExecutionResult {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::Unknown => write!(f, "unknown"),
             Self::Success => write!(f, "success"),
             Self::RetriableError => write!(f, "retriable_error"),
             Self::FatalError => write!(f, "fatal_error"),
@@ -35,7 +38,7 @@ impl std::fmt::Display for WebhookExecutionResult {
 
 impl Default for WebhookExecutionResult {
     fn default() -> WebhookExecutionResult {
-        Self::Success
+        Self::Unknown
     }
 }
 

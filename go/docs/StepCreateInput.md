@@ -13,14 +13,15 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Number** | **int64** |  | 
 **ParentGroupId** | **int64** |  | 
-**Schema** | **string** |  | 
 **Status** | [**CIStatus**](CIStatus.md) |  | 
+**YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
+**YamlResolved** | **string** |  | 
 
 ## Methods
 
 ### NewStepCreateInput
 
-`func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, schema string, status CIStatus, ) *StepCreateInput`
+`func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, status CIStatus, yamlProvider YamlProvider, yamlResolved string, ) *StepCreateInput`
 
 NewStepCreateInput instantiates a new StepCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -225,26 +226,6 @@ and a boolean to check if the value has been set.
 SetParentGroupId sets ParentGroupId field to given value.
 
 
-### GetSchema
-
-`func (o *StepCreateInput) GetSchema() string`
-
-GetSchema returns the Schema field if non-nil, zero value otherwise.
-
-### GetSchemaOk
-
-`func (o *StepCreateInput) GetSchemaOk() (*string, bool)`
-
-GetSchemaOk returns a tuple with the Schema field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSchema
-
-`func (o *StepCreateInput) SetSchema(v string)`
-
-SetSchema sets Schema field to given value.
-
-
 ### GetStatus
 
 `func (o *StepCreateInput) GetStatus() CIStatus`
@@ -263,6 +244,46 @@ and a boolean to check if the value has been set.
 `func (o *StepCreateInput) SetStatus(v CIStatus)`
 
 SetStatus sets Status field to given value.
+
+
+### GetYamlProvider
+
+`func (o *StepCreateInput) GetYamlProvider() YamlProvider`
+
+GetYamlProvider returns the YamlProvider field if non-nil, zero value otherwise.
+
+### GetYamlProviderOk
+
+`func (o *StepCreateInput) GetYamlProviderOk() (*YamlProvider, bool)`
+
+GetYamlProviderOk returns a tuple with the YamlProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlProvider
+
+`func (o *StepCreateInput) SetYamlProvider(v YamlProvider)`
+
+SetYamlProvider sets YamlProvider field to given value.
+
+
+### GetYamlResolved
+
+`func (o *StepCreateInput) GetYamlResolved() string`
+
+GetYamlResolved returns the YamlResolved field if non-nil, zero value otherwise.
+
+### GetYamlResolvedOk
+
+`func (o *StepCreateInput) GetYamlResolvedOk() (*string, bool)`
+
+GetYamlResolvedOk returns a tuple with the YamlResolved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlResolved
+
+`func (o *StepCreateInput) SetYamlResolved(v string)`
+
+SetYamlResolved sets YamlResolved field to given value.
 
 
 

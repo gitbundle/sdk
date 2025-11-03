@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | Option<**String**> |  | [optional]
+**origin** | Option<**String**> |  | [optional]
 **password** | Option<**String**> |  | [optional]
 **r#type** | [**models::RepoProviderType**](RepoProviderType.md) |  | 
 **username** | Option<**String**> |  | [optional]

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigPath** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Disabled** | Pointer to **NullableBool** |  | [optional] 
 **Identifier** | Pointer to **NullableString** |  | [optional] 
+**YamlPath** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -28,41 +28,6 @@ NewActionUpdateInputWithDefaults instantiates a new ActionUpdateInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConfigPath
-
-`func (o *ActionUpdateInput) GetConfigPath() string`
-
-GetConfigPath returns the ConfigPath field if non-nil, zero value otherwise.
-
-### GetConfigPathOk
-
-`func (o *ActionUpdateInput) GetConfigPathOk() (*string, bool)`
-
-GetConfigPathOk returns a tuple with the ConfigPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigPath
-
-`func (o *ActionUpdateInput) SetConfigPath(v string)`
-
-SetConfigPath sets ConfigPath field to given value.
-
-### HasConfigPath
-
-`func (o *ActionUpdateInput) HasConfigPath() bool`
-
-HasConfigPath returns a boolean if a field has been set.
-
-### SetConfigPathNil
-
-`func (o *ActionUpdateInput) SetConfigPathNil(b bool)`
-
- SetConfigPathNil sets the value for ConfigPath to be an explicit nil
-
-### UnsetConfigPath
-`func (o *ActionUpdateInput) UnsetConfigPath()`
-
-UnsetConfigPath ensures that no value is present for ConfigPath, not even an explicit nil
 ### GetDescription
 
 `func (o *ActionUpdateInput) GetDescription() string`
@@ -168,6 +133,41 @@ HasIdentifier returns a boolean if a field has been set.
 `func (o *ActionUpdateInput) UnsetIdentifier()`
 
 UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
+### GetYamlPath
+
+`func (o *ActionUpdateInput) GetYamlPath() string`
+
+GetYamlPath returns the YamlPath field if non-nil, zero value otherwise.
+
+### GetYamlPathOk
+
+`func (o *ActionUpdateInput) GetYamlPathOk() (*string, bool)`
+
+GetYamlPathOk returns a tuple with the YamlPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlPath
+
+`func (o *ActionUpdateInput) SetYamlPath(v string)`
+
+SetYamlPath sets YamlPath field to given value.
+
+### HasYamlPath
+
+`func (o *ActionUpdateInput) HasYamlPath() bool`
+
+HasYamlPath returns a boolean if a field has been set.
+
+### SetYamlPathNil
+
+`func (o *ActionUpdateInput) SetYamlPathNil(b bool)`
+
+ SetYamlPathNil sets the value for YamlPath to be an explicit nil
+
+### UnsetYamlPath
+`func (o *ActionUpdateInput) UnsetYamlPath()`
+
+UnsetYamlPath ensures that no value is present for YamlPath, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

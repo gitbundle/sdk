@@ -5,17 +5,15 @@
 
 * `NOOP` (value: `"noop"`)
 
-* `EXECUTION_UPDATED` (value: `"execution_updated"`)
+* `WORKFLOW_UPDATED` (value: `"workflow_updated"`)
 
-* `EXECUTION_RUNNING` (value: `"execution_running"`)
+* `WORKFLOW_RUNNING` (value: `"workflow_running"`)
 
-* `EXECUTION_COMPLETED` (value: `"execution_completed"`)
+* `WORKFLOW_COMPLETED` (value: `"workflow_completed"`)
 
-* `EXECUTION_CANCELED` (value: `"execution_canceled"`)
+* `WORKFLOW_CANCELED` (value: `"workflow_canceled"`)
 
 * `REPOSITORY_IMPORT_COMPLETED` (value: `"repository_import_completed"`)
-
-* `REPOSITORY_EXPORT_COMPLETED` (value: `"repository_export_completed"`)
 
 * `PULLREQ_UPDATED` (value: `"pullreq_updated"`)
 

@@ -34,18 +34,6 @@ export interface ActionCreateInput {
      * @type {string}
      * @memberof ActionCreateInput
      */
-    'config_path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionCreateInput
-     */
-    'default_branch': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionCreateInput
-     */
     'description': string;
     /**
      * 
@@ -59,25 +47,12 @@ export interface ActionCreateInput {
      * @memberof ActionCreateInput
      */
     'identifier': string;
-}
-/**
- * 
- * @export
- * @interface ActionExecution
- */
-export interface ActionExecution {
     /**
      * 
-     * @type {ExecutionModel}
-     * @memberof ActionExecution
+     * @type {string}
+     * @memberof ActionCreateInput
      */
-    'execution'?: ExecutionModel | null;
-    /**
-     * 
-     * @type {ActionModel}
-     * @memberof ActionExecution
-     */
-    'model': ActionModel;
+    'yaml_path': string;
 }
 /**
  * 
@@ -85,12 +60,6 @@ export interface ActionExecution {
  * @interface ActionModel
  */
 export interface ActionModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionModel
-     */
-    'config_path': string;
     /**
      * 
      * @type {number}
@@ -103,12 +72,6 @@ export interface ActionModel {
      * @memberof ActionModel
      */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionModel
-     */
-    'default_branch': string;
     /**
      * 
      * @type {string}
@@ -157,19 +120,27 @@ export interface ActionModel {
      * @memberof ActionModel
      */
     'version': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ActionModel
+     */
+    'yaml_path': string;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof ActionModel
+     */
+    'yaml_provider': YamlProvider;
 }
+
+
 /**
  * 
  * @export
  * @interface ActionUpdateInput
  */
 export interface ActionUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionUpdateInput
-     */
-    'config_path'?: string | null;
     /**
      * 
      * @type {string}
@@ -188,6 +159,31 @@ export interface ActionUpdateInput {
      * @memberof ActionUpdateInput
      */
     'identifier'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ActionUpdateInput
+     */
+    'yaml_path'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface ActionWorkflow
+ */
+export interface ActionWorkflow {
+    /**
+     * 
+     * @type {ActionModel}
+     * @memberof ActionWorkflow
+     */
+    'model': ActionModel;
+    /**
+     * 
+     * @type {WorkflowModel}
+     * @memberof ActionWorkflow
+     */
+    'workflow'?: WorkflowModel | null;
 }
 /**
  * 
@@ -1410,284 +1406,6 @@ export interface DiffStats {
 /**
  * 
  * @export
- * @interface ExecutionCreateInput
- */
-export interface ExecutionCreateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ExecutionCreateInput
-     */
-    'debug': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionCreateInput
-     */
-    'deploy'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionCreateInput
-     */
-    'deploy_id'?: number | null;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof ExecutionCreateInput
-     */
-    'params'?: { [key: string]: string; };
-}
-/**
- * 
- * @export
- * @interface ExecutionModel
- */
-export interface ExecutionModel {
-    /**
-     * 
-     * @type {TriggerAction}
-     * @memberof ExecutionModel
-     */
-    'action': TriggerAction;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'action_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'after': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'author_email': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'author_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'author_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'before': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'branch_name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'cron': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ExecutionModel
-     */
-    'debug': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'deploy': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'deploy_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'error': string;
-    /**
-     * 
-     * @type {TriggerEvent}
-     * @memberof ExecutionModel
-     */
-    'event': TriggerEvent;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'finished': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'link': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'message': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'number': number;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof ExecutionModel
-     */
-    'params': { [key: string]: string; };
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'ref': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'sender_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'started': number;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof ExecutionModel
-     */
-    'status': CIStatus;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionModel
-     */
-    'title': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionModel
-     */
-    'version': number;
-}
-
-
-/**
- * 
- * @export
- * @interface ExecutionStages
- */
-export interface ExecutionStages {
-    /**
-     * 
-     * @type {ExecutionModel}
-     * @memberof ExecutionStages
-     */
-    'model': ExecutionModel;
-    /**
-     * 
-     * @type {Array<StageSteps>}
-     * @memberof ExecutionStages
-     */
-    'stages': Array<StageSteps>;
-}
-/**
- * 
- * @export
- * @interface ExecutionUpdateInput
- */
-export interface ExecutionUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionUpdateInput
-     */
-    'after'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ExecutionUpdateInput
-     */
-    'error'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionUpdateInput
-     */
-    'finished'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ExecutionUpdateInput
-     */
-    'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof ExecutionUpdateInput
-     */
-    'status'?: CIStatus | null;
-}
-
-
-/**
- * 
- * @export
  * @interface FeedModel
  */
 export interface FeedModel {
@@ -1840,7 +1558,8 @@ export const FeedType = {
     RepoDeleted: 'repo_deleted',
     RepoForked: 'repo_forked',
     RepoRenamed: 'repo_renamed',
-    RepoTransfered: 'repo_transfered',
+    RepoTransferred: 'repo_transferred',
+    RepoRestored: 'repo_restored',
     BranchCreated: 'branch_created',
     BranchRenamed: 'branch_renamed',
     BranchDeleted: 'branch_deleted',
@@ -2803,10 +2522,10 @@ export const Permission = {
     ActionEdit: 'action_edit',
     ActionDelete: 'action_delete',
     ActionExecute: 'action_execute',
-    SecretView: 'secret_view',
-    SecretEdit: 'secret_edit',
-    SecretDelete: 'secret_delete',
-    SecretAccess: 'secret_access',
+    VariableView: 'variable_view',
+    VariableEdit: 'variable_edit',
+    VariableDelete: 'variable_delete',
+    VariableAccess: 'variable_access',
     ConnectorView: 'connector_view',
     ConnectorEdit: 'connector_edit',
     ConnectorDelete: 'connector_delete',
@@ -5093,7 +4812,7 @@ export interface RepoProvider {
      * @type {string}
      * @memberof RepoProvider
      */
-    'host'?: string | null;
+    'origin'?: string | null;
     /**
      * 
      * @type {string}
@@ -5842,142 +5561,6 @@ export interface RuleViolation {
 /**
  * 
  * @export
- * @interface SecretCreateInput
- */
-export interface SecretCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretCreateInput
-     */
-    'data': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretCreateInput
-     */
-    'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretCreateInput
-     */
-    'group_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretCreateInput
-     */
-    'identifier': string;
-}
-/**
- * 
- * @export
- * @interface SecretGroup
- */
-export interface SecretGroup {
-    /**
-     * 
-     * @type {GroupModel}
-     * @memberof SecretGroup
-     */
-    'group'?: GroupModel | null;
-    /**
-     * 
-     * @type {SecretModel}
-     * @memberof SecretGroup
-     */
-    'model': SecretModel;
-}
-/**
- * 
- * @export
- * @interface SecretModel
- */
-export interface SecretModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'created_by': number;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof SecretModel
-     */
-    'data': Array<number>;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretModel
-     */
-    'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretModel
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof SecretModel
-     */
-    'version': number;
-}
-/**
- * 
- * @export
- * @interface SecretPatchInput
- */
-export interface SecretPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretPatchInput
-     */
-    'data'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretPatchInput
-     */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SecretPatchInput
-     */
-    'identifier'?: string | null;
-}
-/**
- * 
- * @export
  * @interface SecuritySettings
  */
 export interface SecuritySettings {
@@ -6048,12 +5631,11 @@ export interface ServiceAccountTokenOutput {
 
 export const SseType = {
     Noop: 'noop',
-    ExecutionUpdated: 'execution_updated',
-    ExecutionRunning: 'execution_running',
-    ExecutionCompleted: 'execution_completed',
-    ExecutionCanceled: 'execution_canceled',
+    WorkflowUpdated: 'workflow_updated',
+    WorkflowRunning: 'workflow_running',
+    WorkflowCompleted: 'workflow_completed',
+    WorkflowCanceled: 'workflow_canceled',
     RepositoryImportCompleted: 'repository_import_completed',
-    RepositoryExportCompleted: 'repository_export_completed',
     PullreqUpdated: 'pullreq_updated'
 } as const;
 
@@ -6072,12 +5654,6 @@ export interface StageCreateInput {
      * @memberof StageCreateInput
      */
     'arch': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof StageCreateInput
-     */
-    'depends_on': any;
     /**
      * 
      * @type {boolean}
@@ -6140,6 +5716,12 @@ export interface StageCreateInput {
     'name': string;
     /**
      * 
+     * @type {any}
+     * @memberof StageCreateInput
+     */
+    'needs': any;
+    /**
+     * 
      * @type {number}
      * @memberof StageCreateInput
      */
@@ -6198,6 +5780,18 @@ export interface StageCreateInput {
      * @memberof StageCreateInput
      */
     'variant': string;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof StageCreateInput
+     */
+    'yaml_provider': YamlProvider;
+    /**
+     * 
+     * @type {string}
+     * @memberof StageCreateInput
+     */
+    'yaml_resolved': string;
 }
 
 
@@ -6221,12 +5815,6 @@ export interface StageModel {
     'created': number;
     /**
      * 
-     * @type {any}
-     * @memberof StageModel
-     */
-    'depends_on': any;
-    /**
-     * 
      * @type {boolean}
      * @memberof StageModel
      */
@@ -6237,12 +5825,6 @@ export interface StageModel {
      * @memberof StageModel
      */
     'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
-    'execution_id': number;
     /**
      * 
      * @type {number}
@@ -6299,6 +5881,12 @@ export interface StageModel {
     'name': string;
     /**
      * 
+     * @type {any}
+     * @memberof StageModel
+     */
+    'needs': any;
+    /**
+     * 
      * @type {number}
      * @memberof StageModel
      */
@@ -6327,6 +5915,12 @@ export interface StageModel {
      * @memberof StageModel
      */
     'parent_group_id': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StageModel
+     */
+    'parent_id'?: number | null;
     /**
      * 
      * @type {number}
@@ -6375,6 +5969,24 @@ export interface StageModel {
      * @memberof StageModel
      */
     'version': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StageModel
+     */
+    'workflow_id': number;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof StageModel
+     */
+    'yaml_provider': YamlProvider;
+    /**
+     * 
+     * @type {string}
+     * @memberof StageModel
+     */
+    'yaml_resolved': string;
 }
 
 
@@ -6498,16 +6110,22 @@ export interface StepCreateInput {
     'parent_group_id': number;
     /**
      * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
-    'schema': string;
-    /**
-     * 
      * @type {CIStatus}
      * @memberof StepCreateInput
      */
     'status': CIStatus;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof StepCreateInput
+     */
+    'yaml_provider': YamlProvider;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepCreateInput
+     */
+    'yaml_resolved': string;
 }
 
 
@@ -6579,12 +6197,6 @@ export interface StepModel {
     'parent_group_id': number;
     /**
      * 
-     * @type {string}
-     * @memberof StepModel
-     */
-    'schema': string;
-    /**
-     * 
      * @type {number}
      * @memberof StepModel
      */
@@ -6613,6 +6225,18 @@ export interface StepModel {
      * @memberof StepModel
      */
     'version': number;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof StepModel
+     */
+    'yaml_provider': YamlProvider;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepModel
+     */
+    'yaml_resolved': string;
 }
 
 
@@ -6836,7 +6460,7 @@ export const TriggerAction = {
     TagUpdated: 'tag_updated',
     PullreqCreated: 'pullreq_created',
     PullreqReopened: 'pullreq_reopened',
-    PullreqBranchUpdated: 'pullreq_branch_updated',
+    PullreqSynchronize: 'pullreq_synchronize',
     PullreqClosed: 'pullreq_closed',
     PullreqMerged: 'pullreq_merged'
 } as const;
@@ -6847,179 +6471,28 @@ export type TriggerAction = typeof TriggerAction[keyof typeof TriggerAction];
 /**
  * 
  * @export
- * @interface TriggerCreateInput
- */
-export interface TriggerCreateInput {
-    /**
-     * 
-     * @type {Array<TriggerAction>}
-     * @memberof TriggerCreateInput
-     */
-    'actions': Array<TriggerAction>;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerCreateInput
-     */
-    'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TriggerCreateInput
-     */
-    'disabled': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerCreateInput
-     */
-    'identifier': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerCreateInput
-     */
-    'secret': string;
-}
-/**
- * 
- * @export
  * @enum {string}
  */
 
 export const TriggerEvent = {
-    Cron: 'cron',
-    Manual: 'manual',
-    Push: 'push',
+    Noop: 'noop',
+    BranchProtectionRule: 'branch_protection_rule',
+    CheckRun: 'check_run',
+    CheckSuite: 'check_suite',
+    Branch: 'branch',
+    Tag: 'tag',
     PullRequest: 'pull_request',
-    Tag: 'tag'
+    Release: 'release',
+    Repository: 'repository',
+    Schedule: 'schedule',
+    Status: 'status',
+    WorkflowDispatch: 'workflow_dispatch',
+    WorkflowRun: 'workflow_run'
 } as const;
 
 export type TriggerEvent = typeof TriggerEvent[keyof typeof TriggerEvent];
 
 
-/**
- * 
- * @export
- * @interface TriggerModel
- */
-export interface TriggerModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'action_id': number;
-    /**
-     * 
-     * @type {Array<TriggerAction>}
-     * @memberof TriggerModel
-     */
-    'actions': Array<TriggerAction>;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerModel
-     */
-    'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TriggerModel
-     */
-    'disabled': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerModel
-     */
-    'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'repo_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerModel
-     */
-    'secret': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerModel
-     */
-    'type': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TriggerModel
-     */
-    'version': number;
-}
-/**
- * 
- * @export
- * @interface TriggerPatchInput
- */
-export interface TriggerPatchInput {
-    /**
-     * 
-     * @type {Array<TriggerAction>}
-     * @memberof TriggerPatchInput
-     */
-    'actions'?: Array<TriggerAction> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerPatchInput
-     */
-    'description'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TriggerPatchInput
-     */
-    'disabled'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerPatchInput
-     */
-    'identifier'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof TriggerPatchInput
-     */
-    'secret'?: string | null;
-}
 /**
  * 
  * @export
@@ -7301,6 +6774,220 @@ export type UserType = typeof UserType[keyof typeof UserType];
 /**
  * 
  * @export
+ * @interface VariableCreateInput
+ */
+export interface VariableCreateInput {
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableCreateInput
+     */
+    'data': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableCreateInput
+     */
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableCreateInput
+     */
+    'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableCreateInput
+     */
+    'parent_ref': string;
+    /**
+     * 
+     * @type {VariableType}
+     * @memberof VariableCreateInput
+     */
+    'type': VariableType;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface VariableGroup
+ */
+export interface VariableGroup {
+    /**
+     * 
+     * @type {GroupModel}
+     * @memberof VariableGroup
+     */
+    'group'?: GroupModel | null;
+    /**
+     * 
+     * @type {VariableModel}
+     * @memberof VariableGroup
+     */
+    'model': VariableModel;
+}
+/**
+ * 
+ * @export
+ * @interface VariableModel
+ */
+export interface VariableModel {
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'created': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'created_by': number;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof VariableModel
+     */
+    'data': Array<number>;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableModel
+     */
+    'description': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariableModel
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'parent_id': number;
+    /**
+     * 
+     * @type {VariableScope}
+     * @memberof VariableModel
+     */
+    'scope': VariableScope;
+    /**
+     * 
+     * @type {VariableType}
+     * @memberof VariableModel
+     */
+    'type': VariableType;
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'updated': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VariableModel
+     */
+    'version': number;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface VariablePatchInput
+ */
+export interface VariablePatchInput {
+    /**
+     * 
+     * @type {string}
+     * @memberof VariablePatchInput
+     */
+    'data'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariablePatchInput
+     */
+    'description'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VariablePatchInput
+     */
+    'identifier'?: string | null;
+    /**
+     * 
+     * @type {VariableType}
+     * @memberof VariablePatchInput
+     */
+    'type': VariableType;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const VariableScope = {
+    Group: 'group',
+    Repository: 'repository'
+} as const;
+
+export type VariableScope = typeof VariableScope[keyof typeof VariableScope];
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const VariableSort = {
+    Noop: 'noop',
+    Id: 'id',
+    Name: 'name',
+    Type: 'type',
+    Created: 'created',
+    Updated: 'updated'
+} as const;
+
+export type VariableSort = typeof VariableSort[keyof typeof VariableSort];
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const VariableType = {
+    PlainText: 'plain_text',
+    SecretText: 'secret_text',
+    EnvironmentText: 'environment_text',
+    EnvironmentSecret: 'environment_secret'
+} as const;
+
+export type VariableType = typeof VariableType[keyof typeof VariableType];
+
+
+/**
+ * 
+ * @export
  * @interface WebhookCreateInput
  */
 export interface WebhookCreateInput {
@@ -7477,6 +7164,7 @@ export interface WebhookExecutionModel {
  */
 
 export const WebhookExecutionResult = {
+    Unknown: 'unknown',
     Success: 'success',
     RetriableError: 'retriable_error',
     FatalError: 'fatal_error'
@@ -7696,6 +7384,7 @@ export type WebhookSort = typeof WebhookSort[keyof typeof WebhookSort];
  */
 
 export const WebhookTrigger = {
+    Noop: 'noop',
     BranchCreated: 'branch_created',
     BranchUpdated: 'branch_updated',
     BranchDeleted: 'branch_deleted',
@@ -7704,13 +7393,336 @@ export const WebhookTrigger = {
     TagDeleted: 'tag_deleted',
     PullreqCreated: 'pullreq_created',
     PullreqReopened: 'pullreq_reopened',
-    PullreqBranchUpdated: 'pullreq_branch_updated',
+    PullreqSynchronize: 'pullreq_synchronize',
     PullreqClosed: 'pullreq_closed',
-    PullreqCommentCreated: 'pullreq_comment_created',
+    PullreqCommented: 'pullreq_commented',
     PullreqMerged: 'pullreq_merged'
 } as const;
 
 export type WebhookTrigger = typeof WebhookTrigger[keyof typeof WebhookTrigger];
+
+
+/**
+ * 
+ * @export
+ * @interface WorkflowCreateInput
+ */
+export interface WorkflowCreateInput {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WorkflowCreateInput
+     */
+    'debug': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowCreateInput
+     */
+    'deploy'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowCreateInput
+     */
+    'deploy_id'?: number | null;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof WorkflowCreateInput
+     */
+    'params'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowCreateInput
+     */
+    'source'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowCreateInput
+     */
+    'source_repo_id'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface WorkflowModel
+ */
+export interface WorkflowModel {
+    /**
+     * 
+     * @type {TriggerAction}
+     * @memberof WorkflowModel
+     */
+    'action': TriggerAction;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'action_id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'after_sha'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'author_email': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'author_id'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'author_name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'before_sha': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'created': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'created_by': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'cron': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WorkflowModel
+     */
+    'debug': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'deploy': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'deploy_id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'error': string;
+    /**
+     * 
+     * @type {TriggerEvent}
+     * @memberof WorkflowModel
+     */
+    'event': TriggerEvent;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'finished': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'id': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'link': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'message': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'number': number;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof WorkflowModel
+     */
+    'params': { [key: string]: string; };
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'repo_id': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'source_repo_id'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'source_rev'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'started': number;
+    /**
+     * 
+     * @type {CIStatus}
+     * @memberof WorkflowModel
+     */
+    'status': CIStatus;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'target_rev': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'title': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'updated': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowModel
+     */
+    'version': number;
+    /**
+     * 
+     * @type {YamlProvider}
+     * @memberof WorkflowModel
+     */
+    'yaml_provider': YamlProvider;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowModel
+     */
+    'yaml_resolved': string;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface WorkflowStages
+ */
+export interface WorkflowStages {
+    /**
+     * 
+     * @type {WorkflowModel}
+     * @memberof WorkflowStages
+     */
+    'model': WorkflowModel;
+    /**
+     * 
+     * @type {Array<StageSteps>}
+     * @memberof WorkflowStages
+     */
+    'stages': Array<StageSteps>;
+}
+/**
+ * 
+ * @export
+ * @interface WorkflowUpdateInput
+ */
+export interface WorkflowUpdateInput {
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowUpdateInput
+     */
+    'after'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkflowUpdateInput
+     */
+    'error'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowUpdateInput
+     */
+    'finished'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof WorkflowUpdateInput
+     */
+    'started'?: number | null;
+    /**
+     * 
+     * @type {CIStatus}
+     * @memberof WorkflowUpdateInput
+     */
+    'status'?: CIStatus | null;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const YamlProvider = {
+    Unknown: 'unknown',
+    GitHub: 'git_hub',
+    GitLab: 'git_lab'
+} as const;
+
+export type YamlProvider = typeof YamlProvider[keyof typeof YamlProvider];
 
 
 
@@ -8122,21 +8134,21 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelExecution: async (repoRef: string, actionIdentifier: string, executionNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        cancelWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('cancelExecution', 'repoRef', repoRef)
+            assertParamExists('cancelWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('cancelExecution', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('cancelExecution', 'executionNumber', executionNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/cancel`
+            assertParamExists('cancelWorkflow', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('cancelWorkflow', 'workflowNumber', workflowNumber)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)));
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8222,73 +8234,21 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteExecution: async (repoRef: string, actionIdentifier: string, executionNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('deleteExecution', 'repoRef', repoRef)
+            assertParamExists('deleteWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('deleteExecution', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('deleteExecution', 'executionNumber', executionNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}`
+            assertParamExists('deleteWorkflow', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('deleteWorkflow', 'workflowNumber', workflowNumber)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteTrigger: async (repoRef: string, actionIdentifier: string, triggerIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('deleteTrigger', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('deleteTrigger', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'triggerIdentifier' is not null or undefined
-            assertParamExists('deleteTrigger', 'triggerIdentifier', triggerIdentifier)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"trigger_identifier"}}`, encodeURIComponent(String(triggerIdentifier)));
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8438,137 +8398,27 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getExecution: async (repoRef: string, actionIdentifier: string, executionNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getExecution', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('getExecution', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('getExecution', 'executionNumber', executionNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getExecutions: async (repoRef: string, actionIdentifier: string, page?: number, size?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getExecutions', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('getExecutions', 'actionIdentifier', actionIdentifier)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogStream: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogStream: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogStream', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('getStepLogStream', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('getStepLogStream', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('getStepLogStream', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}/stream`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8608,27 +8458,27 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogs: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogs: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogs', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('getStepLogs', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('getStepLogs', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('getStepLogs', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8668,21 +8518,21 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTrigger: async (repoRef: string, actionIdentifier: string, triggerIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getTrigger', 'repoRef', repoRef)
+            assertParamExists('getWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('getTrigger', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'triggerIdentifier' is not null or undefined
-            assertParamExists('getTrigger', 'triggerIdentifier', triggerIdentifier)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}`
+            assertParamExists('getWorkflow', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('getWorkflow', 'workflowNumber', workflowNumber)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"trigger_identifier"}}`, encodeURIComponent(String(triggerIdentifier)));
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8722,16 +8572,15 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} actionIdentifier Action identifier
          * @param {number} [page] 
          * @param {number} [size] 
-         * @param {string} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTriggers: async (repoRef: string, actionIdentifier: string, page?: number, size?: number, query?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getWorkflows: async (repoRef: string, actionIdentifier: string, page?: number, size?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getTriggers', 'repoRef', repoRef)
+            assertParamExists('getWorkflows', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('getTriggers', 'actionIdentifier', actionIdentifier)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/triggers`
+            assertParamExists('getWorkflows', 'actionIdentifier', actionIdentifier)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8762,10 +8611,6 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
-            }
-
-            if (query !== undefined) {
-                localVarQueryParameter['query'] = query;
             }
 
 
@@ -8837,85 +8682,27 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {ExecutionUpdateInput} executionUpdateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchExecution: async (repoRef: string, actionIdentifier: string, executionNumber: number, executionUpdateInput: ExecutionUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('patchExecution', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('patchExecution', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('patchExecution', 'executionNumber', executionNumber)
-            // verify required parameter 'executionUpdateInput' is not null or undefined
-            assertParamExists('patchExecution', 'executionUpdateInput', executionUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(executionUpdateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStage: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchStage: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('patchStage', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('patchStage', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('patchStage', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('patchStage', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('patchStage', 'stageNumber', stageNumber)
             // verify required parameter 'stageUpdateInput' is not null or undefined
             assertParamExists('patchStage', 'stageUpdateInput', stageUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8957,30 +8744,30 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStep: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchStep: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('patchStep', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('patchStep', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('patchStep', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('patchStep', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('patchStep', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('patchStep', 'stepNumber', stepNumber)
             // verify required parameter 'stepUpdateInput' is not null or undefined
             assertParamExists('patchStep', 'stepUpdateInput', stepUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9023,24 +8810,24 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {TriggerPatchInput} triggerPatchInput 
+         * @param {number} workflowNumber Workflow number
+         * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchTrigger: async (repoRef: string, actionIdentifier: string, triggerIdentifier: string, triggerPatchInput: TriggerPatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('patchTrigger', 'repoRef', repoRef)
+            assertParamExists('patchWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('patchTrigger', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'triggerIdentifier' is not null or undefined
-            assertParamExists('patchTrigger', 'triggerIdentifier', triggerIdentifier)
-            // verify required parameter 'triggerPatchInput' is not null or undefined
-            assertParamExists('patchTrigger', 'triggerPatchInput', triggerPatchInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier}`
+            assertParamExists('patchWorkflow', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('patchWorkflow', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowUpdateInput' is not null or undefined
+            assertParamExists('patchWorkflow', 'workflowUpdateInput', workflowUpdateInput)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"trigger_identifier"}}`, encodeURIComponent(String(triggerIdentifier)));
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9070,7 +8857,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(triggerPatchInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(workflowUpdateInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9131,78 +8918,24 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {ExecutionCreateInput} executionCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postExecution: async (repoRef: string, actionIdentifier: string, executionCreateInput: ExecutionCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('postExecution', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('postExecution', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionCreateInput' is not null or undefined
-            assertParamExists('postExecution', 'executionCreateInput', executionCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(executionCreateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStage: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageCreateInput: StageCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStage: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStage', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStage', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('postStage', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('postStage', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageCreateInput' is not null or undefined
             assertParamExists('postStage', 'stageCreateInput', stageCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)));
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9243,27 +8976,27 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStep: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStep: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStep', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStep', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('postStep', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('postStep', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('postStep', 'stageNumber', stageNumber)
             // verify required parameter 'stepCreateInput' is not null or undefined
             assertParamExists('postStep', 'stepCreateInput', stepCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9305,27 +9038,27 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog: async (repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStepLog: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStepLog', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStepLog', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'executionNumber' is not null or undefined
-            assertParamExists('postStepLog', 'executionNumber', executionNumber)
+            // verify required parameter 'workflowNumber' is not null or undefined
+            assertParamExists('postStepLog', 'workflowNumber', workflowNumber)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('postStepLog', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('postStepLog', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}/logs`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"execution_number"}}`, encodeURIComponent(String(executionNumber)))
+                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9365,18 +9098,18 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {TriggerCreateInput} triggerCreateInput 
+         * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postTrigger: async (repoRef: string, actionIdentifier: string, triggerCreateInput: TriggerCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postWorkflow: async (repoRef: string, actionIdentifier: string, workflowCreateInput: WorkflowCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('postTrigger', 'repoRef', repoRef)
+            assertParamExists('postWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('postTrigger', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'triggerCreateInput' is not null or undefined
-            assertParamExists('postTrigger', 'triggerCreateInput', triggerCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/triggers`
+            assertParamExists('postWorkflow', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowCreateInput' is not null or undefined
+            assertParamExists('postWorkflow', 'workflowCreateInput', workflowCreateInput)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9408,7 +9141,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(triggerCreateInput, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(workflowCreateInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9429,14 +9162,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancelExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExecutionStages>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelExecution(repoRef, actionIdentifier, executionNumber, options);
+        async cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.cancelExecution']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.cancelWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9456,28 +9189,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteExecution(repoRef, actionIdentifier, executionNumber, options);
+        async deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.deleteExecution']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTrigger(repoRef, actionIdentifier, triggerIdentifier, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.deleteTrigger']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.deleteWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9503,7 +9222,7 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getActions(repoRef: string, page?: number, size?: number, query?: string, latest?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ActionExecution>>> {
+        async getActions(repoRef: string, page?: number, size?: number, query?: string, latest?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ActionWorkflow>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getActions(repoRef, page, size, query, latest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getActions']?.[localVarOperationServerIndex]?.url;
@@ -9513,43 +9232,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExecutionStages>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getExecution(repoRef, actionIdentifier, executionNumber, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getExecution']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getExecutions(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ExecutionModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getExecutions(repoRef, actionIdentifier, page, size, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getExecutions']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogStream(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options);
+        async getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogStream']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9558,14 +9248,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogs(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options);
+        async getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9574,14 +9264,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TriggerModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTrigger(repoRef, actionIdentifier, triggerIdentifier, options);
+        async getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWorkflow(repoRef, actionIdentifier, workflowNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getTrigger']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9590,14 +9280,13 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {string} actionIdentifier Action identifier
          * @param {number} [page] 
          * @param {number} [size] 
-         * @param {string} [query] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTriggers(repoRef: string, actionIdentifier: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TriggerModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTriggers(repoRef, actionIdentifier, page, size, query, options);
+        async getWorkflows(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WorkflowModel>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWorkflows(repoRef, actionIdentifier, page, size, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getTriggers']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.getWorkflows']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9618,29 +9307,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {ExecutionUpdateInput} executionUpdateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchExecution(repoRef: string, actionIdentifier: string, executionNumber: number, executionUpdateInput: ExecutionUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExecutionModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchExecution(repoRef, actionIdentifier, executionNumber, executionUpdateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchExecution']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStage(repoRef, actionIdentifier, executionNumber, stageNumber, stageUpdateInput, options);
+        async patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchStage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9649,15 +9323,15 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, stepUpdateInput, options);
+        async patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchStep']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9666,15 +9340,15 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {TriggerPatchInput} triggerPatchInput 
+         * @param {number} workflowNumber Workflow number
+         * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, triggerPatchInput: TriggerPatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TriggerModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchTrigger(repoRef, actionIdentifier, triggerIdentifier, triggerPatchInput, options);
+        async patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchTrigger']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9694,27 +9368,13 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {ExecutionCreateInput} executionCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postExecution(repoRef: string, actionIdentifier: string, executionCreateInput: ExecutionCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExecutionModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postExecution(repoRef, actionIdentifier, executionCreateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.postExecution']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStage(repoRef, actionIdentifier, executionNumber, stageCreateInput, options);
+        async postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9723,14 +9383,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepCreateInput, options);
+        async postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStep']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9739,14 +9399,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStepLog(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options);
+        async postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStepLog']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -9755,14 +9415,14 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {TriggerCreateInput} triggerCreateInput 
+         * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postTrigger(repoRef: string, actionIdentifier: string, triggerCreateInput: TriggerCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TriggerModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postTrigger(repoRef, actionIdentifier, triggerCreateInput, options);
+        async postWorkflow(repoRef: string, actionIdentifier: string, workflowCreateInput: WorkflowCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postWorkflow(repoRef, actionIdentifier, workflowCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.postTrigger']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.postWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -9779,12 +9439,12 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<ExecutionStages> {
-            return localVarFp.cancelExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(axios, basePath));
+        cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
+            return localVarFp.cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9800,23 +9460,12 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteTrigger(repoRef, actionIdentifier, triggerIdentifier, options).then((request) => request(axios, basePath));
+        deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9838,19 +9487,45 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getActions(repoRef: string, page?: number, size?: number, query?: string, latest?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<ActionExecution>> {
+        getActions(repoRef: string, page?: number, size?: number, query?: string, latest?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<Array<ActionWorkflow>> {
             return localVarFp.getActions(repoRef, page, size, query, latest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
+         * @param {number} stageNumber Stage number
+         * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<ExecutionStages> {
-            return localVarFp.getExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(axios, basePath));
+        getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
+            return localVarFp.getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} actionIdentifier Action identifier
+         * @param {number} workflowNumber Workflow number
+         * @param {number} stageNumber Stage number
+         * @param {number} stepNumber Step number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
+            return localVarFp.getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} actionIdentifier Action identifier
+         * @param {number} workflowNumber Workflow number
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
+            return localVarFp.getWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9861,58 +9536,8 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getExecutions(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<ExecutionModel>> {
-            return localVarFp.getExecutions(repoRef, actionIdentifier, page, size, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {number} stageNumber Stage number
-         * @param {number} stepNumber Step number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getStepLogStream(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogStream(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {number} stageNumber Stage number
-         * @param {number} stepNumber Step number
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getStepLogs(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogs(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<TriggerModel> {
-            return localVarFp.getTrigger(repoRef, actionIdentifier, triggerIdentifier, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getTriggers(repoRef: string, actionIdentifier: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<TriggerModel>> {
-            return localVarFp.getTriggers(repoRef, actionIdentifier, page, size, query, options).then((request) => request(axios, basePath));
+        getWorkflows(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowModel>> {
+            return localVarFp.getWorkflows(repoRef, actionIdentifier, page, size, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9929,52 +9554,40 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
-         * @param {ExecutionUpdateInput} executionUpdateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchExecution(repoRef: string, actionIdentifier: string, executionNumber: number, executionUpdateInput: ExecutionUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<ExecutionModel> {
-            return localVarFp.patchExecution(repoRef, actionIdentifier, executionNumber, executionUpdateInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.patchStage(repoRef, actionIdentifier, executionNumber, stageNumber, stageUpdateInput, options).then((request) => request(axios, basePath));
+        patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.patchStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(axios, basePath));
+        patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {string} triggerIdentifier Action trigger identifier
-         * @param {TriggerPatchInput} triggerPatchInput 
+         * @param {number} workflowNumber Workflow number
+         * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, triggerPatchInput: TriggerPatchInput, options?: RawAxiosRequestConfig): AxiosPromise<TriggerModel> {
-            return localVarFp.patchTrigger(repoRef, actionIdentifier, triggerIdentifier, triggerPatchInput, options).then((request) => request(axios, basePath));
+        patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowModel> {
+            return localVarFp.patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -9990,61 +9603,50 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {ExecutionCreateInput} executionCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postExecution(repoRef: string, actionIdentifier: string, executionCreateInput: ExecutionCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<ExecutionModel> {
-            return localVarFp.postExecution(repoRef, actionIdentifier, executionCreateInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.postStage(repoRef, actionIdentifier, executionNumber, stageCreateInput, options).then((request) => request(axios, basePath));
+        postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.postStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
+        postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {number} executionNumber Execution number
+         * @param {number} workflowNumber Workflow number
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.postStepLog(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} repoRef Repository ref
          * @param {string} actionIdentifier Action identifier
-         * @param {TriggerCreateInput} triggerCreateInput 
+         * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postTrigger(repoRef: string, actionIdentifier: string, triggerCreateInput: TriggerCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<TriggerModel> {
-            return localVarFp.postTrigger(repoRef, actionIdentifier, triggerCreateInput, options).then((request) => request(axios, basePath));
+        postWorkflow(repoRef: string, actionIdentifier: string, workflowCreateInput: WorkflowCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowModel> {
+            return localVarFp.postWorkflow(repoRef, actionIdentifier, workflowCreateInput, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -10060,13 +9662,13 @@ export class ActionsApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public cancelExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).cancelExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(this.axios, this.basePath));
+    public cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10085,26 +9687,13 @@ export class ActionsApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public deleteExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).deleteExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {string} triggerIdentifier Action trigger identifier
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public deleteTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).deleteTrigger(repoRef, actionIdentifier, triggerIdentifier, options).then((request) => request(this.axios, this.basePath));
+    public deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10138,13 +9727,43 @@ export class ActionsApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
+     * @param {number} stageNumber Stage number
+     * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public getExecution(repoRef: string, actionIdentifier: string, executionNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getExecution(repoRef, actionIdentifier, executionNumber, options).then((request) => request(this.axios, this.basePath));
+    public getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {string} actionIdentifier Action identifier
+     * @param {number} workflowNumber Workflow number
+     * @param {number} stageNumber Stage number
+     * @param {number} stepNumber Step number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionsApi
+     */
+    public getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {string} actionIdentifier Action identifier
+     * @param {number} workflowNumber Workflow number
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionsApi
+     */
+    public getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10157,66 +9776,8 @@ export class ActionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public getExecutions(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getExecutions(repoRef, actionIdentifier, page, size, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
-     * @param {number} stageNumber Stage number
-     * @param {number} stepNumber Step number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public getStepLogStream(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
-     * @param {number} stageNumber Stage number
-     * @param {number} stepNumber Step number
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public getStepLogs(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {string} triggerIdentifier Action trigger identifier
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public getTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getTrigger(repoRef, actionIdentifier, triggerIdentifier, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [query] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public getTriggers(repoRef: string, actionIdentifier: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getTriggers(repoRef, actionIdentifier, page, size, query, options).then((request) => request(this.axios, this.basePath));
+    public getWorkflows(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getWorkflows(repoRef, actionIdentifier, page, size, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10236,36 +9797,22 @@ export class ActionsApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
-     * @param {ExecutionUpdateInput} executionUpdateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public patchExecution(repoRef: string, actionIdentifier: string, executionNumber: number, executionUpdateInput: ExecutionUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchExecution(repoRef, actionIdentifier, executionNumber, executionUpdateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {number} stageNumber Stage number
      * @param {StageUpdateInput} stageUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchStage(repoRef, actionIdentifier, executionNumber, stageNumber, stageUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    public patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {StepUpdateInput} stepUpdateInput 
@@ -10273,22 +9820,22 @@ export class ActionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    public patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {string} triggerIdentifier Action trigger identifier
-     * @param {TriggerPatchInput} triggerPatchInput 
+     * @param {number} workflowNumber Workflow number
+     * @param {WorkflowUpdateInput} workflowUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchTrigger(repoRef: string, actionIdentifier: string, triggerIdentifier: string, triggerPatchInput: TriggerPatchInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchTrigger(repoRef, actionIdentifier, triggerIdentifier, triggerPatchInput, options).then((request) => request(this.axios, this.basePath));
+    public patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -10307,1348 +9854,57 @@ export class ActionsApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {ExecutionCreateInput} executionCreateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public postExecution(repoRef: string, actionIdentifier: string, executionCreateInput: ExecutionCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postExecution(repoRef, actionIdentifier, executionCreateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {StageCreateInput} stageCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStage(repoRef: string, actionIdentifier: string, executionNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStage(repoRef, actionIdentifier, executionNumber, stageCreateInput, options).then((request) => request(this.axios, this.basePath));
+    public postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {number} stageNumber Stage number
      * @param {StepCreateInput} stepCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStep(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStep(repoRef, actionIdentifier, executionNumber, stageNumber, stepCreateInput, options).then((request) => request(this.axios, this.basePath));
+    public postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {number} executionNumber Execution number
+     * @param {number} workflowNumber Workflow number
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStepLog(repoRef: string, actionIdentifier: string, executionNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} repoRef Repository ref
      * @param {string} actionIdentifier Action identifier
-     * @param {TriggerCreateInput} triggerCreateInput 
+     * @param {WorkflowCreateInput} workflowCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postTrigger(repoRef: string, actionIdentifier: string, triggerCreateInput: TriggerCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postTrigger(repoRef, actionIdentifier, triggerCreateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * AdminApi - axios parameter creator
- * @export
- */
-export const AdminApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {string} groupRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteGroup: async (groupRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'groupRef' is not null or undefined
-            assertParamExists('deleteGroup', 'groupRef', groupRef)
-            const localVarPath = `/admin/groups/{group_ref}`
-                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteUser: async (userIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userIdentifier' is not null or undefined
-            assertParamExists('deleteUser', 'userIdentifier', userIdentifier)
-            const localVarPath = `/admin/users/{user_identifier}`
-                .replace(`{${"user_identifier"}}`, encodeURIComponent(String(userIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {GroupSort} [sort] 
-         * @param {OrderOption} [order] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getGroups: async (page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/admin/groups`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (query !== undefined) {
-                localVarQueryParameter['query'] = query;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getStats: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/admin/stats`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser: async (userIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userIdentifier' is not null or undefined
-            assertParamExists('getUser', 'userIdentifier', userIdentifier)
-            const localVarPath = `/admin/users/{user_identifier}`
-                .replace(`{${"user_identifier"}}`, encodeURIComponent(String(userIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {OrderOption} [order] 
-         * @param {UserSort} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsers: async (page?: number, size?: number, query?: string, order?: OrderOption, sort?: UserSort, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/admin/users`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (query !== undefined) {
-                localVarQueryParameter['query'] = query;
-            }
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {UserPatchInput} userPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchUser: async (userIdentifier: string, userPatchInput: UserPatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userIdentifier' is not null or undefined
-            assertParamExists('patchUser', 'userIdentifier', userIdentifier)
-            // verify required parameter 'userPatchInput' is not null or undefined
-            assertParamExists('patchUser', 'userPatchInput', userPatchInput)
-            const localVarPath = `/admin/users/{user_identifier}`
-                .replace(`{${"user_identifier"}}`, encodeURIComponent(String(userIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(userPatchInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {AdminPatchInput} adminPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchUserAdmin: async (userIdentifier: string, adminPatchInput: AdminPatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userIdentifier' is not null or undefined
-            assertParamExists('patchUserAdmin', 'userIdentifier', userIdentifier)
-            // verify required parameter 'adminPatchInput' is not null or undefined
-            assertParamExists('patchUserAdmin', 'adminPatchInput', adminPatchInput)
-            const localVarPath = `/admin/users/{user_identifier}/admin`
-                .replace(`{${"user_identifier"}}`, encodeURIComponent(String(userIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(adminPatchInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {UserCreateInput} userCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postUser: async (userCreateInput: UserCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userCreateInput' is not null or undefined
-            assertParamExists('postUser', 'userCreateInput', userCreateInput)
-            const localVarPath = `/admin/users`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(userCreateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * AdminApi - functional programming interface
- * @export
- */
-export const AdminApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = AdminApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {string} groupRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteGroup(groupRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGroup(groupRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.deleteGroup']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteUser(userIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userIdentifier, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.deleteUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {GroupSort} [sort] 
-         * @param {OrderOption} [order] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getGroups(page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GroupModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getGroups(page, size, query, sort, order, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.getGroups']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getStats(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AdminStats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStats(options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.getStats']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUser(userIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(userIdentifier, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.getUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {OrderOption} [order] 
-         * @param {UserSort} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getUsers(page?: number, size?: number, query?: string, order?: OrderOption, sort?: UserSort, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUsers(page, size, query, order, sort, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.getUsers']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {UserPatchInput} userPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchUser(userIdentifier: string, userPatchInput: UserPatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchUser(userIdentifier, userPatchInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.patchUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {AdminPatchInput} adminPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchUserAdmin(userIdentifier: string, adminPatchInput: AdminPatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchUserAdmin(userIdentifier, adminPatchInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.patchUserAdmin']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {UserCreateInput} userCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postUser(userCreateInput: UserCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postUser(userCreateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['AdminApi.postUser']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * AdminApi - factory interface
- * @export
- */
-export const AdminApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = AdminApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {string} groupRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteGroup(groupRef: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteGroup(groupRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteUser(userIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteUser(userIdentifier, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {GroupSort} [sort] 
-         * @param {OrderOption} [order] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getGroups(page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig): AxiosPromise<Array<GroupModel>> {
-            return localVarFp.getGroups(page, size, query, sort, order, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getStats(options?: RawAxiosRequestConfig): AxiosPromise<AdminStats> {
-            return localVarFp.getStats(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUser(userIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<UserModel> {
-            return localVarFp.getUser(userIdentifier, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
-         * @param {OrderOption} [order] 
-         * @param {UserSort} [sort] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getUsers(page?: number, size?: number, query?: string, order?: OrderOption, sort?: UserSort, options?: RawAxiosRequestConfig): AxiosPromise<Array<UserModel>> {
-            return localVarFp.getUsers(page, size, query, order, sort, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {UserPatchInput} userPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchUser(userIdentifier: string, userPatchInput: UserPatchInput, options?: RawAxiosRequestConfig): AxiosPromise<UserModel> {
-            return localVarFp.patchUser(userIdentifier, userPatchInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} userIdentifier 
-         * @param {AdminPatchInput} adminPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchUserAdmin(userIdentifier: string, adminPatchInput: AdminPatchInput, options?: RawAxiosRequestConfig): AxiosPromise<UserModel> {
-            return localVarFp.patchUserAdmin(userIdentifier, adminPatchInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {UserCreateInput} userCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postUser(userCreateInput: UserCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<UserModel> {
-            return localVarFp.postUser(userCreateInput, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * AdminApi - object-oriented interface
- * @export
- * @class AdminApi
- * @extends {BaseAPI}
- */
-export class AdminApi extends BaseAPI {
-    /**
-     * 
-     * @param {string} groupRef 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public deleteGroup(groupRef: string, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).deleteGroup(groupRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} userIdentifier 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public deleteUser(userIdentifier: string, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).deleteUser(userIdentifier, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [query] 
-     * @param {GroupSort} [sort] 
-     * @param {OrderOption} [order] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public getGroups(page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).getGroups(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public getStats(options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).getStats(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} userIdentifier 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public getUser(userIdentifier: string, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).getUser(userIdentifier, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [query] 
-     * @param {OrderOption} [order] 
-     * @param {UserSort} [sort] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public getUsers(page?: number, size?: number, query?: string, order?: OrderOption, sort?: UserSort, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).getUsers(page, size, query, order, sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} userIdentifier 
-     * @param {UserPatchInput} userPatchInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public patchUser(userIdentifier: string, userPatchInput: UserPatchInput, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).patchUser(userIdentifier, userPatchInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} userIdentifier 
-     * @param {AdminPatchInput} adminPatchInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public patchUserAdmin(userIdentifier: string, adminPatchInput: AdminPatchInput, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).patchUserAdmin(userIdentifier, adminPatchInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {UserCreateInput} userCreateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AdminApi
-     */
-    public postUser(userCreateInput: UserCreateInput, options?: RawAxiosRequestConfig) {
-        return AdminApiFp(this.configuration).postUser(userCreateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * BootstrapApi - axios parameter creator
- * @export
- */
-export const BootstrapApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {string} bootstrapRef Group path (eg: \&#39;/group1/group2\&#39;), or repository path (eg: \&#39;/group1/group2/repo\&#39;), or username
-         * @param {string | null} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBootstrap: async (bootstrapRef: string, path: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'bootstrapRef' is not null or undefined
-            assertParamExists('getBootstrap', 'bootstrapRef', bootstrapRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('getBootstrap', 'path', path)
-            const localVarPath = `/bootstrap/{bootstrap_ref}/+/{path}`
-                .replace(`{${"bootstrap_ref"}}`, encodeURIComponent(String(bootstrapRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * BootstrapApi - functional programming interface
- * @export
- */
-export const BootstrapApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = BootstrapApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {string} bootstrapRef Group path (eg: \&#39;/group1/group2\&#39;), or repository path (eg: \&#39;/group1/group2/repo\&#39;), or username
-         * @param {string | null} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getBootstrap(bootstrapRef: string, path: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BootstrapMetadata>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBootstrap(bootstrapRef, path, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['BootstrapApi.getBootstrap']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * BootstrapApi - factory interface
- * @export
- */
-export const BootstrapApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = BootstrapApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {string} bootstrapRef Group path (eg: \&#39;/group1/group2\&#39;), or repository path (eg: \&#39;/group1/group2/repo\&#39;), or username
-         * @param {string | null} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBootstrap(bootstrapRef: string, path: string | null, options?: RawAxiosRequestConfig): AxiosPromise<BootstrapMetadata> {
-            return localVarFp.getBootstrap(bootstrapRef, path, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * BootstrapApi - object-oriented interface
- * @export
- * @class BootstrapApi
- * @extends {BaseAPI}
- */
-export class BootstrapApi extends BaseAPI {
-    /**
-     * 
-     * @param {string} bootstrapRef Group path (eg: \&#39;/group1/group2\&#39;), or repository path (eg: \&#39;/group1/group2/repo\&#39;), or username
-     * @param {string | null} path 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof BootstrapApi
-     */
-    public getBootstrap(bootstrapRef: string, path: string | null, options?: RawAxiosRequestConfig) {
-        return BootstrapApiFp(this.configuration).getBootstrap(bootstrapRef, path, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * ConnectorsApi - axios parameter creator
- * @export
- */
-export const ConnectorsApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteConnector: async (connectorRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorRef' is not null or undefined
-            assertParamExists('deleteConnector', 'connectorRef', connectorRef)
-            const localVarPath = `/connectors/{connector_ref}`
-                .replace(`{${"connector_ref"}}`, encodeURIComponent(String(connectorRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConnector: async (connectorRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorRef' is not null or undefined
-            assertParamExists('getConnector', 'connectorRef', connectorRef)
-            const localVarPath = `/connectors/{connector_ref}`
-                .replace(`{${"connector_ref"}}`, encodeURIComponent(String(connectorRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {ConnectorPatchInput} connectorPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchConnector: async (connectorRef: string, connectorPatchInput: ConnectorPatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorRef' is not null or undefined
-            assertParamExists('patchConnector', 'connectorRef', connectorRef)
-            // verify required parameter 'connectorPatchInput' is not null or undefined
-            assertParamExists('patchConnector', 'connectorPatchInput', connectorPatchInput)
-            const localVarPath = `/connectors/{connector_ref}`
-                .replace(`{${"connector_ref"}}`, encodeURIComponent(String(connectorRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(connectorPatchInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {ConnectorCreateInput} connectorCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postConnector: async (connectorCreateInput: ConnectorCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorCreateInput' is not null or undefined
-            assertParamExists('postConnector', 'connectorCreateInput', connectorCreateInput)
-            const localVarPath = `/connectors`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(connectorCreateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ConnectorsApi - functional programming interface
- * @export
- */
-export const ConnectorsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = ConnectorsApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteConnector(connectorRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteConnector(connectorRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ConnectorsApi.deleteConnector']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getConnector(connectorRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConnector(connectorRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ConnectorsApi.getConnector']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {ConnectorPatchInput} connectorPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchConnector(connectorRef: string, connectorPatchInput: ConnectorPatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchConnector(connectorRef, connectorPatchInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ConnectorsApi.patchConnector']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {ConnectorCreateInput} connectorCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postConnector(connectorCreateInput: ConnectorCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postConnector(connectorCreateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ConnectorsApi.postConnector']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * ConnectorsApi - factory interface
- * @export
- */
-export const ConnectorsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = ConnectorsApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteConnector(connectorRef: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteConnector(connectorRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getConnector(connectorRef: string, options?: RawAxiosRequestConfig): AxiosPromise<ConnectorModel> {
-            return localVarFp.getConnector(connectorRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} connectorRef 
-         * @param {ConnectorPatchInput} connectorPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchConnector(connectorRef: string, connectorPatchInput: ConnectorPatchInput, options?: RawAxiosRequestConfig): AxiosPromise<ConnectorModel> {
-            return localVarFp.patchConnector(connectorRef, connectorPatchInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {ConnectorCreateInput} connectorCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postConnector(connectorCreateInput: ConnectorCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<ConnectorModel> {
-            return localVarFp.postConnector(connectorCreateInput, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * ConnectorsApi - object-oriented interface
- * @export
- * @class ConnectorsApi
- * @extends {BaseAPI}
- */
-export class ConnectorsApi extends BaseAPI {
-    /**
-     * 
-     * @param {string} connectorRef 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorsApi
-     */
-    public deleteConnector(connectorRef: string, options?: RawAxiosRequestConfig) {
-        return ConnectorsApiFp(this.configuration).deleteConnector(connectorRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} connectorRef 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorsApi
-     */
-    public getConnector(connectorRef: string, options?: RawAxiosRequestConfig) {
-        return ConnectorsApiFp(this.configuration).getConnector(connectorRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} connectorRef 
-     * @param {ConnectorPatchInput} connectorPatchInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorsApi
-     */
-    public patchConnector(connectorRef: string, connectorPatchInput: ConnectorPatchInput, options?: RawAxiosRequestConfig) {
-        return ConnectorsApiFp(this.configuration).patchConnector(connectorRef, connectorPatchInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {ConnectorCreateInput} connectorCreateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorsApi
-     */
-    public postConnector(connectorCreateInput: ConnectorCreateInput, options?: RawAxiosRequestConfig) {
-        return ConnectorsApiFp(this.configuration).postConnector(connectorCreateInput, options).then((request) => request(this.axios, this.basePath));
+    public postWorkflow(repoRef: string, actionIdentifier: string, workflowCreateInput: WorkflowCreateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postWorkflow(repoRef, actionIdentifier, workflowCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -11675,6 +9931,54 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarPath = `/groups/{group_ref}/+/members/{user_identifier}`
                 .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)))
                 .replace(`{${"user_identifier"}}`, encodeURIComponent(String(userIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteVariable: async (groupRef: string, variableIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupRef' is not null or undefined
+            assertParamExists('deleteVariable', 'groupRef', groupRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('deleteVariable', 'variableIdentifier', variableIdentifier)
+            const localVarPath = `/groups/{group_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -11755,50 +10059,6 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             if (query !== undefined) {
                 localVarQueryParameter['query'] = query;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getEvents: async (groupRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'groupRef' is not null or undefined
-            assertParamExists('getEvents', 'groupRef', groupRef)
-            const localVarPath = `/groups/{group_ref}/+/events`
-                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
 
 
     
@@ -11999,65 +10259,6 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSecrets: async (groupRef: string, page?: number, size?: number, query?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'groupRef' is not null or undefined
-            assertParamExists('getSecrets', 'groupRef', groupRef)
-            const localVarPath = `/groups/{group_ref}/+/secrets`
-                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
-            }
-
-            if (query !== undefined) {
-                localVarQueryParameter['query'] = query;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
          * @param {UserSort} [sort] 
          * @param {OrderOption} [order] 
          * @param {*} [options] Override http request option.
@@ -12193,6 +10394,128 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVariable: async (groupRef: string, variableIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupRef' is not null or undefined
+            assertParamExists('getVariable', 'groupRef', groupRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('getVariable', 'variableIdentifier', variableIdentifier)
+            const localVarPath = `/groups/{group_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVariables: async (groupRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupRef' is not null or undefined
+            assertParamExists('getVariables', 'groupRef', groupRef)
+            const localVarPath = `/groups/{group_ref}/+/variables`
+                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            if (query !== undefined) {
+                localVarQueryParameter['query'] = query;
+            }
+
+            if (types) {
+                localVarQueryParameter['types'] = types;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {GroupPatchInput} groupPatchInput Group update request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12288,6 +10611,60 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(groupMemberUpdateInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchVariable: async (groupRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupRef' is not null or undefined
+            assertParamExists('patchVariable', 'groupRef', groupRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('patchVariable', 'variableIdentifier', variableIdentifier)
+            // verify required parameter 'variablePatchInput' is not null or undefined
+            assertParamExists('patchVariable', 'variablePatchInput', variablePatchInput)
+            const localVarPath = `/groups/{group_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(variablePatchInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12611,6 +10988,56 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postVariable: async (groupRef: string, variableCreateInput: VariableCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupRef' is not null or undefined
+            assertParamExists('postVariable', 'groupRef', groupRef)
+            // verify required parameter 'variableCreateInput' is not null or undefined
+            assertParamExists('postVariable', 'variableCreateInput', variableCreateInput)
+            const localVarPath = `/groups/{group_ref}/+/variables`
+                .replace(`{${"group_ref"}}`, encodeURIComponent(String(groupRef)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(variableCreateInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12678,6 +11105,19 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteVariable(groupRef, variableIdentifier, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GroupsApi.deleteVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -12688,18 +11128,6 @@ export const GroupsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectors(groupRef, page, size, query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['GroupsApi.getConnectors']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getEvents(groupRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<number>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getEvents(groupRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['GroupsApi.getEvents']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12754,21 +11182,6 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getSecrets(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SecretGroup>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSecrets(groupRef, page, size, query, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['GroupsApi.getSecrets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
          * @param {UserSort} [sort] 
          * @param {OrderOption} [order] 
          * @param {*} [options] Override http request option.
@@ -12800,6 +11213,37 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVariable(groupRef, variableIdentifier, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GroupsApi.getVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getVariables(groupRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VariableGroup>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getVariables(groupRef, page, size, query, types, sort, order, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GroupsApi.getVariables']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {GroupPatchInput} groupPatchInput Group update request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -12822,6 +11266,20 @@ export const GroupsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.patchMember(groupRef, userIdentifier, groupMemberUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['GroupsApi.patchMember']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchVariable(groupRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchVariable(groupRef, variableIdentifier, variablePatchInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GroupsApi.patchVariable']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12915,6 +11373,19 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postVariable(groupRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postVariable(groupRef, variableCreateInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GroupsApi.postVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -12947,6 +11418,16 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteVariable(groupRef, variableIdentifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -12955,15 +11436,6 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          */
         getConnectors(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ConnectorModel>> {
             return localVarFp.getConnectors(groupRef, page, size, query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getEvents(groupRef: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<number>> {
-            return localVarFp.getEvents(groupRef, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13008,18 +11480,6 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSecrets(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<SecretGroup>> {
-            return localVarFp.getSecrets(groupRef, page, size, query, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} groupRef Group ref
-         * @param {number} [page] 
-         * @param {number} [size] 
-         * @param {string} [query] 
          * @param {UserSort} [sort] 
          * @param {OrderOption} [order] 
          * @param {*} [options] Override http request option.
@@ -13045,6 +11505,31 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.getVariable(groupRef, variableIdentifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getVariables(groupRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig): AxiosPromise<Array<VariableGroup>> {
+            return localVarFp.getVariables(groupRef, page, size, query, types, sort, order, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {GroupPatchInput} groupPatchInput Group update request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -13062,6 +11547,17 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          */
         patchMember(groupRef: string, userIdentifier: string, groupMemberUpdateInput: GroupMemberUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<MembershipModel> {
             return localVarFp.patchMember(groupRef, userIdentifier, groupMemberUpdateInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchVariable(groupRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.patchVariable(groupRef, variableIdentifier, variablePatchInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -13133,6 +11629,16 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @param {string} groupRef Group ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postVariable(groupRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.postVariable(groupRef, variableCreateInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} groupRef Group ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -13164,6 +11670,18 @@ export class GroupsApi extends BaseAPI {
     /**
      * 
      * @param {string} groupRef Group ref
+     * @param {string} variableIdentifier 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public deleteVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).deleteVariable(groupRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} groupRef Group ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -13173,17 +11691,6 @@ export class GroupsApi extends BaseAPI {
      */
     public getConnectors(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getConnectors(groupRef, page, size, query, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} groupRef Group ref
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public getEvents(groupRef: string, options?: RawAxiosRequestConfig) {
-        return GroupsApiFp(this.configuration).getEvents(groupRef, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13235,20 +11742,6 @@ export class GroupsApi extends BaseAPI {
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof GroupsApi
-     */
-    public getSecrets(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
-        return GroupsApiFp(this.configuration).getSecrets(groupRef, page, size, query, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} groupRef Group ref
-     * @param {number} [page] 
-     * @param {number} [size] 
-     * @param {string} [query] 
      * @param {UserSort} [sort] 
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
@@ -13278,6 +11771,35 @@ export class GroupsApi extends BaseAPI {
     /**
      * 
      * @param {string} groupRef Group ref
+     * @param {string} variableIdentifier 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public getVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).getVariable(groupRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} groupRef Group ref
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {string} [query] 
+     * @param {Array<VariableType>} [types] 
+     * @param {VariableSort} [sort] 
+     * @param {OrderOption} [order] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public getVariables(groupRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).getVariables(groupRef, page, size, query, types, sort, order, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} groupRef Group ref
      * @param {GroupPatchInput} groupPatchInput Group update request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -13298,6 +11820,19 @@ export class GroupsApi extends BaseAPI {
      */
     public patchMember(groupRef: string, userIdentifier: string, groupMemberUpdateInput: GroupMemberUpdateInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).patchMember(groupRef, userIdentifier, groupMemberUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} groupRef Group ref
+     * @param {string} variableIdentifier 
+     * @param {VariablePatchInput} variablePatchInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public patchVariable(groupRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).patchVariable(groupRef, variableIdentifier, variablePatchInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13379,6 +11914,18 @@ export class GroupsApi extends BaseAPI {
      */
     public postRestore(groupRef: string, groupRestoreInput: GroupRestoreInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postRestore(groupRef, groupRestoreInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} groupRef Group ref
+     * @param {VariableCreateInput} variableCreateInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public postVariable(groupRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).postVariable(groupRef, variableCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16648,6 +15195,54 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRepositoryVariable: async (repoRef: string, variableIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('deleteRepositoryVariable', 'repoRef', repoRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('deleteRepositoryVariable', 'variableIdentifier', variableIdentifier)
+            const localVarPath = `/repos/{repo_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -16808,69 +15403,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
 
             if (compression !== undefined) {
                 localVarQueryParameter['compression'] = compression;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
-         * @param {number} [lineFrom] 
-         * @param {number} [lineTo] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBlame: async (repoRef: string, path: string, gitRef?: string, lineFrom?: number, lineTo?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getBlame', 'repoRef', repoRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('getBlame', 'path', path)
-            const localVarPath = `/repos/{repo_ref}/+/blame/{path}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (gitRef !== undefined) {
-                localVarQueryParameter['git_ref'] = gitRef;
-            }
-
-            if (lineFrom !== undefined) {
-                localVarQueryParameter['line_from'] = lineFrom;
-            }
-
-            if (lineTo !== undefined) {
-                localVarQueryParameter['line_to'] = lineTo;
             }
 
 
@@ -17307,64 +15839,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeCommit] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getContent: async (repoRef: string, path: string, gitRef?: string, includeCommit?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getContent', 'repoRef', repoRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('getContent', 'path', path)
-            const localVarPath = `/repos/{repo_ref}/+/content/{path}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (gitRef !== undefined) {
-                localVarQueryParameter['git_ref'] = gitRef;
-            }
-
-            if (includeCommit !== undefined) {
-                localVarQueryParameter['include_commit'] = includeCommit;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -17409,102 +15883,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
             if (until !== undefined) {
                 localVarQueryParameter['until'] = until;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDiffStats: async (repoRef: string, path: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getDiffStats', 'repoRef', repoRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('getDiffStats', 'path', path)
-            const localVarPath = `/repos/{repo_ref}/+/diff-stats/{path}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDiffs: async (repoRef: string, path: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getDiffs', 'repoRef', repoRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('getDiffs', 'path', path)
-            const localVarPath = `/repos/{repo_ref}/+/diff/{path}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
 
 
     
@@ -17706,60 +16084,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
 
             // authentication access_token_query required
             await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeDirectories] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPaths: async (repoRef: string, gitRef?: string, includeDirectories?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getPaths', 'repoRef', repoRef)
-            const localVarPath = `/repos/{repo_ref}/+/paths`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (gitRef !== undefined) {
-                localVarQueryParameter['git_ref'] = gitRef;
-            }
-
-            if (includeDirectories !== undefined) {
-                localVarQueryParameter['include_directories'] = includeDirectories;
-            }
 
 
     
@@ -18077,6 +16401,128 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRepositoryVariable: async (repoRef: string, variableIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('getRepositoryVariable', 'repoRef', repoRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('getRepositoryVariable', 'variableIdentifier', variableIdentifier)
+            const localVarPath = `/repos/{repo_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRepositoryVariables: async (repoRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('getRepositoryVariables', 'repoRef', repoRef)
+            const localVarPath = `/repos/{repo_ref}/+/variables`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            if (query !== undefined) {
+                localVarQueryParameter['query'] = query;
+            }
+
+            if (types) {
+                localVarQueryParameter['types'] = types;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -18304,6 +16750,60 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchRepositoryVariable: async (repoRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('patchRepositoryVariable', 'repoRef', repoRef)
+            // verify required parameter 'variableIdentifier' is not null or undefined
+            assertParamExists('patchRepositoryVariable', 'variableIdentifier', variableIdentifier)
+            // verify required parameter 'variablePatchInput' is not null or undefined
+            assertParamExists('patchRepositoryVariable', 'variablePatchInput', variablePatchInput)
+            const localVarPath = `/repos/{repo_ref}/+/variables/{variable_identifier}`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"variable_identifier"}}`, encodeURIComponent(String(variableIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(variablePatchInput, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18505,67 +17005,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @param {string} repoRef Repository ref
          * @param {string} path 
-         * @param {string} path2 
-         * @param {Array<CommitDiffFile>} commitDiffFile 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postDiffs: async (repoRef: string, path: string, path2: string, commitDiffFile: Array<CommitDiffFile>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('postDiffs', 'repoRef', repoRef)
-            // verify required parameter 'path' is not null or undefined
-            assertParamExists('postDiffs', 'path', path)
-            // verify required parameter 'path2' is not null or undefined
-            assertParamExists('postDiffs', 'path2', path2)
-            // verify required parameter 'commitDiffFile' is not null or undefined
-            assertParamExists('postDiffs', 'commitDiffFile', commitDiffFile)
-            const localVarPath = `/repos/{repo_ref}/+/diff/{path}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"path"}}`, encodeURIComponent(String(path2)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (path !== undefined) {
-                localVarQueryParameter['path'] = path;
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(commitDiffFile, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18610,61 +17049,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(repoMergeCheckInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {Array<string>} requestBody 
-         * @param {string} [gitRef] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postPathDetails: async (repoRef: string, requestBody: Array<string>, gitRef?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('postPathDetails', 'repoRef', repoRef)
-            // verify required parameter 'requestBody' is not null or undefined
-            assertParamExists('postPathDetails', 'requestBody', requestBody)
-            const localVarPath = `/repos/{repo_ref}/+/path-details`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-            if (gitRef !== undefined) {
-                localVarQueryParameter['git_ref'] = gitRef;
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -18901,6 +17285,56 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postRepositoryVariable: async (repoRef: string, variableCreateInput: VariableCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('postRepositoryVariable', 'repoRef', repoRef)
+            // verify required parameter 'variableCreateInput' is not null or undefined
+            assertParamExists('postRepositoryVariable', 'variableCreateInput', variableCreateInput)
+            const localVarPath = `/repos/{repo_ref}/+/variables`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(variableCreateInput, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -19168,6 +17602,19 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRepositoryVariable(repoRef, variableIdentifier, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.deleteRepositoryVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -19208,22 +17655,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArchive(repoRef, archiveRef, prefix, attributes, paths, timestamp, compression, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getArchive']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
-         * @param {number} [lineFrom] 
-         * @param {number} [lineTo] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getBlame(repoRef: string, path: string, gitRef?: string, lineFrom?: number, lineTo?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BlamePart>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBlame(repoRef, path, gitRef, lineFrom, lineTo, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getBlame']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19335,21 +17766,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeCommit] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getContent(repoRef: string, path: string, gitRef?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RepoContentOutput>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getContent(repoRef, path, gitRef, includeCommit, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getContent']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -19360,32 +17776,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getContributors(repoRef, gitRef, since, until, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getContributors']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getDiffStats(repoRef: string, path: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DiffStats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDiffStats(repoRef, path, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getDiffStats']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getDiffs(repoRef: string, path: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDiffs(repoRef, path, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getDiffs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19439,20 +17829,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getImportProgress(repoRef, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getImportProgress']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeDirectories] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getPaths(repoRef: string, gitRef?: string, includeDirectories?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RepoPathsOutput>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaths(repoRef, gitRef, includeDirectories, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getPaths']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19538,6 +17914,37 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRepositoryVariable(repoRef, variableIdentifier, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getRepositoryVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRepositoryVariables(repoRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<VariableGroup>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRepositoryVariables(repoRef, page, size, query, types, sort, order, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.getRepositoryVariables']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19596,6 +18003,20 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async patchRepositoryVariable(repoRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchRepositoryVariable(repoRef, variableIdentifier, variablePatchInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.patchRepositoryVariable']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19649,21 +18070,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} path 
-         * @param {string} path2 
-         * @param {Array<CommitDiffFile>} commitDiffFile 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postDiffs(repoRef: string, path: string, path2: string, commitDiffFile: Array<CommitDiffFile>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<number>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postDiffs(repoRef, path, path2, commitDiffFile, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.postDiffs']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19672,20 +18078,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postMergeCheck(repoRef, path, repoMergeCheckInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RepositoryApi.postMergeCheck']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {Array<string>} requestBody 
-         * @param {string} [gitRef] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postPathDetails(repoRef: string, requestBody: Array<string>, gitRef?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PathDetails>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postPathDetails(repoRef, requestBody, gitRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.postPathDetails']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19748,6 +18140,19 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postRepositoryPurge(repoRef, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RepositoryApi.postRepositoryPurge']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postRepositoryVariable(repoRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VariableModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postRepositoryVariable(repoRef, variableCreateInput, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RepositoryApi.postRepositoryVariable']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -19856,6 +18261,16 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -19888,19 +18303,6 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
          */
         getArchive(repoRef: string, archiveRef: string, prefix?: string, attributes?: ArchiveAttribute, paths?: Array<string>, timestamp?: number, compression?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<number>> {
             return localVarFp.getArchive(repoRef, archiveRef, prefix, attributes, paths, timestamp, compression, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
-         * @param {number} [lineFrom] 
-         * @param {number} [lineTo] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getBlame(repoRef: string, path: string, gitRef?: string, lineFrom?: number, lineTo?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<BlamePart>> {
-            return localVarFp.getBlame(repoRef, path, gitRef, lineFrom, lineTo, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -19990,18 +18392,6 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeCommit] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getContent(repoRef: string, path: string, gitRef?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<RepoContentOutput> {
-            return localVarFp.getContent(repoRef, path, gitRef, includeCommit, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -20010,26 +18400,6 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
          */
         getContributors(repoRef: string, gitRef?: string, since?: number, until?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<Contributor>> {
             return localVarFp.getContributors(repoRef, gitRef, since, until, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDiffStats(repoRef: string, path: string, options?: RawAxiosRequestConfig): AxiosPromise<DiffStats> {
-            return localVarFp.getDiffStats(repoRef, path, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDiffs(repoRef: string, path: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.getDiffs(repoRef, path, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20071,17 +18441,6 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
          */
         getImportProgress(repoRef: string, options?: RawAxiosRequestConfig): AxiosPromise<JobProgress> {
             return localVarFp.getImportProgress(repoRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} [gitRef] 
-         * @param {boolean} [includeDirectories] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getPaths(repoRef: string, gitRef?: string, includeDirectories?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<RepoPathsOutput> {
-            return localVarFp.getPaths(repoRef, gitRef, includeDirectories, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20148,6 +18507,31 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.getRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {number} [page] 
+         * @param {number} [size] 
+         * @param {string} [query] 
+         * @param {Array<VariableType>} [types] 
+         * @param {VariableSort} [sort] 
+         * @param {OrderOption} [order] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRepositoryVariables(repoRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig): AxiosPromise<Array<VariableGroup>> {
+            return localVarFp.getRepositoryVariables(repoRef, page, size, query, types, sort, order, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -20194,6 +18578,17 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @param {string} repoRef Repository ref
+         * @param {string} variableIdentifier 
+         * @param {VariablePatchInput} variablePatchInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        patchRepositoryVariable(repoRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.patchRepositoryVariable(repoRef, variableIdentifier, variablePatchInput, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20235,35 +18630,12 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
          * 
          * @param {string} repoRef Repository ref
          * @param {string} path 
-         * @param {string} path2 
-         * @param {Array<CommitDiffFile>} commitDiffFile 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postDiffs(repoRef: string, path: string, path2: string, commitDiffFile: Array<CommitDiffFile>, options?: RawAxiosRequestConfig): AxiosPromise<Array<number>> {
-            return localVarFp.postDiffs(repoRef, path, path2, commitDiffFile, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         postMergeCheck(repoRef: string, path: string, repoMergeCheckInput: RepoMergeCheckInput, options?: RawAxiosRequestConfig): AxiosPromise<RepoMergeCheckOutput> {
             return localVarFp.postMergeCheck(repoRef, path, repoMergeCheckInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {Array<string>} requestBody 
-         * @param {string} [gitRef] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postPathDetails(repoRef: string, requestBody: Array<string>, gitRef?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<PathDetails>> {
-            return localVarFp.postPathDetails(repoRef, requestBody, gitRef, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20311,6 +18683,16 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
          */
         postRepositoryPurge(repoRef: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.postRepositoryPurge(repoRef, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {VariableCreateInput} variableCreateInput 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postRepositoryVariable(repoRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<VariableModel> {
+            return localVarFp.postRepositoryVariable(repoRef, variableCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -20414,6 +18796,18 @@ export class RepositoryApi extends BaseAPI {
     /**
      * 
      * @param {string} repoRef Repository ref
+     * @param {string} variableIdentifier 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RepositoryApi
+     */
+    public deleteRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
+        return RepositoryApiFp(this.configuration).deleteRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
      * @param {string} tagName 
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
@@ -20451,21 +18845,6 @@ export class RepositoryApi extends BaseAPI {
      */
     public getArchive(repoRef: string, archiveRef: string, prefix?: string, attributes?: ArchiveAttribute, paths?: Array<string>, timestamp?: number, compression?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getArchive(repoRef, archiveRef, prefix, attributes, paths, timestamp, compression, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} path 
-     * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
-     * @param {number} [lineFrom] 
-     * @param {number} [lineTo] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public getBlame(repoRef: string, path: string, gitRef?: string, lineFrom?: number, lineTo?: number, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).getBlame(repoRef, path, gitRef, lineFrom, lineTo, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20570,20 +18949,6 @@ export class RepositoryApi extends BaseAPI {
     /**
      * 
      * @param {string} repoRef Repository ref
-     * @param {string} path 
-     * @param {string} [gitRef] 
-     * @param {boolean} [includeCommit] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public getContent(repoRef: string, path: string, gitRef?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).getContent(repoRef, path, gitRef, includeCommit, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
      * @param {string} [gitRef] 
      * @param {number} [since] 
      * @param {number} [until] 
@@ -20593,30 +18958,6 @@ export class RepositoryApi extends BaseAPI {
      */
     public getContributors(repoRef: string, gitRef?: string, since?: number, until?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getContributors(repoRef, gitRef, since, until, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} path 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public getDiffStats(repoRef: string, path: string, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).getDiffStats(repoRef, path, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} path 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public getDiffs(repoRef: string, path: string, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).getDiffs(repoRef, path, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20666,19 +19007,6 @@ export class RepositoryApi extends BaseAPI {
      */
     public getImportProgress(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getImportProgress(repoRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} [gitRef] 
-     * @param {boolean} [includeDirectories] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public getPaths(repoRef: string, gitRef?: string, includeDirectories?: boolean, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).getPaths(repoRef, gitRef, includeDirectories, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20758,6 +19086,35 @@ export class RepositoryApi extends BaseAPI {
     /**
      * 
      * @param {string} repoRef Repository ref
+     * @param {string} variableIdentifier 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RepositoryApi
+     */
+    public getRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
+        return RepositoryApiFp(this.configuration).getRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {number} [page] 
+     * @param {number} [size] 
+     * @param {string} [query] 
+     * @param {Array<VariableType>} [types] 
+     * @param {VariableSort} [sort] 
+     * @param {OrderOption} [order] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RepositoryApi
+     */
+    public getRepositoryVariables(repoRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
+        return RepositoryApiFp(this.configuration).getRepositoryVariables(repoRef, page, size, query, types, sort, order, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -20812,6 +19169,19 @@ export class RepositoryApi extends BaseAPI {
     /**
      * 
      * @param {string} repoRef Repository ref
+     * @param {string} variableIdentifier 
+     * @param {VariablePatchInput} variablePatchInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RepositoryApi
+     */
+    public patchRepositoryVariable(repoRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig) {
+        return RepositoryApiFp(this.configuration).patchRepositoryVariable(repoRef, variableIdentifier, variablePatchInput, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
      * @param {SecuritySettings} securitySettings 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -20861,20 +19231,6 @@ export class RepositoryApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} path 
-     * @param {string} path2 
-     * @param {Array<CommitDiffFile>} commitDiffFile 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public postDiffs(repoRef: string, path: string, path2: string, commitDiffFile: Array<CommitDiffFile>, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).postDiffs(repoRef, path, path2, commitDiffFile, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} path 
      * @param {RepoMergeCheckInput} repoMergeCheckInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -20882,19 +19238,6 @@ export class RepositoryApi extends BaseAPI {
      */
     public postMergeCheck(repoRef: string, path: string, repoMergeCheckInput: RepoMergeCheckInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postMergeCheck(repoRef, path, repoMergeCheckInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {Array<string>} requestBody 
-     * @param {string} [gitRef] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RepositoryApi
-     */
-    public postPathDetails(repoRef: string, requestBody: Array<string>, gitRef?: string, options?: RawAxiosRequestConfig) {
-        return RepositoryApiFp(this.configuration).postPathDetails(repoRef, requestBody, gitRef, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -20952,6 +19295,18 @@ export class RepositoryApi extends BaseAPI {
      */
     public postRepositoryPurge(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepositoryPurge(repoRef, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {VariableCreateInput} variableCreateInput 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RepositoryApi
+     */
+    public postRepositoryVariable(repoRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig) {
+        return RepositoryApiFp(this.configuration).postRepositoryVariable(repoRef, variableCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -21660,360 +20015,6 @@ export class RulesApi extends BaseAPI {
      */
     public postRule(repoRef: string, ruleCreateInput: RuleCreateInput, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).postRule(repoRef, ruleCreateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * SecretsApi - axios parameter creator
- * @export
- */
-export const SecretsApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteSecret: async (secretRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'secretRef' is not null or undefined
-            assertParamExists('deleteSecret', 'secretRef', secretRef)
-            const localVarPath = `/secrets/{secret_ref}`
-                .replace(`{${"secret_ref"}}`, encodeURIComponent(String(secretRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSecret: async (secretRef: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'secretRef' is not null or undefined
-            assertParamExists('getSecret', 'secretRef', secretRef)
-            const localVarPath = `/secrets/{secret_ref}`
-                .replace(`{${"secret_ref"}}`, encodeURIComponent(String(secretRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {SecretPatchInput} secretPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchSecret: async (secretRef: string, secretPatchInput: SecretPatchInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'secretRef' is not null or undefined
-            assertParamExists('patchSecret', 'secretRef', secretRef)
-            // verify required parameter 'secretPatchInput' is not null or undefined
-            assertParamExists('patchSecret', 'secretPatchInput', secretPatchInput)
-            const localVarPath = `/secrets/{secret_ref}`
-                .replace(`{${"secret_ref"}}`, encodeURIComponent(String(secretRef)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(secretPatchInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {SecretCreateInput} secretCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecret: async (secretCreateInput: SecretCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'secretCreateInput' is not null or undefined
-            assertParamExists('postSecret', 'secretCreateInput', secretCreateInput)
-            const localVarPath = `/secrets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(secretCreateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * SecretsApi - functional programming interface
- * @export
- */
-export const SecretsApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SecretsApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteSecret(secretRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSecret(secretRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SecretsApi.deleteSecret']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getSecret(secretRef: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSecret(secretRef, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SecretsApi.getSecret']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {SecretPatchInput} secretPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchSecret(secretRef: string, secretPatchInput: SecretPatchInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchSecret(secretRef, secretPatchInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SecretsApi.patchSecret']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {SecretCreateInput} secretCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postSecret(secretCreateInput: SecretCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecretModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postSecret(secretCreateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SecretsApi.postSecret']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * SecretsApi - factory interface
- * @export
- */
-export const SecretsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SecretsApiFp(configuration)
-    return {
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteSecret(secretRef: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteSecret(secretRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getSecret(secretRef: string, options?: RawAxiosRequestConfig): AxiosPromise<SecretModel> {
-            return localVarFp.getSecret(secretRef, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} secretRef 
-         * @param {SecretPatchInput} secretPatchInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        patchSecret(secretRef: string, secretPatchInput: SecretPatchInput, options?: RawAxiosRequestConfig): AxiosPromise<SecretModel> {
-            return localVarFp.patchSecret(secretRef, secretPatchInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {SecretCreateInput} secretCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postSecret(secretCreateInput: SecretCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<SecretModel> {
-            return localVarFp.postSecret(secretCreateInput, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * SecretsApi - object-oriented interface
- * @export
- * @class SecretsApi
- * @extends {BaseAPI}
- */
-export class SecretsApi extends BaseAPI {
-    /**
-     * 
-     * @param {string} secretRef 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SecretsApi
-     */
-    public deleteSecret(secretRef: string, options?: RawAxiosRequestConfig) {
-        return SecretsApiFp(this.configuration).deleteSecret(secretRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} secretRef 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SecretsApi
-     */
-    public getSecret(secretRef: string, options?: RawAxiosRequestConfig) {
-        return SecretsApiFp(this.configuration).getSecret(secretRef, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} secretRef 
-     * @param {SecretPatchInput} secretPatchInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SecretsApi
-     */
-    public patchSecret(secretRef: string, secretPatchInput: SecretPatchInput, options?: RawAxiosRequestConfig) {
-        return SecretsApiFp(this.configuration).patchSecret(secretRef, secretPatchInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {SecretCreateInput} secretCreateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SecretsApi
-     */
-    public postSecret(secretCreateInput: SecretCreateInput, options?: RawAxiosRequestConfig) {
-        return SecretsApiFp(this.configuration).postSecret(secretCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -25786,6 +23787,106 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
          * 
          * @param {string} repoRef Repository ref
          * @param {string} webhookIdentifier Webhook identifier
+         * @param {number} webhookExecutionId Webhook execution id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getExecution: async (repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('getExecution', 'repoRef', repoRef)
+            // verify required parameter 'webhookIdentifier' is not null or undefined
+            assertParamExists('getExecution', 'webhookIdentifier', webhookIdentifier)
+            // verify required parameter 'webhookExecutionId' is not null or undefined
+            assertParamExists('getExecution', 'webhookExecutionId', webhookExecutionId)
+            const localVarPath = `/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"webhook_identifier"}}`, encodeURIComponent(String(webhookIdentifier)))
+                .replace(`{${"webhook_execution_id"}}`, encodeURIComponent(String(webhookExecutionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getExecutions: async (repoRef: string, webhookIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('getExecutions', 'repoRef', repoRef)
+            // verify required parameter 'webhookIdentifier' is not null or undefined
+            assertParamExists('getExecutions', 'webhookIdentifier', webhookIdentifier)
+            const localVarPath = `/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"webhook_identifier"}}`, encodeURIComponent(String(webhookIdentifier)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -25887,106 +23988,6 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             if (order !== undefined) {
                 localVarQueryParameter['order'] = order;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {number} webhookExecutionId Webhook execution id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getWebhooksExecution: async (repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getWebhooksExecution', 'repoRef', repoRef)
-            // verify required parameter 'webhookIdentifier' is not null or undefined
-            assertParamExists('getWebhooksExecution', 'webhookIdentifier', webhookIdentifier)
-            // verify required parameter 'webhookExecutionId' is not null or undefined
-            assertParamExists('getWebhooksExecution', 'webhookExecutionId', webhookExecutionId)
-            const localVarPath = `/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"webhook_identifier"}}`, encodeURIComponent(String(webhookIdentifier)))
-                .replace(`{${"webhook_execution_id"}}`, encodeURIComponent(String(webhookExecutionId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getWebhooksExecutions: async (repoRef: string, webhookIdentifier: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('getWebhooksExecutions', 'repoRef', repoRef)
-            // verify required parameter 'webhookIdentifier' is not null or undefined
-            assertParamExists('getWebhooksExecutions', 'webhookIdentifier', webhookIdentifier)
-            const localVarPath = `/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"webhook_identifier"}}`, encodeURIComponent(String(webhookIdentifier)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
 
 
     
@@ -26182,6 +24183,33 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} repoRef Repository ref
          * @param {string} webhookIdentifier Webhook identifier
+         * @param {number} webhookExecutionId Webhook execution id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebhookExecutionModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getExecution(repoRef, webhookIdentifier, webhookExecutionId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WebhooksApi.getExecution']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WebhookExecutionModel>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getExecutions(repoRef, webhookIdentifier, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['WebhooksApi.getExecutions']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26206,33 +24234,6 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getWebhooks(repoRef, page, size, query, sort, order, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebhooksApi.getWebhooks']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {number} webhookExecutionId Webhook execution id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getWebhooksExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebhookExecutionModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getWebhooksExecution(repoRef, webhookIdentifier, webhookExecutionId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['WebhooksApi.getWebhooksExecution']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getWebhooksExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WebhookExecutionModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getWebhooksExecutions(repoRef, webhookIdentifier, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['WebhooksApi.getWebhooksExecutions']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -26300,6 +24301,27 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
          * 
          * @param {string} repoRef Repository ref
          * @param {string} webhookIdentifier Webhook identifier
+         * @param {number} webhookExecutionId Webhook execution id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig): AxiosPromise<WebhookExecutionModel> {
+            return localVarFp.getExecution(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<WebhookExecutionModel>> {
+            return localVarFp.getExecutions(repoRef, webhookIdentifier, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} repoRef Repository ref
+         * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -26319,27 +24341,6 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
          */
         getWebhooks(repoRef: string, page?: number, size?: number, query?: string, sort?: WebhookSort, order?: OrderOption, options?: RawAxiosRequestConfig): AxiosPromise<Array<WebhookModel>> {
             return localVarFp.getWebhooks(repoRef, page, size, query, sort, order, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {number} webhookExecutionId Webhook execution id
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getWebhooksExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig): AxiosPromise<WebhookExecutionModel> {
-            return localVarFp.getWebhooksExecution(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository ref
-         * @param {string} webhookIdentifier Webhook identifier
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getWebhooksExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<WebhookExecutionModel>> {
-            return localVarFp.getWebhooksExecutions(repoRef, webhookIdentifier, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -26399,6 +24400,31 @@ export class WebhooksApi extends BaseAPI {
      * 
      * @param {string} repoRef Repository ref
      * @param {string} webhookIdentifier Webhook identifier
+     * @param {number} webhookExecutionId Webhook execution id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WebhooksApi
+     */
+    public getExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig) {
+        return WebhooksApiFp(this.configuration).getExecution(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {string} webhookIdentifier Webhook identifier
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WebhooksApi
+     */
+    public getExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig) {
+        return WebhooksApiFp(this.configuration).getExecutions(repoRef, webhookIdentifier, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} repoRef Repository ref
+     * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WebhooksApi
@@ -26421,31 +24447,6 @@ export class WebhooksApi extends BaseAPI {
      */
     public getWebhooks(repoRef: string, page?: number, size?: number, query?: string, sort?: WebhookSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).getWebhooks(repoRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} webhookIdentifier Webhook identifier
-     * @param {number} webhookExecutionId Webhook execution id
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WebhooksApi
-     */
-    public getWebhooksExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig) {
-        return WebhooksApiFp(this.configuration).getWebhooksExecution(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository ref
-     * @param {string} webhookIdentifier Webhook identifier
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof WebhooksApi
-     */
-    public getWebhooksExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig) {
-        return WebhooksApiFp(this.configuration).getWebhooksExecutions(repoRef, webhookIdentifier, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

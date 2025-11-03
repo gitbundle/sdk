@@ -8,10 +8,10 @@ Method | HTTP request | Description
 [**commits_calculate_divergence**](RepositoryApi.md#commits_calculate_divergence) | **POST** /repos/{repo_ref}/+/commits/calculate-divergence | 
 [**delete_branch**](RepositoryApi.md#delete_branch) | **DELETE** /repos/{repo_ref}/+/branches/{branch_name} | 
 [**delete_release**](RepositoryApi.md#delete_release) | **DELETE** /repos/{repo_ref}/+/releases/{tag_ref} | 
+[**delete_repository_variable**](RepositoryApi.md#delete_repository_variable) | **DELETE** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 [**delete_tag**](RepositoryApi.md#delete_tag) | **DELETE** /repos/{repo_ref}/+/tags/{tag_name} | 
 [**general_update**](RepositoryApi.md#general_update) | **PATCH** /repos/{repo_ref}/+/settings/general | 
 [**get_archive**](RepositoryApi.md#get_archive) | **GET** /repos/{repo_ref}/+/archive/{archive_ref} | 
-[**get_blame**](RepositoryApi.md#get_blame) | **GET** /repos/{repo_ref}/+/blame/{path} | 
 [**get_branch**](RepositoryApi.md#get_branch) | **GET** /repos/{repo_ref}/+/branches/{branch_name} | 
 [**get_branches**](RepositoryApi.md#get_branches) | **GET** /repos/{repo_ref}/+/branches | 
 [**get_codeowners_validate**](RepositoryApi.md#get_codeowners_validate) | **GET** /repos/{repo_ref}/+/codeowners/validate | 
@@ -19,37 +19,35 @@ Method | HTTP request | Description
 [**get_commit_diff**](RepositoryApi.md#get_commit_diff) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/diff | 
 [**get_commit_file_content**](RepositoryApi.md#get_commit_file_content) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/content | 
 [**get_commits**](RepositoryApi.md#get_commits) | **GET** /repos/{repo_ref}/+/commits | 
-[**get_content**](RepositoryApi.md#get_content) | **GET** /repos/{repo_ref}/+/content/{path} | 
 [**get_contributors**](RepositoryApi.md#get_contributors) | **GET** /repos/{repo_ref}/+/contributors | 
-[**get_diff_stats**](RepositoryApi.md#get_diff_stats) | **GET** /repos/{repo_ref}/+/diff-stats/{path} | 
-[**get_diffs**](RepositoryApi.md#get_diffs) | **GET** /repos/{repo_ref}/+/diff/{path} | 
 [**get_forks**](RepositoryApi.md#get_forks) | **GET** /repos/{repo_ref}/+/forks | 
 [**get_general**](RepositoryApi.md#get_general) | **GET** /repos/{repo_ref}/+/settings/general | 
 [**get_has_starred**](RepositoryApi.md#get_has_starred) | **GET** /repos/{repo_ref}/+/stars/has_starred | 
 [**get_import_progress**](RepositoryApi.md#get_import_progress) | **GET** /repos/{repo_ref}/+/import-progress | 
-[**get_paths**](RepositoryApi.md#get_paths) | **GET** /repos/{repo_ref}/+/paths | 
 [**get_raw**](RepositoryApi.md#get_raw) | **GET** /repos/{repo_ref}/+/raw/{path} | 
 [**get_release**](RepositoryApi.md#get_release) | **GET** /repos/{repo_ref}/+/releases/{tag_ref} | 
 [**get_releases**](RepositoryApi.md#get_releases) | **GET** /repos/{repo_ref}/+/releases | 
 [**get_repo**](RepositoryApi.md#get_repo) | **GET** /repos/{repo_ref}/+ | 
 [**get_repository_service_accounts**](RepositoryApi.md#get_repository_service_accounts) | **GET** /repos/{repo_ref}/+/service-accounts | 
 [**get_repository_stats**](RepositoryApi.md#get_repository_stats) | **GET** /repos/{repo_ref}/+/stats | 
+[**get_repository_variable**](RepositoryApi.md#get_repository_variable) | **GET** /repos/{repo_ref}/+/variables/{variable_identifier} | 
+[**get_repository_variables**](RepositoryApi.md#get_repository_variables) | **GET** /repos/{repo_ref}/+/variables | 
 [**get_security**](RepositoryApi.md#get_security) | **GET** /repos/{repo_ref}/+/settings/security | 
 [**get_stars**](RepositoryApi.md#get_stars) | **GET** /repos/{repo_ref}/+/stars | 
 [**get_tags**](RepositoryApi.md#get_tags) | **GET** /repos/{repo_ref}/+/tags | 
 [**patch_repo**](RepositoryApi.md#patch_repo) | **PATCH** /repos/{repo_ref}/+ | 
+[**patch_repository_variable**](RepositoryApi.md#patch_repository_variable) | **PATCH** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 [**patch_security**](RepositoryApi.md#patch_security) | **PATCH** /repos/{repo_ref}/+/settings/security | 
 [**patch_stars**](RepositoryApi.md#patch_stars) | **PATCH** /repos/{repo_ref}/+/stars | 
 [**post_branch**](RepositoryApi.md#post_branch) | **POST** /repos/{repo_ref}/+/branches | 
 [**post_default_branch**](RepositoryApi.md#post_default_branch) | **POST** /repos/{repo_ref}/+/default-branch | 
-[**post_diffs**](RepositoryApi.md#post_diffs) | **POST** /repos/{repo_ref}/+/diff/{path} | 
 [**post_merge_check**](RepositoryApi.md#post_merge_check) | **POST** /repos/{repo_ref}/+/merge-check/{path} | 
-[**post_path_details**](RepositoryApi.md#post_path_details) | **POST** /repos/{repo_ref}/+/path-details | 
 [**post_release**](RepositoryApi.md#post_release) | **POST** /repos/{repo_ref}/+/releases | 
 [**post_repo**](RepositoryApi.md#post_repo) | **POST** /repos | 
 [**post_repository_import**](RepositoryApi.md#post_repository_import) | **POST** /repos/import | 
 [**post_repository_move**](RepositoryApi.md#post_repository_move) | **POST** /repos/{repo_ref}/+/move | 
 [**post_repository_purge**](RepositoryApi.md#post_repository_purge) | **POST** /repos/{repo_ref}/+/purge | 
+[**post_repository_variable**](RepositoryApi.md#post_repository_variable) | **POST** /repos/{repo_ref}/+/variables | 
 [**post_tag**](RepositoryApi.md#post_tag) | **POST** /repos/{repo_ref}/+/tags | 
 [**rename_branch**](RepositoryApi.md#rename_branch) | **PATCH** /repos/{repo_ref}/+/branches | 
 [**repo_restore**](RepositoryApi.md#repo_restore) | **POST** /repos/{repo_ref}/+/restore | 
@@ -175,6 +173,35 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## delete_repository_variable
+
+> delete_repository_variable(repo_ref, variable_identifier)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**variable_identifier** | **String** |  | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## delete_tag
 
 > delete_tag(repo_ref, tag_name, bypass_rules)
@@ -264,38 +291,6 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_blame
-
-> Vec<models::BlamePart> get_blame(repo_ref, path, git_ref, line_from, line_to)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**path** | **String** |  | [required] |
-**git_ref** | Option<**String**> | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} |  |
-**line_from** | Option<**i64**> |  |  |
-**line_to** | Option<**i64**> |  |  |
-
-### Return type
-
-[**Vec<models::BlamePart>**](BlamePart.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -518,37 +513,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_content
-
-> models::RepoContentOutput get_content(repo_ref, path, git_ref, include_commit)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**path** | **String** |  | [required] |
-**git_ref** | Option<**String**> |  |  |
-**include_commit** | Option<**bool**> |  |  |
-
-### Return type
-
-[**models::RepoContentOutput**](RepoContentOutput.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## get_contributors
 
 > Vec<models::Contributor> get_contributors(repo_ref, git_ref, since, until)
@@ -576,64 +540,6 @@ Name | Type | Description  | Required | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_diff_stats
-
-> models::DiffStats get_diff_stats(repo_ref, path)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**path** | **String** |  | [required] |
-
-### Return type
-
-[**models::DiffStats**](DiffStats.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_diffs
-
-> String get_diffs(repo_ref, path)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**path** | **String** |  | [required] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -742,36 +648,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::JobProgress**](JobProgress.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_paths
-
-> models::RepoPathsOutput get_paths(repo_ref, git_ref, include_directories)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**git_ref** | Option<**String**> |  |  |
-**include_directories** | Option<**bool**> |  |  |
-
-### Return type
-
-[**models::RepoPathsOutput**](RepoPathsOutput.md)
 
 ### Authorization
 
@@ -961,6 +837,69 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_repository_variable
+
+> models::VariableModel get_repository_variable(repo_ref, variable_identifier)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**variable_identifier** | **String** |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_repository_variables
+
+> Vec<models::VariableGroup> get_repository_variables(repo_ref, page, size, query, types, sort, order)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**page** | Option<**i64**> |  |  |
+**size** | Option<**i64**> |  |  |
+**query** | Option<**String**> |  |  |
+**types** | Option<[**Vec<models::VariableType>**](models::VariableType.md)> |  |  |
+**sort** | Option<[**VariableSort**](.md)> |  |  |
+**order** | Option<[**OrderOption**](.md)> |  |  |
+
+### Return type
+
+[**Vec<models::VariableGroup>**](VariableGroup.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## get_security
 
 > models::SecuritySettings get_security(repo_ref)
@@ -1070,6 +1009,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::RepositoryModel**](RepositoryModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## patch_repository_variable
+
+> models::VariableModel patch_repository_variable(repo_ref, variable_identifier, variable_patch_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**variable_identifier** | **String** |  | [required] |
+**variable_patch_input** | [**VariablePatchInput**](VariablePatchInput.md) |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
 
 ### Authorization
 
@@ -1199,37 +1168,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## post_diffs
-
-> Vec<i32> post_diffs(repo_ref, path, path2, commit_diff_file)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**path** | **String** |  | [required] |
-**path2** | **String** |  | [required] |
-**commit_diff_file** | [**Vec<models::CommitDiffFile>**](CommitDiffFile.md) |  | [required] |
-
-### Return type
-
-**Vec<i32>**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/octet-stream, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## post_merge_check
 
 > models::RepoMergeCheckOutput post_merge_check(repo_ref, path, repo_merge_check_input)
@@ -1247,36 +1185,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::RepoMergeCheckOutput**](RepoMergeCheckOutput.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## post_path_details
-
-> Vec<models::PathDetails> post_path_details(repo_ref, request_body, git_ref)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**request_body** | [**Vec<String>**](String.md) |  | [required] |
-**git_ref** | Option<**String**> |  |  |
-
-### Return type
-
-[**Vec<models::PathDetails>**](PathDetails.md)
 
 ### Authorization
 
@@ -1427,6 +1335,35 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## post_repository_variable
+
+> models::VariableModel post_repository_variable(repo_ref, variable_create_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**variable_create_input** | [**VariableCreateInput**](VariableCreateInput.md) |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

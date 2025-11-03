@@ -5,10 +5,10 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_webhook**](WebhooksApi.md#delete_webhook) | **DELETE** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
+[**get_execution**](WebhooksApi.md#get_execution) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
+[**get_executions**](WebhooksApi.md#get_executions) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 [**get_webhook**](WebhooksApi.md#get_webhook) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 [**get_webhooks**](WebhooksApi.md#get_webhooks) | **GET** /repos/{repo_ref}/+/webhooks | 
-[**get_webhooks_execution**](WebhooksApi.md#get_webhooks_execution) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
-[**get_webhooks_executions**](WebhooksApi.md#get_webhooks_executions) | **GET** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 [**patch_webhook**](WebhooksApi.md#patch_webhook) | **PATCH** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 [**post_retrigger**](WebhooksApi.md#post_retrigger) | **POST** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}/retrigger | 
 [**post_webhook**](WebhooksApi.md#post_webhook) | **POST** /repos/{repo_ref}/+/webhooks | 
@@ -31,6 +31,65 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_execution
+
+> models::WebhookExecutionModel get_execution(repo_ref, webhook_identifier, webhook_execution_id)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**webhook_identifier** | **String** | Webhook identifier | [required] |
+**webhook_execution_id** | **i64** | Webhook execution id | [required] |
+
+### Return type
+
+[**models::WebhookExecutionModel**](WebhookExecutionModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_executions
+
+> Vec<models::WebhookExecutionModel> get_executions(repo_ref, webhook_identifier)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository ref | [required] |
+**webhook_identifier** | **String** | Webhook identifier | [required] |
+
+### Return type
+
+[**Vec<models::WebhookExecutionModel>**](WebhookExecutionModel.md)
 
 ### Authorization
 
@@ -93,65 +152,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**Vec<models::WebhookModel>**](WebhookModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_webhooks_execution
-
-> models::WebhookExecutionModel get_webhooks_execution(repo_ref, webhook_identifier, webhook_execution_id)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**webhook_identifier** | **String** | Webhook identifier | [required] |
-**webhook_execution_id** | **i64** | Webhook execution id | [required] |
-
-### Return type
-
-[**models::WebhookExecutionModel**](WebhookExecutionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_webhooks_executions
-
-> Vec<models::WebhookExecutionModel> get_webhooks_executions(repo_ref, webhook_identifier)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
-**webhook_identifier** | **String** | Webhook identifier | [required] |
-
-### Return type
-
-[**Vec<models::WebhookExecutionModel>**](WebhookExecutionModel.md)
 
 ### Authorization
 

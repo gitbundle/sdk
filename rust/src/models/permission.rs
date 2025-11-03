@@ -61,14 +61,14 @@ pub enum Permission {
     ActionDelete,
     #[serde(rename = "action_execute")]
     ActionExecute,
-    #[serde(rename = "secret_view")]
-    SecretView,
-    #[serde(rename = "secret_edit")]
-    SecretEdit,
-    #[serde(rename = "secret_delete")]
-    SecretDelete,
-    #[serde(rename = "secret_access")]
-    SecretAccess,
+    #[serde(rename = "variable_view")]
+    VariableView,
+    #[serde(rename = "variable_edit")]
+    VariableEdit,
+    #[serde(rename = "variable_delete")]
+    VariableDelete,
+    #[serde(rename = "variable_access")]
+    VariableAccess,
     #[serde(rename = "connector_view")]
     ConnectorView,
     #[serde(rename = "connector_edit")]
@@ -114,10 +114,10 @@ impl std::fmt::Display for Permission {
             Self::ActionEdit => write!(f, "action_edit"),
             Self::ActionDelete => write!(f, "action_delete"),
             Self::ActionExecute => write!(f, "action_execute"),
-            Self::SecretView => write!(f, "secret_view"),
-            Self::SecretEdit => write!(f, "secret_edit"),
-            Self::SecretDelete => write!(f, "secret_delete"),
-            Self::SecretAccess => write!(f, "secret_access"),
+            Self::VariableView => write!(f, "variable_view"),
+            Self::VariableEdit => write!(f, "variable_edit"),
+            Self::VariableDelete => write!(f, "variable_delete"),
+            Self::VariableAccess => write!(f, "variable_access"),
             Self::ConnectorView => write!(f, "connector_view"),
             Self::ConnectorEdit => write!(f, "connector_edit"),
             Self::ConnectorDelete => write!(f, "connector_delete"),

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**host** | **string** |  | [optional] [default to undefined]
+**origin** | **string** |  | [optional] [default to undefined]
 **password** | **string** |  | [optional] [default to undefined]
 **type** | [**RepoProviderType**](RepoProviderType.md) |  | [default to undefined]
 **username** | **string** |  | [optional] [default to undefined]
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 import { RepoProvider } from 'gitbundle-sdk';
 
 const instance: RepoProvider = {
-    host,
+    origin,
     password,
     type,
     username,

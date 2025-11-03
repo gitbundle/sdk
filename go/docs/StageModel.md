@@ -6,10 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Arch** | **string** |  | 
 **Created** | **int64** |  | 
-**DependsOn** | **interface{}** |  | 
 **Errignore** | **bool** |  | 
 **Error** | **string** |  | 
-**ExecutionId** | **int64** |  | 
 **ExitCode** | **int64** |  | 
 **Id** | **int64** |  | 
 **Kernel** | **string** |  | 
@@ -19,11 +17,13 @@ Name | Type | Description | Notes
 **LimitRepo** | **int64** |  | 
 **Machine** | **string** |  | 
 **Name** | **string** |  | 
+**Needs** | **interface{}** |  | 
 **Number** | **int64** |  | 
 **OnFailure** | **bool** |  | 
 **OnSuccess** | **bool** |  | 
 **Os** | **string** |  | 
 **ParentGroupId** | **int64** |  | 
+**ParentId** | Pointer to **NullableInt64** |  | [optional] 
 **RepoId** | **int64** |  | 
 **Started** | Pointer to **NullableInt64** |  | [optional] 
 **Status** | [**CIStatus**](CIStatus.md) |  | 
@@ -32,12 +32,15 @@ Name | Type | Description | Notes
 **Updated** | **int64** |  | 
 **Variant** | **string** |  | 
 **Version** | **int64** |  | 
+**WorkflowId** | **int64** |  | 
+**YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
+**YamlResolved** | **string** |  | 
 
 ## Methods
 
 ### NewStageModel
 
-`func NewStageModel(arch string, created int64, dependsOn interface{}, errignore bool, error_ string, executionId int64, exitCode int64, id int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, ) *StageModel`
+`func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
 
 NewStageModel instantiates a new StageModel object
 This constructor will assign default values to properties that have it defined,
@@ -92,36 +95,6 @@ and a boolean to check if the value has been set.
 SetCreated sets Created field to given value.
 
 
-### GetDependsOn
-
-`func (o *StageModel) GetDependsOn() interface{}`
-
-GetDependsOn returns the DependsOn field if non-nil, zero value otherwise.
-
-### GetDependsOnOk
-
-`func (o *StageModel) GetDependsOnOk() (*interface{}, bool)`
-
-GetDependsOnOk returns a tuple with the DependsOn field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDependsOn
-
-`func (o *StageModel) SetDependsOn(v interface{})`
-
-SetDependsOn sets DependsOn field to given value.
-
-
-### SetDependsOnNil
-
-`func (o *StageModel) SetDependsOnNil(b bool)`
-
- SetDependsOnNil sets the value for DependsOn to be an explicit nil
-
-### UnsetDependsOn
-`func (o *StageModel) UnsetDependsOn()`
-
-UnsetDependsOn ensures that no value is present for DependsOn, not even an explicit nil
 ### GetErrignore
 
 `func (o *StageModel) GetErrignore() bool`
@@ -160,26 +133,6 @@ and a boolean to check if the value has been set.
 `func (o *StageModel) SetError(v string)`
 
 SetError sets Error field to given value.
-
-
-### GetExecutionId
-
-`func (o *StageModel) GetExecutionId() int64`
-
-GetExecutionId returns the ExecutionId field if non-nil, zero value otherwise.
-
-### GetExecutionIdOk
-
-`func (o *StageModel) GetExecutionIdOk() (*int64, bool)`
-
-GetExecutionIdOk returns a tuple with the ExecutionId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExecutionId
-
-`func (o *StageModel) SetExecutionId(v int64)`
-
-SetExecutionId sets ExecutionId field to given value.
 
 
 ### GetExitCode
@@ -362,6 +315,36 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetNeeds
+
+`func (o *StageModel) GetNeeds() interface{}`
+
+GetNeeds returns the Needs field if non-nil, zero value otherwise.
+
+### GetNeedsOk
+
+`func (o *StageModel) GetNeedsOk() (*interface{}, bool)`
+
+GetNeedsOk returns a tuple with the Needs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeeds
+
+`func (o *StageModel) SetNeeds(v interface{})`
+
+SetNeeds sets Needs field to given value.
+
+
+### SetNeedsNil
+
+`func (o *StageModel) SetNeedsNil(b bool)`
+
+ SetNeedsNil sets the value for Needs to be an explicit nil
+
+### UnsetNeeds
+`func (o *StageModel) UnsetNeeds()`
+
+UnsetNeeds ensures that no value is present for Needs, not even an explicit nil
 ### GetNumber
 
 `func (o *StageModel) GetNumber() int64`
@@ -462,6 +445,41 @@ and a boolean to check if the value has been set.
 SetParentGroupId sets ParentGroupId field to given value.
 
 
+### GetParentId
+
+`func (o *StageModel) GetParentId() int64`
+
+GetParentId returns the ParentId field if non-nil, zero value otherwise.
+
+### GetParentIdOk
+
+`func (o *StageModel) GetParentIdOk() (*int64, bool)`
+
+GetParentIdOk returns a tuple with the ParentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentId
+
+`func (o *StageModel) SetParentId(v int64)`
+
+SetParentId sets ParentId field to given value.
+
+### HasParentId
+
+`func (o *StageModel) HasParentId() bool`
+
+HasParentId returns a boolean if a field has been set.
+
+### SetParentIdNil
+
+`func (o *StageModel) SetParentIdNil(b bool)`
+
+ SetParentIdNil sets the value for ParentId to be an explicit nil
+
+### UnsetParentId
+`func (o *StageModel) UnsetParentId()`
+
+UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetRepoId
 
 `func (o *StageModel) GetRepoId() int64`
@@ -650,6 +668,66 @@ and a boolean to check if the value has been set.
 `func (o *StageModel) SetVersion(v int64)`
 
 SetVersion sets Version field to given value.
+
+
+### GetWorkflowId
+
+`func (o *StageModel) GetWorkflowId() int64`
+
+GetWorkflowId returns the WorkflowId field if non-nil, zero value otherwise.
+
+### GetWorkflowIdOk
+
+`func (o *StageModel) GetWorkflowIdOk() (*int64, bool)`
+
+GetWorkflowIdOk returns a tuple with the WorkflowId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkflowId
+
+`func (o *StageModel) SetWorkflowId(v int64)`
+
+SetWorkflowId sets WorkflowId field to given value.
+
+
+### GetYamlProvider
+
+`func (o *StageModel) GetYamlProvider() YamlProvider`
+
+GetYamlProvider returns the YamlProvider field if non-nil, zero value otherwise.
+
+### GetYamlProviderOk
+
+`func (o *StageModel) GetYamlProviderOk() (*YamlProvider, bool)`
+
+GetYamlProviderOk returns a tuple with the YamlProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlProvider
+
+`func (o *StageModel) SetYamlProvider(v YamlProvider)`
+
+SetYamlProvider sets YamlProvider field to given value.
+
+
+### GetYamlResolved
+
+`func (o *StageModel) GetYamlResolved() string`
+
+GetYamlResolved returns the YamlResolved field if non-nil, zero value otherwise.
+
+### GetYamlResolvedOk
+
+`func (o *StageModel) GetYamlResolvedOk() (*string, bool)`
+
+GetYamlResolvedOk returns a tuple with the YamlResolved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlResolved
+
+`func (o *StageModel) SetYamlResolved(v string)`
+
+SetYamlResolved sets YamlResolved field to given value.
 
 
 

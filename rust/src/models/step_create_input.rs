@@ -31,14 +31,16 @@ pub struct StepCreateInput {
     pub number: i64,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
-    #[serde(rename = "schema")]
-    pub schema: String,
     #[serde(rename = "status")]
     pub status: models::CiStatus,
+    #[serde(rename = "yaml_provider")]
+    pub yaml_provider: models::YamlProvider,
+    #[serde(rename = "yaml_resolved")]
+    pub yaml_resolved: String,
 }
 
 impl StepCreateInput {
-    pub fn new(depends_on: Option<serde_json::Value>, detached: bool, errignore: bool, error: String, exit_code: i64, image: String, name: String, number: i64, parent_group_id: i64, schema: String, status: models::CiStatus) -> StepCreateInput {
+    pub fn new(depends_on: Option<serde_json::Value>, detached: bool, errignore: bool, error: String, exit_code: i64, image: String, name: String, number: i64, parent_group_id: i64, status: models::CiStatus, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StepCreateInput {
         StepCreateInput {
             depends_on,
             detached,
@@ -49,8 +51,9 @@ impl StepCreateInput {
             name,
             number,
             parent_group_id,
-            schema,
             status,
+            yaml_provider,
+            yaml_resolved,
         }
     }
 }

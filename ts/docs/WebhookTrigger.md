@@ -3,6 +3,8 @@
 
 ## Enum
 
+* `Noop` (value: `'noop'`)
+
 * `BranchCreated` (value: `'branch_created'`)
 
 * `BranchUpdated` (value: `'branch_updated'`)
@@ -19,11 +21,11 @@
 
 * `PullreqReopened` (value: `'pullreq_reopened'`)
 
-* `PullreqBranchUpdated` (value: `'pullreq_branch_updated'`)
+* `PullreqSynchronize` (value: `'pullreq_synchronize'`)
 
 * `PullreqClosed` (value: `'pullreq_closed'`)
 
-* `PullreqCommentCreated` (value: `'pullreq_comment_created'`)
+* `PullreqCommented` (value: `'pullreq_commented'`)
 
 * `PullreqMerged` (value: `'pullreq_merged'`)
 

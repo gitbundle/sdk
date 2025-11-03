@@ -19,10 +19,10 @@ var _ MappedNullable = &ActionUpdateInput{}
 
 // ActionUpdateInput struct for ActionUpdateInput
 type ActionUpdateInput struct {
-	ConfigPath NullableString `json:"config_path,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Disabled NullableBool `json:"disabled,omitempty"`
 	Identifier NullableString `json:"identifier,omitempty"`
+	YamlPath NullableString `json:"yaml_path,omitempty"`
 }
 
 // NewActionUpdateInput instantiates a new ActionUpdateInput object
@@ -40,48 +40,6 @@ func NewActionUpdateInput() *ActionUpdateInput {
 func NewActionUpdateInputWithDefaults() *ActionUpdateInput {
 	this := ActionUpdateInput{}
 	return &this
-}
-
-// GetConfigPath returns the ConfigPath field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ActionUpdateInput) GetConfigPath() string {
-	if o == nil || IsNil(o.ConfigPath.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ConfigPath.Get()
-}
-
-// GetConfigPathOk returns a tuple with the ConfigPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ActionUpdateInput) GetConfigPathOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ConfigPath.Get(), o.ConfigPath.IsSet()
-}
-
-// HasConfigPath returns a boolean if a field has been set.
-func (o *ActionUpdateInput) HasConfigPath() bool {
-	if o != nil && o.ConfigPath.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetConfigPath gets a reference to the given NullableString and assigns it to the ConfigPath field.
-func (o *ActionUpdateInput) SetConfigPath(v string) {
-	o.ConfigPath.Set(&v)
-}
-// SetConfigPathNil sets the value for ConfigPath to be an explicit nil
-func (o *ActionUpdateInput) SetConfigPathNil() {
-	o.ConfigPath.Set(nil)
-}
-
-// UnsetConfigPath ensures that no value is present for ConfigPath, not even an explicit nil
-func (o *ActionUpdateInput) UnsetConfigPath() {
-	o.ConfigPath.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -210,6 +168,48 @@ func (o *ActionUpdateInput) UnsetIdentifier() {
 	o.Identifier.Unset()
 }
 
+// GetYamlPath returns the YamlPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ActionUpdateInput) GetYamlPath() string {
+	if o == nil || IsNil(o.YamlPath.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.YamlPath.Get()
+}
+
+// GetYamlPathOk returns a tuple with the YamlPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ActionUpdateInput) GetYamlPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.YamlPath.Get(), o.YamlPath.IsSet()
+}
+
+// HasYamlPath returns a boolean if a field has been set.
+func (o *ActionUpdateInput) HasYamlPath() bool {
+	if o != nil && o.YamlPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetYamlPath gets a reference to the given NullableString and assigns it to the YamlPath field.
+func (o *ActionUpdateInput) SetYamlPath(v string) {
+	o.YamlPath.Set(&v)
+}
+// SetYamlPathNil sets the value for YamlPath to be an explicit nil
+func (o *ActionUpdateInput) SetYamlPathNil() {
+	o.YamlPath.Set(nil)
+}
+
+// UnsetYamlPath ensures that no value is present for YamlPath, not even an explicit nil
+func (o *ActionUpdateInput) UnsetYamlPath() {
+	o.YamlPath.Unset()
+}
+
 func (o ActionUpdateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -220,9 +220,6 @@ func (o ActionUpdateInput) MarshalJSON() ([]byte, error) {
 
 func (o ActionUpdateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConfigPath.IsSet() {
-		toSerialize["config_path"] = o.ConfigPath.Get()
-	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -231,6 +228,9 @@ func (o ActionUpdateInput) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Identifier.IsSet() {
 		toSerialize["identifier"] = o.Identifier.Get()
+	}
+	if o.YamlPath.IsSet() {
+		toSerialize["yaml_path"] = o.YamlPath.Get()
 	}
 	return toSerialize, nil
 }

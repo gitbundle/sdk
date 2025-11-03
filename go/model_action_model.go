@@ -21,10 +21,8 @@ var _ MappedNullable = &ActionModel{}
 
 // ActionModel struct for ActionModel
 type ActionModel struct {
-	ConfigPath string `json:"config_path"`
 	Created int64 `json:"created"`
 	CreatedBy int64 `json:"created_by"`
-	DefaultBranch string `json:"default_branch"`
 	Description string `json:"description"`
 	Disabled bool `json:"disabled"`
 	Id int64 `json:"id"`
@@ -33,6 +31,8 @@ type ActionModel struct {
 	Seq int64 `json:"seq"`
 	Updated int64 `json:"updated"`
 	Version int64 `json:"version"`
+	YamlPath string `json:"yaml_path"`
+	YamlProvider YamlProvider `json:"yaml_provider"`
 }
 
 type _ActionModel ActionModel
@@ -41,12 +41,10 @@ type _ActionModel ActionModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewActionModel(configPath string, created int64, createdBy int64, defaultBranch string, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64) *ActionModel {
+func NewActionModel(created int64, createdBy int64, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64, yamlPath string, yamlProvider YamlProvider) *ActionModel {
 	this := ActionModel{}
-	this.ConfigPath = configPath
 	this.Created = created
 	this.CreatedBy = createdBy
-	this.DefaultBranch = defaultBranch
 	this.Description = description
 	this.Disabled = disabled
 	this.Id = id
@@ -55,6 +53,8 @@ func NewActionModel(configPath string, created int64, createdBy int64, defaultBr
 	this.Seq = seq
 	this.Updated = updated
 	this.Version = version
+	this.YamlPath = yamlPath
+	this.YamlProvider = yamlProvider
 	return &this
 }
 
@@ -64,30 +64,6 @@ func NewActionModel(configPath string, created int64, createdBy int64, defaultBr
 func NewActionModelWithDefaults() *ActionModel {
 	this := ActionModel{}
 	return &this
-}
-
-// GetConfigPath returns the ConfigPath field value
-func (o *ActionModel) GetConfigPath() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ConfigPath
-}
-
-// GetConfigPathOk returns a tuple with the ConfigPath field value
-// and a boolean to check if the value has been set.
-func (o *ActionModel) GetConfigPathOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ConfigPath, true
-}
-
-// SetConfigPath sets field value
-func (o *ActionModel) SetConfigPath(v string) {
-	o.ConfigPath = v
 }
 
 // GetCreated returns the Created field value
@@ -136,30 +112,6 @@ func (o *ActionModel) GetCreatedByOk() (*int64, bool) {
 // SetCreatedBy sets field value
 func (o *ActionModel) SetCreatedBy(v int64) {
 	o.CreatedBy = v
-}
-
-// GetDefaultBranch returns the DefaultBranch field value
-func (o *ActionModel) GetDefaultBranch() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.DefaultBranch
-}
-
-// GetDefaultBranchOk returns a tuple with the DefaultBranch field value
-// and a boolean to check if the value has been set.
-func (o *ActionModel) GetDefaultBranchOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DefaultBranch, true
-}
-
-// SetDefaultBranch sets field value
-func (o *ActionModel) SetDefaultBranch(v string) {
-	o.DefaultBranch = v
 }
 
 // GetDescription returns the Description field value
@@ -354,6 +306,54 @@ func (o *ActionModel) SetVersion(v int64) {
 	o.Version = v
 }
 
+// GetYamlPath returns the YamlPath field value
+func (o *ActionModel) GetYamlPath() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlPath
+}
+
+// GetYamlPathOk returns a tuple with the YamlPath field value
+// and a boolean to check if the value has been set.
+func (o *ActionModel) GetYamlPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlPath, true
+}
+
+// SetYamlPath sets field value
+func (o *ActionModel) SetYamlPath(v string) {
+	o.YamlPath = v
+}
+
+// GetYamlProvider returns the YamlProvider field value
+func (o *ActionModel) GetYamlProvider() YamlProvider {
+	if o == nil {
+		var ret YamlProvider
+		return ret
+	}
+
+	return o.YamlProvider
+}
+
+// GetYamlProviderOk returns a tuple with the YamlProvider field value
+// and a boolean to check if the value has been set.
+func (o *ActionModel) GetYamlProviderOk() (*YamlProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlProvider, true
+}
+
+// SetYamlProvider sets field value
+func (o *ActionModel) SetYamlProvider(v YamlProvider) {
+	o.YamlProvider = v
+}
+
 func (o ActionModel) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -364,10 +364,8 @@ func (o ActionModel) MarshalJSON() ([]byte, error) {
 
 func (o ActionModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["config_path"] = o.ConfigPath
 	toSerialize["created"] = o.Created
 	toSerialize["created_by"] = o.CreatedBy
-	toSerialize["default_branch"] = o.DefaultBranch
 	toSerialize["description"] = o.Description
 	toSerialize["disabled"] = o.Disabled
 	toSerialize["id"] = o.Id
@@ -376,6 +374,8 @@ func (o ActionModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["seq"] = o.Seq
 	toSerialize["updated"] = o.Updated
 	toSerialize["version"] = o.Version
+	toSerialize["yaml_path"] = o.YamlPath
+	toSerialize["yaml_provider"] = o.YamlProvider
 	return toSerialize, nil
 }
 
@@ -384,10 +384,8 @@ func (o *ActionModel) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"config_path",
 		"created",
 		"created_by",
-		"default_branch",
 		"description",
 		"disabled",
 		"id",
@@ -396,6 +394,8 @@ func (o *ActionModel) UnmarshalJSON(data []byte) (err error) {
 		"seq",
 		"updated",
 		"version",
+		"yaml_path",
+		"yaml_provider",
 	}
 
 	allProperties := make(map[string]interface{})

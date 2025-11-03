@@ -11,7 +11,7 @@
 | TagUpdated | tag_updated |
 | PullreqCreated | pullreq_created |
 | PullreqReopened | pullreq_reopened |
-| PullreqBranchUpdated | pullreq_branch_updated |
+| PullreqSynchronize | pullreq_synchronize |
 | PullreqClosed | pullreq_closed |
 | PullreqMerged | pullreq_merged |
 

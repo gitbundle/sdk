@@ -50,13 +50,13 @@ Permission represents the different types of permissions a principal can have.
 
 * `ActionExecute` (value: `'action_execute'`)
 
-* `SecretView` (value: `'secret_view'`)
+* `VariableView` (value: `'variable_view'`)
 
-* `SecretEdit` (value: `'secret_edit'`)
+* `VariableEdit` (value: `'variable_edit'`)
 
-* `SecretDelete` (value: `'secret_delete'`)
+* `VariableDelete` (value: `'variable_delete'`)
 
-* `SecretAccess` (value: `'secret_access'`)
+* `VariableAccess` (value: `'variable_access'`)
 
 * `ConnectorView` (value: `'connector_view'`)
 

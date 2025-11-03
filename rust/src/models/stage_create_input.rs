@@ -15,8 +15,6 @@ use serde::{Deserialize, Serialize};
 pub struct StageCreateInput {
     #[serde(rename = "arch")]
     pub arch: String,
-    #[serde(rename = "depends_on", deserialize_with = "Option::deserialize")]
-    pub depends_on: Option<serde_json::Value>,
     #[serde(rename = "errignore")]
     pub errignore: bool,
     #[serde(rename = "error")]
@@ -37,6 +35,8 @@ pub struct StageCreateInput {
     pub machine: String,
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "needs", deserialize_with = "Option::deserialize")]
+    pub needs: Option<serde_json::Value>,
     #[serde(rename = "number")]
     pub number: i64,
     #[serde(rename = "on_failure")]
@@ -57,13 +57,16 @@ pub struct StageCreateInput {
     pub r#type: String,
     #[serde(rename = "variant")]
     pub variant: String,
+    #[serde(rename = "yaml_provider")]
+    pub yaml_provider: models::YamlProvider,
+    #[serde(rename = "yaml_resolved")]
+    pub yaml_resolved: String,
 }
 
 impl StageCreateInput {
-    pub fn new(arch: String, depends_on: Option<serde_json::Value>, errignore: bool, error: String, exit_code: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, status: models::CiStatus, r#type: String, variant: String) -> StageCreateInput {
+    pub fn new(arch: String, errignore: bool, error: String, exit_code: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, status: models::CiStatus, r#type: String, variant: String, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageCreateInput {
         StageCreateInput {
             arch,
-            depends_on,
             errignore,
             error,
             exit_code,
@@ -74,6 +77,7 @@ impl StageCreateInput {
             limit_repo,
             machine,
             name,
+            needs,
             number,
             on_failure,
             on_success,
@@ -84,6 +88,8 @@ impl StageCreateInput {
             stopped: None,
             r#type,
             variant,
+            yaml_provider,
+            yaml_resolved,
         }
     }
 }

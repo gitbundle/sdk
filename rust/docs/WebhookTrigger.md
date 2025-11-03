@@ -4,6 +4,7 @@
 
 | Name | Value |
 |---- | -----|
+| Noop | noop |
 | BranchCreated | branch_created |
 | BranchUpdated | branch_updated |
 | BranchDeleted | branch_deleted |
@@ -12,9 +13,9 @@
 | TagDeleted | tag_deleted |
 | PullreqCreated | pullreq_created |
 | PullreqReopened | pullreq_reopened |
-| PullreqBranchUpdated | pullreq_branch_updated |
+| PullreqSynchronize | pullreq_synchronize |
 | PullreqClosed | pullreq_closed |
-| PullreqCommentCreated | pullreq_comment_created |
+| PullreqCommented | pullreq_commented |
 | PullreqMerged | pullreq_merged |
 
 

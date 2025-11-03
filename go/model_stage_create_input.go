@@ -22,7 +22,6 @@ var _ MappedNullable = &StageCreateInput{}
 // StageCreateInput struct for StageCreateInput
 type StageCreateInput struct {
 	Arch string `json:"arch"`
-	DependsOn interface{} `json:"depends_on"`
 	Errignore bool `json:"errignore"`
 	Error string `json:"error"`
 	ExitCode int64 `json:"exit_code"`
@@ -33,6 +32,7 @@ type StageCreateInput struct {
 	LimitRepo int64 `json:"limit_repo"`
 	Machine string `json:"machine"`
 	Name string `json:"name"`
+	Needs interface{} `json:"needs"`
 	Number int64 `json:"number"`
 	OnFailure bool `json:"on_failure"`
 	OnSuccess bool `json:"on_success"`
@@ -43,6 +43,8 @@ type StageCreateInput struct {
 	Stopped NullableInt64 `json:"stopped,omitempty"`
 	Type string `json:"type"`
 	Variant string `json:"variant"`
+	YamlProvider YamlProvider `json:"yaml_provider"`
+	YamlResolved string `json:"yaml_resolved"`
 }
 
 type _StageCreateInput StageCreateInput
@@ -51,10 +53,9 @@ type _StageCreateInput StageCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageCreateInput(arch string, dependsOn interface{}, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string) *StageCreateInput {
+func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string) *StageCreateInput {
 	this := StageCreateInput{}
 	this.Arch = arch
-	this.DependsOn = dependsOn
 	this.Errignore = errignore
 	this.Error = error_
 	this.ExitCode = exitCode
@@ -65,6 +66,7 @@ func NewStageCreateInput(arch string, dependsOn interface{}, errignore bool, err
 	this.LimitRepo = limitRepo
 	this.Machine = machine
 	this.Name = name
+	this.Needs = needs
 	this.Number = number
 	this.OnFailure = onFailure
 	this.OnSuccess = onSuccess
@@ -73,6 +75,8 @@ func NewStageCreateInput(arch string, dependsOn interface{}, errignore bool, err
 	this.Status = status
 	this.Type = type_
 	this.Variant = variant
+	this.YamlProvider = yamlProvider
+	this.YamlResolved = yamlResolved
 	return &this
 }
 
@@ -106,32 +110,6 @@ func (o *StageCreateInput) GetArchOk() (*string, bool) {
 // SetArch sets field value
 func (o *StageCreateInput) SetArch(v string) {
 	o.Arch = v
-}
-
-// GetDependsOn returns the DependsOn field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *StageCreateInput) GetDependsOn() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.DependsOn
-}
-
-// GetDependsOnOk returns a tuple with the DependsOn field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageCreateInput) GetDependsOnOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.DependsOn) {
-		return nil, false
-	}
-	return &o.DependsOn, true
-}
-
-// SetDependsOn sets field value
-func (o *StageCreateInput) SetDependsOn(v interface{}) {
-	o.DependsOn = v
 }
 
 // GetErrignore returns the Errignore field value
@@ -372,6 +350,32 @@ func (o *StageCreateInput) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *StageCreateInput) SetName(v string) {
 	o.Name = v
+}
+
+// GetNeeds returns the Needs field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *StageCreateInput) GetNeeds() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Needs
+}
+
+// GetNeedsOk returns a tuple with the Needs field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StageCreateInput) GetNeedsOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Needs) {
+		return nil, false
+	}
+	return &o.Needs, true
+}
+
+// SetNeeds sets field value
+func (o *StageCreateInput) SetNeeds(v interface{}) {
+	o.Needs = v
 }
 
 // GetNumber returns the Number field value
@@ -650,6 +654,54 @@ func (o *StageCreateInput) SetVariant(v string) {
 	o.Variant = v
 }
 
+// GetYamlProvider returns the YamlProvider field value
+func (o *StageCreateInput) GetYamlProvider() YamlProvider {
+	if o == nil {
+		var ret YamlProvider
+		return ret
+	}
+
+	return o.YamlProvider
+}
+
+// GetYamlProviderOk returns a tuple with the YamlProvider field value
+// and a boolean to check if the value has been set.
+func (o *StageCreateInput) GetYamlProviderOk() (*YamlProvider, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlProvider, true
+}
+
+// SetYamlProvider sets field value
+func (o *StageCreateInput) SetYamlProvider(v YamlProvider) {
+	o.YamlProvider = v
+}
+
+// GetYamlResolved returns the YamlResolved field value
+func (o *StageCreateInput) GetYamlResolved() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.YamlResolved
+}
+
+// GetYamlResolvedOk returns a tuple with the YamlResolved field value
+// and a boolean to check if the value has been set.
+func (o *StageCreateInput) GetYamlResolvedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.YamlResolved, true
+}
+
+// SetYamlResolved sets field value
+func (o *StageCreateInput) SetYamlResolved(v string) {
+	o.YamlResolved = v
+}
+
 func (o StageCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -661,9 +713,6 @@ func (o StageCreateInput) MarshalJSON() ([]byte, error) {
 func (o StageCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["arch"] = o.Arch
-	if o.DependsOn != nil {
-		toSerialize["depends_on"] = o.DependsOn
-	}
 	toSerialize["errignore"] = o.Errignore
 	toSerialize["error"] = o.Error
 	toSerialize["exit_code"] = o.ExitCode
@@ -674,6 +723,9 @@ func (o StageCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize["limit_repo"] = o.LimitRepo
 	toSerialize["machine"] = o.Machine
 	toSerialize["name"] = o.Name
+	if o.Needs != nil {
+		toSerialize["needs"] = o.Needs
+	}
 	toSerialize["number"] = o.Number
 	toSerialize["on_failure"] = o.OnFailure
 	toSerialize["on_success"] = o.OnSuccess
@@ -688,6 +740,8 @@ func (o StageCreateInput) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["variant"] = o.Variant
+	toSerialize["yaml_provider"] = o.YamlProvider
+	toSerialize["yaml_resolved"] = o.YamlResolved
 	return toSerialize, nil
 }
 
@@ -697,7 +751,6 @@ func (o *StageCreateInput) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"arch",
-		"depends_on",
 		"errignore",
 		"error",
 		"exit_code",
@@ -708,6 +761,7 @@ func (o *StageCreateInput) UnmarshalJSON(data []byte) (err error) {
 		"limit_repo",
 		"machine",
 		"name",
+		"needs",
 		"number",
 		"on_failure",
 		"on_success",
@@ -716,6 +770,8 @@ func (o *StageCreateInput) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"type",
 		"variant",
+		"yaml_provider",
+		"yaml_resolved",
 	}
 
 	allProperties := make(map[string]interface{})

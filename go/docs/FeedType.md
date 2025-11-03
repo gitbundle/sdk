@@ -15,7 +15,9 @@
 
 * `REPO_RENAMED` (value: `"repo_renamed"`)
 
-* `REPO_TRANSFERED` (value: `"repo_transfered"`)
+* `REPO_TRANSFERRED` (value: `"repo_transferred"`)
+
+* `REPO_RESTORED` (value: `"repo_restored"`)
 
 * `BRANCH_CREATED` (value: `"branch_created"`)
 

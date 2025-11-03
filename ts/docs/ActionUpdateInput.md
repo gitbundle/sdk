@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config_path** | **string** |  | [optional] [default to undefined]
 **description** | **string** |  | [optional] [default to undefined]
 **disabled** | **boolean** |  | [optional] [default to undefined]
 **identifier** | **string** |  | [optional] [default to undefined]
+**yaml_path** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 import { ActionUpdateInput } from 'gitbundle-sdk';
 
 const instance: ActionUpdateInput = {
-    config_path,
     description,
     disabled,
     identifier,
+    yaml_path,
 };
 ```
 

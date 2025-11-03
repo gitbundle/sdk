@@ -20,20 +20,36 @@ type TriggerEvent string
 
 // List of TriggerEvent
 const (
-	TRIGGEREVENT_CRON TriggerEvent = "cron"
-	TRIGGEREVENT_MANUAL TriggerEvent = "manual"
-	TRIGGEREVENT_PUSH TriggerEvent = "push"
-	TRIGGEREVENT_PULL_REQUEST TriggerEvent = "pull_request"
+	TRIGGEREVENT_NOOP TriggerEvent = "noop"
+	TRIGGEREVENT_BRANCH_PROTECTION_RULE TriggerEvent = "branch_protection_rule"
+	TRIGGEREVENT_CHECK_RUN TriggerEvent = "check_run"
+	TRIGGEREVENT_CHECK_SUITE TriggerEvent = "check_suite"
+	TRIGGEREVENT_BRANCH TriggerEvent = "branch"
 	TRIGGEREVENT_TAG TriggerEvent = "tag"
+	TRIGGEREVENT_PULL_REQUEST TriggerEvent = "pull_request"
+	TRIGGEREVENT_RELEASE TriggerEvent = "release"
+	TRIGGEREVENT_REPOSITORY TriggerEvent = "repository"
+	TRIGGEREVENT_SCHEDULE TriggerEvent = "schedule"
+	TRIGGEREVENT_STATUS TriggerEvent = "status"
+	TRIGGEREVENT_WORKFLOW_DISPATCH TriggerEvent = "workflow_dispatch"
+	TRIGGEREVENT_WORKFLOW_RUN TriggerEvent = "workflow_run"
 )
 
 // All allowed values of TriggerEvent enum
 var AllowedTriggerEventEnumValues = []TriggerEvent{
-	"cron",
-	"manual",
-	"push",
-	"pull_request",
+	"noop",
+	"branch_protection_rule",
+	"check_run",
+	"check_suite",
+	"branch",
 	"tag",
+	"pull_request",
+	"release",
+	"repository",
+	"schedule",
+	"status",
+	"workflow_dispatch",
+	"workflow_run",
 }
 
 func (v *TriggerEvent) UnmarshalJSON(src []byte) error {

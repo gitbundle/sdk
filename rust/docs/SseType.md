@@ -5,12 +5,11 @@
 | Name | Value |
 |---- | -----|
 | Noop | noop |
-| ExecutionUpdated | execution_updated |
-| ExecutionRunning | execution_running |
-| ExecutionCompleted | execution_completed |
-| ExecutionCanceled | execution_canceled |
+| WorkflowUpdated | workflow_updated |
+| WorkflowRunning | workflow_running |
+| WorkflowCompleted | workflow_completed |
+| WorkflowCanceled | workflow_canceled |
 | RepositoryImportCompleted | repository_import_completed |
-| RepositoryExportCompleted | repository_export_completed |
 | PullreqUpdated | pullreq_updated |
 
 

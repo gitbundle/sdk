@@ -4,10 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigPath** | **string** |  | 
 **Created** | **int64** |  | 
 **CreatedBy** | **int64** |  | 
-**DefaultBranch** | **string** |  | 
 **Description** | **string** |  | 
 **Disabled** | **bool** |  | 
 **Id** | **int64** |  | 
@@ -16,12 +14,14 @@ Name | Type | Description | Notes
 **Seq** | **int64** |  | 
 **Updated** | **int64** |  | 
 **Version** | **int64** |  | 
+**YamlPath** | **string** |  | 
+**YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
 
 ## Methods
 
 ### NewActionModel
 
-`func NewActionModel(configPath string, created int64, createdBy int64, defaultBranch string, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64, ) *ActionModel`
+`func NewActionModel(created int64, createdBy int64, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64, yamlPath string, yamlProvider YamlProvider, ) *ActionModel`
 
 NewActionModel instantiates a new ActionModel object
 This constructor will assign default values to properties that have it defined,
@@ -35,26 +35,6 @@ will change when the set of required properties is changed
 NewActionModelWithDefaults instantiates a new ActionModel object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetConfigPath
-
-`func (o *ActionModel) GetConfigPath() string`
-
-GetConfigPath returns the ConfigPath field if non-nil, zero value otherwise.
-
-### GetConfigPathOk
-
-`func (o *ActionModel) GetConfigPathOk() (*string, bool)`
-
-GetConfigPathOk returns a tuple with the ConfigPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigPath
-
-`func (o *ActionModel) SetConfigPath(v string)`
-
-SetConfigPath sets ConfigPath field to given value.
-
 
 ### GetCreated
 
@@ -94,26 +74,6 @@ and a boolean to check if the value has been set.
 `func (o *ActionModel) SetCreatedBy(v int64)`
 
 SetCreatedBy sets CreatedBy field to given value.
-
-
-### GetDefaultBranch
-
-`func (o *ActionModel) GetDefaultBranch() string`
-
-GetDefaultBranch returns the DefaultBranch field if non-nil, zero value otherwise.
-
-### GetDefaultBranchOk
-
-`func (o *ActionModel) GetDefaultBranchOk() (*string, bool)`
-
-GetDefaultBranchOk returns a tuple with the DefaultBranch field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultBranch
-
-`func (o *ActionModel) SetDefaultBranch(v string)`
-
-SetDefaultBranch sets DefaultBranch field to given value.
 
 
 ### GetDescription
@@ -274,6 +234,46 @@ and a boolean to check if the value has been set.
 `func (o *ActionModel) SetVersion(v int64)`
 
 SetVersion sets Version field to given value.
+
+
+### GetYamlPath
+
+`func (o *ActionModel) GetYamlPath() string`
+
+GetYamlPath returns the YamlPath field if non-nil, zero value otherwise.
+
+### GetYamlPathOk
+
+`func (o *ActionModel) GetYamlPathOk() (*string, bool)`
+
+GetYamlPathOk returns a tuple with the YamlPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlPath
+
+`func (o *ActionModel) SetYamlPath(v string)`
+
+SetYamlPath sets YamlPath field to given value.
+
+
+### GetYamlProvider
+
+`func (o *ActionModel) GetYamlProvider() YamlProvider`
+
+GetYamlProvider returns the YamlProvider field if non-nil, zero value otherwise.
+
+### GetYamlProviderOk
+
+`func (o *ActionModel) GetYamlProviderOk() (*YamlProvider, bool)`
+
+GetYamlProviderOk returns a tuple with the YamlProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlProvider
+
+`func (o *ActionModel) SetYamlProvider(v YamlProvider)`
+
+SetYamlProvider sets YamlProvider field to given value.
 
 
 

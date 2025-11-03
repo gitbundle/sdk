@@ -21,24 +21,22 @@ type SseType string
 // List of SseType
 const (
 	SSETYPE_NOOP SseType = "noop"
-	SSETYPE_EXECUTION_UPDATED SseType = "execution_updated"
-	SSETYPE_EXECUTION_RUNNING SseType = "execution_running"
-	SSETYPE_EXECUTION_COMPLETED SseType = "execution_completed"
-	SSETYPE_EXECUTION_CANCELED SseType = "execution_canceled"
+	SSETYPE_WORKFLOW_UPDATED SseType = "workflow_updated"
+	SSETYPE_WORKFLOW_RUNNING SseType = "workflow_running"
+	SSETYPE_WORKFLOW_COMPLETED SseType = "workflow_completed"
+	SSETYPE_WORKFLOW_CANCELED SseType = "workflow_canceled"
 	SSETYPE_REPOSITORY_IMPORT_COMPLETED SseType = "repository_import_completed"
-	SSETYPE_REPOSITORY_EXPORT_COMPLETED SseType = "repository_export_completed"
 	SSETYPE_PULLREQ_UPDATED SseType = "pullreq_updated"
 )
 
 // All allowed values of SseType enum
 var AllowedSseTypeEnumValues = []SseType{
 	"noop",
-	"execution_updated",
-	"execution_running",
-	"execution_completed",
-	"execution_canceled",
+	"workflow_updated",
+	"workflow_running",
+	"workflow_completed",
+	"workflow_canceled",
 	"repository_import_completed",
-	"repository_export_completed",
 	"pullreq_updated",
 }
 

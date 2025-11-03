@@ -27,10 +27,10 @@
 | ActionEdit | action_edit |
 | ActionDelete | action_delete |
 | ActionExecute | action_execute |
-| SecretView | secret_view |
-| SecretEdit | secret_edit |
-| SecretDelete | secret_delete |
-| SecretAccess | secret_access |
+| VariableView | variable_view |
+| VariableEdit | variable_edit |
+| VariableDelete | variable_delete |
+| VariableAccess | variable_access |
 | ConnectorView | connector_view |
 | ConnectorEdit | connector_edit |
 | ConnectorDelete | connector_delete |

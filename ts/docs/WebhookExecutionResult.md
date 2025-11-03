@@ -3,6 +3,8 @@
 
 ## Enum
 
+* `Unknown` (value: `'unknown'`)
+
 * `Success` (value: `'success'`)
 
 * `RetriableError` (value: `'retriable_error'`)

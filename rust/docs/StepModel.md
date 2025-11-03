@@ -14,12 +14,13 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **number** | **i64** |  | 
 **parent_group_id** | **i64** |  | 
-**schema** | **String** |  | 
 **stage_id** | **i64** |  | 
 **started** | Option<**i64**> |  | [optional]
 **status** | [**models::CiStatus**](CIStatus.md) |  | 
 **stopped** | Option<**i64**> |  | [optional]
 **version** | **i64** |  | 
+**yaml_provider** | [**models::YamlProvider**](YamlProvider.md) |  | 
+**yaml_resolved** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

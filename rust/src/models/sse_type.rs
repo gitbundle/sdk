@@ -16,18 +16,16 @@ use serde::{Deserialize, Serialize};
 pub enum SseType {
     #[serde(rename = "noop")]
     Noop,
-    #[serde(rename = "execution_updated")]
-    ExecutionUpdated,
-    #[serde(rename = "execution_running")]
-    ExecutionRunning,
-    #[serde(rename = "execution_completed")]
-    ExecutionCompleted,
-    #[serde(rename = "execution_canceled")]
-    ExecutionCanceled,
+    #[serde(rename = "workflow_updated")]
+    WorkflowUpdated,
+    #[serde(rename = "workflow_running")]
+    WorkflowRunning,
+    #[serde(rename = "workflow_completed")]
+    WorkflowCompleted,
+    #[serde(rename = "workflow_canceled")]
+    WorkflowCanceled,
     #[serde(rename = "repository_import_completed")]
     RepositoryImportCompleted,
-    #[serde(rename = "repository_export_completed")]
-    RepositoryExportCompleted,
     #[serde(rename = "pullreq_updated")]
     PullreqUpdated,
 
@@ -37,12 +35,11 @@ impl std::fmt::Display for SseType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Noop => write!(f, "noop"),
-            Self::ExecutionUpdated => write!(f, "execution_updated"),
-            Self::ExecutionRunning => write!(f, "execution_running"),
-            Self::ExecutionCompleted => write!(f, "execution_completed"),
-            Self::ExecutionCanceled => write!(f, "execution_canceled"),
+            Self::WorkflowUpdated => write!(f, "workflow_updated"),
+            Self::WorkflowRunning => write!(f, "workflow_running"),
+            Self::WorkflowCompleted => write!(f, "workflow_completed"),
+            Self::WorkflowCanceled => write!(f, "workflow_canceled"),
             Self::RepositoryImportCompleted => write!(f, "repository_import_completed"),
-            Self::RepositoryExportCompleted => write!(f, "repository_export_completed"),
             Self::PullreqUpdated => write!(f, "pullreq_updated"),
         }
     }

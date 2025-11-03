@@ -49,13 +49,13 @@
 
 * `ACTION_EXECUTE` (value: `"action_execute"`)
 
-* `SECRET_VIEW` (value: `"secret_view"`)
+* `VARIABLE_VIEW` (value: `"variable_view"`)
 
-* `SECRET_EDIT` (value: `"secret_edit"`)
+* `VARIABLE_EDIT` (value: `"variable_edit"`)
 
-* `SECRET_DELETE` (value: `"secret_delete"`)
+* `VARIABLE_DELETE` (value: `"variable_delete"`)
 
-* `SECRET_ACCESS` (value: `"secret_access"`)
+* `VARIABLE_ACCESS` (value: `"variable_access"`)
 
 * `CONNECTOR_VIEW` (value: `"connector_view"`)
 

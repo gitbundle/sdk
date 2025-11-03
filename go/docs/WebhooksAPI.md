@@ -5,10 +5,10 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteWebhook**](WebhooksAPI.md#DeleteWebhook) | **Delete** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
+[**GetExecution**](WebhooksAPI.md#GetExecution) | **Get** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
+[**GetExecutions**](WebhooksAPI.md#GetExecutions) | **Get** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 [**GetWebhook**](WebhooksAPI.md#GetWebhook) | **Get** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 [**GetWebhooks**](WebhooksAPI.md#GetWebhooks) | **Get** /repos/{repo_ref}/+/webhooks | 
-[**GetWebhooksExecution**](WebhooksAPI.md#GetWebhooksExecution) | **Get** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id} | 
-[**GetWebhooksExecutions**](WebhooksAPI.md#GetWebhooksExecutions) | **Get** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions | 
 [**PatchWebhook**](WebhooksAPI.md#PatchWebhook) | **Patch** /repos/{repo_ref}/+/webhooks/{webhook_identifier} | 
 [**PostRetrigger**](WebhooksAPI.md#PostRetrigger) | **Post** /repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}/retrigger | 
 [**PostWebhook**](WebhooksAPI.md#PostWebhook) | **Post** /repos/{repo_ref}/+/webhooks | 
@@ -69,6 +69,151 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetExecution
+
+> WebhookExecutionModel GetExecution(ctx, repoRef, webhookIdentifier, webhookExecutionId).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
+	webhookExecutionId := int64(789) // int64 | Webhook execution id
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhooksAPI.GetExecution(context.Background(), repoRef, webhookIdentifier, webhookExecutionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhooksAPI.GetExecution``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetExecution`: WebhookExecutionModel
+	fmt.Fprintf(os.Stdout, "Response from `WebhooksAPI.GetExecution`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**webhookIdentifier** | **string** | Webhook identifier | 
+**webhookExecutionId** | **int64** | Webhook execution id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetExecutionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**WebhookExecutionModel**](WebhookExecutionModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetExecutions
+
+> []WebhookExecutionModel GetExecutions(ctx, repoRef, webhookIdentifier).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhooksAPI.GetExecutions(context.Background(), repoRef, webhookIdentifier).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhooksAPI.GetExecutions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetExecutions`: []WebhookExecutionModel
+	fmt.Fprintf(os.Stdout, "Response from `WebhooksAPI.GetExecutions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**webhookIdentifier** | **string** | Webhook identifier | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetExecutionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]WebhookExecutionModel**](WebhookExecutionModel.md)
 
 ### Authorization
 
@@ -218,151 +363,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]WebhookModel**](WebhookModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetWebhooksExecution
-
-> WebhookExecutionModel GetWebhooksExecution(ctx, repoRef, webhookIdentifier, webhookExecutionId).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
-	webhookExecutionId := int64(789) // int64 | Webhook execution id
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhooksAPI.GetWebhooksExecution(context.Background(), repoRef, webhookIdentifier, webhookExecutionId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WebhooksAPI.GetWebhooksExecution``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetWebhooksExecution`: WebhookExecutionModel
-	fmt.Fprintf(os.Stdout, "Response from `WebhooksAPI.GetWebhooksExecution`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**webhookIdentifier** | **string** | Webhook identifier | 
-**webhookExecutionId** | **int64** | Webhook execution id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWebhooksExecutionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**WebhookExecutionModel**](WebhookExecutionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetWebhooksExecutions
-
-> []WebhookExecutionModel GetWebhooksExecutions(ctx, repoRef, webhookIdentifier).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository ref
-	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhooksAPI.GetWebhooksExecutions(context.Background(), repoRef, webhookIdentifier).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `WebhooksAPI.GetWebhooksExecutions``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetWebhooksExecutions`: []WebhookExecutionModel
-	fmt.Fprintf(os.Stdout, "Response from `WebhooksAPI.GetWebhooksExecutions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
-**webhookIdentifier** | **string** | Webhook identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWebhooksExecutionsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**[]WebhookExecutionModel**](WebhookExecutionModel.md)
 
 ### Authorization
 
@@ -545,7 +545,7 @@ import (
 
 func main() {
 	repoRef := "repoRef_example" // string | Repository ref
-	webhookCreateInput := *openapiclient.NewWebhookCreateInput("Description_example", "DisplayName_example", false, "Identifier_example", false, "Secret_example", []openapiclient.WebhookTrigger{openapiclient.WebhookTrigger("branch_created")}, "Url_example") // WebhookCreateInput | 
+	webhookCreateInput := *openapiclient.NewWebhookCreateInput("Description_example", "DisplayName_example", false, "Identifier_example", false, "Secret_example", []openapiclient.WebhookTrigger{openapiclient.WebhookTrigger("noop")}, "Url_example") // WebhookCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -5,16 +5,18 @@ All URIs are relative to */api/v3*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**deleteMember**](#deletemember) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | |
+|[**deleteVariable**](#deletevariable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | |
 |[**getConnectors**](#getconnectors) | **GET** /groups/{group_ref}/+/connectors | |
-|[**getEvents**](#getevents) | **GET** /groups/{group_ref}/+/events | |
 |[**getGroup**](#getgroup) | **GET** /groups/{group_ref}/+ | |
 |[**getMembers**](#getmembers) | **GET** /groups/{group_ref}/+/members | |
 |[**getRepos**](#getrepos) | **GET** /groups/{group_ref}/+/repos | |
-|[**getSecrets**](#getsecrets) | **GET** /groups/{group_ref}/+/secrets | |
 |[**getServiceAccounts**](#getserviceaccounts) | **GET** /groups/{group_ref}/+/service-accounts | |
 |[**getSubGroups**](#getsubgroups) | **GET** /groups/{group_ref}/+/groups | |
+|[**getVariable**](#getvariable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | |
+|[**getVariables**](#getvariables) | **GET** /groups/{group_ref}/+/variables | |
 |[**patchGroup**](#patchgroup) | **PATCH** /groups/{group_ref}/+ | |
 |[**patchMember**](#patchmember) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | |
+|[**patchVariable**](#patchvariable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | |
 |[**postGroup**](#postgroup) | **POST** /groups | |
 |[**postImport**](#postimport) | **POST** /groups/import | |
 |[**postImportRepos**](#postimportrepos) | **POST** /groups/{group_ref}/+/import | |
@@ -22,6 +24,7 @@ All URIs are relative to */api/v3*
 |[**postMove**](#postmove) | **POST** /groups/{group_ref}/+/move | |
 |[**postPurge**](#postpurge) | **POST** /groups/{group_ref}/+/purge | |
 |[**postRestore**](#postrestore) | **POST** /groups/{group_ref}/+/restore | |
+|[**postVariable**](#postvariable) | **POST** /groups/{group_ref}/+/variables | |
 |[**softDelete**](#softdelete) | **DELETE** /groups/{group_ref}/+ | |
 
 # **deleteMember**
@@ -74,6 +77,66 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**204** | Delete member by user_uid from a group |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteVariable**
+> deleteVariable()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let variableIdentifier: string; // (default to undefined)
+
+const { status, data } = await apiInstance.deleteVariable(
+    groupRef,
+    variableIdentifier
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **variableIdentifier** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Delete variable |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -140,63 +203,6 @@ const { status, data } = await apiInstance.getConnectors(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | List connectors in a group |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getEvents**
-> Array<number> getEvents()
-
-
-### Example
-
-```typescript
-import {
-    GroupsApi,
-    Configuration
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new GroupsApi(configuration);
-
-let groupRef: string; //Group ref (default to undefined)
-
-const { status, data } = await apiInstance.getEvents(
-    groupRef
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **groupRef** | [**string**] | Group ref | defaults to undefined|
-
-
-### Return type
-
-**Array<number>**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/event-stream, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Fetch group events |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -408,72 +414,6 @@ const { status, data } = await apiInstance.getRepos(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getSecrets**
-> Array<SecretGroup> getSecrets()
-
-
-### Example
-
-```typescript
-import {
-    GroupsApi,
-    Configuration
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new GroupsApi(configuration);
-
-let groupRef: string; //Group ref (default to undefined)
-let page: number; // (optional) (default to undefined)
-let size: number; // (optional) (default to undefined)
-let query: string; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.getSecrets(
-    groupRef,
-    page,
-    size,
-    query
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **groupRef** | [**string**] | Group ref | defaults to undefined|
-| **page** | [**number**] |  | (optional) defaults to undefined|
-| **size** | [**number**] |  | (optional) defaults to undefined|
-| **query** | [**string**] |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**Array<SecretGroup>**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | List secrets in a group |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getServiceAccounts**
 > Array<UserModel> getServiceAccounts()
 
@@ -618,6 +558,141 @@ const { status, data } = await apiInstance.getSubGroups(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getVariable**
+> VariableModel getVariable()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let variableIdentifier: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getVariable(
+    groupRef,
+    variableIdentifier
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **variableIdentifier** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**VariableModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get variable |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getVariables**
+> Array<VariableGroup> getVariables()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let page: number; // (optional) (default to undefined)
+let size: number; // (optional) (default to undefined)
+let query: string; // (optional) (default to undefined)
+let types: Array<VariableType>; // (optional) (default to undefined)
+let sort: VariableSort; // (optional) (default to undefined)
+let order: OrderOption; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getVariables(
+    groupRef,
+    page,
+    size,
+    query,
+    types,
+    sort,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **page** | [**number**] |  | (optional) defaults to undefined|
+| **size** | [**number**] |  | (optional) defaults to undefined|
+| **query** | [**string**] |  | (optional) defaults to undefined|
+| **types** | **Array&lt;VariableType&gt;** |  | (optional) defaults to undefined|
+| **sort** | **VariableSort** |  | (optional) defaults to undefined|
+| **order** | **OrderOption** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**Array<VariableGroup>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | List variables in a group |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchGroup**
 > GroupModel patchGroup(groupPatchInput)
 
@@ -733,6 +808,70 @@ const { status, data } = await apiInstance.patchMember(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Update member by user_uid from a group |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchVariable**
+> VariableModel patchVariable(variablePatchInput)
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration,
+    VariablePatchInput
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let variableIdentifier: string; // (default to undefined)
+let variablePatchInput: VariablePatchInput; //
+
+const { status, data } = await apiInstance.patchVariable(
+    groupRef,
+    variableIdentifier,
+    variablePatchInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **variablePatchInput** | **VariablePatchInput**|  | |
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **variableIdentifier** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**VariableModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Patch variable |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1150,6 +1289,67 @@ const { status, data } = await apiInstance.postRestore(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Restore group |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postVariable**
+> VariableModel postVariable(variableCreateInput)
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration,
+    VariableCreateInput
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let variableCreateInput: VariableCreateInput; //
+
+const { status, data } = await apiInstance.postVariable(
+    groupRef,
+    variableCreateInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **variableCreateInput** | **VariableCreateInput**|  | |
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+
+
+### Return type
+
+**VariableModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**201** | Post variable creation |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |

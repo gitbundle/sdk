@@ -20,6 +20,7 @@ type WebhookTrigger string
 
 // List of WebhookTrigger
 const (
+	WEBHOOKTRIGGER_NOOP WebhookTrigger = "noop"
 	WEBHOOKTRIGGER_BRANCH_CREATED WebhookTrigger = "branch_created"
 	WEBHOOKTRIGGER_BRANCH_UPDATED WebhookTrigger = "branch_updated"
 	WEBHOOKTRIGGER_BRANCH_DELETED WebhookTrigger = "branch_deleted"
@@ -28,14 +29,15 @@ const (
 	WEBHOOKTRIGGER_TAG_DELETED WebhookTrigger = "tag_deleted"
 	WEBHOOKTRIGGER_PULLREQ_CREATED WebhookTrigger = "pullreq_created"
 	WEBHOOKTRIGGER_PULLREQ_REOPENED WebhookTrigger = "pullreq_reopened"
-	WEBHOOKTRIGGER_PULLREQ_BRANCH_UPDATED WebhookTrigger = "pullreq_branch_updated"
+	WEBHOOKTRIGGER_PULLREQ_SYNCHRONIZE WebhookTrigger = "pullreq_synchronize"
 	WEBHOOKTRIGGER_PULLREQ_CLOSED WebhookTrigger = "pullreq_closed"
-	WEBHOOKTRIGGER_PULLREQ_COMMENT_CREATED WebhookTrigger = "pullreq_comment_created"
+	WEBHOOKTRIGGER_PULLREQ_COMMENTED WebhookTrigger = "pullreq_commented"
 	WEBHOOKTRIGGER_PULLREQ_MERGED WebhookTrigger = "pullreq_merged"
 )
 
 // All allowed values of WebhookTrigger enum
 var AllowedWebhookTriggerEnumValues = []WebhookTrigger{
+	"noop",
 	"branch_created",
 	"branch_updated",
 	"branch_deleted",
@@ -44,9 +46,9 @@ var AllowedWebhookTriggerEnumValues = []WebhookTrigger{
 	"tag_deleted",
 	"pullreq_created",
 	"pullreq_reopened",
-	"pullreq_branch_updated",
+	"pullreq_synchronize",
 	"pullreq_closed",
-	"pullreq_comment_created",
+	"pullreq_commented",
 	"pullreq_merged",
 }
 

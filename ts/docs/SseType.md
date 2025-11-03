@@ -5,17 +5,15 @@
 
 * `Noop` (value: `'noop'`)
 
-* `ExecutionUpdated` (value: `'execution_updated'`)
+* `WorkflowUpdated` (value: `'workflow_updated'`)
 
-* `ExecutionRunning` (value: `'execution_running'`)
+* `WorkflowRunning` (value: `'workflow_running'`)
 
-* `ExecutionCompleted` (value: `'execution_completed'`)
+* `WorkflowCompleted` (value: `'workflow_completed'`)
 
-* `ExecutionCanceled` (value: `'execution_canceled'`)
+* `WorkflowCanceled` (value: `'workflow_canceled'`)
 
 * `RepositoryImportCompleted` (value: `'repository_import_completed'`)
-
-* `RepositoryExportCompleted` (value: `'repository_export_completed'`)
 
 * `PullreqUpdated` (value: `'pullreq_updated'`)
 

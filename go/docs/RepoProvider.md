@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Host** | Pointer to **NullableString** |  | [optional] 
+**Origin** | Pointer to **NullableString** |  | [optional] 
 **Password** | Pointer to **NullableString** |  | [optional] 
 **Type** | [**RepoProviderType**](RepoProviderType.md) |  | 
 **Username** | Pointer to **NullableString** |  | [optional] 
@@ -28,41 +28,41 @@ NewRepoProviderWithDefaults instantiates a new RepoProvider object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHost
+### GetOrigin
 
-`func (o *RepoProvider) GetHost() string`
+`func (o *RepoProvider) GetOrigin() string`
 
-GetHost returns the Host field if non-nil, zero value otherwise.
+GetOrigin returns the Origin field if non-nil, zero value otherwise.
 
-### GetHostOk
+### GetOriginOk
 
-`func (o *RepoProvider) GetHostOk() (*string, bool)`
+`func (o *RepoProvider) GetOriginOk() (*string, bool)`
 
-GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHost
+### SetOrigin
 
-`func (o *RepoProvider) SetHost(v string)`
+`func (o *RepoProvider) SetOrigin(v string)`
 
-SetHost sets Host field to given value.
+SetOrigin sets Origin field to given value.
 
-### HasHost
+### HasOrigin
 
-`func (o *RepoProvider) HasHost() bool`
+`func (o *RepoProvider) HasOrigin() bool`
 
-HasHost returns a boolean if a field has been set.
+HasOrigin returns a boolean if a field has been set.
 
-### SetHostNil
+### SetOriginNil
 
-`func (o *RepoProvider) SetHostNil(b bool)`
+`func (o *RepoProvider) SetOriginNil(b bool)`
 
- SetHostNil sets the value for Host to be an explicit nil
+ SetOriginNil sets the value for Origin to be an explicit nil
 
-### UnsetHost
-`func (o *RepoProvider) UnsetHost()`
+### UnsetOrigin
+`func (o *RepoProvider) UnsetOrigin()`
 
-UnsetHost ensures that no value is present for Host, not even an explicit nil
+UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetPassword
 
 `func (o *RepoProvider) GetPassword() string`

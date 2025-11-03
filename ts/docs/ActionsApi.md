@@ -4,32 +4,27 @@ All URIs are relative to */api/v3*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**cancelExecution**](#cancelexecution) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/cancel | |
+|[**cancelWorkflow**](#cancelworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel | |
 |[**deleteAction**](#deleteaction) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier} | |
-|[**deleteExecution**](#deleteexecution) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | |
-|[**deleteTrigger**](#deletetrigger) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | |
+|[**deleteWorkflow**](#deleteworkflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
 |[**getAction**](#getaction) | **GET** /repos/{repo_ref}/+/actions/{action_identifier} | |
 |[**getActions**](#getactions) | **GET** /repos/{repo_ref}/+/actions | |
-|[**getExecution**](#getexecution) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | |
-|[**getExecutions**](#getexecutions) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions | |
-|[**getStepLogStream**](#getsteplogstream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number}/stream | |
-|[**getStepLogs**](#getsteplogs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/logs/{stage_number}/{step_number} | |
-|[**getTrigger**](#gettrigger) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | |
-|[**getTriggers**](#gettriggers) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | |
+|[**getStepLogStream**](#getsteplogstream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream | |
+|[**getStepLogs**](#getsteplogs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number} | |
+|[**getWorkflow**](#getworkflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
+|[**getWorkflows**](#getworkflows) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | |
 |[**patchAction**](#patchaction) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier} | |
-|[**patchExecution**](#patchexecution) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number} | |
-|[**patchStage**](#patchstage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | |
-|[**patchStep**](#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number} | |
-|[**patchTrigger**](#patchtrigger) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/triggers/{trigger_identifier} | |
+|[**patchStage**](#patchstage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | |
+|[**patchStep**](#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number} | |
+|[**patchWorkflow**](#patchworkflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
 |[**postAction**](#postaction) | **POST** /repos/{repo_ref}/+/actions | |
-|[**postExecution**](#postexecution) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions | |
-|[**postStage**](#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages | |
-|[**postStep**](#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number} | |
-|[**postStepLog**](#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/executions/{execution_number}/stages/{stage_number}/{step_number}/logs | |
-|[**postTrigger**](#posttrigger) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/triggers | |
+|[**postStage**](#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages | |
+|[**postStep**](#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | |
+|[**postStepLog**](#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs | |
+|[**postWorkflow**](#postworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | |
 
-# **cancelExecution**
-> ExecutionStages cancelExecution()
+# **cancelWorkflow**
+> WorkflowStages cancelWorkflow()
 
 
 ### Example
@@ -45,12 +40,12 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 
-const { status, data } = await apiInstance.cancelExecution(
+const { status, data } = await apiInstance.cancelWorkflow(
     repoRef,
     actionIdentifier,
-    executionNumber
+    workflowNumber
 );
 ```
 
@@ -60,12 +55,12 @@ const { status, data } = await apiInstance.cancelExecution(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 
 
 ### Return type
 
-**ExecutionStages**
+**WorkflowStages**
 
 ### Authorization
 
@@ -80,7 +75,7 @@ const { status, data } = await apiInstance.cancelExecution(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Cancel action execution in a repo |  -  |
+|**200** | Cancel action workflow in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -151,8 +146,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **deleteExecution**
-> deleteExecution()
+# **deleteWorkflow**
+> deleteWorkflow()
 
 
 ### Example
@@ -168,12 +163,12 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 
-const { status, data } = await apiInstance.deleteExecution(
+const { status, data } = await apiInstance.deleteWorkflow(
     repoRef,
     actionIdentifier,
-    executionNumber
+    workflowNumber
 );
 ```
 
@@ -183,7 +178,7 @@ const { status, data } = await apiInstance.deleteExecution(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 
 
 ### Return type
@@ -203,70 +198,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**204** | Delete action execution in a repo |  -  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteTrigger**
-> deleteTrigger()
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
-let triggerIdentifier: string; //Action trigger identifier (default to undefined)
-
-const { status, data } = await apiInstance.deleteTrigger(
-    repoRef,
-    actionIdentifier,
-    triggerIdentifier
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **triggerIdentifier** | [**string**] | Action trigger identifier | defaults to undefined|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**204** | Delete action trigger in a repo |  -  |
+|**204** | Delete action workflow in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -338,7 +270,7 @@ const { status, data } = await apiInstance.getAction(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getActions**
-> Array<ActionExecution> getActions()
+> Array<ActionWorkflow> getActions()
 
 
 ### Example
@@ -380,7 +312,7 @@ const { status, data } = await apiInstance.getActions(
 
 ### Return type
 
-**Array<ActionExecution>**
+**Array<ActionWorkflow>**
 
 ### Authorization
 
@@ -396,135 +328,6 @@ const { status, data } = await apiInstance.getActions(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Get actions list in a repo |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getExecution**
-> ExecutionStages getExecution()
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
-
-const { status, data } = await apiInstance.getExecution(
-    repoRef,
-    actionIdentifier,
-    executionNumber
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
-
-
-### Return type
-
-**ExecutionStages**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Get action execution in a repo |  -  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getExecutions**
-> Array<ExecutionModel> getExecutions()
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
-let page: number; // (optional) (default to undefined)
-let size: number; // (optional) (default to undefined)
-
-const { status, data } = await apiInstance.getExecutions(
-    repoRef,
-    actionIdentifier,
-    page,
-    size
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **page** | [**number**] |  | (optional) defaults to undefined|
-| **size** | [**number**] |  | (optional) defaults to undefined|
-
-
-### Return type
-
-**Array<ExecutionModel>**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Get action executions list in a repo |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -552,14 +355,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.getStepLogStream(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stepNumber
 );
@@ -571,7 +374,7 @@ const { status, data } = await apiInstance.getStepLogStream(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -593,7 +396,7 @@ const { status, data } = await apiInstance.getStepLogStream(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Get action execution step stream event logs in a repo |  -  |
+|**200** | Get action workflow step stream event logs in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -621,14 +424,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.getStepLogs(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stepNumber
 );
@@ -640,7 +443,7 @@ const { status, data } = await apiInstance.getStepLogs(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -662,7 +465,7 @@ const { status, data } = await apiInstance.getStepLogs(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Get action execution step logs in a repo (streaming JSON array) |  -  |
+|**200** | Get action workflow step logs in a repo (streaming JSON array) |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -673,8 +476,8 @@ const { status, data } = await apiInstance.getStepLogs(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getTrigger**
-> TriggerModel getTrigger()
+# **getWorkflow**
+> WorkflowStages getWorkflow()
 
 
 ### Example
@@ -690,12 +493,12 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let triggerIdentifier: string; //Action trigger identifier (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 
-const { status, data } = await apiInstance.getTrigger(
+const { status, data } = await apiInstance.getWorkflow(
     repoRef,
     actionIdentifier,
-    triggerIdentifier
+    workflowNumber
 );
 ```
 
@@ -705,12 +508,12 @@ const { status, data } = await apiInstance.getTrigger(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **triggerIdentifier** | [**string**] | Action trigger identifier | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 
 
 ### Return type
 
-**TriggerModel**
+**WorkflowStages**
 
 ### Authorization
 
@@ -725,7 +528,7 @@ const { status, data } = await apiInstance.getTrigger(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Get action trigger in a repo |  -  |
+|**200** | Get action workflow in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -736,8 +539,8 @@ const { status, data } = await apiInstance.getTrigger(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getTriggers**
-> Array<TriggerModel> getTriggers()
+# **getWorkflows**
+> Array<WorkflowModel> getWorkflows()
 
 
 ### Example
@@ -755,14 +558,12 @@ let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
-let query: string; // (optional) (default to undefined)
 
-const { status, data } = await apiInstance.getTriggers(
+const { status, data } = await apiInstance.getWorkflows(
     repoRef,
     actionIdentifier,
     page,
-    size,
-    query
+    size
 );
 ```
 
@@ -774,12 +575,11 @@ const { status, data } = await apiInstance.getTriggers(
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
-| **query** | [**string**] |  | (optional) defaults to undefined|
 
 
 ### Return type
 
-**Array<TriggerModel>**
+**Array<WorkflowModel>**
 
 ### Authorization
 
@@ -794,7 +594,7 @@ const { status, data } = await apiInstance.getTriggers(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Get action triggers in a repo |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
+|**200** | Get action workflows list in a repo |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -869,73 +669,6 @@ const { status, data } = await apiInstance.patchAction(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchExecution**
-> ExecutionModel patchExecution(executionUpdateInput)
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration,
-    ExecutionUpdateInput
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
-let executionUpdateInput: ExecutionUpdateInput; //
-
-const { status, data } = await apiInstance.patchExecution(
-    repoRef,
-    actionIdentifier,
-    executionNumber,
-    executionUpdateInput
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **executionUpdateInput** | **ExecutionUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
-
-
-### Return type
-
-**ExecutionModel**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Update action execution in a repo |  -  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **patchStage**
 > StageModel patchStage(stageUpdateInput)
 
@@ -954,14 +687,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stageUpdateInput: StageUpdateInput; //
 
 const { status, data } = await apiInstance.patchStage(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stageUpdateInput
 );
@@ -974,7 +707,7 @@ const { status, data } = await apiInstance.patchStage(
 | **stageUpdateInput** | **StageUpdateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 
 
@@ -995,7 +728,7 @@ const { status, data } = await apiInstance.patchStage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Update action execution stage |  -  |
+|**200** | Update action workflow stage |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1024,7 +757,7 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 let stepUpdateInput: StepUpdateInput; //
@@ -1032,7 +765,7 @@ let stepUpdateInput: StepUpdateInput; //
 const { status, data } = await apiInstance.patchStep(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stepNumber,
     stepUpdateInput
@@ -1046,7 +779,7 @@ const { status, data } = await apiInstance.patchStep(
 | **stepUpdateInput** | **StepUpdateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -1068,7 +801,7 @@ const { status, data } = await apiInstance.patchStep(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Update action execution step |  -  |
+|**200** | Update action workflow step |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1079,8 +812,8 @@ const { status, data } = await apiInstance.patchStep(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchTrigger**
-> TriggerModel patchTrigger(triggerPatchInput)
+# **patchWorkflow**
+> WorkflowModel patchWorkflow(workflowUpdateInput)
 
 
 ### Example
@@ -1089,7 +822,7 @@ const { status, data } = await apiInstance.patchStep(
 import {
     ActionsApi,
     Configuration,
-    TriggerPatchInput
+    WorkflowUpdateInput
 } from 'gitbundle-sdk';
 
 const configuration = new Configuration();
@@ -1097,14 +830,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let triggerIdentifier: string; //Action trigger identifier (default to undefined)
-let triggerPatchInput: TriggerPatchInput; //
+let workflowNumber: number; //Workflow number (default to undefined)
+let workflowUpdateInput: WorkflowUpdateInput; //
 
-const { status, data } = await apiInstance.patchTrigger(
+const { status, data } = await apiInstance.patchWorkflow(
     repoRef,
     actionIdentifier,
-    triggerIdentifier,
-    triggerPatchInput
+    workflowNumber,
+    workflowUpdateInput
 );
 ```
 
@@ -1112,15 +845,15 @@ const { status, data } = await apiInstance.patchTrigger(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **triggerPatchInput** | **TriggerPatchInput**|  | |
+| **workflowUpdateInput** | **WorkflowUpdateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **triggerIdentifier** | [**string**] | Action trigger identifier | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 
 
 ### Return type
 
-**TriggerModel**
+**WorkflowModel**
 
 ### Authorization
 
@@ -1135,7 +868,7 @@ const { status, data } = await apiInstance.patchTrigger(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Patch action trigger in a repo |  -  |
+|**200** | Update action workflow in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1207,70 +940,6 @@ const { status, data } = await apiInstance.postAction(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postExecution**
-> ExecutionModel postExecution(executionCreateInput)
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration,
-    ExecutionCreateInput
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
-let executionCreateInput: ExecutionCreateInput; //
-
-const { status, data } = await apiInstance.postExecution(
-    repoRef,
-    actionIdentifier,
-    executionCreateInput
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **executionCreateInput** | **ExecutionCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-
-
-### Return type
-
-**ExecutionModel**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Post action executions in a repo |  -  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **postStage**
 > StageModel postStage(stageCreateInput)
 
@@ -1289,13 +958,13 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageCreateInput: StageCreateInput; //
 
 const { status, data } = await apiInstance.postStage(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageCreateInput
 );
 ```
@@ -1307,7 +976,7 @@ const { status, data } = await apiInstance.postStage(
 | **stageCreateInput** | **StageCreateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 
 
 ### Return type
@@ -1327,7 +996,7 @@ const { status, data } = await apiInstance.postStage(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Create action execution stage |  -  |
+|**201** | Create action workflow stage |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1356,14 +1025,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepCreateInput: StepCreateInput; //
 
 const { status, data } = await apiInstance.postStep(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stepCreateInput
 );
@@ -1376,7 +1045,7 @@ const { status, data } = await apiInstance.postStep(
 | **stepCreateInput** | **StepCreateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 
 
@@ -1397,7 +1066,7 @@ const { status, data } = await apiInstance.postStep(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Create action execution step |  -  |
+|**201** | Create action workflow step |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1425,14 +1094,14 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let executionNumber: number; //Execution number (default to undefined)
+let workflowNumber: number; //Workflow number (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.postStepLog(
     repoRef,
     actionIdentifier,
-    executionNumber,
+    workflowNumber,
     stageNumber,
     stepNumber
 );
@@ -1444,7 +1113,7 @@ const { status, data } = await apiInstance.postStepLog(
 |------------- | ------------- | ------------- | -------------|
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
-| **executionNumber** | [**number**] | Execution number | defaults to undefined|
+| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -1466,7 +1135,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Upload action execution step logs |  -  |
+|**201** | Upload action workflow step logs |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1477,8 +1146,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postTrigger**
-> TriggerModel postTrigger(triggerCreateInput)
+# **postWorkflow**
+> WorkflowModel postWorkflow(workflowCreateInput)
 
 
 ### Example
@@ -1487,7 +1156,7 @@ void (empty response body)
 import {
     ActionsApi,
     Configuration,
-    TriggerCreateInput
+    WorkflowCreateInput
 } from 'gitbundle-sdk';
 
 const configuration = new Configuration();
@@ -1495,12 +1164,12 @@ const apiInstance = new ActionsApi(configuration);
 
 let repoRef: string; //Repository ref (default to undefined)
 let actionIdentifier: string; //Action identifier (default to undefined)
-let triggerCreateInput: TriggerCreateInput; //
+let workflowCreateInput: WorkflowCreateInput; //
 
-const { status, data } = await apiInstance.postTrigger(
+const { status, data } = await apiInstance.postWorkflow(
     repoRef,
     actionIdentifier,
-    triggerCreateInput
+    workflowCreateInput
 );
 ```
 
@@ -1508,14 +1177,14 @@ const { status, data } = await apiInstance.postTrigger(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **triggerCreateInput** | **TriggerCreateInput**|  | |
+| **workflowCreateInput** | **WorkflowCreateInput**|  | |
 | **repoRef** | [**string**] | Repository ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
 
 
 ### Return type
 
-**TriggerModel**
+**WorkflowModel**
 
 ### Authorization
 
@@ -1530,7 +1199,7 @@ const { status, data } = await apiInstance.postTrigger(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**201** | Post action triggers creation in a repo |  -  |
+|**201** | Post action workflow in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |

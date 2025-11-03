@@ -4,6 +4,7 @@
 
 | Name | Value |
 |---- | -----|
+| Unknown | unknown |
 | Success | success |
 | RetriableError | retriable_error |
 | FatalError | fatal_error |

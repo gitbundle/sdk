@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfigPath** | **string** |  | 
-**DefaultBranch** | **string** |  | 
 **Description** | **string** |  | 
 **Disabled** | **bool** |  | 
 **Identifier** | **string** |  | 
+**YamlPath** | **string** |  | 
 
 ## Methods
 
 ### NewActionCreateInput
 
-`func NewActionCreateInput(configPath string, defaultBranch string, description string, disabled bool, identifier string, ) *ActionCreateInput`
+`func NewActionCreateInput(description string, disabled bool, identifier string, yamlPath string, ) *ActionCreateInput`
 
 NewActionCreateInput instantiates a new ActionCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -28,46 +27,6 @@ will change when the set of required properties is changed
 NewActionCreateInputWithDefaults instantiates a new ActionCreateInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetConfigPath
-
-`func (o *ActionCreateInput) GetConfigPath() string`
-
-GetConfigPath returns the ConfigPath field if non-nil, zero value otherwise.
-
-### GetConfigPathOk
-
-`func (o *ActionCreateInput) GetConfigPathOk() (*string, bool)`
-
-GetConfigPathOk returns a tuple with the ConfigPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfigPath
-
-`func (o *ActionCreateInput) SetConfigPath(v string)`
-
-SetConfigPath sets ConfigPath field to given value.
-
-
-### GetDefaultBranch
-
-`func (o *ActionCreateInput) GetDefaultBranch() string`
-
-GetDefaultBranch returns the DefaultBranch field if non-nil, zero value otherwise.
-
-### GetDefaultBranchOk
-
-`func (o *ActionCreateInput) GetDefaultBranchOk() (*string, bool)`
-
-GetDefaultBranchOk returns a tuple with the DefaultBranch field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultBranch
-
-`func (o *ActionCreateInput) SetDefaultBranch(v string)`
-
-SetDefaultBranch sets DefaultBranch field to given value.
-
 
 ### GetDescription
 
@@ -127,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *ActionCreateInput) SetIdentifier(v string)`
 
 SetIdentifier sets Identifier field to given value.
+
+
+### GetYamlPath
+
+`func (o *ActionCreateInput) GetYamlPath() string`
+
+GetYamlPath returns the YamlPath field if non-nil, zero value otherwise.
+
+### GetYamlPathOk
+
+`func (o *ActionCreateInput) GetYamlPathOk() (*string, bool)`
+
+GetYamlPathOk returns a tuple with the YamlPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlPath
+
+`func (o *ActionCreateInput) SetYamlPath(v string)`
+
+SetYamlPath sets YamlPath field to given value.
 
 
 

@@ -26,7 +26,8 @@ const (
 	FEEDTYPE_REPO_DELETED FeedType = "repo_deleted"
 	FEEDTYPE_REPO_FORKED FeedType = "repo_forked"
 	FEEDTYPE_REPO_RENAMED FeedType = "repo_renamed"
-	FEEDTYPE_REPO_TRANSFERED FeedType = "repo_transfered"
+	FEEDTYPE_REPO_TRANSFERRED FeedType = "repo_transferred"
+	FEEDTYPE_REPO_RESTORED FeedType = "repo_restored"
 	FEEDTYPE_BRANCH_CREATED FeedType = "branch_created"
 	FEEDTYPE_BRANCH_RENAMED FeedType = "branch_renamed"
 	FEEDTYPE_BRANCH_DELETED FeedType = "branch_deleted"
@@ -51,7 +52,8 @@ var AllowedFeedTypeEnumValues = []FeedType{
 	"repo_deleted",
 	"repo_forked",
 	"repo_renamed",
-	"repo_transfered",
+	"repo_transferred",
+	"repo_restored",
 	"branch_created",
 	"branch_renamed",
 	"branch_deleted",

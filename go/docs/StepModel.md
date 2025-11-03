@@ -14,18 +14,19 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Number** | **int64** |  | 
 **ParentGroupId** | **int64** |  | 
-**Schema** | **string** |  | 
 **StageId** | **int64** |  | 
 **Started** | Pointer to **NullableInt64** |  | [optional] 
 **Status** | [**CIStatus**](CIStatus.md) |  | 
 **Stopped** | Pointer to **NullableInt64** |  | [optional] 
 **Version** | **int64** |  | 
+**YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
+**YamlResolved** | **string** |  | 
 
 ## Methods
 
 ### NewStepModel
 
-`func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, schema string, stageId int64, status CIStatus, version int64, ) *StepModel`
+`func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, stageId int64, status CIStatus, version int64, yamlProvider YamlProvider, yamlResolved string, ) *StepModel`
 
 NewStepModel instantiates a new StepModel object
 This constructor will assign default values to properties that have it defined,
@@ -250,26 +251,6 @@ and a boolean to check if the value has been set.
 SetParentGroupId sets ParentGroupId field to given value.
 
 
-### GetSchema
-
-`func (o *StepModel) GetSchema() string`
-
-GetSchema returns the Schema field if non-nil, zero value otherwise.
-
-### GetSchemaOk
-
-`func (o *StepModel) GetSchemaOk() (*string, bool)`
-
-GetSchemaOk returns a tuple with the Schema field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSchema
-
-`func (o *StepModel) SetSchema(v string)`
-
-SetSchema sets Schema field to given value.
-
-
 ### GetStageId
 
 `func (o *StepModel) GetStageId() int64`
@@ -398,6 +379,46 @@ and a boolean to check if the value has been set.
 `func (o *StepModel) SetVersion(v int64)`
 
 SetVersion sets Version field to given value.
+
+
+### GetYamlProvider
+
+`func (o *StepModel) GetYamlProvider() YamlProvider`
+
+GetYamlProvider returns the YamlProvider field if non-nil, zero value otherwise.
+
+### GetYamlProviderOk
+
+`func (o *StepModel) GetYamlProviderOk() (*YamlProvider, bool)`
+
+GetYamlProviderOk returns a tuple with the YamlProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlProvider
+
+`func (o *StepModel) SetYamlProvider(v YamlProvider)`
+
+SetYamlProvider sets YamlProvider field to given value.
+
+
+### GetYamlResolved
+
+`func (o *StepModel) GetYamlResolved() string`
+
+GetYamlResolved returns the YamlResolved field if non-nil, zero value otherwise.
+
+### GetYamlResolvedOk
+
+`func (o *StepModel) GetYamlResolvedOk() (*string, bool)`
+
+GetYamlResolvedOk returns a tuple with the YamlResolved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetYamlResolved
+
+`func (o *StepModel) SetYamlResolved(v string)`
+
+SetYamlResolved sets YamlResolved field to given value.
 
 
 

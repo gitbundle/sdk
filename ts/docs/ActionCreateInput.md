@@ -5,11 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config_path** | **string** |  | [default to undefined]
-**default_branch** | **string** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **disabled** | **boolean** |  | [default to undefined]
 **identifier** | **string** |  | [default to undefined]
+**yaml_path** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -17,11 +16,10 @@ Name | Type | Description | Notes
 import { ActionCreateInput } from 'gitbundle-sdk';
 
 const instance: ActionCreateInput = {
-    config_path,
-    default_branch,
     description,
     disabled,
     identifier,
+    yaml_path,
 };
 ```
 

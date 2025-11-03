@@ -14,6 +14,8 @@ use serde::{Deserialize, Serialize};
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum WebhookTrigger {
+    #[serde(rename = "noop")]
+    Noop,
     #[serde(rename = "branch_created")]
     BranchCreated,
     #[serde(rename = "branch_updated")]
@@ -30,12 +32,12 @@ pub enum WebhookTrigger {
     PullreqCreated,
     #[serde(rename = "pullreq_reopened")]
     PullreqReopened,
-    #[serde(rename = "pullreq_branch_updated")]
-    PullreqBranchUpdated,
+    #[serde(rename = "pullreq_synchronize")]
+    PullreqSynchronize,
     #[serde(rename = "pullreq_closed")]
     PullreqClosed,
-    #[serde(rename = "pullreq_comment_created")]
-    PullreqCommentCreated,
+    #[serde(rename = "pullreq_commented")]
+    PullreqCommented,
     #[serde(rename = "pullreq_merged")]
     PullreqMerged,
 
@@ -44,6 +46,7 @@ pub enum WebhookTrigger {
 impl std::fmt::Display for WebhookTrigger {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
+            Self::Noop => write!(f, "noop"),
             Self::BranchCreated => write!(f, "branch_created"),
             Self::BranchUpdated => write!(f, "branch_updated"),
             Self::BranchDeleted => write!(f, "branch_deleted"),
@@ -52,9 +55,9 @@ impl std::fmt::Display for WebhookTrigger {
             Self::TagDeleted => write!(f, "tag_deleted"),
             Self::PullreqCreated => write!(f, "pullreq_created"),
             Self::PullreqReopened => write!(f, "pullreq_reopened"),
-            Self::PullreqBranchUpdated => write!(f, "pullreq_branch_updated"),
+            Self::PullreqSynchronize => write!(f, "pullreq_synchronize"),
             Self::PullreqClosed => write!(f, "pullreq_closed"),
-            Self::PullreqCommentCreated => write!(f, "pullreq_comment_created"),
+            Self::PullreqCommented => write!(f, "pullreq_commented"),
             Self::PullreqMerged => write!(f, "pullreq_merged"),
         }
     }
@@ -62,7 +65,7 @@ impl std::fmt::Display for WebhookTrigger {
 
 impl Default for WebhookTrigger {
     fn default() -> WebhookTrigger {
-        Self::BranchCreated
+        Self::Noop
     }
 }
 

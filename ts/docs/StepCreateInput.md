@@ -14,8 +14,9 @@ Name | Type | Description | Notes
 **name** | **string** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
-**schema** | **string** |  | [default to undefined]
 **status** | [**CIStatus**](CIStatus.md) |  | [default to undefined]
+**yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
+**yaml_resolved** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -32,8 +33,9 @@ const instance: StepCreateInput = {
     name,
     number,
     parent_group_id,
-    schema,
     status,
+    yaml_provider,
+    yaml_resolved,
 };
 ```
 

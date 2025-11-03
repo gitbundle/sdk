@@ -17,7 +17,7 @@
 
 * `PullreqReopened` (value: `'pullreq_reopened'`)
 
-* `PullreqBranchUpdated` (value: `'pullreq_branch_updated'`)
+* `PullreqSynchronize` (value: `'pullreq_synchronize'`)
 
 * `PullreqClosed` (value: `'pullreq_closed'`)
 

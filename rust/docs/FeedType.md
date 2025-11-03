@@ -10,7 +10,8 @@
 | RepoDeleted | repo_deleted |
 | RepoForked | repo_forked |
 | RepoRenamed | repo_renamed |
-| RepoTransfered | repo_transfered |
+| RepoTransferred | repo_transferred |
+| RepoRestored | repo_restored |
 | BranchCreated | branch_created |
 | BranchRenamed | branch_renamed |
 | BranchDeleted | branch_deleted |

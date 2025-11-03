@@ -26,8 +26,10 @@ pub enum FeedType {
     RepoForked,
     #[serde(rename = "repo_renamed")]
     RepoRenamed,
-    #[serde(rename = "repo_transfered")]
-    RepoTransfered,
+    #[serde(rename = "repo_transferred")]
+    RepoTransferred,
+    #[serde(rename = "repo_restored")]
+    RepoRestored,
     #[serde(rename = "branch_created")]
     BranchCreated,
     #[serde(rename = "branch_renamed")]
@@ -68,7 +70,8 @@ impl std::fmt::Display for FeedType {
             Self::RepoDeleted => write!(f, "repo_deleted"),
             Self::RepoForked => write!(f, "repo_forked"),
             Self::RepoRenamed => write!(f, "repo_renamed"),
-            Self::RepoTransfered => write!(f, "repo_transfered"),
+            Self::RepoTransferred => write!(f, "repo_transferred"),
+            Self::RepoRestored => write!(f, "repo_restored"),
             Self::BranchCreated => write!(f, "branch_created"),
             Self::BranchRenamed => write!(f, "branch_renamed"),
             Self::BranchDeleted => write!(f, "branch_deleted"),

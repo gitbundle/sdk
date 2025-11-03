@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arch** | **string** |  | [default to undefined]
-**depends_on** | **any** |  | [default to undefined]
 **errignore** | **boolean** |  | [default to undefined]
 **error** | **string** |  | [default to undefined]
 **exit_code** | **number** |  | [default to undefined]
@@ -17,6 +16,7 @@ Name | Type | Description | Notes
 **limit_repo** | **number** |  | [default to undefined]
 **machine** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
+**needs** | **any** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
 **on_failure** | **boolean** |  | [default to undefined]
 **on_success** | **boolean** |  | [default to undefined]
@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **stopped** | **number** |  | [optional] [default to undefined]
 **type** | **string** |  | [default to undefined]
 **variant** | **string** |  | [default to undefined]
+**yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
+**yaml_resolved** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -35,7 +37,6 @@ import { StageCreateInput } from 'gitbundle-sdk';
 
 const instance: StageCreateInput = {
     arch,
-    depends_on,
     errignore,
     error,
     exit_code,
@@ -46,6 +47,7 @@ const instance: StageCreateInput = {
     limit_repo,
     machine,
     name,
+    needs,
     number,
     on_failure,
     on_success,
@@ -56,6 +58,8 @@ const instance: StageCreateInput = {
     stopped,
     type,
     variant,
+    yaml_provider,
+    yaml_resolved,
 };
 ```
 

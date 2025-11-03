@@ -7,10 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arch** | **string** |  | [default to undefined]
 **created** | **number** |  | [default to undefined]
-**depends_on** | **any** |  | [default to undefined]
 **errignore** | **boolean** |  | [default to undefined]
 **error** | **string** |  | [default to undefined]
-**execution_id** | **number** |  | [default to undefined]
 **exit_code** | **number** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **kernel** | **string** |  | [default to undefined]
@@ -20,11 +18,13 @@ Name | Type | Description | Notes
 **limit_repo** | **number** |  | [default to undefined]
 **machine** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
+**needs** | **any** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
 **on_failure** | **boolean** |  | [default to undefined]
 **on_success** | **boolean** |  | [default to undefined]
 **os** | **string** |  | [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
+**parent_id** | **number** |  | [optional] [default to undefined]
 **repo_id** | **number** |  | [default to undefined]
 **started** | **number** |  | [optional] [default to undefined]
 **status** | [**CIStatus**](CIStatus.md) |  | [default to undefined]
@@ -33,6 +33,9 @@ Name | Type | Description | Notes
 **updated** | **number** |  | [default to undefined]
 **variant** | **string** |  | [default to undefined]
 **version** | **number** |  | [default to undefined]
+**workflow_id** | **number** |  | [default to undefined]
+**yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
+**yaml_resolved** | **string** |  | [default to undefined]
 
 ## Example
 
@@ -42,10 +45,8 @@ import { StageModel } from 'gitbundle-sdk';
 const instance: StageModel = {
     arch,
     created,
-    depends_on,
     errignore,
     error,
-    execution_id,
     exit_code,
     id,
     kernel,
@@ -55,11 +56,13 @@ const instance: StageModel = {
     limit_repo,
     machine,
     name,
+    needs,
     number,
     on_failure,
     on_success,
     os,
     parent_group_id,
+    parent_id,
     repo_id,
     started,
     status,
@@ -68,6 +71,9 @@ const instance: StageModel = {
     updated,
     variant,
     version,
+    workflow_id,
+    yaml_provider,
+    yaml_resolved,
 };
 ```
 
