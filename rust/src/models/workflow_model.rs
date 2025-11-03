@@ -13,8 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WorkflowModel {
-    #[serde(rename = "action")]
-    pub action: models::TriggerAction,
+    #[serde(rename = "action", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub action: Option<Option<String>>,
     #[serde(rename = "action_id")]
     pub action_id: i64,
     #[serde(rename = "after_sha", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -82,9 +82,9 @@ pub struct WorkflowModel {
 }
 
 impl WorkflowModel {
-    pub fn new(action: models::TriggerAction, action_id: i64, author_email: String, author_name: String, before_sha: String, created: i64, created_by: i64, cron: String, debug: bool, deploy: String, deploy_id: i64, error: String, event: models::TriggerEvent, finished: i64, id: i64, link: String, message: String, name: String, number: i64, params: std::collections::HashMap<String, String>, repo_id: i64, started: i64, status: models::CiStatus, target_rev: String, title: String, updated: i64, version: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> WorkflowModel {
+    pub fn new(action_id: i64, author_email: String, author_name: String, before_sha: String, created: i64, created_by: i64, cron: String, debug: bool, deploy: String, deploy_id: i64, error: String, event: models::TriggerEvent, finished: i64, id: i64, link: String, message: String, name: String, number: i64, params: std::collections::HashMap<String, String>, repo_id: i64, started: i64, status: models::CiStatus, target_rev: String, title: String, updated: i64, version: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> WorkflowModel {
         WorkflowModel {
-            action,
+            action: None,
             action_id,
             after_sha: None,
             author_email,

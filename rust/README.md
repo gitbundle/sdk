@@ -32,23 +32,23 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**post_register**](docs/AccountsApi.md#post_register) | **POST** /account/register | 
 *AccountsApi* | [**post_two_factor_passcode**](docs/AccountsApi.md#post_two_factor_passcode) | **POST** /account/two_factor | 
 *AccountsApi* | [**post_two_factor_scratch_token**](docs/AccountsApi.md#post_two_factor_scratch_token) | **POST** /account/two_factor/scratch | 
-*ActionsApi* | [**cancel_workflow**](docs/ActionsApi.md#cancel_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel | 
+*ActionsApi* | [**cancel_workflow**](docs/ActionsApi.md#cancel_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/cancel | 
 *ActionsApi* | [**delete_action**](docs/ActionsApi.md#delete_action) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier} | 
-*ActionsApi* | [**delete_workflow**](docs/ActionsApi.md#delete_workflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
+*ActionsApi* | [**delete_workflow**](docs/ActionsApi.md#delete_workflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id} | 
 *ActionsApi* | [**get_action**](docs/ActionsApi.md#get_action) | **GET** /repos/{repo_ref}/+/actions/{action_identifier} | 
 *ActionsApi* | [**get_actions**](docs/ActionsApi.md#get_actions) | **GET** /repos/{repo_ref}/+/actions | 
-*ActionsApi* | [**get_step_log_stream**](docs/ActionsApi.md#get_step_log_stream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream | 
-*ActionsApi* | [**get_step_logs**](docs/ActionsApi.md#get_step_logs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number} | 
-*ActionsApi* | [**get_workflow**](docs/ActionsApi.md#get_workflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
+*ActionsApi* | [**get_step_log_stream**](docs/ActionsApi.md#get_step_log_stream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number}/stream | 
+*ActionsApi* | [**get_step_logs**](docs/ActionsApi.md#get_step_logs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number} | 
+*ActionsApi* | [**get_workflow**](docs/ActionsApi.md#get_workflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id} | 
 *ActionsApi* | [**get_workflows**](docs/ActionsApi.md#get_workflows) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *ActionsApi* | [**patch_action**](docs/ActionsApi.md#patch_action) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier} | 
-*ActionsApi* | [**patch_stage**](docs/ActionsApi.md#patch_stage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
-*ActionsApi* | [**patch_step**](docs/ActionsApi.md#patch_step) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number} | 
-*ActionsApi* | [**patch_workflow**](docs/ActionsApi.md#patch_workflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | 
+*ActionsApi* | [**patch_stage**](docs/ActionsApi.md#patch_stage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number} | 
+*ActionsApi* | [**patch_step**](docs/ActionsApi.md#patch_step) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number} | 
+*ActionsApi* | [**patch_workflow**](docs/ActionsApi.md#patch_workflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id} | 
 *ActionsApi* | [**post_action**](docs/ActionsApi.md#post_action) | **POST** /repos/{repo_ref}/+/actions | 
-*ActionsApi* | [**post_stage**](docs/ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages | 
-*ActionsApi* | [**post_step**](docs/ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | 
-*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs | 
+*ActionsApi* | [**post_stage**](docs/ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages | 
+*ActionsApi* | [**post_step**](docs/ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number} | 
+*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs | 
 *ActionsApi* | [**post_workflow**](docs/ActionsApi.md#post_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *GroupsApi* | [**delete_member**](docs/GroupsApi.md#delete_member) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | 
 *GroupsApi* | [**delete_variable**](docs/GroupsApi.md#delete_variable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
@@ -408,7 +408,6 @@ Class | Method | HTTP request | Description
  - [TokenCreateOutput](docs/TokenCreateOutput.md)
  - [TokenModel](docs/TokenModel.md)
  - [TokenType](docs/TokenType.md)
- - [TriggerAction](docs/TriggerAction.md)
  - [TriggerEvent](docs/TriggerEvent.md)
  - [TwoFactorCreateInput](docs/TwoFactorCreateInput.md)
  - [TwoFactorGetOutput](docs/TwoFactorGetOutput.md)

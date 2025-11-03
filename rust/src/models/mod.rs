@@ -390,8 +390,6 @@ pub mod token_model;
 pub use self::token_model::TokenModel;
 pub mod token_type;
 pub use self::token_type::TokenType;
-pub mod trigger_action;
-pub use self::trigger_action::TriggerAction;
 pub mod trigger_event;
 pub use self::trigger_event::TriggerEvent;
 pub mod two_factor_create_input;

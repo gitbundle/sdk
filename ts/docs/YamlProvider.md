@@ -5,8 +5,8 @@
 
 * `Unknown` (value: `'unknown'`)
 
-* `GitHub` (value: `'git_hub'`)
+* `Github` (value: `'github'`)
 
-* `GitLab` (value: `'git_lab'`)
+* `Gitlab` (value: `'gitlab'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

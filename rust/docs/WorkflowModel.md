@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | [**models::TriggerAction**](TriggerAction.md) |  | 
+**action** | Option<**String**> |  | [optional]
 **action_id** | **i64** |  | 
 **after_sha** | Option<**String**> |  | [optional]
 **author_email** | **String** |  | 

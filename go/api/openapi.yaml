@@ -3298,10 +3298,6 @@ paths:
         required: true
       responses:
         "201":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/WorkflowModel"
           description: Post action workflow in a repo
         "400":
           content:
@@ -3351,7 +3347,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}:
     delete:
       operationId: delete_workflow
       parameters:
@@ -3371,10 +3367,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3450,10 +3446,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3533,10 +3529,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3603,7 +3599,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/cancel:
     post:
       operationId: cancel_workflow
       parameters:
@@ -3623,10 +3619,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3687,7 +3683,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number}:
     get:
       operationId: get_step_logs
       parameters:
@@ -3707,10 +3703,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3791,7 +3787,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number}/stream:
     get:
       operationId: get_step_log_stream
       parameters:
@@ -3811,10 +3807,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3895,7 +3891,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages:
     post:
       operationId: post_stage
       parameters:
@@ -3915,10 +3911,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -3985,7 +3981,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}:
     patch:
       operationId: patch_stage
       parameters:
@@ -4005,10 +4001,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -4103,10 +4099,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -4182,7 +4178,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}:
     patch:
       operationId: patch_step
       parameters:
@@ -4202,10 +4198,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -4290,7 +4286,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs:
     post:
       operationId: post_step_log
       parameters:
@@ -4310,10 +4306,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_id
         required: true
         schema:
           format: int64
@@ -15931,7 +15927,7 @@ components:
           deploy: deploy
           number: 1
           action_id: 9
-          action: noop
+          action: action
           author_email: author_email
           id: 1
           event: noop
@@ -21807,19 +21803,6 @@ components:
       - pat
       - sat
       type: string
-    TriggerAction:
-      enum:
-      - noop
-      - branch_created
-      - branch_updated
-      - tag_created
-      - tag_updated
-      - pullreq_created
-      - pullreq_reopened
-      - pullreq_synchronize
-      - pullreq_closed
-      - pullreq_merged
-      type: string
     TriggerEvent:
       enum:
       - noop
@@ -22492,9 +22475,9 @@ components:
       example:
         debug: true
         source_repo_id: 6
-        source: source
         params:
           key: params
+        source_sha: source_sha
         deploy: deploy
         deploy_id: 0
       properties:
@@ -22510,13 +22493,13 @@ components:
         params:
           additionalProperties:
             type: string
-        source:
-          nullable: true
-          type: string
         source_repo_id:
           format: int64
           nullable: true
           type: integer
+        source_sha:
+          nullable: true
+          type: string
       required:
       - debug
     WorkflowModel:
@@ -22531,7 +22514,7 @@ components:
         deploy: deploy
         number: 1
         action_id: 9
-        action: noop
+        action: action
         author_email: author_email
         id: 1
         event: noop
@@ -22557,7 +22540,8 @@ components:
         status: pending
       properties:
         action:
-          $ref: "#/components/schemas/TriggerAction"
+          nullable: true
+          type: string
         action_id:
           format: int64
           type: integer
@@ -22641,7 +22625,6 @@ components:
         yaml_resolved:
           type: string
       required:
-      - action
       - action_id
       - author_email
       - author_name
@@ -22820,7 +22803,7 @@ components:
           deploy: deploy
           number: 1
           action_id: 9
-          action: noop
+          action: action
           author_email: author_email
           id: 1
           event: noop
@@ -22881,8 +22864,8 @@ components:
     YamlProvider:
       enum:
       - unknown
-      - git_hub
-      - git_lab
+      - github
+      - gitlab
       type: string
   securitySchemes:
     access_token_query:

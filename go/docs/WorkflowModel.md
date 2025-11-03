@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | [**TriggerAction**](TriggerAction.md) |  | 
+**Action** | Pointer to **NullableString** |  | [optional] 
 **ActionId** | **int64** |  | 
 **AfterSha** | Pointer to **NullableString** |  | [optional] 
 **AuthorEmail** | **string** |  | 
@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewWorkflowModel
 
-`func NewWorkflowModel(action TriggerAction, actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
+`func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
 
 NewWorkflowModel instantiates a new WorkflowModel object
 This constructor will assign default values to properties that have it defined,
@@ -59,24 +59,39 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAction
 
-`func (o *WorkflowModel) GetAction() TriggerAction`
+`func (o *WorkflowModel) GetAction() string`
 
 GetAction returns the Action field if non-nil, zero value otherwise.
 
 ### GetActionOk
 
-`func (o *WorkflowModel) GetActionOk() (*TriggerAction, bool)`
+`func (o *WorkflowModel) GetActionOk() (*string, bool)`
 
 GetActionOk returns a tuple with the Action field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAction
 
-`func (o *WorkflowModel) SetAction(v TriggerAction)`
+`func (o *WorkflowModel) SetAction(v string)`
 
 SetAction sets Action field to given value.
 
+### HasAction
 
+`func (o *WorkflowModel) HasAction() bool`
+
+HasAction returns a boolean if a field has been set.
+
+### SetActionNil
+
+`func (o *WorkflowModel) SetActionNil(b bool)`
+
+ SetActionNil sets the value for Action to be an explicit nil
+
+### UnsetAction
+`func (o *WorkflowModel) UnsetAction()`
+
+UnsetAction ensures that no value is present for Action, not even an explicit nil
 ### GetActionId
 
 `func (o *WorkflowModel) GetActionId() int64`

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **deploy** | **string** |  | [optional] [default to undefined]
 **deploy_id** | **number** |  | [optional] [default to undefined]
 **params** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
-**source** | **string** |  | [optional] [default to undefined]
 **source_repo_id** | **number** |  | [optional] [default to undefined]
+**source_sha** | **string** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -22,8 +22,8 @@ const instance: WorkflowCreateInput = {
     deploy,
     deploy_id,
     params,
-    source,
     source_repo_id,
+    source_sha,
 };
 ```
 

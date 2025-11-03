@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | [**TriggerAction**](TriggerAction.md) |  | [default to undefined]
+**action** | **string** |  | [optional] [default to undefined]
 **action_id** | **number** |  | [default to undefined]
 **after_sha** | **string** |  | [optional] [default to undefined]
 **author_email** | **string** |  | [default to undefined]

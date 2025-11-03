@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Deploy** | Pointer to **NullableString** |  | [optional] 
 **DeployId** | Pointer to **NullableInt64** |  | [optional] 
 **Params** | Pointer to **map[string]string** |  | [optional] 
-**Source** | Pointer to **NullableString** |  | [optional] 
 **SourceRepoId** | Pointer to **NullableInt64** |  | [optional] 
+**SourceSha** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -145,41 +145,6 @@ SetParams sets Params field to given value.
 
 HasParams returns a boolean if a field has been set.
 
-### GetSource
-
-`func (o *WorkflowCreateInput) GetSource() string`
-
-GetSource returns the Source field if non-nil, zero value otherwise.
-
-### GetSourceOk
-
-`func (o *WorkflowCreateInput) GetSourceOk() (*string, bool)`
-
-GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSource
-
-`func (o *WorkflowCreateInput) SetSource(v string)`
-
-SetSource sets Source field to given value.
-
-### HasSource
-
-`func (o *WorkflowCreateInput) HasSource() bool`
-
-HasSource returns a boolean if a field has been set.
-
-### SetSourceNil
-
-`func (o *WorkflowCreateInput) SetSourceNil(b bool)`
-
- SetSourceNil sets the value for Source to be an explicit nil
-
-### UnsetSource
-`func (o *WorkflowCreateInput) UnsetSource()`
-
-UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetSourceRepoId
 
 `func (o *WorkflowCreateInput) GetSourceRepoId() int64`
@@ -215,6 +180,41 @@ HasSourceRepoId returns a boolean if a field has been set.
 `func (o *WorkflowCreateInput) UnsetSourceRepoId()`
 
 UnsetSourceRepoId ensures that no value is present for SourceRepoId, not even an explicit nil
+### GetSourceSha
+
+`func (o *WorkflowCreateInput) GetSourceSha() string`
+
+GetSourceSha returns the SourceSha field if non-nil, zero value otherwise.
+
+### GetSourceShaOk
+
+`func (o *WorkflowCreateInput) GetSourceShaOk() (*string, bool)`
+
+GetSourceShaOk returns a tuple with the SourceSha field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceSha
+
+`func (o *WorkflowCreateInput) SetSourceSha(v string)`
+
+SetSourceSha sets SourceSha field to given value.
+
+### HasSourceSha
+
+`func (o *WorkflowCreateInput) HasSourceSha() bool`
+
+HasSourceSha returns a boolean if a field has been set.
+
+### SetSourceShaNil
+
+`func (o *WorkflowCreateInput) SetSourceShaNil(b bool)`
+
+ SetSourceShaNil sets the value for SourceSha to be an explicit nil
+
+### UnsetSourceSha
+`func (o *WorkflowCreateInput) UnsetSourceSha()`
+
+UnsetSourceSha ensures that no value is present for SourceSha, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
