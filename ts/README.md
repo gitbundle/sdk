@@ -74,10 +74,36 @@ Class | Method | HTTP request | Description
 *ActionsApi* | [**postStep**](docs/ActionsApi.md#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number} | 
 *ActionsApi* | [**postStepLog**](docs/ActionsApi.md#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs | 
 *ActionsApi* | [**postWorkflow**](docs/ActionsApi.md#postworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
+*AdminApi* | [**deleteGroup**](docs/AdminApi.md#deletegroup) | **DELETE** /admin/groups/{group_ref} | 
+*AdminApi* | [**deleteRunner**](docs/AdminApi.md#deleterunner) | **DELETE** /admin/runners/{runner_uuid} | 
+*AdminApi* | [**deleteUser**](docs/AdminApi.md#deleteuser) | **DELETE** /admin/users/{user_identifier} | 
+*AdminApi* | [**getGroups**](docs/AdminApi.md#getgroups) | **GET** /admin/groups | 
+*AdminApi* | [**getResetedRunnerRegisterToken**](docs/AdminApi.md#getresetedrunnerregistertoken) | **GET** /admin/runners/register_token/reseted | 
+*AdminApi* | [**getRunner**](docs/AdminApi.md#getrunner) | **GET** /admin/runners/{runner_uuid} | 
+*AdminApi* | [**getRunnerRegisterToken**](docs/AdminApi.md#getrunnerregistertoken) | **GET** /admin/runners/register_token | 
+*AdminApi* | [**getRunners**](docs/AdminApi.md#getrunners) | **GET** /admin/runners | 
+*AdminApi* | [**getStats**](docs/AdminApi.md#getstats) | **GET** /admin/stats | 
+*AdminApi* | [**getUser**](docs/AdminApi.md#getuser) | **GET** /admin/users/{user_identifier} | 
+*AdminApi* | [**getUsers**](docs/AdminApi.md#getusers) | **GET** /admin/users | 
+*AdminApi* | [**patchRunner**](docs/AdminApi.md#patchrunner) | **PATCH** /admin/runners/{runner_uuid} | 
+*AdminApi* | [**patchUser**](docs/AdminApi.md#patchuser) | **PATCH** /admin/users/{user_identifier} | 
+*AdminApi* | [**patchUserAdmin**](docs/AdminApi.md#patchuseradmin) | **PATCH** /admin/users/{user_identifier}/admin | 
+*AdminApi* | [**postUser**](docs/AdminApi.md#postuser) | **POST** /admin/users | 
+*BootstrapApi* | [**getBootstrap**](docs/BootstrapApi.md#getbootstrap) | **GET** /bootstrap/{bootstrap_ref}/+/{path} | 
+*ConnectorsApi* | [**deleteConnector**](docs/ConnectorsApi.md#deleteconnector) | **DELETE** /connectors/{connector_ref} | 
+*ConnectorsApi* | [**getConnector**](docs/ConnectorsApi.md#getconnector) | **GET** /connectors/{connector_ref} | 
+*ConnectorsApi* | [**patchConnector**](docs/ConnectorsApi.md#patchconnector) | **PATCH** /connectors/{connector_ref} | 
+*ConnectorsApi* | [**postConnector**](docs/ConnectorsApi.md#postconnector) | **POST** /connectors | 
+*GroupsApi* | [**deleteGroupsRunner**](docs/GroupsApi.md#deletegroupsrunner) | **DELETE** /groups/{group_ref}/+/runners/{runner_uuid} | 
 *GroupsApi* | [**deleteMember**](docs/GroupsApi.md#deletemember) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | 
 *GroupsApi* | [**deleteVariable**](docs/GroupsApi.md#deletevariable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsApi* | [**getConnectors**](docs/GroupsApi.md#getconnectors) | **GET** /groups/{group_ref}/+/connectors | 
+*GroupsApi* | [**getEvents**](docs/GroupsApi.md#getevents) | **GET** /groups/{group_ref}/+/events | 
 *GroupsApi* | [**getGroup**](docs/GroupsApi.md#getgroup) | **GET** /groups/{group_ref}/+ | 
+*GroupsApi* | [**getGroupsResetedRunnerRegisterToken**](docs/GroupsApi.md#getgroupsresetedrunnerregistertoken) | **GET** /groups/{group_ref}/+/runners/register_token/reseted | 
+*GroupsApi* | [**getGroupsRunner**](docs/GroupsApi.md#getgroupsrunner) | **GET** /groups/{group_ref}/+/runners/{runner_uuid} | 
+*GroupsApi* | [**getGroupsRunnerRegisterToken**](docs/GroupsApi.md#getgroupsrunnerregistertoken) | **GET** /groups/{group_ref}/+/runners/register_token | 
+*GroupsApi* | [**getGroupsRunners**](docs/GroupsApi.md#getgroupsrunners) | **GET** /groups/{group_ref}/+/runners | 
 *GroupsApi* | [**getMembers**](docs/GroupsApi.md#getmembers) | **GET** /groups/{group_ref}/+/members | 
 *GroupsApi* | [**getRepos**](docs/GroupsApi.md#getrepos) | **GET** /groups/{group_ref}/+/repos | 
 *GroupsApi* | [**getServiceAccounts**](docs/GroupsApi.md#getserviceaccounts) | **GET** /groups/{group_ref}/+/service-accounts | 
@@ -85,6 +111,7 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**getVariable**](docs/GroupsApi.md#getvariable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsApi* | [**getVariables**](docs/GroupsApi.md#getvariables) | **GET** /groups/{group_ref}/+/variables | 
 *GroupsApi* | [**patchGroup**](docs/GroupsApi.md#patchgroup) | **PATCH** /groups/{group_ref}/+ | 
+*GroupsApi* | [**patchGroupsRunner**](docs/GroupsApi.md#patchgroupsrunner) | **PATCH** /groups/{group_ref}/+/runners/{runner_uuid} | 
 *GroupsApi* | [**patchMember**](docs/GroupsApi.md#patchmember) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | 
 *GroupsApi* | [**patchVariable**](docs/GroupsApi.md#patchvariable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsApi* | [**postGroup**](docs/GroupsApi.md#postgroup) | **POST** /groups | 
@@ -132,10 +159,12 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**commitsCalculateDivergence**](docs/RepositoryApi.md#commitscalculatedivergence) | **POST** /repos/{repo_ref}/+/commits/calculate-divergence | 
 *RepositoryApi* | [**deleteBranch**](docs/RepositoryApi.md#deletebranch) | **DELETE** /repos/{repo_ref}/+/branches/{branch_name} | 
 *RepositoryApi* | [**deleteRelease**](docs/RepositoryApi.md#deleterelease) | **DELETE** /repos/{repo_ref}/+/releases/{tag_ref} | 
+*RepositoryApi* | [**deleteRepositoryRunner**](docs/RepositoryApi.md#deleterepositoryrunner) | **DELETE** /repos/{repo_ref}/+/runners/{runner_uuid} | 
 *RepositoryApi* | [**deleteRepositoryVariable**](docs/RepositoryApi.md#deleterepositoryvariable) | **DELETE** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 *RepositoryApi* | [**deleteTag**](docs/RepositoryApi.md#deletetag) | **DELETE** /repos/{repo_ref}/+/tags/{tag_name} | 
 *RepositoryApi* | [**generalUpdate**](docs/RepositoryApi.md#generalupdate) | **PATCH** /repos/{repo_ref}/+/settings/general | 
 *RepositoryApi* | [**getArchive**](docs/RepositoryApi.md#getarchive) | **GET** /repos/{repo_ref}/+/archive/{archive_ref} | 
+*RepositoryApi* | [**getBlame**](docs/RepositoryApi.md#getblame) | **GET** /repos/{repo_ref}/+/blame/{path} | 
 *RepositoryApi* | [**getBranch**](docs/RepositoryApi.md#getbranch) | **GET** /repos/{repo_ref}/+/branches/{branch_name} | 
 *RepositoryApi* | [**getBranches**](docs/RepositoryApi.md#getbranches) | **GET** /repos/{repo_ref}/+/branches | 
 *RepositoryApi* | [**getCodeownersValidate**](docs/RepositoryApi.md#getcodeownersvalidate) | **GET** /repos/{repo_ref}/+/codeowners/validate | 
@@ -143,15 +172,23 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**getCommitDiff**](docs/RepositoryApi.md#getcommitdiff) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/diff | 
 *RepositoryApi* | [**getCommitFileContent**](docs/RepositoryApi.md#getcommitfilecontent) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/content | 
 *RepositoryApi* | [**getCommits**](docs/RepositoryApi.md#getcommits) | **GET** /repos/{repo_ref}/+/commits | 
+*RepositoryApi* | [**getContent**](docs/RepositoryApi.md#getcontent) | **GET** /repos/{repo_ref}/+/content/{path} | 
 *RepositoryApi* | [**getContributors**](docs/RepositoryApi.md#getcontributors) | **GET** /repos/{repo_ref}/+/contributors | 
+*RepositoryApi* | [**getDiffStats**](docs/RepositoryApi.md#getdiffstats) | **GET** /repos/{repo_ref}/+/diff-stats/{path} | 
+*RepositoryApi* | [**getDiffs**](docs/RepositoryApi.md#getdiffs) | **GET** /repos/{repo_ref}/+/diff/{path} | 
 *RepositoryApi* | [**getForks**](docs/RepositoryApi.md#getforks) | **GET** /repos/{repo_ref}/+/forks | 
 *RepositoryApi* | [**getGeneral**](docs/RepositoryApi.md#getgeneral) | **GET** /repos/{repo_ref}/+/settings/general | 
 *RepositoryApi* | [**getHasStarred**](docs/RepositoryApi.md#gethasstarred) | **GET** /repos/{repo_ref}/+/stars/has_starred | 
 *RepositoryApi* | [**getImportProgress**](docs/RepositoryApi.md#getimportprogress) | **GET** /repos/{repo_ref}/+/import-progress | 
+*RepositoryApi* | [**getPaths**](docs/RepositoryApi.md#getpaths) | **GET** /repos/{repo_ref}/+/paths | 
 *RepositoryApi* | [**getRaw**](docs/RepositoryApi.md#getraw) | **GET** /repos/{repo_ref}/+/raw/{path} | 
 *RepositoryApi* | [**getRelease**](docs/RepositoryApi.md#getrelease) | **GET** /repos/{repo_ref}/+/releases/{tag_ref} | 
 *RepositoryApi* | [**getReleases**](docs/RepositoryApi.md#getreleases) | **GET** /repos/{repo_ref}/+/releases | 
 *RepositoryApi* | [**getRepo**](docs/RepositoryApi.md#getrepo) | **GET** /repos/{repo_ref}/+ | 
+*RepositoryApi* | [**getRepositoryResetedRunnerRegisterToken**](docs/RepositoryApi.md#getrepositoryresetedrunnerregistertoken) | **GET** /repos/{repo_ref}/+/runners/register_token/reseted | 
+*RepositoryApi* | [**getRepositoryRunner**](docs/RepositoryApi.md#getrepositoryrunner) | **GET** /repos/{repo_ref}/+/runners/{runner_uuid} | 
+*RepositoryApi* | [**getRepositoryRunnerRegisterToken**](docs/RepositoryApi.md#getrepositoryrunnerregistertoken) | **GET** /repos/{repo_ref}/+/runners/register_token | 
+*RepositoryApi* | [**getRepositoryRunners**](docs/RepositoryApi.md#getrepositoryrunners) | **GET** /repos/{repo_ref}/+/runners | 
 *RepositoryApi* | [**getRepositoryServiceAccounts**](docs/RepositoryApi.md#getrepositoryserviceaccounts) | **GET** /repos/{repo_ref}/+/service-accounts | 
 *RepositoryApi* | [**getRepositoryStats**](docs/RepositoryApi.md#getrepositorystats) | **GET** /repos/{repo_ref}/+/stats | 
 *RepositoryApi* | [**getRepositoryVariable**](docs/RepositoryApi.md#getrepositoryvariable) | **GET** /repos/{repo_ref}/+/variables/{variable_identifier} | 
@@ -160,12 +197,15 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**getStars**](docs/RepositoryApi.md#getstars) | **GET** /repos/{repo_ref}/+/stars | 
 *RepositoryApi* | [**getTags**](docs/RepositoryApi.md#gettags) | **GET** /repos/{repo_ref}/+/tags | 
 *RepositoryApi* | [**patchRepo**](docs/RepositoryApi.md#patchrepo) | **PATCH** /repos/{repo_ref}/+ | 
+*RepositoryApi* | [**patchRepositoryRunner**](docs/RepositoryApi.md#patchrepositoryrunner) | **PATCH** /repos/{repo_ref}/+/runners/{runner_uuid} | 
 *RepositoryApi* | [**patchRepositoryVariable**](docs/RepositoryApi.md#patchrepositoryvariable) | **PATCH** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 *RepositoryApi* | [**patchSecurity**](docs/RepositoryApi.md#patchsecurity) | **PATCH** /repos/{repo_ref}/+/settings/security | 
 *RepositoryApi* | [**patchStars**](docs/RepositoryApi.md#patchstars) | **PATCH** /repos/{repo_ref}/+/stars | 
 *RepositoryApi* | [**postBranch**](docs/RepositoryApi.md#postbranch) | **POST** /repos/{repo_ref}/+/branches | 
 *RepositoryApi* | [**postDefaultBranch**](docs/RepositoryApi.md#postdefaultbranch) | **POST** /repos/{repo_ref}/+/default-branch | 
+*RepositoryApi* | [**postDiffs**](docs/RepositoryApi.md#postdiffs) | **POST** /repos/{repo_ref}/+/diff/{path} | 
 *RepositoryApi* | [**postMergeCheck**](docs/RepositoryApi.md#postmergecheck) | **POST** /repos/{repo_ref}/+/merge-check/{path} | 
+*RepositoryApi* | [**postPathDetails**](docs/RepositoryApi.md#postpathdetails) | **POST** /repos/{repo_ref}/+/path-details | 
 *RepositoryApi* | [**postRelease**](docs/RepositoryApi.md#postrelease) | **POST** /repos/{repo_ref}/+/releases | 
 *RepositoryApi* | [**postRepo**](docs/RepositoryApi.md#postrepo) | **POST** /repos | 
 *RepositoryApi* | [**postRepositoryImport**](docs/RepositoryApi.md#postrepositoryimport) | **POST** /repos/import | 
@@ -183,6 +223,8 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**getRules**](docs/RulesApi.md#getrules) | **GET** /repos/{repo_ref}/+/rules | 
 *RulesApi* | [**patchRule**](docs/RulesApi.md#patchrule) | **PATCH** /repos/{repo_ref}/+/rules/{rule_identifier} | 
 *RulesApi* | [**postRule**](docs/RulesApi.md#postrule) | **POST** /repos/{repo_ref}/+/rules | 
+*RunnersApi* | [**getStage**](docs/RunnersApi.md#getstage) | **GET** /runners/stage | 
+*RunnersApi* | [**postRunnersRegister**](docs/RunnersApi.md#postrunnersregister) | **POST** /runners/register | 
 *ServiceAccountsApi* | [**deleteServiceAccount**](docs/ServiceAccountsApi.md#deleteserviceaccount) | **DELETE** /service-accounts/{sa_identifier} | 
 *ServiceAccountsApi* | [**deleteServiceAccountToken**](docs/ServiceAccountsApi.md#deleteserviceaccounttoken) | **DELETE** /service-accounts/{sa_identifier}/tokens/{token_name} | 
 *ServiceAccountsApi* | [**getServiceAccount**](docs/ServiceAccountsApi.md#getserviceaccount) | **GET** /service-accounts/{sa_identifier} | 
@@ -373,6 +415,8 @@ Class | Method | HTTP request | Description
  - [PullreqWithDiffStats](docs/PullreqWithDiffStats.md)
  - [QueryOption](docs/QueryOption.md)
  - [RegisterInput](docs/RegisterInput.md)
+ - [RegisterScope](docs/RegisterScope.md)
+ - [RegisterTokenModel](docs/RegisterTokenModel.md)
  - [ReleaseCreateInput](docs/ReleaseCreateInput.md)
  - [ReleaseCreator](docs/ReleaseCreator.md)
  - [ReleaseModel](docs/ReleaseModel.md)
@@ -415,6 +459,12 @@ Class | Method | HTTP request | Description
  - [RuleState](docs/RuleState.md)
  - [RuleType](docs/RuleType.md)
  - [RuleViolation](docs/RuleViolation.md)
+ - [RunnerCreator](docs/RunnerCreator.md)
+ - [RunnerModel](docs/RunnerModel.md)
+ - [RunnerPatchInput](docs/RunnerPatchInput.md)
+ - [RunnerPostInput](docs/RunnerPostInput.md)
+ - [RunnerStageOutput](docs/RunnerStageOutput.md)
+ - [RunnerStatus](docs/RunnerStatus.md)
  - [SecuritySettings](docs/SecuritySettings.md)
  - [ServiceAccountCreateInput](docs/ServiceAccountCreateInput.md)
  - [ServiceAccountTokenOutput](docs/ServiceAccountTokenOutput.md)

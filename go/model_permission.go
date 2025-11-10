@@ -55,6 +55,11 @@ const (
 	PERMISSION_TEMPLATE_EDIT Permission = "template_edit"
 	PERMISSION_TEMPLATE_DELETE Permission = "template_delete"
 	PERMISSION_TEMPLATE_ACCESS Permission = "template_access"
+	PERMISSION_RUNNER_VIEW Permission = "runner_view"
+	PERMISSION_RUNNER_ADD Permission = "runner_add"
+	PERMISSION_RUNNER_DELETE Permission = "runner_delete"
+	PERMISSION_RUNNER_EDIT Permission = "runner_edit"
+	PERMISSION_RUNNER_ACCESS Permission = "runner_access"
 )
 
 // All allowed values of Permission enum
@@ -94,6 +99,11 @@ var AllowedPermissionEnumValues = []Permission{
 	"template_edit",
 	"template_delete",
 	"template_access",
+	"runner_view",
+	"runner_add",
+	"runner_delete",
+	"runner_edit",
+	"runner_access",
 }
 
 func (v *Permission) UnmarshalJSON(src []byte) error {

@@ -17,6 +17,8 @@ pub struct TokenCreateInput {
     pub lifetime_ms: Option<Option<i64>>,
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
+    pub permissions: Option<Vec<models::Permission>>,
 }
 
 impl TokenCreateInput {
@@ -24,6 +26,7 @@ impl TokenCreateInput {
         TokenCreateInput {
             lifetime_ms: None,
             name,
+            permissions: None,
         }
     }
 }

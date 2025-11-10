@@ -4,6 +4,9 @@ README.md
 api/openapi.yaml
 api_accounts.go
 api_actions.go
+api_admin.go
+api_bootstrap.go
+api_connectors.go
 api_groups.go
 api_keyword_search.go
 api_pull_request.go
@@ -11,6 +14,7 @@ api_release_upload.go
 api_repository.go
 api_resources.go
 api_rules.go
+api_runners.go
 api_service_accounts.go
 api_status_check.go
 api_system.go
@@ -25,10 +29,12 @@ docs/ActionModel.md
 docs/ActionUpdateInput.md
 docs/ActionWorkflow.md
 docs/ActionsAPI.md
+docs/AdminAPI.md
 docs/AdminPatchInput.md
 docs/AdminStats.md
 docs/ArchiveAttribute.md
 docs/BlamePart.md
+docs/BootstrapAPI.md
 docs/BootstrapMetadata.md
 docs/BranchCreateInput.md
 docs/BranchRenameInput.md
@@ -58,6 +64,7 @@ docs/CommitWithPathRenameDetails.md
 docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
+docs/ConnectorsAPI.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -161,6 +168,8 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
+docs/RegisterScope.md
+docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
 docs/ReleaseModel.md
@@ -207,6 +216,13 @@ docs/RuleState.md
 docs/RuleType.md
 docs/RuleViolation.md
 docs/RulesAPI.md
+docs/RunnerCreator.md
+docs/RunnerModel.md
+docs/RunnerPatchInput.md
+docs/RunnerPostInput.md
+docs/RunnerStageOutput.md
+docs/RunnerStatus.md
+docs/RunnersAPI.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
@@ -401,6 +417,8 @@ model_pullreq_update_input.go
 model_pullreq_with_diff_stats.go
 model_query_option.go
 model_register_input.go
+model_register_scope.go
+model_register_token_model.go
 model_release_create_input.go
 model_release_creator.go
 model_release_model.go
@@ -443,6 +461,12 @@ model_rule_sort.go
 model_rule_state.go
 model_rule_type.go
 model_rule_violation.go
+model_runner_creator.go
+model_runner_model.go
+model_runner_patch_input.go
+model_runner_post_input.go
+model_runner_stage_output.go
+model_runner_status.go
 model_security_settings.go
 model_service_account_create_input.go
 model_service_account_token_output.go
@@ -492,4 +516,5 @@ model_workflow_stages.go
 model_workflow_update_input.go
 model_yaml_provider.go
 response.go
+test/api_runners_test.go
 utils.go

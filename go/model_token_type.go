@@ -24,6 +24,7 @@ const (
 	TOKENTYPE_TWO_FACTOR TokenType = "two_factor"
 	TOKENTYPE_PAT TokenType = "pat"
 	TOKENTYPE_SAT TokenType = "sat"
+	TOKENTYPE_RUNNER TokenType = "runner"
 )
 
 // All allowed values of TokenType enum
@@ -32,6 +33,7 @@ var AllowedTokenTypeEnumValues = []TokenType{
 	"two_factor",
 	"pat",
 	"sat",
+	"runner",
 }
 
 func (v *TokenType) UnmarshalJSON(src []byte) error {

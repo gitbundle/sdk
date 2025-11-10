@@ -30,7 +30,7 @@ pub struct StageModel {
     #[serde(rename = "kind")]
     pub kind: String,
     #[serde(rename = "labels")]
-    pub labels: std::collections::HashMap<String, String>,
+    pub labels: Vec<String>,
     #[serde(rename = "limit")]
     pub limit: i64,
     #[serde(rename = "limit_repo")]
@@ -78,7 +78,7 @@ pub struct StageModel {
 }
 
 impl StageModel {
-    pub fn new(arch: String, created: i64, errignore: bool, error: String, exit_code: i64, id: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, repo_id: i64, status: models::CiStatus, r#type: String, updated: i64, variant: String, version: i64, workflow_id: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageModel {
+    pub fn new(arch: String, created: i64, errignore: bool, error: String, exit_code: i64, id: i64, kernel: String, kind: String, labels: Vec<String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, repo_id: i64, status: models::CiStatus, r#type: String, updated: i64, variant: String, version: i64, workflow_id: i64, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageModel {
         StageModel {
             arch,
             created,

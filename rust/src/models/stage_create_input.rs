@@ -26,7 +26,7 @@ pub struct StageCreateInput {
     #[serde(rename = "kind")]
     pub kind: String,
     #[serde(rename = "labels")]
-    pub labels: std::collections::HashMap<String, String>,
+    pub labels: Vec<String>,
     #[serde(rename = "limit")]
     pub limit: i64,
     #[serde(rename = "limit_repo")]
@@ -64,7 +64,7 @@ pub struct StageCreateInput {
 }
 
 impl StageCreateInput {
-    pub fn new(arch: String, errignore: bool, error: String, exit_code: i64, kernel: String, kind: String, labels: std::collections::HashMap<String, String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, status: models::CiStatus, r#type: String, variant: String, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageCreateInput {
+    pub fn new(arch: String, errignore: bool, error: String, exit_code: i64, kernel: String, kind: String, labels: Vec<String>, limit: i64, limit_repo: i64, machine: String, name: String, needs: Option<serde_json::Value>, number: i64, on_failure: bool, on_success: bool, os: String, parent_group_id: i64, status: models::CiStatus, r#type: String, variant: String, yaml_provider: models::YamlProvider, yaml_resolved: String) -> StageCreateInput {
         StageCreateInput {
             arch,
             errignore,

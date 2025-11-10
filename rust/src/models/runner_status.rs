@@ -13,26 +13,29 @@ use serde::{Deserialize, Serialize};
 
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum UserType {
-    #[serde(rename = "user")]
-    User,
-    #[serde(rename = "service_account")]
-    ServiceAccount,
+pub enum RunnerStatus {
+    #[serde(rename = "offline")]
+    Offline,
+    #[serde(rename = "online")]
+    Online,
+    #[serde(rename = "idle")]
+    Idle,
 
 }
 
-impl std::fmt::Display for UserType {
+impl std::fmt::Display for RunnerStatus {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::User => write!(f, "user"),
-            Self::ServiceAccount => write!(f, "service_account"),
+            Self::Offline => write!(f, "offline"),
+            Self::Online => write!(f, "online"),
+            Self::Idle => write!(f, "idle"),
         }
     }
 }
 
-impl Default for UserType {
-    fn default() -> UserType {
-        Self::User
+impl Default for RunnerStatus {
+    fn default() -> RunnerStatus {
+        Self::Offline
     }
 }
 

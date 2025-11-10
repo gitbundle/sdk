@@ -11,10 +11,12 @@ docs/ActionModel.md
 docs/ActionUpdateInput.md
 docs/ActionWorkflow.md
 docs/ActionsApi.md
+docs/AdminApi.md
 docs/AdminPatchInput.md
 docs/AdminStats.md
 docs/ArchiveAttribute.md
 docs/BlamePart.md
+docs/BootstrapApi.md
 docs/BootstrapMetadata.md
 docs/BranchCreateInput.md
 docs/BranchRenameInput.md
@@ -44,6 +46,7 @@ docs/CommitWithPathRenameDetails.md
 docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
+docs/ConnectorsApi.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -147,6 +150,8 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
+docs/RegisterScope.md
+docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
 docs/ReleaseModel.md
@@ -193,6 +198,13 @@ docs/RuleState.md
 docs/RuleType.md
 docs/RuleViolation.md
 docs/RulesApi.md
+docs/RunnerCreator.md
+docs/RunnerModel.md
+docs/RunnerPatchInput.md
+docs/RunnerPostInput.md
+docs/RunnerStageOutput.md
+docs/RunnerStatus.md
+docs/RunnersApi.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md

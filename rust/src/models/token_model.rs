@@ -23,6 +23,8 @@ pub struct TokenModel {
     pub issued_at: i64,
     #[serde(rename = "name")]
     pub name: String,
+    #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
+    pub permissions: Option<Vec<models::Permission>>,
     #[serde(rename = "type")]
     pub r#type: models::TokenType,
     #[serde(rename = "user_id")]
@@ -37,6 +39,7 @@ impl TokenModel {
             id,
             issued_at,
             name,
+            permissions: None,
             r#type,
             user_id,
         }
