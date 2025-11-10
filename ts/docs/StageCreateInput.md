@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **exit_code** | **number** |  | [default to undefined]
 **kernel** | **string** |  | [default to undefined]
 **kind** | **string** |  | [default to undefined]
-**labels** | **{ [key: string]: string; }** |  | [default to undefined]
+**labels** | **Array&lt;string&gt;** |  | [default to undefined]
 **limit** | **number** |  | [default to undefined]
 **limit_repo** | **number** |  | [default to undefined]
 **machine** | **string** |  | [default to undefined]

@@ -74,4 +74,14 @@ Permission represents the different types of permissions a principal can have.
 
 * `TemplateAccess` (value: `'template_access'`)
 
+* `RunnerView` (value: `'runner_view'`)
+
+* `RunnerAdd` (value: `'runner_add'`)
+
+* `RunnerDelete` (value: `'runner_delete'`)
+
+* `RunnerEdit` (value: `'runner_edit'`)
+
+* `RunnerAccess` (value: `'runner_access'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

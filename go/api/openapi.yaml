@@ -323,6 +323,1539 @@ paths:
       - access_token_query: []
       tags:
       - accounts
+  /admin/groups:
+    get:
+      operationId: get_groups
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          $ref: "#/components/schemas/GroupSort"
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GroupModel"
+                type: array
+          description: Admin get groups
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/groups/{group_ref}:
+    delete:
+      operationId: delete_group
+      parameters:
+      - explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Admin delete group
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/runners:
+    get:
+      operationId: get_runners
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/RunnerCreator"
+                type: array
+          description: Admin get runners
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/runners/register_token:
+    get:
+      operationId: get_runner_register_token
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Admin get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/runners/register_token/reseted:
+    get:
+      operationId: get_reseted_runner_register_token
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Admin get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/runners/{runner_uuid}:
+    delete:
+      operationId: delete_runner
+      parameters:
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Admin delete runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    get:
+      operationId: get_runner
+      parameters:
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Admin get runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    patch:
+      operationId: patch_runner
+      parameters:
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunnerPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Admin patch runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/stats:
+    get:
+      operationId: get_stats
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminStats"
+          description: Admin get stats
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/users:
+    get:
+      operationId: get_users
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          $ref: "#/components/schemas/UserSort"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/UserModel"
+                type: array
+          description: Admin get users
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    post:
+      operationId: post_user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserCreateInput"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserModel"
+          description: Admin post user creation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/users/{user_identifier}:
+    delete:
+      operationId: delete_user
+      parameters:
+      - explode: false
+        in: path
+        name: user_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Admin delete user
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    get:
+      operationId: get_user
+      parameters:
+      - explode: false
+        in: path
+        name: user_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserModel"
+          description: Admin get user
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    patch:
+      operationId: patch_user
+      parameters:
+      - explode: false
+        in: path
+        name: user_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserModel"
+          description: Admin patch user
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/users/{user_identifier}/admin:
+    patch:
+      operationId: patch_user_admin
+      parameters:
+      - explode: false
+        in: path
+        name: user_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserModel"
+          description: Admin patch user admin
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /bootstrap/{bootstrap_ref}/+/{path}:
+    get:
+      operationId: get_bootstrap
+      parameters:
+      - description: "Group path (eg: '/group1/group2'), or repository path (eg: '/group1/group2/repo'),\
+          \ or username"
+        explode: false
+        in: path
+        name: bootstrap_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          nullable: true
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BootstrapMetadata"
+          description: "Get a repository, group or user"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - bootstrap
+  /connectors:
+    post:
+      operationId: post_connector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConnectorCreateInput"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConnectorModel"
+          description: Post connector creation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - connectors
+  /connectors/{connector_ref}:
+    delete:
+      operationId: delete_connector
+      parameters:
+      - explode: false
+        in: path
+        name: connector_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Delete connector
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - connectors
+    get:
+      operationId: get_connector
+      parameters:
+      - explode: false
+        in: path
+        name: connector_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConnectorModel"
+          description: Get connector
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - connectors
+    patch:
+      operationId: patch_connector
+      parameters:
+      - explode: false
+        in: path
+        name: connector_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConnectorPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConnectorModel"
+          description: Patch connector
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - connectors
   /groups:
     post:
       operationId: post_group
@@ -738,6 +2271,77 @@ paths:
                 minimum: 0
                 type: integer
               style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+  /groups/{group_ref}/+/events:
+    get:
+      operationId: get_events
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                items:
+                  format: int32
+                  minimum: 0
+                  type: integer
+                type: array
+          description: Fetch group events
         "400":
           content:
             application/json:
@@ -1702,6 +3306,508 @@ paths:
               schema:
                 $ref: "#/components/schemas/GroupModel"
           description: Restore group
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+  /groups/{group_ref}/+/runners:
+    get:
+      operationId: get_groups_runners
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/RunnerCreator"
+                type: array
+          description: Group get runners
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+  /groups/{group_ref}/+/runners/register_token:
+    get:
+      operationId: get_groups_runner_register_token
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Group get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+  /groups/{group_ref}/+/runners/register_token/reseted:
+    get:
+      operationId: get_groups_reseted_runner_register_token
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Group get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+  /groups/{group_ref}/+/runners/{runner_uuid}:
+    delete:
+      operationId: delete_groups_runner
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Group delete runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+    get:
+      operationId: get_groups_runner
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Group get runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - groups
+    patch:
+      operationId: patch_groups_runner
+      parameters:
+      - description: Group ref
+        explode: false
+        in: path
+        name: group_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunnerPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Group patch runner
         "400":
           content:
             application/json:
@@ -4502,6 +6608,110 @@ paths:
       - access_token_query: []
       tags:
       - repository
+  /repos/{repo_ref}/+/blame/{path}:
+    get:
+      operationId: get_blame
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.
+                  Default value : {Repository Default Branch}
+        explode: true
+        in: query
+        name: git_ref
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: line_from
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: line_to
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/BlamePart"
+                type: array
+          description: Get file content blame in a repo
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
   /repos/{repo_ref}/+/branches:
     get:
       operationId: get_branches
@@ -5930,6 +8140,94 @@ paths:
       - access_token_query: []
       tags:
       - repository
+  /repos/{repo_ref}/+/content/{path}:
+    get:
+      operationId: get_content
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: git_ref
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: include_commit
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RepoContentOutput"
+          description: Get file content in a repo
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
   /repos/{repo_ref}/+/contributors:
     get:
       operationId: get_contributors
@@ -6047,6 +8345,247 @@ paths:
               schema:
                 $ref: "#/components/schemas/RepositoryModel"
           description: Update default branch for a repo
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/diff-stats/{path}:
+    get:
+      operationId: get_diff_stats
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiffStats"
+          description: "Get diff statistics of two commits, branches or tags in a\
+            \ repo"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/diff/{path}:
+    get:
+      operationId: get_diffs
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+          description: "Get the diff between two commits, branches or tags"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+    post:
+      operationId: post_diffs
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: path
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: path
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: "#/components/schemas/CommitDiffFile"
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                items:
+                  format: int32
+                  minimum: 0
+                  type: integer
+                type: array
+          description: "Get the diff between two commits, branches or tags"
         "400":
           content:
             application/json:
@@ -6375,6 +8914,171 @@ paths:
               schema:
                 $ref: "#/components/schemas/RepositoryModel"
           description: Move or rename a repo
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/path-details:
+    post:
+      operationId: post_path_details
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: git_ref
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/PathDetails"
+                type: array
+          description: Get file path details in a repo
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/paths:
+    get:
+      operationId: get_paths
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: git_ref
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: include_directories
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RepoPathsOutput"
+          description: Get file paths in a repo
         "400":
           content:
             application/json:
@@ -9684,6 +12388,508 @@ paths:
       - access_token_query: []
       tags:
       - rules
+  /repos/{repo_ref}/+/runners:
+    get:
+      operationId: get_repository_runners
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/RunnerCreator"
+                type: array
+          description: Repository get runners
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/runners/register_token:
+    get:
+      operationId: get_repository_runner_register_token
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Repository get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/runners/register_token/reseted:
+    get:
+      operationId: get_repository_reseted_runner_register_token
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterTokenModel"
+          description: Repository get runner registration token
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+  /repos/{repo_ref}/+/runners/{runner_uuid}:
+    delete:
+      operationId: delete_repository_runner
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Repository delete runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+    get:
+      operationId: get_repository_runner
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Repository get runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
+    patch:
+      operationId: patch_repository_runner
+      parameters:
+      - description: Repository ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: runner_uuid
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunnerPatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerModel"
+          description: Repository patch runner
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - repository
   /repos/{repo_ref}/+/service-accounts:
     get:
       operationId: get_repository_service_accounts
@@ -12427,6 +15633,124 @@ paths:
           description: Internal server error
       tags:
       - resources
+  /runners/register:
+    post:
+      operationId: post_runners_register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunnerPostInput"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenCreateOutput"
+          description: Register a action runner for gitbundle server
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      tags:
+      - runners
+  /runners/stage:
+    get:
+      operationId: get_stage
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerStageOutput"
+          description: Get a workflow job
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - runners
   /search:
     post:
       operationId: search
@@ -15972,12 +19296,17 @@ components:
       required:
       - model
     AdminPatchInput:
+      example:
+        admin: true
       properties:
         admin:
           type: boolean
       required:
       - admin
     AdminStats:
+      example:
+        total_groups: 0
+        total_users: 0
       properties:
         total_groups:
           format: int64
@@ -15996,6 +19325,41 @@ components:
       - export_subst
       type: string
     BlamePart:
+      example:
+        commit:
+          committer:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          signature:
+            payload: payload
+            signature: signature
+          author:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          file_stats:
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          message: message
+          title: title
+          sha: sha
+          parent_shas:
+          - parent_shas
+          - parent_shas
+        lines:
+        - lines
+        - lines
       properties:
         commit:
           $ref: "#/components/schemas/Commit"
@@ -16007,6 +19371,96 @@ components:
       - commit
       - lines
     BootstrapMetadata:
+      example:
+        path_ref:
+          ref_name: ref_name
+          repo_path: repo_path
+          ref_type: branch
+        repo:
+          parent:
+            num_pulls: 4
+            num_open_pulls: 2
+            description: description
+            size_updated: 1
+            git_ssh_url: git_ssh_url
+            importing: true
+            path: path
+            num_stars: 7
+            pullreq_seq: 1
+            id: 2
+            git_url: git_url
+            is_empty: true
+            num_closed_pulls: 7
+            created: 0
+            fork_id: 5
+            display_name: display_name
+            created_by: 6
+            version: 7
+            deleted: 1
+            size: 1
+            group_id: 5
+            num_merged_pulls: 3
+            is_public: true
+            name: name
+            default_branch: default_branch
+            git_uid: git_uid
+            updated: 6
+            num_forks: 9
+          model:
+            num_pulls: 4
+            num_open_pulls: 2
+            description: description
+            size_updated: 1
+            git_ssh_url: git_ssh_url
+            importing: true
+            path: path
+            num_stars: 7
+            pullreq_seq: 1
+            id: 2
+            git_url: git_url
+            is_empty: true
+            num_closed_pulls: 7
+            created: 0
+            fork_id: 5
+            display_name: display_name
+            created_by: 6
+            version: 7
+            deleted: 1
+            size: 1
+            group_id: 5
+            num_merged_pulls: 3
+            is_public: true
+            name: name
+            default_branch: default_branch
+            git_uid: git_uid
+            updated: 6
+            num_forks: 9
+        user:
+          is_admin: true
+          is_blocked: true
+          is_active: true
+          created: 0
+          parent_id: 1
+          name: name
+          id: 6
+          display_name: display_name
+          parent_type: group
+          type: user
+          updated: 5
+          email: email
+        group:
+          path: path
+          deleted: 1
+          created: 0
+          parent_id: 5
+          is_public: true
+          name: name
+          description: description
+          id: 5
+          created_by: 6
+          updated: 2
+          version: 7
+          is_user_home: true
       properties:
         group:
           $ref: "#/components/schemas/GroupModel"
@@ -16981,6 +20435,12 @@ components:
       required:
       - commit
     ConnectorCreateInput:
+      example:
+        group_ref: group_ref
+        data: data
+        name: name
+        description: description
+        type: type
       properties:
         data:
           type: string
@@ -17044,6 +20504,10 @@ components:
       - updated
       - version
     ConnectorPatchInput:
+      example:
+        data: data
+        name: name
+        description: description
       properties:
         data:
           nullable: true
@@ -17504,38 +20968,38 @@ components:
             updated: 5
             email: email
           model:
-            comment_count: 5
+            comment_count: 1
             merge_target_sha: merge_target_sha
             description: description
             source_repo_id: 1
-            merged_by: 1
+            merged_by: 4
             title: title
             source_sha: source_sha
             source_branch: source_branch
-            unresolved_count: 7
-            number: 1
-            target_repo_id: 6
+            unresolved_count: 1
+            number: 7
+            target_repo_id: 1
             is_draft: true
             merge_check_status: unchecked
             merge_sha: merge_sha
-            id: 4
+            id: 3
             state: open
-            file_count: 2
+            file_count: 9
             merge_base_sha: merge_base_sha
-            edited: 3
-            created: 7
-            merged: 7
+            edited: 7
+            created: 5
+            merged: 2
             merge_conflicts:
             - merge_conflicts
             - merge_conflicts
             target_branch: target_branch
-            created_by: 9
-            version: 4
+            created_by: 2
+            version: 7
             merge_method: merge
-            commit_count: 2
-            activity_seq: 1
-            closed: 5
-            updated: 1
+            commit_count: 5
+            activity_seq: 0
+            closed: 6
+            updated: 6
       properties:
         creator:
           $ref: "#/components/schemas/UserModel"
@@ -18233,6 +21697,39 @@ components:
       - repository
       type: string
     PathDetails:
+      example:
+        path: path
+        last_commit:
+          committer:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          signature:
+            payload: payload
+            signature: signature
+          author:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          file_stats:
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          message: message
+          title: title
+          sha: sha
+          parent_shas:
+          - parent_shas
+          - parent_shas
       properties:
         last_commit:
           $ref: "#/components/schemas/Commit"
@@ -18242,6 +21739,10 @@ components:
       - last_commit
       - path
     PathRefInfo:
+      example:
+        ref_name: ref_name
+        repo_path: repo_path
+        ref_type: branch
       properties:
         ref_name:
           type: string
@@ -18317,6 +21818,11 @@ components:
       - template_edit
       - template_delete
       - template_access
+      - runner_view
+      - runner_add
+      - runner_delete
+      - runner_edit
+      - runner_access
       type: string
     ProtectionBranch:
       example:
@@ -19036,38 +22542,38 @@ components:
           updated: 5
           email: email
         model:
-          comment_count: 5
+          comment_count: 1
           merge_target_sha: merge_target_sha
           description: description
           source_repo_id: 1
-          merged_by: 1
+          merged_by: 4
           title: title
           source_sha: source_sha
           source_branch: source_branch
-          unresolved_count: 7
-          number: 1
-          target_repo_id: 6
+          unresolved_count: 1
+          number: 7
+          target_repo_id: 1
           is_draft: true
           merge_check_status: unchecked
           merge_sha: merge_sha
-          id: 4
+          id: 3
           state: open
-          file_count: 2
+          file_count: 9
           merge_base_sha: merge_base_sha
-          edited: 3
-          created: 7
-          merged: 7
+          edited: 7
+          created: 5
+          merged: 2
           merge_conflicts:
           - merge_conflicts
           - merge_conflicts
           target_branch: target_branch
-          created_by: 9
-          version: 4
+          created_by: 2
+          version: 7
           merge_method: merge
-          commit_count: 2
-          activity_seq: 1
-          closed: 5
-          updated: 1
+          commit_count: 5
+          activity_seq: 0
+          closed: 6
+          updated: 6
       properties:
         author:
           $ref: "#/components/schemas/UserModel"
@@ -19455,38 +22961,38 @@ components:
       - rule_checks
     PullreqModel:
       example:
-        comment_count: 5
+        comment_count: 1
         merge_target_sha: merge_target_sha
         description: description
         source_repo_id: 1
-        merged_by: 1
+        merged_by: 4
         title: title
         source_sha: source_sha
         source_branch: source_branch
-        unresolved_count: 7
-        number: 1
-        target_repo_id: 6
+        unresolved_count: 1
+        number: 7
+        target_repo_id: 1
         is_draft: true
         merge_check_status: unchecked
         merge_sha: merge_sha
-        id: 4
+        id: 3
         state: open
-        file_count: 2
+        file_count: 9
         merge_base_sha: merge_base_sha
-        edited: 3
-        created: 7
-        merged: 7
+        edited: 7
+        created: 5
+        merged: 2
         merge_conflicts:
         - merge_conflicts
         - merge_conflicts
         target_branch: target_branch
-        created_by: 9
-        version: 4
+        created_by: 2
+        version: 7
         merge_method: merge
-        commit_count: 2
-        activity_seq: 1
-        closed: 5
-        updated: 1
+        commit_count: 5
+        activity_seq: 0
+        closed: 6
+        updated: 6
       properties:
         activity_seq:
           format: int64
@@ -19858,38 +23364,38 @@ components:
           files_changed: 0
           commits: 0
         model:
-          comment_count: 5
+          comment_count: 1
           merge_target_sha: merge_target_sha
           description: description
           source_repo_id: 1
-          merged_by: 1
+          merged_by: 4
           title: title
           source_sha: source_sha
           source_branch: source_branch
-          unresolved_count: 7
-          number: 1
-          target_repo_id: 6
+          unresolved_count: 1
+          number: 7
+          target_repo_id: 1
           is_draft: true
           merge_check_status: unchecked
           merge_sha: merge_sha
-          id: 4
+          id: 3
           state: open
-          file_count: 2
+          file_count: 9
           merge_base_sha: merge_base_sha
-          edited: 3
-          created: 7
-          merged: 7
+          edited: 7
+          created: 5
+          merged: 2
           merge_conflicts:
           - merge_conflicts
           - merge_conflicts
           target_branch: target_branch
-          created_by: 9
-          version: 4
+          created_by: 2
+          version: 7
           merge_method: merge
-          commit_count: 2
-          activity_seq: 1
-          closed: 5
-          updated: 1
+          commit_count: 5
+          activity_seq: 0
+          closed: 6
+          updated: 6
         merger:
           is_admin: true
           is_blocked: true
@@ -19941,6 +23447,54 @@ components:
       - email
       - name
       - password
+    RegisterScope:
+      enum:
+      - system
+      - group
+      - repository
+      type: string
+    RegisterTokenModel:
+      example:
+        created: 0
+        parent_id: 5
+        scope: system
+        id: 1
+        created_by: 6
+        updated: 5
+        version: 2
+        token: token
+      properties:
+        created:
+          format: int64
+          type: integer
+        created_by:
+          format: int64
+          type: integer
+        id:
+          format: int64
+          type: integer
+        parent_id:
+          format: int64
+          nullable: true
+          type: integer
+        scope:
+          $ref: "#/components/schemas/RegisterScope"
+        token:
+          type: string
+        updated:
+          format: int64
+          type: integer
+        version:
+          format: int64
+          type: integer
+      required:
+      - created
+      - created_by
+      - id
+      - scope
+      - token
+      - updated
+      - version
     ReleaseAssets:
       items:
         type: string
@@ -20188,6 +23742,93 @@ components:
       - payload
       - sha
     RepoContent:
+      example:
+        file:
+          data: data
+          size: 0
+          encoding: utf8
+        symlink:
+          size: 0
+          target: target
+        submodule:
+          commit_sha: commit_sha
+          url: url
+        dir:
+          entries:
+          - commit_url: commit_url
+            path: path
+            repo_url: repo_url
+            name: name
+            latest_commit:
+              committer:
+                existing: true
+                name: name
+                when: 0
+                email: email
+              signature:
+                payload: payload
+                signature: signature
+              author:
+                existing: true
+                name: name
+                when: 0
+                email: email
+              file_stats:
+              - path: path
+                insertions: 0
+                deletions: 0
+                change_type: undefined
+                old_path: old_path
+              - path: path
+                insertions: 0
+                deletions: 0
+                change_type: undefined
+                old_path: old_path
+              message: message
+              title: title
+              sha: sha
+              parent_shas:
+              - parent_shas
+              - parent_shas
+            type: null
+            sha: sha
+          - commit_url: commit_url
+            path: path
+            repo_url: repo_url
+            name: name
+            latest_commit:
+              committer:
+                existing: true
+                name: name
+                when: 0
+                email: email
+              signature:
+                payload: payload
+                signature: signature
+              author:
+                existing: true
+                name: name
+                when: 0
+                email: email
+              file_stats:
+              - path: path
+                insertions: 0
+                deletions: 0
+                change_type: undefined
+                old_path: old_path
+              - path: path
+                insertions: 0
+                deletions: 0
+                change_type: undefined
+                old_path: old_path
+              message: message
+              title: title
+              sha: sha
+              parent_shas:
+              - parent_shas
+              - parent_shas
+            type: null
+            sha: sha
       properties:
         dir:
           $ref: "#/components/schemas/RepoDirContent"
@@ -20198,6 +23839,44 @@ components:
         symlink:
           $ref: "#/components/schemas/RepoSymlinkContent"
     RepoContentInfo:
+      example:
+        commit_url: commit_url
+        path: path
+        repo_url: repo_url
+        name: name
+        latest_commit:
+          committer:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          signature:
+            payload: payload
+            signature: signature
+          author:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          file_stats:
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          message: message
+          title: title
+          sha: sha
+          parent_shas:
+          - parent_shas
+          - parent_shas
+        type: null
+        sha: sha
       properties:
         commit_url:
           nullable: true
@@ -20233,6 +23912,132 @@ components:
         required:
         - content
         - total_commits
+      example:
+        commit_url: commit_url
+        path: path
+        repo_url: repo_url
+        name: name
+        latest_commit:
+          committer:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          signature:
+            payload: payload
+            signature: signature
+          author:
+            existing: true
+            name: name
+            when: 0
+            email: email
+          file_stats:
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          - path: path
+            insertions: 0
+            deletions: 0
+            change_type: undefined
+            old_path: old_path
+          message: message
+          title: title
+          sha: sha
+          parent_shas:
+          - parent_shas
+          - parent_shas
+        type: file
+        sha: sha
+        content:
+          file:
+            data: data
+            size: 0
+            encoding: utf8
+          symlink:
+            size: 0
+            target: target
+          submodule:
+            commit_sha: commit_sha
+            url: url
+          dir:
+            entries:
+            - commit_url: commit_url
+              path: path
+              repo_url: repo_url
+              name: name
+              latest_commit:
+                committer:
+                  existing: true
+                  name: name
+                  when: 0
+                  email: email
+                signature:
+                  payload: payload
+                  signature: signature
+                author:
+                  existing: true
+                  name: name
+                  when: 0
+                  email: email
+                file_stats:
+                - path: path
+                  insertions: 0
+                  deletions: 0
+                  change_type: undefined
+                  old_path: old_path
+                - path: path
+                  insertions: 0
+                  deletions: 0
+                  change_type: undefined
+                  old_path: old_path
+                message: message
+                title: title
+                sha: sha
+                parent_shas:
+                - parent_shas
+                - parent_shas
+              type: null
+              sha: sha
+            - commit_url: commit_url
+              path: path
+              repo_url: repo_url
+              name: name
+              latest_commit:
+                committer:
+                  existing: true
+                  name: name
+                  when: 0
+                  email: email
+                signature:
+                  payload: payload
+                  signature: signature
+                author:
+                  existing: true
+                  name: name
+                  when: 0
+                  email: email
+                file_stats:
+                - path: path
+                  insertions: 0
+                  deletions: 0
+                  change_type: undefined
+                  old_path: old_path
+                - path: path
+                  insertions: 0
+                  deletions: 0
+                  change_type: undefined
+                  old_path: old_path
+                message: message
+                title: title
+                sha: sha
+                parent_shas:
+                - parent_shas
+                - parent_shas
+              type: null
+              sha: sha
+        total_commits: 0
     RepoContentType:
       enum:
       - file
@@ -20285,6 +24090,82 @@ components:
       - readme
       - single_branch
     RepoDirContent:
+      example:
+        entries:
+        - commit_url: commit_url
+          path: path
+          repo_url: repo_url
+          name: name
+          latest_commit:
+            committer:
+              existing: true
+              name: name
+              when: 0
+              email: email
+            signature:
+              payload: payload
+              signature: signature
+            author:
+              existing: true
+              name: name
+              when: 0
+              email: email
+            file_stats:
+            - path: path
+              insertions: 0
+              deletions: 0
+              change_type: undefined
+              old_path: old_path
+            - path: path
+              insertions: 0
+              deletions: 0
+              change_type: undefined
+              old_path: old_path
+            message: message
+            title: title
+            sha: sha
+            parent_shas:
+            - parent_shas
+            - parent_shas
+          type: null
+          sha: sha
+        - commit_url: commit_url
+          path: path
+          repo_url: repo_url
+          name: name
+          latest_commit:
+            committer:
+              existing: true
+              name: name
+              when: 0
+              email: email
+            signature:
+              payload: payload
+              signature: signature
+            author:
+              existing: true
+              name: name
+              when: 0
+              email: email
+            file_stats:
+            - path: path
+              insertions: 0
+              deletions: 0
+              change_type: undefined
+              old_path: old_path
+            - path: path
+              insertions: 0
+              deletions: 0
+              change_type: undefined
+              old_path: old_path
+            message: message
+            title: title
+            sha: sha
+            parent_shas:
+            - parent_shas
+            - parent_shas
+          type: null
+          sha: sha
       properties:
         entries:
           items:
@@ -20293,6 +24174,10 @@ components:
       required:
       - entries
     RepoFileContent:
+      example:
+        data: data
+        size: 0
+        encoding: utf8
       properties:
         data:
           type: string
@@ -20439,6 +24324,13 @@ components:
       required:
       - model
     RepoPathsOutput:
+      example:
+        dirs:
+        - dirs
+        - dirs
+        files:
+        - files
+        - files
       properties:
         dirs:
           items:
@@ -20532,6 +24424,9 @@ components:
       - release_total_num
       - tag_total_num
     RepoSubmoduleContent:
+      example:
+        commit_sha: commit_sha
+        url: url
       properties:
         commit_sha:
           type: string
@@ -20541,6 +24436,9 @@ components:
       - commit_sha
       - url
     RepoSymlinkContent:
+      example:
+        size: 0
+        target: target
       properties:
         size:
           minimum: 0
@@ -21122,6 +25020,198 @@ components:
       - code
       - message
       - params
+    RunnerCreator:
+      example:
+        creator:
+          is_admin: true
+          is_blocked: true
+          is_active: true
+          created: 0
+          parent_id: 1
+          name: name
+          id: 6
+          display_name: display_name
+          parent_type: group
+          type: user
+          updated: 5
+          email: email
+        model:
+          created: 0
+          release: release
+          description: description
+          created_by: 6
+          uuid: uuid
+          version: 7
+          labels:
+          - labels
+          - labels
+          token_id: 5
+          parent_id: 5
+          scope: system
+          name: name
+          id: 1
+          updated: 2
+          status: offline
+      properties:
+        creator:
+          $ref: "#/components/schemas/UserModel"
+        model:
+          $ref: "#/components/schemas/RunnerModel"
+      required:
+      - model
+    RunnerModel:
+      example:
+        created: 0
+        release: release
+        description: description
+        created_by: 6
+        uuid: uuid
+        version: 7
+        labels:
+        - labels
+        - labels
+        token_id: 5
+        parent_id: 5
+        scope: system
+        name: name
+        id: 1
+        updated: 2
+        status: offline
+      properties:
+        created:
+          format: int64
+          type: integer
+        created_by:
+          format: int64
+          type: integer
+        description:
+          type: string
+        id:
+          format: int64
+          type: integer
+        labels:
+          items:
+            type: string
+          type: array
+        name:
+          type: string
+        parent_id:
+          format: int64
+          nullable: true
+          type: integer
+        release:
+          type: string
+        scope:
+          $ref: "#/components/schemas/RegisterScope"
+        status:
+          $ref: "#/components/schemas/RunnerStatus"
+        token_id:
+          format: int64
+          type: integer
+        updated:
+          format: int64
+          type: integer
+        uuid:
+          type: string
+        version:
+          format: int64
+          type: integer
+      required:
+      - created
+      - created_by
+      - description
+      - id
+      - labels
+      - name
+      - release
+      - scope
+      - status
+      - token_id
+      - updated
+      - uuid
+      - version
+    RunnerPatchInput:
+      example:
+        description: description
+      properties:
+        description:
+          type: string
+      required:
+      - description
+    RunnerPostInput:
+      example:
+        release: release
+        name: name
+        labels:
+        - labels
+        - labels
+        token: token
+      properties:
+        labels:
+          items:
+            type: string
+          type: array
+        name:
+          type: string
+        release:
+          type: string
+        token:
+          type: string
+      required:
+      - labels
+      - name
+      - release
+      - token
+    RunnerStageOutput:
+      example:
+        access_token: access_token
+        stage:
+          workflow_id: 1
+          parent_group_id: 7
+          limit_repo: 5
+          error: error
+          type: type
+          number: 2
+          limit: 5
+          variant: variant
+          id: 1
+          needs: ""
+          on_failure: true
+          stopped: 4
+          os: os
+          created: 0
+          kernel: kernel
+          kind: kind
+          on_success: true
+          started: 2
+          yaml_provider: unknown
+          version: 1
+          errignore: true
+          labels:
+          - labels
+          - labels
+          machine: machine
+          parent_id: 9
+          repo_id: 3
+          yaml_resolved: yaml_resolved
+          exit_code: 6
+          name: name
+          arch: arch
+          updated: 7
+          status: pending
+      properties:
+        access_token:
+          type: string
+        stage:
+          $ref: "#/components/schemas/StageModel"
+      required:
+      - access_token
+    RunnerStatus:
+      enum:
+      - offline
+      - online
+      - idle
+      type: string
     SecuritySettings:
       example:
         secret_scanning_enabled: true
@@ -21162,6 +25252,10 @@ components:
           type: integer
       required:
       - access_token
+    Slice:
+      items:
+        type: string
+      type: array
     SseType:
       enum:
       - noop
@@ -21189,7 +25283,8 @@ components:
         type: type
         errignore: true
         labels:
-          key: labels
+        - labels
+        - labels
         number: 5
         machine: machine
         yaml_resolved: yaml_resolved
@@ -21214,8 +25309,9 @@ components:
         kind:
           type: string
         labels:
-          additionalProperties:
+          items:
             type: string
+          type: array
         limit:
           format: int64
           type: integer
@@ -21304,7 +25400,8 @@ components:
         version: 1
         errignore: true
         labels:
-          key: labels
+        - labels
+        - labels
         machine: machine
         parent_id: 9
         repo_id: 3
@@ -21335,8 +25432,9 @@ components:
         kind:
           type: string
         labels:
-          additionalProperties:
+          items:
             type: string
+          type: array
         limit:
           format: int64
           type: integer
@@ -21448,7 +25546,8 @@ components:
           version: 1
           errignore: true
           labels:
-            key: labels
+          - labels
+          - labels
           machine: machine
           parent_id: 9
           repo_id: 3
@@ -21724,6 +25823,9 @@ components:
       - target
     TokenCreateInput:
       example:
+        permissions:
+        - group_view
+        - group_view
         lifetime_ms: 0
         name: name
       properties:
@@ -21733,6 +25835,10 @@ components:
           type: integer
         name:
           type: string
+        permissions:
+          items:
+            $ref: "#/components/schemas/Permission"
+          type: array
       required:
       - name
     TokenCreateOutput:
@@ -21740,12 +25846,15 @@ components:
         access_token: access_token
         expires_at: 0
         model:
-          expires_at: 6
-          user_id: 5
+          expires_at: 1
+          user_id: 2
+          permissions:
+          - group_view
+          - group_view
           name: name
-          id: 1
+          id: 5
           type: session
-          created_by: 0
+          created_by: 6
           issued_at: 5
       properties:
         access_token:
@@ -21761,12 +25870,15 @@ components:
       - model
     TokenModel:
       example:
-        expires_at: 6
-        user_id: 5
+        expires_at: 1
+        user_id: 2
+        permissions:
+        - group_view
+        - group_view
         name: name
-        id: 1
+        id: 5
         type: session
-        created_by: 0
+        created_by: 6
         issued_at: 5
       properties:
         created_by:
@@ -21784,6 +25896,10 @@ components:
           type: integer
         name:
           type: string
+        permissions:
+          items:
+            $ref: "#/components/schemas/Permission"
+          type: array
         type:
           $ref: "#/components/schemas/TokenType"
         user_id:
@@ -21796,12 +25912,17 @@ components:
       - name
       - type
       - user_id
+    TokenPermissions:
+      items:
+        $ref: "#/components/schemas/Permission"
+      type: array
     TokenType:
       enum:
       - session
       - two_factor
       - pat
       - sat
+      - runner
       type: string
     TriggerEvent:
       enum:
@@ -21864,6 +25985,11 @@ components:
       required:
       - token
     UserCreateInput:
+      example:
+        password: password
+        name: name
+        display_name: display_name
+        email: email
       properties:
         display_name:
           nullable: true
@@ -22018,7 +26144,6 @@ components:
       enum:
       - user
       - service_account
-      - service
       type: string
     Value: {}
     VariableCreateInput:
@@ -22679,7 +26804,8 @@ components:
             version: 1
             errignore: true
             labels:
-              key: labels
+            - labels
+            - labels
             machine: machine
             parent_id: 9
             repo_id: 3
@@ -22747,7 +26873,8 @@ components:
             version: 1
             errignore: true
             labels:
-              key: labels
+            - labels
+            - labels
             machine: machine
             parent_id: 9
             repo_id: 3

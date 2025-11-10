@@ -18,8 +18,6 @@ pub enum UserType {
     User,
     #[serde(rename = "service_account")]
     ServiceAccount,
-    #[serde(rename = "service")]
-    Service,
 
 }
 
@@ -28,7 +26,6 @@ impl std::fmt::Display for UserType {
         match self {
             Self::User => write!(f, "user"),
             Self::ServiceAccount => write!(f, "service_account"),
-            Self::Service => write!(f, "service"),
         }
     }
 }

@@ -8,10 +8,12 @@ docs/ActionModel.md
 docs/ActionUpdateInput.md
 docs/ActionWorkflow.md
 docs/ActionsApi.md
+docs/AdminApi.md
 docs/AdminPatchInput.md
 docs/AdminStats.md
 docs/ArchiveAttribute.md
 docs/BlamePart.md
+docs/BootstrapApi.md
 docs/BootstrapMetadata.md
 docs/BranchCreateInput.md
 docs/BranchRenameInput.md
@@ -41,6 +43,7 @@ docs/CommitWithPathRenameDetails.md
 docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
+docs/ConnectorsApi.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -144,6 +147,8 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
+docs/RegisterScope.md
+docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
 docs/ReleaseModel.md
@@ -190,6 +195,13 @@ docs/RuleState.md
 docs/RuleType.md
 docs/RuleViolation.md
 docs/RulesApi.md
+docs/RunnerCreator.md
+docs/RunnerModel.md
+docs/RunnerPatchInput.md
+docs/RunnerPostInput.md
+docs/RunnerStageOutput.md
+docs/RunnerStatus.md
+docs/RunnersApi.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
@@ -247,7 +259,10 @@ docs/YamlProvider.md
 git_push.sh
 src/apis/accounts_api.rs
 src/apis/actions_api.rs
+src/apis/admin_api.rs
+src/apis/bootstrap_api.rs
 src/apis/configuration.rs
+src/apis/connectors_api.rs
 src/apis/groups_api.rs
 src/apis/keyword_search_api.rs
 src/apis/mod.rs
@@ -256,6 +271,7 @@ src/apis/release_upload_api.rs
 src/apis/repository_api.rs
 src/apis/resources_api.rs
 src/apis/rules_api.rs
+src/apis/runners_api.rs
 src/apis/service_accounts_api.rs
 src/apis/status_check_api.rs
 src/apis/system_api.rs
@@ -401,6 +417,8 @@ src/models/pullreq_update_input.rs
 src/models/pullreq_with_diff_stats.rs
 src/models/query_option.rs
 src/models/register_input.rs
+src/models/register_scope.rs
+src/models/register_token_model.rs
 src/models/release_create_input.rs
 src/models/release_creator.rs
 src/models/release_model.rs
@@ -443,6 +461,12 @@ src/models/rule_sort.rs
 src/models/rule_state.rs
 src/models/rule_type.rs
 src/models/rule_violation.rs
+src/models/runner_creator.rs
+src/models/runner_model.rs
+src/models/runner_patch_input.rs
+src/models/runner_post_input.rs
+src/models/runner_stage_output.rs
+src/models/runner_status.rs
 src/models/security_settings.rs
 src/models/service_account_create_input.rs
 src/models/service_account_token_output.rs

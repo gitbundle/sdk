@@ -4,10 +4,16 @@ All URIs are relative to */api/v3*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|[**deleteGroupsRunner**](#deletegroupsrunner) | **DELETE** /groups/{group_ref}/+/runners/{runner_uuid} | |
 |[**deleteMember**](#deletemember) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | |
 |[**deleteVariable**](#deletevariable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | |
 |[**getConnectors**](#getconnectors) | **GET** /groups/{group_ref}/+/connectors | |
+|[**getEvents**](#getevents) | **GET** /groups/{group_ref}/+/events | |
 |[**getGroup**](#getgroup) | **GET** /groups/{group_ref}/+ | |
+|[**getGroupsResetedRunnerRegisterToken**](#getgroupsresetedrunnerregistertoken) | **GET** /groups/{group_ref}/+/runners/register_token/reseted | |
+|[**getGroupsRunner**](#getgroupsrunner) | **GET** /groups/{group_ref}/+/runners/{runner_uuid} | |
+|[**getGroupsRunnerRegisterToken**](#getgroupsrunnerregistertoken) | **GET** /groups/{group_ref}/+/runners/register_token | |
+|[**getGroupsRunners**](#getgroupsrunners) | **GET** /groups/{group_ref}/+/runners | |
 |[**getMembers**](#getmembers) | **GET** /groups/{group_ref}/+/members | |
 |[**getRepos**](#getrepos) | **GET** /groups/{group_ref}/+/repos | |
 |[**getServiceAccounts**](#getserviceaccounts) | **GET** /groups/{group_ref}/+/service-accounts | |
@@ -15,6 +21,7 @@ All URIs are relative to */api/v3*
 |[**getVariable**](#getvariable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | |
 |[**getVariables**](#getvariables) | **GET** /groups/{group_ref}/+/variables | |
 |[**patchGroup**](#patchgroup) | **PATCH** /groups/{group_ref}/+ | |
+|[**patchGroupsRunner**](#patchgroupsrunner) | **PATCH** /groups/{group_ref}/+/runners/{runner_uuid} | |
 |[**patchMember**](#patchmember) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | |
 |[**patchVariable**](#patchvariable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | |
 |[**postGroup**](#postgroup) | **POST** /groups | |
@@ -26,6 +33,66 @@ All URIs are relative to */api/v3*
 |[**postRestore**](#postrestore) | **POST** /groups/{group_ref}/+/restore | |
 |[**postVariable**](#postvariable) | **POST** /groups/{group_ref}/+/variables | |
 |[**softDelete**](#softdelete) | **DELETE** /groups/{group_ref}/+ | |
+
+# **deleteGroupsRunner**
+> deleteGroupsRunner()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+
+const { status, data } = await apiInstance.deleteGroupsRunner(
+    groupRef,
+    runnerUuid
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Group delete runner |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteMember**
 > deleteMember()
@@ -213,6 +280,63 @@ const { status, data } = await apiInstance.getConnectors(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getEvents**
+> Array<number> getEvents()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+
+const { status, data } = await apiInstance.getEvents(
+    groupRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+
+
+### Return type
+
+**Array<number>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/event-stream, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Fetch group events |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getGroup**
 > GroupModel getGroup()
 
@@ -260,6 +384,249 @@ const { status, data } = await apiInstance.getGroup(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Find group |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGroupsResetedRunnerRegisterToken**
+> RegisterTokenModel getGroupsResetedRunnerRegisterToken()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+
+const { status, data } = await apiInstance.getGroupsResetedRunnerRegisterToken(
+    groupRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+
+
+### Return type
+
+**RegisterTokenModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Group get runner registration token |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGroupsRunner**
+> RunnerModel getGroupsRunner()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getGroupsRunner(
+    groupRef,
+    runnerUuid
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**RunnerModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Group get runner |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGroupsRunnerRegisterToken**
+> RegisterTokenModel getGroupsRunnerRegisterToken()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+
+const { status, data } = await apiInstance.getGroupsRunnerRegisterToken(
+    groupRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+
+
+### Return type
+
+**RegisterTokenModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Group get runner registration token |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getGroupsRunners**
+> Array<RunnerCreator> getGroupsRunners()
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let page: number; // (optional) (default to undefined)
+let size: number; // (optional) (default to undefined)
+let query: string; // (optional) (default to undefined)
+let order: OrderOption; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getGroupsRunners(
+    groupRef,
+    page,
+    size,
+    query,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **page** | [**number**] |  | (optional) defaults to undefined|
+| **size** | [**number**] |  | (optional) defaults to undefined|
+| **query** | [**string**] |  | (optional) defaults to undefined|
+| **order** | **OrderOption** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**Array<RunnerCreator>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Group get runners |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -744,6 +1111,70 @@ const { status, data } = await apiInstance.patchGroup(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Patch a group |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchGroupsRunner**
+> RunnerModel patchGroupsRunner(runnerPatchInput)
+
+
+### Example
+
+```typescript
+import {
+    GroupsApi,
+    Configuration,
+    RunnerPatchInput
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new GroupsApi(configuration);
+
+let groupRef: string; //Group ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+let runnerPatchInput: RunnerPatchInput; //
+
+const { status, data } = await apiInstance.patchGroupsRunner(
+    groupRef,
+    runnerUuid,
+    runnerPatchInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **runnerPatchInput** | **RunnerPatchInput**|  | |
+| **groupRef** | [**string**] | Group ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**RunnerModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Group patch runner |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |

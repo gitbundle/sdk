@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **IssuedAt** | **int64** |  | 
 **Name** | **string** |  | 
+**Permissions** | Pointer to [**[]Permission**](Permission.md) |  | [optional] 
 **Type** | [**TokenType**](TokenType.md) |  | 
 **UserId** | **int64** |  | 
 
@@ -145,6 +146,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPermissions
+
+`func (o *TokenModel) GetPermissions() []Permission`
+
+GetPermissions returns the Permissions field if non-nil, zero value otherwise.
+
+### GetPermissionsOk
+
+`func (o *TokenModel) GetPermissionsOk() (*[]Permission, bool)`
+
+GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPermissions
+
+`func (o *TokenModel) SetPermissions(v []Permission)`
+
+SetPermissions sets Permissions field to given value.
+
+### HasPermissions
+
+`func (o *TokenModel) HasPermissions() bool`
+
+HasPermissions returns a boolean if a field has been set.
 
 ### GetType
 

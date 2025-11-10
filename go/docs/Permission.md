@@ -73,6 +73,16 @@
 
 * `TEMPLATE_ACCESS` (value: `"template_access"`)
 
+* `RUNNER_VIEW` (value: `"runner_view"`)
+
+* `RUNNER_ADD` (value: `"runner_add"`)
+
+* `RUNNER_DELETE` (value: `"runner_delete"`)
+
+* `RUNNER_EDIT` (value: `"runner_edit"`)
+
+* `RUNNER_ACCESS` (value: `"runner_access"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

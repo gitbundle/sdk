@@ -4,10 +4,16 @@ All URIs are relative to */api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_groups_runner**](GroupsApi.md#delete_groups_runner) | **DELETE** /groups/{group_ref}/+/runners/{runner_uuid} | 
 [**delete_member**](GroupsApi.md#delete_member) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | 
 [**delete_variable**](GroupsApi.md#delete_variable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**get_connectors**](GroupsApi.md#get_connectors) | **GET** /groups/{group_ref}/+/connectors | 
+[**get_events**](GroupsApi.md#get_events) | **GET** /groups/{group_ref}/+/events | 
 [**get_group**](GroupsApi.md#get_group) | **GET** /groups/{group_ref}/+ | 
+[**get_groups_reseted_runner_register_token**](GroupsApi.md#get_groups_reseted_runner_register_token) | **GET** /groups/{group_ref}/+/runners/register_token/reseted | 
+[**get_groups_runner**](GroupsApi.md#get_groups_runner) | **GET** /groups/{group_ref}/+/runners/{runner_uuid} | 
+[**get_groups_runner_register_token**](GroupsApi.md#get_groups_runner_register_token) | **GET** /groups/{group_ref}/+/runners/register_token | 
+[**get_groups_runners**](GroupsApi.md#get_groups_runners) | **GET** /groups/{group_ref}/+/runners | 
 [**get_members**](GroupsApi.md#get_members) | **GET** /groups/{group_ref}/+/members | 
 [**get_repos**](GroupsApi.md#get_repos) | **GET** /groups/{group_ref}/+/repos | 
 [**get_service_accounts**](GroupsApi.md#get_service_accounts) | **GET** /groups/{group_ref}/+/service-accounts | 
@@ -15,6 +21,7 @@ Method | HTTP request | Description
 [**get_variable**](GroupsApi.md#get_variable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**get_variables**](GroupsApi.md#get_variables) | **GET** /groups/{group_ref}/+/variables | 
 [**patch_group**](GroupsApi.md#patch_group) | **PATCH** /groups/{group_ref}/+ | 
+[**patch_groups_runner**](GroupsApi.md#patch_groups_runner) | **PATCH** /groups/{group_ref}/+/runners/{runner_uuid} | 
 [**patch_member**](GroupsApi.md#patch_member) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | 
 [**patch_variable**](GroupsApi.md#patch_variable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**post_group**](GroupsApi.md#post_group) | **POST** /groups | 
@@ -27,6 +34,35 @@ Method | HTTP request | Description
 [**post_variable**](GroupsApi.md#post_variable) | **POST** /groups/{group_ref}/+/variables | 
 [**soft_delete**](GroupsApi.md#soft_delete) | **DELETE** /groups/{group_ref}/+ | 
 
+
+
+## delete_groups_runner
+
+> delete_groups_runner(group_ref, runner_uuid)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**runner_uuid** | **String** |  | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## delete_member
@@ -118,6 +154,34 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_events
+
+> Vec<i32> get_events(group_ref)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+
+### Return type
+
+**Vec<i32>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/event-stream, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## get_group
 
 > models::GroupModel get_group(group_ref)
@@ -133,6 +197,123 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::GroupModel**](GroupModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_reseted_runner_register_token
+
+> models::RegisterTokenModel get_groups_reseted_runner_register_token(group_ref)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+
+### Return type
+
+[**models::RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_runner
+
+> models::RunnerModel get_groups_runner(group_ref, runner_uuid)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**runner_uuid** | **String** |  | [required] |
+
+### Return type
+
+[**models::RunnerModel**](RunnerModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_runner_register_token
+
+> models::RegisterTokenModel get_groups_runner_register_token(group_ref)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+
+### Return type
+
+[**models::RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_runners
+
+> Vec<models::RunnerCreator> get_groups_runners(group_ref, page, size, query, order)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**page** | Option<**i64**> |  |  |
+**size** | Option<**i64**> |  |  |
+**query** | Option<**String**> |  |  |
+**order** | Option<[**OrderOption**](.md)> |  |  |
+
+### Return type
+
+[**Vec<models::RunnerCreator>**](RunnerCreator.md)
 
 ### Authorization
 
@@ -357,6 +538,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::GroupModel**](GroupModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## patch_groups_runner
+
+> models::RunnerModel patch_groups_runner(group_ref, runner_uuid, runner_patch_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**runner_uuid** | **String** |  | [required] |
+**runner_patch_input** | [**RunnerPatchInput**](RunnerPatchInput.md) |  | [required] |
+
+### Return type
+
+[**models::RunnerModel**](RunnerModel.md)
 
 ### Authorization
 

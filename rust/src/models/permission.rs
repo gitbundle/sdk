@@ -85,6 +85,16 @@ pub enum Permission {
     TemplateDelete,
     #[serde(rename = "template_access")]
     TemplateAccess,
+    #[serde(rename = "runner_view")]
+    RunnerView,
+    #[serde(rename = "runner_add")]
+    RunnerAdd,
+    #[serde(rename = "runner_delete")]
+    RunnerDelete,
+    #[serde(rename = "runner_edit")]
+    RunnerEdit,
+    #[serde(rename = "runner_access")]
+    RunnerAccess,
 
 }
 
@@ -126,6 +136,11 @@ impl std::fmt::Display for Permission {
             Self::TemplateEdit => write!(f, "template_edit"),
             Self::TemplateDelete => write!(f, "template_delete"),
             Self::TemplateAccess => write!(f, "template_access"),
+            Self::RunnerView => write!(f, "runner_view"),
+            Self::RunnerAdd => write!(f, "runner_add"),
+            Self::RunnerDelete => write!(f, "runner_delete"),
+            Self::RunnerEdit => write!(f, "runner_edit"),
+            Self::RunnerAccess => write!(f, "runner_access"),
         }
     }
 }

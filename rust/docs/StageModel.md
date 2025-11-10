@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **i64** |  | 
 **kernel** | **String** |  | 
 **kind** | **String** |  | 
-**labels** | **std::collections::HashMap<String, String>** |  | 
+**labels** | **Vec<String>** |  | 
 **limit** | **i64** |  | 
 **limit_repo** | **i64** |  | 
 **machine** | **String** |  | 

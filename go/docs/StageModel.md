@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **Kernel** | **string** |  | 
 **Kind** | **string** |  | 
-**Labels** | **map[string]string** |  | 
+**Labels** | **[]string** |  | 
 **Limit** | **int64** |  | 
 **LimitRepo** | **int64** |  | 
 **Machine** | **string** |  | 
@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 
 ### NewStageModel
 
-`func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
+`func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
 
 NewStageModel instantiates a new StageModel object
 This constructor will assign default values to properties that have it defined,
@@ -217,20 +217,20 @@ SetKind sets Kind field to given value.
 
 ### GetLabels
 
-`func (o *StageModel) GetLabels() map[string]string`
+`func (o *StageModel) GetLabels() []string`
 
 GetLabels returns the Labels field if non-nil, zero value otherwise.
 
 ### GetLabelsOk
 
-`func (o *StageModel) GetLabelsOk() (*map[string]string, bool)`
+`func (o *StageModel) GetLabelsOk() (*[]string, bool)`
 
 GetLabelsOk returns a tuple with the Labels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLabels
 
-`func (o *StageModel) SetLabels(v map[string]string)`
+`func (o *StageModel) SetLabels(v []string)`
 
 SetLabels sets Labels field to given value.
 

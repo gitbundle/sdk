@@ -27,7 +27,7 @@ type StageCreateInput struct {
 	ExitCode int64 `json:"exit_code"`
 	Kernel string `json:"kernel"`
 	Kind string `json:"kind"`
-	Labels map[string]string `json:"labels"`
+	Labels []string `json:"labels"`
 	Limit int64 `json:"limit"`
 	LimitRepo int64 `json:"limit_repo"`
 	Machine string `json:"machine"`
@@ -53,7 +53,7 @@ type _StageCreateInput StageCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string) *StageCreateInput {
+func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string) *StageCreateInput {
 	this := StageCreateInput{}
 	this.Arch = arch
 	this.Errignore = errignore
@@ -233,9 +233,9 @@ func (o *StageCreateInput) SetKind(v string) {
 }
 
 // GetLabels returns the Labels field value
-func (o *StageCreateInput) GetLabels() map[string]string {
+func (o *StageCreateInput) GetLabels() []string {
 	if o == nil {
-		var ret map[string]string
+		var ret []string
 		return ret
 	}
 
@@ -244,15 +244,15 @@ func (o *StageCreateInput) GetLabels() map[string]string {
 
 // GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
-func (o *StageCreateInput) GetLabelsOk() (map[string]string, bool) {
+func (o *StageCreateInput) GetLabelsOk() ([]string, bool) {
 	if o == nil {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.Labels, true
 }
 
 // SetLabels sets field value
-func (o *StageCreateInput) SetLabels(v map[string]string) {
+func (o *StageCreateInput) SetLabels(v []string) {
 	o.Labels = v
 }
 

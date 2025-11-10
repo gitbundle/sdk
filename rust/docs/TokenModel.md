@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **i64** |  | 
 **issued_at** | **i64** |  | 
 **name** | **String** |  | 
+**permissions** | Option<[**Vec<models::Permission>**](Permission.md)> |  | [optional]
 **r#type** | [**models::TokenType**](TokenType.md) |  | 
 **user_id** | **i64** |  | 
 

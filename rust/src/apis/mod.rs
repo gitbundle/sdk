@@ -113,6 +113,9 @@ impl From<&str> for ContentType {
 
 pub mod accounts_api;
 pub mod actions_api;
+pub mod admin_api;
+pub mod bootstrap_api;
+pub mod connectors_api;
 pub mod groups_api;
 pub mod keyword_search_api;
 pub mod pull_request_api;
@@ -120,6 +123,7 @@ pub mod release_upload_api;
 pub mod repository_api;
 pub mod resources_api;
 pub mod rules_api;
+pub mod runners_api;
 pub mod service_accounts_api;
 pub mod status_check_api;
 pub mod system_api;

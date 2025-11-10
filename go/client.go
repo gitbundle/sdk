@@ -53,6 +53,12 @@ type APIClient struct {
 
 	ActionsAPI *ActionsAPIService
 
+	AdminAPI *AdminAPIService
+
+	BootstrapAPI *BootstrapAPIService
+
+	ConnectorsAPI *ConnectorsAPIService
+
 	GroupsAPI *GroupsAPIService
 
 	KeywordSearchAPI *KeywordSearchAPIService
@@ -66,6 +72,8 @@ type APIClient struct {
 	ResourcesAPI *ResourcesAPIService
 
 	RulesAPI *RulesAPIService
+
+	RunnersAPI *RunnersAPIService
 
 	ServiceAccountsAPI *ServiceAccountsAPIService
 
@@ -98,6 +106,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.ActionsAPI = (*ActionsAPIService)(&c.common)
+	c.AdminAPI = (*AdminAPIService)(&c.common)
+	c.BootstrapAPI = (*BootstrapAPIService)(&c.common)
+	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
 	c.GroupsAPI = (*GroupsAPIService)(&c.common)
 	c.KeywordSearchAPI = (*KeywordSearchAPIService)(&c.common)
 	c.PullRequestAPI = (*PullRequestAPIService)(&c.common)
@@ -105,6 +116,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RepositoryAPI = (*RepositoryAPIService)(&c.common)
 	c.ResourcesAPI = (*ResourcesAPIService)(&c.common)
 	c.RulesAPI = (*RulesAPIService)(&c.common)
+	c.RunnersAPI = (*RunnersAPIService)(&c.common)
 	c.ServiceAccountsAPI = (*ServiceAccountsAPIService)(&c.common)
 	c.StatusCheckAPI = (*StatusCheckAPIService)(&c.common)
 	c.SystemAPI = (*SystemAPIService)(&c.common)

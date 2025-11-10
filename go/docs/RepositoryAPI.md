@@ -8,10 +8,12 @@ Method | HTTP request | Description
 [**CommitsCalculateDivergence**](RepositoryAPI.md#CommitsCalculateDivergence) | **Post** /repos/{repo_ref}/+/commits/calculate-divergence | 
 [**DeleteBranch**](RepositoryAPI.md#DeleteBranch) | **Delete** /repos/{repo_ref}/+/branches/{branch_name} | 
 [**DeleteRelease**](RepositoryAPI.md#DeleteRelease) | **Delete** /repos/{repo_ref}/+/releases/{tag_ref} | 
+[**DeleteRepositoryRunner**](RepositoryAPI.md#DeleteRepositoryRunner) | **Delete** /repos/{repo_ref}/+/runners/{runner_uuid} | 
 [**DeleteRepositoryVariable**](RepositoryAPI.md#DeleteRepositoryVariable) | **Delete** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 [**DeleteTag**](RepositoryAPI.md#DeleteTag) | **Delete** /repos/{repo_ref}/+/tags/{tag_name} | 
 [**GeneralUpdate**](RepositoryAPI.md#GeneralUpdate) | **Patch** /repos/{repo_ref}/+/settings/general | 
 [**GetArchive**](RepositoryAPI.md#GetArchive) | **Get** /repos/{repo_ref}/+/archive/{archive_ref} | 
+[**GetBlame**](RepositoryAPI.md#GetBlame) | **Get** /repos/{repo_ref}/+/blame/{path} | 
 [**GetBranch**](RepositoryAPI.md#GetBranch) | **Get** /repos/{repo_ref}/+/branches/{branch_name} | 
 [**GetBranches**](RepositoryAPI.md#GetBranches) | **Get** /repos/{repo_ref}/+/branches | 
 [**GetCodeownersValidate**](RepositoryAPI.md#GetCodeownersValidate) | **Get** /repos/{repo_ref}/+/codeowners/validate | 
@@ -19,15 +21,23 @@ Method | HTTP request | Description
 [**GetCommitDiff**](RepositoryAPI.md#GetCommitDiff) | **Get** /repos/{repo_ref}/+/commits/{commit_sha}/diff | 
 [**GetCommitFileContent**](RepositoryAPI.md#GetCommitFileContent) | **Get** /repos/{repo_ref}/+/commits/{commit_sha}/content | 
 [**GetCommits**](RepositoryAPI.md#GetCommits) | **Get** /repos/{repo_ref}/+/commits | 
+[**GetContent**](RepositoryAPI.md#GetContent) | **Get** /repos/{repo_ref}/+/content/{path} | 
 [**GetContributors**](RepositoryAPI.md#GetContributors) | **Get** /repos/{repo_ref}/+/contributors | 
+[**GetDiffStats**](RepositoryAPI.md#GetDiffStats) | **Get** /repos/{repo_ref}/+/diff-stats/{path} | 
+[**GetDiffs**](RepositoryAPI.md#GetDiffs) | **Get** /repos/{repo_ref}/+/diff/{path} | 
 [**GetForks**](RepositoryAPI.md#GetForks) | **Get** /repos/{repo_ref}/+/forks | 
 [**GetGeneral**](RepositoryAPI.md#GetGeneral) | **Get** /repos/{repo_ref}/+/settings/general | 
 [**GetHasStarred**](RepositoryAPI.md#GetHasStarred) | **Get** /repos/{repo_ref}/+/stars/has_starred | 
 [**GetImportProgress**](RepositoryAPI.md#GetImportProgress) | **Get** /repos/{repo_ref}/+/import-progress | 
+[**GetPaths**](RepositoryAPI.md#GetPaths) | **Get** /repos/{repo_ref}/+/paths | 
 [**GetRaw**](RepositoryAPI.md#GetRaw) | **Get** /repos/{repo_ref}/+/raw/{path} | 
 [**GetRelease**](RepositoryAPI.md#GetRelease) | **Get** /repos/{repo_ref}/+/releases/{tag_ref} | 
 [**GetReleases**](RepositoryAPI.md#GetReleases) | **Get** /repos/{repo_ref}/+/releases | 
 [**GetRepo**](RepositoryAPI.md#GetRepo) | **Get** /repos/{repo_ref}/+ | 
+[**GetRepositoryResetedRunnerRegisterToken**](RepositoryAPI.md#GetRepositoryResetedRunnerRegisterToken) | **Get** /repos/{repo_ref}/+/runners/register_token/reseted | 
+[**GetRepositoryRunner**](RepositoryAPI.md#GetRepositoryRunner) | **Get** /repos/{repo_ref}/+/runners/{runner_uuid} | 
+[**GetRepositoryRunnerRegisterToken**](RepositoryAPI.md#GetRepositoryRunnerRegisterToken) | **Get** /repos/{repo_ref}/+/runners/register_token | 
+[**GetRepositoryRunners**](RepositoryAPI.md#GetRepositoryRunners) | **Get** /repos/{repo_ref}/+/runners | 
 [**GetRepositoryServiceAccounts**](RepositoryAPI.md#GetRepositoryServiceAccounts) | **Get** /repos/{repo_ref}/+/service-accounts | 
 [**GetRepositoryStats**](RepositoryAPI.md#GetRepositoryStats) | **Get** /repos/{repo_ref}/+/stats | 
 [**GetRepositoryVariable**](RepositoryAPI.md#GetRepositoryVariable) | **Get** /repos/{repo_ref}/+/variables/{variable_identifier} | 
@@ -36,12 +46,15 @@ Method | HTTP request | Description
 [**GetStars**](RepositoryAPI.md#GetStars) | **Get** /repos/{repo_ref}/+/stars | 
 [**GetTags**](RepositoryAPI.md#GetTags) | **Get** /repos/{repo_ref}/+/tags | 
 [**PatchRepo**](RepositoryAPI.md#PatchRepo) | **Patch** /repos/{repo_ref}/+ | 
+[**PatchRepositoryRunner**](RepositoryAPI.md#PatchRepositoryRunner) | **Patch** /repos/{repo_ref}/+/runners/{runner_uuid} | 
 [**PatchRepositoryVariable**](RepositoryAPI.md#PatchRepositoryVariable) | **Patch** /repos/{repo_ref}/+/variables/{variable_identifier} | 
 [**PatchSecurity**](RepositoryAPI.md#PatchSecurity) | **Patch** /repos/{repo_ref}/+/settings/security | 
 [**PatchStars**](RepositoryAPI.md#PatchStars) | **Patch** /repos/{repo_ref}/+/stars | 
 [**PostBranch**](RepositoryAPI.md#PostBranch) | **Post** /repos/{repo_ref}/+/branches | 
 [**PostDefaultBranch**](RepositoryAPI.md#PostDefaultBranch) | **Post** /repos/{repo_ref}/+/default-branch | 
+[**PostDiffs**](RepositoryAPI.md#PostDiffs) | **Post** /repos/{repo_ref}/+/diff/{path} | 
 [**PostMergeCheck**](RepositoryAPI.md#PostMergeCheck) | **Post** /repos/{repo_ref}/+/merge-check/{path} | 
+[**PostPathDetails**](RepositoryAPI.md#PostPathDetails) | **Post** /repos/{repo_ref}/+/path-details | 
 [**PostRelease**](RepositoryAPI.md#PostRelease) | **Post** /repos/{repo_ref}/+/releases | 
 [**PostRepo**](RepositoryAPI.md#PostRepo) | **Post** /repos | 
 [**PostRepositoryImport**](RepositoryAPI.md#PostRepositoryImport) | **Post** /repos/import | 
@@ -318,6 +331,75 @@ Name | Type | Description  | Notes
 
 
  **bypassRules** | **bool** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteRepositoryRunner
+
+> DeleteRepositoryRunner(ctx, repoRef, runnerUuid).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	runnerUuid := "runnerUuid_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.RepositoryAPI.DeleteRepositoryRunner(context.Background(), repoRef, runnerUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.DeleteRepositoryRunner``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**runnerUuid** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteRepositoryRunnerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 
 ### Return type
 
@@ -622,6 +704,83 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/octet-stream, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBlame
+
+> []BlamePart GetBlame(ctx, repoRef, path).GitRef(gitRef).LineFrom(lineFrom).LineTo(lineTo).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	path := "path_example" // string | 
+	gitRef := "gitRef_example" // string | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} (optional)
+	lineFrom := int64(789) // int64 |  (optional)
+	lineTo := int64(789) // int64 |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetBlame(context.Background(), repoRef, path).GitRef(gitRef).LineFrom(lineFrom).LineTo(lineTo).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetBlame``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBlame`: []BlamePart
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetBlame`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**path** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBlameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **gitRef** | **string** | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} | 
+ **lineFrom** | **int64** |  | 
+ **lineTo** | **int64** |  | 
+
+### Return type
+
+[**[]BlamePart**](BlamePart.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1152,6 +1311,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetContent
+
+> RepoContentOutput GetContent(ctx, repoRef, path).GitRef(gitRef).IncludeCommit(includeCommit).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	path := "path_example" // string | 
+	gitRef := "gitRef_example" // string |  (optional)
+	includeCommit := true // bool |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetContent(context.Background(), repoRef, path).GitRef(gitRef).IncludeCommit(includeCommit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetContent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetContent`: RepoContentOutput
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetContent`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**path** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetContentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **gitRef** | **string** |  | 
+ **includeCommit** | **bool** |  | 
+
+### Return type
+
+[**RepoContentOutput**](RepoContentOutput.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetContributors
 
 > []Contributor GetContributors(ctx, repoRef).GitRef(gitRef).Since(since).Until(until).Execute()
@@ -1220,6 +1454,148 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDiffStats
+
+> DiffStats GetDiffStats(ctx, repoRef, path).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	path := "path_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetDiffStats(context.Background(), repoRef, path).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetDiffStats``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDiffStats`: DiffStats
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetDiffStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**path** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDiffStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DiffStats**](DiffStats.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDiffs
+
+> string GetDiffs(ctx, repoRef, path).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	path := "path_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetDiffs(context.Background(), repoRef, path).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetDiffs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDiffs`: string
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetDiffs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**path** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDiffsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1493,6 +1869,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobProgress**](JobProgress.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPaths
+
+> RepoPathsOutput GetPaths(ctx, repoRef).GitRef(gitRef).IncludeDirectories(includeDirectories).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	gitRef := "gitRef_example" // string |  (optional)
+	includeDirectories := true // bool |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetPaths(context.Background(), repoRef).GitRef(gitRef).IncludeDirectories(includeDirectories).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetPaths``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetPaths`: RepoPathsOutput
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetPaths`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPathsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **gitRef** | **string** |  | 
+ **includeDirectories** | **bool** |  | 
+
+### Return type
+
+[**RepoPathsOutput**](RepoPathsOutput.md)
 
 ### Authorization
 
@@ -1783,6 +2231,289 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RepoParent**](RepoParent.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRepositoryResetedRunnerRegisterToken
+
+> RegisterTokenModel GetRepositoryResetedRunnerRegisterToken(ctx, repoRef).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetRepositoryResetedRunnerRegisterToken(context.Background(), repoRef).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetRepositoryResetedRunnerRegisterToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRepositoryResetedRunnerRegisterToken`: RegisterTokenModel
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetRepositoryResetedRunnerRegisterToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRepositoryResetedRunnerRegisterTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRepositoryRunner
+
+> RunnerModel GetRepositoryRunner(ctx, repoRef, runnerUuid).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	runnerUuid := "runnerUuid_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetRepositoryRunner(context.Background(), repoRef, runnerUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetRepositoryRunner``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRepositoryRunner`: RunnerModel
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetRepositoryRunner`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**runnerUuid** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRepositoryRunnerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**RunnerModel**](RunnerModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRepositoryRunnerRegisterToken
+
+> RegisterTokenModel GetRepositoryRunnerRegisterToken(ctx, repoRef).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetRepositoryRunnerRegisterToken(context.Background(), repoRef).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetRepositoryRunnerRegisterToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRepositoryRunnerRegisterToken`: RegisterTokenModel
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetRepositoryRunnerRegisterToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRepositoryRunnerRegisterTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRepositoryRunners
+
+> []RunnerCreator GetRepositoryRunners(ctx, repoRef).Page(page).Size(size).Query(query).Order(order).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	page := int64(789) // int64 |  (optional)
+	size := int64(789) // int64 |  (optional)
+	query := "query_example" // string |  (optional)
+	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.GetRepositoryRunners(context.Background(), repoRef).Page(page).Size(size).Query(query).Order(order).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetRepositoryRunners``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetRepositoryRunners`: []RunnerCreator
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.GetRepositoryRunners`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRepositoryRunnersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **page** | **int64** |  | 
+ **size** | **int64** |  | 
+ **query** | **string** |  | 
+ **order** | [**OrderOption**](OrderOption.md) |  | 
+
+### Return type
+
+[**[]RunnerCreator**](RunnerCreator.md)
 
 ### Authorization
 
@@ -2377,6 +3108,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PatchRepositoryRunner
+
+> RunnerModel PatchRepositoryRunner(ctx, repoRef, runnerUuid).RunnerPatchInput(runnerPatchInput).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	runnerUuid := "runnerUuid_example" // string | 
+	runnerPatchInput := *openapiclient.NewRunnerPatchInput("Description_example") // RunnerPatchInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.PatchRepositoryRunner(context.Background(), repoRef, runnerUuid).RunnerPatchInput(runnerPatchInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.PatchRepositoryRunner``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchRepositoryRunner`: RunnerModel
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.PatchRepositoryRunner`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**runnerUuid** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchRepositoryRunnerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **runnerPatchInput** | [**RunnerPatchInput**](RunnerPatchInput.md) |  | 
+
+### Return type
+
+[**RunnerModel**](RunnerModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PatchRepositoryVariable
 
 > VariableModel PatchRepositoryVariable(ctx, repoRef, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
@@ -2730,6 +3534,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PostDiffs
+
+> []int32 PostDiffs(ctx, repoRef, path2).Path(path).CommitDiffFile(commitDiffFile).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	path := "path_example" // string | 
+	path2 := "path_example" // string | 
+	commitDiffFile := []openapiclient.CommitDiffFile{*openapiclient.NewCommitDiffFile()} // []CommitDiffFile | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.PostDiffs(context.Background(), repoRef, path2).Path(path).CommitDiffFile(commitDiffFile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.PostDiffs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostDiffs`: []int32
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.PostDiffs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+**path2** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostDiffsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **path** | **string** |  | 
+
+ **commitDiffFile** | [**[]CommitDiffFile**](CommitDiffFile.md) |  | 
+
+### Return type
+
+**[]int32**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/octet-stream, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostMergeCheck
 
 > RepoMergeCheckOutput PostMergeCheck(ctx, repoRef, path).RepoMergeCheckInput(repoMergeCheckInput).Execute()
@@ -2788,6 +3667,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RepoMergeCheckOutput**](RepoMergeCheckOutput.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostPathDetails
+
+> []PathDetails PostPathDetails(ctx, repoRef).RequestBody(requestBody).GitRef(gitRef).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository ref
+	requestBody := []string{"Property_example"} // []string | 
+	gitRef := "gitRef_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RepositoryAPI.PostPathDetails(context.Background(), repoRef).RequestBody(requestBody).GitRef(gitRef).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.PostPathDetails``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostPathDetails`: []PathDetails
+	fmt.Fprintf(os.Stdout, "Response from `RepositoryAPI.PostPathDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostPathDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **requestBody** | **[]string** |  | 
+ **gitRef** | **string** |  | 
+
+### Return type
+
+[**[]PathDetails**](PathDetails.md)
 
 ### Authorization
 

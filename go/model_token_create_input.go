@@ -23,6 +23,7 @@ var _ MappedNullable = &TokenCreateInput{}
 type TokenCreateInput struct {
 	LifetimeMs NullableInt64 `json:"lifetime_ms,omitempty"`
 	Name string `json:"name"`
+	Permissions []Permission `json:"permissions,omitempty"`
 }
 
 type _TokenCreateInput TokenCreateInput
@@ -111,6 +112,38 @@ func (o *TokenCreateInput) SetName(v string) {
 	o.Name = v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *TokenCreateInput) GetPermissions() []Permission {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []Permission
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenCreateInput) GetPermissionsOk() ([]Permission, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *TokenCreateInput) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []Permission and assigns it to the Permissions field.
+func (o *TokenCreateInput) SetPermissions(v []Permission) {
+	o.Permissions = v
+}
+
 func (o TokenCreateInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -125,6 +158,9 @@ func (o TokenCreateInput) ToMap() (map[string]interface{}, error) {
 		toSerialize["lifetime_ms"] = o.LifetimeMs.Get()
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
 	return toSerialize, nil
 }
 

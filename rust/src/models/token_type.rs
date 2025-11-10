@@ -22,6 +22,8 @@ pub enum TokenType {
     Pat,
     #[serde(rename = "sat")]
     Sat,
+    #[serde(rename = "runner")]
+    Runner,
 
 }
 
@@ -32,6 +34,7 @@ impl std::fmt::Display for TokenType {
             Self::TwoFactor => write!(f, "two_factor"),
             Self::Pat => write!(f, "pat"),
             Self::Sat => write!(f, "sat"),
+            Self::Runner => write!(f, "runner"),
         }
     }
 }

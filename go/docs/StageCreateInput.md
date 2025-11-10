@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ExitCode** | **int64** |  | 
 **Kernel** | **string** |  | 
 **Kind** | **string** |  | 
-**Labels** | **map[string]string** |  | 
+**Labels** | **[]string** |  | 
 **Limit** | **int64** |  | 
 **LimitRepo** | **int64** |  | 
 **Machine** | **string** |  | 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewStageCreateInput
 
-`func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels map[string]string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string, ) *StageCreateInput`
+`func NewStageCreateInput(arch string, errignore bool, error_ string, exitCode int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, status CIStatus, type_ string, variant string, yamlProvider YamlProvider, yamlResolved string, ) *StageCreateInput`
 
 NewStageCreateInput instantiates a new StageCreateInput object
 This constructor will assign default values to properties that have it defined,
@@ -170,20 +170,20 @@ SetKind sets Kind field to given value.
 
 ### GetLabels
 
-`func (o *StageCreateInput) GetLabels() map[string]string`
+`func (o *StageCreateInput) GetLabels() []string`
 
 GetLabels returns the Labels field if non-nil, zero value otherwise.
 
 ### GetLabelsOk
 
-`func (o *StageCreateInput) GetLabelsOk() (*map[string]string, bool)`
+`func (o *StageCreateInput) GetLabelsOk() (*[]string, bool)`
 
 GetLabelsOk returns a tuple with the Labels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLabels
 
-`func (o *StageCreateInput) SetLabels(v map[string]string)`
+`func (o *StageCreateInput) SetLabels(v []string)`
 
 SetLabels sets Labels field to given value.
 

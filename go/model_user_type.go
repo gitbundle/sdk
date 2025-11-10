@@ -22,14 +22,12 @@ type UserType string
 const (
 	USERTYPE_USER UserType = "user"
 	USERTYPE_SERVICE_ACCOUNT UserType = "service_account"
-	USERTYPE_SERVICE UserType = "service"
 )
 
 // All allowed values of UserType enum
 var AllowedUserTypeEnumValues = []UserType{
 	"user",
 	"service_account",
-	"service",
 }
 
 func (v *UserType) UnmarshalJSON(src []byte) error {

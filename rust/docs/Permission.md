@@ -39,6 +39,11 @@
 | TemplateEdit | template_edit |
 | TemplateDelete | template_delete |
 | TemplateAccess | template_access |
+| RunnerView | runner_view |
+| RunnerAdd | runner_add |
+| RunnerDelete | runner_delete |
+| RunnerEdit | runner_edit |
+| RunnerAccess | runner_access |
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

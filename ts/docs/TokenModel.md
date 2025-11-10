@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **id** | **number** |  | [default to undefined]
 **issued_at** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
+**permissions** | [**Array&lt;Permission&gt;**](Permission.md) |  | [optional] [default to undefined]
 **type** | [**TokenType**](TokenType.md) |  | [default to undefined]
 **user_id** | **number** |  | [default to undefined]
 
@@ -24,6 +25,7 @@ const instance: TokenModel = {
     id,
     issued_at,
     name,
+    permissions,
     type,
     user_id,
 };

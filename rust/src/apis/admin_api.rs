@@ -29,6 +29,20 @@ pub enum DeleteGroupError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`delete_runner`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum DeleteRunnerError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`delete_user`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -47,6 +61,62 @@ pub enum DeleteUserError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetGroupsError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_reseted_runner_register_token`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetResetedRunnerRegisterTokenError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_runner`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetRunnerError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_runner_register_token`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetRunnerRegisterTokenError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_runners`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetRunnersError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -89,6 +159,20 @@ pub enum GetUserError {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetUsersError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`patch_runner`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PatchRunnerError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -177,6 +261,45 @@ pub async fn delete_group(configuration: &configuration::Configuration, group_re
     } else {
         let content = resp.text().await?;
         let entity: Option<DeleteGroupError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn delete_runner(configuration: &configuration::Configuration, runner_uuid: &str) -> Result<(), Error<DeleteRunnerError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_runner_uuid = runner_uuid;
+
+    let uri_str = format!("{}/admin/runners/{runner_uuid}", configuration.base_path, runner_uuid=crate::apis::urlencode(p_runner_uuid));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<DeleteRunnerError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -285,6 +408,217 @@ pub async fn get_groups(configuration: &configuration::Configuration, page: Opti
     } else {
         let content = resp.text().await?;
         let entity: Option<GetGroupsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_reseted_runner_register_token(configuration: &configuration::Configuration, ) -> Result<models::RegisterTokenModel, Error<GetResetedRunnerRegisterTokenError>> {
+
+    let uri_str = format!("{}/admin/runners/register_token/reseted", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RegisterTokenModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RegisterTokenModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetResetedRunnerRegisterTokenError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_runner(configuration: &configuration::Configuration, runner_uuid: &str) -> Result<models::RunnerModel, Error<GetRunnerError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_runner_uuid = runner_uuid;
+
+    let uri_str = format!("{}/admin/runners/{runner_uuid}", configuration.base_path, runner_uuid=crate::apis::urlencode(p_runner_uuid));
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RunnerModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RunnerModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetRunnerError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_runner_register_token(configuration: &configuration::Configuration, ) -> Result<models::RegisterTokenModel, Error<GetRunnerRegisterTokenError>> {
+
+    let uri_str = format!("{}/admin/runners/register_token", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RegisterTokenModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RegisterTokenModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetRunnerRegisterTokenError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn get_runners(configuration: &configuration::Configuration, page: Option<i64>, size: Option<i64>, query: Option<&str>, order: Option<models::OrderOption>) -> Result<Vec<models::RunnerCreator>, Error<GetRunnersError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_page = page;
+    let p_size = size;
+    let p_query = query;
+    let p_order = order;
+
+    let uri_str = format!("{}/admin/runners", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_page {
+        req_builder = req_builder.query(&[("page", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_size {
+        req_builder = req_builder.query(&[("size", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query {
+        req_builder = req_builder.query(&[("query", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_order {
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    }
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::RunnerCreator&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::RunnerCreator&gt;`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetRunnersError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
@@ -452,6 +786,58 @@ pub async fn get_users(configuration: &configuration::Configuration, page: Optio
     } else {
         let content = resp.text().await?;
         let entity: Option<GetUsersError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
+    }
+}
+
+pub async fn patch_runner(configuration: &configuration::Configuration, runner_uuid: &str, runner_patch_input: models::RunnerPatchInput) -> Result<models::RunnerModel, Error<PatchRunnerError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_runner_uuid = runner_uuid;
+    let p_runner_patch_input = runner_patch_input;
+
+    let uri_str = format!("{}/admin/runners/{runner_uuid}", configuration.base_path, runner_uuid=crate::apis::urlencode(p_runner_uuid));
+    let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_runner_patch_input);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RunnerModel`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RunnerModel`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PatchRunnerError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }

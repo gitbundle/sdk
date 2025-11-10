@@ -26,6 +26,7 @@ type TokenModel struct {
 	Id int64 `json:"id"`
 	IssuedAt int64 `json:"issued_at"`
 	Name string `json:"name"`
+	Permissions []Permission `json:"permissions,omitempty"`
 	Type TokenType `json:"type"`
 	UserId int64 `json:"user_id"`
 }
@@ -193,6 +194,38 @@ func (o *TokenModel) SetName(v string) {
 	o.Name = v
 }
 
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *TokenModel) GetPermissions() []Permission {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []Permission
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TokenModel) GetPermissionsOk() ([]Permission, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *TokenModel) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []Permission and assigns it to the Permissions field.
+func (o *TokenModel) SetPermissions(v []Permission) {
+	o.Permissions = v
+}
+
 // GetType returns the Type field value
 func (o *TokenModel) GetType() TokenType {
 	if o == nil {
@@ -258,6 +291,9 @@ func (o TokenModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["issued_at"] = o.IssuedAt
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
 	toSerialize["type"] = o.Type
 	toSerialize["user_id"] = o.UserId
 	return toSerialize, nil

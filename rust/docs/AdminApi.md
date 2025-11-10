@@ -5,11 +5,17 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_group**](AdminApi.md#delete_group) | **DELETE** /admin/groups/{group_ref} | 
+[**delete_runner**](AdminApi.md#delete_runner) | **DELETE** /admin/runners/{runner_uuid} | 
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /admin/users/{user_identifier} | 
 [**get_groups**](AdminApi.md#get_groups) | **GET** /admin/groups | 
+[**get_reseted_runner_register_token**](AdminApi.md#get_reseted_runner_register_token) | **GET** /admin/runners/register_token/reseted | 
+[**get_runner**](AdminApi.md#get_runner) | **GET** /admin/runners/{runner_uuid} | 
+[**get_runner_register_token**](AdminApi.md#get_runner_register_token) | **GET** /admin/runners/register_token | 
+[**get_runners**](AdminApi.md#get_runners) | **GET** /admin/runners | 
 [**get_stats**](AdminApi.md#get_stats) | **GET** /admin/stats | 
 [**get_user**](AdminApi.md#get_user) | **GET** /admin/users/{user_identifier} | 
 [**get_users**](AdminApi.md#get_users) | **GET** /admin/users | 
+[**patch_runner**](AdminApi.md#patch_runner) | **PATCH** /admin/runners/{runner_uuid} | 
 [**patch_user**](AdminApi.md#patch_user) | **PATCH** /admin/users/{user_identifier} | 
 [**patch_user_admin**](AdminApi.md#patch_user_admin) | **PATCH** /admin/users/{user_identifier}/admin | 
 [**post_user**](AdminApi.md#post_user) | **POST** /admin/users | 
@@ -27,6 +33,34 @@ Method | HTTP request | Description
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_ref** | **String** |  | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## delete_runner
+
+> delete_runner(runner_uuid)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**runner_uuid** | **String** |  | [required] |
 
 ### Return type
 
@@ -91,6 +125,115 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**Vec<models::GroupModel>**](GroupModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_reseted_runner_register_token
+
+> models::RegisterTokenModel get_reseted_runner_register_token()
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_runner
+
+> models::RunnerModel get_runner(runner_uuid)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**runner_uuid** | **String** |  | [required] |
+
+### Return type
+
+[**models::RunnerModel**](RunnerModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_runner_register_token
+
+> models::RegisterTokenModel get_runner_register_token()
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::RegisterTokenModel**](RegisterTokenModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_runners
+
+> Vec<models::RunnerCreator> get_runners(page, size, query, order)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**page** | Option<**i64**> |  |  |
+**size** | Option<**i64**> |  |  |
+**query** | Option<**String**> |  |  |
+**order** | Option<[**OrderOption**](.md)> |  |  |
+
+### Return type
+
+[**Vec<models::RunnerCreator>**](RunnerCreator.md)
 
 ### Authorization
 
@@ -184,6 +327,35 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## patch_runner
+
+> models::RunnerModel patch_runner(runner_uuid, runner_patch_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**runner_uuid** | **String** |  | [required] |
+**runner_patch_input** | [**RunnerPatchInput**](RunnerPatchInput.md) |  | [required] |
+
+### Return type
+
+[**models::RunnerModel**](RunnerModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

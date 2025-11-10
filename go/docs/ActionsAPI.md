@@ -1098,7 +1098,7 @@ func main() {
 	repoRef := "repoRef_example" // string | Repository ref
 	actionIdentifier := "actionIdentifier_example" // string | Action identifier
 	workflowId := int64(789) // int64 | Workflow id
-	stageCreateInput := *openapiclient.NewStageCreateInput("Arch_example", false, "Error_example", int64(123), "Kernel_example", "Kind_example", map[string]string{"key": "Inner_example"}, int64(123), int64(123), "Machine_example", "Name_example", interface{}(123), int64(123), false, false, "Os_example", int64(123), openapiclient.CIStatus("pending"), "Type_example", "Variant_example", openapiclient.YamlProvider("unknown"), "YamlResolved_example") // StageCreateInput | 
+	stageCreateInput := *openapiclient.NewStageCreateInput("Arch_example", false, "Error_example", int64(123), "Kernel_example", "Kind_example", []string{"Labels_example"}, int64(123), int64(123), "Machine_example", "Name_example", interface{}(123), int64(123), false, false, "Os_example", int64(123), openapiclient.CIStatus("pending"), "Type_example", "Variant_example", openapiclient.YamlProvider("unknown"), "YamlResolved_example") // StageCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

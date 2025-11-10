@@ -8,10 +8,12 @@ All URIs are relative to */api/v3*
 |[**commitsCalculateDivergence**](#commitscalculatedivergence) | **POST** /repos/{repo_ref}/+/commits/calculate-divergence | |
 |[**deleteBranch**](#deletebranch) | **DELETE** /repos/{repo_ref}/+/branches/{branch_name} | |
 |[**deleteRelease**](#deleterelease) | **DELETE** /repos/{repo_ref}/+/releases/{tag_ref} | |
+|[**deleteRepositoryRunner**](#deleterepositoryrunner) | **DELETE** /repos/{repo_ref}/+/runners/{runner_uuid} | |
 |[**deleteRepositoryVariable**](#deleterepositoryvariable) | **DELETE** /repos/{repo_ref}/+/variables/{variable_identifier} | |
 |[**deleteTag**](#deletetag) | **DELETE** /repos/{repo_ref}/+/tags/{tag_name} | |
 |[**generalUpdate**](#generalupdate) | **PATCH** /repos/{repo_ref}/+/settings/general | |
 |[**getArchive**](#getarchive) | **GET** /repos/{repo_ref}/+/archive/{archive_ref} | |
+|[**getBlame**](#getblame) | **GET** /repos/{repo_ref}/+/blame/{path} | |
 |[**getBranch**](#getbranch) | **GET** /repos/{repo_ref}/+/branches/{branch_name} | |
 |[**getBranches**](#getbranches) | **GET** /repos/{repo_ref}/+/branches | |
 |[**getCodeownersValidate**](#getcodeownersvalidate) | **GET** /repos/{repo_ref}/+/codeowners/validate | |
@@ -19,15 +21,23 @@ All URIs are relative to */api/v3*
 |[**getCommitDiff**](#getcommitdiff) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/diff | |
 |[**getCommitFileContent**](#getcommitfilecontent) | **GET** /repos/{repo_ref}/+/commits/{commit_sha}/content | |
 |[**getCommits**](#getcommits) | **GET** /repos/{repo_ref}/+/commits | |
+|[**getContent**](#getcontent) | **GET** /repos/{repo_ref}/+/content/{path} | |
 |[**getContributors**](#getcontributors) | **GET** /repos/{repo_ref}/+/contributors | |
+|[**getDiffStats**](#getdiffstats) | **GET** /repos/{repo_ref}/+/diff-stats/{path} | |
+|[**getDiffs**](#getdiffs) | **GET** /repos/{repo_ref}/+/diff/{path} | |
 |[**getForks**](#getforks) | **GET** /repos/{repo_ref}/+/forks | |
 |[**getGeneral**](#getgeneral) | **GET** /repos/{repo_ref}/+/settings/general | |
 |[**getHasStarred**](#gethasstarred) | **GET** /repos/{repo_ref}/+/stars/has_starred | |
 |[**getImportProgress**](#getimportprogress) | **GET** /repos/{repo_ref}/+/import-progress | |
+|[**getPaths**](#getpaths) | **GET** /repos/{repo_ref}/+/paths | |
 |[**getRaw**](#getraw) | **GET** /repos/{repo_ref}/+/raw/{path} | |
 |[**getRelease**](#getrelease) | **GET** /repos/{repo_ref}/+/releases/{tag_ref} | |
 |[**getReleases**](#getreleases) | **GET** /repos/{repo_ref}/+/releases | |
 |[**getRepo**](#getrepo) | **GET** /repos/{repo_ref}/+ | |
+|[**getRepositoryResetedRunnerRegisterToken**](#getrepositoryresetedrunnerregistertoken) | **GET** /repos/{repo_ref}/+/runners/register_token/reseted | |
+|[**getRepositoryRunner**](#getrepositoryrunner) | **GET** /repos/{repo_ref}/+/runners/{runner_uuid} | |
+|[**getRepositoryRunnerRegisterToken**](#getrepositoryrunnerregistertoken) | **GET** /repos/{repo_ref}/+/runners/register_token | |
+|[**getRepositoryRunners**](#getrepositoryrunners) | **GET** /repos/{repo_ref}/+/runners | |
 |[**getRepositoryServiceAccounts**](#getrepositoryserviceaccounts) | **GET** /repos/{repo_ref}/+/service-accounts | |
 |[**getRepositoryStats**](#getrepositorystats) | **GET** /repos/{repo_ref}/+/stats | |
 |[**getRepositoryVariable**](#getrepositoryvariable) | **GET** /repos/{repo_ref}/+/variables/{variable_identifier} | |
@@ -36,12 +46,15 @@ All URIs are relative to */api/v3*
 |[**getStars**](#getstars) | **GET** /repos/{repo_ref}/+/stars | |
 |[**getTags**](#gettags) | **GET** /repos/{repo_ref}/+/tags | |
 |[**patchRepo**](#patchrepo) | **PATCH** /repos/{repo_ref}/+ | |
+|[**patchRepositoryRunner**](#patchrepositoryrunner) | **PATCH** /repos/{repo_ref}/+/runners/{runner_uuid} | |
 |[**patchRepositoryVariable**](#patchrepositoryvariable) | **PATCH** /repos/{repo_ref}/+/variables/{variable_identifier} | |
 |[**patchSecurity**](#patchsecurity) | **PATCH** /repos/{repo_ref}/+/settings/security | |
 |[**patchStars**](#patchstars) | **PATCH** /repos/{repo_ref}/+/stars | |
 |[**postBranch**](#postbranch) | **POST** /repos/{repo_ref}/+/branches | |
 |[**postDefaultBranch**](#postdefaultbranch) | **POST** /repos/{repo_ref}/+/default-branch | |
+|[**postDiffs**](#postdiffs) | **POST** /repos/{repo_ref}/+/diff/{path} | |
 |[**postMergeCheck**](#postmergecheck) | **POST** /repos/{repo_ref}/+/merge-check/{path} | |
+|[**postPathDetails**](#postpathdetails) | **POST** /repos/{repo_ref}/+/path-details | |
 |[**postRelease**](#postrelease) | **POST** /repos/{repo_ref}/+/releases | |
 |[**postRepo**](#postrepo) | **POST** /repos | |
 |[**postRepositoryImport**](#postrepositoryimport) | **POST** /repos/import | |
@@ -304,6 +317,66 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteRepositoryRunner**
+> deleteRepositoryRunner()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+
+const { status, data } = await apiInstance.deleteRepositoryRunner(
+    repoRef,
+    runnerUuid
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**204** | Repository delete runner |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteRepositoryVariable**
 > deleteRepositoryVariable()
 
@@ -554,6 +627,75 @@ const { status, data } = await apiInstance.getArchive(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Get archive file. Response Content-Type can be one of: application/tar, application/gzip, application/zip |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getBlame**
+> Array<BlamePart> getBlame()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let path: string; // (default to undefined)
+let gitRef: string; //The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} (optional) (default to undefined)
+let lineFrom: number; // (optional) (default to undefined)
+let lineTo: number; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getBlame(
+    repoRef,
+    path,
+    gitRef,
+    lineFrom,
+    lineTo
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **path** | [**string**] |  | defaults to undefined|
+| **gitRef** | [**string**] | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} | (optional) defaults to undefined|
+| **lineFrom** | [**number**] |  | (optional) defaults to undefined|
+| **lineTo** | [**number**] |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**Array<BlamePart>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get file content blame in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1029,6 +1171,72 @@ const { status, data } = await apiInstance.getCommits(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getContent**
+> RepoContentOutput getContent()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let path: string; // (default to undefined)
+let gitRef: string; // (optional) (default to undefined)
+let includeCommit: boolean; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getContent(
+    repoRef,
+    path,
+    gitRef,
+    includeCommit
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **path** | [**string**] |  | defaults to undefined|
+| **gitRef** | [**string**] |  | (optional) defaults to undefined|
+| **includeCommit** | [**boolean**] |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**RepoContentOutput**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get file content in a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getContributors**
 > Array<Contributor> getContributors()
 
@@ -1085,6 +1293,126 @@ const { status, data } = await apiInstance.getContributors(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | List contributors in a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getDiffStats**
+> DiffStats getDiffStats()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let path: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getDiffStats(
+    repoRef,
+    path
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **path** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**DiffStats**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get diff statistics of two commits, branches or tags in a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getDiffs**
+> string getDiffs()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let path: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getDiffs(
+    repoRef,
+    path
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **path** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get the diff between two commits, branches or tags |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -1338,6 +1666,69 @@ const { status, data } = await apiInstance.getImportProgress(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getPaths**
+> RepoPathsOutput getPaths()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let gitRef: string; // (optional) (default to undefined)
+let includeDirectories: boolean; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getPaths(
+    repoRef,
+    gitRef,
+    includeDirectories
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **gitRef** | [**string**] |  | (optional) defaults to undefined|
+| **includeDirectories** | [**boolean**] |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**RepoPathsOutput**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get file paths in a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getRaw**
 > Array<number> getRaw()
 
@@ -1580,6 +1971,249 @@ const { status, data } = await apiInstance.getRepo(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Find a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRepositoryResetedRunnerRegisterToken**
+> RegisterTokenModel getRepositoryResetedRunnerRegisterToken()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+
+const { status, data } = await apiInstance.getRepositoryResetedRunnerRegisterToken(
+    repoRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+
+
+### Return type
+
+**RegisterTokenModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Repository get runner registration token |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRepositoryRunner**
+> RunnerModel getRepositoryRunner()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getRepositoryRunner(
+    repoRef,
+    runnerUuid
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**RunnerModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Repository get runner |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRepositoryRunnerRegisterToken**
+> RegisterTokenModel getRepositoryRunnerRegisterToken()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+
+const { status, data } = await apiInstance.getRepositoryRunnerRegisterToken(
+    repoRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+
+
+### Return type
+
+**RegisterTokenModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Repository get runner registration token |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getRepositoryRunners**
+> Array<RunnerCreator> getRepositoryRunners()
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let page: number; // (optional) (default to undefined)
+let size: number; // (optional) (default to undefined)
+let query: string; // (optional) (default to undefined)
+let order: OrderOption; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.getRepositoryRunners(
+    repoRef,
+    page,
+    size,
+    query,
+    order
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **page** | [**number**] |  | (optional) defaults to undefined|
+| **size** | [**number**] |  | (optional) defaults to undefined|
+| **query** | [**string**] |  | (optional) defaults to undefined|
+| **order** | **OrderOption** |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**Array<RunnerCreator>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Repository get runners |  * x-next-page -  <br>  * x-page -  <br>  * x-per-page -  <br>  * x-prev-page -  <br>  * x-total -  <br>  * x-total-pages -  <br>  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -2098,6 +2732,70 @@ const { status, data } = await apiInstance.patchRepo(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchRepositoryRunner**
+> RunnerModel patchRepositoryRunner(runnerPatchInput)
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration,
+    RunnerPatchInput
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let runnerUuid: string; // (default to undefined)
+let runnerPatchInput: RunnerPatchInput; //
+
+const { status, data } = await apiInstance.patchRepositoryRunner(
+    repoRef,
+    runnerUuid,
+    runnerPatchInput
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **runnerPatchInput** | **RunnerPatchInput**|  | |
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **runnerUuid** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**RunnerModel**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Repository patch runner |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchRepositoryVariable**
 > VariableModel patchRepositoryVariable(variablePatchInput)
 
@@ -2407,6 +3105,72 @@ const { status, data } = await apiInstance.postDefaultBranch(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **postDiffs**
+> Array<number> postDiffs(commitDiffFile)
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let path: string; // (default to undefined)
+let path2: string; // (default to undefined)
+let commitDiffFile: Array<CommitDiffFile>; //
+
+const { status, data } = await apiInstance.postDiffs(
+    repoRef,
+    path,
+    path2,
+    commitDiffFile
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **commitDiffFile** | **Array<CommitDiffFile>**|  | |
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **path** | [**string**] |  | defaults to undefined|
+| **path2** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**Array<number>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/octet-stream, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get the diff between two commits, branches or tags |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **postMergeCheck**
 > RepoMergeCheckOutput postMergeCheck(repoMergeCheckInput)
 
@@ -2461,6 +3225,69 @@ const { status, data } = await apiInstance.postMergeCheck(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Checks if two branches are mergeable in a repo |  -  |
+|**400** | Bad request |  -  |
+|**401** | Unauthorized |  -  |
+|**403** | Forbidden |  -  |
+|**404** | Not Found |  -  |
+|**409** | Conflict |  -  |
+|**429** | Too Many Requests |  -  |
+|**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postPathDetails**
+> Array<PathDetails> postPathDetails(requestBody)
+
+
+### Example
+
+```typescript
+import {
+    RepositoryApi,
+    Configuration
+} from 'gitbundle-sdk';
+
+const configuration = new Configuration();
+const apiInstance = new RepositoryApi(configuration);
+
+let repoRef: string; //Repository ref (default to undefined)
+let requestBody: Array<string>; //
+let gitRef: string; // (optional) (default to undefined)
+
+const { status, data } = await apiInstance.postPathDetails(
+    repoRef,
+    requestBody,
+    gitRef
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **requestBody** | **Array<string>**|  | |
+| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **gitRef** | [**string**] |  | (optional) defaults to undefined|
+
+
+### Return type
+
+**Array<PathDetails>**
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Get file path details in a repo |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
