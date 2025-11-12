@@ -25,6 +25,7 @@ type ActionModel struct {
 	CreatedBy int64 `json:"created_by"`
 	Description string `json:"description"`
 	Disabled bool `json:"disabled"`
+	Event NullableTriggerEvent `json:"event,omitempty"`
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	RepoId int64 `json:"repo_id"`
@@ -160,6 +161,48 @@ func (o *ActionModel) GetDisabledOk() (*bool, bool) {
 // SetDisabled sets field value
 func (o *ActionModel) SetDisabled(v bool) {
 	o.Disabled = v
+}
+
+// GetEvent returns the Event field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ActionModel) GetEvent() TriggerEvent {
+	if o == nil || IsNil(o.Event.Get()) {
+		var ret TriggerEvent
+		return ret
+	}
+	return *o.Event.Get()
+}
+
+// GetEventOk returns a tuple with the Event field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ActionModel) GetEventOk() (*TriggerEvent, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Event.Get(), o.Event.IsSet()
+}
+
+// HasEvent returns a boolean if a field has been set.
+func (o *ActionModel) HasEvent() bool {
+	if o != nil && o.Event.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEvent gets a reference to the given NullableTriggerEvent and assigns it to the Event field.
+func (o *ActionModel) SetEvent(v TriggerEvent) {
+	o.Event.Set(&v)
+}
+// SetEventNil sets the value for Event to be an explicit nil
+func (o *ActionModel) SetEventNil() {
+	o.Event.Set(nil)
+}
+
+// UnsetEvent ensures that no value is present for Event, not even an explicit nil
+func (o *ActionModel) UnsetEvent() {
+	o.Event.Unset()
 }
 
 // GetId returns the Id field value
@@ -368,6 +411,9 @@ func (o ActionModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_by"] = o.CreatedBy
 	toSerialize["description"] = o.Description
 	toSerialize["disabled"] = o.Disabled
+	if o.Event.IsSet() {
+		toSerialize["event"] = o.Event.Get()
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["repo_id"] = o.RepoId

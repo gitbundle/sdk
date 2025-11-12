@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **link** | **String** |  | 
 **metadata** | Option<[**serde_json::Value**](.md)> |  | 
 **name** | **String** |  | 
-**payload** | Option<[**serde_json::Value**](.md)> |  | 
+**payload** | [**models::CheckPayload**](CheckPayload.md) |  | 
 **payload_kind** | [**models::CheckPayloadKind**](CheckPayloadKind.md) |  | 
 **payload_version** | **String** |  | 
 **repo_id** | **i64** |  | 

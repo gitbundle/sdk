@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_by** | **i64** |  | 
 **description** | **String** |  | 
 **disabled** | **bool** |  | 
+**event** | Option<[**models::TriggerEvent**](TriggerEvent.md)> |  | [optional]
 **id** | **i64** |  | 
 **name** | **String** |  | 
 **repo_id** | **i64** |  | 

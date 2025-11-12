@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **link** | **string** |  | [default to undefined]
 **metadata** | **any** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**payload** | **any** |  | [default to undefined]
+**payload** | [**CheckPayload**](CheckPayload.md) |  | [default to undefined]
 **payload_kind** | [**CheckPayloadKind**](CheckPayloadKind.md) |  | [default to undefined]
 **payload_version** | **string** |  | [default to undefined]
 **repo_id** | **number** |  | [default to undefined]

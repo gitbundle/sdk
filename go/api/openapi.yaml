@@ -5854,7 +5854,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}:
     delete:
       operationId: delete_workflow
       parameters:
@@ -5866,7 +5866,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -5874,10 +5874,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -5945,7 +5945,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -5953,10 +5953,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6028,7 +6028,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6036,10 +6036,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6106,7 +6106,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/cancel:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel:
     post:
       operationId: cancel_workflow
       parameters:
@@ -6118,7 +6118,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6126,10 +6126,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6190,7 +6190,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}:
     get:
       operationId: get_step_logs
       parameters:
@@ -6202,7 +6202,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6210,10 +6210,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6294,7 +6294,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/logs/{stage_number}/{step_number}/stream:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream:
     get:
       operationId: get_step_log_stream
       parameters:
@@ -6306,7 +6306,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6314,10 +6314,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6398,7 +6398,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages:
     post:
       operationId: post_stage
       parameters:
@@ -6410,7 +6410,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6418,10 +6418,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6488,7 +6488,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}:
     patch:
       operationId: patch_stage
       parameters:
@@ -6500,7 +6500,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6508,10 +6508,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6598,7 +6598,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6606,10 +6606,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6685,7 +6685,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}:
     patch:
       operationId: patch_step
       parameters:
@@ -6697,7 +6697,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6705,10 +6705,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -6793,7 +6793,7 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs:
     post:
       operationId: post_step_log
       parameters:
@@ -6805,7 +6805,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or action name
         explode: false
         in: path
         name: action_identifier
@@ -6813,10 +6813,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow id
+      - description: Workflow number
         explode: false
         in: path
-        name: workflow_id
+        name: workflow_number
         required: true
         schema:
           format: int64
@@ -19557,17 +19557,18 @@ components:
       - yaml_path
     ActionModel:
       example:
-        yaml_path: yaml_path
         created: 0
-        repo_id: 5
-        name: name
         description: description
-        disabled: true
-        id: 1
         yaml_provider: unknown
         created_by: 6
-        updated: 2
         version: 7
+        yaml_path: yaml_path
+        repo_id: 5
+        name: name
+        disabled: true
+        id: 1
+        event: noop
+        updated: 2
         seq: 5
       properties:
         created:
@@ -19580,6 +19581,8 @@ components:
           type: string
         disabled:
           type: boolean
+        event:
+          $ref: "#/components/schemas/TriggerEvent"
         id:
           format: int64
           type: integer
@@ -19649,7 +19652,7 @@ components:
           action: action
           author_email: author_email
           id: 1
-          event: noop
+          event: null
           deploy_id: 7
           cron: cron
           debug: true
@@ -19671,17 +19674,18 @@ components:
           updated: 4
           status: pending
         model:
-          yaml_path: yaml_path
           created: 0
-          repo_id: 5
-          name: name
           description: description
-          disabled: true
-          id: 1
           yaml_provider: unknown
           created_by: 6
-          updated: 2
           version: 7
+          yaml_path: yaml_path
+          repo_id: 5
+          name: name
+          disabled: true
+          id: 1
+          event: noop
+          updated: 2
           seq: 5
       properties:
         model:
@@ -19912,7 +19916,7 @@ components:
       type: string
     CheckModel:
       example:
-        payload_kind: empty
+        payload_kind: null
         summary: summary
         metadata: ""
         payload_version: payload_version
@@ -19921,7 +19925,10 @@ components:
         started: 2
         created_by: 6
         commit_sha: commit_sha
-        payload: ""
+        payload:
+          data: ""
+          kind: empty
+          version: version
         repo_id: 5
         ended: 1
         name: name
@@ -19948,7 +19955,8 @@ components:
         metadata: {}
         name:
           type: string
-        payload: {}
+        payload:
+          $ref: "#/components/schemas/CheckPayload"
         payload_kind:
           $ref: "#/components/schemas/CheckPayloadKind"
         payload_version:
@@ -22980,7 +22988,7 @@ components:
       example:
         bypassable: true
         model:
-          payload_kind: empty
+          payload_kind: null
           summary: summary
           metadata: ""
           payload_version: payload_version
@@ -22989,7 +22997,10 @@ components:
           started: 2
           created_by: 6
           commit_sha: commit_sha
-          payload: ""
+          payload:
+            data: ""
+            kind: empty
+            version: version
           repo_id: 5
           ended: 1
           name: name
@@ -23014,7 +23025,7 @@ components:
         checks:
         - bypassable: true
           model:
-            payload_kind: empty
+            payload_kind: null
             summary: summary
             metadata: ""
             payload_version: payload_version
@@ -23023,7 +23034,10 @@ components:
             started: 2
             created_by: 6
             commit_sha: commit_sha
-            payload: ""
+            payload:
+              data: ""
+              kind: empty
+              version: version
             repo_id: 5
             ended: 1
             name: name
@@ -23033,7 +23047,7 @@ components:
           required: true
         - bypassable: true
           model:
-            payload_kind: empty
+            payload_kind: null
             summary: summary
             metadata: ""
             payload_version: payload_version
@@ -23042,7 +23056,10 @@ components:
             started: 2
             created_by: 6
             commit_sha: commit_sha
-            payload: ""
+            payload:
+              data: ""
+              kind: empty
+              version: version
             repo_id: 5
             ended: 1
             name: name
@@ -27037,7 +27054,7 @@ components:
         action: action
         author_email: author_email
         id: 1
-        event: noop
+        event: null
         deploy_id: 7
         cron: cron
         debug: true
@@ -27328,7 +27345,7 @@ components:
           action: action
           author_email: author_email
           id: 1
-          event: noop
+          event: null
           deploy_id: 7
           cron: cron
           debug: true

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Link** | **string** |  | 
 **Metadata** | **interface{}** |  | 
 **Name** | **string** |  | 
-**Payload** | **interface{}** |  | 
+**Payload** | [**CheckPayload**](CheckPayload.md) |  | 
 **PayloadKind** | [**CheckPayloadKind**](CheckPayloadKind.md) |  | 
 **PayloadVersion** | **string** |  | 
 **RepoId** | **int64** |  | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewCheckModel
 
-`func NewCheckModel(commitSha string, created int64, createdBy int64, ended int64, id int64, link string, metadata interface{}, name string, payload interface{}, payloadKind CheckPayloadKind, payloadVersion string, repoId int64, started int64, status CheckStatus, summary string, updated int64, ) *CheckModel`
+`func NewCheckModel(commitSha string, created int64, createdBy int64, ended int64, id int64, link string, metadata interface{}, name string, payload CheckPayload, payloadKind CheckPayloadKind, payloadVersion string, repoId int64, started int64, status CheckStatus, summary string, updated int64, ) *CheckModel`
 
 NewCheckModel instantiates a new CheckModel object
 This constructor will assign default values to properties that have it defined,
@@ -212,34 +212,24 @@ SetName sets Name field to given value.
 
 ### GetPayload
 
-`func (o *CheckModel) GetPayload() interface{}`
+`func (o *CheckModel) GetPayload() CheckPayload`
 
 GetPayload returns the Payload field if non-nil, zero value otherwise.
 
 ### GetPayloadOk
 
-`func (o *CheckModel) GetPayloadOk() (*interface{}, bool)`
+`func (o *CheckModel) GetPayloadOk() (*CheckPayload, bool)`
 
 GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayload
 
-`func (o *CheckModel) SetPayload(v interface{})`
+`func (o *CheckModel) SetPayload(v CheckPayload)`
 
 SetPayload sets Payload field to given value.
 
 
-### SetPayloadNil
-
-`func (o *CheckModel) SetPayloadNil(b bool)`
-
- SetPayloadNil sets the value for Payload to be an explicit nil
-
-### UnsetPayload
-`func (o *CheckModel) UnsetPayload()`
-
-UnsetPayload ensures that no value is present for Payload, not even an explicit nil
 ### GetPayloadKind
 
 `func (o *CheckModel) GetPayloadKind() CheckPayloadKind`

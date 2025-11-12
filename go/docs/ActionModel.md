@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedBy** | **int64** |  | 
 **Description** | **string** |  | 
 **Disabled** | **bool** |  | 
+**Event** | Pointer to [**NullableTriggerEvent**](TriggerEvent.md) |  | [optional] 
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
 **RepoId** | **int64** |  | 
@@ -116,6 +117,41 @@ and a boolean to check if the value has been set.
 SetDisabled sets Disabled field to given value.
 
 
+### GetEvent
+
+`func (o *ActionModel) GetEvent() TriggerEvent`
+
+GetEvent returns the Event field if non-nil, zero value otherwise.
+
+### GetEventOk
+
+`func (o *ActionModel) GetEventOk() (*TriggerEvent, bool)`
+
+GetEventOk returns a tuple with the Event field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEvent
+
+`func (o *ActionModel) SetEvent(v TriggerEvent)`
+
+SetEvent sets Event field to given value.
+
+### HasEvent
+
+`func (o *ActionModel) HasEvent() bool`
+
+HasEvent returns a boolean if a field has been set.
+
+### SetEventNil
+
+`func (o *ActionModel) SetEventNil(b bool)`
+
+ SetEventNil sets the value for Event to be an explicit nil
+
+### UnsetEvent
+`func (o *ActionModel) UnsetEvent()`
+
+UnsetEvent ensures that no value is present for Event, not even an explicit nil
 ### GetId
 
 `func (o *ActionModel) GetId() int64`

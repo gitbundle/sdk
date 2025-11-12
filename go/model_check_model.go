@@ -29,7 +29,7 @@ type CheckModel struct {
 	Link string `json:"link"`
 	Metadata interface{} `json:"metadata"`
 	Name string `json:"name"`
-	Payload interface{} `json:"payload"`
+	Payload CheckPayload `json:"payload"`
 	PayloadKind CheckPayloadKind `json:"payload_kind"`
 	PayloadVersion string `json:"payload_version"`
 	RepoId int64 `json:"repo_id"`
@@ -45,7 +45,7 @@ type _CheckModel CheckModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckModel(commitSha string, created int64, createdBy int64, ended int64, id int64, link string, metadata interface{}, name string, payload interface{}, payloadKind CheckPayloadKind, payloadVersion string, repoId int64, started int64, status CheckStatus, summary string, updated int64) *CheckModel {
+func NewCheckModel(commitSha string, created int64, createdBy int64, ended int64, id int64, link string, metadata interface{}, name string, payload CheckPayload, payloadKind CheckPayloadKind, payloadVersion string, repoId int64, started int64, status CheckStatus, summary string, updated int64) *CheckModel {
 	this := CheckModel{}
 	this.CommitSha = commitSha
 	this.Created = created
@@ -269,10 +269,9 @@ func (o *CheckModel) SetName(v string) {
 }
 
 // GetPayload returns the Payload field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *CheckModel) GetPayload() interface{} {
+func (o *CheckModel) GetPayload() CheckPayload {
 	if o == nil {
-		var ret interface{}
+		var ret CheckPayload
 		return ret
 	}
 
@@ -281,16 +280,15 @@ func (o *CheckModel) GetPayload() interface{} {
 
 // GetPayloadOk returns a tuple with the Payload field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckModel) GetPayloadOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Payload) {
+func (o *CheckModel) GetPayloadOk() (*CheckPayload, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Payload, true
 }
 
 // SetPayload sets field value
-func (o *CheckModel) SetPayload(v interface{}) {
+func (o *CheckModel) SetPayload(v CheckPayload) {
 	o.Payload = v
 }
 
@@ -482,9 +480,7 @@ func (o CheckModel) ToMap() (map[string]interface{}, error) {
 		toSerialize["metadata"] = o.Metadata
 	}
 	toSerialize["name"] = o.Name
-	if o.Payload != nil {
-		toSerialize["payload"] = o.Payload
-	}
+	toSerialize["payload"] = o.Payload
 	toSerialize["payload_kind"] = o.PayloadKind
 	toSerialize["payload_version"] = o.PayloadVersion
 	toSerialize["repo_id"] = o.RepoId

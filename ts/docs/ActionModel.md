@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **created_by** | **number** |  | [default to undefined]
 **description** | **string** |  | [default to undefined]
 **disabled** | **boolean** |  | [default to undefined]
+**event** | [**TriggerEvent**](TriggerEvent.md) |  | [optional] [default to undefined]
 **id** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **repo_id** | **number** |  | [default to undefined]
@@ -28,6 +29,7 @@ const instance: ActionModel = {
     created_by,
     description,
     disabled,
+    event,
     id,
     name,
     repo_id,

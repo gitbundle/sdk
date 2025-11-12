@@ -21,6 +21,8 @@ pub struct ActionModel {
     pub description: String,
     #[serde(rename = "disabled")]
     pub disabled: bool,
+    #[serde(rename = "event", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub event: Option<Option<models::TriggerEvent>>,
     #[serde(rename = "id")]
     pub id: i64,
     #[serde(rename = "name")]
@@ -46,6 +48,7 @@ impl ActionModel {
             created_by,
             description,
             disabled,
+            event: None,
             id,
             name,
             repo_id,
