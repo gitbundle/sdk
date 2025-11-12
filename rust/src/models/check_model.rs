@@ -29,8 +29,8 @@ pub struct CheckModel {
     pub metadata: Option<serde_json::Value>,
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "payload", deserialize_with = "Option::deserialize")]
-    pub payload: Option<serde_json::Value>,
+    #[serde(rename = "payload")]
+    pub payload: Box<models::CheckPayload>,
     #[serde(rename = "payload_kind")]
     pub payload_kind: models::CheckPayloadKind,
     #[serde(rename = "payload_version")]
@@ -48,7 +48,7 @@ pub struct CheckModel {
 }
 
 impl CheckModel {
-    pub fn new(commit_sha: String, created: i64, created_by: i64, ended: i64, id: i64, link: String, metadata: Option<serde_json::Value>, name: String, payload: Option<serde_json::Value>, payload_kind: models::CheckPayloadKind, payload_version: String, repo_id: i64, started: i64, status: models::CheckStatus, summary: String, updated: i64) -> CheckModel {
+    pub fn new(commit_sha: String, created: i64, created_by: i64, ended: i64, id: i64, link: String, metadata: Option<serde_json::Value>, name: String, payload: models::CheckPayload, payload_kind: models::CheckPayloadKind, payload_version: String, repo_id: i64, started: i64, status: models::CheckStatus, summary: String, updated: i64) -> CheckModel {
         CheckModel {
             commit_sha,
             created,
@@ -58,7 +58,7 @@ impl CheckModel {
             link,
             metadata,
             name,
-            payload,
+            payload: Box::new(payload),
             payload_kind,
             payload_version,
             repo_id,
