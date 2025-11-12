@@ -1781,7 +1781,7 @@ const { status, data } = await apiInstance.getRaw(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Get file raw content in a repo |  -  |
+|**200** | Get file raw content in a repo, try to detect content_type by file extension, or using text/plain when detection failed |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |
@@ -2174,14 +2174,12 @@ let repoRef: string; //Repository ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
-let order: OrderOption; // (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryRunners(
     repoRef,
     page,
     size,
-    query,
-    order
+    query
 );
 ```
 
@@ -2193,7 +2191,6 @@ const { status, data } = await apiInstance.getRepositoryRunners(
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
-| **order** | **OrderOption** |  | (optional) defaults to undefined|
 
 
 ### Return type

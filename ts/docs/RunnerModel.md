@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **description** | **string** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **labels** | **Array&lt;string&gt;** |  | [default to undefined]
+**last_online** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **parent_id** | **number** |  | [optional] [default to undefined]
 **release** | **string** |  | [default to undefined]
-**scope** | [**RegisterScope**](RegisterScope.md) |  | [default to undefined]
+**scope** | [**Scope**](Scope.md) |  | [default to undefined]
 **status** | [**RunnerStatus**](RunnerStatus.md) |  | [default to undefined]
 **token_id** | **number** |  | [default to undefined]
 **updated** | **number** |  | [default to undefined]
@@ -31,6 +32,7 @@ const instance: RunnerModel = {
     description,
     id,
     labels,
+    last_online,
     name,
     parent_id,
     release,

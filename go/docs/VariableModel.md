@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Id** | **int64** |  | 
 **Name** | **string** |  | 
 **ParentId** | **int64** |  | 
-**Scope** | [**VariableScope**](VariableScope.md) |  | 
+**Scope** | [**Scope**](Scope.md) |  | 
 **Type** | [**VariableType**](VariableType.md) |  | 
 **Updated** | **int64** |  | 
 **Version** | **int64** |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewVariableModel
 
-`func NewVariableModel(created int64, createdBy int64, data []int32, description string, id int64, name string, parentId int64, scope VariableScope, type_ VariableType, updated int64, version int64, ) *VariableModel`
+`func NewVariableModel(created int64, createdBy int64, data []int32, description string, id int64, name string, parentId int64, scope Scope, type_ VariableType, updated int64, version int64, ) *VariableModel`
 
 NewVariableModel instantiates a new VariableModel object
 This constructor will assign default values to properties that have it defined,
@@ -177,20 +177,20 @@ SetParentId sets ParentId field to given value.
 
 ### GetScope
 
-`func (o *VariableModel) GetScope() VariableScope`
+`func (o *VariableModel) GetScope() Scope`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *VariableModel) GetScopeOk() (*VariableScope, bool)`
+`func (o *VariableModel) GetScopeOk() (*Scope, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *VariableModel) SetScope(v VariableScope)`
+`func (o *VariableModel) SetScope(v Scope)`
 
 SetScope sets Scope field to given value.
 

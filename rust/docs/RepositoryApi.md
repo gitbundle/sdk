@@ -1061,7 +1061,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_repository_runners
 
-> Vec<models::RunnerCreator> get_repository_runners(repo_ref, page, size, query, order)
+> Vec<models::RunnerCreator> get_repository_runners(repo_ref, page, size, query)
 
 
 ### Parameters
@@ -1073,7 +1073,6 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
-**order** | Option<[**OrderOption**](.md)> |  |  |
 
 ### Return type
 

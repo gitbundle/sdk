@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **parent_id** | **number** |  | [default to undefined]
-**scope** | [**VariableScope**](VariableScope.md) |  | [default to undefined]
+**scope** | [**Scope**](Scope.md) |  | [default to undefined]
 **type** | [**VariableType**](VariableType.md) |  | [default to undefined]
 **updated** | **number** |  | [default to undefined]
 **version** | **number** |  | [default to undefined]

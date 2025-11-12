@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **description** | **String** |  | 
 **id** | **i64** |  | 
 **labels** | **Vec<String>** |  | 
+**last_online** | **i64** |  | 
 **name** | **String** |  | 
 **parent_id** | Option<**i64**> |  | [optional]
 **release** | **String** |  | 
-**scope** | [**models::RegisterScope**](RegisterScope.md) |  | 
+**scope** | [**models::Scope**](Scope.md) |  | 
 **status** | [**models::RunnerStatus**](RunnerStatus.md) |  | 
 **token_id** | **i64** |  | 
 **updated** | **i64** |  | 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created_by** | **i64** |  | 
 **id** | **i64** |  | 
 **parent_id** | Option<**i64**> |  | [optional]
-**scope** | [**models::RegisterScope**](RegisterScope.md) |  | 
+**scope** | [**models::Scope**](Scope.md) |  | 
 **token** | **String** |  | 
 **updated** | **i64** |  | 
 **version** | **i64** |  | 

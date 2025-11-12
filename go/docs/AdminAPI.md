@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeleteGroup**](AdminAPI.md#DeleteGroup) | **Delete** /admin/groups/{group_ref} | 
 [**DeleteRunner**](AdminAPI.md#DeleteRunner) | **Delete** /admin/runners/{runner_uuid} | 
 [**DeleteUser**](AdminAPI.md#DeleteUser) | **Delete** /admin/users/{user_identifier} | 
+[**DeleteVariable**](AdminAPI.md#DeleteVariable) | **Delete** /admin/variables/{variable_identifier} | 
 [**GetGroups**](AdminAPI.md#GetGroups) | **Get** /admin/groups | 
 [**GetResetedRunnerRegisterToken**](AdminAPI.md#GetResetedRunnerRegisterToken) | **Get** /admin/runners/register_token/reseted | 
 [**GetRunner**](AdminAPI.md#GetRunner) | **Get** /admin/runners/{runner_uuid} | 
@@ -15,10 +16,14 @@ Method | HTTP request | Description
 [**GetStats**](AdminAPI.md#GetStats) | **Get** /admin/stats | 
 [**GetUser**](AdminAPI.md#GetUser) | **Get** /admin/users/{user_identifier} | 
 [**GetUsers**](AdminAPI.md#GetUsers) | **Get** /admin/users | 
+[**GetVariable**](AdminAPI.md#GetVariable) | **Get** /admin/variables/{variable_identifier} | 
+[**GetVariables**](AdminAPI.md#GetVariables) | **Get** /admin/variables | 
 [**PatchRunner**](AdminAPI.md#PatchRunner) | **Patch** /admin/runners/{runner_uuid} | 
 [**PatchUser**](AdminAPI.md#PatchUser) | **Patch** /admin/users/{user_identifier} | 
 [**PatchUserAdmin**](AdminAPI.md#PatchUserAdmin) | **Patch** /admin/users/{user_identifier}/admin | 
+[**PatchVariable**](AdminAPI.md#PatchVariable) | **Patch** /admin/variables/{variable_identifier} | 
 [**PostUser**](AdminAPI.md#PostUser) | **Post** /admin/users | 
+[**PostVariable**](AdminAPI.md#PostVariable) | **Post** /admin/variables | 
 
 
 
@@ -196,6 +201,72 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteVariable
+
+> DeleteVariable(ctx, variableIdentifier).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	variableIdentifier := "variableIdentifier_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AdminAPI.DeleteVariable(context.Background(), variableIdentifier).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteVariableRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -480,7 +551,7 @@ Other parameters are passed through a pointer to a apiGetRunnerRegisterTokenRequ
 
 ## GetRunners
 
-> []RunnerCreator GetRunners(ctx).Page(page).Size(size).Query(query).Order(order).Execute()
+> []RunnerCreator GetRunners(ctx).Page(page).Size(size).Query(query).Execute()
 
 
 
@@ -500,11 +571,10 @@ func main() {
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
-	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetRunners(context.Background()).Page(page).Size(size).Query(query).Order(order).Execute()
+	resp, r, err := apiClient.AdminAPI.GetRunners(context.Background()).Page(page).Size(size).Query(query).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetRunners``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -528,7 +598,6 @@ Name | Type | Description  | Notes
  **page** | **int64** |  | 
  **size** | **int64** |  | 
  **query** | **string** |  | 
- **order** | [**OrderOption**](OrderOption.md) |  | 
 
 ### Return type
 
@@ -732,6 +801,148 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]UserModel**](UserModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVariable
+
+> VariableModel GetVariable(ctx, variableIdentifier).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	variableIdentifier := "variableIdentifier_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.GetVariable(context.Background(), variableIdentifier).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVariables
+
+> []VariableGroup GetVariables(ctx).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	page := int64(789) // int64 |  (optional)
+	size := int64(789) // int64 |  (optional)
+	query := "query_example" // string |  (optional)
+	types := []openapiclient.VariableType{openapiclient.VariableType("plain_text")} // []VariableType |  (optional)
+	sort := openapiclient.VariableSort("noop") // VariableSort |  (optional)
+	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.GetVariables(context.Background()).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetVariables``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetVariables`: []VariableGroup
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetVariables`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVariablesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64** |  | 
+ **size** | **int64** |  | 
+ **query** | **string** |  | 
+ **types** | [**[]VariableType**](VariableType.md) |  | 
+ **sort** | [**VariableSort**](VariableSort.md) |  | 
+ **order** | [**OrderOption**](OrderOption.md) |  | 
+
+### Return type
+
+[**[]VariableGroup**](VariableGroup.md)
 
 ### Authorization
 
@@ -957,6 +1168,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PatchVariable
+
+> VariableModel PatchVariable(ctx, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	variableIdentifier := "variableIdentifier_example" // string | 
+	variablePatchInput := *openapiclient.NewVariablePatchInput(openapiclient.VariableType("plain_text")) // VariablePatchInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.PatchVariable(context.Background(), variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.PatchVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.PatchVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **variablePatchInput** | [**VariablePatchInput**](VariablePatchInput.md) |  | 
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostUser
 
 > UserModel PostUser(ctx).UserCreateInput(userCreateInput).Execute()
@@ -1006,6 +1287,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserModel**](UserModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostVariable
+
+> VariableModel PostVariable(ctx).VariableCreateInput(variableCreateInput).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	variableCreateInput := *openapiclient.NewVariableCreateInput("Data_example", "Description_example", "Identifier_example", "ParentRef_example", openapiclient.VariableType("plain_text")) // VariableCreateInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.PostVariable(context.Background()).VariableCreateInput(variableCreateInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.PostVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.PostVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variableCreateInput** | [**VariableCreateInput**](VariableCreateInput.md) |  | 
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
 
 ### Authorization
 

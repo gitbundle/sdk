@@ -22,7 +22,7 @@ pub struct RegisterTokenModel {
     #[serde(rename = "parent_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub parent_id: Option<Option<i64>>,
     #[serde(rename = "scope")]
-    pub scope: models::RegisterScope,
+    pub scope: models::Scope,
     #[serde(rename = "token")]
     pub token: String,
     #[serde(rename = "updated")]
@@ -32,7 +32,7 @@ pub struct RegisterTokenModel {
 }
 
 impl RegisterTokenModel {
-    pub fn new(created: i64, created_by: i64, id: i64, scope: models::RegisterScope, token: String, updated: i64, version: i64) -> RegisterTokenModel {
+    pub fn new(created: i64, created_by: i64, id: i64, scope: models::Scope, token: String, updated: i64, version: i64) -> RegisterTokenModel {
         RegisterTokenModel {
             created,
             created_by,

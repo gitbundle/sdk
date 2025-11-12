@@ -559,13 +559,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: order
-        required: false
-        schema:
-          $ref: "#/components/schemas/OrderOption"
-        style: form
       responses:
         "200":
           content:
@@ -1470,6 +1463,421 @@ paths:
               schema:
                 $ref: "#/components/schemas/UserModel"
           description: Admin patch user admin
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/variables:
+    get:
+      operationId: get_variables
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: size
+        required: false
+        schema:
+          format: int64
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: types
+        required: false
+        schema:
+          items:
+            $ref: "#/components/schemas/VariableType"
+          type: array
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          $ref: "#/components/schemas/VariableSort"
+        style: form
+      - explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          $ref: "#/components/schemas/OrderOption"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/VariableGroup"
+                type: array
+          description: Admin list system variables in a group
+          headers:
+            x-next-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-per-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-prev-page:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                nullable: true
+                type: integer
+              style: simple
+            x-total:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+            x-total-pages:
+              explode: false
+              schema:
+                format: int64
+                minimum: 0
+                type: integer
+              style: simple
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    post:
+      operationId: post_variable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VariableCreateInput"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VariableModel"
+          description: Admin post system variable creation
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+  /admin/variables/{variable_identifier}:
+    delete:
+      operationId: delete_variable
+      parameters:
+      - explode: false
+        in: path
+        name: variable_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Delete variable
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    get:
+      operationId: get_variable
+      parameters:
+      - explode: false
+        in: path
+        name: variable_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VariableModel"
+          description: Admin get system variable
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - admin
+    patch:
+      operationId: patch_variable
+      parameters:
+      - explode: false
+        in: path
+        name: variable_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VariablePatchInput"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VariableModel"
+          description: Admin patch system variable
         "400":
           content:
             application/json:
@@ -3391,13 +3799,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: order
-        required: false
-        schema:
-          $ref: "#/components/schemas/OrderOption"
-        style: form
       responses:
         "200":
           content:
@@ -4011,7 +4412,7 @@ paths:
       - groups
   /groups/{group_ref}/+/variables:
     get:
-      operationId: get_variables
+      operationId: get_groups_variables
       parameters:
       - description: Group ref
         explode: false
@@ -4172,7 +4573,7 @@ paths:
       tags:
       - groups
     post:
-      operationId: post_variable
+      operationId: post_groups_variable
       parameters:
       - description: Group ref
         explode: false
@@ -4245,7 +4646,7 @@ paths:
       - groups
   /groups/{group_ref}/+/variables/{variable_identifier}:
     delete:
-      operationId: delete_variable
+      operationId: delete_groups_variable
       parameters:
       - description: Group ref
         explode: false
@@ -4314,7 +4715,7 @@ paths:
       tags:
       - groups
     get:
-      operationId: get_variable
+      operationId: get_groups_variable
       parameters:
       - description: Group ref
         explode: false
@@ -4387,7 +4788,7 @@ paths:
       tags:
       - groups
     patch:
-      operationId: patch_variable
+      operationId: patch_groups_variable
       parameters:
       - description: Group ref
         explode: false
@@ -11420,7 +11821,8 @@ paths:
                   minimum: 0
                   type: integer
                 type: array
-          description: Get file raw content in a repo
+          description: "Get file raw content in a repo, try to detect content_type\
+            \ by file extension, or using text/plain when detection failed"
         "400":
           content:
             application/json:
@@ -12424,13 +12826,6 @@ paths:
         required: false
         schema:
           type: string
-        style: form
-      - explode: true
-        in: query
-        name: order
-        required: false
-        schema:
-          $ref: "#/components/schemas/OrderOption"
         style: form
       responses:
         "200":
@@ -23447,12 +23842,6 @@ components:
       - email
       - name
       - password
-    RegisterScope:
-      enum:
-      - system
-      - group
-      - repository
-      type: string
     RegisterTokenModel:
       example:
         created: 0
@@ -23478,7 +23867,7 @@ components:
           nullable: true
           type: integer
         scope:
-          $ref: "#/components/schemas/RegisterScope"
+          $ref: "#/components/schemas/Scope"
         token:
           type: string
         updated:
@@ -25039,18 +25428,19 @@ components:
           created: 0
           release: release
           description: description
+          last_online: 5
           created_by: 6
           uuid: uuid
-          version: 7
+          version: 9
           labels:
           - labels
           - labels
-          token_id: 5
+          token_id: 2
           parent_id: 5
           scope: system
           name: name
           id: 1
-          updated: 2
+          updated: 7
           status: offline
       properties:
         creator:
@@ -25064,18 +25454,19 @@ components:
         created: 0
         release: release
         description: description
+        last_online: 5
         created_by: 6
         uuid: uuid
-        version: 7
+        version: 9
         labels:
         - labels
         - labels
-        token_id: 5
+        token_id: 2
         parent_id: 5
         scope: system
         name: name
         id: 1
-        updated: 2
+        updated: 7
         status: offline
       properties:
         created:
@@ -25093,6 +25484,9 @@ components:
           items:
             type: string
           type: array
+        last_online:
+          format: int64
+          type: integer
         name:
           type: string
         parent_id:
@@ -25102,7 +25496,7 @@ components:
         release:
           type: string
         scope:
-          $ref: "#/components/schemas/RegisterScope"
+          $ref: "#/components/schemas/Scope"
         status:
           $ref: "#/components/schemas/RunnerStatus"
         token_id:
@@ -25122,6 +25516,7 @@ components:
       - description
       - id
       - labels
+      - last_online
       - name
       - release
       - scope
@@ -25210,7 +25605,12 @@ components:
       enum:
       - offline
       - online
-      - idle
+      type: string
+    Scope:
+      enum:
+      - system
+      - group
+      - repository
       type: string
     SecuritySettings:
       example:
@@ -26178,7 +26578,7 @@ components:
           - 0
           created: 0
           parent_id: 5
-          scope: group
+          scope: system
           name: name
           description: description
           id: 5
@@ -26213,7 +26613,7 @@ components:
         - 0
         created: 0
         parent_id: 5
-        scope: group
+        scope: system
         name: name
         description: description
         id: 5
@@ -26245,7 +26645,7 @@ components:
           format: int64
           type: integer
         scope:
-          $ref: "#/components/schemas/VariableScope"
+          $ref: "#/components/schemas/Scope"
         type:
           $ref: "#/components/schemas/VariableType"
         updated:
@@ -26286,11 +26686,6 @@ components:
           $ref: "#/components/schemas/VariableType"
       required:
       - type
-    VariableScope:
-      enum:
-      - group
-      - repository
-      type: string
     VariableSort:
       enum:
       - noop

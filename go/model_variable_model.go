@@ -28,7 +28,7 @@ type VariableModel struct {
 	Id int64 `json:"id"`
 	Name string `json:"name"`
 	ParentId int64 `json:"parent_id"`
-	Scope VariableScope `json:"scope"`
+	Scope Scope `json:"scope"`
 	Type VariableType `json:"type"`
 	Updated int64 `json:"updated"`
 	Version int64 `json:"version"`
@@ -40,7 +40,7 @@ type _VariableModel VariableModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableModel(created int64, createdBy int64, data []int32, description string, id int64, name string, parentId int64, scope VariableScope, type_ VariableType, updated int64, version int64) *VariableModel {
+func NewVariableModel(created int64, createdBy int64, data []int32, description string, id int64, name string, parentId int64, scope Scope, type_ VariableType, updated int64, version int64) *VariableModel {
 	this := VariableModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
@@ -233,9 +233,9 @@ func (o *VariableModel) SetParentId(v int64) {
 }
 
 // GetScope returns the Scope field value
-func (o *VariableModel) GetScope() VariableScope {
+func (o *VariableModel) GetScope() Scope {
 	if o == nil {
-		var ret VariableScope
+		var ret Scope
 		return ret
 	}
 
@@ -244,7 +244,7 @@ func (o *VariableModel) GetScope() VariableScope {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *VariableModel) GetScopeOk() (*VariableScope, bool) {
+func (o *VariableModel) GetScopeOk() (*Scope, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -252,7 +252,7 @@ func (o *VariableModel) GetScopeOk() (*VariableScope, bool) {
 }
 
 // SetScope sets field value
-func (o *VariableModel) SetScope(v VariableScope) {
+func (o *VariableModel) SetScope(v Scope) {
 	o.Scope = v
 }
 

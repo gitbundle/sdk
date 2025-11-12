@@ -9,10 +9,11 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Id** | **int64** |  | 
 **Labels** | **[]string** |  | 
+**LastOnline** | **int64** |  | 
 **Name** | **string** |  | 
 **ParentId** | Pointer to **NullableInt64** |  | [optional] 
 **Release** | **string** |  | 
-**Scope** | [**RegisterScope**](RegisterScope.md) |  | 
+**Scope** | [**Scope**](Scope.md) |  | 
 **Status** | [**RunnerStatus**](RunnerStatus.md) |  | 
 **TokenId** | **int64** |  | 
 **Updated** | **int64** |  | 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewRunnerModel
 
-`func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, name string, release string, scope RegisterScope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64, ) *RunnerModel`
+`func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64, ) *RunnerModel`
 
 NewRunnerModel instantiates a new RunnerModel object
 This constructor will assign default values to properties that have it defined,
@@ -138,6 +139,26 @@ and a boolean to check if the value has been set.
 SetLabels sets Labels field to given value.
 
 
+### GetLastOnline
+
+`func (o *RunnerModel) GetLastOnline() int64`
+
+GetLastOnline returns the LastOnline field if non-nil, zero value otherwise.
+
+### GetLastOnlineOk
+
+`func (o *RunnerModel) GetLastOnlineOk() (*int64, bool)`
+
+GetLastOnlineOk returns a tuple with the LastOnline field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastOnline
+
+`func (o *RunnerModel) SetLastOnline(v int64)`
+
+SetLastOnline sets LastOnline field to given value.
+
+
 ### GetName
 
 `func (o *RunnerModel) GetName() string`
@@ -215,20 +236,20 @@ SetRelease sets Release field to given value.
 
 ### GetScope
 
-`func (o *RunnerModel) GetScope() RegisterScope`
+`func (o *RunnerModel) GetScope() Scope`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *RunnerModel) GetScopeOk() (*RegisterScope, bool)`
+`func (o *RunnerModel) GetScopeOk() (*Scope, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *RunnerModel) SetScope(v RegisterScope)`
+`func (o *RunnerModel) SetScope(v Scope)`
 
 SetScope sets Scope field to given value.
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedBy** | **int64** |  | 
 **Id** | **int64** |  | 
 **ParentId** | Pointer to **NullableInt64** |  | [optional] 
-**Scope** | [**RegisterScope**](RegisterScope.md) |  | 
+**Scope** | [**Scope**](Scope.md) |  | 
 **Token** | **string** |  | 
 **Updated** | **int64** |  | 
 **Version** | **int64** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRegisterTokenModel
 
-`func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope RegisterScope, token string, updated int64, version int64, ) *RegisterTokenModel`
+`func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope Scope, token string, updated int64, version int64, ) *RegisterTokenModel`
 
 NewRegisterTokenModel instantiates a new RegisterTokenModel object
 This constructor will assign default values to properties that have it defined,
@@ -129,20 +129,20 @@ HasParentId returns a boolean if a field has been set.
 UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetScope
 
-`func (o *RegisterTokenModel) GetScope() RegisterScope`
+`func (o *RegisterTokenModel) GetScope() Scope`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *RegisterTokenModel) GetScopeOk() (*RegisterScope, bool)`
+`func (o *RegisterTokenModel) GetScopeOk() (*Scope, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *RegisterTokenModel) SetScope(v RegisterScope)`
+`func (o *RegisterTokenModel) SetScope(v Scope)`
 
 SetScope sets Scope field to given value.
 

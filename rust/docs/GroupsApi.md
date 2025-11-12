@@ -5,8 +5,8 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_groups_runner**](GroupsApi.md#delete_groups_runner) | **DELETE** /groups/{group_ref}/+/runners/{runner_uuid} | 
+[**delete_groups_variable**](GroupsApi.md#delete_groups_variable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**delete_member**](GroupsApi.md#delete_member) | **DELETE** /groups/{group_ref}/+/members/{user_identifier} | 
-[**delete_variable**](GroupsApi.md#delete_variable) | **DELETE** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**get_connectors**](GroupsApi.md#get_connectors) | **GET** /groups/{group_ref}/+/connectors | 
 [**get_events**](GroupsApi.md#get_events) | **GET** /groups/{group_ref}/+/events | 
 [**get_group**](GroupsApi.md#get_group) | **GET** /groups/{group_ref}/+ | 
@@ -14,24 +14,24 @@ Method | HTTP request | Description
 [**get_groups_runner**](GroupsApi.md#get_groups_runner) | **GET** /groups/{group_ref}/+/runners/{runner_uuid} | 
 [**get_groups_runner_register_token**](GroupsApi.md#get_groups_runner_register_token) | **GET** /groups/{group_ref}/+/runners/register_token | 
 [**get_groups_runners**](GroupsApi.md#get_groups_runners) | **GET** /groups/{group_ref}/+/runners | 
+[**get_groups_variable**](GroupsApi.md#get_groups_variable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | 
+[**get_groups_variables**](GroupsApi.md#get_groups_variables) | **GET** /groups/{group_ref}/+/variables | 
 [**get_members**](GroupsApi.md#get_members) | **GET** /groups/{group_ref}/+/members | 
 [**get_repos**](GroupsApi.md#get_repos) | **GET** /groups/{group_ref}/+/repos | 
 [**get_service_accounts**](GroupsApi.md#get_service_accounts) | **GET** /groups/{group_ref}/+/service-accounts | 
 [**get_sub_groups**](GroupsApi.md#get_sub_groups) | **GET** /groups/{group_ref}/+/groups | 
-[**get_variable**](GroupsApi.md#get_variable) | **GET** /groups/{group_ref}/+/variables/{variable_identifier} | 
-[**get_variables**](GroupsApi.md#get_variables) | **GET** /groups/{group_ref}/+/variables | 
 [**patch_group**](GroupsApi.md#patch_group) | **PATCH** /groups/{group_ref}/+ | 
 [**patch_groups_runner**](GroupsApi.md#patch_groups_runner) | **PATCH** /groups/{group_ref}/+/runners/{runner_uuid} | 
+[**patch_groups_variable**](GroupsApi.md#patch_groups_variable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**patch_member**](GroupsApi.md#patch_member) | **PATCH** /groups/{group_ref}/+/members/{user_identifier} | 
-[**patch_variable**](GroupsApi.md#patch_variable) | **PATCH** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**post_group**](GroupsApi.md#post_group) | **POST** /groups | 
+[**post_groups_variable**](GroupsApi.md#post_groups_variable) | **POST** /groups/{group_ref}/+/variables | 
 [**post_import**](GroupsApi.md#post_import) | **POST** /groups/import | 
 [**post_import_repos**](GroupsApi.md#post_import_repos) | **POST** /groups/{group_ref}/+/import | 
 [**post_member**](GroupsApi.md#post_member) | **POST** /groups/{group_ref}/+/members | 
 [**post_move**](GroupsApi.md#post_move) | **POST** /groups/{group_ref}/+/move | 
 [**post_purge**](GroupsApi.md#post_purge) | **POST** /groups/{group_ref}/+/purge | 
 [**post_restore**](GroupsApi.md#post_restore) | **POST** /groups/{group_ref}/+/restore | 
-[**post_variable**](GroupsApi.md#post_variable) | **POST** /groups/{group_ref}/+/variables | 
 [**soft_delete**](GroupsApi.md#soft_delete) | **DELETE** /groups/{group_ref}/+ | 
 
 
@@ -65,9 +65,9 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## delete_member
+## delete_groups_variable
 
-> delete_member(group_ref, user_identifier)
+> delete_groups_variable(group_ref, variable_identifier)
 
 
 ### Parameters
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_ref** | **String** | Group ref | [required] |
-**user_identifier** | **String** |  | [required] |
+**variable_identifier** | **String** |  | [required] |
 
 ### Return type
 
@@ -94,9 +94,9 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## delete_variable
+## delete_member
 
-> delete_variable(group_ref, variable_identifier)
+> delete_member(group_ref, user_identifier)
 
 
 ### Parameters
@@ -105,7 +105,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_ref** | **String** | Group ref | [required] |
-**variable_identifier** | **String** |  | [required] |
+**user_identifier** | **String** |  | [required] |
 
 ### Return type
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_groups_runners
 
-> Vec<models::RunnerCreator> get_groups_runners(group_ref, page, size, query, order)
+> Vec<models::RunnerCreator> get_groups_runners(group_ref, page, size, query)
 
 
 ### Parameters
@@ -309,11 +309,73 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
-**order** | Option<[**OrderOption**](.md)> |  |  |
 
 ### Return type
 
 [**Vec<models::RunnerCreator>**](RunnerCreator.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_variable
+
+> models::VariableModel get_groups_variable(group_ref, variable_identifier)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**variable_identifier** | **String** |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_groups_variables
+
+> Vec<models::VariableGroup> get_groups_variables(group_ref, page, size, query, types, sort, order)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**page** | Option<**i64**> |  |  |
+**size** | Option<**i64**> |  |  |
+**query** | Option<**String**> |  |  |
+**types** | Option<[**Vec<models::VariableType>**](models::VariableType.md)> |  |  |
+**sort** | Option<[**VariableSort**](.md)> |  |  |
+**order** | Option<[**OrderOption**](.md)> |  |  |
+
+### Return type
+
+[**Vec<models::VariableGroup>**](VariableGroup.md)
 
 ### Authorization
 
@@ -459,69 +521,6 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## get_variable
-
-> models::VariableModel get_variable(group_ref, variable_identifier)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**group_ref** | **String** | Group ref | [required] |
-**variable_identifier** | **String** |  | [required] |
-
-### Return type
-
-[**models::VariableModel**](VariableModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## get_variables
-
-> Vec<models::VariableGroup> get_variables(group_ref, page, size, query, types, sort, order)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**group_ref** | **String** | Group ref | [required] |
-**page** | Option<**i64**> |  |  |
-**size** | Option<**i64**> |  |  |
-**query** | Option<**String**> |  |  |
-**types** | Option<[**Vec<models::VariableType>**](models::VariableType.md)> |  |  |
-**sort** | Option<[**VariableSort**](.md)> |  |  |
-**order** | Option<[**OrderOption**](.md)> |  |  |
-
-### Return type
-
-[**Vec<models::VariableGroup>**](VariableGroup.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## patch_group
 
 > models::GroupModel patch_group(group_ref, group_patch_input)
@@ -581,6 +580,36 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## patch_groups_variable
+
+> models::VariableModel patch_groups_variable(group_ref, variable_identifier, variable_patch_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**variable_identifier** | **String** |  | [required] |
+**variable_patch_input** | [**VariablePatchInput**](VariablePatchInput.md) |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## patch_member
 
 > models::MembershipModel patch_member(group_ref, user_identifier, group_member_update_input)
@@ -598,36 +627,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::MembershipModel**](MembershipModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## patch_variable
-
-> models::VariableModel patch_variable(group_ref, variable_identifier, variable_patch_input)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**group_ref** | **String** | Group ref | [required] |
-**variable_identifier** | **String** |  | [required] |
-**variable_patch_input** | [**VariablePatchInput**](VariablePatchInput.md) |  | [required] |
-
-### Return type
-
-[**models::VariableModel**](VariableModel.md)
 
 ### Authorization
 
@@ -660,6 +659,35 @@ Name | Type | Description  | Required | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## post_groups_variable
+
+> models::VariableModel post_groups_variable(group_ref, variable_create_input)
+
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_ref** | **String** | Group ref | [required] |
+**variable_create_input** | [**VariableCreateInput**](VariableCreateInput.md) |  | [required] |
+
+### Return type
+
+[**models::VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
 
 ### HTTP request headers
 
@@ -828,35 +856,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::GroupModel**](GroupModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## post_variable
-
-> models::VariableModel post_variable(group_ref, variable_create_input)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**group_ref** | **String** | Group ref | [required] |
-**variable_create_input** | [**VariableCreateInput**](VariableCreateInput.md) |  | [required] |
-
-### Return type
-
-[**models::VariableModel**](VariableModel.md)
 
 ### Authorization
 

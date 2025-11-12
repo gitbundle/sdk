@@ -5,8 +5,8 @@ All URIs are relative to */api/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteGroupsRunner**](GroupsAPI.md#DeleteGroupsRunner) | **Delete** /groups/{group_ref}/+/runners/{runner_uuid} | 
+[**DeleteGroupsVariable**](GroupsAPI.md#DeleteGroupsVariable) | **Delete** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**DeleteMember**](GroupsAPI.md#DeleteMember) | **Delete** /groups/{group_ref}/+/members/{user_identifier} | 
-[**DeleteVariable**](GroupsAPI.md#DeleteVariable) | **Delete** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**GetConnectors**](GroupsAPI.md#GetConnectors) | **Get** /groups/{group_ref}/+/connectors | 
 [**GetEvents**](GroupsAPI.md#GetEvents) | **Get** /groups/{group_ref}/+/events | 
 [**GetGroup**](GroupsAPI.md#GetGroup) | **Get** /groups/{group_ref}/+ | 
@@ -14,24 +14,24 @@ Method | HTTP request | Description
 [**GetGroupsRunner**](GroupsAPI.md#GetGroupsRunner) | **Get** /groups/{group_ref}/+/runners/{runner_uuid} | 
 [**GetGroupsRunnerRegisterToken**](GroupsAPI.md#GetGroupsRunnerRegisterToken) | **Get** /groups/{group_ref}/+/runners/register_token | 
 [**GetGroupsRunners**](GroupsAPI.md#GetGroupsRunners) | **Get** /groups/{group_ref}/+/runners | 
+[**GetGroupsVariable**](GroupsAPI.md#GetGroupsVariable) | **Get** /groups/{group_ref}/+/variables/{variable_identifier} | 
+[**GetGroupsVariables**](GroupsAPI.md#GetGroupsVariables) | **Get** /groups/{group_ref}/+/variables | 
 [**GetMembers**](GroupsAPI.md#GetMembers) | **Get** /groups/{group_ref}/+/members | 
 [**GetRepos**](GroupsAPI.md#GetRepos) | **Get** /groups/{group_ref}/+/repos | 
 [**GetServiceAccounts**](GroupsAPI.md#GetServiceAccounts) | **Get** /groups/{group_ref}/+/service-accounts | 
 [**GetSubGroups**](GroupsAPI.md#GetSubGroups) | **Get** /groups/{group_ref}/+/groups | 
-[**GetVariable**](GroupsAPI.md#GetVariable) | **Get** /groups/{group_ref}/+/variables/{variable_identifier} | 
-[**GetVariables**](GroupsAPI.md#GetVariables) | **Get** /groups/{group_ref}/+/variables | 
 [**PatchGroup**](GroupsAPI.md#PatchGroup) | **Patch** /groups/{group_ref}/+ | 
 [**PatchGroupsRunner**](GroupsAPI.md#PatchGroupsRunner) | **Patch** /groups/{group_ref}/+/runners/{runner_uuid} | 
+[**PatchGroupsVariable**](GroupsAPI.md#PatchGroupsVariable) | **Patch** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**PatchMember**](GroupsAPI.md#PatchMember) | **Patch** /groups/{group_ref}/+/members/{user_identifier} | 
-[**PatchVariable**](GroupsAPI.md#PatchVariable) | **Patch** /groups/{group_ref}/+/variables/{variable_identifier} | 
 [**PostGroup**](GroupsAPI.md#PostGroup) | **Post** /groups | 
+[**PostGroupsVariable**](GroupsAPI.md#PostGroupsVariable) | **Post** /groups/{group_ref}/+/variables | 
 [**PostImport**](GroupsAPI.md#PostImport) | **Post** /groups/import | 
 [**PostImportRepos**](GroupsAPI.md#PostImportRepos) | **Post** /groups/{group_ref}/+/import | 
 [**PostMember**](GroupsAPI.md#PostMember) | **Post** /groups/{group_ref}/+/members | 
 [**PostMove**](GroupsAPI.md#PostMove) | **Post** /groups/{group_ref}/+/move | 
 [**PostPurge**](GroupsAPI.md#PostPurge) | **Post** /groups/{group_ref}/+/purge | 
 [**PostRestore**](GroupsAPI.md#PostRestore) | **Post** /groups/{group_ref}/+/restore | 
-[**PostVariable**](GroupsAPI.md#PostVariable) | **Post** /groups/{group_ref}/+/variables | 
 [**SoftDelete**](GroupsAPI.md#SoftDelete) | **Delete** /groups/{group_ref}/+ | 
 
 
@@ -105,6 +105,75 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteGroupsVariable
+
+> DeleteGroupsVariable(ctx, groupRef, variableIdentifier).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	groupRef := "groupRef_example" // string | Group ref
+	variableIdentifier := "variableIdentifier_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.GroupsAPI.DeleteGroupsVariable(context.Background(), groupRef, variableIdentifier).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.DeleteGroupsVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupRef** | **string** | Group ref | 
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGroupsVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteMember
 
 > DeleteMember(ctx, groupRef, userIdentifier).Execute()
@@ -149,75 +218,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteMemberRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteVariable
-
-> DeleteVariable(ctx, groupRef, variableIdentifier).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	groupRef := "groupRef_example" // string | Group ref
-	variableIdentifier := "variableIdentifier_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GroupsAPI.DeleteVariable(context.Background(), groupRef, variableIdentifier).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.DeleteVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupRef** | **string** | Group ref | 
-**variableIdentifier** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteVariableRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -662,7 +662,7 @@ Name | Type | Description  | Notes
 
 ## GetGroupsRunners
 
-> []RunnerCreator GetGroupsRunners(ctx, groupRef).Page(page).Size(size).Query(query).Order(order).Execute()
+> []RunnerCreator GetGroupsRunners(ctx, groupRef).Page(page).Size(size).Query(query).Execute()
 
 
 
@@ -683,11 +683,10 @@ func main() {
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
-	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.GetGroupsRunners(context.Background(), groupRef).Page(page).Size(size).Query(query).Order(order).Execute()
+	resp, r, err := apiClient.GroupsAPI.GetGroupsRunners(context.Background(), groupRef).Page(page).Size(size).Query(query).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroupsRunners``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -716,11 +715,161 @@ Name | Type | Description  | Notes
  **page** | **int64** |  | 
  **size** | **int64** |  | 
  **query** | **string** |  | 
- **order** | [**OrderOption**](OrderOption.md) |  | 
 
 ### Return type
 
 [**[]RunnerCreator**](RunnerCreator.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetGroupsVariable
+
+> VariableModel GetGroupsVariable(ctx, groupRef, variableIdentifier).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	groupRef := "groupRef_example" // string | Group ref
+	variableIdentifier := "variableIdentifier_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GroupsAPI.GetGroupsVariable(context.Background(), groupRef, variableIdentifier).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroupsVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGroupsVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroupsVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupRef** | **string** | Group ref | 
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGroupsVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetGroupsVariables
+
+> []VariableGroup GetGroupsVariables(ctx, groupRef).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	groupRef := "groupRef_example" // string | Group ref
+	page := int64(789) // int64 |  (optional)
+	size := int64(789) // int64 |  (optional)
+	query := "query_example" // string |  (optional)
+	types := []openapiclient.VariableType{openapiclient.VariableType("plain_text")} // []VariableType |  (optional)
+	sort := openapiclient.VariableSort("noop") // VariableSort |  (optional)
+	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GroupsAPI.GetGroupsVariables(context.Background(), groupRef).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroupsVariables``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGroupsVariables`: []VariableGroup
+	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroupsVariables`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupRef** | **string** | Group ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGroupsVariablesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **page** | **int64** |  | 
+ **size** | **int64** |  | 
+ **query** | **string** |  | 
+ **types** | [**[]VariableType**](VariableType.md) |  | 
+ **sort** | [**VariableSort**](VariableSort.md) |  | 
+ **order** | [**OrderOption**](OrderOption.md) |  | 
+
+### Return type
+
+[**[]VariableGroup**](VariableGroup.md)
 
 ### Authorization
 
@@ -1048,157 +1197,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetVariable
-
-> VariableModel GetVariable(ctx, groupRef, variableIdentifier).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	groupRef := "groupRef_example" // string | Group ref
-	variableIdentifier := "variableIdentifier_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.GetVariable(context.Background(), groupRef, variableIdentifier).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetVariable`: VariableModel
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetVariable`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupRef** | **string** | Group ref | 
-**variableIdentifier** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetVariableRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**VariableModel**](VariableModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetVariables
-
-> []VariableGroup GetVariables(ctx, groupRef).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	groupRef := "groupRef_example" // string | Group ref
-	page := int64(789) // int64 |  (optional)
-	size := int64(789) // int64 |  (optional)
-	query := "query_example" // string |  (optional)
-	types := []openapiclient.VariableType{openapiclient.VariableType("plain_text")} // []VariableType |  (optional)
-	sort := openapiclient.VariableSort("noop") // VariableSort |  (optional)
-	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.GetVariables(context.Background(), groupRef).Page(page).Size(size).Query(query).Types(types).Sort(sort).Order(order).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetVariables``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetVariables`: []VariableGroup
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetVariables`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupRef** | **string** | Group ref | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetVariablesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **page** | **int64** |  | 
- **size** | **int64** |  | 
- **query** | **string** |  | 
- **types** | [**[]VariableType**](VariableType.md) |  | 
- **sort** | [**VariableSort**](VariableSort.md) |  | 
- **order** | [**OrderOption**](OrderOption.md) |  | 
-
-### Return type
-
-[**[]VariableGroup**](VariableGroup.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PatchGroup
 
 > GroupModel PatchGroup(ctx, groupRef).GroupPatchInput(groupPatchInput).Execute()
@@ -1342,6 +1340,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PatchGroupsVariable
+
+> VariableModel PatchGroupsVariable(ctx, groupRef, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	groupRef := "groupRef_example" // string | Group ref
+	variableIdentifier := "variableIdentifier_example" // string | 
+	variablePatchInput := *openapiclient.NewVariablePatchInput(openapiclient.VariableType("plain_text")) // VariablePatchInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GroupsAPI.PatchGroupsVariable(context.Background(), groupRef, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.PatchGroupsVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchGroupsVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.PatchGroupsVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupRef** | **string** | Group ref | 
+**variableIdentifier** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchGroupsVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **variablePatchInput** | [**VariablePatchInput**](VariablePatchInput.md) |  | 
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PatchMember
 
 > MembershipModel PatchMember(ctx, groupRef, userIdentifier).GroupMemberUpdateInput(groupMemberUpdateInput).Execute()
@@ -1415,79 +1486,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchVariable
-
-> VariableModel PatchVariable(ctx, groupRef, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	groupRef := "groupRef_example" // string | Group ref
-	variableIdentifier := "variableIdentifier_example" // string | 
-	variablePatchInput := *openapiclient.NewVariablePatchInput(openapiclient.VariableType("plain_text")) // VariablePatchInput | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.PatchVariable(context.Background(), groupRef, variableIdentifier).VariablePatchInput(variablePatchInput).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.PatchVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PatchVariable`: VariableModel
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.PatchVariable`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupRef** | **string** | Group ref | 
-**variableIdentifier** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchVariableRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **variablePatchInput** | [**VariablePatchInput**](VariablePatchInput.md) |  | 
-
-### Return type
-
-[**VariableModel**](VariableModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PostGroup
 
 > GroupModel PostGroup(ctx).GroupCreateInput(groupCreateInput).Execute()
@@ -1541,6 +1539,76 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostGroupsVariable
+
+> VariableModel PostGroupsVariable(ctx, groupRef).VariableCreateInput(variableCreateInput).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	groupRef := "groupRef_example" // string | Group ref
+	variableCreateInput := *openapiclient.NewVariableCreateInput("Data_example", "Description_example", "Identifier_example", "ParentRef_example", openapiclient.VariableType("plain_text")) // VariableCreateInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GroupsAPI.PostGroupsVariable(context.Background(), groupRef).VariableCreateInput(variableCreateInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.PostGroupsVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostGroupsVariable`: VariableModel
+	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.PostGroupsVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupRef** | **string** | Group ref | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostGroupsVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **variableCreateInput** | [**VariableCreateInput**](VariableCreateInput.md) |  | 
+
+### Return type
+
+[**VariableModel**](VariableModel.md)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
 
 ### HTTP request headers
 
@@ -1947,76 +2015,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GroupModel**](GroupModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PostVariable
-
-> VariableModel PostVariable(ctx, groupRef).VariableCreateInput(variableCreateInput).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	groupRef := "groupRef_example" // string | Group ref
-	variableCreateInput := *openapiclient.NewVariableCreateInput("Data_example", "Description_example", "Identifier_example", "ParentRef_example", openapiclient.VariableType("plain_text")) // VariableCreateInput | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.PostVariable(context.Background(), groupRef).VariableCreateInput(variableCreateInput).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.PostVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostVariable`: VariableModel
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.PostVariable`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupRef** | **string** | Group ref | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostVariableRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **variableCreateInput** | [**VariableCreateInput**](VariableCreateInput.md) |  | 
-
-### Return type
-
-[**VariableModel**](VariableModel.md)
 
 ### Authorization
 

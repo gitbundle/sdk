@@ -22,14 +22,12 @@ type RunnerStatus string
 const (
 	RUNNERSTATUS_OFFLINE RunnerStatus = "offline"
 	RUNNERSTATUS_ONLINE RunnerStatus = "online"
-	RUNNERSTATUS_IDLE RunnerStatus = "idle"
 )
 
 // All allowed values of RunnerStatus enum
 var AllowedRunnerStatusEnumValues = []RunnerStatus{
 	"offline",
 	"online",
-	"idle",
 }
 
 func (v *RunnerStatus) UnmarshalJSON(src []byte) error {

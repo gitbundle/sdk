@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **created_by** | **number** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
 **parent_id** | **number** |  | [optional] [default to undefined]
-**scope** | [**RegisterScope**](RegisterScope.md) |  | [default to undefined]
+**scope** | [**Scope**](Scope.md) |  | [default to undefined]
 **token** | **string** |  | [default to undefined]
 **updated** | **number** |  | [default to undefined]
 **version** | **number** |  | [default to undefined]

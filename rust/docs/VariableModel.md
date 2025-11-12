@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **i64** |  | 
 **name** | **String** |  | 
 **parent_id** | **i64** |  | 
-**scope** | [**models::VariableScope**](VariableScope.md) |  | 
+**scope** | [**models::Scope**](Scope.md) |  | 
 **r#type** | [**models::VariableType**](VariableType.md) |  | 
 **updated** | **i64** |  | 
 **version** | **i64** |  | 

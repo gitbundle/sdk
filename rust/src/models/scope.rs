@@ -13,26 +13,29 @@ use serde::{Deserialize, Serialize};
 
 /// 
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum RunnerStatus {
-    #[serde(rename = "offline")]
-    Offline,
-    #[serde(rename = "online")]
-    Online,
+pub enum Scope {
+    #[serde(rename = "system")]
+    System,
+    #[serde(rename = "group")]
+    Group,
+    #[serde(rename = "repository")]
+    Repository,
 
 }
 
-impl std::fmt::Display for RunnerStatus {
+impl std::fmt::Display for Scope {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Offline => write!(f, "offline"),
-            Self::Online => write!(f, "online"),
+            Self::System => write!(f, "system"),
+            Self::Group => write!(f, "group"),
+            Self::Repository => write!(f, "repository"),
         }
     }
 }
 
-impl Default for RunnerStatus {
-    fn default() -> RunnerStatus {
-        Self::Offline
+impl Default for Scope {
+    fn default() -> Scope {
+        Self::System
     }
 }
 

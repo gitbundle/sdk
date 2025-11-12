@@ -2455,7 +2455,7 @@ Name | Type | Description  | Notes
 
 ## GetRepositoryRunners
 
-> []RunnerCreator GetRepositoryRunners(ctx, repoRef).Page(page).Size(size).Query(query).Order(order).Execute()
+> []RunnerCreator GetRepositoryRunners(ctx, repoRef).Page(page).Size(size).Query(query).Execute()
 
 
 
@@ -2476,11 +2476,10 @@ func main() {
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
-	order := openapiclient.OrderOption("asc") // OrderOption |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RepositoryAPI.GetRepositoryRunners(context.Background(), repoRef).Page(page).Size(size).Query(query).Order(order).Execute()
+	resp, r, err := apiClient.RepositoryAPI.GetRepositoryRunners(context.Background(), repoRef).Page(page).Size(size).Query(query).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RepositoryAPI.GetRepositoryRunners``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2509,7 +2508,6 @@ Name | Type | Description  | Notes
  **page** | **int64** |  | 
  **size** | **int64** |  | 
  **query** | **string** |  | 
- **order** | [**OrderOption**](OrderOption.md) |  | 
 
 ### Return type
 
