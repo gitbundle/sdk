@@ -23,6 +23,8 @@ pub struct RunnerModel {
     pub id: i64,
     #[serde(rename = "labels")]
     pub labels: Vec<String>,
+    #[serde(rename = "last_online")]
+    pub last_online: i64,
     #[serde(rename = "name")]
     pub name: String,
     #[serde(rename = "parent_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -30,7 +32,7 @@ pub struct RunnerModel {
     #[serde(rename = "release")]
     pub release: String,
     #[serde(rename = "scope")]
-    pub scope: models::RegisterScope,
+    pub scope: models::Scope,
     #[serde(rename = "status")]
     pub status: models::RunnerStatus,
     #[serde(rename = "token_id")]
@@ -44,13 +46,14 @@ pub struct RunnerModel {
 }
 
 impl RunnerModel {
-    pub fn new(created: i64, created_by: i64, description: String, id: i64, labels: Vec<String>, name: String, release: String, scope: models::RegisterScope, status: models::RunnerStatus, token_id: i64, updated: i64, uuid: String, version: i64) -> RunnerModel {
+    pub fn new(created: i64, created_by: i64, description: String, id: i64, labels: Vec<String>, last_online: i64, name: String, release: String, scope: models::Scope, status: models::RunnerStatus, token_id: i64, updated: i64, uuid: String, version: i64) -> RunnerModel {
         RunnerModel {
             created,
             created_by,
             description,
             id,
             labels,
+            last_online,
             name,
             parent_id: None,
             release,

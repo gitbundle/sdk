@@ -6859,7 +6859,6 @@ type ApiGetRepositoryRunnersRequest struct {
 	page *int64
 	size *int64
 	query *string
-	order *OrderOption
 }
 
 func (r ApiGetRepositoryRunnersRequest) Page(page int64) ApiGetRepositoryRunnersRequest {
@@ -6874,11 +6873,6 @@ func (r ApiGetRepositoryRunnersRequest) Size(size int64) ApiGetRepositoryRunners
 
 func (r ApiGetRepositoryRunnersRequest) Query(query string) ApiGetRepositoryRunnersRequest {
 	r.query = &query
-	return r
-}
-
-func (r ApiGetRepositoryRunnersRequest) Order(order OrderOption) ApiGetRepositoryRunnersRequest {
-	r.order = &order
 	return r
 }
 
@@ -6931,9 +6925,6 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 	}
 	if r.query != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")
-	}
-	if r.order != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

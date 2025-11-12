@@ -105,6 +105,7 @@ Class | Method | HTTP request | Description
 *AdminAPI* | [**DeleteGroup**](docs/AdminAPI.md#deletegroup) | **Delete** /admin/groups/{group_ref} | 
 *AdminAPI* | [**DeleteRunner**](docs/AdminAPI.md#deleterunner) | **Delete** /admin/runners/{runner_uuid} | 
 *AdminAPI* | [**DeleteUser**](docs/AdminAPI.md#deleteuser) | **Delete** /admin/users/{user_identifier} | 
+*AdminAPI* | [**DeleteVariable**](docs/AdminAPI.md#deletevariable) | **Delete** /admin/variables/{variable_identifier} | 
 *AdminAPI* | [**GetGroups**](docs/AdminAPI.md#getgroups) | **Get** /admin/groups | 
 *AdminAPI* | [**GetResetedRunnerRegisterToken**](docs/AdminAPI.md#getresetedrunnerregistertoken) | **Get** /admin/runners/register_token/reseted | 
 *AdminAPI* | [**GetRunner**](docs/AdminAPI.md#getrunner) | **Get** /admin/runners/{runner_uuid} | 
@@ -113,18 +114,22 @@ Class | Method | HTTP request | Description
 *AdminAPI* | [**GetStats**](docs/AdminAPI.md#getstats) | **Get** /admin/stats | 
 *AdminAPI* | [**GetUser**](docs/AdminAPI.md#getuser) | **Get** /admin/users/{user_identifier} | 
 *AdminAPI* | [**GetUsers**](docs/AdminAPI.md#getusers) | **Get** /admin/users | 
+*AdminAPI* | [**GetVariable**](docs/AdminAPI.md#getvariable) | **Get** /admin/variables/{variable_identifier} | 
+*AdminAPI* | [**GetVariables**](docs/AdminAPI.md#getvariables) | **Get** /admin/variables | 
 *AdminAPI* | [**PatchRunner**](docs/AdminAPI.md#patchrunner) | **Patch** /admin/runners/{runner_uuid} | 
 *AdminAPI* | [**PatchUser**](docs/AdminAPI.md#patchuser) | **Patch** /admin/users/{user_identifier} | 
 *AdminAPI* | [**PatchUserAdmin**](docs/AdminAPI.md#patchuseradmin) | **Patch** /admin/users/{user_identifier}/admin | 
+*AdminAPI* | [**PatchVariable**](docs/AdminAPI.md#patchvariable) | **Patch** /admin/variables/{variable_identifier} | 
 *AdminAPI* | [**PostUser**](docs/AdminAPI.md#postuser) | **Post** /admin/users | 
+*AdminAPI* | [**PostVariable**](docs/AdminAPI.md#postvariable) | **Post** /admin/variables | 
 *BootstrapAPI* | [**GetBootstrap**](docs/BootstrapAPI.md#getbootstrap) | **Get** /bootstrap/{bootstrap_ref}/+/{path} | 
 *ConnectorsAPI* | [**DeleteConnector**](docs/ConnectorsAPI.md#deleteconnector) | **Delete** /connectors/{connector_ref} | 
 *ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{connector_ref} | 
 *ConnectorsAPI* | [**PatchConnector**](docs/ConnectorsAPI.md#patchconnector) | **Patch** /connectors/{connector_ref} | 
 *ConnectorsAPI* | [**PostConnector**](docs/ConnectorsAPI.md#postconnector) | **Post** /connectors | 
 *GroupsAPI* | [**DeleteGroupsRunner**](docs/GroupsAPI.md#deletegroupsrunner) | **Delete** /groups/{group_ref}/+/runners/{runner_uuid} | 
+*GroupsAPI* | [**DeleteGroupsVariable**](docs/GroupsAPI.md#deletegroupsvariable) | **Delete** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsAPI* | [**DeleteMember**](docs/GroupsAPI.md#deletemember) | **Delete** /groups/{group_ref}/+/members/{user_identifier} | 
-*GroupsAPI* | [**DeleteVariable**](docs/GroupsAPI.md#deletevariable) | **Delete** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsAPI* | [**GetConnectors**](docs/GroupsAPI.md#getconnectors) | **Get** /groups/{group_ref}/+/connectors | 
 *GroupsAPI* | [**GetEvents**](docs/GroupsAPI.md#getevents) | **Get** /groups/{group_ref}/+/events | 
 *GroupsAPI* | [**GetGroup**](docs/GroupsAPI.md#getgroup) | **Get** /groups/{group_ref}/+ | 
@@ -132,24 +137,24 @@ Class | Method | HTTP request | Description
 *GroupsAPI* | [**GetGroupsRunner**](docs/GroupsAPI.md#getgroupsrunner) | **Get** /groups/{group_ref}/+/runners/{runner_uuid} | 
 *GroupsAPI* | [**GetGroupsRunnerRegisterToken**](docs/GroupsAPI.md#getgroupsrunnerregistertoken) | **Get** /groups/{group_ref}/+/runners/register_token | 
 *GroupsAPI* | [**GetGroupsRunners**](docs/GroupsAPI.md#getgroupsrunners) | **Get** /groups/{group_ref}/+/runners | 
+*GroupsAPI* | [**GetGroupsVariable**](docs/GroupsAPI.md#getgroupsvariable) | **Get** /groups/{group_ref}/+/variables/{variable_identifier} | 
+*GroupsAPI* | [**GetGroupsVariables**](docs/GroupsAPI.md#getgroupsvariables) | **Get** /groups/{group_ref}/+/variables | 
 *GroupsAPI* | [**GetMembers**](docs/GroupsAPI.md#getmembers) | **Get** /groups/{group_ref}/+/members | 
 *GroupsAPI* | [**GetRepos**](docs/GroupsAPI.md#getrepos) | **Get** /groups/{group_ref}/+/repos | 
 *GroupsAPI* | [**GetServiceAccounts**](docs/GroupsAPI.md#getserviceaccounts) | **Get** /groups/{group_ref}/+/service-accounts | 
 *GroupsAPI* | [**GetSubGroups**](docs/GroupsAPI.md#getsubgroups) | **Get** /groups/{group_ref}/+/groups | 
-*GroupsAPI* | [**GetVariable**](docs/GroupsAPI.md#getvariable) | **Get** /groups/{group_ref}/+/variables/{variable_identifier} | 
-*GroupsAPI* | [**GetVariables**](docs/GroupsAPI.md#getvariables) | **Get** /groups/{group_ref}/+/variables | 
 *GroupsAPI* | [**PatchGroup**](docs/GroupsAPI.md#patchgroup) | **Patch** /groups/{group_ref}/+ | 
 *GroupsAPI* | [**PatchGroupsRunner**](docs/GroupsAPI.md#patchgroupsrunner) | **Patch** /groups/{group_ref}/+/runners/{runner_uuid} | 
+*GroupsAPI* | [**PatchGroupsVariable**](docs/GroupsAPI.md#patchgroupsvariable) | **Patch** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsAPI* | [**PatchMember**](docs/GroupsAPI.md#patchmember) | **Patch** /groups/{group_ref}/+/members/{user_identifier} | 
-*GroupsAPI* | [**PatchVariable**](docs/GroupsAPI.md#patchvariable) | **Patch** /groups/{group_ref}/+/variables/{variable_identifier} | 
 *GroupsAPI* | [**PostGroup**](docs/GroupsAPI.md#postgroup) | **Post** /groups | 
+*GroupsAPI* | [**PostGroupsVariable**](docs/GroupsAPI.md#postgroupsvariable) | **Post** /groups/{group_ref}/+/variables | 
 *GroupsAPI* | [**PostImport**](docs/GroupsAPI.md#postimport) | **Post** /groups/import | 
 *GroupsAPI* | [**PostImportRepos**](docs/GroupsAPI.md#postimportrepos) | **Post** /groups/{group_ref}/+/import | 
 *GroupsAPI* | [**PostMember**](docs/GroupsAPI.md#postmember) | **Post** /groups/{group_ref}/+/members | 
 *GroupsAPI* | [**PostMove**](docs/GroupsAPI.md#postmove) | **Post** /groups/{group_ref}/+/move | 
 *GroupsAPI* | [**PostPurge**](docs/GroupsAPI.md#postpurge) | **Post** /groups/{group_ref}/+/purge | 
 *GroupsAPI* | [**PostRestore**](docs/GroupsAPI.md#postrestore) | **Post** /groups/{group_ref}/+/restore | 
-*GroupsAPI* | [**PostVariable**](docs/GroupsAPI.md#postvariable) | **Post** /groups/{group_ref}/+/variables | 
 *GroupsAPI* | [**SoftDelete**](docs/GroupsAPI.md#softdelete) | **Delete** /groups/{group_ref}/+ | 
 *KeywordSearchAPI* | [**Search**](docs/KeywordSearchAPI.md#search) | **Post** /search | 
 *PullRequestAPI* | [**DeleteComment**](docs/PullRequestAPI.md#deletecomment) | **Delete** /repos/{repo_ref}/+/pullreq/{pullreq_number}/comments/{pullreq_comment_id} | 
@@ -443,7 +448,6 @@ Class | Method | HTTP request | Description
  - [PullreqWithDiffStats](docs/PullreqWithDiffStats.md)
  - [QueryOption](docs/QueryOption.md)
  - [RegisterInput](docs/RegisterInput.md)
- - [RegisterScope](docs/RegisterScope.md)
  - [RegisterTokenModel](docs/RegisterTokenModel.md)
  - [ReleaseCreateInput](docs/ReleaseCreateInput.md)
  - [ReleaseCreator](docs/ReleaseCreator.md)
@@ -493,6 +497,7 @@ Class | Method | HTTP request | Description
  - [RunnerPostInput](docs/RunnerPostInput.md)
  - [RunnerStageOutput](docs/RunnerStageOutput.md)
  - [RunnerStatus](docs/RunnerStatus.md)
+ - [Scope](docs/Scope.md)
  - [SecuritySettings](docs/SecuritySettings.md)
  - [ServiceAccountCreateInput](docs/ServiceAccountCreateInput.md)
  - [ServiceAccountTokenOutput](docs/ServiceAccountTokenOutput.md)
@@ -525,7 +530,6 @@ Class | Method | HTTP request | Description
  - [VariableGroup](docs/VariableGroup.md)
  - [VariableModel](docs/VariableModel.md)
  - [VariablePatchInput](docs/VariablePatchInput.md)
- - [VariableScope](docs/VariableScope.md)
  - [VariableSort](docs/VariableSort.md)
  - [VariableType](docs/VariableType.md)
  - [WebhookCreateInput](docs/WebhookCreateInput.md)

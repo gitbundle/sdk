@@ -147,7 +147,6 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
-docs/RegisterScope.md
 docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
@@ -202,6 +201,7 @@ docs/RunnerPostInput.md
 docs/RunnerStageOutput.md
 docs/RunnerStatus.md
 docs/RunnersApi.md
+docs/Scope.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
@@ -239,7 +239,6 @@ docs/VariableCreateInput.md
 docs/VariableGroup.md
 docs/VariableModel.md
 docs/VariablePatchInput.md
-docs/VariableScope.md
 docs/VariableSort.md
 docs/VariableType.md
 docs/WebhookCreateInput.md
@@ -417,7 +416,6 @@ src/models/pullreq_update_input.rs
 src/models/pullreq_with_diff_stats.rs
 src/models/query_option.rs
 src/models/register_input.rs
-src/models/register_scope.rs
 src/models/register_token_model.rs
 src/models/release_create_input.rs
 src/models/release_creator.rs
@@ -467,6 +465,7 @@ src/models/runner_patch_input.rs
 src/models/runner_post_input.rs
 src/models/runner_stage_output.rs
 src/models/runner_status.rs
+src/models/scope.rs
 src/models/security_settings.rs
 src/models/service_account_create_input.rs
 src/models/service_account_token_output.rs
@@ -499,7 +498,6 @@ src/models/variable_create_input.rs
 src/models/variable_group.rs
 src/models/variable_model.rs
 src/models/variable_patch_input.rs
-src/models/variable_scope.rs
 src/models/variable_sort.rs
 src/models/variable_type.rs
 src/models/webhook_create_input.rs

@@ -25,7 +25,7 @@ type RegisterTokenModel struct {
 	CreatedBy int64 `json:"created_by"`
 	Id int64 `json:"id"`
 	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	Scope RegisterScope `json:"scope"`
+	Scope Scope `json:"scope"`
 	Token string `json:"token"`
 	Updated int64 `json:"updated"`
 	Version int64 `json:"version"`
@@ -37,7 +37,7 @@ type _RegisterTokenModel RegisterTokenModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope RegisterScope, token string, updated int64, version int64) *RegisterTokenModel {
+func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope Scope, token string, updated int64, version int64) *RegisterTokenModel {
 	this := RegisterTokenModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
@@ -172,9 +172,9 @@ func (o *RegisterTokenModel) UnsetParentId() {
 }
 
 // GetScope returns the Scope field value
-func (o *RegisterTokenModel) GetScope() RegisterScope {
+func (o *RegisterTokenModel) GetScope() Scope {
 	if o == nil {
-		var ret RegisterScope
+		var ret Scope
 		return ret
 	}
 
@@ -183,7 +183,7 @@ func (o *RegisterTokenModel) GetScope() RegisterScope {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *RegisterTokenModel) GetScopeOk() (*RegisterScope, bool) {
+func (o *RegisterTokenModel) GetScopeOk() (*Scope, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -191,7 +191,7 @@ func (o *RegisterTokenModel) GetScopeOk() (*RegisterScope, bool) {
 }
 
 // SetScope sets field value
-func (o *RegisterTokenModel) SetScope(v RegisterScope) {
+func (o *RegisterTokenModel) SetScope(v Scope) {
 	o.Scope = v
 }
 

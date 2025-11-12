@@ -26,10 +26,11 @@ type RunnerModel struct {
 	Description string `json:"description"`
 	Id int64 `json:"id"`
 	Labels []string `json:"labels"`
+	LastOnline int64 `json:"last_online"`
 	Name string `json:"name"`
 	ParentId NullableInt64 `json:"parent_id,omitempty"`
 	Release string `json:"release"`
-	Scope RegisterScope `json:"scope"`
+	Scope Scope `json:"scope"`
 	Status RunnerStatus `json:"status"`
 	TokenId int64 `json:"token_id"`
 	Updated int64 `json:"updated"`
@@ -43,13 +44,14 @@ type _RunnerModel RunnerModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, name string, release string, scope RegisterScope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64) *RunnerModel {
+func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64) *RunnerModel {
 	this := RunnerModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
 	this.Description = description
 	this.Id = id
 	this.Labels = labels
+	this.LastOnline = lastOnline
 	this.Name = name
 	this.Release = release
 	this.Scope = scope
@@ -189,6 +191,30 @@ func (o *RunnerModel) SetLabels(v []string) {
 	o.Labels = v
 }
 
+// GetLastOnline returns the LastOnline field value
+func (o *RunnerModel) GetLastOnline() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.LastOnline
+}
+
+// GetLastOnlineOk returns a tuple with the LastOnline field value
+// and a boolean to check if the value has been set.
+func (o *RunnerModel) GetLastOnlineOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastOnline, true
+}
+
+// SetLastOnline sets field value
+func (o *RunnerModel) SetLastOnline(v int64) {
+	o.LastOnline = v
+}
+
 // GetName returns the Name field value
 func (o *RunnerModel) GetName() string {
 	if o == nil {
@@ -280,9 +306,9 @@ func (o *RunnerModel) SetRelease(v string) {
 }
 
 // GetScope returns the Scope field value
-func (o *RunnerModel) GetScope() RegisterScope {
+func (o *RunnerModel) GetScope() Scope {
 	if o == nil {
-		var ret RegisterScope
+		var ret Scope
 		return ret
 	}
 
@@ -291,7 +317,7 @@ func (o *RunnerModel) GetScope() RegisterScope {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *RunnerModel) GetScopeOk() (*RegisterScope, bool) {
+func (o *RunnerModel) GetScopeOk() (*Scope, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -299,7 +325,7 @@ func (o *RunnerModel) GetScopeOk() (*RegisterScope, bool) {
 }
 
 // SetScope sets field value
-func (o *RunnerModel) SetScope(v RegisterScope) {
+func (o *RunnerModel) SetScope(v Scope) {
 	o.Scope = v
 }
 
@@ -438,6 +464,7 @@ func (o RunnerModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["id"] = o.Id
 	toSerialize["labels"] = o.Labels
+	toSerialize["last_online"] = o.LastOnline
 	toSerialize["name"] = o.Name
 	if o.ParentId.IsSet() {
 		toSerialize["parent_id"] = o.ParentId.Get()
@@ -462,6 +489,7 @@ func (o *RunnerModel) UnmarshalJSON(data []byte) (err error) {
 		"description",
 		"id",
 		"labels",
+		"last_online",
 		"name",
 		"release",
 		"scope",

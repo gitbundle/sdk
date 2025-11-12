@@ -168,7 +168,6 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
-docs/RegisterScope.md
 docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
@@ -223,6 +222,7 @@ docs/RunnerPostInput.md
 docs/RunnerStageOutput.md
 docs/RunnerStatus.md
 docs/RunnersAPI.md
+docs/Scope.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
@@ -260,7 +260,6 @@ docs/VariableCreateInput.md
 docs/VariableGroup.md
 docs/VariableModel.md
 docs/VariablePatchInput.md
-docs/VariableScope.md
 docs/VariableSort.md
 docs/VariableType.md
 docs/WebhookCreateInput.md
@@ -417,7 +416,6 @@ model_pullreq_update_input.go
 model_pullreq_with_diff_stats.go
 model_query_option.go
 model_register_input.go
-model_register_scope.go
 model_register_token_model.go
 model_release_create_input.go
 model_release_creator.go
@@ -467,6 +465,7 @@ model_runner_patch_input.go
 model_runner_post_input.go
 model_runner_stage_output.go
 model_runner_status.go
+model_scope.go
 model_security_settings.go
 model_service_account_create_input.go
 model_service_account_token_output.go
@@ -499,7 +498,6 @@ model_variable_create_input.go
 model_variable_group.go
 model_variable_model.go
 model_variable_patch_input.go
-model_variable_scope.go
 model_variable_sort.go
 model_variable_type.go
 model_webhook_create_input.go
@@ -516,5 +514,4 @@ model_workflow_stages.go
 model_workflow_update_input.go
 model_yaml_provider.go
 response.go
-test/api_runners_test.go
 utils.go

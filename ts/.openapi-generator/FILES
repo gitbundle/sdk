@@ -150,7 +150,6 @@ docs/PullreqUpdateInput.md
 docs/PullreqWithDiffStats.md
 docs/QueryOption.md
 docs/RegisterInput.md
-docs/RegisterScope.md
 docs/RegisterTokenModel.md
 docs/ReleaseCreateInput.md
 docs/ReleaseCreator.md
@@ -205,6 +204,7 @@ docs/RunnerPostInput.md
 docs/RunnerStageOutput.md
 docs/RunnerStatus.md
 docs/RunnersApi.md
+docs/Scope.md
 docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
@@ -242,7 +242,6 @@ docs/VariableCreateInput.md
 docs/VariableGroup.md
 docs/VariableModel.md
 docs/VariablePatchInput.md
-docs/VariableScope.md
 docs/VariableSort.md
 docs/VariableType.md
 docs/WebhookCreateInput.md

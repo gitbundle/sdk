@@ -28,7 +28,7 @@ pub struct VariableModel {
     #[serde(rename = "parent_id")]
     pub parent_id: i64,
     #[serde(rename = "scope")]
-    pub scope: models::VariableScope,
+    pub scope: models::Scope,
     #[serde(rename = "type")]
     pub r#type: models::VariableType,
     #[serde(rename = "updated")]
@@ -38,7 +38,7 @@ pub struct VariableModel {
 }
 
 impl VariableModel {
-    pub fn new(created: i64, created_by: i64, data: Vec<i32>, description: String, id: i64, name: String, parent_id: i64, scope: models::VariableScope, r#type: models::VariableType, updated: i64, version: i64) -> VariableModel {
+    pub fn new(created: i64, created_by: i64, data: Vec<i32>, description: String, id: i64, name: String, parent_id: i64, scope: models::Scope, r#type: models::VariableType, updated: i64, version: i64) -> VariableModel {
         VariableModel {
             created,
             created_by,

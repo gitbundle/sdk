@@ -2681,13 +2681,12 @@ pub async fn get_repository_runner_register_token(configuration: &configuration:
     }
 }
 
-pub async fn get_repository_runners(configuration: &configuration::Configuration, repo_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>, order: Option<models::OrderOption>) -> Result<Vec<models::RunnerCreator>, Error<GetRepositoryRunnersError>> {
+pub async fn get_repository_runners(configuration: &configuration::Configuration, repo_ref: &str, page: Option<i64>, size: Option<i64>, query: Option<&str>) -> Result<Vec<models::RunnerCreator>, Error<GetRepositoryRunnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_page = page;
     let p_size = size;
     let p_query = query;
-    let p_order = order;
 
     let uri_str = format!("{}/repos/{repo_ref}/+/runners", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
@@ -2700,9 +2699,6 @@ pub async fn get_repository_runners(configuration: &configuration::Configuration
     }
     if let Some(ref param_value) = p_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
