@@ -21,6 +21,7 @@ var _ MappedNullable = &StageModel{}
 
 // StageModel struct for StageModel
 type StageModel struct {
+	ActionId      int64         `json:"action_id"`
 	Arch          string        `json:"arch"`
 	Created       int64         `json:"created"`
 	Errignore     bool          `json:"errignore"`
@@ -60,8 +61,9 @@ type _StageModel StageModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string) *StageModel {
+func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string) *StageModel {
 	this := StageModel{}
+	this.ActionId = actionId
 	this.Arch = arch
 	this.Created = created
 	this.Errignore = errignore
@@ -99,6 +101,30 @@ func NewStageModel(arch string, created int64, errignore bool, error_ string, ex
 func NewStageModelWithDefaults() *StageModel {
 	this := StageModel{}
 	return &this
+}
+
+// GetActionId returns the ActionId field value
+func (o *StageModel) GetActionId() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.ActionId
+}
+
+// GetActionIdOk returns a tuple with the ActionId field value
+// and a boolean to check if the value has been set.
+func (o *StageModel) GetActionIdOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ActionId, true
+}
+
+// SetActionId sets field value
+func (o *StageModel) SetActionId(v int64) {
+	o.ActionId = v
 }
 
 // GetArch returns the Arch field value
@@ -914,6 +940,7 @@ func (o StageModel) MarshalJSON() ([]byte, error) {
 
 func (o StageModel) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["action_id"] = o.ActionId
 	toSerialize["arch"] = o.Arch
 	toSerialize["created"] = o.Created
 	toSerialize["errignore"] = o.Errignore
@@ -961,6 +988,7 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"action_id",
 		"arch",
 		"created",
 		"errignore",

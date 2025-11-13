@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**action_id** | **number** |  | [default to undefined]
 **arch** | **string** |  | [default to undefined]
 **created** | **number** |  | [default to undefined]
 **errignore** | **boolean** |  | [default to undefined]
@@ -43,6 +44,7 @@ Name | Type | Description | Notes
 import { StageModel } from 'gitbundle-sdk';
 
 const instance: StageModel = {
+    action_id,
     arch,
     created,
     errignore,

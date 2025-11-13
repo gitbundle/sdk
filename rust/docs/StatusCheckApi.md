@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_sha** | **String** |  | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
@@ -52,7 +52,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **query** | Option<**String**> |  |  |
 **since** | Option<**i64**> |  |  |
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_sha** | **String** |  | [required] |
 **check_report_input** | [**CheckReportInput**](CheckReportInput.md) |  | [required] |
 

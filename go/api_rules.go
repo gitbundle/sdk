@@ -38,7 +38,7 @@ func (r ApiDeleteRuleRequest) Execute() (*http.Response, error) {
 DeleteRule Method for DeleteRule
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param ruleIdentifier Rule identifier
 	@return ApiDeleteRuleRequest
 */
@@ -222,7 +222,7 @@ func (r ApiGetRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 GetRule Method for GetRule
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param ruleIdentifier Rule identifier
 	@return ApiGetRuleRequest
 */
@@ -453,7 +453,7 @@ func (r ApiGetRulesRequest) Execute() ([]RuleModel, *http.Response, error) {
 GetRules Method for GetRules
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRulesRequest
 */
 func (a *RulesAPIService) GetRules(ctx context.Context, repoRef string) ApiGetRulesRequest {
@@ -678,7 +678,7 @@ func (r ApiPatchRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 PatchRule Method for PatchRule
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param ruleIdentifier Rule identifier
 	@return ApiPatchRuleRequest
 */
@@ -884,7 +884,7 @@ func (r ApiPostRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 PostRule Method for PostRule
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostRuleRequest
 */
 func (a *RulesAPIService) PostRule(ctx context.Context, repoRef string) ApiPostRuleRequest {

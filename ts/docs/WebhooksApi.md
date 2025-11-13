@@ -28,7 +28,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 
 const { status, data } = await apiInstance.deleteWebhook(
@@ -41,7 +41,7 @@ const { status, data } = await apiInstance.deleteWebhook(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 
 
@@ -88,7 +88,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 let webhookExecutionId: number; //Webhook execution id (default to undefined)
 
@@ -103,7 +103,7 @@ const { status, data } = await apiInstance.getExecution(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 | **webhookExecutionId** | [**number**] | Webhook execution id | defaults to undefined|
 
@@ -151,7 +151,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 
 const { status, data } = await apiInstance.getExecutions(
@@ -164,7 +164,7 @@ const { status, data } = await apiInstance.getExecutions(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 
 
@@ -211,7 +211,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 
 const { status, data } = await apiInstance.getWebhook(
@@ -224,7 +224,7 @@ const { status, data } = await apiInstance.getWebhook(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 
 
@@ -271,7 +271,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -292,7 +292,7 @@ const { status, data } = await apiInstance.getWebhooks(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -344,7 +344,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 let webhookPatchInput: WebhookPatchInput; //
 
@@ -360,7 +360,7 @@ const { status, data } = await apiInstance.patchWebhook(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webhookPatchInput** | **WebhookPatchInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 
 
@@ -407,7 +407,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookIdentifier: string; //Webhook identifier (default to undefined)
 let webhookExecutionId: number; //Webhook execution id (default to undefined)
 
@@ -422,7 +422,7 @@ const { status, data } = await apiInstance.postRetrigger(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **webhookIdentifier** | [**string**] | Webhook identifier | defaults to undefined|
 | **webhookExecutionId** | [**number**] | Webhook execution id | defaults to undefined|
 
@@ -471,7 +471,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new WebhooksApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let webhookCreateInput: WebhookCreateInput; //
 
 const { status, data } = await apiInstance.postWebhook(
@@ -485,7 +485,7 @@ const { status, data } = await apiInstance.postWebhook(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **webhookCreateInput** | **WebhookCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type

@@ -4998,7 +4998,7 @@ paths:
     delete:
       operationId: soft_repository_delete
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5060,7 +5060,7 @@ paths:
     get:
       operationId: get_repo
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5126,7 +5126,7 @@ paths:
     patch:
       operationId: patch_repo
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5199,7 +5199,7 @@ paths:
     get:
       operationId: get_actions
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5344,7 +5344,7 @@ paths:
     post:
       operationId: post_action
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5417,7 +5417,7 @@ paths:
     delete:
       operationId: delete_action
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5425,7 +5425,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5487,7 +5487,7 @@ paths:
     get:
       operationId: get_action
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5495,7 +5495,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5561,7 +5561,7 @@ paths:
     patch:
       operationId: patch_action
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5569,7 +5569,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5642,7 +5642,7 @@ paths:
     get:
       operationId: get_workflows
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5650,7 +5650,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5781,7 +5781,7 @@ paths:
     post:
       operationId: post_workflow
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5789,7 +5789,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action identifier
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5854,11 +5854,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}:
     delete:
       operationId: delete_workflow
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5866,7 +5866,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5874,10 +5874,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -5937,7 +5937,7 @@ paths:
     get:
       operationId: get_workflow
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -5945,7 +5945,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -5953,10 +5953,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6020,7 +6020,7 @@ paths:
     patch:
       operationId: patch_workflow
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6028,7 +6028,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6036,10 +6036,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6106,11 +6106,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/cancel:
     post:
       operationId: cancel_workflow
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6118,7 +6118,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6126,10 +6126,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6190,11 +6190,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}:
     get:
       operationId: get_step_logs
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6202,7 +6202,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6210,10 +6210,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6294,11 +6294,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream:
     get:
       operationId: get_step_log_stream
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6306,7 +6306,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6314,10 +6314,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6398,11 +6398,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages:
     post:
       operationId: post_stage
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6410,7 +6410,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6418,10 +6418,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6488,11 +6488,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}:
     patch:
       operationId: patch_stage
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6500,7 +6500,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6508,10 +6508,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6590,7 +6590,7 @@ paths:
     post:
       operationId: post_step
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6598,7 +6598,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6606,10 +6606,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6685,11 +6685,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}:
     patch:
       operationId: patch_step
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6697,7 +6697,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6705,10 +6705,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6793,11 +6793,11 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs:
     post:
       operationId: post_step_log
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -6805,7 +6805,7 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Action id or action name
+      - description: Action id or name
         explode: false
         in: path
         name: action_identifier
@@ -6813,10 +6813,10 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Workflow number
+      - description: Workflow number or id
         explode: false
         in: path
-        name: workflow_number
+        name: workflow_idn
         required: true
         schema:
           format: int64
@@ -6895,7 +6895,7 @@ paths:
     get:
       operationId: get_archive
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7013,7 +7013,7 @@ paths:
     get:
       operationId: get_blame
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7117,7 +7117,7 @@ paths:
     get:
       operationId: get_branches
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7262,7 +7262,7 @@ paths:
     patch:
       operationId: rename_branch
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7340,7 +7340,7 @@ paths:
     post:
       operationId: post_branch
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7419,7 +7419,7 @@ paths:
     delete:
       operationId: delete_branch
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7501,7 +7501,7 @@ paths:
     get:
       operationId: get_branch
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7575,7 +7575,7 @@ paths:
     get:
       operationId: get_checks
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7720,7 +7720,7 @@ paths:
     put:
       operationId: put_check_report
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7800,7 +7800,7 @@ paths:
     get:
       operationId: get_recent
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7884,7 +7884,7 @@ paths:
     get:
       operationId: get_codeowners_validate
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -7958,7 +7958,7 @@ paths:
     get:
       operationId: get_commits
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8140,7 +8140,7 @@ paths:
     post:
       operationId: commit_files
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8219,7 +8219,7 @@ paths:
     post:
       operationId: commits_calculate_divergence
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8294,7 +8294,7 @@ paths:
     get:
       operationId: get_commit
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8368,7 +8368,7 @@ paths:
     get:
       operationId: get_commit_file_content
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8471,7 +8471,7 @@ paths:
     get:
       operationId: get_commit_diff
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8545,7 +8545,7 @@ paths:
     get:
       operationId: get_content
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8633,7 +8633,7 @@ paths:
     get:
       operationId: get_contributors
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8725,7 +8725,7 @@ paths:
     post:
       operationId: post_default_branch
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8798,7 +8798,7 @@ paths:
     get:
       operationId: get_diff_stats
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8873,7 +8873,7 @@ paths:
     get:
       operationId: get_diffs
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -8946,7 +8946,7 @@ paths:
     post:
       operationId: post_diffs
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9039,7 +9039,7 @@ paths:
     get:
       operationId: get_forks
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9147,7 +9147,7 @@ paths:
     get:
       operationId: get_import_progress
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9214,7 +9214,7 @@ paths:
     post:
       operationId: post_merge_check
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9294,7 +9294,7 @@ paths:
     post:
       operationId: post_repository_move
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9367,7 +9367,7 @@ paths:
     post:
       operationId: post_path_details
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9451,7 +9451,7 @@ paths:
     get:
       operationId: get_paths
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9532,7 +9532,7 @@ paths:
     get:
       operationId: get_pullreqs
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9740,7 +9740,7 @@ paths:
     post:
       operationId: post_pullreq
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9813,7 +9813,7 @@ paths:
     get:
       operationId: get_pullreq
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9888,7 +9888,7 @@ paths:
     patch:
       operationId: patch_pullreq
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -9970,7 +9970,7 @@ paths:
     get:
       operationId: get_activities
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10107,7 +10107,7 @@ paths:
     get:
       operationId: get_pull request_checks
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10183,7 +10183,7 @@ paths:
     get:
       operationId: get_code_owners
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10259,7 +10259,7 @@ paths:
     post:
       operationId: post_comment
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10341,7 +10341,7 @@ paths:
     post:
       operationId: post_apply_suggestions
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10429,7 +10429,7 @@ paths:
     delete:
       operationId: delete_comment
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10509,7 +10509,7 @@ paths:
     patch:
       operationId: patch_comment
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10600,7 +10600,7 @@ paths:
     put:
       operationId: put_comment_status
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10691,7 +10691,7 @@ paths:
     get:
       operationId: get_pull request_commits
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10832,7 +10832,7 @@ paths:
     post:
       operationId: post_diff
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10920,7 +10920,7 @@ paths:
     get:
       operationId: get_file_views
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -10997,7 +10997,7 @@ paths:
     put:
       operationId: put_file_views
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11079,7 +11079,7 @@ paths:
     delete:
       operationId: delete_file_view
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11158,7 +11158,7 @@ paths:
     post:
       operationId: post_merge
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11246,7 +11246,7 @@ paths:
     get:
       operationId: get_metadata
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11322,7 +11322,7 @@ paths:
     get:
       operationId: get_reviewers
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11399,7 +11399,7 @@ paths:
     put:
       operationId: put_reviewer
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11481,7 +11481,7 @@ paths:
     delete:
       operationId: delete_reviewer
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11562,7 +11562,7 @@ paths:
     post:
       operationId: post_reviews
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11644,7 +11644,7 @@ paths:
     post:
       operationId: post_state
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11726,7 +11726,7 @@ paths:
     post:
       operationId: post_repository_purge
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11789,7 +11789,7 @@ paths:
     get:
       operationId: get_raw
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -11875,7 +11875,7 @@ paths:
     get:
       operationId: get_releases
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12027,7 +12027,7 @@ paths:
     post:
       operationId: post_release
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12106,7 +12106,7 @@ paths:
     delete:
       operationId: delete_release
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12188,7 +12188,7 @@ paths:
     get:
       operationId: get_release
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12262,7 +12262,7 @@ paths:
     post:
       operationId: repo_restore
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12335,7 +12335,7 @@ paths:
     get:
       operationId: get_rules
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12496,7 +12496,7 @@ paths:
     post:
       operationId: post_rule
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12569,7 +12569,7 @@ paths:
     delete:
       operationId: delete_rule
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12639,7 +12639,7 @@ paths:
     get:
       operationId: get_rule
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12713,7 +12713,7 @@ paths:
     patch:
       operationId: patch_rule
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12794,7 +12794,7 @@ paths:
     get:
       operationId: get_repository_runners
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -12933,7 +12933,7 @@ paths:
     get:
       operationId: get_repository_runner_register_token
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13000,7 +13000,7 @@ paths:
     get:
       operationId: get_repository_reseted_runner_register_token
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13067,7 +13067,7 @@ paths:
     delete:
       operationId: delete_repository_runner
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13136,7 +13136,7 @@ paths:
     get:
       operationId: get_repository_runner
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13209,7 +13209,7 @@ paths:
     patch:
       operationId: patch_repository_runner
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13289,7 +13289,7 @@ paths:
     get:
       operationId: get_repository_service_accounts
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13358,7 +13358,7 @@ paths:
     get:
       operationId: get_general
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13424,7 +13424,7 @@ paths:
     patch:
       operationId: general_update
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13497,7 +13497,7 @@ paths:
     get:
       operationId: get_security
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13563,7 +13563,7 @@ paths:
     patch:
       operationId: patch_security
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13636,7 +13636,7 @@ paths:
     get:
       operationId: get_stars
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13743,7 +13743,7 @@ paths:
     patch:
       operationId: patch_stars
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13816,7 +13816,7 @@ paths:
     get:
       operationId: get_has_starred
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13883,7 +13883,7 @@ paths:
     get:
       operationId: get_repository_stats
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -13950,7 +13950,7 @@ paths:
     get:
       operationId: get_tags
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14095,7 +14095,7 @@ paths:
     post:
       operationId: post_tag
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14174,7 +14174,7 @@ paths:
     delete:
       operationId: delete_tag
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14257,7 +14257,7 @@ paths:
     get:
       operationId: get_download
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14337,7 +14337,7 @@ paths:
     head:
       operationId: head_offset
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14400,7 +14400,7 @@ paths:
     get:
       operationId: get_assets
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14476,7 +14476,7 @@ paths:
     delete:
       operationId: delete_upload
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14545,7 +14545,7 @@ paths:
     get:
       operationId: get_restore
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14622,7 +14622,7 @@ paths:
     patch:
       operationId: patch_chunks
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14695,7 +14695,7 @@ paths:
     post:
       operationId: post_upload
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14769,7 +14769,7 @@ paths:
     get:
       operationId: get_repository_variables
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -14930,7 +14930,7 @@ paths:
     post:
       operationId: post_repository_variable
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15003,7 +15003,7 @@ paths:
     delete:
       operationId: delete_repository_variable
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15072,7 +15072,7 @@ paths:
     get:
       operationId: get_repository_variable
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15145,7 +15145,7 @@ paths:
     patch:
       operationId: patch_repository_variable
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15225,7 +15225,7 @@ paths:
     get:
       operationId: get_webhooks
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15377,7 +15377,7 @@ paths:
     post:
       operationId: post_webhook
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15450,7 +15450,7 @@ paths:
     delete:
       operationId: delete_webhook
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15520,7 +15520,7 @@ paths:
     get:
       operationId: get_webhook
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15594,7 +15594,7 @@ paths:
     patch:
       operationId: patch_webhook
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15675,7 +15675,7 @@ paths:
     get:
       operationId: get_executions
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15752,7 +15752,7 @@ paths:
     get:
       operationId: get_execution
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -15836,7 +15836,7 @@ paths:
     post:
       operationId: post_retrigger
       parameters:
-      - description: Repository ref
+      - description: Repository id or ref
         explode: false
         in: path
         name: repo_ref
@@ -25579,23 +25579,24 @@ components:
         access_token: access_token
         stage:
           workflow_id: 1
-          parent_group_id: 7
-          limit_repo: 5
+          parent_group_id: 9
+          limit_repo: 2
           error: error
           type: type
-          number: 2
+          number: 7
+          action_id: 0
           limit: 5
           variant: variant
-          id: 1
+          id: 5
           needs: ""
           on_failure: true
-          stopped: 4
+          stopped: 7
           os: os
-          created: 0
+          created: 6
           kernel: kernel
           kind: kind
           on_success: true
-          started: 2
+          started: 4
           yaml_provider: unknown
           version: 1
           errignore: true
@@ -25603,13 +25604,13 @@ components:
           - labels
           - labels
           machine: machine
-          parent_id: 9
-          repo_id: 3
+          parent_id: 3
+          repo_id: 2
           yaml_resolved: yaml_resolved
-          exit_code: 6
+          exit_code: 1
           name: name
           arch: arch
-          updated: 7
+          updated: 1
           status: pending
       properties:
         access_token:
@@ -25796,23 +25797,24 @@ components:
     StageModel:
       example:
         workflow_id: 1
-        parent_group_id: 7
-        limit_repo: 5
+        parent_group_id: 9
+        limit_repo: 2
         error: error
         type: type
-        number: 2
+        number: 7
+        action_id: 0
         limit: 5
         variant: variant
-        id: 1
+        id: 5
         needs: ""
         on_failure: true
-        stopped: 4
+        stopped: 7
         os: os
-        created: 0
+        created: 6
         kernel: kernel
         kind: kind
         on_success: true
-        started: 2
+        started: 4
         yaml_provider: unknown
         version: 1
         errignore: true
@@ -25820,15 +25822,18 @@ components:
         - labels
         - labels
         machine: machine
-        parent_id: 9
-        repo_id: 3
+        parent_id: 3
+        repo_id: 2
         yaml_resolved: yaml_resolved
-        exit_code: 6
+        exit_code: 1
         name: name
         arch: arch
-        updated: 7
+        updated: 1
         status: pending
       properties:
+        action_id:
+          format: int64
+          type: integer
         arch:
           type: string
         created:
@@ -25910,6 +25915,7 @@ components:
         yaml_resolved:
           type: string
       required:
+      - action_id
       - arch
       - created
       - errignore
@@ -25942,23 +25948,24 @@ components:
       example:
         model:
           workflow_id: 1
-          parent_group_id: 7
-          limit_repo: 5
+          parent_group_id: 9
+          limit_repo: 2
           error: error
           type: type
-          number: 2
+          number: 7
+          action_id: 0
           limit: 5
           variant: variant
-          id: 1
+          id: 5
           needs: ""
           on_failure: true
-          stopped: 4
+          stopped: 7
           os: os
-          created: 0
+          created: 6
           kernel: kernel
           kind: kind
           on_success: true
-          started: 2
+          started: 4
           yaml_provider: unknown
           version: 1
           errignore: true
@@ -25966,48 +25973,48 @@ components:
           - labels
           - labels
           machine: machine
-          parent_id: 9
-          repo_id: 3
+          parent_id: 3
+          repo_id: 2
           yaml_resolved: yaml_resolved
-          exit_code: 6
+          exit_code: 1
           name: name
           arch: arch
-          updated: 7
+          updated: 1
           status: pending
         steps:
         - image: image
           stopped: 9
           depends_on: ""
-          parent_group_id: 1
-          stage_id: 4
-          started: 5
+          parent_group_id: 4
+          stage_id: 5
+          started: 9
           yaml_provider: null
           error: error
-          version: 9
+          version: 6
           errignore: true
           detached: true
-          number: 7
+          number: 1
           yaml_resolved: yaml_resolved
-          exit_code: 1
+          exit_code: 6
           name: name
-          id: 6
+          id: 7
           status: null
         - image: image
           stopped: 9
           depends_on: ""
-          parent_group_id: 1
-          stage_id: 4
-          started: 5
+          parent_group_id: 4
+          stage_id: 5
+          started: 9
           yaml_provider: null
           error: error
-          version: 9
+          version: 6
           errignore: true
           detached: true
-          number: 7
+          number: 1
           yaml_resolved: yaml_resolved
-          exit_code: 1
+          exit_code: 6
           name: name
-          id: 6
+          id: 7
           status: null
       properties:
         model:
@@ -26103,19 +26110,19 @@ components:
         image: image
         stopped: 9
         depends_on: ""
-        parent_group_id: 1
-        stage_id: 4
-        started: 5
+        parent_group_id: 4
+        stage_id: 5
+        started: 9
         yaml_provider: null
         error: error
-        version: 9
+        version: 6
         errignore: true
         detached: true
-        number: 7
+        number: 1
         yaml_resolved: yaml_resolved
-        exit_code: 1
+        exit_code: 6
         name: name
-        id: 6
+        id: 7
         status: null
       properties:
         depends_on: {}
@@ -27195,23 +27202,24 @@ components:
         stages:
         - model:
             workflow_id: 1
-            parent_group_id: 7
-            limit_repo: 5
+            parent_group_id: 9
+            limit_repo: 2
             error: error
             type: type
-            number: 2
+            number: 7
+            action_id: 0
             limit: 5
             variant: variant
-            id: 1
+            id: 5
             needs: ""
             on_failure: true
-            stopped: 4
+            stopped: 7
             os: os
-            created: 0
+            created: 6
             kernel: kernel
             kind: kind
             on_success: true
-            started: 2
+            started: 4
             yaml_provider: unknown
             version: 1
             errignore: true
@@ -27219,68 +27227,69 @@ components:
             - labels
             - labels
             machine: machine
-            parent_id: 9
-            repo_id: 3
+            parent_id: 3
+            repo_id: 2
             yaml_resolved: yaml_resolved
-            exit_code: 6
+            exit_code: 1
             name: name
             arch: arch
-            updated: 7
+            updated: 1
             status: pending
           steps:
           - image: image
             stopped: 9
             depends_on: ""
-            parent_group_id: 1
-            stage_id: 4
-            started: 5
+            parent_group_id: 4
+            stage_id: 5
+            started: 9
             yaml_provider: null
             error: error
-            version: 9
+            version: 6
             errignore: true
             detached: true
-            number: 7
+            number: 1
             yaml_resolved: yaml_resolved
-            exit_code: 1
+            exit_code: 6
             name: name
-            id: 6
+            id: 7
             status: null
           - image: image
             stopped: 9
             depends_on: ""
-            parent_group_id: 1
-            stage_id: 4
-            started: 5
+            parent_group_id: 4
+            stage_id: 5
+            started: 9
             yaml_provider: null
             error: error
-            version: 9
+            version: 6
             errignore: true
             detached: true
-            number: 7
+            number: 1
             yaml_resolved: yaml_resolved
-            exit_code: 1
+            exit_code: 6
             name: name
-            id: 6
+            id: 7
             status: null
         - model:
             workflow_id: 1
-            parent_group_id: 7
-            limit_repo: 5
+            parent_group_id: 9
+            limit_repo: 2
             error: error
             type: type
-            number: 2
+            number: 7
+            action_id: 0
             limit: 5
             variant: variant
-            id: 1
+            id: 5
             needs: ""
             on_failure: true
-            stopped: 4
+            stopped: 7
             os: os
-            created: 0
+            created: 6
             kernel: kernel
             kind: kind
             on_success: true
-            started: 2
+            started: 4
             yaml_provider: unknown
             version: 1
             errignore: true
@@ -27288,48 +27297,48 @@ components:
             - labels
             - labels
             machine: machine
-            parent_id: 9
-            repo_id: 3
+            parent_id: 3
+            repo_id: 2
             yaml_resolved: yaml_resolved
-            exit_code: 6
+            exit_code: 1
             name: name
             arch: arch
-            updated: 7
+            updated: 1
             status: pending
           steps:
           - image: image
             stopped: 9
             depends_on: ""
-            parent_group_id: 1
-            stage_id: 4
-            started: 5
+            parent_group_id: 4
+            stage_id: 5
+            started: 9
             yaml_provider: null
             error: error
-            version: 9
+            version: 6
             errignore: true
             detached: true
-            number: 7
+            number: 1
             yaml_resolved: yaml_resolved
-            exit_code: 1
+            exit_code: 6
             name: name
-            id: 6
+            id: 7
             status: null
           - image: image
             stopped: 9
             depends_on: ""
-            parent_group_id: 1
-            stage_id: 4
-            started: 5
+            parent_group_id: 4
+            stage_id: 5
+            started: 9
             yaml_provider: null
             error: error
-            version: 9
+            version: 6
             errignore: true
             detached: true
-            number: 7
+            number: 1
             yaml_resolved: yaml_resolved
-            exit_code: 1
+            exit_code: 6
             name: name
-            id: 6
+            id: 7
             status: null
         model:
           author_name: author_name

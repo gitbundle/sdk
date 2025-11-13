@@ -28,9 +28,9 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.CancelWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.CancelWorkflow(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,9 +58,9 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 
-		httpRes, err := apiClient.ActionsAPI.DeleteWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
+		httpRes, err := apiClient.ActionsAPI.DeleteWorkflow(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -102,11 +102,11 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -120,11 +120,11 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -138,9 +138,9 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetWorkflow(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -184,10 +184,10 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -201,11 +201,11 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -219,9 +219,9 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchWorkflow(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -249,9 +249,9 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -265,10 +265,10 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -282,11 +282,11 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 		var repoRef string
 		var actionIdentifier string
-		var workflowNumber int64
+		var workflowIdn int64
 		var stageNumber int64
 		var stepNumber int64
 
-		httpRes, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
+		httpRes, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

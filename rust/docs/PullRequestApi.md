@@ -41,7 +41,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_comment_id** | **i64** | Pull request comment id | [required] |
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **path** | **String** |  | [required] |
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_reviewer_id** | **i64** | Pull request reviewer id | [required] |
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
@@ -167,7 +167,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -196,7 +196,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -225,7 +225,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -254,7 +254,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -283,7 +283,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
@@ -314,7 +314,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -343,7 +343,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -383,7 +383,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 
 ### Return type
@@ -412,7 +412,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_comment_id** | **i64** | Pull request comment id | [required] |
 **pullreq_comment_update_input** | [**PullreqCommentUpdateInput**](PullreqCommentUpdateInput.md) |  | [required] |
@@ -443,7 +443,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_update_input** | [**PullreqUpdateInput**](PullreqUpdateInput.md) |  | [required] |
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_apply_suggestions_input** | [**PullreqApplySuggestionsInput**](PullreqApplySuggestionsInput.md) |  | [required] |
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_comment_create_input** | [**PullreqCommentCreateInput**](PullreqCommentCreateInput.md) |  | [required] |
 
@@ -533,7 +533,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **commit_diff_file** | [**Vec<models::CommitDiffFile>**](CommitDiffFile.md) |  | [required] |
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_merge_input** | [**PullreqMergeInput**](PullreqMergeInput.md) |  | [required] |
 
@@ -593,7 +593,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_create_input** | [**PullreqCreateInput**](PullreqCreateInput.md) |  | [required] |
 
 ### Return type
@@ -622,7 +622,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_review_submit_input** | [**PullreqReviewSubmitInput**](PullreqReviewSubmitInput.md) |  | [required] |
 
@@ -652,7 +652,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_state_update_input** | [**PullreqStateUpdateInput**](PullreqStateUpdateInput.md) |  | [required] |
 
@@ -682,7 +682,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_comment_id** | **i64** | Pull request comment id | [required] |
 **pullreq_comment_status_input** | [**PullreqCommentStatusInput**](PullreqCommentStatusInput.md) |  | [required] |
@@ -713,7 +713,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_file_view_create_input** | [**PullreqFileViewCreateInput**](PullreqFileViewCreateInput.md) |  | [required] |
 
@@ -743,7 +743,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **pullreq_number** | **i64** | Pull request number | [required] |
 **pullreq_reviewer_add_input** | [**PullreqReviewerAddInput**](PullreqReviewerAddInput.md) |  | [required] |
 

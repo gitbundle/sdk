@@ -78,7 +78,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_files_input** | [**CommitFilesInput**](CommitFilesInput.md) |  | [required] |
 
 ### Return type
@@ -107,7 +107,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_commit_divergences_input** | [**RepoCommitDivergencesInput**](RepoCommitDivergencesInput.md) |  | [required] |
 
 ### Return type
@@ -136,7 +136,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **branch_name** | **String** |  | [required] |
 **bypass_rules** | Option<**bool**> |  |  |
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 **bypass_rules** | Option<**bool**> |  |  |
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **runner_uuid** | **String** |  | [required] |
 
 ### Return type
@@ -225,7 +225,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **variable_identifier** | **String** |  | [required] |
 
 ### Return type
@@ -254,7 +254,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_name** | **String** |  | [required] |
 **bypass_rules** | Option<**bool**> |  |  |
 
@@ -284,7 +284,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **general_settings** | [**GeneralSettings**](GeneralSettings.md) |  | [required] |
 
 ### Return type
@@ -313,7 +313,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **archive_ref** | **String** |  | [required] |
 **prefix** | Option<**String**> |  |  |
 **attributes** | Option<[**ArchiveAttribute**](.md)> |  |  |
@@ -347,7 +347,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 **git_ref** | Option<**String**> | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} |  |
 **line_from** | Option<**i64**> |  |  |
@@ -379,7 +379,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **branch_name** | **String** |  | [required] |
 
 ### Return type
@@ -408,7 +408,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -440,7 +440,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **git_ref** | Option<**String**> |  |  |
 
 ### Return type
@@ -469,7 +469,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_sha** | **String** |  | [required] |
 
 ### Return type
@@ -498,7 +498,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_sha** | **String** |  | [required] |
 
 ### Return type
@@ -527,7 +527,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **commit_sha** | **String** |  | [required] |
 **file_path** | **String** |  | [required] |
 **hunk_header** | **String** |  | [required] |
@@ -560,7 +560,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **git_ref** | Option<**String**> |  |  |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
@@ -597,7 +597,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 **git_ref** | Option<**String**> |  |  |
 **include_commit** | Option<**bool**> |  |  |
@@ -628,7 +628,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **git_ref** | Option<**String**> |  |  |
 **since** | Option<**i64**> |  |  |
 **until** | Option<**i64**> |  |  |
@@ -659,7 +659,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 
 ### Return type
@@ -688,7 +688,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 
 ### Return type
@@ -717,7 +717,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -750,7 +750,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -778,7 +778,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -806,7 +806,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -834,7 +834,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **git_ref** | Option<**String**> |  |  |
 **include_directories** | Option<**bool**> |  |  |
 
@@ -864,7 +864,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 **git_ref** | Option<**String**> |  |  |
 
@@ -894,7 +894,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -923,7 +923,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -956,7 +956,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -984,7 +984,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1012,7 +1012,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **runner_uuid** | **String** |  | [required] |
 
 ### Return type
@@ -1041,7 +1041,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1069,7 +1069,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -1100,7 +1100,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1128,7 +1128,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1156,7 +1156,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **variable_identifier** | **String** |  | [required] |
 
 ### Return type
@@ -1185,7 +1185,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -1219,7 +1219,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1247,7 +1247,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -1280,7 +1280,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -1312,7 +1312,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_update_input** | [**RepoUpdateInput**](RepoUpdateInput.md) |  | [required] |
 
 ### Return type
@@ -1341,7 +1341,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **runner_uuid** | **String** |  | [required] |
 **runner_patch_input** | [**RunnerPatchInput**](RunnerPatchInput.md) |  | [required] |
 
@@ -1371,7 +1371,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **variable_identifier** | **String** |  | [required] |
 **variable_patch_input** | [**VariablePatchInput**](VariablePatchInput.md) |  | [required] |
 
@@ -1401,7 +1401,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **security_settings** | [**SecuritySettings**](SecuritySettings.md) |  | [required] |
 
 ### Return type
@@ -1430,7 +1430,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_stars_input** | [**RepoStarsInput**](RepoStarsInput.md) |  | [required] |
 
 ### Return type
@@ -1459,7 +1459,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **branch_create_input** | [**BranchCreateInput**](BranchCreateInput.md) |  | [required] |
 
 ### Return type
@@ -1488,7 +1488,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_update_default_branch_input** | [**RepoUpdateDefaultBranchInput**](RepoUpdateDefaultBranchInput.md) |  | [required] |
 
 ### Return type
@@ -1517,7 +1517,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 **path2** | **String** |  | [required] |
 **commit_diff_file** | [**Vec<models::CommitDiffFile>**](CommitDiffFile.md) |  | [required] |
@@ -1548,7 +1548,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **path** | **String** |  | [required] |
 **repo_merge_check_input** | [**RepoMergeCheckInput**](RepoMergeCheckInput.md) |  | [required] |
 
@@ -1578,7 +1578,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **request_body** | [**Vec<String>**](String.md) |  | [required] |
 **git_ref** | Option<**String**> |  |  |
 
@@ -1608,7 +1608,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **release_create_input** | [**ReleaseCreateInput**](ReleaseCreateInput.md) |  | [required] |
 
 ### Return type
@@ -1693,7 +1693,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_move_input** | [**RepoMoveInput**](RepoMoveInput.md) |  | [required] |
 
 ### Return type
@@ -1722,7 +1722,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -1750,7 +1750,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **variable_create_input** | [**VariableCreateInput**](VariableCreateInput.md) |  | [required] |
 
 ### Return type
@@ -1779,7 +1779,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_create_input** | [**TagCreateInput**](TagCreateInput.md) |  | [required] |
 
 ### Return type
@@ -1808,7 +1808,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **branch_rename_input** | [**BranchRenameInput**](BranchRenameInput.md) |  | [required] |
 
 ### Return type
@@ -1837,7 +1837,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **repo_restore_input** | [**RepoRestoreInput**](RepoRestoreInput.md) |  | [required] |
 
 ### Return type
@@ -1866,7 +1866,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 

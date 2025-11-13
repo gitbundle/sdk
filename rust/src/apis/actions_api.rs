@@ -269,19 +269,19 @@ pub async fn cancel_workflow(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
 ) -> Result<models::WorkflowStages, Error<CancelWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
 
     let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel",
+        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/cancel",
         configuration.base_path,
         repo_ref = crate::apis::urlencode(p_repo_ref),
         action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_number = p_workflow_number
+        workflow_idn = p_workflow_idn
     );
     let mut req_builder = configuration
         .client
@@ -393,19 +393,19 @@ pub async fn delete_workflow(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
 ) -> Result<(), Error<DeleteWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
 
     let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}",
+        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}",
         configuration.base_path,
         repo_ref = crate::apis::urlencode(p_repo_ref),
         action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_number = p_workflow_number
+        workflow_idn = p_workflow_idn
     );
     let mut req_builder = configuration
         .client
@@ -596,18 +596,18 @@ pub async fn get_step_log_stream(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
 ) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogStreamError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -661,18 +661,18 @@ pub async fn get_step_logs(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
 ) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -726,19 +726,19 @@ pub async fn get_workflow(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
 ) -> Result<models::WorkflowStages, Error<GetWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
 
     let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}",
+        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}",
         configuration.base_path,
         repo_ref = crate::apis::urlencode(p_repo_ref),
         action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_number = p_workflow_number
+        workflow_idn = p_workflow_idn
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -936,18 +936,18 @@ pub async fn patch_stage(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     stage_update_input: models::StageUpdateInput,
 ) -> Result<models::StageModel, Error<PatchStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_stage_update_input = stage_update_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::PATCH, &uri_str);
@@ -1004,7 +1004,7 @@ pub async fn patch_step(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
     step_update_input: models::StepUpdateInput,
@@ -1012,12 +1012,12 @@ pub async fn patch_step(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
     let p_step_update_input = step_update_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::PATCH, &uri_str);
@@ -1074,21 +1074,21 @@ pub async fn patch_workflow(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     workflow_update_input: models::WorkflowUpdateInput,
 ) -> Result<models::WorkflowModel, Error<PatchWorkflowError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_workflow_update_input = workflow_update_input;
 
     let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}",
+        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}",
         configuration.base_path,
         repo_ref = crate::apis::urlencode(p_repo_ref),
         action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_number = p_workflow_number
+        workflow_idn = p_workflow_idn
     );
     let mut req_builder = configuration
         .client
@@ -1212,21 +1212,21 @@ pub async fn post_stage(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_create_input: models::StageCreateInput,
 ) -> Result<models::StageModel, Error<PostStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_create_input = stage_create_input;
 
     let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages",
+        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages",
         configuration.base_path,
         repo_ref = crate::apis::urlencode(p_repo_ref),
         action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_number = p_workflow_number
+        workflow_idn = p_workflow_idn
     );
     let mut req_builder = configuration
         .client
@@ -1284,18 +1284,18 @@ pub async fn post_step(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     step_create_input: models::StepCreateInput,
 ) -> Result<models::StageModel, Error<PostStepError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_create_input = step_create_input;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
@@ -1352,18 +1352,18 @@ pub async fn post_step_log(
     configuration: &configuration::Configuration,
     repo_ref: &str,
     action_identifier: &str,
-    workflow_number: i64,
+    workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
 ) -> Result<(), Error<PostStepLogError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
-    let p_workflow_number = workflow_number;
+    let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_number=p_workflow_number, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);

@@ -23,7 +23,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new StatusCheckApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitSha: string; // (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
@@ -42,7 +42,7 @@ const { status, data } = await apiInstance.getChecks(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **commitSha** | [**string**] |  | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
@@ -92,7 +92,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new StatusCheckApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let query: string; // (optional) (default to undefined)
 let since: number; // (optional) (default to undefined)
 
@@ -107,7 +107,7 @@ const { status, data } = await apiInstance.getRecent(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
 | **since** | [**number**] |  | (optional) defaults to undefined|
 
@@ -156,7 +156,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new StatusCheckApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitSha: string; // (default to undefined)
 let checkReportInput: CheckReportInput; //
 
@@ -172,7 +172,7 @@ const { status, data } = await apiInstance.putCheckReport(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **checkReportInput** | **CheckReportInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **commitSha** | [**string**] |  | defaults to undefined|
 
 

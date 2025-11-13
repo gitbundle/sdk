@@ -87,7 +87,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	commitFilesInput := *openapiclient.NewCommitFilesInput([]openapiclient.RepoCommitFileAction{*openapiclient.NewRepoCommitFileAction(openapiclient.CommitFileActionType("create"), "Path_example", "Payload_example", "Sha_example")}, "Branch_example", "Message_example", "NewBranch_example", "Title_example") // CommitFilesInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -108,7 +108,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -157,7 +157,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoCommitDivergencesInput := *openapiclient.NewRepoCommitDivergencesInput(int32(123), []openapiclient.CommitDivergenceRequest{*openapiclient.NewCommitDivergenceRequest("From_example", "To_example")}) // RepoCommitDivergencesInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -178,7 +178,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -227,7 +227,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	branchName := "branchName_example" // string | 
 	bypassRules := true // bool |  (optional)
 
@@ -247,7 +247,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **branchName** | **string** |  | 
 
 ### Other Parameters
@@ -298,7 +298,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	tagRef := "tagRef_example" // string | 
 	bypassRules := true // bool |  (optional)
 
@@ -318,7 +318,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **tagRef** | **string** |  | 
 
 ### Other Parameters
@@ -369,7 +369,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	runnerUuid := "runnerUuid_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -388,7 +388,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **runnerUuid** | **string** |  | 
 
 ### Other Parameters
@@ -438,7 +438,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	variableIdentifier := "variableIdentifier_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -457,7 +457,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **variableIdentifier** | **string** |  | 
 
 ### Other Parameters
@@ -507,7 +507,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	tagName := "tagName_example" // string | 
 	bypassRules := true // bool |  (optional)
 
@@ -527,7 +527,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **tagName** | **string** |  | 
 
 ### Other Parameters
@@ -578,7 +578,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	generalSettings := *openapiclient.NewGeneralSettings(int64(123)) // GeneralSettings | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -599,7 +599,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -648,7 +648,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	archiveRef := "archiveRef_example" // string | 
 	prefix := "prefix_example" // string |  (optional)
 	attributes := openapiclient.ArchiveAttribute("export_ignore") // ArchiveAttribute |  (optional)
@@ -674,7 +674,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **archiveRef** | **string** |  | 
 
 ### Other Parameters
@@ -729,7 +729,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 	gitRef := "gitRef_example" // string | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} (optional)
 	lineFrom := int64(789) // int64 |  (optional)
@@ -753,7 +753,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -806,7 +806,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	branchName := "branchName_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -827,7 +827,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **branchName** | **string** |  | 
 
 ### Other Parameters
@@ -877,7 +877,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -901,7 +901,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -953,7 +953,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	gitRef := "gitRef_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -974,7 +974,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1023,7 +1023,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	commitSha := "commitSha_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1044,7 +1044,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **commitSha** | **string** |  | 
 
 ### Other Parameters
@@ -1094,7 +1094,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	commitSha := "commitSha_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1115,7 +1115,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **commitSha** | **string** |  | 
 
 ### Other Parameters
@@ -1165,7 +1165,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	commitSha := "commitSha_example" // string | 
 	filePath := "filePath_example" // string | 
 	hunkHeader := "hunkHeader_example" // string | 
@@ -1190,7 +1190,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **commitSha** | **string** |  | 
 
 ### Other Parameters
@@ -1244,7 +1244,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	gitRef := "gitRef_example" // string |  (optional)
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
@@ -1273,7 +1273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1330,7 +1330,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 	gitRef := "gitRef_example" // string |  (optional)
 	includeCommit := true // bool |  (optional)
@@ -1353,7 +1353,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -1405,7 +1405,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	gitRef := "gitRef_example" // string |  (optional)
 	since := int64(789) // int64 |  (optional)
 	until := int64(789) // int64 |  (optional)
@@ -1428,7 +1428,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1479,7 +1479,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1500,7 +1500,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -1550,7 +1550,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1571,7 +1571,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -1621,7 +1621,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -1646,7 +1646,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1699,7 +1699,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1719,7 +1719,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1767,7 +1767,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1787,7 +1787,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1835,7 +1835,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1855,7 +1855,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1903,7 +1903,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	gitRef := "gitRef_example" // string |  (optional)
 	includeDirectories := true // bool |  (optional)
 
@@ -1925,7 +1925,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1975,7 +1975,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 	gitRef := "gitRef_example" // string |  (optional)
 
@@ -1997,7 +1997,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -2048,7 +2048,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	tagRef := "tagRef_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -2069,7 +2069,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **tagRef** | **string** |  | 
 
 ### Other Parameters
@@ -2119,7 +2119,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -2144,7 +2144,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2197,7 +2197,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2217,7 +2217,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2265,7 +2265,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2285,7 +2285,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2333,7 +2333,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	runnerUuid := "runnerUuid_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -2354,7 +2354,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **runnerUuid** | **string** |  | 
 
 ### Other Parameters
@@ -2404,7 +2404,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2424,7 +2424,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2472,7 +2472,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -2495,7 +2495,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2546,7 +2546,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2566,7 +2566,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2614,7 +2614,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2634,7 +2634,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2682,7 +2682,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	variableIdentifier := "variableIdentifier_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -2703,7 +2703,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **variableIdentifier** | **string** |  | 
 
 ### Other Parameters
@@ -2753,7 +2753,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -2779,7 +2779,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2833,7 +2833,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2853,7 +2853,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2901,7 +2901,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -2926,7 +2926,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -2979,7 +2979,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -3003,7 +3003,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3055,7 +3055,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoUpdateInput := *openapiclient.NewRepoUpdateInput() // RepoUpdateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3076,7 +3076,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3125,7 +3125,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	runnerUuid := "runnerUuid_example" // string | 
 	runnerPatchInput := *openapiclient.NewRunnerPatchInput("Description_example") // RunnerPatchInput | 
 
@@ -3147,7 +3147,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **runnerUuid** | **string** |  | 
 
 ### Other Parameters
@@ -3198,7 +3198,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	variableIdentifier := "variableIdentifier_example" // string | 
 	variablePatchInput := *openapiclient.NewVariablePatchInput(openapiclient.VariableType("plain_text")) // VariablePatchInput | 
 
@@ -3220,7 +3220,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **variableIdentifier** | **string** |  | 
 
 ### Other Parameters
@@ -3271,7 +3271,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	securitySettings := *openapiclient.NewSecuritySettings() // SecuritySettings | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3292,7 +3292,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3341,7 +3341,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoStarsInput := *openapiclient.NewRepoStarsInput(false) // RepoStarsInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3362,7 +3362,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3411,7 +3411,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	branchCreateInput := *openapiclient.NewBranchCreateInput(false, "Name_example") // BranchCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3432,7 +3432,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3481,7 +3481,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoUpdateDefaultBranchInput := *openapiclient.NewRepoUpdateDefaultBranchInput("Name_example") // RepoUpdateDefaultBranchInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3502,7 +3502,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3551,7 +3551,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 	path2 := "path_example" // string | 
 	commitDiffFile := []openapiclient.CommitDiffFile{*openapiclient.NewCommitDiffFile()} // []CommitDiffFile | 
@@ -3574,7 +3574,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path2** | **string** |  | 
 
 ### Other Parameters
@@ -3626,7 +3626,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	path := "path_example" // string | 
 	repoMergeCheckInput := *openapiclient.NewRepoMergeCheckInput() // RepoMergeCheckInput | 
 
@@ -3648,7 +3648,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **path** | **string** |  | 
 
 ### Other Parameters
@@ -3699,7 +3699,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	requestBody := []string{"Property_example"} // []string | 
 	gitRef := "gitRef_example" // string |  (optional)
 
@@ -3721,7 +3721,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3771,7 +3771,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	releaseCreateInput := *openapiclient.NewReleaseCreateInput(false, "Description_example", false, false, "TagName_example", "Target_example", "Title_example") // ReleaseCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3792,7 +3792,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -3969,7 +3969,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoMoveInput := *openapiclient.NewRepoMoveInput() // RepoMoveInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -3990,7 +3990,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4039,7 +4039,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -4057,7 +4057,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4105,7 +4105,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	variableCreateInput := *openapiclient.NewVariableCreateInput("Data_example", "Description_example", "Identifier_example", "ParentRef_example", openapiclient.VariableType("plain_text")) // VariableCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -4126,7 +4126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4175,7 +4175,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	tagCreateInput := *openapiclient.NewTagCreateInput(false, "Message_example", "Name_example", "Target_example") // TagCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -4196,7 +4196,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4245,7 +4245,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	branchRenameInput := *openapiclient.NewBranchRenameInput(false, "NewName_example", "OldName_example") // BranchRenameInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -4266,7 +4266,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4315,7 +4315,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	repoRestoreInput := *openapiclient.NewRepoRestoreInput() // RepoRestoreInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -4336,7 +4336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -4385,7 +4385,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -4403,7 +4403,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 

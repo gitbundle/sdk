@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**action_id** | **i64** |  | 
 **arch** | **String** |  | 
 **created** | **i64** |  | 
 **errignore** | **bool** |  | 

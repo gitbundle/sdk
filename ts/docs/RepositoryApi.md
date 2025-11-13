@@ -82,7 +82,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitFilesInput: CommitFilesInput; //
 
 const { status, data } = await apiInstance.commitFiles(
@@ -96,7 +96,7 @@ const { status, data } = await apiInstance.commitFiles(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **commitFilesInput** | **CommitFilesInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -144,7 +144,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoCommitDivergencesInput: RepoCommitDivergencesInput; //
 
 const { status, data } = await apiInstance.commitsCalculateDivergence(
@@ -158,7 +158,7 @@ const { status, data } = await apiInstance.commitsCalculateDivergence(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoCommitDivergencesInput** | **RepoCommitDivergencesInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -204,7 +204,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let branchName: string; // (default to undefined)
 let bypassRules: boolean; // (optional) (default to undefined)
 
@@ -219,7 +219,7 @@ const { status, data } = await apiInstance.deleteBranch(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **branchName** | [**string**] |  | defaults to undefined|
 | **bypassRules** | [**boolean**] |  | (optional) defaults to undefined|
 
@@ -268,7 +268,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 let bypassRules: boolean; // (optional) (default to undefined)
 
@@ -283,7 +283,7 @@ const { status, data } = await apiInstance.deleteRelease(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 | **bypassRules** | [**boolean**] |  | (optional) defaults to undefined|
 
@@ -332,7 +332,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let runnerUuid: string; // (default to undefined)
 
 const { status, data } = await apiInstance.deleteRepositoryRunner(
@@ -345,7 +345,7 @@ const { status, data } = await apiInstance.deleteRepositoryRunner(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **runnerUuid** | [**string**] |  | defaults to undefined|
 
 
@@ -392,7 +392,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let variableIdentifier: string; // (default to undefined)
 
 const { status, data } = await apiInstance.deleteRepositoryVariable(
@@ -405,7 +405,7 @@ const { status, data } = await apiInstance.deleteRepositoryVariable(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **variableIdentifier** | [**string**] |  | defaults to undefined|
 
 
@@ -452,7 +452,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagName: string; // (default to undefined)
 let bypassRules: boolean; // (optional) (default to undefined)
 
@@ -467,7 +467,7 @@ const { status, data } = await apiInstance.deleteTag(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagName** | [**string**] |  | defaults to undefined|
 | **bypassRules** | [**boolean**] |  | (optional) defaults to undefined|
 
@@ -517,7 +517,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let generalSettings: GeneralSettings; //
 
 const { status, data } = await apiInstance.generalUpdate(
@@ -531,7 +531,7 @@ const { status, data } = await apiInstance.generalUpdate(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **generalSettings** | **GeneralSettings**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -577,7 +577,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let archiveRef: string; // (default to undefined)
 let prefix: string; // (optional) (default to undefined)
 let attributes: ArchiveAttribute; // (optional) (default to undefined)
@@ -600,7 +600,7 @@ const { status, data } = await apiInstance.getArchive(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **archiveRef** | [**string**] |  | defaults to undefined|
 | **prefix** | [**string**] |  | (optional) defaults to undefined|
 | **attributes** | **ArchiveAttribute** |  | (optional) defaults to undefined|
@@ -652,7 +652,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 let gitRef: string; //The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} (optional) (default to undefined)
 let lineFrom: number; // (optional) (default to undefined)
@@ -671,7 +671,7 @@ const { status, data } = await apiInstance.getBlame(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 | **gitRef** | [**string**] | The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch} | (optional) defaults to undefined|
 | **lineFrom** | [**number**] |  | (optional) defaults to undefined|
@@ -721,7 +721,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let branchName: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getBranch(
@@ -734,7 +734,7 @@ const { status, data } = await apiInstance.getBranch(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **branchName** | [**string**] |  | defaults to undefined|
 
 
@@ -781,7 +781,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -800,7 +800,7 @@ const { status, data } = await apiInstance.getBranches(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -850,7 +850,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 
 const { status, data } = await apiInstance.getCodeownersValidate(
@@ -863,7 +863,7 @@ const { status, data } = await apiInstance.getCodeownersValidate(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 
 
@@ -910,7 +910,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitSha: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getCommit(
@@ -923,7 +923,7 @@ const { status, data } = await apiInstance.getCommit(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **commitSha** | [**string**] |  | defaults to undefined|
 
 
@@ -970,7 +970,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitSha: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getCommitDiff(
@@ -983,7 +983,7 @@ const { status, data } = await apiInstance.getCommitDiff(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **commitSha** | [**string**] |  | defaults to undefined|
 
 
@@ -1030,7 +1030,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let commitSha: string; // (default to undefined)
 let filePath: string; // (default to undefined)
 let hunkHeader: string; // (default to undefined)
@@ -1051,7 +1051,7 @@ const { status, data } = await apiInstance.getCommitFileContent(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **commitSha** | [**string**] |  | defaults to undefined|
 | **filePath** | [**string**] |  | defaults to undefined|
 | **hunkHeader** | [**string**] |  | defaults to undefined|
@@ -1102,7 +1102,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
@@ -1131,7 +1131,7 @@ const { status, data } = await apiInstance.getCommits(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
@@ -1186,7 +1186,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 let includeCommit: boolean; // (optional) (default to undefined)
@@ -1203,7 +1203,7 @@ const { status, data } = await apiInstance.getContent(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 | **includeCommit** | [**boolean**] |  | (optional) defaults to undefined|
@@ -1252,7 +1252,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 let since: number; // (optional) (default to undefined)
 let until: number; // (optional) (default to undefined)
@@ -1269,7 +1269,7 @@ const { status, data } = await apiInstance.getContributors(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 | **since** | [**number**] |  | (optional) defaults to undefined|
 | **until** | [**number**] |  | (optional) defaults to undefined|
@@ -1318,7 +1318,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getDiffStats(
@@ -1331,7 +1331,7 @@ const { status, data } = await apiInstance.getDiffStats(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 
 
@@ -1378,7 +1378,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getDiffs(
@@ -1391,7 +1391,7 @@ const { status, data } = await apiInstance.getDiffs(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 
 
@@ -1438,7 +1438,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -1459,7 +1459,7 @@ const { status, data } = await apiInstance.getForks(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -1510,7 +1510,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getGeneral(
     repoRef
@@ -1521,7 +1521,7 @@ const { status, data } = await apiInstance.getGeneral(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -1567,7 +1567,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getHasStarred(
     repoRef
@@ -1578,7 +1578,7 @@ const { status, data } = await apiInstance.getHasStarred(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -1624,7 +1624,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getImportProgress(
     repoRef
@@ -1635,7 +1635,7 @@ const { status, data } = await apiInstance.getImportProgress(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -1681,7 +1681,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 let includeDirectories: boolean; // (optional) (default to undefined)
 
@@ -1696,7 +1696,7 @@ const { status, data } = await apiInstance.getPaths(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 | **includeDirectories** | [**boolean**] |  | (optional) defaults to undefined|
 
@@ -1744,7 +1744,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 let gitRef: string; // (optional) (default to undefined)
 
@@ -1759,7 +1759,7 @@ const { status, data } = await apiInstance.getRaw(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 
@@ -1807,7 +1807,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getRelease(
@@ -1820,7 +1820,7 @@ const { status, data } = await apiInstance.getRelease(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -1867,7 +1867,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -1888,7 +1888,7 @@ const { status, data } = await apiInstance.getReleases(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -1939,7 +1939,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getRepo(
     repoRef
@@ -1950,7 +1950,7 @@ const { status, data } = await apiInstance.getRepo(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -1996,7 +1996,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryResetedRunnerRegisterToken(
     repoRef
@@ -2007,7 +2007,7 @@ const { status, data } = await apiInstance.getRepositoryResetedRunnerRegisterTok
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2053,7 +2053,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let runnerUuid: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryRunner(
@@ -2066,7 +2066,7 @@ const { status, data } = await apiInstance.getRepositoryRunner(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **runnerUuid** | [**string**] |  | defaults to undefined|
 
 
@@ -2113,7 +2113,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryRunnerRegisterToken(
     repoRef
@@ -2124,7 +2124,7 @@ const { status, data } = await apiInstance.getRepositoryRunnerRegisterToken(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2170,7 +2170,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -2187,7 +2187,7 @@ const { status, data } = await apiInstance.getRepositoryRunners(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -2236,7 +2236,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryServiceAccounts(
     repoRef
@@ -2247,7 +2247,7 @@ const { status, data } = await apiInstance.getRepositoryServiceAccounts(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2293,7 +2293,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryStats(
     repoRef
@@ -2304,7 +2304,7 @@ const { status, data } = await apiInstance.getRepositoryStats(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2350,7 +2350,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let variableIdentifier: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getRepositoryVariable(
@@ -2363,7 +2363,7 @@ const { status, data } = await apiInstance.getRepositoryVariable(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **variableIdentifier** | [**string**] |  | defaults to undefined|
 
 
@@ -2410,7 +2410,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -2433,7 +2433,7 @@ const { status, data } = await apiInstance.getRepositoryVariables(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -2485,7 +2485,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.getSecurity(
     repoRef
@@ -2496,7 +2496,7 @@ const { status, data } = await apiInstance.getSecurity(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2542,7 +2542,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -2563,7 +2563,7 @@ const { status, data } = await apiInstance.getStars(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -2614,7 +2614,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -2633,7 +2633,7 @@ const { status, data } = await apiInstance.getTags(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -2684,7 +2684,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoUpdateInput: RepoUpdateInput; //
 
 const { status, data } = await apiInstance.patchRepo(
@@ -2698,7 +2698,7 @@ const { status, data } = await apiInstance.patchRepo(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoUpdateInput** | **RepoUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2745,7 +2745,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let runnerUuid: string; // (default to undefined)
 let runnerPatchInput: RunnerPatchInput; //
 
@@ -2761,7 +2761,7 @@ const { status, data } = await apiInstance.patchRepositoryRunner(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **runnerPatchInput** | **RunnerPatchInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **runnerUuid** | [**string**] |  | defaults to undefined|
 
 
@@ -2809,7 +2809,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let variableIdentifier: string; // (default to undefined)
 let variablePatchInput: VariablePatchInput; //
 
@@ -2825,7 +2825,7 @@ const { status, data } = await apiInstance.patchRepositoryVariable(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **variablePatchInput** | **VariablePatchInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **variableIdentifier** | [**string**] |  | defaults to undefined|
 
 
@@ -2873,7 +2873,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let securitySettings: SecuritySettings; //
 
 const { status, data } = await apiInstance.patchSecurity(
@@ -2887,7 +2887,7 @@ const { status, data } = await apiInstance.patchSecurity(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **securitySettings** | **SecuritySettings**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2934,7 +2934,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoStarsInput: RepoStarsInput; //
 
 const { status, data } = await apiInstance.patchStars(
@@ -2948,7 +2948,7 @@ const { status, data } = await apiInstance.patchStars(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoStarsInput** | **RepoStarsInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -2995,7 +2995,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let branchCreateInput: BranchCreateInput; //
 
 const { status, data } = await apiInstance.postBranch(
@@ -3009,7 +3009,7 @@ const { status, data } = await apiInstance.postBranch(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **branchCreateInput** | **BranchCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3057,7 +3057,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoUpdateDefaultBranchInput: RepoUpdateDefaultBranchInput; //
 
 const { status, data } = await apiInstance.postDefaultBranch(
@@ -3071,7 +3071,7 @@ const { status, data } = await apiInstance.postDefaultBranch(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoUpdateDefaultBranchInput** | **RepoUpdateDefaultBranchInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3117,7 +3117,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 let path2: string; // (default to undefined)
 let commitDiffFile: Array<CommitDiffFile>; //
@@ -3135,7 +3135,7 @@ const { status, data } = await apiInstance.postDiffs(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **commitDiffFile** | **Array<CommitDiffFile>**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 | **path2** | [**string**] |  | defaults to undefined|
 
@@ -3184,7 +3184,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let path: string; // (default to undefined)
 let repoMergeCheckInput: RepoMergeCheckInput; //
 
@@ -3200,7 +3200,7 @@ const { status, data } = await apiInstance.postMergeCheck(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoMergeCheckInput** | **RepoMergeCheckInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 
 
@@ -3247,7 +3247,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let requestBody: Array<string>; //
 let gitRef: string; // (optional) (default to undefined)
 
@@ -3263,7 +3263,7 @@ const { status, data } = await apiInstance.postPathDetails(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **requestBody** | **Array<string>**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **gitRef** | [**string**] |  | (optional) defaults to undefined|
 
 
@@ -3311,7 +3311,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let releaseCreateInput: ReleaseCreateInput; //
 
 const { status, data } = await apiInstance.postRelease(
@@ -3325,7 +3325,7 @@ const { status, data } = await apiInstance.postRelease(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **releaseCreateInput** | **ReleaseCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3489,7 +3489,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoMoveInput: RepoMoveInput; //
 
 const { status, data } = await apiInstance.postRepositoryMove(
@@ -3503,7 +3503,7 @@ const { status, data } = await apiInstance.postRepositoryMove(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoMoveInput** | **RepoMoveInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3549,7 +3549,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.postRepositoryPurge(
     repoRef
@@ -3560,7 +3560,7 @@ const { status, data } = await apiInstance.postRepositoryPurge(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3607,7 +3607,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let variableCreateInput: VariableCreateInput; //
 
 const { status, data } = await apiInstance.postRepositoryVariable(
@@ -3621,7 +3621,7 @@ const { status, data } = await apiInstance.postRepositoryVariable(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **variableCreateInput** | **VariableCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3668,7 +3668,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagCreateInput: TagCreateInput; //
 
 const { status, data } = await apiInstance.postTag(
@@ -3682,7 +3682,7 @@ const { status, data } = await apiInstance.postTag(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **tagCreateInput** | **TagCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3730,7 +3730,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let branchRenameInput: BranchRenameInput; //
 
 const { status, data } = await apiInstance.renameBranch(
@@ -3744,7 +3744,7 @@ const { status, data } = await apiInstance.renameBranch(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **branchRenameInput** | **BranchRenameInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3792,7 +3792,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let repoRestoreInput: RepoRestoreInput; //
 
 const { status, data } = await apiInstance.repoRestore(
@@ -3806,7 +3806,7 @@ const { status, data } = await apiInstance.repoRestore(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **repoRestoreInput** | **RepoRestoreInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -3852,7 +3852,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RepositoryApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.softRepositoryDelete(
     repoRef
@@ -3863,7 +3863,7 @@ const { status, data } = await apiInstance.softRepositoryDelete(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type

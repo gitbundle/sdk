@@ -44,7 +44,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqCommentId: number; //Pull request comment id (default to undefined)
 
@@ -59,7 +59,7 @@ const { status, data } = await apiInstance.deleteComment(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **pullreqCommentId** | [**number**] | Pull request comment id | defaults to undefined|
 
@@ -107,7 +107,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let path: string; // (default to undefined)
 
@@ -122,7 +122,7 @@ const { status, data } = await apiInstance.deleteFileView(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **path** | [**string**] |  | defaults to undefined|
 
@@ -170,7 +170,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqReviewerId: number; //Pull request reviewer id (default to undefined)
 
@@ -185,7 +185,7 @@ const { status, data } = await apiInstance.deleteReviewer(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **pullreqReviewerId** | [**number**] | Pull request reviewer id | defaults to undefined|
 
@@ -233,7 +233,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
@@ -260,7 +260,7 @@ const { status, data } = await apiInstance.getActivities(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
@@ -314,7 +314,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getCodeOwners(
@@ -327,7 +327,7 @@ const { status, data } = await apiInstance.getCodeOwners(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -374,7 +374,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getFileViews(
@@ -387,7 +387,7 @@ const { status, data } = await apiInstance.getFileViews(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -434,7 +434,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getMetadata(
@@ -447,7 +447,7 @@ const { status, data } = await apiInstance.getMetadata(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -494,7 +494,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getPullRequestChecks(
@@ -507,7 +507,7 @@ const { status, data } = await apiInstance.getPullRequestChecks(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -554,7 +554,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
@@ -571,7 +571,7 @@ const { status, data } = await apiInstance.getPullRequestCommits(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
@@ -620,7 +620,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getPullreq(
@@ -633,7 +633,7 @@ const { status, data } = await apiInstance.getPullreq(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -680,7 +680,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -715,7 +715,7 @@ const { status, data } = await apiInstance.getPullreqs(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -773,7 +773,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 
 const { status, data } = await apiInstance.getReviewers(
@@ -786,7 +786,7 @@ const { status, data } = await apiInstance.getReviewers(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -834,7 +834,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqCommentId: number; //Pull request comment id (default to undefined)
 let pullreqCommentUpdateInput: PullreqCommentUpdateInput; //
@@ -852,7 +852,7 @@ const { status, data } = await apiInstance.patchComment(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqCommentUpdateInput** | **PullreqCommentUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **pullreqCommentId** | [**number**] | Pull request comment id | defaults to undefined|
 
@@ -901,7 +901,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqUpdateInput: PullreqUpdateInput; //
 
@@ -917,7 +917,7 @@ const { status, data } = await apiInstance.patchPullreq(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqUpdateInput** | **PullreqUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -965,7 +965,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqApplySuggestionsInput: PullreqApplySuggestionsInput; //
 
@@ -981,7 +981,7 @@ const { status, data } = await apiInstance.postApplySuggestions(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqApplySuggestionsInput** | **PullreqApplySuggestionsInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1030,7 +1030,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqCommentCreateInput: PullreqCommentCreateInput; //
 
@@ -1046,7 +1046,7 @@ const { status, data } = await apiInstance.postComment(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqCommentCreateInput** | **PullreqCommentCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1093,7 +1093,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let commitDiffFile: Array<CommitDiffFile>; //
 
@@ -1109,7 +1109,7 @@ const { status, data } = await apiInstance.postDiff(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **commitDiffFile** | **Array<CommitDiffFile>**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1157,7 +1157,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqMergeInput: PullreqMergeInput; //
 
@@ -1173,7 +1173,7 @@ const { status, data } = await apiInstance.postMerge(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqMergeInput** | **PullreqMergeInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1222,7 +1222,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqCreateInput: PullreqCreateInput; //
 
 const { status, data } = await apiInstance.postPullreq(
@@ -1236,7 +1236,7 @@ const { status, data } = await apiInstance.postPullreq(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqCreateInput** | **PullreqCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -1283,7 +1283,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqReviewSubmitInput: PullreqReviewSubmitInput; //
 
@@ -1299,7 +1299,7 @@ const { status, data } = await apiInstance.postReviews(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqReviewSubmitInput** | **PullreqReviewSubmitInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1347,7 +1347,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqStateUpdateInput: PullreqStateUpdateInput; //
 
@@ -1363,7 +1363,7 @@ const { status, data } = await apiInstance.postState(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqStateUpdateInput** | **PullreqStateUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1411,7 +1411,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqCommentId: number; //Pull request comment id (default to undefined)
 let pullreqCommentStatusInput: PullreqCommentStatusInput; //
@@ -1429,7 +1429,7 @@ const { status, data } = await apiInstance.putCommentStatus(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqCommentStatusInput** | **PullreqCommentStatusInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 | **pullreqCommentId** | [**number**] | Pull request comment id | defaults to undefined|
 
@@ -1478,7 +1478,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqFileViewCreateInput: PullreqFileViewCreateInput; //
 
@@ -1494,7 +1494,7 @@ const { status, data } = await apiInstance.putFileViews(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqFileViewCreateInput** | **PullreqFileViewCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 
@@ -1542,7 +1542,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new PullRequestApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let pullreqNumber: number; //Pull request number (default to undefined)
 let pullreqReviewerAddInput: PullreqReviewerAddInput; //
 
@@ -1558,7 +1558,7 @@ const { status, data } = await apiInstance.putReviewer(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **pullreqReviewerAddInput** | **PullreqReviewerAddInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **pullreqNumber** | [**number**] | Pull request number | defaults to undefined|
 
 

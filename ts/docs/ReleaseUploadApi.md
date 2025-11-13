@@ -27,7 +27,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.deleteUpload(
@@ -40,7 +40,7 @@ const { status, data } = await apiInstance.deleteUpload(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -87,7 +87,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getAssets(
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.getAssets(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -147,7 +147,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getDownload(
@@ -160,7 +160,7 @@ const { status, data } = await apiInstance.getDownload(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -208,7 +208,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.getRestore(
@@ -221,7 +221,7 @@ const { status, data } = await apiInstance.getRestore(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -268,7 +268,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 
 const { status, data } = await apiInstance.headOffset(
     repoRef
@@ -279,7 +279,7 @@ const { status, data } = await apiInstance.headOffset(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -325,7 +325,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.patchChunks(
@@ -338,7 +338,7 @@ const { status, data } = await apiInstance.patchChunks(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 
@@ -385,7 +385,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ReleaseUploadApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let tagRef: string; // (default to undefined)
 
 const { status, data } = await apiInstance.postUpload(
@@ -398,7 +398,7 @@ const { status, data } = await apiInstance.postUpload(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **tagRef** | [**string**] |  | defaults to undefined|
 
 

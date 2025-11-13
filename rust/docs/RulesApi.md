@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **rule_identifier** | **String** | Rule identifier | [required] |
 
 ### Return type
@@ -51,7 +51,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **rule_identifier** | **String** | Rule identifier | [required] |
 
 ### Return type
@@ -80,7 +80,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **page** | Option<**i64**> |  |  |
 **size** | Option<**i64**> |  |  |
 **query** | Option<**String**> |  |  |
@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **rule_identifier** | **String** | Rule identifier | [required] |
 **rule_patch_input** | [**RulePatchInput**](RulePatchInput.md) |  | [required] |
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **rule_create_input** | [**RuleCreateInput**](RuleCreateInput.md) |  | [required] |
 
 ### Return type

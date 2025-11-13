@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -53,7 +53,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -82,7 +82,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -111,7 +111,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 
 ### Return type
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type
@@ -197,7 +197,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository ref | [required] |
+**repo_ref** | **String** | Repository id or ref | [required] |
 **tag_ref** | **String** |  | [required] |
 
 ### Return type

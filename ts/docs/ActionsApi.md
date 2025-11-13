@@ -4,23 +4,23 @@ All URIs are relative to */api/v3*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**cancelWorkflow**](#cancelworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel | |
+|[**cancelWorkflow**](#cancelworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/cancel | |
 |[**deleteAction**](#deleteaction) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier} | |
-|[**deleteWorkflow**](#deleteworkflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
+|[**deleteWorkflow**](#deleteworkflow) | **DELETE** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | |
 |[**getAction**](#getaction) | **GET** /repos/{repo_ref}/+/actions/{action_identifier} | |
 |[**getActions**](#getactions) | **GET** /repos/{repo_ref}/+/actions | |
-|[**getStepLogStream**](#getsteplogstream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream | |
-|[**getStepLogs**](#getsteplogs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number} | |
-|[**getWorkflow**](#getworkflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
+|[**getStepLogStream**](#getsteplogstream) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream | |
+|[**getStepLogs**](#getsteplogs) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number} | |
+|[**getWorkflow**](#getworkflow) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | |
 |[**getWorkflows**](#getworkflows) | **GET** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | |
 |[**patchAction**](#patchaction) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier} | |
-|[**patchStage**](#patchstage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | |
-|[**patchStep**](#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number} | |
-|[**patchWorkflow**](#patchworkflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number} | |
+|[**patchStage**](#patchstage) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | |
+|[**patchStep**](#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number} | |
+|[**patchWorkflow**](#patchworkflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | |
 |[**postAction**](#postaction) | **POST** /repos/{repo_ref}/+/actions | |
-|[**postStage**](#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages | |
-|[**postStep**](#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number} | |
-|[**postStepLog**](#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs | |
+|[**postStage**](#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | |
+|[**postStep**](#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | |
+|[**postStepLog**](#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs | |
 |[**postWorkflow**](#postworkflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | |
 
 # **cancelWorkflow**
@@ -38,14 +38,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 
 const { status, data } = await apiInstance.cancelWorkflow(
     repoRef,
     actionIdentifier,
-    workflowNumber
+    workflowIdn
 );
 ```
 
@@ -53,9 +53,9 @@ const { status, data } = await apiInstance.cancelWorkflow(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 
 
 ### Return type
@@ -101,8 +101,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
 
 const { status, data } = await apiInstance.deleteAction(
     repoRef,
@@ -114,8 +114,8 @@ const { status, data } = await apiInstance.deleteAction(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 
 
 ### Return type
@@ -161,14 +161,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 
 const { status, data } = await apiInstance.deleteWorkflow(
     repoRef,
     actionIdentifier,
-    workflowNumber
+    workflowIdn
 );
 ```
 
@@ -176,9 +176,9 @@ const { status, data } = await apiInstance.deleteWorkflow(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 
 
 ### Return type
@@ -224,8 +224,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
 
 const { status, data } = await apiInstance.getAction(
     repoRef,
@@ -237,8 +237,8 @@ const { status, data } = await apiInstance.getAction(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 
 
 ### Return type
@@ -284,7 +284,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -303,7 +303,7 @@ const { status, data } = await apiInstance.getActions(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -353,16 +353,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.getStepLogStream(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stepNumber
 );
@@ -372,9 +372,9 @@ const { status, data } = await apiInstance.getStepLogStream(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -422,16 +422,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.getStepLogs(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stepNumber
 );
@@ -441,9 +441,9 @@ const { status, data } = await apiInstance.getStepLogs(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -491,14 +491,14 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 
 const { status, data } = await apiInstance.getWorkflow(
     repoRef,
     actionIdentifier,
-    workflowNumber
+    workflowIdn
 );
 ```
 
@@ -506,9 +506,9 @@ const { status, data } = await apiInstance.getWorkflow(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 
 
 ### Return type
@@ -554,8 +554,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 
@@ -571,8 +571,8 @@ const { status, data } = await apiInstance.getWorkflows(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 
@@ -621,8 +621,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
 let actionUpdateInput: ActionUpdateInput; //
 
 const { status, data } = await apiInstance.patchAction(
@@ -637,8 +637,8 @@ const { status, data } = await apiInstance.patchAction(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **actionUpdateInput** | **ActionUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 
 
 ### Return type
@@ -685,16 +685,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stageUpdateInput: StageUpdateInput; //
 
 const { status, data } = await apiInstance.patchStage(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stageUpdateInput
 );
@@ -705,9 +705,9 @@ const { status, data } = await apiInstance.patchStage(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **stageUpdateInput** | **StageUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 
 
@@ -755,9 +755,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 let stepUpdateInput: StepUpdateInput; //
@@ -765,7 +765,7 @@ let stepUpdateInput: StepUpdateInput; //
 const { status, data } = await apiInstance.patchStep(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stepNumber,
     stepUpdateInput
@@ -777,9 +777,9 @@ const { status, data } = await apiInstance.patchStep(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **stepUpdateInput** | **StepUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -828,15 +828,15 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let workflowUpdateInput: WorkflowUpdateInput; //
 
 const { status, data } = await apiInstance.patchWorkflow(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     workflowUpdateInput
 );
 ```
@@ -846,9 +846,9 @@ const { status, data } = await apiInstance.patchWorkflow(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **workflowUpdateInput** | **WorkflowUpdateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 
 
 ### Return type
@@ -895,7 +895,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let actionCreateInput: ActionCreateInput; //
 
 const { status, data } = await apiInstance.postAction(
@@ -909,7 +909,7 @@ const { status, data } = await apiInstance.postAction(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **actionCreateInput** | **ActionCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type
@@ -956,15 +956,15 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageCreateInput: StageCreateInput; //
 
 const { status, data } = await apiInstance.postStage(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageCreateInput
 );
 ```
@@ -974,9 +974,9 @@ const { status, data } = await apiInstance.postStage(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **stageCreateInput** | **StageCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 
 
 ### Return type
@@ -1023,16 +1023,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepCreateInput: StepCreateInput; //
 
 const { status, data } = await apiInstance.postStep(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stepCreateInput
 );
@@ -1043,9 +1043,9 @@ const { status, data } = await apiInstance.postStep(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **stepCreateInput** | **StepCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 
 
@@ -1092,16 +1092,16 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action id or action name (default to undefined)
-let workflowNumber: number; //Workflow number (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
+let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
 
 const { status, data } = await apiInstance.postStepLog(
     repoRef,
     actionIdentifier,
-    workflowNumber,
+    workflowIdn,
     stageNumber,
     stepNumber
 );
@@ -1111,9 +1111,9 @@ const { status, data } = await apiInstance.postStepLog(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or action name | defaults to undefined|
-| **workflowNumber** | [**number**] | Workflow number | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
+| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
 | **stageNumber** | [**number**] | Stage number | defaults to undefined|
 | **stepNumber** | [**number**] | Step number | defaults to undefined|
 
@@ -1162,8 +1162,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ActionsApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
-let actionIdentifier: string; //Action identifier (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
+let actionIdentifier: string; //Action id or name (default to undefined)
 let workflowCreateInput: WorkflowCreateInput; //
 
 const { status, data } = await apiInstance.postWorkflow(
@@ -1178,8 +1178,8 @@ const { status, data } = await apiInstance.postWorkflow(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **workflowCreateInput** | **WorkflowCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action identifier | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
+| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 
 
 ### Return type

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 
 	configuration := openapiclient.NewConfiguration()
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 
 ### Other Parameters
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 	webhookExecutionId := int64(789) // int64 | Webhook execution id
 
@@ -125,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 **webhookExecutionId** | **int64** | Webhook execution id | 
 
@@ -177,7 +177,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 
 	configuration := openapiclient.NewConfiguration()
@@ -198,7 +198,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 
 ### Other Parameters
@@ -248,7 +248,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 
 	configuration := openapiclient.NewConfiguration()
@@ -269,7 +269,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 
 ### Other Parameters
@@ -319,7 +319,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -344,7 +344,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -397,7 +397,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 	webhookPatchInput := *openapiclient.NewWebhookPatchInput() // WebhookPatchInput | 
 
@@ -419,7 +419,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 
 ### Other Parameters
@@ -470,7 +470,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookIdentifier := "webhookIdentifier_example" // string | Webhook identifier
 	webhookExecutionId := int64(789) // int64 | Webhook execution id
 
@@ -492,7 +492,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **webhookIdentifier** | **string** | Webhook identifier | 
 **webhookExecutionId** | **int64** | Webhook execution id | 
 
@@ -544,7 +544,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	webhookCreateInput := *openapiclient.NewWebhookCreateInput("Description_example", "DisplayName_example", false, "Identifier_example", false, "Secret_example", []openapiclient.WebhookTrigger{openapiclient.WebhookTrigger("noop")}, "Url_example") // WebhookCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -565,7 +565,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 

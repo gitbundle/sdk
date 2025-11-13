@@ -43,7 +43,7 @@ func (r ApiCommitFilesRequest) Execute() (*CommitFilesOutput, *http.Response, er
 CommitFiles Method for CommitFiles
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiCommitFilesRequest
 */
 func (a *RepositoryAPIService) CommitFiles(ctx context.Context, repoRef string) ApiCommitFilesRequest {
@@ -257,7 +257,7 @@ func (r ApiCommitsCalculateDivergenceRequest) Execute() ([]CommitDivergence, *ht
 CommitsCalculateDivergence Method for CommitsCalculateDivergence
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiCommitsCalculateDivergenceRequest
 */
 func (a *RepositoryAPIService) CommitsCalculateDivergence(ctx context.Context, repoRef string) ApiCommitsCalculateDivergenceRequest {
@@ -461,7 +461,7 @@ func (r ApiDeleteBranchRequest) Execute() (*http.Response, error) {
 DeleteBranch Method for DeleteBranch
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param branchName
 	@return ApiDeleteBranchRequest
 */
@@ -665,7 +665,7 @@ func (r ApiDeleteReleaseRequest) Execute() (*http.Response, error) {
 DeleteRelease Method for DeleteRelease
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiDeleteReleaseRequest
 */
@@ -863,7 +863,7 @@ func (r ApiDeleteRepositoryRunnerRequest) Execute() (*http.Response, error) {
 DeleteRepositoryRunner Method for DeleteRepositoryRunner
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param runnerUuid
 	@return ApiDeleteRepositoryRunnerRequest
 */
@@ -1047,7 +1047,7 @@ func (r ApiDeleteRepositoryVariableRequest) Execute() (*http.Response, error) {
 DeleteRepositoryVariable Method for DeleteRepositoryVariable
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param variableIdentifier
 	@return ApiDeleteRepositoryVariableRequest
 */
@@ -1237,7 +1237,7 @@ func (r ApiDeleteTagRequest) Execute() (*http.Response, error) {
 DeleteTag Method for DeleteTag
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagName
 	@return ApiDeleteTagRequest
 */
@@ -1440,7 +1440,7 @@ func (r ApiGeneralUpdateRequest) Execute() (*GeneralSettings, *http.Response, er
 GeneralUpdate Method for GeneralUpdate
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGeneralUpdateRequest
 */
 func (a *RepositoryAPIService) GeneralUpdate(ctx context.Context, repoRef string) ApiGeneralUpdateRequest {
@@ -1668,7 +1668,7 @@ func (r ApiGetArchiveRequest) Execute() ([]int32, *http.Response, error) {
 GetArchive Method for GetArchive
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param archiveRef
 	@return ApiGetArchiveRequest
 */
@@ -1906,7 +1906,7 @@ func (r ApiGetBlameRequest) Execute() ([]BlamePart, *http.Response, error) {
 GetBlame Method for GetBlame
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiGetBlameRequest
 */
@@ -2111,7 +2111,7 @@ func (r ApiGetBranchRequest) Execute() (*CommitBranch, *http.Response, error) {
 GetBranch Method for GetBranch
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param branchName
 	@return ApiGetBranchRequest
 */
@@ -2330,7 +2330,7 @@ func (r ApiGetBranchesRequest) Execute() ([]CommitBranch, *http.Response, error)
 GetBranches Method for GetBranches
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetBranchesRequest
 */
 func (a *RepositoryAPIService) GetBranches(ctx context.Context, repoRef string) ApiGetBranchesRequest {
@@ -2540,7 +2540,7 @@ func (r ApiGetCodeownersValidateRequest) Execute() (*CodeOwnersValidation, *http
 GetCodeownersValidate Method for GetCodeownersValidate
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetCodeownersValidateRequest
 */
 func (a *RepositoryAPIService) GetCodeownersValidate(ctx context.Context, repoRef string) ApiGetCodeownersValidateRequest {
@@ -2736,7 +2736,7 @@ func (r ApiGetCommitRequest) Execute() (*Commit, *http.Response, error) {
 GetCommit Method for GetCommit
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param commitSha
 	@return ApiGetCommitRequest
 */
@@ -2932,7 +2932,7 @@ func (r ApiGetCommitDiffRequest) Execute() (string, *http.Response, error) {
 GetCommitDiff Method for GetCommitDiff
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param commitSha
 	@return ApiGetCommitDiffRequest
 */
@@ -3152,7 +3152,7 @@ func (r ApiGetCommitFileContentRequest) Execute() (*DiffFileContent, *http.Respo
 GetCommitFileContent Method for GetCommitFileContent
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param commitSha
 	@return ApiGetCommitFileContentRequest
 */
@@ -3416,7 +3416,7 @@ func (r ApiGetCommitsRequest) Execute() ([]CommitWithPathRenameDetails, *http.Re
 GetCommits Method for GetCommits
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetCommitsRequest
 */
 func (a *RepositoryAPIService) GetCommits(ctx context.Context, repoRef string) ApiGetCommitsRequest {
@@ -3648,7 +3648,7 @@ func (r ApiGetContentRequest) Execute() (*RepoContentOutput, *http.Response, err
 GetContent Method for GetContent
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiGetContentRequest
 */
@@ -3867,7 +3867,7 @@ func (r ApiGetContributorsRequest) Execute() ([]Contributor, *http.Response, err
 GetContributors Method for GetContributors
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetContributorsRequest
 */
 func (a *RepositoryAPIService) GetContributors(ctx context.Context, repoRef string) ApiGetContributorsRequest {
@@ -4069,7 +4069,7 @@ func (r ApiGetDiffStatsRequest) Execute() (*DiffStats, *http.Response, error) {
 GetDiffStats Method for GetDiffStats
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiGetDiffStatsRequest
 */
@@ -4265,7 +4265,7 @@ func (r ApiGetDiffsRequest) Execute() (string, *http.Response, error) {
 GetDiffs Method for GetDiffs
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiGetDiffsRequest
 */
@@ -4490,7 +4490,7 @@ func (r ApiGetForksRequest) Execute() ([]RepositoryModel, *http.Response, error)
 GetForks Method for GetForks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetForksRequest
 */
 func (a *RepositoryAPIService) GetForks(ctx context.Context, repoRef string) ApiGetForksRequest {
@@ -4697,7 +4697,7 @@ func (r ApiGetGeneralRequest) Execute() (*GeneralSettings, *http.Response, error
 GetGeneral Method for GetGeneral
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetGeneralRequest
 */
 func (a *RepositoryAPIService) GetGeneral(ctx context.Context, repoRef string) ApiGetGeneralRequest {
@@ -4889,7 +4889,7 @@ func (r ApiGetHasStarredRequest) Execute() (*RepositoryStarModel, *http.Response
 GetHasStarred Method for GetHasStarred
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetHasStarredRequest
 */
 func (a *RepositoryAPIService) GetHasStarred(ctx context.Context, repoRef string) ApiGetHasStarredRequest {
@@ -5081,7 +5081,7 @@ func (r ApiGetImportProgressRequest) Execute() (*JobProgress, *http.Response, er
 GetImportProgress Method for GetImportProgress
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetImportProgressRequest
 */
 func (a *RepositoryAPIService) GetImportProgress(ctx context.Context, repoRef string) ApiGetImportProgressRequest {
@@ -5285,7 +5285,7 @@ func (r ApiGetPathsRequest) Execute() (*RepoPathsOutput, *http.Response, error) 
 GetPaths Method for GetPaths
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetPathsRequest
 */
 func (a *RepositoryAPIService) GetPaths(ctx context.Context, repoRef string) ApiGetPathsRequest {
@@ -5490,7 +5490,7 @@ func (r ApiGetRawRequest) Execute() ([]int32, *http.Response, error) {
 GetRaw Method for GetRaw
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiGetRawRequest
 */
@@ -5689,7 +5689,7 @@ func (r ApiGetReleaseRequest) Execute() (*ReleaseCreator, *http.Response, error)
 GetRelease Method for GetRelease
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiGetReleaseRequest
 */
@@ -5914,7 +5914,7 @@ func (r ApiGetReleasesRequest) Execute() ([]ReleaseCreator, *http.Response, erro
 GetReleases Method for GetReleases
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetReleasesRequest
 */
 func (a *RepositoryAPIService) GetReleases(ctx context.Context, repoRef string) ApiGetReleasesRequest {
@@ -6121,7 +6121,7 @@ func (r ApiGetRepoRequest) Execute() (*RepoParent, *http.Response, error) {
 GetRepo Method for GetRepo
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepoRequest
 */
 func (a *RepositoryAPIService) GetRepo(ctx context.Context, repoRef string) ApiGetRepoRequest {
@@ -6313,7 +6313,7 @@ func (r ApiGetRepositoryResetedRunnerRegisterTokenRequest) Execute() (*RegisterT
 GetRepositoryResetedRunnerRegisterToken Method for GetRepositoryResetedRunnerRegisterToken
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryResetedRunnerRegisterTokenRequest
 */
 func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterToken(ctx context.Context, repoRef string) ApiGetRepositoryResetedRunnerRegisterTokenRequest {
@@ -6506,7 +6506,7 @@ func (r ApiGetRepositoryRunnerRequest) Execute() (*RunnerModel, *http.Response, 
 GetRepositoryRunner Method for GetRepositoryRunner
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param runnerUuid
 	@return ApiGetRepositoryRunnerRequest
 */
@@ -6701,7 +6701,7 @@ func (r ApiGetRepositoryRunnerRegisterTokenRequest) Execute() (*RegisterTokenMod
 GetRepositoryRunnerRegisterToken Method for GetRepositoryRunnerRegisterToken
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryRunnerRegisterTokenRequest
 */
 func (a *RepositoryAPIService) GetRepositoryRunnerRegisterToken(ctx context.Context, repoRef string) ApiGetRepositoryRunnerRegisterTokenRequest {
@@ -6911,7 +6911,7 @@ func (r ApiGetRepositoryRunnersRequest) Execute() ([]RunnerCreator, *http.Respon
 GetRepositoryRunners Method for GetRepositoryRunners
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryRunnersRequest
 */
 func (a *RepositoryAPIService) GetRepositoryRunners(ctx context.Context, repoRef string) ApiGetRepositoryRunnersRequest {
@@ -7112,7 +7112,7 @@ func (r ApiGetRepositoryServiceAccountsRequest) Execute() ([]UserModel, *http.Re
 GetRepositoryServiceAccounts Method for GetRepositoryServiceAccounts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryServiceAccountsRequest
 */
 func (a *RepositoryAPIService) GetRepositoryServiceAccounts(ctx context.Context, repoRef string) ApiGetRepositoryServiceAccountsRequest {
@@ -7304,7 +7304,7 @@ func (r ApiGetRepositoryStatsRequest) Execute() (*RepoStatsOutput, *http.Respons
 GetRepositoryStats Method for GetRepositoryStats
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryStatsRequest
 */
 func (a *RepositoryAPIService) GetRepositoryStats(ctx context.Context, repoRef string) ApiGetRepositoryStatsRequest {
@@ -7497,7 +7497,7 @@ func (r ApiGetRepositoryVariableRequest) Execute() (*VariableModel, *http.Respon
 GetRepositoryVariable Method for GetRepositoryVariable
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param variableIdentifier
 	@return ApiGetRepositoryVariableRequest
 */
@@ -7728,7 +7728,7 @@ func (r ApiGetRepositoryVariablesRequest) Execute() ([]VariableGroup, *http.Resp
 GetRepositoryVariables Method for GetRepositoryVariables
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRepositoryVariablesRequest
 */
 func (a *RepositoryAPIService) GetRepositoryVariables(ctx context.Context, repoRef string) ApiGetRepositoryVariablesRequest {
@@ -7946,7 +7946,7 @@ func (r ApiGetSecurityRequest) Execute() (*SecuritySettings, *http.Response, err
 GetSecurity Method for GetSecurity
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetSecurityRequest
 */
 func (a *RepositoryAPIService) GetSecurity(ctx context.Context, repoRef string) ApiGetSecurityRequest {
@@ -8168,7 +8168,7 @@ func (r ApiGetStarsRequest) Execute() ([]UserModel, *http.Response, error) {
 GetStars Method for GetStars
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetStarsRequest
 */
 func (a *RepositoryAPIService) GetStars(ctx context.Context, repoRef string) ApiGetStarsRequest {
@@ -8399,7 +8399,7 @@ func (r ApiGetTagsRequest) Execute() ([]CommitTag, *http.Response, error) {
 GetTags Method for GetTags
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetTagsRequest
 */
 func (a *RepositoryAPIService) GetTags(ctx context.Context, repoRef string) ApiGetTagsRequest {
@@ -8609,7 +8609,7 @@ func (r ApiPatchRepoRequest) Execute() (*RepositoryModel, *http.Response, error)
 PatchRepo Method for PatchRepo
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPatchRepoRequest
 */
 func (a *RepositoryAPIService) PatchRepo(ctx context.Context, repoRef string) ApiPatchRepoRequest {
@@ -8813,7 +8813,7 @@ func (r ApiPatchRepositoryRunnerRequest) Execute() (*RunnerModel, *http.Response
 PatchRepositoryRunner Method for PatchRepositoryRunner
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param runnerUuid
 	@return ApiPatchRepositoryRunnerRequest
 */
@@ -9020,7 +9020,7 @@ func (r ApiPatchRepositoryVariableRequest) Execute() (*VariableModel, *http.Resp
 PatchRepositoryVariable Method for PatchRepositoryVariable
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param variableIdentifier
 	@return ApiPatchRepositoryVariableRequest
 */
@@ -9226,7 +9226,7 @@ func (r ApiPatchSecurityRequest) Execute() (*SecuritySettings, *http.Response, e
 PatchSecurity Method for PatchSecurity
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPatchSecurityRequest
 */
 func (a *RepositoryAPIService) PatchSecurity(ctx context.Context, repoRef string) ApiPatchSecurityRequest {
@@ -9429,7 +9429,7 @@ func (r ApiPatchStarsRequest) Execute() (*RepositoryModel, *http.Response, error
 PatchStars Method for PatchStars
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPatchStarsRequest
 */
 func (a *RepositoryAPIService) PatchStars(ctx context.Context, repoRef string) ApiPatchStarsRequest {
@@ -9632,7 +9632,7 @@ func (r ApiPostBranchRequest) Execute() (*CommitBranch, *http.Response, error) {
 PostBranch Method for PostBranch
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostBranchRequest
 */
 func (a *RepositoryAPIService) PostBranch(ctx context.Context, repoRef string) ApiPostBranchRequest {
@@ -9846,7 +9846,7 @@ func (r ApiPostDefaultBranchRequest) Execute() (*RepositoryModel, *http.Response
 PostDefaultBranch Method for PostDefaultBranch
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostDefaultBranchRequest
 */
 func (a *RepositoryAPIService) PostDefaultBranch(ctx context.Context, repoRef string) ApiPostDefaultBranchRequest {
@@ -10056,7 +10056,7 @@ func (r ApiPostDiffsRequest) Execute() ([]int32, *http.Response, error) {
 PostDiffs Method for PostDiffs
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path2
 	@return ApiPostDiffsRequest
 */
@@ -10267,7 +10267,7 @@ func (r ApiPostMergeCheckRequest) Execute() (*RepoMergeCheckOutput, *http.Respon
 PostMergeCheck Method for PostMergeCheck
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param path
 	@return ApiPostMergeCheckRequest
 */
@@ -10479,7 +10479,7 @@ func (r ApiPostPathDetailsRequest) Execute() ([]PathDetails, *http.Response, err
 PostPathDetails Method for PostPathDetails
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostPathDetailsRequest
 */
 func (a *RepositoryAPIService) PostPathDetails(ctx context.Context, repoRef string) ApiPostPathDetailsRequest {
@@ -10685,7 +10685,7 @@ func (r ApiPostReleaseRequest) Execute() (*ReleaseModel, *http.Response, error) 
 PostRelease Method for PostRelease
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostReleaseRequest
 */
 func (a *RepositoryAPIService) PostRelease(ctx context.Context, repoRef string) ApiPostReleaseRequest {
@@ -11297,7 +11297,7 @@ func (r ApiPostRepositoryMoveRequest) Execute() (*RepositoryModel, *http.Respons
 PostRepositoryMove Method for PostRepositoryMove
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostRepositoryMoveRequest
 */
 func (a *RepositoryAPIService) PostRepositoryMove(ctx context.Context, repoRef string) ApiPostRepositoryMoveRequest {
@@ -11494,7 +11494,7 @@ func (r ApiPostRepositoryPurgeRequest) Execute() (*http.Response, error) {
 PostRepositoryPurge Method for PostRepositoryPurge
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostRepositoryPurgeRequest
 */
 func (a *RepositoryAPIService) PostRepositoryPurge(ctx context.Context, repoRef string) ApiPostRepositoryPurgeRequest {
@@ -11680,7 +11680,7 @@ func (r ApiPostRepositoryVariableRequest) Execute() (*VariableModel, *http.Respo
 PostRepositoryVariable Method for PostRepositoryVariable
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostRepositoryVariableRequest
 */
 func (a *RepositoryAPIService) PostRepositoryVariable(ctx context.Context, repoRef string) ApiPostRepositoryVariableRequest {
@@ -11883,7 +11883,7 @@ func (r ApiPostTagRequest) Execute() (*CommitTag, *http.Response, error) {
 PostTag Method for PostTag
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostTagRequest
 */
 func (a *RepositoryAPIService) PostTag(ctx context.Context, repoRef string) ApiPostTagRequest {
@@ -12097,7 +12097,7 @@ func (r ApiRenameBranchRequest) Execute() (*CommitBranch, *http.Response, error)
 RenameBranch Method for RenameBranch
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiRenameBranchRequest
 */
 func (a *RepositoryAPIService) RenameBranch(ctx context.Context, repoRef string) ApiRenameBranchRequest {
@@ -12311,7 +12311,7 @@ func (r ApiRepoRestoreRequest) Execute() (*RepositoryModel, *http.Response, erro
 RepoRestore Method for RepoRestore
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiRepoRestoreRequest
 */
 func (a *RepositoryAPIService) RepoRestore(ctx context.Context, repoRef string) ApiRepoRestoreRequest {
@@ -12508,7 +12508,7 @@ func (r ApiSoftRepositoryDeleteRequest) Execute() (*http.Response, error) {
 SoftRepositoryDelete Method for SoftRepositoryDelete
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiSoftRepositoryDeleteRequest
 */
 func (a *RepositoryAPIService) SoftRepositoryDelete(ctx context.Context, repoRef string) ApiSoftRepositoryDeleteRequest {

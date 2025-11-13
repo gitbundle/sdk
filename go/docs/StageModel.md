@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActionId** | **int64** |  | 
 **Arch** | **string** |  | 
 **Created** | **int64** |  | 
 **Errignore** | **bool** |  | 
@@ -40,7 +41,7 @@ Name | Type | Description | Notes
 
 ### NewStageModel
 
-`func NewStageModel(arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
+`func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
 
 NewStageModel instantiates a new StageModel object
 This constructor will assign default values to properties that have it defined,
@@ -54,6 +55,26 @@ will change when the set of required properties is changed
 NewStageModelWithDefaults instantiates a new StageModel object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActionId
+
+`func (o *StageModel) GetActionId() int64`
+
+GetActionId returns the ActionId field if non-nil, zero value otherwise.
+
+### GetActionIdOk
+
+`func (o *StageModel) GetActionIdOk() (*int64, bool)`
+
+GetActionIdOk returns a tuple with the ActionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionId
+
+`func (o *StageModel) SetActionId(v int64)`
+
+SetActionId sets ActionId field to given value.
+
 
 ### GetArch
 

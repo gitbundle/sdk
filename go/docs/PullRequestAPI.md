@@ -50,7 +50,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqCommentId := int64(789) // int64 | Pull request comment id
 
@@ -70,7 +70,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 **pullreqCommentId** | **int64** | Pull request comment id | 
 
@@ -122,7 +122,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	path := "path_example" // string | 
 
@@ -142,7 +142,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 **path** | **string** |  | 
 
@@ -194,7 +194,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqReviewerId := int64(789) // int64 | Pull request reviewer id
 
@@ -214,7 +214,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 **pullreqReviewerId** | **int64** | Pull request reviewer id | 
 
@@ -266,7 +266,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
@@ -294,7 +294,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -351,7 +351,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -372,7 +372,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -422,7 +422,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -443,7 +443,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -493,7 +493,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -514,7 +514,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -564,7 +564,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -585,7 +585,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -635,7 +635,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
@@ -658,7 +658,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -710,7 +710,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -731,7 +731,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -781,7 +781,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -813,7 +813,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -873,7 +873,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 
 	configuration := openapiclient.NewConfiguration()
@@ -894,7 +894,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -944,7 +944,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqCommentId := int64(789) // int64 | Pull request comment id
 	pullreqCommentUpdateInput := *openapiclient.NewPullreqCommentUpdateInput("Text_example") // PullreqCommentUpdateInput | 
@@ -967,7 +967,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 **pullreqCommentId** | **int64** | Pull request comment id | 
 
@@ -1020,7 +1020,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqUpdateInput := *openapiclient.NewPullreqUpdateInput("Description_example", "Title_example") // PullreqUpdateInput | 
 
@@ -1042,7 +1042,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1093,7 +1093,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqApplySuggestionsInput := *openapiclient.NewPullreqApplySuggestionsInput(false, false, "Message_example", []openapiclient.PullreqSuggestionReference{*openapiclient.NewPullreqSuggestionReference("CheckSum_example", int64(123))}, "Title_example") // PullreqApplySuggestionsInput | 
 
@@ -1115,7 +1115,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1166,7 +1166,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqCommentCreateInput := *openapiclient.NewPullreqCommentCreateInput(int64(123), false, int64(123), false, int64(123), "Path_example", "SourceCommitSha_example", "TargetCommitSha_example", "Text_example") // PullreqCommentCreateInput | 
 
@@ -1188,7 +1188,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1239,7 +1239,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	commitDiffFile := []openapiclient.CommitDiffFile{*openapiclient.NewCommitDiffFile()} // []CommitDiffFile | 
 
@@ -1261,7 +1261,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1312,7 +1312,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqMergeInput := *openapiclient.NewPullreqMergeInput(false, false, "Message_example", "SourceSha_example", "Title_example") // PullreqMergeInput | 
 
@@ -1334,7 +1334,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1385,7 +1385,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqCreateInput := *openapiclient.NewPullreqCreateInput("Description_example", false, "SourceBranch_example", "SourceRepoRef_example", "TargetBranch_example", "Title_example") // PullreqCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -1406,7 +1406,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -1455,7 +1455,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqReviewSubmitInput := *openapiclient.NewPullreqReviewSubmitInput("CommitSha_example", openapiclient.PullreqReviewDecision("pending")) // PullreqReviewSubmitInput | 
 
@@ -1477,7 +1477,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1528,7 +1528,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqStateUpdateInput := *openapiclient.NewPullreqStateUpdateInput(false, openapiclient.PullreqState("open")) // PullreqStateUpdateInput | 
 
@@ -1550,7 +1550,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1601,7 +1601,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqCommentId := int64(789) // int64 | Pull request comment id
 	pullreqCommentStatusInput := *openapiclient.NewPullreqCommentStatusInput(openapiclient.PullreqActivityStatus("active")) // PullreqCommentStatusInput | 
@@ -1624,7 +1624,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 **pullreqCommentId** | **int64** | Pull request comment id | 
 
@@ -1677,7 +1677,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqFileViewCreateInput := *openapiclient.NewPullreqFileViewCreateInput("CommitSha_example", "Path_example") // PullreqFileViewCreateInput | 
 
@@ -1699,7 +1699,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters
@@ -1750,7 +1750,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	pullreqNumber := int64(789) // int64 | Pull request number
 	pullreqReviewerAddInput := *openapiclient.NewPullreqReviewerAddInput(int64(123)) // PullreqReviewerAddInput | 
 
@@ -1772,7 +1772,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **pullreqNumber** | **int64** | Pull request number | 
 
 ### Other Parameters

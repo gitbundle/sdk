@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	ruleIdentifier := "ruleIdentifier_example" // string | Rule identifier
 
 	configuration := openapiclient.NewConfiguration()
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **ruleIdentifier** | **string** | Rule identifier | 
 
 ### Other Parameters
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	ruleIdentifier := "ruleIdentifier_example" // string | Rule identifier
 
 	configuration := openapiclient.NewConfiguration()
@@ -121,7 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **ruleIdentifier** | **string** | Rule identifier | 
 
 ### Other Parameters
@@ -171,7 +171,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	page := int64(789) // int64 |  (optional)
 	size := int64(789) // int64 |  (optional)
 	query := "query_example" // string |  (optional)
@@ -197,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 
@@ -251,7 +251,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	ruleIdentifier := "ruleIdentifier_example" // string | Rule identifier
 	rulePatchInput := *openapiclient.NewRulePatchInput() // RulePatchInput | 
 
@@ -273,7 +273,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 **ruleIdentifier** | **string** | Rule identifier | 
 
 ### Other Parameters
@@ -324,7 +324,7 @@ import (
 )
 
 func main() {
-	repoRef := "repoRef_example" // string | Repository ref
+	repoRef := "repoRef_example" // string | Repository id or ref
 	ruleCreateInput := *openapiclient.NewRuleCreateInput("Description_example", "Name_example", *openapiclient.NewProtectionPattern(), openapiclient.RuleState("disabled"), openapiclient.RuleType("branch")) // RuleCreateInput | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -345,7 +345,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository ref | 
+**repoRef** | **string** | Repository id or ref | 
 
 ### Other Parameters
 

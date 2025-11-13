@@ -25,7 +25,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RulesApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let ruleIdentifier: string; //Rule identifier (default to undefined)
 
 const { status, data } = await apiInstance.deleteRule(
@@ -38,7 +38,7 @@ const { status, data } = await apiInstance.deleteRule(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **ruleIdentifier** | [**string**] | Rule identifier | defaults to undefined|
 
 
@@ -85,7 +85,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RulesApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let ruleIdentifier: string; //Rule identifier (default to undefined)
 
 const { status, data } = await apiInstance.getRule(
@@ -98,7 +98,7 @@ const { status, data } = await apiInstance.getRule(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **ruleIdentifier** | [**string**] | Rule identifier | defaults to undefined|
 
 
@@ -145,7 +145,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RulesApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let page: number; // (optional) (default to undefined)
 let size: number; // (optional) (default to undefined)
 let query: string; // (optional) (default to undefined)
@@ -168,7 +168,7 @@ const { status, data } = await apiInstance.getRules(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **page** | [**number**] |  | (optional) defaults to undefined|
 | **size** | [**number**] |  | (optional) defaults to undefined|
 | **query** | [**string**] |  | (optional) defaults to undefined|
@@ -221,7 +221,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RulesApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let ruleIdentifier: string; //Rule identifier (default to undefined)
 let rulePatchInput: RulePatchInput; //
 
@@ -237,7 +237,7 @@ const { status, data } = await apiInstance.patchRule(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **rulePatchInput** | **RulePatchInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **ruleIdentifier** | [**string**] | Rule identifier | defaults to undefined|
 
 
@@ -285,7 +285,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new RulesApi(configuration);
 
-let repoRef: string; //Repository ref (default to undefined)
+let repoRef: string; //Repository id or ref (default to undefined)
 let ruleCreateInput: RuleCreateInput; //
 
 const { status, data } = await apiInstance.postRule(
@@ -299,7 +299,7 @@ const { status, data } = await apiInstance.postRule(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **ruleCreateInput** | **RuleCreateInput**|  | |
-| **repoRef** | [**string**] | Repository ref | defaults to undefined|
+| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 
 
 ### Return type

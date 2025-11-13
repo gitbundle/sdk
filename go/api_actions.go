@@ -27,7 +27,7 @@ type ApiCancelWorkflowRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 }
 
 func (r ApiCancelWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error) {
@@ -38,18 +38,18 @@ func (r ApiCancelWorkflowRequest) Execute() (*WorkflowStages, *http.Response, er
 CancelWorkflow Method for CancelWorkflow
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@return ApiCancelWorkflowRequest
 */
-func (a *ActionsAPIService) CancelWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiCancelWorkflowRequest {
+func (a *ActionsAPIService) CancelWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64) ApiCancelWorkflowRequest {
 	return ApiCancelWorkflowRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 	}
 }
 
@@ -69,10 +69,10 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/cancel"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -237,8 +237,8 @@ func (r ApiDeleteActionRequest) Execute() (*http.Response, error) {
 DeleteAction Method for DeleteAction
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action identifier
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
 	@return ApiDeleteActionRequest
 */
 func (a *ActionsAPIService) DeleteAction(ctx context.Context, repoRef string, actionIdentifier string) ApiDeleteActionRequest {
@@ -411,7 +411,7 @@ type ApiDeleteWorkflowRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 }
 
 func (r ApiDeleteWorkflowRequest) Execute() (*http.Response, error) {
@@ -422,18 +422,18 @@ func (r ApiDeleteWorkflowRequest) Execute() (*http.Response, error) {
 DeleteWorkflow Method for DeleteWorkflow
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@return ApiDeleteWorkflowRequest
 */
-func (a *ActionsAPIService) DeleteWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiDeleteWorkflowRequest {
+func (a *ActionsAPIService) DeleteWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64) ApiDeleteWorkflowRequest {
 	return ApiDeleteWorkflowRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 	}
 }
 
@@ -450,10 +450,10 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,8 +609,8 @@ func (r ApiGetActionRequest) Execute() (*ActionModel, *http.Response, error) {
 GetAction Method for GetAction
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action identifier
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
 	@return ApiGetActionRequest
 */
 func (a *ActionsAPIService) GetAction(ctx context.Context, repoRef string, actionIdentifier string) ApiGetActionRequest {
@@ -828,7 +828,7 @@ func (r ApiGetActionsRequest) Execute() ([]ActionWorkflow, *http.Response, error
 GetActions Method for GetActions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetActionsRequest
 */
 func (a *ActionsAPIService) GetActions(ctx context.Context, repoRef string) ApiGetActionsRequest {
@@ -1023,7 +1023,7 @@ type ApiGetStepLogStreamRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
 }
@@ -1036,20 +1036,20 @@ func (r ApiGetStepLogStreamRequest) Execute() ([]LiveLogLine, *http.Response, er
 GetStepLogStream Method for GetStepLogStream
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@param stepNumber Step number
 	@return ApiGetStepLogStreamRequest
 */
-func (a *ActionsAPIService) GetStepLogStream(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiGetStepLogStreamRequest {
+func (a *ActionsAPIService) GetStepLogStream(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64, stepNumber int64) ApiGetStepLogStreamRequest {
 	return ApiGetStepLogStreamRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 		stepNumber:       stepNumber,
 	}
@@ -1071,10 +1071,10 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"step_number"+"}", url.PathEscape(parameterValueToString(r.stepNumber, "stepNumber")), -1)
 
@@ -1231,7 +1231,7 @@ type ApiGetStepLogsRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
 }
@@ -1244,20 +1244,20 @@ func (r ApiGetStepLogsRequest) Execute() ([]LiveLogLine, *http.Response, error) 
 GetStepLogs Method for GetStepLogs
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@param stepNumber Step number
 	@return ApiGetStepLogsRequest
 */
-func (a *ActionsAPIService) GetStepLogs(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiGetStepLogsRequest {
+func (a *ActionsAPIService) GetStepLogs(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64, stepNumber int64) ApiGetStepLogsRequest {
 	return ApiGetStepLogsRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 		stepNumber:       stepNumber,
 	}
@@ -1279,10 +1279,10 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"step_number"+"}", url.PathEscape(parameterValueToString(r.stepNumber, "stepNumber")), -1)
 
@@ -1439,7 +1439,7 @@ type ApiGetWorkflowRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 }
 
 func (r ApiGetWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error) {
@@ -1450,18 +1450,18 @@ func (r ApiGetWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error
 GetWorkflow Method for GetWorkflow
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@return ApiGetWorkflowRequest
 */
-func (a *ActionsAPIService) GetWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiGetWorkflowRequest {
+func (a *ActionsAPIService) GetWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64) ApiGetWorkflowRequest {
 	return ApiGetWorkflowRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 	}
 }
 
@@ -1481,10 +1481,10 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1661,8 +1661,8 @@ func (r ApiGetWorkflowsRequest) Execute() ([]WorkflowModel, *http.Response, erro
 GetWorkflows Method for GetWorkflows
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action identifier
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
 	@return ApiGetWorkflowsRequest
 */
 func (a *ActionsAPIService) GetWorkflows(ctx context.Context, repoRef string, actionIdentifier string) ApiGetWorkflowsRequest {
@@ -1869,8 +1869,8 @@ func (r ApiPatchActionRequest) Execute() (*ActionModel, *http.Response, error) {
 PatchAction Method for PatchAction
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action identifier
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
 	@return ApiPatchActionRequest
 */
 func (a *ActionsAPIService) PatchAction(ctx context.Context, repoRef string, actionIdentifier string) ApiPatchActionRequest {
@@ -2060,7 +2060,7 @@ type ApiPatchStageRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stageUpdateInput *StageUpdateInput
 }
@@ -2078,19 +2078,19 @@ func (r ApiPatchStageRequest) Execute() (*StageModel, *http.Response, error) {
 PatchStage Method for PatchStage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@return ApiPatchStageRequest
 */
-func (a *ActionsAPIService) PatchStage(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64) ApiPatchStageRequest {
+func (a *ActionsAPIService) PatchStage(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64) ApiPatchStageRequest {
 	return ApiPatchStageRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 	}
 }
@@ -2111,10 +2111,10 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2275,7 +2275,7 @@ type ApiPatchStepRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
 	stepUpdateInput  *StepUpdateInput
@@ -2294,20 +2294,20 @@ func (r ApiPatchStepRequest) Execute() (*StageModel, *http.Response, error) {
 PatchStep Method for PatchStep
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@param stepNumber Step number
 	@return ApiPatchStepRequest
 */
-func (a *ActionsAPIService) PatchStep(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiPatchStepRequest {
+func (a *ActionsAPIService) PatchStep(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64, stepNumber int64) ApiPatchStepRequest {
 	return ApiPatchStepRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 		stepNumber:       stepNumber,
 	}
@@ -2329,10 +2329,10 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"step_number"+"}", url.PathEscape(parameterValueToString(r.stepNumber, "stepNumber")), -1)
 
@@ -2494,7 +2494,7 @@ type ApiPatchWorkflowRequest struct {
 	ApiService          *ActionsAPIService
 	repoRef             string
 	actionIdentifier    string
-	workflowNumber      int64
+	workflowIdn         int64
 	workflowUpdateInput *WorkflowUpdateInput
 }
 
@@ -2511,18 +2511,18 @@ func (r ApiPatchWorkflowRequest) Execute() (*WorkflowModel, *http.Response, erro
 PatchWorkflow Method for PatchWorkflow
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@return ApiPatchWorkflowRequest
 */
-func (a *ActionsAPIService) PatchWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiPatchWorkflowRequest {
+func (a *ActionsAPIService) PatchWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64) ApiPatchWorkflowRequest {
 	return ApiPatchWorkflowRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 	}
 }
 
@@ -2542,10 +2542,10 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2720,7 +2720,7 @@ func (r ApiPostActionRequest) Execute() (*ActionModel, *http.Response, error) {
 PostAction Method for PostAction
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostActionRequest
 */
 func (a *ActionsAPIService) PostAction(ctx context.Context, repoRef string) ApiPostActionRequest {
@@ -2908,7 +2908,7 @@ type ApiPostStageRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageCreateInput *StageCreateInput
 }
 
@@ -2925,18 +2925,18 @@ func (r ApiPostStageRequest) Execute() (*StageModel, *http.Response, error) {
 PostStage Method for PostStage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@return ApiPostStageRequest
 */
-func (a *ActionsAPIService) PostStage(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiPostStageRequest {
+func (a *ActionsAPIService) PostStage(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64) ApiPostStageRequest {
 	return ApiPostStageRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 	}
 }
 
@@ -2956,10 +2956,10 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3119,7 +3119,7 @@ type ApiPostStepRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stepCreateInput  *StepCreateInput
 }
@@ -3137,19 +3137,19 @@ func (r ApiPostStepRequest) Execute() (*StageModel, *http.Response, error) {
 PostStep Method for PostStep
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@return ApiPostStepRequest
 */
-func (a *ActionsAPIService) PostStep(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64) ApiPostStepRequest {
+func (a *ActionsAPIService) PostStep(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64) ApiPostStepRequest {
 	return ApiPostStepRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 	}
 }
@@ -3170,10 +3170,10 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3334,7 +3334,7 @@ type ApiPostStepLogRequest struct {
 	ApiService       *ActionsAPIService
 	repoRef          string
 	actionIdentifier string
-	workflowNumber   int64
+	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
 }
@@ -3347,20 +3347,20 @@ func (r ApiPostStepLogRequest) Execute() (*http.Response, error) {
 PostStepLog Method for PostStepLog
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action id or action name
-	@param workflowNumber Workflow number
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
 	@param stageNumber Stage number
 	@param stepNumber Step number
 	@return ApiPostStepLogRequest
 */
-func (a *ActionsAPIService) PostStepLog(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiPostStepLogRequest {
+func (a *ActionsAPIService) PostStepLog(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64, stepNumber int64) ApiPostStepLogRequest {
 	return ApiPostStepLogRequest{
 		ApiService:       a,
 		ctx:              ctx,
 		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber:   workflowNumber,
+		workflowIdn:      workflowIdn,
 		stageNumber:      stageNumber,
 		stepNumber:       stepNumber,
 	}
@@ -3379,10 +3379,10 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"workflow_number"+"}", url.PathEscape(parameterValueToString(r.workflowNumber, "workflowNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"step_number"+"}", url.PathEscape(parameterValueToString(r.stepNumber, "stepNumber")), -1)
 
@@ -3546,8 +3546,8 @@ func (r ApiPostWorkflowRequest) Execute() (*http.Response, error) {
 PostWorkflow Method for PostWorkflow
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
-	@param actionIdentifier Action identifier
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
 	@return ApiPostWorkflowRequest
 */
 func (a *ActionsAPIService) PostWorkflow(ctx context.Context, repoRef string, actionIdentifier string) ApiPostWorkflowRequest {
