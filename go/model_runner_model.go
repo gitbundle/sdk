@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,21 +21,21 @@ var _ MappedNullable = &RunnerModel{}
 
 // RunnerModel struct for RunnerModel
 type RunnerModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Description string `json:"description"`
-	Id int64 `json:"id"`
-	Labels []string `json:"labels"`
-	LastOnline int64 `json:"last_online"`
-	Name string `json:"name"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	Release string `json:"release"`
-	Scope Scope `json:"scope"`
-	Status RunnerStatus `json:"status"`
-	TokenId int64 `json:"token_id"`
-	Updated int64 `json:"updated"`
-	Uuid string `json:"uuid"`
-	Version int64 `json:"version"`
+	Created     int64         `json:"created"`
+	CreatedBy   int64         `json:"created_by"`
+	Description string        `json:"description"`
+	Id          int64         `json:"id"`
+	Labels      []string      `json:"labels"`
+	LastOnline  int64         `json:"last_online"`
+	Name        string        `json:"name"`
+	ParentId    NullableInt64 `json:"parent_id,omitempty"`
+	Release     string        `json:"release"`
+	Scope       Scope         `json:"scope"`
+	Status      RunnerStatus  `json:"status"`
+	TokenId     int64         `json:"token_id"`
+	Updated     int64         `json:"updated"`
+	Uuid        string        `json:"uuid"`
+	Version     int64         `json:"version"`
 }
 
 type _RunnerModel RunnerModel
@@ -271,6 +271,7 @@ func (o *RunnerModel) HasParentId() bool {
 func (o *RunnerModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *RunnerModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -450,7 +451,7 @@ func (o *RunnerModel) SetVersion(v int64) {
 }
 
 func (o RunnerModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -505,10 +506,10 @@ func (o *RunnerModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -564,5 +565,3 @@ func (v *NullableRunnerModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

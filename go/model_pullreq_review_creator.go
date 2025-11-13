@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &PullreqReviewCreator{}
 
 // PullreqReviewCreator struct for PullreqReviewCreator
 type PullreqReviewCreator struct {
-	Creator NullableUserModel `json:"creator,omitempty"`
-	Model PullreqReviewModel `json:"model"`
+	Creator NullableUserModel  `json:"creator,omitempty"`
+	Model   PullreqReviewModel `json:"model"`
 }
 
 type _PullreqReviewCreator PullreqReviewCreator
@@ -77,6 +77,7 @@ func (o *PullreqReviewCreator) HasCreator() bool {
 func (o *PullreqReviewCreator) SetCreator(v UserModel) {
 	o.Creator.Set(&v)
 }
+
 // SetCreatorNil sets the value for Creator to be an explicit nil
 func (o *PullreqReviewCreator) SetCreatorNil() {
 	o.Creator.Set(nil)
@@ -112,7 +113,7 @@ func (o *PullreqReviewCreator) SetModel(v PullreqReviewModel) {
 }
 
 func (o PullreqReviewCreator) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *PullreqReviewCreator) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullablePullreqReviewCreator) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

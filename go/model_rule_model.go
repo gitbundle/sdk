@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,19 +21,19 @@ var _ MappedNullable = &RuleModel{}
 
 // RuleModel struct for RuleModel
 type RuleModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Definition interface{} `json:"definition"`
-	Description string `json:"description"`
-	GroupId NullableInt64 `json:"group_id,omitempty"`
-	Id int64 `json:"id"`
-	Name string `json:"name"`
-	Pattern interface{} `json:"pattern"`
-	RepoId NullableInt64 `json:"repo_id,omitempty"`
-	State RuleState `json:"state"`
-	Type RuleType `json:"type"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	Created     int64         `json:"created"`
+	CreatedBy   int64         `json:"created_by"`
+	Definition  interface{}   `json:"definition"`
+	Description string        `json:"description"`
+	GroupId     NullableInt64 `json:"group_id,omitempty"`
+	Id          int64         `json:"id"`
+	Name        string        `json:"name"`
+	Pattern     interface{}   `json:"pattern"`
+	RepoId      NullableInt64 `json:"repo_id,omitempty"`
+	State       RuleState     `json:"state"`
+	Type        RuleType      `json:"type"`
+	Updated     int64         `json:"updated"`
+	Version     int64         `json:"version"`
 }
 
 type _RuleModel RuleModel
@@ -196,6 +196,7 @@ func (o *RuleModel) HasGroupId() bool {
 func (o *RuleModel) SetGroupId(v int64) {
 	o.GroupId.Set(&v)
 }
+
 // SetGroupIdNil sets the value for GroupId to be an explicit nil
 func (o *RuleModel) SetGroupIdNil() {
 	o.GroupId.Set(nil)
@@ -312,6 +313,7 @@ func (o *RuleModel) HasRepoId() bool {
 func (o *RuleModel) SetRepoId(v int64) {
 	o.RepoId.Set(&v)
 }
+
 // SetRepoIdNil sets the value for RepoId to be an explicit nil
 func (o *RuleModel) SetRepoIdNil() {
 	o.RepoId.Set(nil)
@@ -419,7 +421,7 @@ func (o *RuleModel) SetVersion(v int64) {
 }
 
 func (o RuleModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -475,10 +477,10 @@ func (o *RuleModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -534,5 +536,3 @@ func (v *NullableRuleModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,16 +20,16 @@ type CIStatus string
 
 // List of CIStatus
 const (
-	CISTATUS_PENDING CIStatus = "pending"
-	CISTATUS_SKIPPED CIStatus = "skipped"
-	CISTATUS_BLOCKED CIStatus = "blocked"
-	CISTATUS_DECLINED CIStatus = "declined"
+	CISTATUS_PENDING                 CIStatus = "pending"
+	CISTATUS_SKIPPED                 CIStatus = "skipped"
+	CISTATUS_BLOCKED                 CIStatus = "blocked"
+	CISTATUS_DECLINED                CIStatus = "declined"
 	CISTATUS_WAITING_ON_DEPENDENCIES CIStatus = "waiting_on_dependencies"
-	CISTATUS_RUNNING CIStatus = "running"
-	CISTATUS_SUCCESS CIStatus = "success"
-	CISTATUS_FAILURE CIStatus = "failure"
-	CISTATUS_KILLED CIStatus = "killed"
-	CISTATUS_ERROR CIStatus = "error"
+	CISTATUS_RUNNING                 CIStatus = "running"
+	CISTATUS_SUCCESS                 CIStatus = "success"
+	CISTATUS_FAILURE                 CIStatus = "failure"
+	CISTATUS_KILLED                  CIStatus = "killed"
+	CISTATUS_ERROR                   CIStatus = "error"
 )
 
 // All allowed values of CIStatus enum
@@ -124,4 +124,3 @@ func (v *NullableCIStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

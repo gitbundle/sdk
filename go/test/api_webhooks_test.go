@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService DeleteWebhook", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var webhookIdentifier string
@@ -36,9 +36,40 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test WebhooksAPIService GetExecution", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var webhookIdentifier string
+		var webhookExecutionId int64
+
+		resp, httpRes, err := apiClient.WebhooksAPI.GetExecution(context.Background(), repoRef, webhookIdentifier, webhookExecutionId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WebhooksAPIService GetExecutions", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var webhookIdentifier string
+
+		resp, httpRes, err := apiClient.WebhooksAPI.GetExecutions(context.Background(), repoRef, webhookIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test WebhooksAPIService GetWebhook", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var webhookIdentifier string
@@ -53,7 +84,7 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService GetWebhooks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -65,40 +96,9 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test WebhooksAPIService GetWebhooksExecution", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var webhookIdentifier string
-		var webhookExecutionId int64
-
-		resp, httpRes, err := apiClient.WebhooksAPI.GetWebhooksExecution(context.Background(), repoRef, webhookIdentifier, webhookExecutionId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WebhooksAPIService GetWebhooksExecutions", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var webhookIdentifier string
-
-		resp, httpRes, err := apiClient.WebhooksAPI.GetWebhooksExecutions(context.Background(), repoRef, webhookIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test WebhooksAPIService PatchWebhook", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var webhookIdentifier string
@@ -113,7 +113,7 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService PostRetrigger", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var webhookIdentifier string
@@ -129,7 +129,7 @@ func Test_gitbundlesdk_WebhooksAPIService(t *testing.T) {
 
 	t.Run("Test WebhooksAPIService PostWebhook", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 

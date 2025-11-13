@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &MembershipModel{}
 
 // MembershipModel struct for MembershipModel
 type MembershipModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	GroupId int64 `json:"group_id"`
-	Id int64 `json:"id"`
-	Removeable bool `json:"removeable"`
-	Role MembershipRole `json:"role"`
-	Updated int64 `json:"updated"`
-	UserId int64 `json:"user_id"`
+	Created    int64          `json:"created"`
+	CreatedBy  int64          `json:"created_by"`
+	GroupId    int64          `json:"group_id"`
+	Id         int64          `json:"id"`
+	Removeable bool           `json:"removeable"`
+	Role       MembershipRole `json:"role"`
+	Updated    int64          `json:"updated"`
+	UserId     int64          `json:"user_id"`
 }
 
 type _MembershipModel MembershipModel
@@ -251,7 +251,7 @@ func (o *MembershipModel) SetUserId(v int64) {
 }
 
 func (o MembershipModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -291,10 +291,10 @@ func (o *MembershipModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -350,5 +350,3 @@ func (v *NullableMembershipModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

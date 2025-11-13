@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &FeedRelations{}
 
 // FeedRelations struct for FeedRelations
 type FeedRelations struct {
-	Creator NullableUserModel `json:"creator,omitempty"`
-	Model FeedModel `json:"model"`
-	Pullreq NullablePullreqAuthor `json:"pullreq,omitempty"`
+	Creator         NullableUserModel              `json:"creator,omitempty"`
+	Model           FeedModel                      `json:"model"`
+	Pullreq         NullablePullreqAuthor          `json:"pullreq,omitempty"`
 	PullreqActivity NullablePullreqActivityCreator `json:"pullreq_activity,omitempty"`
-	PullreqReview NullablePullreqReviewCreator `json:"pullreq_review,omitempty"`
-	Release NullableReleaseCreator `json:"release,omitempty"`
-	Repo NullableRepositoryModel `json:"repo,omitempty"`
+	PullreqReview   NullablePullreqReviewCreator   `json:"pullreq_review,omitempty"`
+	Release         NullableReleaseCreator         `json:"release,omitempty"`
+	Repo            NullableRepositoryModel        `json:"repo,omitempty"`
 }
 
 type _FeedRelations FeedRelations
@@ -82,6 +82,7 @@ func (o *FeedRelations) HasCreator() bool {
 func (o *FeedRelations) SetCreator(v UserModel) {
 	o.Creator.Set(&v)
 }
+
 // SetCreatorNil sets the value for Creator to be an explicit nil
 func (o *FeedRelations) SetCreatorNil() {
 	o.Creator.Set(nil)
@@ -148,6 +149,7 @@ func (o *FeedRelations) HasPullreq() bool {
 func (o *FeedRelations) SetPullreq(v PullreqAuthor) {
 	o.Pullreq.Set(&v)
 }
+
 // SetPullreqNil sets the value for Pullreq to be an explicit nil
 func (o *FeedRelations) SetPullreqNil() {
 	o.Pullreq.Set(nil)
@@ -190,6 +192,7 @@ func (o *FeedRelations) HasPullreqActivity() bool {
 func (o *FeedRelations) SetPullreqActivity(v PullreqActivityCreator) {
 	o.PullreqActivity.Set(&v)
 }
+
 // SetPullreqActivityNil sets the value for PullreqActivity to be an explicit nil
 func (o *FeedRelations) SetPullreqActivityNil() {
 	o.PullreqActivity.Set(nil)
@@ -232,6 +235,7 @@ func (o *FeedRelations) HasPullreqReview() bool {
 func (o *FeedRelations) SetPullreqReview(v PullreqReviewCreator) {
 	o.PullreqReview.Set(&v)
 }
+
 // SetPullreqReviewNil sets the value for PullreqReview to be an explicit nil
 func (o *FeedRelations) SetPullreqReviewNil() {
 	o.PullreqReview.Set(nil)
@@ -274,6 +278,7 @@ func (o *FeedRelations) HasRelease() bool {
 func (o *FeedRelations) SetRelease(v ReleaseCreator) {
 	o.Release.Set(&v)
 }
+
 // SetReleaseNil sets the value for Release to be an explicit nil
 func (o *FeedRelations) SetReleaseNil() {
 	o.Release.Set(nil)
@@ -316,6 +321,7 @@ func (o *FeedRelations) HasRepo() bool {
 func (o *FeedRelations) SetRepo(v RepositoryModel) {
 	o.Repo.Set(&v)
 }
+
 // SetRepoNil sets the value for Repo to be an explicit nil
 func (o *FeedRelations) SetRepoNil() {
 	o.Repo.Set(nil)
@@ -327,7 +333,7 @@ func (o *FeedRelations) UnsetRepo() {
 }
 
 func (o FeedRelations) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -371,10 +377,10 @@ func (o *FeedRelations) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -430,5 +436,3 @@ func (v *NullableFeedRelations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

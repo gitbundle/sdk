@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &CommitBranch{}
 // CommitBranch struct for CommitBranch
 type CommitBranch struct {
 	Commit NullableCommit `json:"commit,omitempty"`
-	Name string `json:"name"`
-	Sha string `json:"sha"`
+	Name   string         `json:"name"`
+	Sha    string         `json:"sha"`
 }
 
 type _CommitBranch CommitBranch
@@ -79,6 +79,7 @@ func (o *CommitBranch) HasCommit() bool {
 func (o *CommitBranch) SetCommit(v Commit) {
 	o.Commit.Set(&v)
 }
+
 // SetCommitNil sets the value for Commit to be an explicit nil
 func (o *CommitBranch) SetCommitNil() {
 	o.Commit.Set(nil)
@@ -138,7 +139,7 @@ func (o *CommitBranch) SetSha(v string) {
 }
 
 func (o CommitBranch) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +170,10 @@ func (o *CommitBranch) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +229,3 @@ func (v *NullableCommitBranch) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

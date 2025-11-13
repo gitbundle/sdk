@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &PullreqActivityRelations{}
 // PullreqActivityRelations struct for PullreqActivityRelations
 type PullreqActivityRelations struct {
 	Children []PullreqActivityModel `json:"children"`
-	Creator NullableUserModel `json:"creator,omitempty"`
-	Model PullreqActivityModel `json:"model"`
-	Resolver NullableUserModel `json:"resolver,omitempty"`
+	Creator  NullableUserModel      `json:"creator,omitempty"`
+	Model    PullreqActivityModel   `json:"model"`
+	Resolver NullableUserModel      `json:"resolver,omitempty"`
 }
 
 type _PullreqActivityRelations PullreqActivityRelations
@@ -104,6 +104,7 @@ func (o *PullreqActivityRelations) HasCreator() bool {
 func (o *PullreqActivityRelations) SetCreator(v UserModel) {
 	o.Creator.Set(&v)
 }
+
 // SetCreatorNil sets the value for Creator to be an explicit nil
 func (o *PullreqActivityRelations) SetCreatorNil() {
 	o.Creator.Set(nil)
@@ -170,6 +171,7 @@ func (o *PullreqActivityRelations) HasResolver() bool {
 func (o *PullreqActivityRelations) SetResolver(v UserModel) {
 	o.Resolver.Set(&v)
 }
+
 // SetResolverNil sets the value for Resolver to be an explicit nil
 func (o *PullreqActivityRelations) SetResolverNil() {
 	o.Resolver.Set(nil)
@@ -181,7 +183,7 @@ func (o *PullreqActivityRelations) UnsetResolver() {
 }
 
 func (o PullreqActivityRelations) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,10 +217,10 @@ func (o *PullreqActivityRelations) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -274,5 +276,3 @@ func (v *NullablePullreqActivityRelations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

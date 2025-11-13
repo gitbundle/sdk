@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,8 +22,8 @@ var _ MappedNullable = &MembershipUserGroup{}
 // MembershipUserGroup struct for MembershipUserGroup
 type MembershipUserGroup struct {
 	Group NullableGroupModel `json:"group,omitempty"`
-	Model MembershipModel `json:"model"`
-	User NullableUserModel `json:"user,omitempty"`
+	Model MembershipModel    `json:"model"`
+	User  NullableUserModel  `json:"user,omitempty"`
 }
 
 type _MembershipUserGroup MembershipUserGroup
@@ -78,6 +78,7 @@ func (o *MembershipUserGroup) HasGroup() bool {
 func (o *MembershipUserGroup) SetGroup(v GroupModel) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *MembershipUserGroup) SetGroupNil() {
 	o.Group.Set(nil)
@@ -144,6 +145,7 @@ func (o *MembershipUserGroup) HasUser() bool {
 func (o *MembershipUserGroup) SetUser(v UserModel) {
 	o.User.Set(&v)
 }
+
 // SetUserNil sets the value for User to be an explicit nil
 func (o *MembershipUserGroup) SetUserNil() {
 	o.User.Set(nil)
@@ -155,7 +157,7 @@ func (o *MembershipUserGroup) UnsetUser() {
 }
 
 func (o MembershipUserGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,10 +189,10 @@ func (o *MembershipUserGroup) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -246,5 +248,3 @@ func (v *NullableMembershipUserGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

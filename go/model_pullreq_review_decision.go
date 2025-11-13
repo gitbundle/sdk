@@ -20,9 +20,9 @@ type PullreqReviewDecision string
 
 // List of PullreqReviewDecision
 const (
-	PULLREQREVIEWDECISION_PENDING PullreqReviewDecision = "pending"
-	PULLREQREVIEWDECISION_REVIEWED PullreqReviewDecision = "reviewed"
-	PULLREQREVIEWDECISION_APPROVED PullreqReviewDecision = "approved"
+	PULLREQREVIEWDECISION_PENDING   PullreqReviewDecision = "pending"
+	PULLREQREVIEWDECISION_REVIEWED  PullreqReviewDecision = "reviewed"
+	PULLREQREVIEWDECISION_APPROVED  PullreqReviewDecision = "approved"
 	PULLREQREVIEWDECISION_CHANGEREQ PullreqReviewDecision = "changereq"
 )
 
@@ -112,4 +112,3 @@ func (v *NullablePullreqReviewDecision) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

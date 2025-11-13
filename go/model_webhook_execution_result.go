@@ -20,10 +20,10 @@ type WebhookExecutionResult string
 
 // List of WebhookExecutionResult
 const (
-	WEBHOOKEXECUTIONRESULT_UNKNOWN WebhookExecutionResult = "unknown"
-	WEBHOOKEXECUTIONRESULT_SUCCESS WebhookExecutionResult = "success"
+	WEBHOOKEXECUTIONRESULT_UNKNOWN         WebhookExecutionResult = "unknown"
+	WEBHOOKEXECUTIONRESULT_SUCCESS         WebhookExecutionResult = "success"
 	WEBHOOKEXECUTIONRESULT_RETRIABLE_ERROR WebhookExecutionResult = "retriable_error"
-	WEBHOOKEXECUTIONRESULT_FATAL_ERROR WebhookExecutionResult = "fatal_error"
+	WEBHOOKEXECUTIONRESULT_FATAL_ERROR     WebhookExecutionResult = "fatal_error"
 )
 
 // All allowed values of WebhookExecutionResult enum
@@ -112,4 +112,3 @@ func (v *NullableWebhookExecutionResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

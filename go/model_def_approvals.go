@@ -19,10 +19,10 @@ var _ MappedNullable = &DefApprovals{}
 
 // DefApprovals struct for DefApprovals
 type DefApprovals struct {
-	RequireCodeOwners *bool `json:"require_code_owners,omitempty"`
-	RequireLatestCommit *bool `json:"require_latest_commit,omitempty"`
-	RequireMinimumCount *int64 `json:"require_minimum_count,omitempty"`
-	RequireNoChangeRequest *bool `json:"require_no_change_request,omitempty"`
+	RequireCodeOwners      *bool  `json:"require_code_owners,omitempty"`
+	RequireLatestCommit    *bool  `json:"require_latest_commit,omitempty"`
+	RequireMinimumCount    *int64 `json:"require_minimum_count,omitempty"`
+	RequireNoChangeRequest *bool  `json:"require_no_change_request,omitempty"`
 }
 
 // NewDefApprovals instantiates a new DefApprovals object
@@ -171,7 +171,7 @@ func (o *DefApprovals) SetRequireNoChangeRequest(v bool) {
 }
 
 func (o DefApprovals) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableDefApprovals) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

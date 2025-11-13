@@ -20,7 +20,7 @@ var _ MappedNullable = &RepoRestoreInput{}
 // RepoRestoreInput struct for RepoRestoreInput
 type RepoRestoreInput struct {
 	NewIdentifier NullableString `json:"new_identifier,omitempty"`
-	NewParentRef NullableString `json:"new_parent_ref,omitempty"`
+	NewParentRef  NullableString `json:"new_parent_ref,omitempty"`
 }
 
 // NewRepoRestoreInput instantiates a new RepoRestoreInput object
@@ -72,6 +72,7 @@ func (o *RepoRestoreInput) HasNewIdentifier() bool {
 func (o *RepoRestoreInput) SetNewIdentifier(v string) {
 	o.NewIdentifier.Set(&v)
 }
+
 // SetNewIdentifierNil sets the value for NewIdentifier to be an explicit nil
 func (o *RepoRestoreInput) SetNewIdentifierNil() {
 	o.NewIdentifier.Set(nil)
@@ -114,6 +115,7 @@ func (o *RepoRestoreInput) HasNewParentRef() bool {
 func (o *RepoRestoreInput) SetNewParentRef(v string) {
 	o.NewParentRef.Set(&v)
 }
+
 // SetNewParentRefNil sets the value for NewParentRef to be an explicit nil
 func (o *RepoRestoreInput) SetNewParentRefNil() {
 	o.NewParentRef.Set(nil)
@@ -125,7 +127,7 @@ func (o *RepoRestoreInput) UnsetNewParentRef() {
 }
 
 func (o RepoRestoreInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableRepoRestoreInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

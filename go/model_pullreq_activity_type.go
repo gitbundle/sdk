@@ -20,14 +20,14 @@ type PullreqActivityType string
 
 // List of PullreqActivityType
 const (
-	PULLREQACTIVITYTYPE_COMMENT PullreqActivityType = "comment"
-	PULLREQACTIVITYTYPE_CODE_COMMENT PullreqActivityType = "code_comment"
-	PULLREQACTIVITYTYPE_TITLE_CHANGE PullreqActivityType = "title_change"
-	PULLREQACTIVITYTYPE_STATE_CHANGE PullreqActivityType = "state_change"
+	PULLREQACTIVITYTYPE_COMMENT       PullreqActivityType = "comment"
+	PULLREQACTIVITYTYPE_CODE_COMMENT  PullreqActivityType = "code_comment"
+	PULLREQACTIVITYTYPE_TITLE_CHANGE  PullreqActivityType = "title_change"
+	PULLREQACTIVITYTYPE_STATE_CHANGE  PullreqActivityType = "state_change"
 	PULLREQACTIVITYTYPE_REVIEW_SUBMIT PullreqActivityType = "review_submit"
 	PULLREQACTIVITYTYPE_BRANCH_UPDATE PullreqActivityType = "branch_update"
 	PULLREQACTIVITYTYPE_BRANCH_DELETE PullreqActivityType = "branch_delete"
-	PULLREQACTIVITYTYPE_MERGE PullreqActivityType = "merge"
+	PULLREQACTIVITYTYPE_MERGE         PullreqActivityType = "merge"
 )
 
 // All allowed values of PullreqActivityType enum
@@ -120,4 +120,3 @@ func (v *NullablePullreqActivityType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

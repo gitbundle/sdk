@@ -20,8 +20,8 @@ type MembershipSort string
 
 // List of MembershipSort
 const (
-	MEMBERSHIPSORT_NOOP MembershipSort = "noop"
-	MEMBERSHIPSORT_ID MembershipSort = "id"
+	MEMBERSHIPSORT_NOOP    MembershipSort = "noop"
+	MEMBERSHIPSORT_ID      MembershipSort = "id"
 	MEMBERSHIPSORT_CREATED MembershipSort = "created"
 )
 
@@ -110,4 +110,3 @@ func (v *NullableMembershipSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

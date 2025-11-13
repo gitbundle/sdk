@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &LiveLogLine{}
 
 // LiveLogLine struct for LiveLogLine
 type LiveLogLine struct {
-	Out string `json:"out"`
-	Pos int64 `json:"pos"`
-	Time int64 `json:"time"`
+	Out  string `json:"out"`
+	Pos  int64  `json:"pos"`
+	Time int64  `json:"time"`
 }
 
 type _LiveLogLine LiveLogLine
@@ -121,7 +121,7 @@ func (o *LiveLogLine) SetTime(v int64) {
 }
 
 func (o LiveLogLine) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *LiveLogLine) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullableLiveLogLine) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

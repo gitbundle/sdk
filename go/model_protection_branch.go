@@ -19,9 +19,9 @@ var _ MappedNullable = &ProtectionBranch{}
 
 // ProtectionBranch struct for ProtectionBranch
 type ProtectionBranch struct {
-	Bypass *DefBypass `json:"bypass,omitempty"`
+	Bypass    *DefBypass    `json:"bypass,omitempty"`
 	Lifecycle *DefLifecycle `json:"lifecycle,omitempty"`
-	Pullreq *DefPullreq `json:"pullreq,omitempty"`
+	Pullreq   *DefPullreq   `json:"pullreq,omitempty"`
 }
 
 // NewProtectionBranch instantiates a new ProtectionBranch object
@@ -138,7 +138,7 @@ func (o *ProtectionBranch) SetPullreq(v DefPullreq) {
 }
 
 func (o ProtectionBranch) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableProtectionBranch) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

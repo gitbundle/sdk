@@ -20,7 +20,7 @@ var _ MappedNullable = &RepoUpdateInput{}
 // RepoUpdateInput struct for RepoUpdateInput
 type RepoUpdateInput struct {
 	Description NullableString `json:"description,omitempty"`
-	IsPublic NullableBool `json:"is_public,omitempty"`
+	IsPublic    NullableBool   `json:"is_public,omitempty"`
 }
 
 // NewRepoUpdateInput instantiates a new RepoUpdateInput object
@@ -72,6 +72,7 @@ func (o *RepoUpdateInput) HasDescription() bool {
 func (o *RepoUpdateInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *RepoUpdateInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -114,6 +115,7 @@ func (o *RepoUpdateInput) HasIsPublic() bool {
 func (o *RepoUpdateInput) SetIsPublic(v bool) {
 	o.IsPublic.Set(&v)
 }
+
 // SetIsPublicNil sets the value for IsPublic to be an explicit nil
 func (o *RepoUpdateInput) SetIsPublicNil() {
 	o.IsPublic.Set(nil)
@@ -125,7 +127,7 @@ func (o *RepoUpdateInput) UnsetIsPublic() {
 }
 
 func (o RepoUpdateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableRepoUpdateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

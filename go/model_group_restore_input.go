@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupRestoreInput{}
 // GroupRestoreInput struct for GroupRestoreInput
 type GroupRestoreInput struct {
 	NewIdentifier NullableString `json:"new_identifier,omitempty"`
-	NewParentRef NullableString `json:"new_parent_ref,omitempty"`
+	NewParentRef  NullableString `json:"new_parent_ref,omitempty"`
 }
 
 // NewGroupRestoreInput instantiates a new GroupRestoreInput object
@@ -72,6 +72,7 @@ func (o *GroupRestoreInput) HasNewIdentifier() bool {
 func (o *GroupRestoreInput) SetNewIdentifier(v string) {
 	o.NewIdentifier.Set(&v)
 }
+
 // SetNewIdentifierNil sets the value for NewIdentifier to be an explicit nil
 func (o *GroupRestoreInput) SetNewIdentifierNil() {
 	o.NewIdentifier.Set(nil)
@@ -114,6 +115,7 @@ func (o *GroupRestoreInput) HasNewParentRef() bool {
 func (o *GroupRestoreInput) SetNewParentRef(v string) {
 	o.NewParentRef.Set(&v)
 }
+
 // SetNewParentRefNil sets the value for NewParentRef to be an explicit nil
 func (o *GroupRestoreInput) SetNewParentRefNil() {
 	o.NewParentRef.Set(nil)
@@ -125,7 +127,7 @@ func (o *GroupRestoreInput) UnsetNewParentRef() {
 }
 
 func (o GroupRestoreInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableGroupRestoreInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

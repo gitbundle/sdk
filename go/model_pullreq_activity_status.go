@@ -20,7 +20,7 @@ type PullreqActivityStatus string
 
 // List of PullreqActivityStatus
 const (
-	PULLREQACTIVITYSTATUS_ACTIVE PullreqActivityStatus = "active"
+	PULLREQACTIVITYSTATUS_ACTIVE   PullreqActivityStatus = "active"
 	PULLREQACTIVITYSTATUS_RESOLVED PullreqActivityStatus = "resolved"
 )
 
@@ -108,4 +108,3 @@ func (v *NullablePullreqActivityStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

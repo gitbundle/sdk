@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &DiffFileContent{}
 
 // DiffFileContent struct for DiffFileContent
 type DiffFileContent struct {
-	Header NullableString `json:"header,omitempty"`
-	Hunk NullableHunkHeader `json:"hunk,omitempty"`
-	Lines []string `json:"lines"`
+	Header NullableString     `json:"header,omitempty"`
+	Hunk   NullableHunkHeader `json:"hunk,omitempty"`
+	Lines  []string           `json:"lines"`
 }
 
 type _DiffFileContent DiffFileContent
@@ -78,6 +78,7 @@ func (o *DiffFileContent) HasHeader() bool {
 func (o *DiffFileContent) SetHeader(v string) {
 	o.Header.Set(&v)
 }
+
 // SetHeaderNil sets the value for Header to be an explicit nil
 func (o *DiffFileContent) SetHeaderNil() {
 	o.Header.Set(nil)
@@ -120,6 +121,7 @@ func (o *DiffFileContent) HasHunk() bool {
 func (o *DiffFileContent) SetHunk(v HunkHeader) {
 	o.Hunk.Set(&v)
 }
+
 // SetHunkNil sets the value for Hunk to be an explicit nil
 func (o *DiffFileContent) SetHunkNil() {
 	o.Hunk.Set(nil)
@@ -155,7 +157,7 @@ func (o *DiffFileContent) SetLines(v []string) {
 }
 
 func (o DiffFileContent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,10 +189,10 @@ func (o *DiffFileContent) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -246,5 +248,3 @@ func (v *NullableDiffFileContent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

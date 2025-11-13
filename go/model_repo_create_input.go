@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,16 +21,16 @@ var _ MappedNullable = &RepoCreateInput{}
 
 // RepoCreateInput struct for RepoCreateInput
 type RepoCreateInput struct {
-	DefaultBranch *string `json:"default_branch,omitempty"`
-	Description string `json:"description"`
-	ForkId NullableInt64 `json:"fork_id,omitempty"`
-	GitIgnore string `json:"git_ignore"`
-	Identifier string `json:"identifier"`
-	IsPublic bool `json:"is_public"`
-	License string `json:"license"`
-	ParentRef string `json:"parent_ref"`
-	Readme bool `json:"readme"`
-	SingleBranch string `json:"single_branch"`
+	DefaultBranch *string       `json:"default_branch,omitempty"`
+	Description   string        `json:"description"`
+	ForkId        NullableInt64 `json:"fork_id,omitempty"`
+	GitIgnore     string        `json:"git_ignore"`
+	Identifier    string        `json:"identifier"`
+	IsPublic      bool          `json:"is_public"`
+	License       string        `json:"license"`
+	ParentRef     string        `json:"parent_ref"`
+	Readme        bool          `json:"readme"`
+	SingleBranch  string        `json:"single_branch"`
 }
 
 type _RepoCreateInput RepoCreateInput
@@ -148,6 +148,7 @@ func (o *RepoCreateInput) HasForkId() bool {
 func (o *RepoCreateInput) SetForkId(v int64) {
 	o.ForkId.Set(&v)
 }
+
 // SetForkIdNil sets the value for ForkId to be an explicit nil
 func (o *RepoCreateInput) SetForkIdNil() {
 	o.ForkId.Set(nil)
@@ -327,7 +328,7 @@ func (o *RepoCreateInput) SetSingleBranch(v string) {
 }
 
 func (o RepoCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -373,10 +374,10 @@ func (o *RepoCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -432,5 +433,3 @@ func (v *NullableRepoCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

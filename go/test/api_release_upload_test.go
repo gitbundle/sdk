@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService DeleteUpload", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -38,7 +38,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService GetAssets", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -53,7 +53,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService GetDownload", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -68,7 +68,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService GetRestore", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -83,7 +83,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService HeadOffset", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -96,7 +96,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService PatchChunks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -111,7 +111,7 @@ func Test_gitbundlesdk_ReleaseUploadAPIService(t *testing.T) {
 
 	t.Run("Test ReleaseUploadAPIService PostUpload", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string

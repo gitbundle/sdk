@@ -21,11 +21,11 @@ type FileDiffStatus string
 // List of FileDiffStatus
 const (
 	FILEDIFFSTATUS_UNDEFINED FileDiffStatus = "undefined"
-	FILEDIFFSTATUS_ADDED FileDiffStatus = "added"
-	FILEDIFFSTATUS_DELETED FileDiffStatus = "deleted"
-	FILEDIFFSTATUS_MODIFIED FileDiffStatus = "modified"
-	FILEDIFFSTATUS_RENAMED FileDiffStatus = "renamed"
-	FILEDIFFSTATUS_COPIED FileDiffStatus = "copied"
+	FILEDIFFSTATUS_ADDED     FileDiffStatus = "added"
+	FILEDIFFSTATUS_DELETED   FileDiffStatus = "deleted"
+	FILEDIFFSTATUS_MODIFIED  FileDiffStatus = "modified"
+	FILEDIFFSTATUS_RENAMED   FileDiffStatus = "renamed"
+	FILEDIFFSTATUS_COPIED    FileDiffStatus = "copied"
 )
 
 // All allowed values of FileDiffStatus enum
@@ -116,4 +116,3 @@ func (v *NullableFileDiffStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

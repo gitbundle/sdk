@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &WorkflowCreateInput{}
 
 // WorkflowCreateInput struct for WorkflowCreateInput
 type WorkflowCreateInput struct {
-	Debug bool `json:"debug"`
-	Deploy NullableString `json:"deploy,omitempty"`
-	DeployId NullableInt64 `json:"deploy_id,omitempty"`
-	Params map[string]string `json:"params,omitempty"`
-	SourceRepoId NullableInt64 `json:"source_repo_id,omitempty"`
-	SourceSha NullableString `json:"source_sha,omitempty"`
+	Debug        bool              `json:"debug"`
+	Deploy       NullableString    `json:"deploy,omitempty"`
+	DeployId     NullableInt64     `json:"deploy_id,omitempty"`
+	Params       map[string]string `json:"params,omitempty"`
+	SourceRepoId NullableInt64     `json:"source_repo_id,omitempty"`
+	SourceSha    NullableString    `json:"source_sha,omitempty"`
 }
 
 type _WorkflowCreateInput WorkflowCreateInput
@@ -105,6 +105,7 @@ func (o *WorkflowCreateInput) HasDeploy() bool {
 func (o *WorkflowCreateInput) SetDeploy(v string) {
 	o.Deploy.Set(&v)
 }
+
 // SetDeployNil sets the value for Deploy to be an explicit nil
 func (o *WorkflowCreateInput) SetDeployNil() {
 	o.Deploy.Set(nil)
@@ -147,6 +148,7 @@ func (o *WorkflowCreateInput) HasDeployId() bool {
 func (o *WorkflowCreateInput) SetDeployId(v int64) {
 	o.DeployId.Set(&v)
 }
+
 // SetDeployIdNil sets the value for DeployId to be an explicit nil
 func (o *WorkflowCreateInput) SetDeployIdNil() {
 	o.DeployId.Set(nil)
@@ -221,6 +223,7 @@ func (o *WorkflowCreateInput) HasSourceRepoId() bool {
 func (o *WorkflowCreateInput) SetSourceRepoId(v int64) {
 	o.SourceRepoId.Set(&v)
 }
+
 // SetSourceRepoIdNil sets the value for SourceRepoId to be an explicit nil
 func (o *WorkflowCreateInput) SetSourceRepoIdNil() {
 	o.SourceRepoId.Set(nil)
@@ -263,6 +266,7 @@ func (o *WorkflowCreateInput) HasSourceSha() bool {
 func (o *WorkflowCreateInput) SetSourceSha(v string) {
 	o.SourceSha.Set(&v)
 }
+
 // SetSourceShaNil sets the value for SourceSha to be an explicit nil
 func (o *WorkflowCreateInput) SetSourceShaNil() {
 	o.SourceSha.Set(nil)
@@ -274,7 +278,7 @@ func (o *WorkflowCreateInput) UnsetSourceSha() {
 }
 
 func (o WorkflowCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -315,10 +319,10 @@ func (o *WorkflowCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -374,5 +378,3 @@ func (v *NullableWorkflowCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,9 @@ type GroupSort string
 
 // List of GroupSort
 const (
-	GROUPSORT_NOOP GroupSort = "noop"
-	GROUPSORT_ID GroupSort = "id"
-	GROUPSORT_NAME GroupSort = "name"
+	GROUPSORT_NOOP    GroupSort = "noop"
+	GROUPSORT_ID      GroupSort = "id"
+	GROUPSORT_NAME    GroupSort = "name"
 	GROUPSORT_CREATED GroupSort = "created"
 	GROUPSORT_UPDATED GroupSort = "updated"
 )
@@ -114,4 +114,3 @@ func (v *NullableGroupSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

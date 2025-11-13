@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &CheckPayload{}
 
 // CheckPayload struct for CheckPayload
 type CheckPayload struct {
-	Data interface{} `json:"data"`
-	Kind CheckPayloadKind `json:"kind"`
-	Version string `json:"version"`
+	Data    interface{}      `json:"data"`
+	Kind    CheckPayloadKind `json:"kind"`
+	Version string           `json:"version"`
 }
 
 type _CheckPayload CheckPayload
@@ -123,7 +123,7 @@ func (o *CheckPayload) SetVersion(v string) {
 }
 
 func (o CheckPayload) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -155,10 +155,10 @@ func (o *CheckPayload) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -214,5 +214,3 @@ func (v *NullableCheckPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

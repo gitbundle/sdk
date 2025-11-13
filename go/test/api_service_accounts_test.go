@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService DeleteServiceAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 
@@ -37,7 +37,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService DeleteServiceAccountToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 		var tokenName string
@@ -51,7 +51,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService GetServiceAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 
@@ -65,7 +65,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService GetServiceAccountTokens", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 
@@ -79,7 +79,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService PostServiceAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 
@@ -93,7 +93,7 @@ func Test_gitbundlesdk_ServiceAccountsAPIService(t *testing.T) {
 
 	t.Run("Test ServiceAccountsAPIService PostServiceAccountToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var saIdentifier string
 

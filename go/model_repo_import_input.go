@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &RepoImportInput{}
 
 // RepoImportInput struct for RepoImportInput
 type RepoImportInput struct {
-	Description string `json:"description"`
-	Identifier string `json:"identifier"`
-	IsPublic bool `json:"is_public"`
-	ParentRef string `json:"parent_ref"`
-	Provider RepoProvider `json:"provider"`
-	ProviderRepo string `json:"provider_repo"`
+	Description  string       `json:"description"`
+	Identifier   string       `json:"identifier"`
+	IsPublic     bool         `json:"is_public"`
+	ParentRef    string       `json:"parent_ref"`
+	Provider     RepoProvider `json:"provider"`
+	ProviderRepo string       `json:"provider_repo"`
 }
 
 type _RepoImportInput RepoImportInput
@@ -199,7 +199,7 @@ func (o *RepoImportInput) SetProviderRepo(v string) {
 }
 
 func (o RepoImportInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,10 +235,10 @@ func (o *RepoImportInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -294,5 +294,3 @@ func (v *NullableRepoImportInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

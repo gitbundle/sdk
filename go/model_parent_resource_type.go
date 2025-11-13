@@ -20,7 +20,7 @@ type ParentResourceType string
 
 // List of ParentResourceType
 const (
-	PARENTRESOURCETYPE_GROUP ParentResourceType = "group"
+	PARENTRESOURCETYPE_GROUP      ParentResourceType = "group"
 	PARENTRESOURCETYPE_REPOSITORY ParentResourceType = "repository"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableParentResourceType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

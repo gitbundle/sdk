@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
@@ -22,15 +22,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ActionsAPIService CancelExecution", func(t *testing.T) {
+	t.Run("Test ActionsAPIService CancelWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.CancelExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.CancelWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService DeleteAction", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
@@ -52,30 +52,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService DeleteExecution", func(t *testing.T) {
+	t.Run("Test ActionsAPIService DeleteWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-		var executionNumber int64
-
-		httpRes, err := apiClient.ActionsAPI.DeleteExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ActionsAPIService DeleteTrigger", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var triggerIdentifier string
+		var workflowNumber int64
 
-		httpRes, err := apiClient.ActionsAPI.DeleteTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).Execute()
+		httpRes, err := apiClient.ActionsAPI.DeleteWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -84,7 +69,7 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService GetAction", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
@@ -99,7 +84,7 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService GetActions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -111,48 +96,17 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService GetExecution", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-		var executionNumber int64
-
-		resp, httpRes, err := apiClient.ActionsAPI.GetExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ActionsAPIService GetExecutions", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-
-		resp, httpRes, err := apiClient.ActionsAPI.GetExecutions(context.Background(), repoRef, actionIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ActionsAPIService GetStepLogStream", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogStream(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -162,15 +116,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService GetStepLogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetStepLogs(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -178,15 +132,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService GetTrigger", func(t *testing.T) {
+	t.Run("Test ActionsAPIService GetWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var triggerIdentifier string
+		var workflowNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -194,14 +148,14 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService GetTriggers", func(t *testing.T) {
+	t.Run("Test ActionsAPIService GetWorkflows", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
 
-		resp, httpRes, err := apiClient.ActionsAPI.GetTriggers(context.Background(), repoRef, actionIdentifier).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.GetWorkflows(context.Background(), repoRef, actionIdentifier).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -211,7 +165,7 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService PatchAction", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
@@ -224,32 +178,16 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService PatchExecution", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-		var executionNumber int64
-
-		resp, httpRes, err := apiClient.ActionsAPI.PatchExecution(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ActionsAPIService PatchStage", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchStage(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -259,15 +197,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService PatchStep", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 		var stepNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -275,15 +213,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService PatchTrigger", func(t *testing.T) {
+	t.Run("Test ActionsAPIService PatchWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var triggerIdentifier string
+		var workflowNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PatchTrigger(context.Background(), repoRef, actionIdentifier, triggerIdentifier).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PatchWorkflow(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -293,7 +231,7 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService PostAction", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -305,30 +243,15 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService PostExecution", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-
-		resp, httpRes, err := apiClient.ActionsAPI.PostExecution(context.Background(), repoRef, actionIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ActionsAPIService PostStage", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, executionNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -338,14 +261,14 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService PostStep", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 
-		resp, httpRes, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber).Execute()
+		resp, httpRes, err := apiClient.ActionsAPI.PostStep(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -355,32 +278,31 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	t.Run("Test ActionsAPIService PostStepLog", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
-		var executionNumber int64
+		var workflowNumber int64
 		var stageNumber int64
 		var stepNumber int64
 
-		httpRes, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, executionNumber, stageNumber, stepNumber).Execute()
+		httpRes, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ActionsAPIService PostTrigger", func(t *testing.T) {
+	t.Run("Test ActionsAPIService PostWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var actionIdentifier string
 
-		resp, httpRes, err := apiClient.ActionsAPI.PostTrigger(context.Background(), repoRef, actionIdentifier).Execute()
+		httpRes, err := apiClient.ActionsAPI.PostWorkflow(context.Background(), repoRef, actionIdentifier).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &TokenCreateInput{}
 
 // TokenCreateInput struct for TokenCreateInput
 type TokenCreateInput struct {
-	LifetimeMs NullableInt64 `json:"lifetime_ms,omitempty"`
-	Name string `json:"name"`
-	Permissions []Permission `json:"permissions,omitempty"`
+	LifetimeMs  NullableInt64 `json:"lifetime_ms,omitempty"`
+	Name        string        `json:"name"`
+	Permissions []Permission  `json:"permissions,omitempty"`
 }
 
 type _TokenCreateInput TokenCreateInput
@@ -78,6 +78,7 @@ func (o *TokenCreateInput) HasLifetimeMs() bool {
 func (o *TokenCreateInput) SetLifetimeMs(v int64) {
 	o.LifetimeMs.Set(&v)
 }
+
 // SetLifetimeMsNil sets the value for LifetimeMs to be an explicit nil
 func (o *TokenCreateInput) SetLifetimeMsNil() {
 	o.LifetimeMs.Set(nil)
@@ -145,7 +146,7 @@ func (o *TokenCreateInput) SetPermissions(v []Permission) {
 }
 
 func (o TokenCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,10 +178,10 @@ func (o *TokenCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -236,5 +237,3 @@ func (v *NullableTokenCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

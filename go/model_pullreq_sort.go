@@ -20,11 +20,11 @@ type PullreqSort string
 
 // List of PullreqSort
 const (
-	PULLREQSORT_NOOP PullreqSort = "noop"
-	PULLREQSORT_NUMBER PullreqSort = "number"
+	PULLREQSORT_NOOP    PullreqSort = "noop"
+	PULLREQSORT_NUMBER  PullreqSort = "number"
 	PULLREQSORT_CREATED PullreqSort = "created"
-	PULLREQSORT_EDITED PullreqSort = "edited"
-	PULLREQSORT_MERGED PullreqSort = "merged"
+	PULLREQSORT_EDITED  PullreqSort = "edited"
+	PULLREQSORT_MERGED  PullreqSort = "merged"
 	PULLREQSORT_UPDATED PullreqSort = "updated"
 )
 
@@ -116,4 +116,3 @@ func (v *NullablePullreqSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

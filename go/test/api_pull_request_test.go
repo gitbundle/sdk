@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService DeleteComment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -39,7 +39,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService DeleteFileView", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -54,7 +54,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService DeleteReviewer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -69,7 +69,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetActivities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -84,7 +84,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetCodeOwners", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -99,7 +99,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetFileViews", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -114,7 +114,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetMetadata", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -129,7 +129,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetPullRequestChecks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -144,7 +144,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetPullRequestCommits", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -159,7 +159,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetPullreq", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -174,7 +174,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetPullreqs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -188,7 +188,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService GetReviewers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -203,7 +203,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PatchComment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -219,7 +219,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PatchPullreq", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -234,7 +234,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostApplySuggestions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -249,7 +249,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostComment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -264,7 +264,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostDiff", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -279,7 +279,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostMerge", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -294,7 +294,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostPullreq", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -308,7 +308,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostReviews", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -323,7 +323,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PostState", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -338,7 +338,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PutCommentStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -354,7 +354,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PutFileViews", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64
@@ -369,7 +369,7 @@ func Test_gitbundlesdk_PullRequestAPIService(t *testing.T) {
 
 	t.Run("Test PullRequestAPIService PutReviewer", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var pullreqNumber int64

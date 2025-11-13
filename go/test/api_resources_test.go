@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_ResourcesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_ResourcesAPIService(t *testing.T) {
 
 	t.Run("Test ResourcesAPIService GetGitignores", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ResourcesAPI.GetGitignores(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_gitbundlesdk_ResourcesAPIService(t *testing.T) {
 
 	t.Run("Test ResourcesAPIService GetLicenses", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ResourcesAPI.GetLicenses(context.Background()).Execute()
 

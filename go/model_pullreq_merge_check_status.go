@@ -21,7 +21,7 @@ type PullreqMergeCheckStatus string
 // List of PullreqMergeCheckStatus
 const (
 	PULLREQMERGECHECKSTATUS_UNCHECKED PullreqMergeCheckStatus = "unchecked"
-	PULLREQMERGECHECKSTATUS_CONFLICT PullreqMergeCheckStatus = "conflict"
+	PULLREQMERGECHECKSTATUS_CONFLICT  PullreqMergeCheckStatus = "conflict"
 	PULLREQMERGECHECKSTATUS_MERGEABLE PullreqMergeCheckStatus = "mergeable"
 )
 
@@ -110,4 +110,3 @@ func (v *NullablePullreqMergeCheckStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,20 +21,20 @@ var _ MappedNullable = &FeedModel{}
 
 // FeedModel struct for FeedModel
 type FeedModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	DateContribution NullableInt64 `json:"date_contribution,omitempty"`
-	FeedType FeedType `json:"feed_type"`
-	Id int64 `json:"id"`
-	IsPrivate bool `json:"is_private"`
-	NumContributions NullableInt64 `json:"num_contributions,omitempty"`
-	Payload interface{} `json:"payload"`
+	Created           int64         `json:"created"`
+	CreatedBy         int64         `json:"created_by"`
+	DateContribution  NullableInt64 `json:"date_contribution,omitempty"`
+	FeedType          FeedType      `json:"feed_type"`
+	Id                int64         `json:"id"`
+	IsPrivate         bool          `json:"is_private"`
+	NumContributions  NullableInt64 `json:"num_contributions,omitempty"`
+	Payload           interface{}   `json:"payload"`
 	PullreqActivityId NullableInt64 `json:"pullreq_activity_id,omitempty"`
-	PullreqId NullableInt64 `json:"pullreq_id,omitempty"`
-	PullreqReviewId NullableInt64 `json:"pullreq_review_id,omitempty"`
-	ReleaseId NullableInt64 `json:"release_id,omitempty"`
-	RepoId int64 `json:"repo_id"`
-	Updated int64 `json:"updated"`
+	PullreqId         NullableInt64 `json:"pullreq_id,omitempty"`
+	PullreqReviewId   NullableInt64 `json:"pullreq_review_id,omitempty"`
+	ReleaseId         NullableInt64 `json:"release_id,omitempty"`
+	RepoId            int64         `json:"repo_id"`
+	Updated           int64         `json:"updated"`
 }
 
 type _FeedModel FeedModel
@@ -144,6 +144,7 @@ func (o *FeedModel) HasDateContribution() bool {
 func (o *FeedModel) SetDateContribution(v int64) {
 	o.DateContribution.Set(&v)
 }
+
 // SetDateContributionNil sets the value for DateContribution to be an explicit nil
 func (o *FeedModel) SetDateContributionNil() {
 	o.DateContribution.Set(nil)
@@ -258,6 +259,7 @@ func (o *FeedModel) HasNumContributions() bool {
 func (o *FeedModel) SetNumContributions(v int64) {
 	o.NumContributions.Set(&v)
 }
+
 // SetNumContributionsNil sets the value for NumContributions to be an explicit nil
 func (o *FeedModel) SetNumContributionsNil() {
 	o.NumContributions.Set(nil)
@@ -326,6 +328,7 @@ func (o *FeedModel) HasPullreqActivityId() bool {
 func (o *FeedModel) SetPullreqActivityId(v int64) {
 	o.PullreqActivityId.Set(&v)
 }
+
 // SetPullreqActivityIdNil sets the value for PullreqActivityId to be an explicit nil
 func (o *FeedModel) SetPullreqActivityIdNil() {
 	o.PullreqActivityId.Set(nil)
@@ -368,6 +371,7 @@ func (o *FeedModel) HasPullreqId() bool {
 func (o *FeedModel) SetPullreqId(v int64) {
 	o.PullreqId.Set(&v)
 }
+
 // SetPullreqIdNil sets the value for PullreqId to be an explicit nil
 func (o *FeedModel) SetPullreqIdNil() {
 	o.PullreqId.Set(nil)
@@ -410,6 +414,7 @@ func (o *FeedModel) HasPullreqReviewId() bool {
 func (o *FeedModel) SetPullreqReviewId(v int64) {
 	o.PullreqReviewId.Set(&v)
 }
+
 // SetPullreqReviewIdNil sets the value for PullreqReviewId to be an explicit nil
 func (o *FeedModel) SetPullreqReviewIdNil() {
 	o.PullreqReviewId.Set(nil)
@@ -452,6 +457,7 @@ func (o *FeedModel) HasReleaseId() bool {
 func (o *FeedModel) SetReleaseId(v int64) {
 	o.ReleaseId.Set(&v)
 }
+
 // SetReleaseIdNil sets the value for ReleaseId to be an explicit nil
 func (o *FeedModel) SetReleaseIdNil() {
 	o.ReleaseId.Set(nil)
@@ -511,7 +517,7 @@ func (o *FeedModel) SetUpdated(v int64) {
 }
 
 func (o FeedModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -571,10 +577,10 @@ func (o *FeedModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -630,5 +636,3 @@ func (v *NullableFeedModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

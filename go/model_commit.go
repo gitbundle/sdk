@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &Commit{}
 
 // Commit struct for Commit
 type Commit struct {
-	Author Identity `json:"author"`
-	Committer Identity `json:"committer"`
-	FileStats []CommitFileStats `json:"file_stats"`
-	Message string `json:"message"`
-	ParentShas []string `json:"parent_shas"`
-	Sha string `json:"sha"`
-	Signature NullableCommitGPGSignature `json:"signature,omitempty"`
-	Title string `json:"title"`
+	Author     Identity                   `json:"author"`
+	Committer  Identity                   `json:"committer"`
+	FileStats  []CommitFileStats          `json:"file_stats"`
+	Message    string                     `json:"message"`
+	ParentShas []string                   `json:"parent_shas"`
+	Sha        string                     `json:"sha"`
+	Signature  NullableCommitGPGSignature `json:"signature,omitempty"`
+	Title      string                     `json:"title"`
 }
 
 type _Commit Commit
@@ -233,6 +233,7 @@ func (o *Commit) HasSignature() bool {
 func (o *Commit) SetSignature(v CommitGPGSignature) {
 	o.Signature.Set(&v)
 }
+
 // SetSignatureNil sets the value for Signature to be an explicit nil
 func (o *Commit) SetSignatureNil() {
 	o.Signature.Set(nil)
@@ -268,7 +269,7 @@ func (o *Commit) SetTitle(v string) {
 }
 
 func (o Commit) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -309,10 +310,10 @@ func (o *Commit) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -368,5 +369,3 @@ func (v *NullableCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,12 +20,12 @@ type JobState string
 
 // List of JobState
 const (
-	JOBSTATE_PENDING JobState = "pending"
+	JOBSTATE_PENDING   JobState = "pending"
 	JOBSTATE_SCHEDULED JobState = "scheduled"
-	JOBSTATE_RUNNING JobState = "running"
-	JOBSTATE_FINISHED JobState = "finished"
-	JOBSTATE_FAILED JobState = "failed"
-	JOBSTATE_CANCELED JobState = "canceled"
+	JOBSTATE_RUNNING   JobState = "running"
+	JOBSTATE_FINISHED  JobState = "finished"
+	JOBSTATE_FAILED    JobState = "failed"
+	JOBSTATE_CANCELED  JobState = "canceled"
 )
 
 // All allowed values of JobState enum
@@ -116,4 +116,3 @@ func (v *NullableJobState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

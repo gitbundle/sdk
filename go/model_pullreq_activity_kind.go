@@ -20,8 +20,8 @@ type PullreqActivityKind string
 
 // List of PullreqActivityKind
 const (
-	PULLREQACTIVITYKIND_SYSTEM PullreqActivityKind = "system"
-	PULLREQACTIVITYKIND_COMMENT PullreqActivityKind = "comment"
+	PULLREQACTIVITYKIND_SYSTEM         PullreqActivityKind = "system"
+	PULLREQACTIVITYKIND_COMMENT        PullreqActivityKind = "comment"
 	PULLREQACTIVITYKIND_CHANGE_COMMENT PullreqActivityKind = "change_comment"
 )
 
@@ -110,4 +110,3 @@ func (v *NullablePullreqActivityKind) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,14 +19,14 @@ var _ MappedNullable = &WebhookPatchInput{}
 
 // WebhookPatchInput struct for WebhookPatchInput
 type WebhookPatchInput struct {
-	Description NullableString `json:"description,omitempty"`
-	DisplayName NullableString `json:"display_name,omitempty"`
-	Enabled NullableBool `json:"enabled,omitempty"`
-	Identifier NullableString `json:"identifier,omitempty"`
-	Insecure NullableBool `json:"insecure,omitempty"`
-	Secret NullableString `json:"secret,omitempty"`
-	Triggers []WebhookTrigger `json:"triggers,omitempty"`
-	Url NullableString `json:"url,omitempty"`
+	Description NullableString   `json:"description,omitempty"`
+	DisplayName NullableString   `json:"display_name,omitempty"`
+	Enabled     NullableBool     `json:"enabled,omitempty"`
+	Identifier  NullableString   `json:"identifier,omitempty"`
+	Insecure    NullableBool     `json:"insecure,omitempty"`
+	Secret      NullableString   `json:"secret,omitempty"`
+	Triggers    []WebhookTrigger `json:"triggers,omitempty"`
+	Url         NullableString   `json:"url,omitempty"`
 }
 
 // NewWebhookPatchInput instantiates a new WebhookPatchInput object
@@ -78,6 +78,7 @@ func (o *WebhookPatchInput) HasDescription() bool {
 func (o *WebhookPatchInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *WebhookPatchInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -120,6 +121,7 @@ func (o *WebhookPatchInput) HasDisplayName() bool {
 func (o *WebhookPatchInput) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *WebhookPatchInput) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -162,6 +164,7 @@ func (o *WebhookPatchInput) HasEnabled() bool {
 func (o *WebhookPatchInput) SetEnabled(v bool) {
 	o.Enabled.Set(&v)
 }
+
 // SetEnabledNil sets the value for Enabled to be an explicit nil
 func (o *WebhookPatchInput) SetEnabledNil() {
 	o.Enabled.Set(nil)
@@ -204,6 +207,7 @@ func (o *WebhookPatchInput) HasIdentifier() bool {
 func (o *WebhookPatchInput) SetIdentifier(v string) {
 	o.Identifier.Set(&v)
 }
+
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *WebhookPatchInput) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -246,6 +250,7 @@ func (o *WebhookPatchInput) HasInsecure() bool {
 func (o *WebhookPatchInput) SetInsecure(v bool) {
 	o.Insecure.Set(&v)
 }
+
 // SetInsecureNil sets the value for Insecure to be an explicit nil
 func (o *WebhookPatchInput) SetInsecureNil() {
 	o.Insecure.Set(nil)
@@ -288,6 +293,7 @@ func (o *WebhookPatchInput) HasSecret() bool {
 func (o *WebhookPatchInput) SetSecret(v string) {
 	o.Secret.Set(&v)
 }
+
 // SetSecretNil sets the value for Secret to be an explicit nil
 func (o *WebhookPatchInput) SetSecretNil() {
 	o.Secret.Set(nil)
@@ -363,6 +369,7 @@ func (o *WebhookPatchInput) HasUrl() bool {
 func (o *WebhookPatchInput) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *WebhookPatchInput) SetUrlNil() {
 	o.Url.Set(nil)
@@ -374,7 +381,7 @@ func (o *WebhookPatchInput) UnsetUrl() {
 }
 
 func (o WebhookPatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -445,5 +452,3 @@ func (v *NullableWebhookPatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

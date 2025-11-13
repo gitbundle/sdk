@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &TokenModel{}
 
 // TokenModel struct for TokenModel
 type TokenModel struct {
-	CreatedBy int64 `json:"created_by"`
-	ExpiresAt NullableInt64 `json:"expires_at,omitempty"`
-	Id int64 `json:"id"`
-	IssuedAt int64 `json:"issued_at"`
-	Name string `json:"name"`
-	Permissions []Permission `json:"permissions,omitempty"`
-	Type TokenType `json:"type"`
-	UserId int64 `json:"user_id"`
+	CreatedBy   int64         `json:"created_by"`
+	ExpiresAt   NullableInt64 `json:"expires_at,omitempty"`
+	Id          int64         `json:"id"`
+	IssuedAt    int64         `json:"issued_at"`
+	Name        string        `json:"name"`
+	Permissions []Permission  `json:"permissions,omitempty"`
+	Type        TokenType     `json:"type"`
+	UserId      int64         `json:"user_id"`
 }
 
 type _TokenModel TokenModel
@@ -112,6 +112,7 @@ func (o *TokenModel) HasExpiresAt() bool {
 func (o *TokenModel) SetExpiresAt(v int64) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *TokenModel) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -275,7 +276,7 @@ func (o *TokenModel) SetUserId(v int64) {
 }
 
 func (o TokenModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -317,10 +318,10 @@ func (o *TokenModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -376,5 +377,3 @@ func (v *NullableTokenModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

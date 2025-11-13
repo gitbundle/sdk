@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,34 +21,34 @@ var _ MappedNullable = &RepositoryModel{}
 
 // RepositoryModel struct for RepositoryModel
 type RepositoryModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	DefaultBranch string `json:"default_branch"`
-	Deleted NullableInt64 `json:"deleted,omitempty"`
-	Description string `json:"description"`
-	DisplayName string `json:"display_name"`
-	ForkId NullableInt64 `json:"fork_id,omitempty"`
-	GitSshUrl NullableString `json:"git_ssh_url,omitempty"`
-	GitUid string `json:"git_uid"`
-	GitUrl NullableString `json:"git_url,omitempty"`
-	GroupId int64 `json:"group_id"`
-	Id int64 `json:"id"`
-	Importing bool `json:"importing"`
-	IsEmpty bool `json:"is_empty"`
-	IsPublic bool `json:"is_public"`
-	Name string `json:"name"`
-	NumClosedPulls int64 `json:"num_closed_pulls"`
-	NumForks int64 `json:"num_forks"`
-	NumMergedPulls int64 `json:"num_merged_pulls"`
-	NumOpenPulls int64 `json:"num_open_pulls"`
-	NumPulls int64 `json:"num_pulls"`
-	NumStars int64 `json:"num_stars"`
-	Path NullableString `json:"path,omitempty"`
-	PullreqSeq int64 `json:"pullreq_seq"`
-	Size int64 `json:"size"`
-	SizeUpdated NullableInt64 `json:"size_updated,omitempty"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	Created        int64          `json:"created"`
+	CreatedBy      int64          `json:"created_by"`
+	DefaultBranch  string         `json:"default_branch"`
+	Deleted        NullableInt64  `json:"deleted,omitempty"`
+	Description    string         `json:"description"`
+	DisplayName    string         `json:"display_name"`
+	ForkId         NullableInt64  `json:"fork_id,omitempty"`
+	GitSshUrl      NullableString `json:"git_ssh_url,omitempty"`
+	GitUid         string         `json:"git_uid"`
+	GitUrl         NullableString `json:"git_url,omitempty"`
+	GroupId        int64          `json:"group_id"`
+	Id             int64          `json:"id"`
+	Importing      bool           `json:"importing"`
+	IsEmpty        bool           `json:"is_empty"`
+	IsPublic       bool           `json:"is_public"`
+	Name           string         `json:"name"`
+	NumClosedPulls int64          `json:"num_closed_pulls"`
+	NumForks       int64          `json:"num_forks"`
+	NumMergedPulls int64          `json:"num_merged_pulls"`
+	NumOpenPulls   int64          `json:"num_open_pulls"`
+	NumPulls       int64          `json:"num_pulls"`
+	NumStars       int64          `json:"num_stars"`
+	Path           NullableString `json:"path,omitempty"`
+	PullreqSeq     int64          `json:"pullreq_seq"`
+	Size           int64          `json:"size"`
+	SizeUpdated    NullableInt64  `json:"size_updated,omitempty"`
+	Updated        int64          `json:"updated"`
+	Version        int64          `json:"version"`
 }
 
 type _RepositoryModel RepositoryModel
@@ -196,6 +196,7 @@ func (o *RepositoryModel) HasDeleted() bool {
 func (o *RepositoryModel) SetDeleted(v int64) {
 	o.Deleted.Set(&v)
 }
+
 // SetDeletedNil sets the value for Deleted to be an explicit nil
 func (o *RepositoryModel) SetDeletedNil() {
 	o.Deleted.Set(nil)
@@ -286,6 +287,7 @@ func (o *RepositoryModel) HasForkId() bool {
 func (o *RepositoryModel) SetForkId(v int64) {
 	o.ForkId.Set(&v)
 }
+
 // SetForkIdNil sets the value for ForkId to be an explicit nil
 func (o *RepositoryModel) SetForkIdNil() {
 	o.ForkId.Set(nil)
@@ -328,6 +330,7 @@ func (o *RepositoryModel) HasGitSshUrl() bool {
 func (o *RepositoryModel) SetGitSshUrl(v string) {
 	o.GitSshUrl.Set(&v)
 }
+
 // SetGitSshUrlNil sets the value for GitSshUrl to be an explicit nil
 func (o *RepositoryModel) SetGitSshUrlNil() {
 	o.GitSshUrl.Set(nil)
@@ -394,6 +397,7 @@ func (o *RepositoryModel) HasGitUrl() bool {
 func (o *RepositoryModel) SetGitUrl(v string) {
 	o.GitUrl.Set(&v)
 }
+
 // SetGitUrlNil sets the value for GitUrl to be an explicit nil
 func (o *RepositoryModel) SetGitUrlNil() {
 	o.GitUrl.Set(nil)
@@ -724,6 +728,7 @@ func (o *RepositoryModel) HasPath() bool {
 func (o *RepositoryModel) SetPath(v string) {
 	o.Path.Set(&v)
 }
+
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *RepositoryModel) SetPathNil() {
 	o.Path.Set(nil)
@@ -814,6 +819,7 @@ func (o *RepositoryModel) HasSizeUpdated() bool {
 func (o *RepositoryModel) SetSizeUpdated(v int64) {
 	o.SizeUpdated.Set(&v)
 }
+
 // SetSizeUpdatedNil sets the value for SizeUpdated to be an explicit nil
 func (o *RepositoryModel) SetSizeUpdatedNil() {
 	o.SizeUpdated.Set(nil)
@@ -873,7 +879,7 @@ func (o *RepositoryModel) SetVersion(v int64) {
 }
 
 func (o RepositoryModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -959,10 +965,10 @@ func (o *RepositoryModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1018,5 +1024,3 @@ func (v *NullableRepositoryModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

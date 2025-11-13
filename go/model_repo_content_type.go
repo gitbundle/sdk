@@ -20,9 +20,9 @@ type RepoContentType string
 
 // List of RepoContentType
 const (
-	REPOCONTENTTYPE_FILE RepoContentType = "file"
-	REPOCONTENTTYPE_DIR RepoContentType = "dir"
-	REPOCONTENTTYPE_SYMLINK RepoContentType = "symlink"
+	REPOCONTENTTYPE_FILE      RepoContentType = "file"
+	REPOCONTENTTYPE_DIR       RepoContentType = "dir"
+	REPOCONTENTTYPE_SYMLINK   RepoContentType = "symlink"
 	REPOCONTENTTYPE_SUBMODULE RepoContentType = "submodule"
 )
 
@@ -112,4 +112,3 @@ func (v *NullableRepoContentType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

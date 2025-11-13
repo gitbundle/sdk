@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // BootstrapAPIService BootstrapAPI service
 type BootstrapAPIService service
 
 type ApiGetBootstrapRequest struct {
-	ctx context.Context
-	ApiService *BootstrapAPIService
+	ctx          context.Context
+	ApiService   *BootstrapAPIService
 	bootstrapRef string
-	path string
+	path         string
 }
 
 func (r ApiGetBootstrapRequest) Execute() (*BootstrapMetadata, *http.Response, error) {
@@ -37,28 +36,29 @@ func (r ApiGetBootstrapRequest) Execute() (*BootstrapMetadata, *http.Response, e
 /*
 GetBootstrap Method for GetBootstrap
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param bootstrapRef Group path (eg: '/group1/group2'), or repository path (eg: '/group1/group2/repo'), or username
- @param path
- @return ApiGetBootstrapRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param bootstrapRef Group path (eg: '/group1/group2'), or repository path (eg: '/group1/group2/repo'), or username
+	@param path
+	@return ApiGetBootstrapRequest
 */
 func (a *BootstrapAPIService) GetBootstrap(ctx context.Context, bootstrapRef string, path string) ApiGetBootstrapRequest {
 	return ApiGetBootstrapRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		bootstrapRef: bootstrapRef,
-		path: path,
+		path:         path,
 	}
 }
 
 // Execute executes the request
-//  @return BootstrapMetadata
+//
+//	@return BootstrapMetadata
 func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*BootstrapMetadata, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BootstrapMetadata
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BootstrapMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BootstrapAPIService.GetBootstrap")
@@ -134,8 +134,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -189,8 +189,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -200,8 +200,8 @@ func (a *BootstrapAPIService) GetBootstrapExecute(r ApiGetBootstrapRequest) (*Bo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

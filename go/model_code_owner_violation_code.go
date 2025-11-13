@@ -20,10 +20,10 @@ type CodeOwnerViolationCode string
 
 // List of CodeOwnerViolationCode
 const (
-	CODEOWNERVIOLATIONCODE_NOOP CodeOwnerViolationCode = "noop"
-	CODEOWNERVIOLATIONCODE_USER_NOT_FOUND CodeOwnerViolationCode = "user_not_found"
+	CODEOWNERVIOLATIONCODE_NOOP            CodeOwnerViolationCode = "noop"
+	CODEOWNERVIOLATIONCODE_USER_NOT_FOUND  CodeOwnerViolationCode = "user_not_found"
 	CODEOWNERVIOLATIONCODE_PATTERN_INVALID CodeOwnerViolationCode = "pattern_invalid"
-	CODEOWNERVIOLATIONCODE_PATTERN_EMPTY CodeOwnerViolationCode = "pattern_empty"
+	CODEOWNERVIOLATIONCODE_PATTERN_EMPTY   CodeOwnerViolationCode = "pattern_empty"
 )
 
 // All allowed values of CodeOwnerViolationCode enum
@@ -112,4 +112,3 @@ func (v *NullableCodeOwnerViolationCode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &RepositoryStarModel{}
 
 // RepositoryStarModel struct for RepositoryStarModel
 type RepositoryStarModel struct {
-	Created int64 `json:"created"`
+	Created   int64 `json:"created"`
 	CreatedBy int64 `json:"created_by"`
-	GroupId int64 `json:"group_id"`
-	Id int64 `json:"id"`
-	RepoId int64 `json:"repo_id"`
-	Updated int64 `json:"updated"`
+	GroupId   int64 `json:"group_id"`
+	Id        int64 `json:"id"`
+	RepoId    int64 `json:"repo_id"`
+	Updated   int64 `json:"updated"`
 }
 
 type _RepositoryStarModel RepositoryStarModel
@@ -199,7 +199,7 @@ func (o *RepositoryStarModel) SetUpdated(v int64) {
 }
 
 func (o RepositoryStarModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,10 +235,10 @@ func (o *RepositoryStarModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -294,5 +294,3 @@ func (v *NullableRepositoryStarModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,10 @@ var _ MappedNullable = &UserPatchInput{}
 // UserPatchInput struct for UserPatchInput
 type UserPatchInput struct {
 	DisplayName NullableString `json:"display_name,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	IsActive NullableBool `json:"is_active,omitempty"`
-	IsBlocked NullableBool `json:"is_blocked,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Email       NullableString `json:"email,omitempty"`
+	IsActive    NullableBool   `json:"is_active,omitempty"`
+	IsBlocked   NullableBool   `json:"is_blocked,omitempty"`
+	Password    NullableString `json:"password,omitempty"`
 }
 
 // NewUserPatchInput instantiates a new UserPatchInput object
@@ -75,6 +75,7 @@ func (o *UserPatchInput) HasDisplayName() bool {
 func (o *UserPatchInput) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UserPatchInput) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -117,6 +118,7 @@ func (o *UserPatchInput) HasEmail() bool {
 func (o *UserPatchInput) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserPatchInput) SetEmailNil() {
 	o.Email.Set(nil)
@@ -159,6 +161,7 @@ func (o *UserPatchInput) HasIsActive() bool {
 func (o *UserPatchInput) SetIsActive(v bool) {
 	o.IsActive.Set(&v)
 }
+
 // SetIsActiveNil sets the value for IsActive to be an explicit nil
 func (o *UserPatchInput) SetIsActiveNil() {
 	o.IsActive.Set(nil)
@@ -201,6 +204,7 @@ func (o *UserPatchInput) HasIsBlocked() bool {
 func (o *UserPatchInput) SetIsBlocked(v bool) {
 	o.IsBlocked.Set(&v)
 }
+
 // SetIsBlockedNil sets the value for IsBlocked to be an explicit nil
 func (o *UserPatchInput) SetIsBlockedNil() {
 	o.IsBlocked.Set(nil)
@@ -243,6 +247,7 @@ func (o *UserPatchInput) HasPassword() bool {
 func (o *UserPatchInput) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *UserPatchInput) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -254,7 +259,7 @@ func (o *UserPatchInput) UnsetPassword() {
 }
 
 func (o UserPatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,5 +321,3 @@ func (v *NullableUserPatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

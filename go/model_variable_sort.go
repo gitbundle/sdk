@@ -20,10 +20,10 @@ type VariableSort string
 
 // List of VariableSort
 const (
-	VARIABLESORT_NOOP VariableSort = "noop"
-	VARIABLESORT_ID VariableSort = "id"
-	VARIABLESORT_NAME VariableSort = "name"
-	VARIABLESORT_TYPE VariableSort = "type"
+	VARIABLESORT_NOOP    VariableSort = "noop"
+	VARIABLESORT_ID      VariableSort = "id"
+	VARIABLESORT_NAME    VariableSort = "name"
+	VARIABLESORT_TYPE    VariableSort = "type"
 	VARIABLESORT_CREATED VariableSort = "created"
 	VARIABLESORT_UPDATED VariableSort = "updated"
 )
@@ -116,4 +116,3 @@ func (v *NullableVariableSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

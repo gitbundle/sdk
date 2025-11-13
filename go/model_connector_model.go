@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,15 +21,15 @@ var _ MappedNullable = &ConnectorModel{}
 
 // ConnectorModel struct for ConnectorModel
 type ConnectorModel struct {
-	Created int64 `json:"created"`
-	Data string `json:"data"`
+	Created     int64  `json:"created"`
+	Data        string `json:"data"`
 	Description string `json:"description"`
-	GroupId int64 `json:"group_id"`
-	Id int64 `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	GroupId     int64  `json:"group_id"`
+	Id          int64  `json:"id"`
+	Name        string `json:"name"`
+	Type        string `json:"type"`
+	Updated     int64  `json:"updated"`
+	Version     int64  `json:"version"`
 }
 
 type _ConnectorModel ConnectorModel
@@ -277,7 +277,7 @@ func (o *ConnectorModel) SetVersion(v int64) {
 }
 
 func (o ConnectorModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -319,10 +319,10 @@ func (o *ConnectorModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -378,5 +378,3 @@ func (v *NullableConnectorModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

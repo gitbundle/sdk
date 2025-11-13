@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &PullreqWithDiffStats{}
 
 // PullreqWithDiffStats struct for PullreqWithDiffStats
 type PullreqWithDiffStats struct {
-	Author NullableUserModel `json:"author,omitempty"`
-	DiffStats DiffStats `json:"diff_stats"`
-	Merger NullableUserModel `json:"merger,omitempty"`
-	Model PullreqModel `json:"model"`
+	Author    NullableUserModel `json:"author,omitempty"`
+	DiffStats DiffStats         `json:"diff_stats"`
+	Merger    NullableUserModel `json:"merger,omitempty"`
+	Model     PullreqModel      `json:"model"`
 }
 
 type _PullreqWithDiffStats PullreqWithDiffStats
@@ -80,6 +80,7 @@ func (o *PullreqWithDiffStats) HasAuthor() bool {
 func (o *PullreqWithDiffStats) SetAuthor(v UserModel) {
 	o.Author.Set(&v)
 }
+
 // SetAuthorNil sets the value for Author to be an explicit nil
 func (o *PullreqWithDiffStats) SetAuthorNil() {
 	o.Author.Set(nil)
@@ -146,6 +147,7 @@ func (o *PullreqWithDiffStats) HasMerger() bool {
 func (o *PullreqWithDiffStats) SetMerger(v UserModel) {
 	o.Merger.Set(&v)
 }
+
 // SetMergerNil sets the value for Merger to be an explicit nil
 func (o *PullreqWithDiffStats) SetMergerNil() {
 	o.Merger.Set(nil)
@@ -181,7 +183,7 @@ func (o *PullreqWithDiffStats) SetModel(v PullreqModel) {
 }
 
 func (o PullreqWithDiffStats) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,10 +217,10 @@ func (o *PullreqWithDiffStats) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -274,5 +276,3 @@ func (v *NullablePullreqWithDiffStats) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

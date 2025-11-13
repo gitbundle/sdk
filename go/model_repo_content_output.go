@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,15 +21,15 @@ var _ MappedNullable = &RepoContentOutput{}
 
 // RepoContentOutput struct for RepoContentOutput
 type RepoContentOutput struct {
-	CommitUrl *string `json:"commit_url,omitempty"`
-	LatestCommit *Commit `json:"latest_commit,omitempty"`
-	Name string `json:"name"`
-	Path string `json:"path"`
-	RepoUrl *string `json:"repo_url,omitempty"`
-	Sha string `json:"sha"`
-	Type RepoContentType `json:"type"`
-	Content RepoContent `json:"content"`
-	TotalCommits int64 `json:"total_commits"`
+	CommitUrl    *string         `json:"commit_url,omitempty"`
+	LatestCommit *Commit         `json:"latest_commit,omitempty"`
+	Name         string          `json:"name"`
+	Path         string          `json:"path"`
+	RepoUrl      *string         `json:"repo_url,omitempty"`
+	Sha          string          `json:"sha"`
+	Type         RepoContentType `json:"type"`
+	Content      RepoContent     `json:"content"`
+	TotalCommits int64           `json:"total_commits"`
 }
 
 type _RepoContentOutput RepoContentOutput
@@ -298,7 +298,7 @@ func (o *RepoContentOutput) SetTotalCommits(v int64) {
 }
 
 func (o RepoContentOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -343,10 +343,10 @@ func (o *RepoContentOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -402,5 +402,3 @@ func (v *NullableRepoContentOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &ActionWorkflow{}
 
 // ActionWorkflow struct for ActionWorkflow
 type ActionWorkflow struct {
-	Model ActionModel `json:"model"`
+	Model    ActionModel           `json:"model"`
 	Workflow NullableWorkflowModel `json:"workflow,omitempty"`
 }
 
@@ -101,6 +101,7 @@ func (o *ActionWorkflow) HasWorkflow() bool {
 func (o *ActionWorkflow) SetWorkflow(v WorkflowModel) {
 	o.Workflow.Set(&v)
 }
+
 // SetWorkflowNil sets the value for Workflow to be an explicit nil
 func (o *ActionWorkflow) SetWorkflowNil() {
 	o.Workflow.Set(nil)
@@ -112,7 +113,7 @@ func (o *ActionWorkflow) UnsetWorkflow() {
 }
 
 func (o ActionWorkflow) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *ActionWorkflow) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullableActionWorkflow) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

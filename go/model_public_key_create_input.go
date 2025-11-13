@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PublicKeyCreateInput{}
 
 // PublicKeyCreateInput struct for PublicKeyCreateInput
 type PublicKeyCreateInput struct {
-	Content string `json:"content"`
-	Name NullableString `json:"name,omitempty"`
-	Usage PublicKeyUsage `json:"usage"`
+	Content string         `json:"content"`
+	Name    NullableString `json:"name,omitempty"`
+	Usage   PublicKeyUsage `json:"usage"`
 }
 
 type _PublicKeyCreateInput PublicKeyCreateInput
@@ -103,6 +103,7 @@ func (o *PublicKeyCreateInput) HasName() bool {
 func (o *PublicKeyCreateInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PublicKeyCreateInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -138,7 +139,7 @@ func (o *PublicKeyCreateInput) SetUsage(v PublicKeyUsage) {
 }
 
 func (o PublicKeyCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +170,10 @@ func (o *PublicKeyCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +229,3 @@ func (v *NullablePublicKeyCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

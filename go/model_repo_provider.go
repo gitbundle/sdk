@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &RepoProvider{}
 
 // RepoProvider struct for RepoProvider
 type RepoProvider struct {
-	Origin NullableString `json:"origin,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	Type RepoProviderType `json:"type"`
-	Username NullableString `json:"username,omitempty"`
+	Origin   NullableString   `json:"origin,omitempty"`
+	Password NullableString   `json:"password,omitempty"`
+	Type     RepoProviderType `json:"type"`
+	Username NullableString   `json:"username,omitempty"`
 }
 
 type _RepoProvider RepoProvider
@@ -79,6 +79,7 @@ func (o *RepoProvider) HasOrigin() bool {
 func (o *RepoProvider) SetOrigin(v string) {
 	o.Origin.Set(&v)
 }
+
 // SetOriginNil sets the value for Origin to be an explicit nil
 func (o *RepoProvider) SetOriginNil() {
 	o.Origin.Set(nil)
@@ -121,6 +122,7 @@ func (o *RepoProvider) HasPassword() bool {
 func (o *RepoProvider) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *RepoProvider) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -187,6 +189,7 @@ func (o *RepoProvider) HasUsername() bool {
 func (o *RepoProvider) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *RepoProvider) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -198,7 +201,7 @@ func (o *RepoProvider) UnsetUsername() {
 }
 
 func (o RepoProvider) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,10 +236,10 @@ func (o *RepoProvider) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -292,5 +295,3 @@ func (v *NullableRepoProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

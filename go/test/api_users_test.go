@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetProfileGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -38,7 +38,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetProfileRepos", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -52,7 +52,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersFeeds", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -66,7 +66,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersHasPerm", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 		var repoRef string
@@ -81,7 +81,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersHeatmap", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -95,7 +95,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersStars", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -109,7 +109,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identifier string
 
@@ -123,7 +123,7 @@ func Test_gitbundlesdk_UsersAPIService(t *testing.T) {
 
 	t.Run("Test UsersAPIService GetUsersUsers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UsersAPI.GetUsersUsers(context.Background()).Execute()
 

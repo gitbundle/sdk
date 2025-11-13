@@ -19,9 +19,9 @@ var _ MappedNullable = &CommitDiffFile{}
 
 // CommitDiffFile struct for CommitDiffFile
 type CommitDiffFile struct {
-	EndLine *int64 `json:"end_line,omitempty"`
-	Path *string `json:"path,omitempty"`
-	StartLine *int64 `json:"start_line,omitempty"`
+	EndLine   *int64  `json:"end_line,omitempty"`
+	Path      *string `json:"path,omitempty"`
+	StartLine *int64  `json:"start_line,omitempty"`
 }
 
 // NewCommitDiffFile instantiates a new CommitDiffFile object
@@ -138,7 +138,7 @@ func (o *CommitDiffFile) SetStartLine(v int64) {
 }
 
 func (o CommitDiffFile) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableCommitDiffFile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

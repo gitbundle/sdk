@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PostLogin", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.PostLogin(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PostLogout", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.PostLogout(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PostRegister", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.PostRegister(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PostTwoFactorPasscode", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.PostTwoFactorPasscode(context.Background()).Execute()
 
@@ -71,7 +71,7 @@ func Test_gitbundlesdk_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PostTwoFactorScratchToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.PostTwoFactorScratchToken(context.Background()).Execute()
 

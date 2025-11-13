@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &PullreqReviewModel{}
 
 // PullreqReviewModel struct for PullreqReviewModel
 type PullreqReviewModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Decision PullreqReviewDecision `json:"decision"`
-	Id int64 `json:"id"`
-	PullreqId int64 `json:"pullreq_id"`
-	Sha string `json:"sha"`
-	Updated int64 `json:"updated"`
+	Created   int64                 `json:"created"`
+	CreatedBy int64                 `json:"created_by"`
+	Decision  PullreqReviewDecision `json:"decision"`
+	Id        int64                 `json:"id"`
+	PullreqId int64                 `json:"pullreq_id"`
+	Sha       string                `json:"sha"`
+	Updated   int64                 `json:"updated"`
 }
 
 type _PullreqReviewModel PullreqReviewModel
@@ -225,7 +225,7 @@ func (o *PullreqReviewModel) SetUpdated(v int64) {
 }
 
 func (o PullreqReviewModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -263,10 +263,10 @@ func (o *PullreqReviewModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -322,5 +322,3 @@ func (v *NullablePullreqReviewModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

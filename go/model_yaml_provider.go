@@ -21,8 +21,8 @@ type YamlProvider string
 // List of YamlProvider
 const (
 	YAMLPROVIDER_UNKNOWN YamlProvider = "unknown"
-	YAMLPROVIDER_GITHUB YamlProvider = "github"
-	YAMLPROVIDER_GITLAB YamlProvider = "gitlab"
+	YAMLPROVIDER_GITHUB  YamlProvider = "github"
+	YAMLPROVIDER_GITLAB  YamlProvider = "gitlab"
 )
 
 // All allowed values of YamlProvider enum
@@ -110,4 +110,3 @@ func (v *NullableYamlProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

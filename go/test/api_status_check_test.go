@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_StatusCheckAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_StatusCheckAPIService(t *testing.T) {
 
 	t.Run("Test StatusCheckAPIService GetChecks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var commitSha string
@@ -39,7 +39,7 @@ func Test_gitbundlesdk_StatusCheckAPIService(t *testing.T) {
 
 	t.Run("Test StatusCheckAPIService GetRecent", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -53,7 +53,7 @@ func Test_gitbundlesdk_StatusCheckAPIService(t *testing.T) {
 
 	t.Run("Test StatusCheckAPIService PutCheckReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var commitSha string

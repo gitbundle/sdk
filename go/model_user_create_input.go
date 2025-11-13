@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &UserCreateInput{}
 // UserCreateInput struct for UserCreateInput
 type UserCreateInput struct {
 	DisplayName NullableString `json:"display_name,omitempty"`
-	Email string `json:"email"`
-	Name string `json:"name"`
-	Password NullableString `json:"password,omitempty"`
+	Email       string         `json:"email"`
+	Name        string         `json:"name"`
+	Password    NullableString `json:"password,omitempty"`
 }
 
 type _UserCreateInput UserCreateInput
@@ -80,6 +80,7 @@ func (o *UserCreateInput) HasDisplayName() bool {
 func (o *UserCreateInput) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UserCreateInput) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -170,6 +171,7 @@ func (o *UserCreateInput) HasPassword() bool {
 func (o *UserCreateInput) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *UserCreateInput) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -181,7 +183,7 @@ func (o *UserCreateInput) UnsetPassword() {
 }
 
 func (o UserCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,10 +217,10 @@ func (o *UserCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -274,5 +276,3 @@ func (v *NullableUserCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

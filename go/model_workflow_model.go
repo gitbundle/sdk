@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,39 +21,39 @@ var _ MappedNullable = &WorkflowModel{}
 
 // WorkflowModel struct for WorkflowModel
 type WorkflowModel struct {
-	Action NullableString `json:"action,omitempty"`
-	ActionId int64 `json:"action_id"`
-	AfterSha NullableString `json:"after_sha,omitempty"`
-	AuthorEmail string `json:"author_email"`
-	AuthorId NullableInt64 `json:"author_id,omitempty"`
-	AuthorName string `json:"author_name"`
-	BeforeSha string `json:"before_sha"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Cron string `json:"cron"`
-	Debug bool `json:"debug"`
-	Deploy string `json:"deploy"`
-	DeployId int64 `json:"deploy_id"`
-	Error string `json:"error"`
-	Event TriggerEvent `json:"event"`
-	Finished int64 `json:"finished"`
-	Id int64 `json:"id"`
-	Link string `json:"link"`
-	Message string `json:"message"`
-	Name string `json:"name"`
-	Number int64 `json:"number"`
-	Params map[string]string `json:"params"`
-	RepoId int64 `json:"repo_id"`
-	SourceRepoId NullableInt64 `json:"source_repo_id,omitempty"`
-	SourceRev NullableString `json:"source_rev,omitempty"`
-	Started int64 `json:"started"`
-	Status CIStatus `json:"status"`
-	TargetRev string `json:"target_rev"`
-	Title string `json:"title"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
-	YamlProvider YamlProvider `json:"yaml_provider"`
-	YamlResolved string `json:"yaml_resolved"`
+	Action       NullableString    `json:"action,omitempty"`
+	ActionId     int64             `json:"action_id"`
+	AfterSha     NullableString    `json:"after_sha,omitempty"`
+	AuthorEmail  string            `json:"author_email"`
+	AuthorId     NullableInt64     `json:"author_id,omitempty"`
+	AuthorName   string            `json:"author_name"`
+	BeforeSha    string            `json:"before_sha"`
+	Created      int64             `json:"created"`
+	CreatedBy    int64             `json:"created_by"`
+	Cron         string            `json:"cron"`
+	Debug        bool              `json:"debug"`
+	Deploy       string            `json:"deploy"`
+	DeployId     int64             `json:"deploy_id"`
+	Error        string            `json:"error"`
+	Event        TriggerEvent      `json:"event"`
+	Finished     int64             `json:"finished"`
+	Id           int64             `json:"id"`
+	Link         string            `json:"link"`
+	Message      string            `json:"message"`
+	Name         string            `json:"name"`
+	Number       int64             `json:"number"`
+	Params       map[string]string `json:"params"`
+	RepoId       int64             `json:"repo_id"`
+	SourceRepoId NullableInt64     `json:"source_repo_id,omitempty"`
+	SourceRev    NullableString    `json:"source_rev,omitempty"`
+	Started      int64             `json:"started"`
+	Status       CIStatus          `json:"status"`
+	TargetRev    string            `json:"target_rev"`
+	Title        string            `json:"title"`
+	Updated      int64             `json:"updated"`
+	Version      int64             `json:"version"`
+	YamlProvider YamlProvider      `json:"yaml_provider"`
+	YamlResolved string            `json:"yaml_resolved"`
 }
 
 type _WorkflowModel WorkflowModel
@@ -135,6 +135,7 @@ func (o *WorkflowModel) HasAction() bool {
 func (o *WorkflowModel) SetAction(v string) {
 	o.Action.Set(&v)
 }
+
 // SetActionNil sets the value for Action to be an explicit nil
 func (o *WorkflowModel) SetActionNil() {
 	o.Action.Set(nil)
@@ -201,6 +202,7 @@ func (o *WorkflowModel) HasAfterSha() bool {
 func (o *WorkflowModel) SetAfterSha(v string) {
 	o.AfterSha.Set(&v)
 }
+
 // SetAfterShaNil sets the value for AfterSha to be an explicit nil
 func (o *WorkflowModel) SetAfterShaNil() {
 	o.AfterSha.Set(nil)
@@ -267,6 +269,7 @@ func (o *WorkflowModel) HasAuthorId() bool {
 func (o *WorkflowModel) SetAuthorId(v int64) {
 	o.AuthorId.Set(&v)
 }
+
 // SetAuthorIdNil sets the value for AuthorId to be an explicit nil
 func (o *WorkflowModel) SetAuthorIdNil() {
 	o.AuthorId.Set(nil)
@@ -741,6 +744,7 @@ func (o *WorkflowModel) HasSourceRepoId() bool {
 func (o *WorkflowModel) SetSourceRepoId(v int64) {
 	o.SourceRepoId.Set(&v)
 }
+
 // SetSourceRepoIdNil sets the value for SourceRepoId to be an explicit nil
 func (o *WorkflowModel) SetSourceRepoIdNil() {
 	o.SourceRepoId.Set(nil)
@@ -783,6 +787,7 @@ func (o *WorkflowModel) HasSourceRev() bool {
 func (o *WorkflowModel) SetSourceRev(v string) {
 	o.SourceRev.Set(&v)
 }
+
 // SetSourceRevNil sets the value for SourceRev to be an explicit nil
 func (o *WorkflowModel) SetSourceRevNil() {
 	o.SourceRev.Set(nil)
@@ -986,7 +991,7 @@ func (o *WorkflowModel) SetYamlResolved(v string) {
 }
 
 func (o WorkflowModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1081,10 +1086,10 @@ func (o *WorkflowModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1140,5 +1145,3 @@ func (v *NullableWorkflowModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

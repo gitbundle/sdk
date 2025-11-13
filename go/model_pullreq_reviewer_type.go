@@ -21,8 +21,8 @@ type PullreqReviewerType string
 // List of PullreqReviewerType
 const (
 	PULLREQREVIEWERTYPE_SELF_ASSIGNED PullreqReviewerType = "self_assigned"
-	PULLREQREVIEWERTYPE_REQUESTED PullreqReviewerType = "requested"
-	PULLREQREVIEWERTYPE_ASSIGNED PullreqReviewerType = "assigned"
+	PULLREQREVIEWERTYPE_REQUESTED     PullreqReviewerType = "requested"
+	PULLREQREVIEWERTYPE_ASSIGNED      PullreqReviewerType = "assigned"
 )
 
 // All allowed values of PullreqReviewerType enum
@@ -110,4 +110,3 @@ func (v *NullablePullreqReviewerType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -24,7 +24,7 @@ const (
 	CHECKSTATUS_RUNNING CheckStatus = "running"
 	CHECKSTATUS_SUCCESS CheckStatus = "success"
 	CHECKSTATUS_FAILURE CheckStatus = "failure"
-	CHECKSTATUS_ERROR CheckStatus = "error"
+	CHECKSTATUS_ERROR   CheckStatus = "error"
 )
 
 // All allowed values of CheckStatus enum
@@ -114,4 +114,3 @@ func (v *NullableCheckStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,11 +19,11 @@ var _ MappedNullable = &RulePatchInput{}
 
 // RulePatchInput struct for RulePatchInput
 type RulePatchInput struct {
-	Definition NullableProtectionDefinition `json:"definition,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Pattern NullableProtectionPattern `json:"pattern,omitempty"`
-	State NullableRuleState `json:"state,omitempty"`
+	Definition  NullableProtectionDefinition `json:"definition,omitempty"`
+	Description NullableString               `json:"description,omitempty"`
+	Name        NullableString               `json:"name,omitempty"`
+	Pattern     NullableProtectionPattern    `json:"pattern,omitempty"`
+	State       NullableRuleState            `json:"state,omitempty"`
 }
 
 // NewRulePatchInput instantiates a new RulePatchInput object
@@ -75,6 +75,7 @@ func (o *RulePatchInput) HasDefinition() bool {
 func (o *RulePatchInput) SetDefinition(v ProtectionDefinition) {
 	o.Definition.Set(&v)
 }
+
 // SetDefinitionNil sets the value for Definition to be an explicit nil
 func (o *RulePatchInput) SetDefinitionNil() {
 	o.Definition.Set(nil)
@@ -117,6 +118,7 @@ func (o *RulePatchInput) HasDescription() bool {
 func (o *RulePatchInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *RulePatchInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -159,6 +161,7 @@ func (o *RulePatchInput) HasName() bool {
 func (o *RulePatchInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *RulePatchInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -201,6 +204,7 @@ func (o *RulePatchInput) HasPattern() bool {
 func (o *RulePatchInput) SetPattern(v ProtectionPattern) {
 	o.Pattern.Set(&v)
 }
+
 // SetPatternNil sets the value for Pattern to be an explicit nil
 func (o *RulePatchInput) SetPatternNil() {
 	o.Pattern.Set(nil)
@@ -243,6 +247,7 @@ func (o *RulePatchInput) HasState() bool {
 func (o *RulePatchInput) SetState(v RuleState) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *RulePatchInput) SetStateNil() {
 	o.State.Set(nil)
@@ -254,7 +259,7 @@ func (o *RulePatchInput) UnsetState() {
 }
 
 func (o RulePatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,5 +321,3 @@ func (v *NullableRulePatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

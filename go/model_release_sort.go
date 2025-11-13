@@ -20,8 +20,8 @@ type ReleaseSort string
 
 // List of ReleaseSort
 const (
-	RELEASESORT_NOOP ReleaseSort = "noop"
-	RELEASESORT_ID ReleaseSort = "id"
+	RELEASESORT_NOOP    ReleaseSort = "noop"
+	RELEASESORT_ID      ReleaseSort = "id"
 	RELEASESORT_CREATED ReleaseSort = "created"
 	RELEASESORT_UPDATED ReleaseSort = "updated"
 )
@@ -112,4 +112,3 @@ func (v *NullableReleaseSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

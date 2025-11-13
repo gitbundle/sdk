@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &PullreqAuthor{}
 // PullreqAuthor struct for PullreqAuthor
 type PullreqAuthor struct {
 	Author NullableUserModel `json:"author,omitempty"`
-	Model PullreqModel `json:"model"`
+	Model  PullreqModel      `json:"model"`
 }
 
 type _PullreqAuthor PullreqAuthor
@@ -77,6 +77,7 @@ func (o *PullreqAuthor) HasAuthor() bool {
 func (o *PullreqAuthor) SetAuthor(v UserModel) {
 	o.Author.Set(&v)
 }
+
 // SetAuthorNil sets the value for Author to be an explicit nil
 func (o *PullreqAuthor) SetAuthorNil() {
 	o.Author.Set(nil)
@@ -112,7 +113,7 @@ func (o *PullreqAuthor) SetModel(v PullreqModel) {
 }
 
 func (o PullreqAuthor) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *PullreqAuthor) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullablePullreqAuthor) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

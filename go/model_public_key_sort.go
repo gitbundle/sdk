@@ -20,9 +20,9 @@ type PublicKeySort string
 
 // List of PublicKeySort
 const (
-	PUBLICKEYSORT_NOOP PublicKeySort = "noop"
-	PUBLICKEYSORT_ID PublicKeySort = "id"
-	PUBLICKEYSORT_NAME PublicKeySort = "name"
+	PUBLICKEYSORT_NOOP    PublicKeySort = "noop"
+	PUBLICKEYSORT_ID      PublicKeySort = "id"
+	PUBLICKEYSORT_NAME    PublicKeySort = "name"
 	PUBLICKEYSORT_CREATED PublicKeySort = "created"
 )
 
@@ -112,4 +112,3 @@ func (v *NullablePublicKeySort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

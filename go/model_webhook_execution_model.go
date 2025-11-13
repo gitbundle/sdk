@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,24 +21,24 @@ var _ MappedNullable = &WebhookExecutionModel{}
 
 // WebhookExecutionModel struct for WebhookExecutionModel
 type WebhookExecutionModel struct {
-	Created int64 `json:"created"`
-	Duration int64 `json:"duration"`
-	Error string `json:"error"`
-	Id int64 `json:"id"`
-	RequestBody string `json:"request_body"`
-	RequestHeaders string `json:"request_headers"`
-	RequestUrl string `json:"request_url"`
-	ResponseBody string `json:"response_body"`
-	ResponseHeaders string `json:"response_headers"`
-	ResponseStatus string `json:"response_status"`
-	ResponseStatusCode int64 `json:"response_status_code"`
-	Result WebhookExecutionResult `json:"result"`
-	RetriggerOf NullableInt64 `json:"retrigger_of,omitempty"`
-	Retriggerable bool `json:"retriggerable"`
-	TriggerId string `json:"trigger_id"`
-	TriggerType WebhookTrigger `json:"trigger_type"`
-	Updated int64 `json:"updated"`
-	WebhookId int64 `json:"webhook_id"`
+	Created            int64                  `json:"created"`
+	Duration           int64                  `json:"duration"`
+	Error              string                 `json:"error"`
+	Id                 int64                  `json:"id"`
+	RequestBody        string                 `json:"request_body"`
+	RequestHeaders     string                 `json:"request_headers"`
+	RequestUrl         string                 `json:"request_url"`
+	ResponseBody       string                 `json:"response_body"`
+	ResponseHeaders    string                 `json:"response_headers"`
+	ResponseStatus     string                 `json:"response_status"`
+	ResponseStatusCode int64                  `json:"response_status_code"`
+	Result             WebhookExecutionResult `json:"result"`
+	RetriggerOf        NullableInt64          `json:"retrigger_of,omitempty"`
+	Retriggerable      bool                   `json:"retriggerable"`
+	TriggerId          string                 `json:"trigger_id"`
+	TriggerType        WebhookTrigger         `json:"trigger_type"`
+	Updated            int64                  `json:"updated"`
+	WebhookId          int64                  `json:"webhook_id"`
 }
 
 type _WebhookExecutionModel WebhookExecutionModel
@@ -397,6 +397,7 @@ func (o *WebhookExecutionModel) HasRetriggerOf() bool {
 func (o *WebhookExecutionModel) SetRetriggerOf(v int64) {
 	o.RetriggerOf.Set(&v)
 }
+
 // SetRetriggerOfNil sets the value for RetriggerOf to be an explicit nil
 func (o *WebhookExecutionModel) SetRetriggerOfNil() {
 	o.RetriggerOf.Set(nil)
@@ -528,7 +529,7 @@ func (o *WebhookExecutionModel) SetWebhookId(v int64) {
 }
 
 func (o WebhookExecutionModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -589,10 +590,10 @@ func (o *WebhookExecutionModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -648,5 +649,3 @@ func (v *NullableWebhookExecutionModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

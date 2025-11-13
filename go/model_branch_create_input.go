@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &BranchCreateInput{}
 
 // BranchCreateInput struct for BranchCreateInput
 type BranchCreateInput struct {
-	BypassRules bool `json:"bypass_rules"`
-	Name string `json:"name"`
-	Target NullableString `json:"target,omitempty"`
+	BypassRules bool           `json:"bypass_rules"`
+	Name        string         `json:"name"`
+	Target      NullableString `json:"target,omitempty"`
 }
 
 type _BranchCreateInput BranchCreateInput
@@ -127,6 +127,7 @@ func (o *BranchCreateInput) HasTarget() bool {
 func (o *BranchCreateInput) SetTarget(v string) {
 	o.Target.Set(&v)
 }
+
 // SetTargetNil sets the value for Target to be an explicit nil
 func (o *BranchCreateInput) SetTargetNil() {
 	o.Target.Set(nil)
@@ -138,7 +139,7 @@ func (o *BranchCreateInput) UnsetTarget() {
 }
 
 func (o BranchCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +170,10 @@ func (o *BranchCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +229,3 @@ func (v *NullableBranchCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

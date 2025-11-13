@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,9 +22,9 @@ var _ MappedNullable = &GroupCreateInput{}
 // GroupCreateInput struct for GroupCreateInput
 type GroupCreateInput struct {
 	Description NullableString `json:"description,omitempty"`
-	Identifier string `json:"identifier"`
-	IsPublic bool `json:"is_public"`
-	ParentRef string `json:"parent_ref"`
+	Identifier  string         `json:"identifier"`
+	IsPublic    bool           `json:"is_public"`
+	ParentRef   string         `json:"parent_ref"`
 }
 
 type _GroupCreateInput GroupCreateInput
@@ -81,6 +81,7 @@ func (o *GroupCreateInput) HasDescription() bool {
 func (o *GroupCreateInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *GroupCreateInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -164,7 +165,7 @@ func (o *GroupCreateInput) SetParentRef(v string) {
 }
 
 func (o GroupCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -197,10 +198,10 @@ func (o *GroupCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -256,5 +257,3 @@ func (v *NullableGroupCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

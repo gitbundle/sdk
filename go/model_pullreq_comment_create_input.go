@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,15 +21,15 @@ var _ MappedNullable = &PullreqCommentCreateInput{}
 
 // PullreqCommentCreateInput struct for PullreqCommentCreateInput
 type PullreqCommentCreateInput struct {
-	LineEnd int64 `json:"line_end"`
-	LineEndNew bool `json:"line_end_new"`
-	LineStart int64 `json:"line_start"`
-	LineStartNew bool `json:"line_start_new"`
-	ParentId int64 `json:"parent_id"`
-	Path string `json:"path"`
+	LineEnd         int64  `json:"line_end"`
+	LineEndNew      bool   `json:"line_end_new"`
+	LineStart       int64  `json:"line_start"`
+	LineStartNew    bool   `json:"line_start_new"`
+	ParentId        int64  `json:"parent_id"`
+	Path            string `json:"path"`
 	SourceCommitSha string `json:"source_commit_sha"`
 	TargetCommitSha string `json:"target_commit_sha"`
-	Text string `json:"text"`
+	Text            string `json:"text"`
 }
 
 type _PullreqCommentCreateInput PullreqCommentCreateInput
@@ -277,7 +277,7 @@ func (o *PullreqCommentCreateInput) SetText(v string) {
 }
 
 func (o PullreqCommentCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -319,10 +319,10 @@ func (o *PullreqCommentCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -378,5 +378,3 @@ func (v *NullablePullreqCommentCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,10 +19,10 @@ var _ MappedNullable = &BootstrapMetadata{}
 
 // BootstrapMetadata struct for BootstrapMetadata
 type BootstrapMetadata struct {
-	Group NullableGroupModel `json:"group,omitempty"`
+	Group   NullableGroupModel  `json:"group,omitempty"`
 	PathRef NullablePathRefInfo `json:"path_ref,omitempty"`
-	Repo NullableRepoParent `json:"repo,omitempty"`
-	User NullableUserModel `json:"user,omitempty"`
+	Repo    NullableRepoParent  `json:"repo,omitempty"`
+	User    NullableUserModel   `json:"user,omitempty"`
 }
 
 // NewBootstrapMetadata instantiates a new BootstrapMetadata object
@@ -74,6 +74,7 @@ func (o *BootstrapMetadata) HasGroup() bool {
 func (o *BootstrapMetadata) SetGroup(v GroupModel) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *BootstrapMetadata) SetGroupNil() {
 	o.Group.Set(nil)
@@ -116,6 +117,7 @@ func (o *BootstrapMetadata) HasPathRef() bool {
 func (o *BootstrapMetadata) SetPathRef(v PathRefInfo) {
 	o.PathRef.Set(&v)
 }
+
 // SetPathRefNil sets the value for PathRef to be an explicit nil
 func (o *BootstrapMetadata) SetPathRefNil() {
 	o.PathRef.Set(nil)
@@ -158,6 +160,7 @@ func (o *BootstrapMetadata) HasRepo() bool {
 func (o *BootstrapMetadata) SetRepo(v RepoParent) {
 	o.Repo.Set(&v)
 }
+
 // SetRepoNil sets the value for Repo to be an explicit nil
 func (o *BootstrapMetadata) SetRepoNil() {
 	o.Repo.Set(nil)
@@ -200,6 +203,7 @@ func (o *BootstrapMetadata) HasUser() bool {
 func (o *BootstrapMetadata) SetUser(v UserModel) {
 	o.User.Set(&v)
 }
+
 // SetUserNil sets the value for User to be an explicit nil
 func (o *BootstrapMetadata) SetUserNil() {
 	o.User.Set(nil)
@@ -211,7 +215,7 @@ func (o *BootstrapMetadata) UnsetUser() {
 }
 
 func (o BootstrapMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +274,3 @@ func (v *NullableBootstrapMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

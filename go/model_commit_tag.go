@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &CommitTag{}
 
 // CommitTag struct for CommitTag
 type CommitTag struct {
-	Commit NullableCommit `json:"commit,omitempty"`
-	IsAnnotated bool `json:"is_annotated"`
-	Message NullableString `json:"message,omitempty"`
-	Name string `json:"name"`
-	Sha string `json:"sha"`
-	Tagger NullableIdentity `json:"tagger,omitempty"`
-	Title NullableString `json:"title,omitempty"`
+	Commit      NullableCommit   `json:"commit,omitempty"`
+	IsAnnotated bool             `json:"is_annotated"`
+	Message     NullableString   `json:"message,omitempty"`
+	Name        string           `json:"name"`
+	Sha         string           `json:"sha"`
+	Tagger      NullableIdentity `json:"tagger,omitempty"`
+	Title       NullableString   `json:"title,omitempty"`
 }
 
 type _CommitTag CommitTag
@@ -84,6 +84,7 @@ func (o *CommitTag) HasCommit() bool {
 func (o *CommitTag) SetCommit(v Commit) {
 	o.Commit.Set(&v)
 }
+
 // SetCommitNil sets the value for Commit to be an explicit nil
 func (o *CommitTag) SetCommitNil() {
 	o.Commit.Set(nil)
@@ -150,6 +151,7 @@ func (o *CommitTag) HasMessage() bool {
 func (o *CommitTag) SetMessage(v string) {
 	o.Message.Set(&v)
 }
+
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *CommitTag) SetMessageNil() {
 	o.Message.Set(nil)
@@ -240,6 +242,7 @@ func (o *CommitTag) HasTagger() bool {
 func (o *CommitTag) SetTagger(v Identity) {
 	o.Tagger.Set(&v)
 }
+
 // SetTaggerNil sets the value for Tagger to be an explicit nil
 func (o *CommitTag) SetTaggerNil() {
 	o.Tagger.Set(nil)
@@ -282,6 +285,7 @@ func (o *CommitTag) HasTitle() bool {
 func (o *CommitTag) SetTitle(v string) {
 	o.Title.Set(&v)
 }
+
 // SetTitleNil sets the value for Title to be an explicit nil
 func (o *CommitTag) SetTitleNil() {
 	o.Title.Set(nil)
@@ -293,7 +297,7 @@ func (o *CommitTag) UnsetTitle() {
 }
 
 func (o CommitTag) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -335,10 +339,10 @@ func (o *CommitTag) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -394,5 +398,3 @@ func (v *NullableCommitTag) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

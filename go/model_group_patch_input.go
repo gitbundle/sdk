@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupPatchInput{}
 // GroupPatchInput struct for GroupPatchInput
 type GroupPatchInput struct {
 	Description NullableString `json:"description,omitempty"`
-	IsPublic NullableBool `json:"is_public,omitempty"`
+	IsPublic    NullableBool   `json:"is_public,omitempty"`
 }
 
 // NewGroupPatchInput instantiates a new GroupPatchInput object
@@ -72,6 +72,7 @@ func (o *GroupPatchInput) HasDescription() bool {
 func (o *GroupPatchInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *GroupPatchInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -114,6 +115,7 @@ func (o *GroupPatchInput) HasIsPublic() bool {
 func (o *GroupPatchInput) SetIsPublic(v bool) {
 	o.IsPublic.Set(&v)
 }
+
 // SetIsPublicNil sets the value for IsPublic to be an explicit nil
 func (o *GroupPatchInput) SetIsPublicNil() {
 	o.IsPublic.Set(nil)
@@ -125,7 +127,7 @@ func (o *GroupPatchInput) UnsetIsPublic() {
 }
 
 func (o GroupPatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableGroupPatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

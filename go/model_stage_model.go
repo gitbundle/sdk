@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,37 +21,37 @@ var _ MappedNullable = &StageModel{}
 
 // StageModel struct for StageModel
 type StageModel struct {
-	Arch string `json:"arch"`
-	Created int64 `json:"created"`
-	Errignore bool `json:"errignore"`
-	Error string `json:"error"`
-	ExitCode int64 `json:"exit_code"`
-	Id int64 `json:"id"`
-	Kernel string `json:"kernel"`
-	Kind string `json:"kind"`
-	Labels []string `json:"labels"`
-	Limit int64 `json:"limit"`
-	LimitRepo int64 `json:"limit_repo"`
-	Machine string `json:"machine"`
-	Name string `json:"name"`
-	Needs interface{} `json:"needs"`
-	Number int64 `json:"number"`
-	OnFailure bool `json:"on_failure"`
-	OnSuccess bool `json:"on_success"`
-	Os string `json:"os"`
-	ParentGroupId int64 `json:"parent_group_id"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	RepoId int64 `json:"repo_id"`
-	Started NullableInt64 `json:"started,omitempty"`
-	Status CIStatus `json:"status"`
-	Stopped NullableInt64 `json:"stopped,omitempty"`
-	Type string `json:"type"`
-	Updated int64 `json:"updated"`
-	Variant string `json:"variant"`
-	Version int64 `json:"version"`
-	WorkflowId int64 `json:"workflow_id"`
-	YamlProvider YamlProvider `json:"yaml_provider"`
-	YamlResolved string `json:"yaml_resolved"`
+	Arch          string        `json:"arch"`
+	Created       int64         `json:"created"`
+	Errignore     bool          `json:"errignore"`
+	Error         string        `json:"error"`
+	ExitCode      int64         `json:"exit_code"`
+	Id            int64         `json:"id"`
+	Kernel        string        `json:"kernel"`
+	Kind          string        `json:"kind"`
+	Labels        []string      `json:"labels"`
+	Limit         int64         `json:"limit"`
+	LimitRepo     int64         `json:"limit_repo"`
+	Machine       string        `json:"machine"`
+	Name          string        `json:"name"`
+	Needs         interface{}   `json:"needs"`
+	Number        int64         `json:"number"`
+	OnFailure     bool          `json:"on_failure"`
+	OnSuccess     bool          `json:"on_success"`
+	Os            string        `json:"os"`
+	ParentGroupId int64         `json:"parent_group_id"`
+	ParentId      NullableInt64 `json:"parent_id,omitempty"`
+	RepoId        int64         `json:"repo_id"`
+	Started       NullableInt64 `json:"started,omitempty"`
+	Status        CIStatus      `json:"status"`
+	Stopped       NullableInt64 `json:"stopped,omitempty"`
+	Type          string        `json:"type"`
+	Updated       int64         `json:"updated"`
+	Variant       string        `json:"variant"`
+	Version       int64         `json:"version"`
+	WorkflowId    int64         `json:"workflow_id"`
+	YamlProvider  YamlProvider  `json:"yaml_provider"`
+	YamlResolved  string        `json:"yaml_resolved"`
 }
 
 type _StageModel StageModel
@@ -591,6 +591,7 @@ func (o *StageModel) HasParentId() bool {
 func (o *StageModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *StageModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -657,6 +658,7 @@ func (o *StageModel) HasStarted() bool {
 func (o *StageModel) SetStarted(v int64) {
 	o.Started.Set(&v)
 }
+
 // SetStartedNil sets the value for Started to be an explicit nil
 func (o *StageModel) SetStartedNil() {
 	o.Started.Set(nil)
@@ -723,6 +725,7 @@ func (o *StageModel) HasStopped() bool {
 func (o *StageModel) SetStopped(v int64) {
 	o.Stopped.Set(&v)
 }
+
 // SetStoppedNil sets the value for Stopped to be an explicit nil
 func (o *StageModel) SetStoppedNil() {
 	o.Stopped.Set(nil)
@@ -902,7 +905,7 @@ func (o *StageModel) SetYamlResolved(v string) {
 }
 
 func (o StageModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -993,10 +996,10 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1052,5 +1055,3 @@ func (v *NullableStageModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

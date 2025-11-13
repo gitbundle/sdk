@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,16 +21,16 @@ var _ MappedNullable = &PublicKeyModel{}
 
 // PublicKeyModel struct for PublicKeyModel
 type PublicKeyModel struct {
-	Comment string `json:"comment"`
-	Content []int32 `json:"content"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Fingerprint string `json:"fingerprint"`
-	Id int64 `json:"id"`
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Usage PublicKeyUsage `json:"usage"`
-	Verified NullableInt64 `json:"verified,omitempty"`
+	Comment     string         `json:"comment"`
+	Content     []int32        `json:"content"`
+	Created     int64          `json:"created"`
+	CreatedBy   int64          `json:"created_by"`
+	Fingerprint string         `json:"fingerprint"`
+	Id          int64          `json:"id"`
+	Name        string         `json:"name"`
+	Type        string         `json:"type"`
+	Usage       PublicKeyUsage `json:"usage"`
+	Verified    NullableInt64  `json:"verified,omitempty"`
 }
 
 type _PublicKeyModel PublicKeyModel
@@ -309,6 +309,7 @@ func (o *PublicKeyModel) HasVerified() bool {
 func (o *PublicKeyModel) SetVerified(v int64) {
 	o.Verified.Set(&v)
 }
+
 // SetVerifiedNil sets the value for Verified to be an explicit nil
 func (o *PublicKeyModel) SetVerifiedNil() {
 	o.Verified.Set(nil)
@@ -320,7 +321,7 @@ func (o *PublicKeyModel) UnsetVerified() {
 }
 
 func (o PublicKeyModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -365,10 +366,10 @@ func (o *PublicKeyModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -424,5 +425,3 @@ func (v *NullablePublicKeyModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

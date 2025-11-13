@@ -20,9 +20,9 @@ type RepoSort string
 
 // List of RepoSort
 const (
-	REPOSORT_NOOP RepoSort = "noop"
-	REPOSORT_ID RepoSort = "id"
-	REPOSORT_NAME RepoSort = "name"
+	REPOSORT_NOOP    RepoSort = "noop"
+	REPOSORT_ID      RepoSort = "id"
+	REPOSORT_NAME    RepoSort = "name"
 	REPOSORT_CREATED RepoSort = "created"
 	REPOSORT_UPDATED RepoSort = "updated"
 )
@@ -114,4 +114,3 @@ func (v *NullableRepoSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,8 +19,8 @@ var _ MappedNullable = &QueryOption{}
 
 // QueryOption struct for QueryOption
 type QueryOption struct {
-	Page *int64 `json:"page,omitempty"`
-	Size *int64 `json:"size,omitempty"`
+	Page  *int64  `json:"page,omitempty"`
+	Size  *int64  `json:"size,omitempty"`
 	Query *string `json:"query,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *QueryOption) SetQuery(v string) {
 }
 
 func (o QueryOption) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableQueryOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

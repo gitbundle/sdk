@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,19 +21,19 @@ var _ MappedNullable = &ActionModel{}
 
 // ActionModel struct for ActionModel
 type ActionModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Description string `json:"description"`
-	Disabled bool `json:"disabled"`
-	Event NullableTriggerEvent `json:"event,omitempty"`
-	Id int64 `json:"id"`
-	Name string `json:"name"`
-	RepoId int64 `json:"repo_id"`
-	Seq int64 `json:"seq"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
-	YamlPath string `json:"yaml_path"`
-	YamlProvider YamlProvider `json:"yaml_provider"`
+	Created      int64                `json:"created"`
+	CreatedBy    int64                `json:"created_by"`
+	Description  string               `json:"description"`
+	Disabled     bool                 `json:"disabled"`
+	Event        NullableTriggerEvent `json:"event,omitempty"`
+	Id           int64                `json:"id"`
+	Name         string               `json:"name"`
+	RepoId       int64                `json:"repo_id"`
+	Seq          int64                `json:"seq"`
+	Updated      int64                `json:"updated"`
+	Version      int64                `json:"version"`
+	YamlPath     string               `json:"yaml_path"`
+	YamlProvider YamlProvider         `json:"yaml_provider"`
 }
 
 type _ActionModel ActionModel
@@ -195,6 +195,7 @@ func (o *ActionModel) HasEvent() bool {
 func (o *ActionModel) SetEvent(v TriggerEvent) {
 	o.Event.Set(&v)
 }
+
 // SetEventNil sets the value for Event to be an explicit nil
 func (o *ActionModel) SetEventNil() {
 	o.Event.Set(nil)
@@ -398,7 +399,7 @@ func (o *ActionModel) SetYamlProvider(v YamlProvider) {
 }
 
 func (o ActionModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -449,10 +450,10 @@ func (o *ActionModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -508,5 +509,3 @@ func (v *NullableActionModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

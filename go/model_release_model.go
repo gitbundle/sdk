@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,25 +21,25 @@ var _ MappedNullable = &ReleaseModel{}
 
 // ReleaseModel struct for ReleaseModel
 type ReleaseModel struct {
-	Assets []string `json:"assets,omitempty"`
-	Contributors []Contributor `json:"contributors,omitempty"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Deleted NullableInt64 `json:"deleted,omitempty"`
-	Description string `json:"description"`
-	Id int64 `json:"id"`
-	IsDraft bool `json:"is_draft"`
-	IsLatest NullableBool `json:"is_latest,omitempty"`
-	IsPrerelease bool `json:"is_prerelease"`
-	NumCommits int64 `json:"num_commits"`
-	OriginAuthor NullableString `json:"origin_author,omitempty"`
-	OriginAuthorId NullableInt64 `json:"origin_author_id,omitempty"`
-	RepoId int64 `json:"repo_id"`
-	Sha1 string `json:"sha1"`
-	TagName string `json:"tag_name"`
-	Title string `json:"title"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	Assets         []string       `json:"assets,omitempty"`
+	Contributors   []Contributor  `json:"contributors,omitempty"`
+	Created        int64          `json:"created"`
+	CreatedBy      int64          `json:"created_by"`
+	Deleted        NullableInt64  `json:"deleted,omitempty"`
+	Description    string         `json:"description"`
+	Id             int64          `json:"id"`
+	IsDraft        bool           `json:"is_draft"`
+	IsLatest       NullableBool   `json:"is_latest,omitempty"`
+	IsPrerelease   bool           `json:"is_prerelease"`
+	NumCommits     int64          `json:"num_commits"`
+	OriginAuthor   NullableString `json:"origin_author,omitempty"`
+	OriginAuthorId NullableInt64  `json:"origin_author_id,omitempty"`
+	RepoId         int64          `json:"repo_id"`
+	Sha1           string         `json:"sha1"`
+	TagName        string         `json:"tag_name"`
+	Title          string         `json:"title"`
+	Updated        int64          `json:"updated"`
+	Version        int64          `json:"version"`
 }
 
 type _ReleaseModel ReleaseModel
@@ -218,6 +218,7 @@ func (o *ReleaseModel) HasDeleted() bool {
 func (o *ReleaseModel) SetDeleted(v int64) {
 	o.Deleted.Set(&v)
 }
+
 // SetDeletedNil sets the value for Deleted to be an explicit nil
 func (o *ReleaseModel) SetDeletedNil() {
 	o.Deleted.Set(nil)
@@ -332,6 +333,7 @@ func (o *ReleaseModel) HasIsLatest() bool {
 func (o *ReleaseModel) SetIsLatest(v bool) {
 	o.IsLatest.Set(&v)
 }
+
 // SetIsLatestNil sets the value for IsLatest to be an explicit nil
 func (o *ReleaseModel) SetIsLatestNil() {
 	o.IsLatest.Set(nil)
@@ -422,6 +424,7 @@ func (o *ReleaseModel) HasOriginAuthor() bool {
 func (o *ReleaseModel) SetOriginAuthor(v string) {
 	o.OriginAuthor.Set(&v)
 }
+
 // SetOriginAuthorNil sets the value for OriginAuthor to be an explicit nil
 func (o *ReleaseModel) SetOriginAuthorNil() {
 	o.OriginAuthor.Set(nil)
@@ -464,6 +467,7 @@ func (o *ReleaseModel) HasOriginAuthorId() bool {
 func (o *ReleaseModel) SetOriginAuthorId(v int64) {
 	o.OriginAuthorId.Set(&v)
 }
+
 // SetOriginAuthorIdNil sets the value for OriginAuthorId to be an explicit nil
 func (o *ReleaseModel) SetOriginAuthorIdNil() {
 	o.OriginAuthorId.Set(nil)
@@ -619,7 +623,7 @@ func (o *ReleaseModel) SetVersion(v int64) {
 }
 
 func (o ReleaseModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -687,10 +691,10 @@ func (o *ReleaseModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -746,5 +750,3 @@ func (v *NullableReleaseModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

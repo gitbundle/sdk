@@ -21,7 +21,7 @@ type ArchiveAttribute string
 // List of ArchiveAttribute
 const (
 	ARCHIVEATTRIBUTE_EXPORT_IGNORE ArchiveAttribute = "export_ignore"
-	ARCHIVEATTRIBUTE_EXPORT_SUBST ArchiveAttribute = "export_subst"
+	ARCHIVEATTRIBUTE_EXPORT_SUBST  ArchiveAttribute = "export_subst"
 )
 
 // All allowed values of ArchiveAttribute enum
@@ -108,4 +108,3 @@ func (v *NullableArchiveAttribute) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

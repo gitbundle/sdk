@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &PullreqFileViewCreateInput{}
 // PullreqFileViewCreateInput struct for PullreqFileViewCreateInput
 type PullreqFileViewCreateInput struct {
 	CommitSha string `json:"commit_sha"`
-	Path string `json:"path"`
+	Path      string `json:"path"`
 }
 
 type _PullreqFileViewCreateInput PullreqFileViewCreateInput
@@ -95,7 +95,7 @@ func (o *PullreqFileViewCreateInput) SetPath(v string) {
 }
 
 func (o PullreqFileViewCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,10 +123,10 @@ func (o *PullreqFileViewCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -182,5 +182,3 @@ func (v *NullablePullreqFileViewCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
