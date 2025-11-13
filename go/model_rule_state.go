@@ -21,8 +21,8 @@ type RuleState string
 // List of RuleState
 const (
 	RULESTATE_DISABLED RuleState = "disabled"
-	RULESTATE_ACTIVE RuleState = "active"
-	RULESTATE_MONITOR RuleState = "monitor"
+	RULESTATE_ACTIVE   RuleState = "active"
+	RULESTATE_MONITOR  RuleState = "monitor"
 )
 
 // All allowed values of RuleState enum
@@ -110,4 +110,3 @@ func (v *NullableRuleState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

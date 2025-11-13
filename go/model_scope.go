@@ -20,8 +20,8 @@ type Scope string
 
 // List of Scope
 const (
-	SCOPE_SYSTEM Scope = "system"
-	SCOPE_GROUP Scope = "group"
+	SCOPE_SYSTEM     Scope = "system"
+	SCOPE_GROUP      Scope = "group"
 	SCOPE_REPOSITORY Scope = "repository"
 )
 
@@ -110,4 +110,3 @@ func (v *NullableScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

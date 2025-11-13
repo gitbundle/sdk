@@ -20,10 +20,10 @@ type CheckPayloadKind string
 
 // List of CheckPayloadKind
 const (
-	CHECKPAYLOADKIND_EMPTY CheckPayloadKind = "empty"
-	CHECKPAYLOADKIND_RAW CheckPayloadKind = "raw"
+	CHECKPAYLOADKIND_EMPTY    CheckPayloadKind = "empty"
+	CHECKPAYLOADKIND_RAW      CheckPayloadKind = "raw"
 	CHECKPAYLOADKIND_MARKDOWN CheckPayloadKind = "markdown"
-	CHECKPAYLOADKIND_ACTION CheckPayloadKind = "action"
+	CHECKPAYLOADKIND_ACTION   CheckPayloadKind = "action"
 )
 
 // All allowed values of CheckPayloadKind enum
@@ -112,4 +112,3 @@ func (v *NullableCheckPayloadKind) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

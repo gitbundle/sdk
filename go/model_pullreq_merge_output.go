@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,18 +21,18 @@ var _ MappedNullable = &PullreqMergeOutput{}
 
 // PullreqMergeOutput struct for PullreqMergeOutput
 type PullreqMergeOutput struct {
-	AllowedMethods []PullreqMergeMethod `json:"allowed_methods,omitempty"`
-	BranchDeleted NullableBool `json:"branch_deleted,omitempty"`
-	ConflictFiles []string `json:"conflict_files"`
-	DryRun NullableBool `json:"dry_run,omitempty"`
-	MinimumRequiredApprovalsCount NullableInt64 `json:"minimum_required_approvals_count,omitempty"`
-	MinimumRequiredApprovalsCountLatest NullableInt64 `json:"minimum_required_approvals_count_latest,omitempty"`
-	RequiresCodeOwnersApproval NullableBool `json:"requires_code_owners_approval,omitempty"`
-	RequiresCodeOwnersApprovalLatest NullableBool `json:"requires_code_owners_approval_latest,omitempty"`
-	RequiresCommentResolution NullableBool `json:"requires_comment_resolution,omitempty"`
-	RequiresNoChangeRequests NullableBool `json:"requires_no_change_requests,omitempty"`
-	RuleChecks []RuleCheckResult `json:"rule_checks"`
-	Sha NullableString `json:"sha,omitempty"`
+	AllowedMethods                      []PullreqMergeMethod `json:"allowed_methods,omitempty"`
+	BranchDeleted                       NullableBool         `json:"branch_deleted,omitempty"`
+	ConflictFiles                       []string             `json:"conflict_files"`
+	DryRun                              NullableBool         `json:"dry_run,omitempty"`
+	MinimumRequiredApprovalsCount       NullableInt64        `json:"minimum_required_approvals_count,omitempty"`
+	MinimumRequiredApprovalsCountLatest NullableInt64        `json:"minimum_required_approvals_count_latest,omitempty"`
+	RequiresCodeOwnersApproval          NullableBool         `json:"requires_code_owners_approval,omitempty"`
+	RequiresCodeOwnersApprovalLatest    NullableBool         `json:"requires_code_owners_approval_latest,omitempty"`
+	RequiresCommentResolution           NullableBool         `json:"requires_comment_resolution,omitempty"`
+	RequiresNoChangeRequests            NullableBool         `json:"requires_no_change_requests,omitempty"`
+	RuleChecks                          []RuleCheckResult    `json:"rule_checks"`
+	Sha                                 NullableString       `json:"sha,omitempty"`
 }
 
 type _PullreqMergeOutput PullreqMergeOutput
@@ -121,6 +121,7 @@ func (o *PullreqMergeOutput) HasBranchDeleted() bool {
 func (o *PullreqMergeOutput) SetBranchDeleted(v bool) {
 	o.BranchDeleted.Set(&v)
 }
+
 // SetBranchDeletedNil sets the value for BranchDeleted to be an explicit nil
 func (o *PullreqMergeOutput) SetBranchDeletedNil() {
 	o.BranchDeleted.Set(nil)
@@ -187,6 +188,7 @@ func (o *PullreqMergeOutput) HasDryRun() bool {
 func (o *PullreqMergeOutput) SetDryRun(v bool) {
 	o.DryRun.Set(&v)
 }
+
 // SetDryRunNil sets the value for DryRun to be an explicit nil
 func (o *PullreqMergeOutput) SetDryRunNil() {
 	o.DryRun.Set(nil)
@@ -229,6 +231,7 @@ func (o *PullreqMergeOutput) HasMinimumRequiredApprovalsCount() bool {
 func (o *PullreqMergeOutput) SetMinimumRequiredApprovalsCount(v int64) {
 	o.MinimumRequiredApprovalsCount.Set(&v)
 }
+
 // SetMinimumRequiredApprovalsCountNil sets the value for MinimumRequiredApprovalsCount to be an explicit nil
 func (o *PullreqMergeOutput) SetMinimumRequiredApprovalsCountNil() {
 	o.MinimumRequiredApprovalsCount.Set(nil)
@@ -271,6 +274,7 @@ func (o *PullreqMergeOutput) HasMinimumRequiredApprovalsCountLatest() bool {
 func (o *PullreqMergeOutput) SetMinimumRequiredApprovalsCountLatest(v int64) {
 	o.MinimumRequiredApprovalsCountLatest.Set(&v)
 }
+
 // SetMinimumRequiredApprovalsCountLatestNil sets the value for MinimumRequiredApprovalsCountLatest to be an explicit nil
 func (o *PullreqMergeOutput) SetMinimumRequiredApprovalsCountLatestNil() {
 	o.MinimumRequiredApprovalsCountLatest.Set(nil)
@@ -313,6 +317,7 @@ func (o *PullreqMergeOutput) HasRequiresCodeOwnersApproval() bool {
 func (o *PullreqMergeOutput) SetRequiresCodeOwnersApproval(v bool) {
 	o.RequiresCodeOwnersApproval.Set(&v)
 }
+
 // SetRequiresCodeOwnersApprovalNil sets the value for RequiresCodeOwnersApproval to be an explicit nil
 func (o *PullreqMergeOutput) SetRequiresCodeOwnersApprovalNil() {
 	o.RequiresCodeOwnersApproval.Set(nil)
@@ -355,6 +360,7 @@ func (o *PullreqMergeOutput) HasRequiresCodeOwnersApprovalLatest() bool {
 func (o *PullreqMergeOutput) SetRequiresCodeOwnersApprovalLatest(v bool) {
 	o.RequiresCodeOwnersApprovalLatest.Set(&v)
 }
+
 // SetRequiresCodeOwnersApprovalLatestNil sets the value for RequiresCodeOwnersApprovalLatest to be an explicit nil
 func (o *PullreqMergeOutput) SetRequiresCodeOwnersApprovalLatestNil() {
 	o.RequiresCodeOwnersApprovalLatest.Set(nil)
@@ -397,6 +403,7 @@ func (o *PullreqMergeOutput) HasRequiresCommentResolution() bool {
 func (o *PullreqMergeOutput) SetRequiresCommentResolution(v bool) {
 	o.RequiresCommentResolution.Set(&v)
 }
+
 // SetRequiresCommentResolutionNil sets the value for RequiresCommentResolution to be an explicit nil
 func (o *PullreqMergeOutput) SetRequiresCommentResolutionNil() {
 	o.RequiresCommentResolution.Set(nil)
@@ -439,6 +446,7 @@ func (o *PullreqMergeOutput) HasRequiresNoChangeRequests() bool {
 func (o *PullreqMergeOutput) SetRequiresNoChangeRequests(v bool) {
 	o.RequiresNoChangeRequests.Set(&v)
 }
+
 // SetRequiresNoChangeRequestsNil sets the value for RequiresNoChangeRequests to be an explicit nil
 func (o *PullreqMergeOutput) SetRequiresNoChangeRequestsNil() {
 	o.RequiresNoChangeRequests.Set(nil)
@@ -505,6 +513,7 @@ func (o *PullreqMergeOutput) HasSha() bool {
 func (o *PullreqMergeOutput) SetSha(v string) {
 	o.Sha.Set(&v)
 }
+
 // SetShaNil sets the value for Sha to be an explicit nil
 func (o *PullreqMergeOutput) SetShaNil() {
 	o.Sha.Set(nil)
@@ -516,7 +525,7 @@ func (o *PullreqMergeOutput) UnsetSha() {
 }
 
 func (o PullreqMergeOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -574,10 +583,10 @@ func (o *PullreqMergeOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -633,5 +642,3 @@ func (v *NullablePullreqMergeOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

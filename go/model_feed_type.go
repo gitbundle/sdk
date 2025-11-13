@@ -20,28 +20,28 @@ type FeedType string
 
 // List of FeedType
 const (
-	FEEDTYPE_NOOP FeedType = "noop"
-	FEEDTYPE_REPO_CREATED FeedType = "repo_created"
-	FEEDTYPE_REPO_IMPORTED FeedType = "repo_imported"
-	FEEDTYPE_REPO_DELETED FeedType = "repo_deleted"
-	FEEDTYPE_REPO_FORKED FeedType = "repo_forked"
-	FEEDTYPE_REPO_RENAMED FeedType = "repo_renamed"
-	FEEDTYPE_REPO_TRANSFERRED FeedType = "repo_transferred"
-	FEEDTYPE_REPO_RESTORED FeedType = "repo_restored"
-	FEEDTYPE_BRANCH_CREATED FeedType = "branch_created"
-	FEEDTYPE_BRANCH_RENAMED FeedType = "branch_renamed"
-	FEEDTYPE_BRANCH_DELETED FeedType = "branch_deleted"
-	FEEDTYPE_TAG_CREATED FeedType = "tag_created"
-	FEEDTYPE_TAG_DELETED FeedType = "tag_deleted"
-	FEEDTYPE_COMMITS_PUSHED FeedType = "commits_pushed"
-	FEEDTYPE_PULL_REQUEST_CREATED FeedType = "pull_request_created"
-	FEEDTYPE_PULL_REQUEST_CLOSED FeedType = "pull_request_closed"
-	FEEDTYPE_PULL_REQUEST_REOPENED FeedType = "pull_request_reopened"
-	FEEDTYPE_PULL_REQUEST_MERGED FeedType = "pull_request_merged"
-	FEEDTYPE_PULL_REQUEST_REVIEWED FeedType = "pull_request_reviewed"
+	FEEDTYPE_NOOP                   FeedType = "noop"
+	FEEDTYPE_REPO_CREATED           FeedType = "repo_created"
+	FEEDTYPE_REPO_IMPORTED          FeedType = "repo_imported"
+	FEEDTYPE_REPO_DELETED           FeedType = "repo_deleted"
+	FEEDTYPE_REPO_FORKED            FeedType = "repo_forked"
+	FEEDTYPE_REPO_RENAMED           FeedType = "repo_renamed"
+	FEEDTYPE_REPO_TRANSFERRED       FeedType = "repo_transferred"
+	FEEDTYPE_REPO_RESTORED          FeedType = "repo_restored"
+	FEEDTYPE_BRANCH_CREATED         FeedType = "branch_created"
+	FEEDTYPE_BRANCH_RENAMED         FeedType = "branch_renamed"
+	FEEDTYPE_BRANCH_DELETED         FeedType = "branch_deleted"
+	FEEDTYPE_TAG_CREATED            FeedType = "tag_created"
+	FEEDTYPE_TAG_DELETED            FeedType = "tag_deleted"
+	FEEDTYPE_COMMITS_PUSHED         FeedType = "commits_pushed"
+	FEEDTYPE_PULL_REQUEST_CREATED   FeedType = "pull_request_created"
+	FEEDTYPE_PULL_REQUEST_CLOSED    FeedType = "pull_request_closed"
+	FEEDTYPE_PULL_REQUEST_REOPENED  FeedType = "pull_request_reopened"
+	FEEDTYPE_PULL_REQUEST_MERGED    FeedType = "pull_request_merged"
+	FEEDTYPE_PULL_REQUEST_REVIEWED  FeedType = "pull_request_reviewed"
 	FEEDTYPE_PULL_REQUEST_COMMENTED FeedType = "pull_request_commented"
-	FEEDTYPE_RELEASE_CREATED FeedType = "release_created"
-	FEEDTYPE_RELEASE_DELETED FeedType = "release_deleted"
+	FEEDTYPE_RELEASE_CREATED        FeedType = "release_created"
+	FEEDTYPE_RELEASE_DELETED        FeedType = "release_deleted"
 )
 
 // All allowed values of FeedType enum
@@ -148,4 +148,3 @@ func (v *NullableFeedType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -19,10 +19,10 @@ var _ MappedNullable = &RepoContent{}
 
 // RepoContent struct for RepoContent
 type RepoContent struct {
-	Dir NullableRepoDirContent `json:"dir,omitempty"`
-	File NullableRepoFileContent `json:"file,omitempty"`
+	Dir       NullableRepoDirContent       `json:"dir,omitempty"`
+	File      NullableRepoFileContent      `json:"file,omitempty"`
 	Submodule NullableRepoSubmoduleContent `json:"submodule,omitempty"`
-	Symlink NullableRepoSymlinkContent `json:"symlink,omitempty"`
+	Symlink   NullableRepoSymlinkContent   `json:"symlink,omitempty"`
 }
 
 // NewRepoContent instantiates a new RepoContent object
@@ -74,6 +74,7 @@ func (o *RepoContent) HasDir() bool {
 func (o *RepoContent) SetDir(v RepoDirContent) {
 	o.Dir.Set(&v)
 }
+
 // SetDirNil sets the value for Dir to be an explicit nil
 func (o *RepoContent) SetDirNil() {
 	o.Dir.Set(nil)
@@ -116,6 +117,7 @@ func (o *RepoContent) HasFile() bool {
 func (o *RepoContent) SetFile(v RepoFileContent) {
 	o.File.Set(&v)
 }
+
 // SetFileNil sets the value for File to be an explicit nil
 func (o *RepoContent) SetFileNil() {
 	o.File.Set(nil)
@@ -158,6 +160,7 @@ func (o *RepoContent) HasSubmodule() bool {
 func (o *RepoContent) SetSubmodule(v RepoSubmoduleContent) {
 	o.Submodule.Set(&v)
 }
+
 // SetSubmoduleNil sets the value for Submodule to be an explicit nil
 func (o *RepoContent) SetSubmoduleNil() {
 	o.Submodule.Set(nil)
@@ -200,6 +203,7 @@ func (o *RepoContent) HasSymlink() bool {
 func (o *RepoContent) SetSymlink(v RepoSymlinkContent) {
 	o.Symlink.Set(&v)
 }
+
 // SetSymlinkNil sets the value for Symlink to be an explicit nil
 func (o *RepoContent) SetSymlinkNil() {
 	o.Symlink.Set(nil)
@@ -211,7 +215,7 @@ func (o *RepoContent) UnsetSymlink() {
 }
 
 func (o RepoContent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +274,3 @@ func (v *NullableRepoContent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

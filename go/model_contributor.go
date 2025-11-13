@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,10 +22,10 @@ var _ MappedNullable = &Contributor{}
 // Contributor struct for Contributor
 type Contributor struct {
 	DisplayName *string `json:"display_name,omitempty"`
-	Email string `json:"email"`
-	Id int64 `json:"id"`
-	Name string `json:"name"`
-	NumCommits int64 `json:"num_commits"`
+	Email       string  `json:"email"`
+	Id          int64   `json:"id"`
+	Name        string  `json:"name"`
+	NumCommits  int64   `json:"num_commits"`
 }
 
 type _Contributor Contributor
@@ -180,7 +180,7 @@ func (o *Contributor) SetNumCommits(v int64) {
 }
 
 func (o Contributor) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,10 +215,10 @@ func (o *Contributor) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -274,5 +274,3 @@ func (v *NullableContributor) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

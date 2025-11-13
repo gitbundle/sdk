@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,22 +21,22 @@ var _ MappedNullable = &CheckModel{}
 
 // CheckModel struct for CheckModel
 type CheckModel struct {
-	CommitSha string `json:"commit_sha"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Ended int64 `json:"ended"`
-	Id int64 `json:"id"`
-	Link string `json:"link"`
-	Metadata interface{} `json:"metadata"`
-	Name string `json:"name"`
-	Payload CheckPayload `json:"payload"`
-	PayloadKind CheckPayloadKind `json:"payload_kind"`
-	PayloadVersion string `json:"payload_version"`
-	RepoId int64 `json:"repo_id"`
-	Started int64 `json:"started"`
-	Status CheckStatus `json:"status"`
-	Summary string `json:"summary"`
-	Updated int64 `json:"updated"`
+	CommitSha      string           `json:"commit_sha"`
+	Created        int64            `json:"created"`
+	CreatedBy      int64            `json:"created_by"`
+	Ended          int64            `json:"ended"`
+	Id             int64            `json:"id"`
+	Link           string           `json:"link"`
+	Metadata       interface{}      `json:"metadata"`
+	Name           string           `json:"name"`
+	Payload        CheckPayload     `json:"payload"`
+	PayloadKind    CheckPayloadKind `json:"payload_kind"`
+	PayloadVersion string           `json:"payload_version"`
+	RepoId         int64            `json:"repo_id"`
+	Started        int64            `json:"started"`
+	Status         CheckStatus      `json:"status"`
+	Summary        string           `json:"summary"`
+	Updated        int64            `json:"updated"`
 }
 
 type _CheckModel CheckModel
@@ -461,7 +461,7 @@ func (o *CheckModel) SetUpdated(v int64) {
 }
 
 func (o CheckModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -519,10 +519,10 @@ func (o *CheckModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -578,5 +578,3 @@ func (v *NullableCheckModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

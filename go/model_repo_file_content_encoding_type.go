@@ -20,7 +20,7 @@ type RepoFileContentEncodingType string
 
 // List of RepoFileContentEncodingType
 const (
-	REPOFILECONTENTENCODINGTYPE_UTF8 RepoFileContentEncodingType = "utf8"
+	REPOFILECONTENTENCODINGTYPE_UTF8   RepoFileContentEncodingType = "utf8"
 	REPOFILECONTENTENCODINGTYPE_BASE64 RepoFileContentEncodingType = "base64"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableRepoFileContentEncodingType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

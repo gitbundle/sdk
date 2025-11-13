@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &OwnerEvaluation{}
 
 // OwnerEvaluation struct for OwnerEvaluation
 type OwnerEvaluation struct {
-	Owner NullableUserModel `json:"owner,omitempty"`
+	Owner          NullableUserModel     `json:"owner,omitempty"`
 	ReviewDecision PullreqReviewDecision `json:"review_decision"`
-	ReviewSha string `json:"review_sha"`
+	ReviewSha      string                `json:"review_sha"`
 }
 
 type _OwnerEvaluation OwnerEvaluation
@@ -79,6 +79,7 @@ func (o *OwnerEvaluation) HasOwner() bool {
 func (o *OwnerEvaluation) SetOwner(v UserModel) {
 	o.Owner.Set(&v)
 }
+
 // SetOwnerNil sets the value for Owner to be an explicit nil
 func (o *OwnerEvaluation) SetOwnerNil() {
 	o.Owner.Set(nil)
@@ -138,7 +139,7 @@ func (o *OwnerEvaluation) SetReviewSha(v string) {
 }
 
 func (o OwnerEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +170,10 @@ func (o *OwnerEvaluation) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +229,3 @@ func (v *NullableOwnerEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

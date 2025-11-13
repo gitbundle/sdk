@@ -18,12 +18,11 @@ import (
 	"net/url"
 )
 
-
 // KeywordSearchAPIService KeywordSearchAPI service
 type KeywordSearchAPIService service
 
 type ApiSearchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KeywordSearchAPIService
 }
 
@@ -34,24 +33,25 @@ func (r ApiSearchRequest) Execute() (string, *http.Response, error) {
 /*
 Search Method for Search
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchRequest
 */
 func (a *KeywordSearchAPIService) Search(ctx context.Context) ApiSearchRequest {
 	return ApiSearchRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *KeywordSearchAPIService) SearchExecute(r ApiSearchRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeywordSearchAPIService.Search")

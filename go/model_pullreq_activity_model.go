@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,34 +21,34 @@ var _ MappedNullable = &PullreqActivityModel{}
 
 // PullreqActivityModel struct for PullreqActivityModel
 type PullreqActivityModel struct {
-	CodeCommentLineNew NullableInt64 `json:"code_comment_line_new,omitempty"`
-	CodeCommentLineOld NullableInt64 `json:"code_comment_line_old,omitempty"`
-	CodeCommentMergeBaseSha NullableString `json:"code_comment_merge_base_sha,omitempty"`
-	CodeCommentPath NullableString `json:"code_comment_path,omitempty"`
-	CodeCommentSourceSha NullableString `json:"code_comment_source_sha,omitempty"`
-	CodeCommentSpanNew NullableInt64 `json:"code_comment_span_new,omitempty"`
-	CodeCommentSpanOld NullableInt64 `json:"code_comment_span_old,omitempty"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Deleted NullableInt64 `json:"deleted,omitempty"`
-	Edited int64 `json:"edited"`
-	Id int64 `json:"id"`
-	Kind PullreqActivityKind `json:"kind"`
-	Metadata NullablePullreqActivityMetadata `json:"metadata,omitempty"`
-	Order int64 `json:"order"`
-	Outdated NullableBool `json:"outdated,omitempty"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	Payload interface{} `json:"payload"`
-	PullreqId int64 `json:"pullreq_id"`
-	ReplySeq int64 `json:"reply_seq"`
-	RepoId int64 `json:"repo_id"`
-	Resolved NullableInt64 `json:"resolved,omitempty"`
-	ResolvedBy NullableInt64 `json:"resolved_by,omitempty"`
-	SubOrder int64 `json:"sub_order"`
-	Text string `json:"text"`
-	Type PullreqActivityType `json:"type"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	CodeCommentLineNew      NullableInt64                   `json:"code_comment_line_new,omitempty"`
+	CodeCommentLineOld      NullableInt64                   `json:"code_comment_line_old,omitempty"`
+	CodeCommentMergeBaseSha NullableString                  `json:"code_comment_merge_base_sha,omitempty"`
+	CodeCommentPath         NullableString                  `json:"code_comment_path,omitempty"`
+	CodeCommentSourceSha    NullableString                  `json:"code_comment_source_sha,omitempty"`
+	CodeCommentSpanNew      NullableInt64                   `json:"code_comment_span_new,omitempty"`
+	CodeCommentSpanOld      NullableInt64                   `json:"code_comment_span_old,omitempty"`
+	Created                 int64                           `json:"created"`
+	CreatedBy               int64                           `json:"created_by"`
+	Deleted                 NullableInt64                   `json:"deleted,omitempty"`
+	Edited                  int64                           `json:"edited"`
+	Id                      int64                           `json:"id"`
+	Kind                    PullreqActivityKind             `json:"kind"`
+	Metadata                NullablePullreqActivityMetadata `json:"metadata,omitempty"`
+	Order                   int64                           `json:"order"`
+	Outdated                NullableBool                    `json:"outdated,omitempty"`
+	ParentId                NullableInt64                   `json:"parent_id,omitempty"`
+	Payload                 interface{}                     `json:"payload"`
+	PullreqId               int64                           `json:"pullreq_id"`
+	ReplySeq                int64                           `json:"reply_seq"`
+	RepoId                  int64                           `json:"repo_id"`
+	Resolved                NullableInt64                   `json:"resolved,omitempty"`
+	ResolvedBy              NullableInt64                   `json:"resolved_by,omitempty"`
+	SubOrder                int64                           `json:"sub_order"`
+	Text                    string                          `json:"text"`
+	Type                    PullreqActivityType             `json:"type"`
+	Updated                 int64                           `json:"updated"`
+	Version                 int64                           `json:"version"`
 }
 
 type _PullreqActivityModel PullreqActivityModel
@@ -117,6 +117,7 @@ func (o *PullreqActivityModel) HasCodeCommentLineNew() bool {
 func (o *PullreqActivityModel) SetCodeCommentLineNew(v int64) {
 	o.CodeCommentLineNew.Set(&v)
 }
+
 // SetCodeCommentLineNewNil sets the value for CodeCommentLineNew to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentLineNewNil() {
 	o.CodeCommentLineNew.Set(nil)
@@ -159,6 +160,7 @@ func (o *PullreqActivityModel) HasCodeCommentLineOld() bool {
 func (o *PullreqActivityModel) SetCodeCommentLineOld(v int64) {
 	o.CodeCommentLineOld.Set(&v)
 }
+
 // SetCodeCommentLineOldNil sets the value for CodeCommentLineOld to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentLineOldNil() {
 	o.CodeCommentLineOld.Set(nil)
@@ -201,6 +203,7 @@ func (o *PullreqActivityModel) HasCodeCommentMergeBaseSha() bool {
 func (o *PullreqActivityModel) SetCodeCommentMergeBaseSha(v string) {
 	o.CodeCommentMergeBaseSha.Set(&v)
 }
+
 // SetCodeCommentMergeBaseShaNil sets the value for CodeCommentMergeBaseSha to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentMergeBaseShaNil() {
 	o.CodeCommentMergeBaseSha.Set(nil)
@@ -243,6 +246,7 @@ func (o *PullreqActivityModel) HasCodeCommentPath() bool {
 func (o *PullreqActivityModel) SetCodeCommentPath(v string) {
 	o.CodeCommentPath.Set(&v)
 }
+
 // SetCodeCommentPathNil sets the value for CodeCommentPath to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentPathNil() {
 	o.CodeCommentPath.Set(nil)
@@ -285,6 +289,7 @@ func (o *PullreqActivityModel) HasCodeCommentSourceSha() bool {
 func (o *PullreqActivityModel) SetCodeCommentSourceSha(v string) {
 	o.CodeCommentSourceSha.Set(&v)
 }
+
 // SetCodeCommentSourceShaNil sets the value for CodeCommentSourceSha to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentSourceShaNil() {
 	o.CodeCommentSourceSha.Set(nil)
@@ -327,6 +332,7 @@ func (o *PullreqActivityModel) HasCodeCommentSpanNew() bool {
 func (o *PullreqActivityModel) SetCodeCommentSpanNew(v int64) {
 	o.CodeCommentSpanNew.Set(&v)
 }
+
 // SetCodeCommentSpanNewNil sets the value for CodeCommentSpanNew to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentSpanNewNil() {
 	o.CodeCommentSpanNew.Set(nil)
@@ -369,6 +375,7 @@ func (o *PullreqActivityModel) HasCodeCommentSpanOld() bool {
 func (o *PullreqActivityModel) SetCodeCommentSpanOld(v int64) {
 	o.CodeCommentSpanOld.Set(&v)
 }
+
 // SetCodeCommentSpanOldNil sets the value for CodeCommentSpanOld to be an explicit nil
 func (o *PullreqActivityModel) SetCodeCommentSpanOldNil() {
 	o.CodeCommentSpanOld.Set(nil)
@@ -459,6 +466,7 @@ func (o *PullreqActivityModel) HasDeleted() bool {
 func (o *PullreqActivityModel) SetDeleted(v int64) {
 	o.Deleted.Set(&v)
 }
+
 // SetDeletedNil sets the value for Deleted to be an explicit nil
 func (o *PullreqActivityModel) SetDeletedNil() {
 	o.Deleted.Set(nil)
@@ -573,6 +581,7 @@ func (o *PullreqActivityModel) HasMetadata() bool {
 func (o *PullreqActivityModel) SetMetadata(v PullreqActivityMetadata) {
 	o.Metadata.Set(&v)
 }
+
 // SetMetadataNil sets the value for Metadata to be an explicit nil
 func (o *PullreqActivityModel) SetMetadataNil() {
 	o.Metadata.Set(nil)
@@ -639,6 +648,7 @@ func (o *PullreqActivityModel) HasOutdated() bool {
 func (o *PullreqActivityModel) SetOutdated(v bool) {
 	o.Outdated.Set(&v)
 }
+
 // SetOutdatedNil sets the value for Outdated to be an explicit nil
 func (o *PullreqActivityModel) SetOutdatedNil() {
 	o.Outdated.Set(nil)
@@ -681,6 +691,7 @@ func (o *PullreqActivityModel) HasParentId() bool {
 func (o *PullreqActivityModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *PullreqActivityModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -821,6 +832,7 @@ func (o *PullreqActivityModel) HasResolved() bool {
 func (o *PullreqActivityModel) SetResolved(v int64) {
 	o.Resolved.Set(&v)
 }
+
 // SetResolvedNil sets the value for Resolved to be an explicit nil
 func (o *PullreqActivityModel) SetResolvedNil() {
 	o.Resolved.Set(nil)
@@ -863,6 +875,7 @@ func (o *PullreqActivityModel) HasResolvedBy() bool {
 func (o *PullreqActivityModel) SetResolvedBy(v int64) {
 	o.ResolvedBy.Set(&v)
 }
+
 // SetResolvedByNil sets the value for ResolvedBy to be an explicit nil
 func (o *PullreqActivityModel) SetResolvedByNil() {
 	o.ResolvedBy.Set(nil)
@@ -994,7 +1007,7 @@ func (o *PullreqActivityModel) SetVersion(v int64) {
 }
 
 func (o PullreqActivityModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1089,10 +1102,10 @@ func (o *PullreqActivityModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1148,5 +1161,3 @@ func (v *NullablePullreqActivityModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

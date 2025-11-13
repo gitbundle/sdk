@@ -21,7 +21,7 @@ type PathRefType string
 // List of PathRefType
 const (
 	PATHREFTYPE_BRANCH PathRefType = "branch"
-	PATHREFTYPE_TAG PathRefType = "tag"
+	PATHREFTYPE_TAG    PathRefType = "tag"
 	PATHREFTYPE_COMMIT PathRefType = "commit"
 )
 
@@ -110,4 +110,3 @@ func (v *NullablePathRefType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

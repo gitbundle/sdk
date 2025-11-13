@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,7 +22,7 @@ var _ MappedNullable = &VariableGroup{}
 // VariableGroup struct for VariableGroup
 type VariableGroup struct {
 	Group NullableGroupModel `json:"group,omitempty"`
-	Model VariableModel `json:"model"`
+	Model VariableModel      `json:"model"`
 }
 
 type _VariableGroup VariableGroup
@@ -77,6 +77,7 @@ func (o *VariableGroup) HasGroup() bool {
 func (o *VariableGroup) SetGroup(v GroupModel) {
 	o.Group.Set(&v)
 }
+
 // SetGroupNil sets the value for Group to be an explicit nil
 func (o *VariableGroup) SetGroupNil() {
 	o.Group.Set(nil)
@@ -112,7 +113,7 @@ func (o *VariableGroup) SetModel(v VariableModel) {
 }
 
 func (o VariableGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *VariableGroup) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullableVariableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

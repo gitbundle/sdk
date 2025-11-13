@@ -18,12 +18,11 @@ import (
 	"net/url"
 )
 
-
 // RunnersAPIService RunnersAPI service
 type RunnersAPIService service
 
 type ApiGetStageRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RunnersAPIService
 }
 
@@ -34,24 +33,25 @@ func (r ApiGetStageRequest) Execute() (*RunnerStageOutput, *http.Response, error
 /*
 GetStage Method for GetStage
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetStageRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetStageRequest
 */
 func (a *RunnersAPIService) GetStage(ctx context.Context) ApiGetStageRequest {
 	return ApiGetStageRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RunnerStageOutput
+//
+//	@return RunnerStageOutput
 func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RunnerStageOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RunnerStageOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnersAPIService.GetStage")
@@ -125,8 +125,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -136,8 +136,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -147,8 +147,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -158,8 +158,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -169,8 +169,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -180,8 +180,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -191,8 +191,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -210,8 +210,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 }
 
 type ApiPostRunnersRegisterRequest struct {
-	ctx context.Context
-	ApiService *RunnersAPIService
+	ctx             context.Context
+	ApiService      *RunnersAPIService
 	runnerPostInput *RunnerPostInput
 }
 
@@ -227,24 +227,25 @@ func (r ApiPostRunnersRegisterRequest) Execute() (*TokenCreateOutput, *http.Resp
 /*
 PostRunnersRegister Method for PostRunnersRegister
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRunnersRegisterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostRunnersRegisterRequest
 */
 func (a *RunnersAPIService) PostRunnersRegister(ctx context.Context) ApiPostRunnersRegisterRequest {
 	return ApiPostRunnersRegisterRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TokenCreateOutput
+//
+//	@return TokenCreateOutput
 func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterRequest) (*TokenCreateOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TokenCreateOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TokenCreateOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnersAPIService.PostRunnersRegister")
@@ -309,8 +310,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -320,8 +321,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -331,8 +332,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -342,8 +343,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -353,8 +354,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -364,8 +365,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -375,8 +376,8 @@ func (a *RunnersAPIService) PostRunnersRegisterExecute(r ApiPostRunnersRegisterR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

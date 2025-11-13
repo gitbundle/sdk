@@ -19,15 +19,14 @@ import (
 	"strings"
 )
 
-
 // ReleaseUploadAPIService ReleaseUploadAPI service
 type ReleaseUploadAPIService service
 
 type ApiDeleteUploadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiDeleteUploadRequest) Execute() (*http.Response, error) {
@@ -37,26 +36,26 @@ func (r ApiDeleteUploadRequest) Execute() (*http.Response, error) {
 /*
 DeleteUpload Method for DeleteUpload
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiDeleteUploadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiDeleteUploadRequest
 */
 func (a *ReleaseUploadAPIService) DeleteUpload(ctx context.Context, repoRef string, tagRef string) ApiDeleteUploadRequest {
 	return ApiDeleteUploadRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
 func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.DeleteUpload")
@@ -132,8 +131,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +142,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +153,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +164,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +175,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -187,8 +186,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -198,8 +197,8 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -208,10 +207,10 @@ func (a *ReleaseUploadAPIService) DeleteUploadExecute(r ApiDeleteUploadRequest) 
 }
 
 type ApiGetAssetsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiGetAssetsRequest) Execute() ([]string, *http.Response, error) {
@@ -221,28 +220,29 @@ func (r ApiGetAssetsRequest) Execute() ([]string, *http.Response, error) {
 /*
 GetAssets Method for GetAssets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiGetAssetsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiGetAssetsRequest
 */
 func (a *ReleaseUploadAPIService) GetAssets(ctx context.Context, repoRef string, tagRef string) ApiGetAssetsRequest {
 	return ApiGetAssetsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.GetAssets")
@@ -318,8 +318,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -329,8 +329,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -340,8 +340,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -351,8 +351,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -362,8 +362,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -373,8 +373,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -384,8 +384,8 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -403,10 +403,10 @@ func (a *ReleaseUploadAPIService) GetAssetsExecute(r ApiGetAssetsRequest) ([]str
 }
 
 type ApiGetDownloadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiGetDownloadRequest) Execute() ([]int32, *http.Response, error) {
@@ -416,28 +416,29 @@ func (r ApiGetDownloadRequest) Execute() ([]int32, *http.Response, error) {
 /*
 GetDownload Method for GetDownload
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiGetDownloadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiGetDownloadRequest
 */
 func (a *ReleaseUploadAPIService) GetDownload(ctx context.Context, repoRef string, tagRef string) ApiGetDownloadRequest {
 	return ApiGetDownloadRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.GetDownload")
@@ -513,8 +514,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -524,8 +525,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -535,8 +536,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -546,8 +547,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -557,8 +558,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -568,8 +569,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -579,8 +580,8 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -598,10 +599,10 @@ func (a *ReleaseUploadAPIService) GetDownloadExecute(r ApiGetDownloadRequest) ([
 }
 
 type ApiGetRestoreRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiGetRestoreRequest) Execute() ([]int32, *http.Response, error) {
@@ -611,28 +612,29 @@ func (r ApiGetRestoreRequest) Execute() ([]int32, *http.Response, error) {
 /*
 GetRestore Method for GetRestore
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiGetRestoreRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiGetRestoreRequest
 */
 func (a *ReleaseUploadAPIService) GetRestore(ctx context.Context, repoRef string, tagRef string) ApiGetRestoreRequest {
 	return ApiGetRestoreRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.GetRestore")
@@ -708,8 +710,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -719,8 +721,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -730,8 +732,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -741,8 +743,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -752,8 +754,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -763,8 +765,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -774,8 +776,8 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -793,9 +795,9 @@ func (a *ReleaseUploadAPIService) GetRestoreExecute(r ApiGetRestoreRequest) ([]i
 }
 
 type ApiHeadOffsetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiHeadOffsetRequest) Execute() (*http.Response, error) {
@@ -805,24 +807,24 @@ func (r ApiHeadOffsetRequest) Execute() (*http.Response, error) {
 /*
 HeadOffset Method for HeadOffset
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiHeadOffsetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiHeadOffsetRequest
 */
 func (a *ReleaseUploadAPIService) HeadOffset(ctx context.Context, repoRef string) ApiHeadOffsetRequest {
 	return ApiHeadOffsetRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
 func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodHead
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodHead
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.HeadOffset")
@@ -897,8 +899,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -908,8 +910,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -919,8 +921,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -930,8 +932,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -941,8 +943,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -952,8 +954,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -963,8 +965,8 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -973,10 +975,10 @@ func (a *ReleaseUploadAPIService) HeadOffsetExecute(r ApiHeadOffsetRequest) (*ht
 }
 
 type ApiPatchChunksRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiPatchChunksRequest) Execute() (string, *http.Response, error) {
@@ -986,28 +988,29 @@ func (r ApiPatchChunksRequest) Execute() (string, *http.Response, error) {
 /*
 PatchChunks Method for PatchChunks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiPatchChunksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiPatchChunksRequest
 */
 func (a *ReleaseUploadAPIService) PatchChunks(ctx context.Context, repoRef string, tagRef string) ApiPatchChunksRequest {
 	return ApiPatchChunksRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.PatchChunks")
@@ -1083,8 +1086,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1094,8 +1097,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1105,8 +1108,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1116,8 +1119,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1127,8 +1130,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1138,8 +1141,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1149,8 +1152,8 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1168,10 +1171,10 @@ func (a *ReleaseUploadAPIService) PatchChunksExecute(r ApiPatchChunksRequest) (s
 }
 
 type ApiPostUploadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReleaseUploadAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiPostUploadRequest) Execute() (string, *http.Response, error) {
@@ -1181,28 +1184,29 @@ func (r ApiPostUploadRequest) Execute() (string, *http.Response, error) {
 /*
 PostUpload Method for PostUpload
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiPostUploadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiPostUploadRequest
 */
 func (a *ReleaseUploadAPIService) PostUpload(ctx context.Context, repoRef string, tagRef string) ApiPostUploadRequest {
 	return ApiPostUploadRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReleaseUploadAPIService.PostUpload")
@@ -1278,8 +1282,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1289,8 +1293,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1300,8 +1304,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1311,8 +1315,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1322,8 +1326,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1333,8 +1337,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1344,8 +1348,8 @@ func (a *ReleaseUploadAPIService) PostUploadExecute(r ApiPostUploadRequest) (str
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

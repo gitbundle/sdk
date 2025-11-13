@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &RuleCreateInput{}
 
 // RuleCreateInput struct for RuleCreateInput
 type RuleCreateInput struct {
-	Definition NullableProtectionDefinition `json:"definition,omitempty"`
-	Description string `json:"description"`
-	Name string `json:"name"`
-	Pattern ProtectionPattern `json:"pattern"`
-	State RuleState `json:"state"`
-	Type RuleType `json:"type"`
+	Definition  NullableProtectionDefinition `json:"definition,omitempty"`
+	Description string                       `json:"description"`
+	Name        string                       `json:"name"`
+	Pattern     ProtectionPattern            `json:"pattern"`
+	State       RuleState                    `json:"state"`
+	Type        RuleType                     `json:"type"`
 }
 
 type _RuleCreateInput RuleCreateInput
@@ -85,6 +85,7 @@ func (o *RuleCreateInput) HasDefinition() bool {
 func (o *RuleCreateInput) SetDefinition(v ProtectionDefinition) {
 	o.Definition.Set(&v)
 }
+
 // SetDefinitionNil sets the value for Definition to be an explicit nil
 func (o *RuleCreateInput) SetDefinitionNil() {
 	o.Definition.Set(nil)
@@ -216,7 +217,7 @@ func (o *RuleCreateInput) SetType(v RuleType) {
 }
 
 func (o RuleCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,10 +254,10 @@ func (o *RuleCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -312,5 +313,3 @@ func (v *NullableRuleCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

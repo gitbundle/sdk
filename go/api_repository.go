@@ -16,18 +16,17 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // RepositoryAPIService RepositoryAPI service
 type RepositoryAPIService service
 
 type ApiCommitFilesRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *RepositoryAPIService
+	repoRef          string
 	commitFilesInput *CommitFilesInput
 }
 
@@ -43,26 +42,27 @@ func (r ApiCommitFilesRequest) Execute() (*CommitFilesOutput, *http.Response, er
 /*
 CommitFiles Method for CommitFiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiCommitFilesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiCommitFilesRequest
 */
 func (a *RepositoryAPIService) CommitFiles(ctx context.Context, repoRef string) ApiCommitFilesRequest {
 	return ApiCommitFilesRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return CommitFilesOutput
+//
+//	@return CommitFilesOutput
 func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*CommitFilesOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitFilesOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitFilesOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.CommitFiles")
@@ -142,8 +142,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -153,8 +153,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -164,8 +164,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -175,8 +175,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -186,8 +186,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -197,8 +197,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -208,8 +208,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -219,8 +219,8 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -238,9 +238,9 @@ func (a *RepositoryAPIService) CommitFilesExecute(r ApiCommitFilesRequest) (*Com
 }
 
 type ApiCommitsCalculateDivergenceRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                        context.Context
+	ApiService                 *RepositoryAPIService
+	repoRef                    string
 	repoCommitDivergencesInput *RepoCommitDivergencesInput
 }
 
@@ -256,26 +256,27 @@ func (r ApiCommitsCalculateDivergenceRequest) Execute() ([]CommitDivergence, *ht
 /*
 CommitsCalculateDivergence Method for CommitsCalculateDivergence
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiCommitsCalculateDivergenceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiCommitsCalculateDivergenceRequest
 */
 func (a *RepositoryAPIService) CommitsCalculateDivergence(ctx context.Context, repoRef string) ApiCommitsCalculateDivergenceRequest {
 	return ApiCommitsCalculateDivergenceRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []CommitDivergence
+//
+//	@return []CommitDivergence
 func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCalculateDivergenceRequest) ([]CommitDivergence, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommitDivergence
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommitDivergence
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.CommitsCalculateDivergence")
@@ -355,8 +356,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -366,8 +367,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -377,8 +378,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -388,8 +389,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -399,8 +400,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -410,8 +411,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -421,8 +422,8 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -440,10 +441,10 @@ func (a *RepositoryAPIService) CommitsCalculateDivergenceExecute(r ApiCommitsCal
 }
 
 type ApiDeleteBranchRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	branchName string
+	ctx         context.Context
+	ApiService  *RepositoryAPIService
+	repoRef     string
+	branchName  string
 	bypassRules *bool
 }
 
@@ -459,16 +460,16 @@ func (r ApiDeleteBranchRequest) Execute() (*http.Response, error) {
 /*
 DeleteBranch Method for DeleteBranch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param branchName
- @return ApiDeleteBranchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param branchName
+	@return ApiDeleteBranchRequest
 */
 func (a *RepositoryAPIService) DeleteBranch(ctx context.Context, repoRef string, branchName string) ApiDeleteBranchRequest {
 	return ApiDeleteBranchRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		branchName: branchName,
 	}
 }
@@ -476,9 +477,9 @@ func (a *RepositoryAPIService) DeleteBranch(ctx context.Context, repoRef string,
 // Execute executes the request
 func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.DeleteBranch")
@@ -557,8 +558,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -568,8 +569,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -579,8 +580,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -590,8 +591,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -601,8 +602,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -612,8 +613,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -623,8 +624,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -634,8 +635,8 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -644,10 +645,10 @@ func (a *RepositoryAPIService) DeleteBranchExecute(r ApiDeleteBranchRequest) (*h
 }
 
 type ApiDeleteReleaseRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	tagRef string
+	ctx         context.Context
+	ApiService  *RepositoryAPIService
+	repoRef     string
+	tagRef      string
 	bypassRules *bool
 }
 
@@ -663,26 +664,26 @@ func (r ApiDeleteReleaseRequest) Execute() (*http.Response, error) {
 /*
 DeleteRelease Method for DeleteRelease
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiDeleteReleaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiDeleteReleaseRequest
 */
 func (a *RepositoryAPIService) DeleteRelease(ctx context.Context, repoRef string, tagRef string) ApiDeleteReleaseRequest {
 	return ApiDeleteReleaseRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
 func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.DeleteRelease")
@@ -761,8 +762,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -772,8 +773,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -783,8 +784,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -794,8 +795,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -805,8 +806,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -816,8 +817,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -827,8 +828,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -838,8 +839,8 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -848,9 +849,9 @@ func (a *RepositoryAPIService) DeleteReleaseExecute(r ApiDeleteReleaseRequest) (
 }
 
 type ApiDeleteRepositoryRunnerRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 	runnerUuid string
 }
 
@@ -861,16 +862,16 @@ func (r ApiDeleteRepositoryRunnerRequest) Execute() (*http.Response, error) {
 /*
 DeleteRepositoryRunner Method for DeleteRepositoryRunner
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param runnerUuid
- @return ApiDeleteRepositoryRunnerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param runnerUuid
+	@return ApiDeleteRepositoryRunnerRequest
 */
 func (a *RepositoryAPIService) DeleteRepositoryRunner(ctx context.Context, repoRef string, runnerUuid string) ApiDeleteRepositoryRunnerRequest {
 	return ApiDeleteRepositoryRunnerRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		runnerUuid: runnerUuid,
 	}
 }
@@ -878,9 +879,9 @@ func (a *RepositoryAPIService) DeleteRepositoryRunner(ctx context.Context, repoR
 // Execute executes the request
 func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteRepositoryRunnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.DeleteRepositoryRunner")
@@ -956,8 +957,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -967,8 +968,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -978,8 +979,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -989,8 +990,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1000,8 +1001,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1011,8 +1012,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1022,8 +1023,8 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1032,9 +1033,9 @@ func (a *RepositoryAPIService) DeleteRepositoryRunnerExecute(r ApiDeleteReposito
 }
 
 type ApiDeleteRepositoryVariableRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                context.Context
+	ApiService         *RepositoryAPIService
+	repoRef            string
 	variableIdentifier string
 }
 
@@ -1045,16 +1046,16 @@ func (r ApiDeleteRepositoryVariableRequest) Execute() (*http.Response, error) {
 /*
 DeleteRepositoryVariable Method for DeleteRepositoryVariable
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param variableIdentifier
- @return ApiDeleteRepositoryVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param variableIdentifier
+	@return ApiDeleteRepositoryVariableRequest
 */
 func (a *RepositoryAPIService) DeleteRepositoryVariable(ctx context.Context, repoRef string, variableIdentifier string) ApiDeleteRepositoryVariableRequest {
 	return ApiDeleteRepositoryVariableRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:         a,
+		ctx:                ctx,
+		repoRef:            repoRef,
 		variableIdentifier: variableIdentifier,
 	}
 }
@@ -1062,9 +1063,9 @@ func (a *RepositoryAPIService) DeleteRepositoryVariable(ctx context.Context, rep
 // Execute executes the request
 func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteRepositoryVariableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.DeleteRepositoryVariable")
@@ -1140,8 +1141,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1151,8 +1152,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1162,8 +1163,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1173,8 +1174,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1184,8 +1185,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1195,8 +1196,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1206,8 +1207,8 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1216,10 +1217,10 @@ func (a *RepositoryAPIService) DeleteRepositoryVariableExecute(r ApiDeleteReposi
 }
 
 type ApiDeleteTagRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	tagName string
+	ctx         context.Context
+	ApiService  *RepositoryAPIService
+	repoRef     string
+	tagName     string
 	bypassRules *bool
 }
 
@@ -1235,26 +1236,26 @@ func (r ApiDeleteTagRequest) Execute() (*http.Response, error) {
 /*
 DeleteTag Method for DeleteTag
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagName
- @return ApiDeleteTagRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagName
+	@return ApiDeleteTagRequest
 */
 func (a *RepositoryAPIService) DeleteTag(ctx context.Context, repoRef string, tagName string) ApiDeleteTagRequest {
 	return ApiDeleteTagRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagName: tagName,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagName:    tagName,
 	}
 }
 
 // Execute executes the request
 func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.DeleteTag")
@@ -1333,8 +1334,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1344,8 +1345,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1355,8 +1356,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1366,8 +1367,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1377,8 +1378,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -1388,8 +1389,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1399,8 +1400,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1410,8 +1411,8 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1420,9 +1421,9 @@ func (a *RepositoryAPIService) DeleteTagExecute(r ApiDeleteTagRequest) (*http.Re
 }
 
 type ApiGeneralUpdateRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx             context.Context
+	ApiService      *RepositoryAPIService
+	repoRef         string
 	generalSettings *GeneralSettings
 }
 
@@ -1438,26 +1439,27 @@ func (r ApiGeneralUpdateRequest) Execute() (*GeneralSettings, *http.Response, er
 /*
 GeneralUpdate Method for GeneralUpdate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGeneralUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGeneralUpdateRequest
 */
 func (a *RepositoryAPIService) GeneralUpdate(ctx context.Context, repoRef string) ApiGeneralUpdateRequest {
 	return ApiGeneralUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return GeneralSettings
+//
+//	@return GeneralSettings
 func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (*GeneralSettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GeneralSettings
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GeneralSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GeneralUpdate")
@@ -1537,8 +1539,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1548,8 +1550,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1559,8 +1561,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1570,8 +1572,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1581,8 +1583,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1592,8 +1594,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1603,8 +1605,8 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1622,14 +1624,14 @@ func (a *RepositoryAPIService) GeneralUpdateExecute(r ApiGeneralUpdateRequest) (
 }
 
 type ApiGetArchiveRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	archiveRef string
-	prefix *string
-	attributes *ArchiveAttribute
-	paths *[]string
-	timestamp *int64
+	ctx         context.Context
+	ApiService  *RepositoryAPIService
+	repoRef     string
+	archiveRef  string
+	prefix      *string
+	attributes  *ArchiveAttribute
+	paths       *[]string
+	timestamp   *int64
 	compression *int32
 }
 
@@ -1665,28 +1667,29 @@ func (r ApiGetArchiveRequest) Execute() ([]int32, *http.Response, error) {
 /*
 GetArchive Method for GetArchive
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param archiveRef
- @return ApiGetArchiveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param archiveRef
+	@return ApiGetArchiveRequest
 */
 func (a *RepositoryAPIService) GetArchive(ctx context.Context, repoRef string, archiveRef string) ApiGetArchiveRequest {
 	return ApiGetArchiveRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		archiveRef: archiveRef,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetArchive")
@@ -1785,8 +1788,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1796,8 +1799,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1807,8 +1810,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1818,8 +1821,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1829,8 +1832,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1840,8 +1843,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1851,8 +1854,8 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1870,13 +1873,13 @@ func (a *RepositoryAPIService) GetArchiveExecute(r ApiGetArchiveRequest) ([]int3
 }
 
 type ApiGetBlameRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	path string
-	gitRef *string
-	lineFrom *int64
-	lineTo *int64
+	repoRef    string
+	path       string
+	gitRef     *string
+	lineFrom   *int64
+	lineTo     *int64
 }
 
 // The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
@@ -1902,28 +1905,29 @@ func (r ApiGetBlameRequest) Execute() ([]BlamePart, *http.Response, error) {
 /*
 GetBlame Method for GetBlame
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiGetBlameRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiGetBlameRequest
 */
 func (a *RepositoryAPIService) GetBlame(ctx context.Context, repoRef string, path string) ApiGetBlameRequest {
 	return ApiGetBlameRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return []BlamePart
+//
+//	@return []BlamePart
 func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePart, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []BlamePart
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []BlamePart
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetBlame")
@@ -2008,8 +2012,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2019,8 +2023,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2030,8 +2034,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2041,8 +2045,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2052,8 +2056,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2063,8 +2067,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2074,8 +2078,8 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2093,9 +2097,9 @@ func (a *RepositoryAPIService) GetBlameExecute(r ApiGetBlameRequest) ([]BlamePar
 }
 
 type ApiGetBranchRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 	branchName string
 }
 
@@ -2106,28 +2110,29 @@ func (r ApiGetBranchRequest) Execute() (*CommitBranch, *http.Response, error) {
 /*
 GetBranch Method for GetBranch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param branchName
- @return ApiGetBranchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param branchName
+	@return ApiGetBranchRequest
 */
 func (a *RepositoryAPIService) GetBranch(ctx context.Context, repoRef string, branchName string) ApiGetBranchRequest {
 	return ApiGetBranchRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		branchName: branchName,
 	}
 }
 
 // Execute executes the request
-//  @return CommitBranch
+//
+//	@return CommitBranch
 func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitBranch, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitBranch
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitBranch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetBranch")
@@ -2203,8 +2208,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2214,8 +2219,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2225,8 +2230,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2236,8 +2241,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2247,8 +2252,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2258,8 +2263,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2269,8 +2274,8 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2288,12 +2293,12 @@ func (a *RepositoryAPIService) GetBranchExecute(r ApiGetBranchRequest) (*CommitB
 }
 
 type ApiGetBranchesRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
+	ctx           context.Context
+	ApiService    *RepositoryAPIService
+	repoRef       string
+	page          *int64
+	size          *int64
+	query         *string
 	includeCommit *bool
 }
 
@@ -2324,26 +2329,27 @@ func (r ApiGetBranchesRequest) Execute() ([]CommitBranch, *http.Response, error)
 /*
 GetBranches Method for GetBranches
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetBranchesRequest
 */
 func (a *RepositoryAPIService) GetBranches(ctx context.Context, repoRef string) ApiGetBranchesRequest {
 	return ApiGetBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []CommitBranch
+//
+//	@return []CommitBranch
 func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]CommitBranch, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommitBranch
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommitBranch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetBranches")
@@ -2430,8 +2436,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2441,8 +2447,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2452,8 +2458,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2463,8 +2469,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2474,8 +2480,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2485,8 +2491,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2496,8 +2502,8 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2515,10 +2521,10 @@ func (a *RepositoryAPIService) GetBranchesExecute(r ApiGetBranchesRequest) ([]Co
 }
 
 type ApiGetCodeownersValidateRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	gitRef *string
+	repoRef    string
+	gitRef     *string
 }
 
 func (r ApiGetCodeownersValidateRequest) GitRef(gitRef string) ApiGetCodeownersValidateRequest {
@@ -2533,26 +2539,27 @@ func (r ApiGetCodeownersValidateRequest) Execute() (*CodeOwnersValidation, *http
 /*
 GetCodeownersValidate Method for GetCodeownersValidate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetCodeownersValidateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetCodeownersValidateRequest
 */
 func (a *RepositoryAPIService) GetCodeownersValidate(ctx context.Context, repoRef string) ApiGetCodeownersValidateRequest {
 	return ApiGetCodeownersValidateRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return CodeOwnersValidation
+//
+//	@return CodeOwnersValidation
 func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersValidateRequest) (*CodeOwnersValidation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CodeOwnersValidation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CodeOwnersValidation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetCodeownersValidate")
@@ -2630,8 +2637,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2641,8 +2648,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2652,8 +2659,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2663,8 +2670,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2674,8 +2681,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2685,8 +2692,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2696,8 +2703,8 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2715,10 +2722,10 @@ func (a *RepositoryAPIService) GetCodeownersValidateExecute(r ApiGetCodeownersVa
 }
 
 type ApiGetCommitRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	commitSha string
+	repoRef    string
+	commitSha  string
 }
 
 func (r ApiGetCommitRequest) Execute() (*Commit, *http.Response, error) {
@@ -2728,28 +2735,29 @@ func (r ApiGetCommitRequest) Execute() (*Commit, *http.Response, error) {
 /*
 GetCommit Method for GetCommit
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param commitSha
- @return ApiGetCommitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param commitSha
+	@return ApiGetCommitRequest
 */
 func (a *RepositoryAPIService) GetCommit(ctx context.Context, repoRef string, commitSha string) ApiGetCommitRequest {
 	return ApiGetCommitRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		commitSha: commitSha,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		commitSha:  commitSha,
 	}
 }
 
 // Execute executes the request
-//  @return Commit
+//
+//	@return Commit
 func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Commit
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Commit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetCommit")
@@ -2825,8 +2833,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2836,8 +2844,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2847,8 +2855,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2858,8 +2866,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2869,8 +2877,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2880,8 +2888,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2891,8 +2899,8 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2910,10 +2918,10 @@ func (a *RepositoryAPIService) GetCommitExecute(r ApiGetCommitRequest) (*Commit,
 }
 
 type ApiGetCommitDiffRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	commitSha string
+	repoRef    string
+	commitSha  string
 }
 
 func (r ApiGetCommitDiffRequest) Execute() (string, *http.Response, error) {
@@ -2923,28 +2931,29 @@ func (r ApiGetCommitDiffRequest) Execute() (string, *http.Response, error) {
 /*
 GetCommitDiff Method for GetCommitDiff
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param commitSha
- @return ApiGetCommitDiffRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param commitSha
+	@return ApiGetCommitDiffRequest
 */
 func (a *RepositoryAPIService) GetCommitDiff(ctx context.Context, repoRef string, commitSha string) ApiGetCommitDiffRequest {
 	return ApiGetCommitDiffRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		commitSha: commitSha,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		commitSha:  commitSha,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetCommitDiff")
@@ -3020,8 +3029,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3031,8 +3040,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3042,8 +3051,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3053,8 +3062,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3064,8 +3073,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3075,8 +3084,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3086,8 +3095,8 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3105,14 +3114,14 @@ func (a *RepositoryAPIService) GetCommitDiffExecute(r ApiGetCommitDiffRequest) (
 }
 
 type ApiGetCommitFileContentRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	commitSha string
-	filePath *string
+	repoRef    string
+	commitSha  string
+	filePath   *string
 	hunkHeader *string
-	expandUp *bool
-	size *int32
+	expandUp   *bool
+	size       *int32
 }
 
 func (r ApiGetCommitFileContentRequest) FilePath(filePath string) ApiGetCommitFileContentRequest {
@@ -3142,28 +3151,29 @@ func (r ApiGetCommitFileContentRequest) Execute() (*DiffFileContent, *http.Respo
 /*
 GetCommitFileContent Method for GetCommitFileContent
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param commitSha
- @return ApiGetCommitFileContentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param commitSha
+	@return ApiGetCommitFileContentRequest
 */
 func (a *RepositoryAPIService) GetCommitFileContent(ctx context.Context, repoRef string, commitSha string) ApiGetCommitFileContentRequest {
 	return ApiGetCommitFileContentRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		commitSha: commitSha,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		commitSha:  commitSha,
 	}
 }
 
 // Execute executes the request
-//  @return DiffFileContent
+//
+//	@return DiffFileContent
 func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileContentRequest) (*DiffFileContent, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DiffFileContent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DiffFileContent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetCommitFileContent")
@@ -3254,8 +3264,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3265,8 +3275,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3276,8 +3286,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3287,8 +3297,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3298,8 +3308,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3309,8 +3319,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3320,8 +3330,8 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3339,17 +3349,17 @@ func (a *RepositoryAPIService) GetCommitFileContentExecute(r ApiGetCommitFileCon
 }
 
 type ApiGetCommitsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	gitRef *string
-	page *int64
-	size *int64
-	after *string
-	path *string
-	since *int64
-	until *int64
-	author *string
+	ctx          context.Context
+	ApiService   *RepositoryAPIService
+	repoRef      string
+	gitRef       *string
+	page         *int64
+	size         *int64
+	after        *string
+	path         *string
+	since        *int64
+	until        *int64
+	author       *string
 	includeStats *bool
 }
 
@@ -3405,26 +3415,27 @@ func (r ApiGetCommitsRequest) Execute() ([]CommitWithPathRenameDetails, *http.Re
 /*
 GetCommits Method for GetCommits
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetCommitsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetCommitsRequest
 */
 func (a *RepositoryAPIService) GetCommits(ctx context.Context, repoRef string) ApiGetCommitsRequest {
 	return ApiGetCommitsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []CommitWithPathRenameDetails
+//
+//	@return []CommitWithPathRenameDetails
 func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]CommitWithPathRenameDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommitWithPathRenameDetails
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommitWithPathRenameDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetCommits")
@@ -3526,8 +3537,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3537,8 +3548,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3548,8 +3559,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3559,8 +3570,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3570,8 +3581,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3581,8 +3592,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3592,8 +3603,8 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3611,11 +3622,11 @@ func (a *RepositoryAPIService) GetCommitsExecute(r ApiGetCommitsRequest) ([]Comm
 }
 
 type ApiGetContentRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	path string
-	gitRef *string
+	ctx           context.Context
+	ApiService    *RepositoryAPIService
+	repoRef       string
+	path          string
+	gitRef        *string
 	includeCommit *bool
 }
 
@@ -3636,28 +3647,29 @@ func (r ApiGetContentRequest) Execute() (*RepoContentOutput, *http.Response, err
 /*
 GetContent Method for GetContent
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiGetContentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiGetContentRequest
 */
 func (a *RepositoryAPIService) GetContent(ctx context.Context, repoRef string, path string) ApiGetContentRequest {
 	return ApiGetContentRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return RepoContentOutput
+//
+//	@return RepoContentOutput
 func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoContentOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepoContentOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepoContentOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetContent")
@@ -3739,8 +3751,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3750,8 +3762,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3761,8 +3773,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3772,8 +3784,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3783,8 +3795,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3794,8 +3806,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3805,8 +3817,8 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3824,12 +3836,12 @@ func (a *RepositoryAPIService) GetContentExecute(r ApiGetContentRequest) (*RepoC
 }
 
 type ApiGetContributorsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	gitRef *string
-	since *int64
-	until *int64
+	repoRef    string
+	gitRef     *string
+	since      *int64
+	until      *int64
 }
 
 func (r ApiGetContributorsRequest) GitRef(gitRef string) ApiGetContributorsRequest {
@@ -3854,26 +3866,27 @@ func (r ApiGetContributorsRequest) Execute() ([]Contributor, *http.Response, err
 /*
 GetContributors Method for GetContributors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetContributorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetContributorsRequest
 */
 func (a *RepositoryAPIService) GetContributors(ctx context.Context, repoRef string) ApiGetContributorsRequest {
 	return ApiGetContributorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []Contributor
+//
+//	@return []Contributor
 func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsRequest) ([]Contributor, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Contributor
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Contributor
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetContributors")
@@ -3957,8 +3970,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3968,8 +3981,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3979,8 +3992,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3990,8 +4003,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4001,8 +4014,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4012,8 +4025,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4023,8 +4036,8 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4042,10 +4055,10 @@ func (a *RepositoryAPIService) GetContributorsExecute(r ApiGetContributorsReques
 }
 
 type ApiGetDiffStatsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	path string
+	repoRef    string
+	path       string
 }
 
 func (r ApiGetDiffStatsRequest) Execute() (*DiffStats, *http.Response, error) {
@@ -4055,28 +4068,29 @@ func (r ApiGetDiffStatsRequest) Execute() (*DiffStats, *http.Response, error) {
 /*
 GetDiffStats Method for GetDiffStats
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiGetDiffStatsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiGetDiffStatsRequest
 */
 func (a *RepositoryAPIService) GetDiffStats(ctx context.Context, repoRef string, path string) ApiGetDiffStatsRequest {
 	return ApiGetDiffStatsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return DiffStats
+//
+//	@return DiffStats
 func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*DiffStats, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DiffStats
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DiffStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetDiffStats")
@@ -4152,8 +4166,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4163,8 +4177,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4174,8 +4188,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4185,8 +4199,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4196,8 +4210,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4207,8 +4221,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4218,8 +4232,8 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4237,10 +4251,10 @@ func (a *RepositoryAPIService) GetDiffStatsExecute(r ApiGetDiffStatsRequest) (*D
 }
 
 type ApiGetDiffsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	path string
+	repoRef    string
+	path       string
 }
 
 func (r ApiGetDiffsRequest) Execute() (string, *http.Response, error) {
@@ -4250,28 +4264,29 @@ func (r ApiGetDiffsRequest) Execute() (string, *http.Response, error) {
 /*
 GetDiffs Method for GetDiffs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiGetDiffsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiGetDiffsRequest
 */
 func (a *RepositoryAPIService) GetDiffs(ctx context.Context, repoRef string, path string) ApiGetDiffsRequest {
 	return ApiGetDiffsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetDiffs")
@@ -4347,8 +4362,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4358,8 +4373,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4369,8 +4384,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4380,8 +4395,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4391,8 +4406,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4402,8 +4417,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4413,8 +4428,8 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4432,14 +4447,14 @@ func (a *RepositoryAPIService) GetDiffsExecute(r ApiGetDiffsRequest) (string, *h
 }
 
 type ApiGetForksRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	sort *RepoSort
-	order *OrderOption
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	sort       *RepoSort
+	order      *OrderOption
 }
 
 func (r ApiGetForksRequest) Page(page int64) ApiGetForksRequest {
@@ -4474,26 +4489,27 @@ func (r ApiGetForksRequest) Execute() ([]RepositoryModel, *http.Response, error)
 /*
 GetForks Method for GetForks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetForksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetForksRequest
 */
 func (a *RepositoryAPIService) GetForks(ctx context.Context, repoRef string) ApiGetForksRequest {
 	return ApiGetForksRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []RepositoryModel
+//
+//	@return []RepositoryModel
 func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RepositoryModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetForks")
@@ -4583,8 +4599,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4594,8 +4610,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4605,8 +4621,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4616,8 +4632,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4627,8 +4643,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4638,8 +4654,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4649,8 +4665,8 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4668,9 +4684,9 @@ func (a *RepositoryAPIService) GetForksExecute(r ApiGetForksRequest) ([]Reposito
 }
 
 type ApiGetGeneralRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetGeneralRequest) Execute() (*GeneralSettings, *http.Response, error) {
@@ -4680,26 +4696,27 @@ func (r ApiGetGeneralRequest) Execute() (*GeneralSettings, *http.Response, error
 /*
 GetGeneral Method for GetGeneral
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetGeneralRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetGeneralRequest
 */
 func (a *RepositoryAPIService) GetGeneral(ctx context.Context, repoRef string) ApiGetGeneralRequest {
 	return ApiGetGeneralRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return GeneralSettings
+//
+//	@return GeneralSettings
 func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*GeneralSettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GeneralSettings
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GeneralSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetGeneral")
@@ -4774,8 +4791,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4785,8 +4802,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4796,8 +4813,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4807,8 +4824,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4818,8 +4835,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4829,8 +4846,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4840,8 +4857,8 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4859,9 +4876,9 @@ func (a *RepositoryAPIService) GetGeneralExecute(r ApiGetGeneralRequest) (*Gener
 }
 
 type ApiGetHasStarredRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetHasStarredRequest) Execute() (*RepositoryStarModel, *http.Response, error) {
@@ -4871,26 +4888,27 @@ func (r ApiGetHasStarredRequest) Execute() (*RepositoryStarModel, *http.Response
 /*
 GetHasStarred Method for GetHasStarred
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetHasStarredRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetHasStarredRequest
 */
 func (a *RepositoryAPIService) GetHasStarred(ctx context.Context, repoRef string) ApiGetHasStarredRequest {
 	return ApiGetHasStarredRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryStarModel
+//
+//	@return RepositoryStarModel
 func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (*RepositoryStarModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryStarModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryStarModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetHasStarred")
@@ -4965,8 +4983,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4976,8 +4994,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4987,8 +5005,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4998,8 +5016,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5009,8 +5027,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5020,8 +5038,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5031,8 +5049,8 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5050,9 +5068,9 @@ func (a *RepositoryAPIService) GetHasStarredExecute(r ApiGetHasStarredRequest) (
 }
 
 type ApiGetImportProgressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetImportProgressRequest) Execute() (*JobProgress, *http.Response, error) {
@@ -5062,26 +5080,27 @@ func (r ApiGetImportProgressRequest) Execute() (*JobProgress, *http.Response, er
 /*
 GetImportProgress Method for GetImportProgress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetImportProgressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetImportProgressRequest
 */
 func (a *RepositoryAPIService) GetImportProgress(ctx context.Context, repoRef string) ApiGetImportProgressRequest {
 	return ApiGetImportProgressRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return JobProgress
+//
+//	@return JobProgress
 func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRequest) (*JobProgress, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *JobProgress
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *JobProgress
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetImportProgress")
@@ -5156,8 +5175,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5167,8 +5186,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5178,8 +5197,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5189,8 +5208,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5200,8 +5219,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5211,8 +5230,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5222,8 +5241,8 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5241,10 +5260,10 @@ func (a *RepositoryAPIService) GetImportProgressExecute(r ApiGetImportProgressRe
 }
 
 type ApiGetPathsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	gitRef *string
+	ctx                context.Context
+	ApiService         *RepositoryAPIService
+	repoRef            string
+	gitRef             *string
 	includeDirectories *bool
 }
 
@@ -5265,26 +5284,27 @@ func (r ApiGetPathsRequest) Execute() (*RepoPathsOutput, *http.Response, error) 
 /*
 GetPaths Method for GetPaths
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetPathsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetPathsRequest
 */
 func (a *RepositoryAPIService) GetPaths(ctx context.Context, repoRef string) ApiGetPathsRequest {
 	return ApiGetPathsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepoPathsOutput
+//
+//	@return RepoPathsOutput
 func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPathsOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepoPathsOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepoPathsOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetPaths")
@@ -5365,8 +5385,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5376,8 +5396,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5387,8 +5407,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5398,8 +5418,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5409,8 +5429,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5420,8 +5440,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5431,8 +5451,8 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5450,11 +5470,11 @@ func (a *RepositoryAPIService) GetPathsExecute(r ApiGetPathsRequest) (*RepoPaths
 }
 
 type ApiGetRawRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	path string
-	gitRef *string
+	repoRef    string
+	path       string
+	gitRef     *string
 }
 
 func (r ApiGetRawRequest) GitRef(gitRef string) ApiGetRawRequest {
@@ -5469,28 +5489,29 @@ func (r ApiGetRawRequest) Execute() ([]int32, *http.Response, error) {
 /*
 GetRaw Method for GetRaw
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiGetRawRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiGetRawRequest
 */
 func (a *RepositoryAPIService) GetRaw(ctx context.Context, repoRef string, path string) ApiGetRawRequest {
 	return ApiGetRawRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRaw")
@@ -5569,8 +5590,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5580,8 +5601,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5591,8 +5612,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5602,8 +5623,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5613,8 +5634,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5624,8 +5645,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5635,8 +5656,8 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5654,10 +5675,10 @@ func (a *RepositoryAPIService) GetRawExecute(r ApiGetRawRequest) ([]int32, *http
 }
 
 type ApiGetReleaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	tagRef string
+	repoRef    string
+	tagRef     string
 }
 
 func (r ApiGetReleaseRequest) Execute() (*ReleaseCreator, *http.Response, error) {
@@ -5667,28 +5688,29 @@ func (r ApiGetReleaseRequest) Execute() (*ReleaseCreator, *http.Response, error)
 /*
 GetRelease Method for GetRelease
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param tagRef
- @return ApiGetReleaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param tagRef
+	@return ApiGetReleaseRequest
 */
 func (a *RepositoryAPIService) GetRelease(ctx context.Context, repoRef string, tagRef string) ApiGetReleaseRequest {
 	return ApiGetReleaseRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		tagRef: tagRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		tagRef:     tagRef,
 	}
 }
 
 // Execute executes the request
-//  @return ReleaseCreator
+//
+//	@return ReleaseCreator
 func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*ReleaseCreator, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReleaseCreator
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReleaseCreator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRelease")
@@ -5764,8 +5786,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5775,8 +5797,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5786,8 +5808,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5797,8 +5819,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5808,8 +5830,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5819,8 +5841,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5830,8 +5852,8 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5849,14 +5871,14 @@ func (a *RepositoryAPIService) GetReleaseExecute(r ApiGetReleaseRequest) (*Relea
 }
 
 type ApiGetReleasesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	sort *ReleaseSort
-	order *OrderOption
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	sort       *ReleaseSort
+	order      *OrderOption
 }
 
 func (r ApiGetReleasesRequest) Page(page int64) ApiGetReleasesRequest {
@@ -5891,26 +5913,27 @@ func (r ApiGetReleasesRequest) Execute() ([]ReleaseCreator, *http.Response, erro
 /*
 GetReleases Method for GetReleases
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetReleasesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetReleasesRequest
 */
 func (a *RepositoryAPIService) GetReleases(ctx context.Context, repoRef string) ApiGetReleasesRequest {
 	return ApiGetReleasesRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []ReleaseCreator
+//
+//	@return []ReleaseCreator
 func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]ReleaseCreator, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ReleaseCreator
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ReleaseCreator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetReleases")
@@ -6000,8 +6023,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6011,8 +6034,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6022,8 +6045,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6033,8 +6056,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6044,8 +6067,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -6055,8 +6078,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6066,8 +6089,8 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6085,9 +6108,9 @@ func (a *RepositoryAPIService) GetReleasesExecute(r ApiGetReleasesRequest) ([]Re
 }
 
 type ApiGetRepoRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetRepoRequest) Execute() (*RepoParent, *http.Response, error) {
@@ -6097,26 +6120,27 @@ func (r ApiGetRepoRequest) Execute() (*RepoParent, *http.Response, error) {
 /*
 GetRepo Method for GetRepo
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepoRequest
 */
 func (a *RepositoryAPIService) GetRepo(ctx context.Context, repoRef string) ApiGetRepoRequest {
 	return ApiGetRepoRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepoParent
+//
+//	@return RepoParent
 func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepoParent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepoParent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepo")
@@ -6191,8 +6215,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6202,8 +6226,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6213,8 +6237,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6224,8 +6248,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6235,8 +6259,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -6246,8 +6270,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6257,8 +6281,8 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6276,9 +6300,9 @@ func (a *RepositoryAPIService) GetRepoExecute(r ApiGetRepoRequest) (*RepoParent,
 }
 
 type ApiGetRepositoryResetedRunnerRegisterTokenRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetRepositoryResetedRunnerRegisterTokenRequest) Execute() (*RegisterTokenModel, *http.Response, error) {
@@ -6288,26 +6312,27 @@ func (r ApiGetRepositoryResetedRunnerRegisterTokenRequest) Execute() (*RegisterT
 /*
 GetRepositoryResetedRunnerRegisterToken Method for GetRepositoryResetedRunnerRegisterToken
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryResetedRunnerRegisterTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryResetedRunnerRegisterTokenRequest
 */
 func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterToken(ctx context.Context, repoRef string) ApiGetRepositoryResetedRunnerRegisterTokenRequest {
 	return ApiGetRepositoryResetedRunnerRegisterTokenRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RegisterTokenModel
+//
+//	@return RegisterTokenModel
 func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r ApiGetRepositoryResetedRunnerRegisterTokenRequest) (*RegisterTokenModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RegisterTokenModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RegisterTokenModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryResetedRunnerRegisterToken")
@@ -6382,8 +6407,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6393,8 +6418,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6404,8 +6429,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6415,8 +6440,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6426,8 +6451,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -6437,8 +6462,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6448,8 +6473,8 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6467,9 +6492,9 @@ func (a *RepositoryAPIService) GetRepositoryResetedRunnerRegisterTokenExecute(r 
 }
 
 type ApiGetRepositoryRunnerRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 	runnerUuid string
 }
 
@@ -6480,28 +6505,29 @@ func (r ApiGetRepositoryRunnerRequest) Execute() (*RunnerModel, *http.Response, 
 /*
 GetRepositoryRunner Method for GetRepositoryRunner
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param runnerUuid
- @return ApiGetRepositoryRunnerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param runnerUuid
+	@return ApiGetRepositoryRunnerRequest
 */
 func (a *RepositoryAPIService) GetRepositoryRunner(ctx context.Context, repoRef string, runnerUuid string) ApiGetRepositoryRunnerRequest {
 	return ApiGetRepositoryRunnerRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		runnerUuid: runnerUuid,
 	}
 }
 
 // Execute executes the request
-//  @return RunnerModel
+//
+//	@return RunnerModel
 func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunnerRequest) (*RunnerModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RunnerModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RunnerModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryRunner")
@@ -6577,8 +6603,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6588,8 +6614,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6599,8 +6625,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6610,8 +6636,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6621,8 +6647,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -6632,8 +6658,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6643,8 +6669,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6662,9 +6688,9 @@ func (a *RepositoryAPIService) GetRepositoryRunnerExecute(r ApiGetRepositoryRunn
 }
 
 type ApiGetRepositoryRunnerRegisterTokenRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetRepositoryRunnerRegisterTokenRequest) Execute() (*RegisterTokenModel, *http.Response, error) {
@@ -6674,26 +6700,27 @@ func (r ApiGetRepositoryRunnerRegisterTokenRequest) Execute() (*RegisterTokenMod
 /*
 GetRepositoryRunnerRegisterToken Method for GetRepositoryRunnerRegisterToken
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryRunnerRegisterTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryRunnerRegisterTokenRequest
 */
 func (a *RepositoryAPIService) GetRepositoryRunnerRegisterToken(ctx context.Context, repoRef string) ApiGetRepositoryRunnerRegisterTokenRequest {
 	return ApiGetRepositoryRunnerRegisterTokenRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RegisterTokenModel
+//
+//	@return RegisterTokenModel
 func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetRepositoryRunnerRegisterTokenRequest) (*RegisterTokenModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RegisterTokenModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RegisterTokenModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryRunnerRegisterToken")
@@ -6768,8 +6795,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6779,8 +6806,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6790,8 +6817,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6801,8 +6828,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6812,8 +6839,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -6823,8 +6850,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6834,8 +6861,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6853,12 +6880,12 @@ func (a *RepositoryAPIService) GetRepositoryRunnerRegisterTokenExecute(r ApiGetR
 }
 
 type ApiGetRepositoryRunnersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
 }
 
 func (r ApiGetRepositoryRunnersRequest) Page(page int64) ApiGetRepositoryRunnersRequest {
@@ -6883,26 +6910,27 @@ func (r ApiGetRepositoryRunnersRequest) Execute() ([]RunnerCreator, *http.Respon
 /*
 GetRepositoryRunners Method for GetRepositoryRunners
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryRunnersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryRunnersRequest
 */
 func (a *RepositoryAPIService) GetRepositoryRunners(ctx context.Context, repoRef string) ApiGetRepositoryRunnersRequest {
 	return ApiGetRepositoryRunnersRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []RunnerCreator
+//
+//	@return []RunnerCreator
 func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRunnersRequest) ([]RunnerCreator, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RunnerCreator
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RunnerCreator
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryRunners")
@@ -6986,8 +7014,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6997,8 +7025,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7008,8 +7036,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7019,8 +7047,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7030,8 +7058,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -7041,8 +7069,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7052,8 +7080,8 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7071,9 +7099,9 @@ func (a *RepositoryAPIService) GetRepositoryRunnersExecute(r ApiGetRepositoryRun
 }
 
 type ApiGetRepositoryServiceAccountsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetRepositoryServiceAccountsRequest) Execute() ([]UserModel, *http.Response, error) {
@@ -7083,26 +7111,27 @@ func (r ApiGetRepositoryServiceAccountsRequest) Execute() ([]UserModel, *http.Re
 /*
 GetRepositoryServiceAccounts Method for GetRepositoryServiceAccounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryServiceAccountsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryServiceAccountsRequest
 */
 func (a *RepositoryAPIService) GetRepositoryServiceAccounts(ctx context.Context, repoRef string) ApiGetRepositoryServiceAccountsRequest {
 	return ApiGetRepositoryServiceAccountsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []UserModel
+//
+//	@return []UserModel
 func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepositoryServiceAccountsRequest) ([]UserModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []UserModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UserModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryServiceAccounts")
@@ -7177,8 +7206,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7188,8 +7217,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7199,8 +7228,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7210,8 +7239,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7221,8 +7250,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -7232,8 +7261,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7243,8 +7272,8 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7262,9 +7291,9 @@ func (a *RepositoryAPIService) GetRepositoryServiceAccountsExecute(r ApiGetRepos
 }
 
 type ApiGetRepositoryStatsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetRepositoryStatsRequest) Execute() (*RepoStatsOutput, *http.Response, error) {
@@ -7274,26 +7303,27 @@ func (r ApiGetRepositoryStatsRequest) Execute() (*RepoStatsOutput, *http.Respons
 /*
 GetRepositoryStats Method for GetRepositoryStats
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryStatsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryStatsRequest
 */
 func (a *RepositoryAPIService) GetRepositoryStats(ctx context.Context, repoRef string) ApiGetRepositoryStatsRequest {
 	return ApiGetRepositoryStatsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepoStatsOutput
+//
+//	@return RepoStatsOutput
 func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStatsRequest) (*RepoStatsOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepoStatsOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepoStatsOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryStats")
@@ -7368,8 +7398,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7379,8 +7409,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7390,8 +7420,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7401,8 +7431,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7412,8 +7442,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -7423,8 +7453,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7434,8 +7464,8 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7453,9 +7483,9 @@ func (a *RepositoryAPIService) GetRepositoryStatsExecute(r ApiGetRepositoryStats
 }
 
 type ApiGetRepositoryVariableRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                context.Context
+	ApiService         *RepositoryAPIService
+	repoRef            string
 	variableIdentifier string
 }
 
@@ -7466,28 +7496,29 @@ func (r ApiGetRepositoryVariableRequest) Execute() (*VariableModel, *http.Respon
 /*
 GetRepositoryVariable Method for GetRepositoryVariable
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param variableIdentifier
- @return ApiGetRepositoryVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param variableIdentifier
+	@return ApiGetRepositoryVariableRequest
 */
 func (a *RepositoryAPIService) GetRepositoryVariable(ctx context.Context, repoRef string, variableIdentifier string) ApiGetRepositoryVariableRequest {
 	return ApiGetRepositoryVariableRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:         a,
+		ctx:                ctx,
+		repoRef:            repoRef,
 		variableIdentifier: variableIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return VariableModel
+//
+//	@return VariableModel
 func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVariableRequest) (*VariableModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VariableModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VariableModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryVariable")
@@ -7563,8 +7594,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7574,8 +7605,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7585,8 +7616,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7596,8 +7627,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7607,8 +7638,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -7618,8 +7649,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7629,8 +7660,8 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7648,15 +7679,15 @@ func (a *RepositoryAPIService) GetRepositoryVariableExecute(r ApiGetRepositoryVa
 }
 
 type ApiGetRepositoryVariablesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	types *[]VariableType
-	sort *VariableSort
-	order *OrderOption
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	types      *[]VariableType
+	sort       *VariableSort
+	order      *OrderOption
 }
 
 func (r ApiGetRepositoryVariablesRequest) Page(page int64) ApiGetRepositoryVariablesRequest {
@@ -7696,26 +7727,27 @@ func (r ApiGetRepositoryVariablesRequest) Execute() ([]VariableGroup, *http.Resp
 /*
 GetRepositoryVariables Method for GetRepositoryVariables
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRepositoryVariablesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRepositoryVariablesRequest
 */
 func (a *RepositoryAPIService) GetRepositoryVariables(ctx context.Context, repoRef string) ApiGetRepositoryVariablesRequest {
 	return ApiGetRepositoryVariablesRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []VariableGroup
+//
+//	@return []VariableGroup
 func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryVariablesRequest) ([]VariableGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []VariableGroup
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []VariableGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetRepositoryVariables")
@@ -7816,8 +7848,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7827,8 +7859,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7838,8 +7870,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7849,8 +7881,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7860,8 +7892,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -7871,8 +7903,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7882,8 +7914,8 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7901,9 +7933,9 @@ func (a *RepositoryAPIService) GetRepositoryVariablesExecute(r ApiGetRepositoryV
 }
 
 type ApiGetSecurityRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiGetSecurityRequest) Execute() (*SecuritySettings, *http.Response, error) {
@@ -7913,26 +7945,27 @@ func (r ApiGetSecurityRequest) Execute() (*SecuritySettings, *http.Response, err
 /*
 GetSecurity Method for GetSecurity
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetSecurityRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetSecurityRequest
 */
 func (a *RepositoryAPIService) GetSecurity(ctx context.Context, repoRef string) ApiGetSecurityRequest {
 	return ApiGetSecurityRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return SecuritySettings
+//
+//	@return SecuritySettings
 func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*SecuritySettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecuritySettings
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecuritySettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetSecurity")
@@ -8007,8 +8040,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -8018,8 +8051,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8029,8 +8062,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8040,8 +8073,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -8051,8 +8084,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -8062,8 +8095,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8073,8 +8106,8 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8092,14 +8125,14 @@ func (a *RepositoryAPIService) GetSecurityExecute(r ApiGetSecurityRequest) (*Sec
 }
 
 type ApiGetStarsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	sort *UserSort
-	order *OrderOption
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	sort       *UserSort
+	order      *OrderOption
 }
 
 func (r ApiGetStarsRequest) Page(page int64) ApiGetStarsRequest {
@@ -8134,26 +8167,27 @@ func (r ApiGetStarsRequest) Execute() ([]UserModel, *http.Response, error) {
 /*
 GetStars Method for GetStars
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetStarsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetStarsRequest
 */
 func (a *RepositoryAPIService) GetStars(ctx context.Context, repoRef string) ApiGetStarsRequest {
 	return ApiGetStarsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []UserModel
+//
+//	@return []UserModel
 func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []UserModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []UserModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetStars")
@@ -8243,8 +8277,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -8254,8 +8288,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8265,8 +8299,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8276,8 +8310,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -8287,8 +8321,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -8298,8 +8332,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8309,8 +8343,8 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8328,12 +8362,12 @@ func (a *RepositoryAPIService) GetStarsExecute(r ApiGetStarsRequest) ([]UserMode
 }
 
 type ApiGetTagsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
+	ctx           context.Context
+	ApiService    *RepositoryAPIService
+	repoRef       string
+	page          *int64
+	size          *int64
+	query         *string
 	includeCommit *bool
 }
 
@@ -8364,26 +8398,27 @@ func (r ApiGetTagsRequest) Execute() ([]CommitTag, *http.Response, error) {
 /*
 GetTags Method for GetTags
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetTagsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetTagsRequest
 */
 func (a *RepositoryAPIService) GetTags(ctx context.Context, repoRef string) ApiGetTagsRequest {
 	return ApiGetTagsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []CommitTag
+//
+//	@return []CommitTag
 func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommitTag
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommitTag
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.GetTags")
@@ -8470,8 +8505,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -8481,8 +8516,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8492,8 +8527,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8503,8 +8538,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -8514,8 +8549,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -8525,8 +8560,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8536,8 +8571,8 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8555,9 +8590,9 @@ func (a *RepositoryAPIService) GetTagsExecute(r ApiGetTagsRequest) ([]CommitTag,
 }
 
 type ApiPatchRepoRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx             context.Context
+	ApiService      *RepositoryAPIService
+	repoRef         string
 	repoUpdateInput *RepoUpdateInput
 }
 
@@ -8573,26 +8608,27 @@ func (r ApiPatchRepoRequest) Execute() (*RepositoryModel, *http.Response, error)
 /*
 PatchRepo Method for PatchRepo
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPatchRepoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPatchRepoRequest
 */
 func (a *RepositoryAPIService) PatchRepo(ctx context.Context, repoRef string) ApiPatchRepoRequest {
 	return ApiPatchRepoRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PatchRepo")
@@ -8672,8 +8708,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -8683,8 +8719,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8694,8 +8730,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8705,8 +8741,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -8716,8 +8752,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -8727,8 +8763,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8738,8 +8774,8 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8757,10 +8793,10 @@ func (a *RepositoryAPIService) PatchRepoExecute(r ApiPatchRepoRequest) (*Reposit
 }
 
 type ApiPatchRepositoryRunnerRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	runnerUuid string
+	ctx              context.Context
+	ApiService       *RepositoryAPIService
+	repoRef          string
+	runnerUuid       string
 	runnerPatchInput *RunnerPatchInput
 }
 
@@ -8776,28 +8812,29 @@ func (r ApiPatchRepositoryRunnerRequest) Execute() (*RunnerModel, *http.Response
 /*
 PatchRepositoryRunner Method for PatchRepositoryRunner
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param runnerUuid
- @return ApiPatchRepositoryRunnerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param runnerUuid
+	@return ApiPatchRepositoryRunnerRequest
 */
 func (a *RepositoryAPIService) PatchRepositoryRunner(ctx context.Context, repoRef string, runnerUuid string) ApiPatchRepositoryRunnerRequest {
 	return ApiPatchRepositoryRunnerRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 		runnerUuid: runnerUuid,
 	}
 }
 
 // Execute executes the request
-//  @return RunnerModel
+//
+//	@return RunnerModel
 func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepositoryRunnerRequest) (*RunnerModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RunnerModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RunnerModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PatchRepositoryRunner")
@@ -8878,8 +8915,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -8889,8 +8926,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -8900,8 +8937,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -8911,8 +8948,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -8922,8 +8959,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -8933,8 +8970,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -8944,8 +8981,8 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -8963,9 +9000,9 @@ func (a *RepositoryAPIService) PatchRepositoryRunnerExecute(r ApiPatchRepository
 }
 
 type ApiPatchRepositoryVariableRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                context.Context
+	ApiService         *RepositoryAPIService
+	repoRef            string
 	variableIdentifier string
 	variablePatchInput *VariablePatchInput
 }
@@ -8982,28 +9019,29 @@ func (r ApiPatchRepositoryVariableRequest) Execute() (*VariableModel, *http.Resp
 /*
 PatchRepositoryVariable Method for PatchRepositoryVariable
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param variableIdentifier
- @return ApiPatchRepositoryVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param variableIdentifier
+	@return ApiPatchRepositoryVariableRequest
 */
 func (a *RepositoryAPIService) PatchRepositoryVariable(ctx context.Context, repoRef string, variableIdentifier string) ApiPatchRepositoryVariableRequest {
 	return ApiPatchRepositoryVariableRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:         a,
+		ctx:                ctx,
+		repoRef:            repoRef,
 		variableIdentifier: variableIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return VariableModel
+//
+//	@return VariableModel
 func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchRepositoryVariableRequest) (*VariableModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VariableModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VariableModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PatchRepositoryVariable")
@@ -9084,8 +9122,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -9095,8 +9133,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -9106,8 +9144,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9117,8 +9155,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -9128,8 +9166,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -9139,8 +9177,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -9150,8 +9188,8 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9169,9 +9207,9 @@ func (a *RepositoryAPIService) PatchRepositoryVariableExecute(r ApiPatchReposito
 }
 
 type ApiPatchSecurityRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *RepositoryAPIService
+	repoRef          string
 	securitySettings *SecuritySettings
 }
 
@@ -9187,26 +9225,27 @@ func (r ApiPatchSecurityRequest) Execute() (*SecuritySettings, *http.Response, e
 /*
 PatchSecurity Method for PatchSecurity
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPatchSecurityRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPatchSecurityRequest
 */
 func (a *RepositoryAPIService) PatchSecurity(ctx context.Context, repoRef string) ApiPatchSecurityRequest {
 	return ApiPatchSecurityRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return SecuritySettings
+//
+//	@return SecuritySettings
 func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (*SecuritySettings, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecuritySettings
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecuritySettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PatchSecurity")
@@ -9286,8 +9325,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -9297,8 +9336,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -9308,8 +9347,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9319,8 +9358,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -9330,8 +9369,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -9341,8 +9380,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -9352,8 +9391,8 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9371,9 +9410,9 @@ func (a *RepositoryAPIService) PatchSecurityExecute(r ApiPatchSecurityRequest) (
 }
 
 type ApiPatchStarsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx            context.Context
+	ApiService     *RepositoryAPIService
+	repoRef        string
 	repoStarsInput *RepoStarsInput
 }
 
@@ -9389,26 +9428,27 @@ func (r ApiPatchStarsRequest) Execute() (*RepositoryModel, *http.Response, error
 /*
 PatchStars Method for PatchStars
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPatchStarsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPatchStarsRequest
 */
 func (a *RepositoryAPIService) PatchStars(ctx context.Context, repoRef string) ApiPatchStarsRequest {
 	return ApiPatchStarsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PatchStars")
@@ -9488,8 +9528,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -9499,8 +9539,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -9510,8 +9550,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9521,8 +9561,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -9532,8 +9572,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -9543,8 +9583,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -9554,8 +9594,8 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9573,9 +9613,9 @@ func (a *RepositoryAPIService) PatchStarsExecute(r ApiPatchStarsRequest) (*Repos
 }
 
 type ApiPostBranchRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx               context.Context
+	ApiService        *RepositoryAPIService
+	repoRef           string
 	branchCreateInput *BranchCreateInput
 }
 
@@ -9591,26 +9631,27 @@ func (r ApiPostBranchRequest) Execute() (*CommitBranch, *http.Response, error) {
 /*
 PostBranch Method for PostBranch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostBranchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostBranchRequest
 */
 func (a *RepositoryAPIService) PostBranch(ctx context.Context, repoRef string) ApiPostBranchRequest {
 	return ApiPostBranchRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return CommitBranch
+//
+//	@return CommitBranch
 func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*CommitBranch, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitBranch
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitBranch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostBranch")
@@ -9690,8 +9731,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -9701,8 +9742,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -9712,8 +9753,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9723,8 +9764,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -9734,8 +9775,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -9745,8 +9786,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -9756,8 +9797,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -9767,8 +9808,8 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9786,9 +9827,9 @@ func (a *RepositoryAPIService) PostBranchExecute(r ApiPostBranchRequest) (*Commi
 }
 
 type ApiPostDefaultBranchRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                          context.Context
+	ApiService                   *RepositoryAPIService
+	repoRef                      string
 	repoUpdateDefaultBranchInput *RepoUpdateDefaultBranchInput
 }
 
@@ -9804,26 +9845,27 @@ func (r ApiPostDefaultBranchRequest) Execute() (*RepositoryModel, *http.Response
 /*
 PostDefaultBranch Method for PostDefaultBranch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostDefaultBranchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostDefaultBranchRequest
 */
 func (a *RepositoryAPIService) PostDefaultBranch(ctx context.Context, repoRef string) ApiPostDefaultBranchRequest {
 	return ApiPostDefaultBranchRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostDefaultBranch")
@@ -9903,8 +9945,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -9914,8 +9956,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -9925,8 +9967,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -9936,8 +9978,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -9947,8 +9989,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -9958,8 +10000,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -9969,8 +10011,8 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -9988,11 +10030,11 @@ func (a *RepositoryAPIService) PostDefaultBranchExecute(r ApiPostDefaultBranchRe
 }
 
 type ApiPostDiffsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	path *string
-	path2 string
+	ctx            context.Context
+	ApiService     *RepositoryAPIService
+	repoRef        string
+	path           *string
+	path2          string
 	commitDiffFile *[]CommitDiffFile
 }
 
@@ -10013,28 +10055,29 @@ func (r ApiPostDiffsRequest) Execute() ([]int32, *http.Response, error) {
 /*
 PostDiffs Method for PostDiffs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path2
- @return ApiPostDiffsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path2
+	@return ApiPostDiffsRequest
 */
 func (a *RepositoryAPIService) PostDiffs(ctx context.Context, repoRef string, path2 string) ApiPostDiffsRequest {
 	return ApiPostDiffsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path2: path2,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path2:      path2,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostDiffs")
@@ -10119,8 +10162,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -10130,8 +10173,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -10141,8 +10184,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -10152,8 +10195,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -10163,8 +10206,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -10174,8 +10217,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -10185,8 +10228,8 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10204,10 +10247,10 @@ func (a *RepositoryAPIService) PostDiffsExecute(r ApiPostDiffsRequest) ([]int32,
 }
 
 type ApiPostMergeCheckRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
-	path string
+	ctx                 context.Context
+	ApiService          *RepositoryAPIService
+	repoRef             string
+	path                string
 	repoMergeCheckInput *RepoMergeCheckInput
 }
 
@@ -10223,28 +10266,29 @@ func (r ApiPostMergeCheckRequest) Execute() (*RepoMergeCheckOutput, *http.Respon
 /*
 PostMergeCheck Method for PostMergeCheck
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param path
- @return ApiPostMergeCheckRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param path
+	@return ApiPostMergeCheckRequest
 */
 func (a *RepositoryAPIService) PostMergeCheck(ctx context.Context, repoRef string, path string) ApiPostMergeCheckRequest {
 	return ApiPostMergeCheckRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		path: path,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		path:       path,
 	}
 }
 
 // Execute executes the request
-//  @return RepoMergeCheckOutput
+//
+//	@return RepoMergeCheckOutput
 func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest) (*RepoMergeCheckOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepoMergeCheckOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepoMergeCheckOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostMergeCheck")
@@ -10325,8 +10369,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -10336,8 +10380,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -10347,8 +10391,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -10358,8 +10402,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -10369,8 +10413,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -10380,8 +10424,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -10391,8 +10435,8 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10410,11 +10454,11 @@ func (a *RepositoryAPIService) PostMergeCheckExecute(r ApiPostMergeCheckRequest)
 }
 
 type ApiPostPathDetailsRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx         context.Context
+	ApiService  *RepositoryAPIService
+	repoRef     string
 	requestBody *[]string
-	gitRef *string
+	gitRef      *string
 }
 
 func (r ApiPostPathDetailsRequest) RequestBody(requestBody []string) ApiPostPathDetailsRequest {
@@ -10434,26 +10478,27 @@ func (r ApiPostPathDetailsRequest) Execute() ([]PathDetails, *http.Response, err
 /*
 PostPathDetails Method for PostPathDetails
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostPathDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostPathDetailsRequest
 */
 func (a *RepositoryAPIService) PostPathDetails(ctx context.Context, repoRef string) ApiPostPathDetailsRequest {
 	return ApiPostPathDetailsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []PathDetails
+//
+//	@return []PathDetails
 func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsRequest) ([]PathDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PathDetails
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PathDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostPathDetails")
@@ -10536,8 +10581,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -10547,8 +10592,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -10558,8 +10603,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -10569,8 +10614,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -10580,8 +10625,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -10591,8 +10636,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -10602,8 +10647,8 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10621,9 +10666,9 @@ func (a *RepositoryAPIService) PostPathDetailsExecute(r ApiPostPathDetailsReques
 }
 
 type ApiPostReleaseRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                context.Context
+	ApiService         *RepositoryAPIService
+	repoRef            string
 	releaseCreateInput *ReleaseCreateInput
 }
 
@@ -10639,26 +10684,27 @@ func (r ApiPostReleaseRequest) Execute() (*ReleaseModel, *http.Response, error) 
 /*
 PostRelease Method for PostRelease
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostReleaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostReleaseRequest
 */
 func (a *RepositoryAPIService) PostRelease(ctx context.Context, repoRef string) ApiPostReleaseRequest {
 	return ApiPostReleaseRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return ReleaseModel
+//
+//	@return ReleaseModel
 func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*ReleaseModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReleaseModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReleaseModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRelease")
@@ -10738,8 +10784,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -10749,8 +10795,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -10760,8 +10806,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -10771,8 +10817,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -10782,8 +10828,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -10793,8 +10839,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -10804,8 +10850,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -10815,8 +10861,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -10834,8 +10880,8 @@ func (a *RepositoryAPIService) PostReleaseExecute(r ApiPostReleaseRequest) (*Rel
 }
 
 type ApiPostRepoRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
+	ctx             context.Context
+	ApiService      *RepositoryAPIService
 	repoCreateInput *RepoCreateInput
 }
 
@@ -10851,24 +10897,25 @@ func (r ApiPostRepoRequest) Execute() (*RepositoryModel, *http.Response, error) 
 /*
 PostRepo Method for PostRepo
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRepoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostRepoRequest
 */
 func (a *RepositoryAPIService) PostRepo(ctx context.Context) ApiPostRepoRequest {
 	return ApiPostRepoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRepo")
@@ -10947,8 +10994,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -10958,8 +11005,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -10969,8 +11016,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -10980,8 +11027,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -10991,8 +11038,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11002,8 +11049,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -11013,8 +11060,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11032,8 +11079,8 @@ func (a *RepositoryAPIService) PostRepoExecute(r ApiPostRepoRequest) (*Repositor
 }
 
 type ApiPostRepositoryImportRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
+	ctx             context.Context
+	ApiService      *RepositoryAPIService
 	repoImportInput *RepoImportInput
 }
 
@@ -11049,24 +11096,25 @@ func (r ApiPostRepositoryImportRequest) Execute() (*RepositoryModel, *http.Respo
 /*
 PostRepositoryImport Method for PostRepositoryImport
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRepositoryImportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostRepositoryImportRequest
 */
 func (a *RepositoryAPIService) PostRepositoryImport(ctx context.Context) ApiPostRepositoryImportRequest {
 	return ApiPostRepositoryImportRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryImportRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRepositoryImport")
@@ -11145,8 +11193,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -11156,8 +11204,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -11167,8 +11215,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11178,8 +11226,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -11189,8 +11237,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11200,8 +11248,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -11211,8 +11259,8 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11230,9 +11278,9 @@ func (a *RepositoryAPIService) PostRepositoryImportExecute(r ApiPostRepositoryIm
 }
 
 type ApiPostRepositoryMoveRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *RepositoryAPIService
+	repoRef       string
 	repoMoveInput *RepoMoveInput
 }
 
@@ -11248,26 +11296,27 @@ func (r ApiPostRepositoryMoveRequest) Execute() (*RepositoryModel, *http.Respons
 /*
 PostRepositoryMove Method for PostRepositoryMove
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostRepositoryMoveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostRepositoryMoveRequest
 */
 func (a *RepositoryAPIService) PostRepositoryMove(ctx context.Context, repoRef string) ApiPostRepositoryMoveRequest {
 	return ApiPostRepositoryMoveRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMoveRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRepositoryMove")
@@ -11347,8 +11396,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -11358,8 +11407,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -11369,8 +11418,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11380,8 +11429,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -11391,8 +11440,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11402,8 +11451,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -11413,8 +11462,8 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11432,9 +11481,9 @@ func (a *RepositoryAPIService) PostRepositoryMoveExecute(r ApiPostRepositoryMove
 }
 
 type ApiPostRepositoryPurgeRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiPostRepositoryPurgeRequest) Execute() (*http.Response, error) {
@@ -11444,24 +11493,24 @@ func (r ApiPostRepositoryPurgeRequest) Execute() (*http.Response, error) {
 /*
 PostRepositoryPurge Method for PostRepositoryPurge
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostRepositoryPurgeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostRepositoryPurgeRequest
 */
 func (a *RepositoryAPIService) PostRepositoryPurge(ctx context.Context, repoRef string) ApiPostRepositoryPurgeRequest {
 	return ApiPostRepositoryPurgeRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
 func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPurgeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRepositoryPurge")
@@ -11536,8 +11585,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -11547,8 +11596,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -11558,8 +11607,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11569,8 +11618,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -11580,8 +11629,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11591,8 +11640,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -11602,8 +11651,8 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -11612,9 +11661,9 @@ func (a *RepositoryAPIService) PostRepositoryPurgeExecute(r ApiPostRepositoryPur
 }
 
 type ApiPostRepositoryVariableRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx                 context.Context
+	ApiService          *RepositoryAPIService
+	repoRef             string
 	variableCreateInput *VariableCreateInput
 }
 
@@ -11630,26 +11679,27 @@ func (r ApiPostRepositoryVariableRequest) Execute() (*VariableModel, *http.Respo
 /*
 PostRepositoryVariable Method for PostRepositoryVariable
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostRepositoryVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostRepositoryVariableRequest
 */
 func (a *RepositoryAPIService) PostRepositoryVariable(ctx context.Context, repoRef string) ApiPostRepositoryVariableRequest {
 	return ApiPostRepositoryVariableRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return VariableModel
+//
+//	@return VariableModel
 func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepositoryVariableRequest) (*VariableModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VariableModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VariableModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostRepositoryVariable")
@@ -11729,8 +11779,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -11740,8 +11790,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -11751,8 +11801,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11762,8 +11812,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -11773,8 +11823,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11784,8 +11834,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -11795,8 +11845,8 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -11814,9 +11864,9 @@ func (a *RepositoryAPIService) PostRepositoryVariableExecute(r ApiPostRepository
 }
 
 type ApiPostTagRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx            context.Context
+	ApiService     *RepositoryAPIService
+	repoRef        string
 	tagCreateInput *TagCreateInput
 }
 
@@ -11832,26 +11882,27 @@ func (r ApiPostTagRequest) Execute() (*CommitTag, *http.Response, error) {
 /*
 PostTag Method for PostTag
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostTagRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostTagRequest
 */
 func (a *RepositoryAPIService) PostTag(ctx context.Context, repoRef string) ApiPostTagRequest {
 	return ApiPostTagRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return CommitTag
+//
+//	@return CommitTag
 func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitTag
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitTag
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.PostTag")
@@ -11931,8 +11982,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -11942,8 +11993,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -11953,8 +12004,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -11964,8 +12015,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -11975,8 +12026,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -11986,8 +12037,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -11997,8 +12048,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -12008,8 +12059,8 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12027,9 +12078,9 @@ func (a *RepositoryAPIService) PostTagExecute(r ApiPostTagRequest) (*CommitTag, 
 }
 
 type ApiRenameBranchRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx               context.Context
+	ApiService        *RepositoryAPIService
+	repoRef           string
 	branchRenameInput *BranchRenameInput
 }
 
@@ -12045,26 +12096,27 @@ func (r ApiRenameBranchRequest) Execute() (*CommitBranch, *http.Response, error)
 /*
 RenameBranch Method for RenameBranch
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiRenameBranchRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiRenameBranchRequest
 */
 func (a *RepositoryAPIService) RenameBranch(ctx context.Context, repoRef string) ApiRenameBranchRequest {
 	return ApiRenameBranchRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return CommitBranch
+//
+//	@return CommitBranch
 func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*CommitBranch, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitBranch
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitBranch
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.RenameBranch")
@@ -12144,8 +12196,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -12155,8 +12207,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -12166,8 +12218,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12177,8 +12229,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -12188,8 +12240,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -12199,8 +12251,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -12210,8 +12262,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -12221,8 +12273,8 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12240,9 +12292,9 @@ func (a *RepositoryAPIService) RenameBranchExecute(r ApiRenameBranchRequest) (*C
 }
 
 type ApiRepoRestoreRequest struct {
-	ctx context.Context
-	ApiService *RepositoryAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *RepositoryAPIService
+	repoRef          string
 	repoRestoreInput *RepoRestoreInput
 }
 
@@ -12258,26 +12310,27 @@ func (r ApiRepoRestoreRequest) Execute() (*RepositoryModel, *http.Response, erro
 /*
 RepoRestore Method for RepoRestore
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiRepoRestoreRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiRepoRestoreRequest
 */
 func (a *RepositoryAPIService) RepoRestore(ctx context.Context, repoRef string) ApiRepoRestoreRequest {
 	return ApiRepoRestoreRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RepositoryModel
+//
+//	@return RepositoryModel
 func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*RepositoryModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RepositoryModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RepositoryModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.RepoRestore")
@@ -12357,8 +12410,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -12368,8 +12421,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -12379,8 +12432,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12390,8 +12443,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -12401,8 +12454,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -12412,8 +12465,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -12423,8 +12476,8 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -12442,9 +12495,9 @@ func (a *RepositoryAPIService) RepoRestoreExecute(r ApiRepoRestoreRequest) (*Rep
 }
 
 type ApiSoftRepositoryDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RepositoryAPIService
-	repoRef string
+	repoRef    string
 }
 
 func (r ApiSoftRepositoryDeleteRequest) Execute() (*http.Response, error) {
@@ -12454,24 +12507,24 @@ func (r ApiSoftRepositoryDeleteRequest) Execute() (*http.Response, error) {
 /*
 SoftRepositoryDelete Method for SoftRepositoryDelete
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiSoftRepositoryDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiSoftRepositoryDeleteRequest
 */
 func (a *RepositoryAPIService) SoftRepositoryDelete(ctx context.Context, repoRef string) ApiSoftRepositoryDeleteRequest {
 	return ApiSoftRepositoryDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
 func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RepositoryAPIService.SoftRepositoryDelete")
@@ -12546,8 +12599,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -12557,8 +12610,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -12568,8 +12621,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -12579,8 +12632,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -12590,8 +12643,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -12601,8 +12654,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -12612,8 +12665,8 @@ func (a *RepositoryAPIService) SoftRepositoryDeleteExecute(r ApiSoftRepositoryDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

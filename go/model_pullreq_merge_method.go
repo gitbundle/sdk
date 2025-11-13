@@ -20,7 +20,7 @@ type PullreqMergeMethod string
 
 // List of PullreqMergeMethod
 const (
-	PULLREQMERGEMETHOD_MERGE PullreqMergeMethod = "merge"
+	PULLREQMERGEMETHOD_MERGE  PullreqMergeMethod = "merge"
 	PULLREQMERGEMETHOD_SQUASH PullreqMergeMethod = "squash"
 	PULLREQMERGEMETHOD_REBASE PullreqMergeMethod = "rebase"
 )
@@ -110,4 +110,3 @@ func (v *NullablePullreqMergeMethod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

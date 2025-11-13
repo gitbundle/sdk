@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,36 +21,36 @@ var _ MappedNullable = &PullreqModel{}
 
 // PullreqModel struct for PullreqModel
 type PullreqModel struct {
-	ActivitySeq NullableInt64 `json:"activity_seq,omitempty"`
-	Closed NullableInt64 `json:"closed,omitempty"`
-	CommentCount int64 `json:"comment_count"`
-	CommitCount NullableInt64 `json:"commit_count,omitempty"`
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Description string `json:"description"`
-	Edited int64 `json:"edited"`
-	FileCount NullableInt64 `json:"file_count,omitempty"`
-	Id int64 `json:"id"`
-	IsDraft bool `json:"is_draft"`
-	MergeBaseSha string `json:"merge_base_sha"`
-	MergeCheckStatus PullreqMergeCheckStatus `json:"merge_check_status"`
-	MergeConflicts []string `json:"merge_conflicts,omitempty"`
-	MergeMethod NullablePullreqMergeMethod `json:"merge_method,omitempty"`
-	MergeSha NullableString `json:"merge_sha,omitempty"`
-	MergeTargetSha NullableString `json:"merge_target_sha,omitempty"`
-	Merged NullableInt64 `json:"merged,omitempty"`
-	MergedBy NullableInt64 `json:"merged_by,omitempty"`
-	Number int64 `json:"number"`
-	SourceBranch string `json:"source_branch"`
-	SourceRepoId int64 `json:"source_repo_id"`
-	SourceSha string `json:"source_sha"`
-	State PullreqState `json:"state"`
-	TargetBranch string `json:"target_branch"`
-	TargetRepoId int64 `json:"target_repo_id"`
-	Title string `json:"title"`
-	UnresolvedCount int64 `json:"unresolved_count"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	ActivitySeq      NullableInt64              `json:"activity_seq,omitempty"`
+	Closed           NullableInt64              `json:"closed,omitempty"`
+	CommentCount     int64                      `json:"comment_count"`
+	CommitCount      NullableInt64              `json:"commit_count,omitempty"`
+	Created          int64                      `json:"created"`
+	CreatedBy        int64                      `json:"created_by"`
+	Description      string                     `json:"description"`
+	Edited           int64                      `json:"edited"`
+	FileCount        NullableInt64              `json:"file_count,omitempty"`
+	Id               int64                      `json:"id"`
+	IsDraft          bool                       `json:"is_draft"`
+	MergeBaseSha     string                     `json:"merge_base_sha"`
+	MergeCheckStatus PullreqMergeCheckStatus    `json:"merge_check_status"`
+	MergeConflicts   []string                   `json:"merge_conflicts,omitempty"`
+	MergeMethod      NullablePullreqMergeMethod `json:"merge_method,omitempty"`
+	MergeSha         NullableString             `json:"merge_sha,omitempty"`
+	MergeTargetSha   NullableString             `json:"merge_target_sha,omitempty"`
+	Merged           NullableInt64              `json:"merged,omitempty"`
+	MergedBy         NullableInt64              `json:"merged_by,omitempty"`
+	Number           int64                      `json:"number"`
+	SourceBranch     string                     `json:"source_branch"`
+	SourceRepoId     int64                      `json:"source_repo_id"`
+	SourceSha        string                     `json:"source_sha"`
+	State            PullreqState               `json:"state"`
+	TargetBranch     string                     `json:"target_branch"`
+	TargetRepoId     int64                      `json:"target_repo_id"`
+	Title            string                     `json:"title"`
+	UnresolvedCount  int64                      `json:"unresolved_count"`
+	Updated          int64                      `json:"updated"`
+	Version          int64                      `json:"version"`
 }
 
 type _PullreqModel PullreqModel
@@ -124,6 +124,7 @@ func (o *PullreqModel) HasActivitySeq() bool {
 func (o *PullreqModel) SetActivitySeq(v int64) {
 	o.ActivitySeq.Set(&v)
 }
+
 // SetActivitySeqNil sets the value for ActivitySeq to be an explicit nil
 func (o *PullreqModel) SetActivitySeqNil() {
 	o.ActivitySeq.Set(nil)
@@ -166,6 +167,7 @@ func (o *PullreqModel) HasClosed() bool {
 func (o *PullreqModel) SetClosed(v int64) {
 	o.Closed.Set(&v)
 }
+
 // SetClosedNil sets the value for Closed to be an explicit nil
 func (o *PullreqModel) SetClosedNil() {
 	o.Closed.Set(nil)
@@ -232,6 +234,7 @@ func (o *PullreqModel) HasCommitCount() bool {
 func (o *PullreqModel) SetCommitCount(v int64) {
 	o.CommitCount.Set(&v)
 }
+
 // SetCommitCountNil sets the value for CommitCount to be an explicit nil
 func (o *PullreqModel) SetCommitCountNil() {
 	o.CommitCount.Set(nil)
@@ -370,6 +373,7 @@ func (o *PullreqModel) HasFileCount() bool {
 func (o *PullreqModel) SetFileCount(v int64) {
 	o.FileCount.Set(&v)
 }
+
 // SetFileCountNil sets the value for FileCount to be an explicit nil
 func (o *PullreqModel) SetFileCountNil() {
 	o.FileCount.Set(nil)
@@ -540,6 +544,7 @@ func (o *PullreqModel) HasMergeMethod() bool {
 func (o *PullreqModel) SetMergeMethod(v PullreqMergeMethod) {
 	o.MergeMethod.Set(&v)
 }
+
 // SetMergeMethodNil sets the value for MergeMethod to be an explicit nil
 func (o *PullreqModel) SetMergeMethodNil() {
 	o.MergeMethod.Set(nil)
@@ -582,6 +587,7 @@ func (o *PullreqModel) HasMergeSha() bool {
 func (o *PullreqModel) SetMergeSha(v string) {
 	o.MergeSha.Set(&v)
 }
+
 // SetMergeShaNil sets the value for MergeSha to be an explicit nil
 func (o *PullreqModel) SetMergeShaNil() {
 	o.MergeSha.Set(nil)
@@ -624,6 +630,7 @@ func (o *PullreqModel) HasMergeTargetSha() bool {
 func (o *PullreqModel) SetMergeTargetSha(v string) {
 	o.MergeTargetSha.Set(&v)
 }
+
 // SetMergeTargetShaNil sets the value for MergeTargetSha to be an explicit nil
 func (o *PullreqModel) SetMergeTargetShaNil() {
 	o.MergeTargetSha.Set(nil)
@@ -666,6 +673,7 @@ func (o *PullreqModel) HasMerged() bool {
 func (o *PullreqModel) SetMerged(v int64) {
 	o.Merged.Set(&v)
 }
+
 // SetMergedNil sets the value for Merged to be an explicit nil
 func (o *PullreqModel) SetMergedNil() {
 	o.Merged.Set(nil)
@@ -708,6 +716,7 @@ func (o *PullreqModel) HasMergedBy() bool {
 func (o *PullreqModel) SetMergedBy(v int64) {
 	o.MergedBy.Set(&v)
 }
+
 // SetMergedByNil sets the value for MergedBy to be an explicit nil
 func (o *PullreqModel) SetMergedByNil() {
 	o.MergedBy.Set(nil)
@@ -983,7 +992,7 @@ func (o *PullreqModel) SetVersion(v int64) {
 }
 
 func (o PullreqModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1077,10 +1086,10 @@ func (o *PullreqModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1136,5 +1145,3 @@ func (v *NullablePullreqModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

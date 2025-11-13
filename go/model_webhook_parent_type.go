@@ -21,7 +21,7 @@ type WebhookParentType string
 // List of WebhookParentType
 const (
 	WEBHOOKPARENTTYPE_REPOSITORY WebhookParentType = "repository"
-	WEBHOOKPARENTTYPE_GROUP WebhookParentType = "group"
+	WEBHOOKPARENTTYPE_GROUP      WebhookParentType = "group"
 )
 
 // All allowed values of WebhookParentType enum
@@ -108,4 +108,3 @@ func (v *NullableWebhookParentType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

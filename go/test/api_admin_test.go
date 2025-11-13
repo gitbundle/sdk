@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService DeleteGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -35,9 +35,22 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService DeleteRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var runnerUuid string
+
+		httpRes, err := apiClient.AdminAPI.DeleteRunner(context.Background(), runnerUuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService DeleteUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userIdentifier string
 
@@ -48,9 +61,22 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService DeleteVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var variableIdentifier string
+
+		httpRes, err := apiClient.AdminAPI.DeleteVariable(context.Background(), variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService GetGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.GetGroups(context.Background()).Execute()
 
@@ -60,9 +86,59 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService GetResetedRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminAPI.GetResetedRunnerRegisterToken(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService GetRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.AdminAPI.GetRunner(context.Background(), runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService GetRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminAPI.GetRunnerRegisterToken(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService GetRunners", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminAPI.GetRunners(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService GetStats", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.GetStats(context.Background()).Execute()
 
@@ -74,7 +150,7 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService GetUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userIdentifier string
 
@@ -88,7 +164,7 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService GetUsers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.GetUsers(context.Background()).Execute()
 
@@ -98,9 +174,49 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService GetVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.AdminAPI.GetVariable(context.Background(), variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService GetVariables", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminAPI.GetVariables(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService PatchRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.AdminAPI.PatchRunner(context.Background(), runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService PatchUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userIdentifier string
 
@@ -114,7 +230,7 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService PatchUserAdmin", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userIdentifier string
 
@@ -126,11 +242,37 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService PatchVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.AdminAPI.PatchVariable(context.Background(), variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService PostUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.PostUser(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdminAPIService PostVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AdminAPI.PostVariable(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

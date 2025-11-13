@@ -20,10 +20,10 @@ type MembershipRole string
 
 // List of MembershipRole
 const (
-	MEMBERSHIPROLE_READER MembershipRole = "reader"
-	MEMBERSHIPROLE_EXECUTOR MembershipRole = "executor"
+	MEMBERSHIPROLE_READER      MembershipRole = "reader"
+	MEMBERSHIPROLE_EXECUTOR    MembershipRole = "executor"
 	MEMBERSHIPROLE_CONTRIBUTOR MembershipRole = "contributor"
-	MEMBERSHIPROLE_OWNER MembershipRole = "owner"
+	MEMBERSHIPROLE_OWNER       MembershipRole = "owner"
 )
 
 // All allowed values of MembershipRole enum
@@ -112,4 +112,3 @@ func (v *NullableMembershipRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

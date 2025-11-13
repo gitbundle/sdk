@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &JobProgress{}
 
 // JobProgress struct for JobProgress
 type JobProgress struct {
-	Failure string `json:"failure"`
-	Progress int64 `json:"progress"`
-	Result string `json:"result"`
-	State JobState `json:"state"`
+	Failure  string   `json:"failure"`
+	Progress int64    `json:"progress"`
+	Result   string   `json:"result"`
+	State    JobState `json:"state"`
 }
 
 type _JobProgress JobProgress
@@ -147,7 +147,7 @@ func (o *JobProgress) SetState(v JobState) {
 }
 
 func (o JobProgress) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,10 +179,10 @@ func (o *JobProgress) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -238,5 +238,3 @@ func (v *NullableJobProgress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

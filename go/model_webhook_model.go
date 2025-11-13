@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,24 +21,24 @@ var _ MappedNullable = &WebhookModel{}
 
 // WebhookModel struct for WebhookModel
 type WebhookModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Description string `json:"description"`
-	DisplayName string `json:"display_name"`
-	Enabled bool `json:"enabled"`
-	GroupId NullableInt64 `json:"group_id,omitempty"`
-	Id int64 `json:"id"`
-	Insecure bool `json:"insecure"`
-	Internal bool `json:"internal"`
+	Created               int64                          `json:"created"`
+	CreatedBy             int64                          `json:"created_by"`
+	Description           string                         `json:"description"`
+	DisplayName           string                         `json:"display_name"`
+	Enabled               bool                           `json:"enabled"`
+	GroupId               NullableInt64                  `json:"group_id,omitempty"`
+	Id                    int64                          `json:"id"`
+	Insecure              bool                           `json:"insecure"`
+	Internal              bool                           `json:"internal"`
 	LatestExecutionResult NullableWebhookExecutionResult `json:"latest_execution_result,omitempty"`
-	Name string `json:"name"`
-	ParentType WebhookParentType `json:"parent_type"`
-	RepoId NullableInt64 `json:"repo_id,omitempty"`
-	Secret string `json:"secret"`
-	Triggers []WebhookTrigger `json:"triggers"`
-	Updated int64 `json:"updated"`
-	Url string `json:"url"`
-	Version int64 `json:"version"`
+	Name                  string                         `json:"name"`
+	ParentType            WebhookParentType              `json:"parent_type"`
+	RepoId                NullableInt64                  `json:"repo_id,omitempty"`
+	Secret                string                         `json:"secret"`
+	Triggers              []WebhookTrigger               `json:"triggers"`
+	Updated               int64                          `json:"updated"`
+	Url                   string                         `json:"url"`
+	Version               int64                          `json:"version"`
 }
 
 type _WebhookModel WebhookModel
@@ -227,6 +227,7 @@ func (o *WebhookModel) HasGroupId() bool {
 func (o *WebhookModel) SetGroupId(v int64) {
 	o.GroupId.Set(&v)
 }
+
 // SetGroupIdNil sets the value for GroupId to be an explicit nil
 func (o *WebhookModel) SetGroupIdNil() {
 	o.GroupId.Set(nil)
@@ -341,6 +342,7 @@ func (o *WebhookModel) HasLatestExecutionResult() bool {
 func (o *WebhookModel) SetLatestExecutionResult(v WebhookExecutionResult) {
 	o.LatestExecutionResult.Set(&v)
 }
+
 // SetLatestExecutionResultNil sets the value for LatestExecutionResult to be an explicit nil
 func (o *WebhookModel) SetLatestExecutionResultNil() {
 	o.LatestExecutionResult.Set(nil)
@@ -431,6 +433,7 @@ func (o *WebhookModel) HasRepoId() bool {
 func (o *WebhookModel) SetRepoId(v int64) {
 	o.RepoId.Set(&v)
 }
+
 // SetRepoIdNil sets the value for RepoId to be an explicit nil
 func (o *WebhookModel) SetRepoIdNil() {
 	o.RepoId.Set(nil)
@@ -562,7 +565,7 @@ func (o *WebhookModel) SetVersion(v int64) {
 }
 
 func (o WebhookModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -625,10 +628,10 @@ func (o *WebhookModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -684,5 +687,3 @@ func (v *NullableWebhookModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

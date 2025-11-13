@@ -19,7 +19,7 @@ var _ MappedNullable = &DiffStats{}
 
 // DiffStats struct for DiffStats
 type DiffStats struct {
-	Commits *int32 `json:"commits,omitempty"`
+	Commits      *int32 `json:"commits,omitempty"`
 	FilesChanged *int32 `json:"files_changed,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *DiffStats) SetFilesChanged(v int32) {
 }
 
 func (o DiffStats) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableDiffStats) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

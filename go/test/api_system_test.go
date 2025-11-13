@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_SystemAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService GetConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.GetConfig(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_gitbundlesdk_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService GetHealth", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.GetHealth(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_gitbundlesdk_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService GetVersion", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.GetVersion(context.Background()).Execute()
 

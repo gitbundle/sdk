@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
 
 	t.Run("Test RulesAPIService DeleteRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var ruleIdentifier string
@@ -38,7 +38,7 @@ func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
 
 	t.Run("Test RulesAPIService GetRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var ruleIdentifier string
@@ -53,7 +53,7 @@ func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
 
 	t.Run("Test RulesAPIService GetRules", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -67,7 +67,7 @@ func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
 
 	t.Run("Test RulesAPIService PatchRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var ruleIdentifier string
@@ -82,7 +82,7 @@ func Test_gitbundlesdk_RulesAPIService(t *testing.T) {
 
 	t.Run("Test RulesAPIService PostRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 

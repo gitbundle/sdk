@@ -20,12 +20,12 @@ type WebhookSort string
 
 // List of WebhookSort
 const (
-	WEBHOOKSORT_NOOP WebhookSort = "noop"
-	WEBHOOKSORT_ID WebhookSort = "id"
-	WEBHOOKSORT_NAME WebhookSort = "name"
+	WEBHOOKSORT_NOOP         WebhookSort = "noop"
+	WEBHOOKSORT_ID           WebhookSort = "id"
+	WEBHOOKSORT_NAME         WebhookSort = "name"
 	WEBHOOKSORT_DISPLAY_NAME WebhookSort = "display_name"
-	WEBHOOKSORT_CREATED WebhookSort = "created"
-	WEBHOOKSORT_UPDATED WebhookSort = "updated"
+	WEBHOOKSORT_CREATED      WebhookSort = "created"
+	WEBHOOKSORT_UPDATED      WebhookSort = "updated"
 )
 
 // All allowed values of WebhookSort enum
@@ -116,4 +116,3 @@ func (v *NullableWebhookSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

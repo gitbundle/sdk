@@ -20,9 +20,9 @@ type VariableType string
 
 // List of VariableType
 const (
-	VARIABLETYPE_PLAIN_TEXT VariableType = "plain_text"
-	VARIABLETYPE_SECRET_TEXT VariableType = "secret_text"
-	VARIABLETYPE_ENVIRONMENT_TEXT VariableType = "environment_text"
+	VARIABLETYPE_PLAIN_TEXT         VariableType = "plain_text"
+	VARIABLETYPE_SECRET_TEXT        VariableType = "secret_text"
+	VARIABLETYPE_ENVIRONMENT_TEXT   VariableType = "environment_text"
 	VARIABLETYPE_ENVIRONMENT_SECRET VariableType = "environment_secret"
 )
 
@@ -112,4 +112,3 @@ func (v *NullableVariableType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

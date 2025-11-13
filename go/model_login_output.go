@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &LoginOutput{}
 
 // LoginOutput struct for LoginOutput
 type LoginOutput struct {
-	AccessToken string `json:"access_token"`
-	ExpiresAt NullableInt64 `json:"expires_at,omitempty"`
-	TwoFactorEnabled NullableBool `json:"two_factor_enabled,omitempty"`
+	AccessToken      string        `json:"access_token"`
+	ExpiresAt        NullableInt64 `json:"expires_at,omitempty"`
+	TwoFactorEnabled NullableBool  `json:"two_factor_enabled,omitempty"`
 }
 
 type _LoginOutput LoginOutput
@@ -102,6 +102,7 @@ func (o *LoginOutput) HasExpiresAt() bool {
 func (o *LoginOutput) SetExpiresAt(v int64) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *LoginOutput) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -144,6 +145,7 @@ func (o *LoginOutput) HasTwoFactorEnabled() bool {
 func (o *LoginOutput) SetTwoFactorEnabled(v bool) {
 	o.TwoFactorEnabled.Set(&v)
 }
+
 // SetTwoFactorEnabledNil sets the value for TwoFactorEnabled to be an explicit nil
 func (o *LoginOutput) SetTwoFactorEnabledNil() {
 	o.TwoFactorEnabled.Set(nil)
@@ -155,7 +157,7 @@ func (o *LoginOutput) UnsetTwoFactorEnabled() {
 }
 
 func (o LoginOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,10 +189,10 @@ func (o *LoginOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -246,5 +248,3 @@ func (v *NullableLoginOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

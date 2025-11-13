@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,17 +21,17 @@ var _ MappedNullable = &PullreqReviewerModel{}
 
 // PullreqReviewerModel struct for PullreqReviewerModel
 type PullreqReviewerModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Id int64 `json:"id"`
-	LatestReviewId NullableInt64 `json:"latest_review_id,omitempty"`
-	PullreqId int64 `json:"pullreq_id"`
-	RepoId int64 `json:"repo_id"`
+	Created        int64                 `json:"created"`
+	CreatedBy      int64                 `json:"created_by"`
+	Id             int64                 `json:"id"`
+	LatestReviewId NullableInt64         `json:"latest_review_id,omitempty"`
+	PullreqId      int64                 `json:"pullreq_id"`
+	RepoId         int64                 `json:"repo_id"`
 	ReviewDecision PullreqReviewDecision `json:"review_decision"`
-	Sha string `json:"sha"`
-	Type PullreqReviewerType `json:"type"`
-	Updated int64 `json:"updated"`
-	UserId int64 `json:"user_id"`
+	Sha            string                `json:"sha"`
+	Type           PullreqReviewerType   `json:"type"`
+	Updated        int64                 `json:"updated"`
+	UserId         int64                 `json:"user_id"`
 }
 
 type _PullreqReviewerModel PullreqReviewerModel
@@ -167,6 +167,7 @@ func (o *PullreqReviewerModel) HasLatestReviewId() bool {
 func (o *PullreqReviewerModel) SetLatestReviewId(v int64) {
 	o.LatestReviewId.Set(&v)
 }
+
 // SetLatestReviewIdNil sets the value for LatestReviewId to be an explicit nil
 func (o *PullreqReviewerModel) SetLatestReviewIdNil() {
 	o.LatestReviewId.Set(nil)
@@ -346,7 +347,7 @@ func (o *PullreqReviewerModel) SetUserId(v int64) {
 }
 
 func (o PullreqReviewerModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -393,10 +394,10 @@ func (o *PullreqReviewerModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -452,5 +453,3 @@ func (v *NullablePullreqReviewerModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

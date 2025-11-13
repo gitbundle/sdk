@@ -19,16 +19,15 @@ import (
 	"strings"
 )
 
-
 // ActionsAPIService ActionsAPI service
 type ActionsAPIService service
 
 type ApiCancelWorkflowRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
+	workflowNumber   int64
 }
 
 func (r ApiCancelWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error) {
@@ -38,30 +37,31 @@ func (r ApiCancelWorkflowRequest) Execute() (*WorkflowStages, *http.Response, er
 /*
 CancelWorkflow Method for CancelWorkflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @return ApiCancelWorkflowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@return ApiCancelWorkflowRequest
 */
 func (a *ActionsAPIService) CancelWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiCancelWorkflowRequest {
 	return ApiCancelWorkflowRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
+		workflowNumber:   workflowNumber,
 	}
 }
 
 // Execute executes the request
-//  @return WorkflowStages
+//
+//	@return WorkflowStages
 func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*WorkflowStages, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkflowStages
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkflowStages
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.CancelWorkflow")
@@ -138,8 +138,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -182,8 +182,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -193,8 +193,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -204,8 +204,8 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -223,9 +223,9 @@ func (a *ActionsAPIService) CancelWorkflowExecute(r ApiCancelWorkflowRequest) (*
 }
 
 type ApiDeleteActionRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
 }
 
@@ -236,16 +236,16 @@ func (r ApiDeleteActionRequest) Execute() (*http.Response, error) {
 /*
 DeleteAction Method for DeleteAction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action identifier
- @return ApiDeleteActionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action identifier
+	@return ApiDeleteActionRequest
 */
 func (a *ActionsAPIService) DeleteAction(ctx context.Context, repoRef string, actionIdentifier string) ApiDeleteActionRequest {
 	return ApiDeleteActionRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
 	}
 }
@@ -253,9 +253,9 @@ func (a *ActionsAPIService) DeleteAction(ctx context.Context, repoRef string, ac
 // Execute executes the request
 func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.DeleteAction")
@@ -331,8 +331,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -342,8 +342,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -353,8 +353,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -364,8 +364,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -375,8 +375,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -386,8 +386,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -397,8 +397,8 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -407,11 +407,11 @@ func (a *ActionsAPIService) DeleteActionExecute(r ApiDeleteActionRequest) (*http
 }
 
 type ApiDeleteWorkflowRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
+	workflowNumber   int64
 }
 
 func (r ApiDeleteWorkflowRequest) Execute() (*http.Response, error) {
@@ -421,28 +421,28 @@ func (r ApiDeleteWorkflowRequest) Execute() (*http.Response, error) {
 /*
 DeleteWorkflow Method for DeleteWorkflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @return ApiDeleteWorkflowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@return ApiDeleteWorkflowRequest
 */
 func (a *ActionsAPIService) DeleteWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiDeleteWorkflowRequest {
 	return ApiDeleteWorkflowRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
+		workflowNumber:   workflowNumber,
 	}
 }
 
 // Execute executes the request
 func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.DeleteWorkflow")
@@ -519,8 +519,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -530,8 +530,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -541,8 +541,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -552,8 +552,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -563,8 +563,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -574,8 +574,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -585,8 +585,8 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -595,9 +595,9 @@ func (a *ActionsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*
 }
 
 type ApiGetActionRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
 }
 
@@ -608,28 +608,29 @@ func (r ApiGetActionRequest) Execute() (*ActionModel, *http.Response, error) {
 /*
 GetAction Method for GetAction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action identifier
- @return ApiGetActionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action identifier
+	@return ApiGetActionRequest
 */
 func (a *ActionsAPIService) GetAction(ctx context.Context, repoRef string, actionIdentifier string) ApiGetActionRequest {
 	return ApiGetActionRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ActionModel
+//
+//	@return ActionModel
 func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ActionModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ActionModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetAction")
@@ -705,8 +706,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -716,8 +717,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -727,8 +728,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -738,8 +739,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -749,8 +750,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -760,8 +761,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -771,8 +772,8 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -790,13 +791,13 @@ func (a *ActionsAPIService) GetActionExecute(r ApiGetActionRequest) (*ActionMode
 }
 
 type ApiGetActionsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ActionsAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	latest *bool
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	latest     *bool
 }
 
 func (r ApiGetActionsRequest) Page(page int64) ApiGetActionsRequest {
@@ -826,26 +827,27 @@ func (r ApiGetActionsRequest) Execute() ([]ActionWorkflow, *http.Response, error
 /*
 GetActions Method for GetActions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetActionsRequest
 */
 func (a *ActionsAPIService) GetActions(ctx context.Context, repoRef string) ApiGetActionsRequest {
 	return ApiGetActionsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []ActionWorkflow
+//
+//	@return []ActionWorkflow
 func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionWorkflow, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ActionWorkflow
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ActionWorkflow
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetActions")
@@ -932,8 +934,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -943,8 +945,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -954,8 +956,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -965,8 +967,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -976,8 +978,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -987,8 +989,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -998,8 +1000,8 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1017,13 +1019,13 @@ func (a *ActionsAPIService) GetActionsExecute(r ApiGetActionsRequest) ([]ActionW
 }
 
 type ApiGetStepLogStreamRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
-	stepNumber int64
+	workflowNumber   int64
+	stageNumber      int64
+	stepNumber       int64
 }
 
 func (r ApiGetStepLogStreamRequest) Execute() ([]LiveLogLine, *http.Response, error) {
@@ -1033,34 +1035,35 @@ func (r ApiGetStepLogStreamRequest) Execute() ([]LiveLogLine, *http.Response, er
 /*
 GetStepLogStream Method for GetStepLogStream
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @param stepNumber Step number
- @return ApiGetStepLogStreamRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@param stepNumber Step number
+	@return ApiGetStepLogStreamRequest
 */
 func (a *ActionsAPIService) GetStepLogStream(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiGetStepLogStreamRequest {
 	return ApiGetStepLogStreamRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
-		stepNumber: stepNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
+		stepNumber:       stepNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []LiveLogLine
+//
+//	@return []LiveLogLine
 func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest) ([]LiveLogLine, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LiveLogLine
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LiveLogLine
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetStepLogStream")
@@ -1139,8 +1142,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1150,8 +1153,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1161,8 +1164,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1172,8 +1175,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1183,8 +1186,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1194,8 +1197,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1205,8 +1208,8 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1224,13 +1227,13 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 }
 
 type ApiGetStepLogsRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
-	stepNumber int64
+	workflowNumber   int64
+	stageNumber      int64
+	stepNumber       int64
 }
 
 func (r ApiGetStepLogsRequest) Execute() ([]LiveLogLine, *http.Response, error) {
@@ -1240,34 +1243,35 @@ func (r ApiGetStepLogsRequest) Execute() ([]LiveLogLine, *http.Response, error) 
 /*
 GetStepLogs Method for GetStepLogs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @param stepNumber Step number
- @return ApiGetStepLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@param stepNumber Step number
+	@return ApiGetStepLogsRequest
 */
 func (a *ActionsAPIService) GetStepLogs(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiGetStepLogsRequest {
 	return ApiGetStepLogsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
-		stepNumber: stepNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
+		stepNumber:       stepNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []LiveLogLine
+//
+//	@return []LiveLogLine
 func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveLogLine, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LiveLogLine
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []LiveLogLine
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetStepLogs")
@@ -1346,8 +1350,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1357,8 +1361,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1368,8 +1372,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1379,8 +1383,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1390,8 +1394,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1401,8 +1405,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1412,8 +1416,8 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1431,11 +1435,11 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 }
 
 type ApiGetWorkflowRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
+	workflowNumber   int64
 }
 
 func (r ApiGetWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error) {
@@ -1445,30 +1449,31 @@ func (r ApiGetWorkflowRequest) Execute() (*WorkflowStages, *http.Response, error
 /*
 GetWorkflow Method for GetWorkflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @return ApiGetWorkflowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@return ApiGetWorkflowRequest
 */
 func (a *ActionsAPIService) GetWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiGetWorkflowRequest {
 	return ApiGetWorkflowRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
+		workflowNumber:   workflowNumber,
 	}
 }
 
 // Execute executes the request
-//  @return WorkflowStages
+//
+//	@return WorkflowStages
 func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*WorkflowStages, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkflowStages
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkflowStages
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetWorkflow")
@@ -1545,8 +1550,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1556,8 +1561,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1567,8 +1572,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1578,8 +1583,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1589,8 +1594,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1600,8 +1605,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1611,8 +1616,8 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1630,12 +1635,12 @@ func (a *ActionsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workfl
 }
 
 type ApiGetWorkflowsRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	page *int64
-	size *int64
+	page             *int64
+	size             *int64
 }
 
 func (r ApiGetWorkflowsRequest) Page(page int64) ApiGetWorkflowsRequest {
@@ -1655,28 +1660,29 @@ func (r ApiGetWorkflowsRequest) Execute() ([]WorkflowModel, *http.Response, erro
 /*
 GetWorkflows Method for GetWorkflows
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action identifier
- @return ApiGetWorkflowsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action identifier
+	@return ApiGetWorkflowsRequest
 */
 func (a *ActionsAPIService) GetWorkflows(ctx context.Context, repoRef string, actionIdentifier string) ApiGetWorkflowsRequest {
 	return ApiGetWorkflowsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return []WorkflowModel
+//
+//	@return []WorkflowModel
 func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]WorkflowModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []WorkflowModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []WorkflowModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetWorkflows")
@@ -1758,8 +1764,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1769,8 +1775,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1780,8 +1786,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1791,8 +1797,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1802,8 +1808,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1813,8 +1819,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1824,8 +1830,8 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1843,10 +1849,10 @@ func (a *ActionsAPIService) GetWorkflowsExecute(r ApiGetWorkflowsRequest) ([]Wor
 }
 
 type ApiPatchActionRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
-	actionIdentifier string
+	ctx               context.Context
+	ApiService        *ActionsAPIService
+	repoRef           string
+	actionIdentifier  string
 	actionUpdateInput *ActionUpdateInput
 }
 
@@ -1862,28 +1868,29 @@ func (r ApiPatchActionRequest) Execute() (*ActionModel, *http.Response, error) {
 /*
 PatchAction Method for PatchAction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action identifier
- @return ApiPatchActionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action identifier
+	@return ApiPatchActionRequest
 */
 func (a *ActionsAPIService) PatchAction(ctx context.Context, repoRef string, actionIdentifier string) ApiPatchActionRequest {
 	return ApiPatchActionRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ActionModel
+//
+//	@return ActionModel
 func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*ActionModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ActionModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ActionModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PatchAction")
@@ -1964,8 +1971,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1975,8 +1982,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1986,8 +1993,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1997,8 +2004,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2008,8 +2015,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2019,8 +2026,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2030,8 +2037,8 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2049,12 +2056,12 @@ func (a *ActionsAPIService) PatchActionExecute(r ApiPatchActionRequest) (*Action
 }
 
 type ApiPatchStageRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
+	workflowNumber   int64
+	stageNumber      int64
 	stageUpdateInput *StageUpdateInput
 }
 
@@ -2070,32 +2077,33 @@ func (r ApiPatchStageRequest) Execute() (*StageModel, *http.Response, error) {
 /*
 PatchStage Method for PatchStage
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @return ApiPatchStageRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@return ApiPatchStageRequest
 */
 func (a *ActionsAPIService) PatchStage(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64) ApiPatchStageRequest {
 	return ApiPatchStageRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
 	}
 }
 
 // Execute executes the request
-//  @return StageModel
+//
+//	@return StageModel
 func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StageModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StageModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PatchStage")
@@ -2178,8 +2186,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2189,8 +2197,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2200,8 +2208,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2211,8 +2219,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2222,8 +2230,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2233,8 +2241,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2244,8 +2252,8 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2263,14 +2271,14 @@ func (a *ActionsAPIService) PatchStageExecute(r ApiPatchStageRequest) (*StageMod
 }
 
 type ApiPatchStepRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
-	stepNumber int64
-	stepUpdateInput *StepUpdateInput
+	workflowNumber   int64
+	stageNumber      int64
+	stepNumber       int64
+	stepUpdateInput  *StepUpdateInput
 }
 
 func (r ApiPatchStepRequest) StepUpdateInput(stepUpdateInput StepUpdateInput) ApiPatchStepRequest {
@@ -2285,34 +2293,35 @@ func (r ApiPatchStepRequest) Execute() (*StageModel, *http.Response, error) {
 /*
 PatchStep Method for PatchStep
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @param stepNumber Step number
- @return ApiPatchStepRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@param stepNumber Step number
+	@return ApiPatchStepRequest
 */
 func (a *ActionsAPIService) PatchStep(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiPatchStepRequest {
 	return ApiPatchStepRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
-		stepNumber: stepNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
+		stepNumber:       stepNumber,
 	}
 }
 
 // Execute executes the request
-//  @return StageModel
+//
+//	@return StageModel
 func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StageModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StageModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PatchStep")
@@ -2396,8 +2405,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2407,8 +2416,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2418,8 +2427,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2429,8 +2438,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2440,8 +2449,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2451,8 +2460,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2462,8 +2471,8 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2481,11 +2490,11 @@ func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel
 }
 
 type ApiPatchWorkflowRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
-	actionIdentifier string
-	workflowNumber int64
+	ctx                 context.Context
+	ApiService          *ActionsAPIService
+	repoRef             string
+	actionIdentifier    string
+	workflowNumber      int64
 	workflowUpdateInput *WorkflowUpdateInput
 }
 
@@ -2501,30 +2510,31 @@ func (r ApiPatchWorkflowRequest) Execute() (*WorkflowModel, *http.Response, erro
 /*
 PatchWorkflow Method for PatchWorkflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @return ApiPatchWorkflowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@return ApiPatchWorkflowRequest
 */
 func (a *ActionsAPIService) PatchWorkflow(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiPatchWorkflowRequest {
 	return ApiPatchWorkflowRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
+		workflowNumber:   workflowNumber,
 	}
 }
 
 // Execute executes the request
-//  @return WorkflowModel
+//
+//	@return WorkflowModel
 func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*WorkflowModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *WorkflowModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *WorkflowModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PatchWorkflow")
@@ -2606,8 +2616,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2617,8 +2627,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2628,8 +2638,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2639,8 +2649,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2650,8 +2660,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2661,8 +2671,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2672,8 +2682,8 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2691,9 +2701,9 @@ func (a *ActionsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Wo
 }
 
 type ApiPostActionRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx               context.Context
+	ApiService        *ActionsAPIService
+	repoRef           string
 	actionCreateInput *ActionCreateInput
 }
 
@@ -2709,26 +2719,27 @@ func (r ApiPostActionRequest) Execute() (*ActionModel, *http.Response, error) {
 /*
 PostAction Method for PostAction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostActionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostActionRequest
 */
 func (a *ActionsAPIService) PostAction(ctx context.Context, repoRef string) ApiPostActionRequest {
 	return ApiPostActionRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return ActionModel
+//
+//	@return ActionModel
 func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ActionModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ActionModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostAction")
@@ -2808,8 +2819,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2819,8 +2830,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2830,8 +2841,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2841,8 +2852,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2852,8 +2863,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2863,8 +2874,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2874,8 +2885,8 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2893,11 +2904,11 @@ func (a *ActionsAPIService) PostActionExecute(r ApiPostActionRequest) (*ActionMo
 }
 
 type ApiPostStageRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
+	workflowNumber   int64
 	stageCreateInput *StageCreateInput
 }
 
@@ -2913,30 +2924,31 @@ func (r ApiPostStageRequest) Execute() (*StageModel, *http.Response, error) {
 /*
 PostStage Method for PostStage
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @return ApiPostStageRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@return ApiPostStageRequest
 */
 func (a *ActionsAPIService) PostStage(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64) ApiPostStageRequest {
 	return ApiPostStageRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
+		workflowNumber:   workflowNumber,
 	}
 }
 
 // Execute executes the request
-//  @return StageModel
+//
+//	@return StageModel
 func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StageModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StageModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostStage")
@@ -3018,8 +3030,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3029,8 +3041,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3040,8 +3052,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3051,8 +3063,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3062,8 +3074,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3073,8 +3085,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3084,8 +3096,8 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3103,13 +3115,13 @@ func (a *ActionsAPIService) PostStageExecute(r ApiPostStageRequest) (*StageModel
 }
 
 type ApiPostStepRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
-	stepCreateInput *StepCreateInput
+	workflowNumber   int64
+	stageNumber      int64
+	stepCreateInput  *StepCreateInput
 }
 
 func (r ApiPostStepRequest) StepCreateInput(stepCreateInput StepCreateInput) ApiPostStepRequest {
@@ -3124,32 +3136,33 @@ func (r ApiPostStepRequest) Execute() (*StageModel, *http.Response, error) {
 /*
 PostStep Method for PostStep
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @return ApiPostStepRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@return ApiPostStepRequest
 */
 func (a *ActionsAPIService) PostStep(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64) ApiPostStepRequest {
 	return ApiPostStepRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
 	}
 }
 
 // Execute executes the request
-//  @return StageModel
+//
+//	@return StageModel
 func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StageModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StageModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostStep")
@@ -3232,8 +3245,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3243,8 +3256,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3254,8 +3267,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3265,8 +3278,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3276,8 +3289,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3287,8 +3300,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3298,8 +3311,8 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3317,13 +3330,13 @@ func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, 
 }
 
 type ApiPostStepLogRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
 	actionIdentifier string
-	workflowNumber int64
-	stageNumber int64
-	stepNumber int64
+	workflowNumber   int64
+	stageNumber      int64
+	stepNumber       int64
 }
 
 func (r ApiPostStepLogRequest) Execute() (*http.Response, error) {
@@ -3333,32 +3346,32 @@ func (r ApiPostStepLogRequest) Execute() (*http.Response, error) {
 /*
 PostStepLog Method for PostStepLog
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action id or action name
- @param workflowNumber Workflow number
- @param stageNumber Stage number
- @param stepNumber Step number
- @return ApiPostStepLogRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action id or action name
+	@param workflowNumber Workflow number
+	@param stageNumber Stage number
+	@param stepNumber Step number
+	@return ApiPostStepLogRequest
 */
 func (a *ActionsAPIService) PostStepLog(ctx context.Context, repoRef string, actionIdentifier string, workflowNumber int64, stageNumber int64, stepNumber int64) ApiPostStepLogRequest {
 	return ApiPostStepLogRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
-		workflowNumber: workflowNumber,
-		stageNumber: stageNumber,
-		stepNumber: stepNumber,
+		workflowNumber:   workflowNumber,
+		stageNumber:      stageNumber,
+		stepNumber:       stepNumber,
 	}
 }
 
 // Execute executes the request
 func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostStepLog")
@@ -3437,8 +3450,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3448,8 +3461,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3459,8 +3472,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3470,8 +3483,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3481,8 +3494,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3492,8 +3505,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3503,8 +3516,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3513,10 +3526,10 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 }
 
 type ApiPostWorkflowRequest struct {
-	ctx context.Context
-	ApiService *ActionsAPIService
-	repoRef string
-	actionIdentifier string
+	ctx                 context.Context
+	ApiService          *ActionsAPIService
+	repoRef             string
+	actionIdentifier    string
 	workflowCreateInput *WorkflowCreateInput
 }
 
@@ -3532,16 +3545,16 @@ func (r ApiPostWorkflowRequest) Execute() (*http.Response, error) {
 /*
 PostWorkflow Method for PostWorkflow
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param actionIdentifier Action identifier
- @return ApiPostWorkflowRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param actionIdentifier Action identifier
+	@return ApiPostWorkflowRequest
 */
 func (a *ActionsAPIService) PostWorkflow(ctx context.Context, repoRef string, actionIdentifier string) ApiPostWorkflowRequest {
 	return ApiPostWorkflowRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
 		actionIdentifier: actionIdentifier,
 	}
 }
@@ -3549,9 +3562,9 @@ func (a *ActionsAPIService) PostWorkflow(ctx context.Context, repoRef string, ac
 // Execute executes the request
 func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostWorkflow")
@@ -3632,8 +3645,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3643,8 +3656,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3654,8 +3667,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3665,8 +3678,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3676,8 +3689,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3687,8 +3700,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3698,8 +3711,8 @@ func (a *ActionsAPIService) PostWorkflowExecute(r ApiPostWorkflowRequest) (*http
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

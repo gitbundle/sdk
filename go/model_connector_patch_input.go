@@ -19,9 +19,9 @@ var _ MappedNullable = &ConnectorPatchInput{}
 
 // ConnectorPatchInput struct for ConnectorPatchInput
 type ConnectorPatchInput struct {
-	Data NullableString `json:"data,omitempty"`
+	Data        NullableString `json:"data,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name        NullableString `json:"name,omitempty"`
 }
 
 // NewConnectorPatchInput instantiates a new ConnectorPatchInput object
@@ -73,6 +73,7 @@ func (o *ConnectorPatchInput) HasData() bool {
 func (o *ConnectorPatchInput) SetData(v string) {
 	o.Data.Set(&v)
 }
+
 // SetDataNil sets the value for Data to be an explicit nil
 func (o *ConnectorPatchInput) SetDataNil() {
 	o.Data.Set(nil)
@@ -115,6 +116,7 @@ func (o *ConnectorPatchInput) HasDescription() bool {
 func (o *ConnectorPatchInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ConnectorPatchInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -157,6 +159,7 @@ func (o *ConnectorPatchInput) HasName() bool {
 func (o *ConnectorPatchInput) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ConnectorPatchInput) SetNameNil() {
 	o.Name.Set(nil)
@@ -168,7 +171,7 @@ func (o *ConnectorPatchInput) UnsetName() {
 }
 
 func (o ConnectorPatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -224,5 +227,3 @@ func (v *NullableConnectorPatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

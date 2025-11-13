@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,23 +21,23 @@ var _ MappedNullable = &StepModel{}
 
 // StepModel struct for StepModel
 type StepModel struct {
-	DependsOn interface{} `json:"depends_on"`
-	Detached bool `json:"detached"`
-	Errignore bool `json:"errignore"`
-	Error string `json:"error"`
-	ExitCode int64 `json:"exit_code"`
-	Id int64 `json:"id"`
-	Image string `json:"image"`
-	Name string `json:"name"`
-	Number int64 `json:"number"`
-	ParentGroupId int64 `json:"parent_group_id"`
-	StageId int64 `json:"stage_id"`
-	Started NullableInt64 `json:"started,omitempty"`
-	Status CIStatus `json:"status"`
-	Stopped NullableInt64 `json:"stopped,omitempty"`
-	Version int64 `json:"version"`
-	YamlProvider YamlProvider `json:"yaml_provider"`
-	YamlResolved string `json:"yaml_resolved"`
+	DependsOn     interface{}   `json:"depends_on"`
+	Detached      bool          `json:"detached"`
+	Errignore     bool          `json:"errignore"`
+	Error         string        `json:"error"`
+	ExitCode      int64         `json:"exit_code"`
+	Id            int64         `json:"id"`
+	Image         string        `json:"image"`
+	Name          string        `json:"name"`
+	Number        int64         `json:"number"`
+	ParentGroupId int64         `json:"parent_group_id"`
+	StageId       int64         `json:"stage_id"`
+	Started       NullableInt64 `json:"started,omitempty"`
+	Status        CIStatus      `json:"status"`
+	Stopped       NullableInt64 `json:"stopped,omitempty"`
+	Version       int64         `json:"version"`
+	YamlProvider  YamlProvider  `json:"yaml_provider"`
+	YamlResolved  string        `json:"yaml_resolved"`
 }
 
 type _StepModel StepModel
@@ -372,6 +372,7 @@ func (o *StepModel) HasStarted() bool {
 func (o *StepModel) SetStarted(v int64) {
 	o.Started.Set(&v)
 }
+
 // SetStartedNil sets the value for Started to be an explicit nil
 func (o *StepModel) SetStartedNil() {
 	o.Started.Set(nil)
@@ -438,6 +439,7 @@ func (o *StepModel) HasStopped() bool {
 func (o *StepModel) SetStopped(v int64) {
 	o.Stopped.Set(&v)
 }
+
 // SetStoppedNil sets the value for Stopped to be an explicit nil
 func (o *StepModel) SetStoppedNil() {
 	o.Stopped.Set(nil)
@@ -521,7 +523,7 @@ func (o *StepModel) SetYamlResolved(v string) {
 }
 
 func (o StepModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -583,10 +585,10 @@ func (o *StepModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -642,5 +644,3 @@ func (v *NullableStepModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

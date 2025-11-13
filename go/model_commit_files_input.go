@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &CommitFilesInput{}
 
 // CommitFilesInput struct for CommitFilesInput
 type CommitFilesInput struct {
-	Actions []RepoCommitFileAction `json:"actions"`
-	Branch string `json:"branch"`
-	BypassRules *bool `json:"bypass_rules,omitempty"`
-	DryRunRules *bool `json:"dry_run_rules,omitempty"`
-	Message string `json:"message"`
-	NewBranch string `json:"new_branch"`
-	Title string `json:"title"`
+	Actions     []RepoCommitFileAction `json:"actions"`
+	Branch      string                 `json:"branch"`
+	BypassRules *bool                  `json:"bypass_rules,omitempty"`
+	DryRunRules *bool                  `json:"dry_run_rules,omitempty"`
+	Message     string                 `json:"message"`
+	NewBranch   string                 `json:"new_branch"`
+	Title       string                 `json:"title"`
 }
 
 type _CommitFilesInput CommitFilesInput
@@ -239,7 +239,7 @@ func (o *CommitFilesInput) SetTitle(v string) {
 }
 
 func (o CommitFilesInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,10 +279,10 @@ func (o *CommitFilesInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -338,5 +338,3 @@ func (v *NullableCommitFilesInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

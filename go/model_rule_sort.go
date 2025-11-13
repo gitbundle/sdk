@@ -20,9 +20,9 @@ type RuleSort string
 
 // List of RuleSort
 const (
-	RULESORT_NOOP RuleSort = "noop"
-	RULESORT_ID RuleSort = "id"
-	RULESORT_NAME RuleSort = "name"
+	RULESORT_NOOP    RuleSort = "noop"
+	RULESORT_ID      RuleSort = "id"
+	RULESORT_NAME    RuleSort = "name"
 	RULESORT_CREATED RuleSort = "created"
 	RULESORT_UPDATED RuleSort = "updated"
 )
@@ -114,4 +114,3 @@ func (v *NullableRuleSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

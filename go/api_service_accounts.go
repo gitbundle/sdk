@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // ServiceAccountsAPIService ServiceAccountsAPI service
 type ServiceAccountsAPIService service
 
 type ApiDeleteServiceAccountRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
+	ctx          context.Context
+	ApiService   *ServiceAccountsAPIService
 	saIdentifier string
 }
 
@@ -36,14 +35,14 @@ func (r ApiDeleteServiceAccountRequest) Execute() (*http.Response, error) {
 /*
 DeleteServiceAccount Method for DeleteServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @return ApiDeleteServiceAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@return ApiDeleteServiceAccountRequest
 */
 func (a *ServiceAccountsAPIService) DeleteServiceAccount(ctx context.Context, saIdentifier string) ApiDeleteServiceAccountRequest {
 	return ApiDeleteServiceAccountRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
 	}
 }
@@ -51,9 +50,9 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccount(ctx context.Context, sa
 // Execute executes the request
 func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServiceAccountRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteServiceAccount")
@@ -128,8 +127,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -139,8 +138,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -150,8 +149,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -161,8 +160,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -172,8 +171,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -183,8 +182,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +193,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -204,10 +203,10 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountExecute(r ApiDeleteServi
 }
 
 type ApiDeleteServiceAccountTokenRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
+	ctx          context.Context
+	ApiService   *ServiceAccountsAPIService
 	saIdentifier string
-	tokenName string
+	tokenName    string
 }
 
 func (r ApiDeleteServiceAccountTokenRequest) Execute() (*http.Response, error) {
@@ -217,26 +216,26 @@ func (r ApiDeleteServiceAccountTokenRequest) Execute() (*http.Response, error) {
 /*
 DeleteServiceAccountToken Method for DeleteServiceAccountToken
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @param tokenName
- @return ApiDeleteServiceAccountTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@param tokenName
+	@return ApiDeleteServiceAccountTokenRequest
 */
 func (a *ServiceAccountsAPIService) DeleteServiceAccountToken(ctx context.Context, saIdentifier string, tokenName string) ApiDeleteServiceAccountTokenRequest {
 	return ApiDeleteServiceAccountTokenRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
-		tokenName: tokenName,
+		tokenName:    tokenName,
 	}
 }
 
 // Execute executes the request
 func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDeleteServiceAccountTokenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteServiceAccountToken")
@@ -312,8 +311,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -323,8 +322,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -334,8 +333,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -345,8 +344,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -356,8 +355,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -367,8 +366,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -378,8 +377,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -388,8 +387,8 @@ func (a *ServiceAccountsAPIService) DeleteServiceAccountTokenExecute(r ApiDelete
 }
 
 type ApiGetServiceAccountRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
+	ctx          context.Context
+	ApiService   *ServiceAccountsAPIService
 	saIdentifier string
 }
 
@@ -400,26 +399,27 @@ func (r ApiGetServiceAccountRequest) Execute() (*UserModel, *http.Response, erro
 /*
 GetServiceAccount Method for GetServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @return ApiGetServiceAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@return ApiGetServiceAccountRequest
 */
 func (a *ServiceAccountsAPIService) GetServiceAccount(ctx context.Context, saIdentifier string) ApiGetServiceAccountRequest {
 	return ApiGetServiceAccountRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return UserModel
+//
+//	@return UserModel
 func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAccountRequest) (*UserModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.GetServiceAccount")
@@ -494,8 +494,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -505,8 +505,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -516,8 +516,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -527,8 +527,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -538,8 +538,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -549,8 +549,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -560,8 +560,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -579,8 +579,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountExecute(r ApiGetServiceAcco
 }
 
 type ApiGetServiceAccountTokensRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
+	ctx          context.Context
+	ApiService   *ServiceAccountsAPIService
 	saIdentifier string
 }
 
@@ -591,26 +591,27 @@ func (r ApiGetServiceAccountTokensRequest) Execute() ([]TokenModel, *http.Respon
 /*
 GetServiceAccountTokens Method for GetServiceAccountTokens
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @return ApiGetServiceAccountTokensRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@return ApiGetServiceAccountTokensRequest
 */
 func (a *ServiceAccountsAPIService) GetServiceAccountTokens(ctx context.Context, saIdentifier string) ApiGetServiceAccountTokensRequest {
 	return ApiGetServiceAccountTokensRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return []TokenModel
+//
+//	@return []TokenModel
 func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServiceAccountTokensRequest) ([]TokenModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TokenModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TokenModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.GetServiceAccountTokens")
@@ -685,8 +686,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -696,8 +697,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -707,8 +708,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -718,8 +719,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -729,8 +730,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -740,8 +741,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -751,8 +752,8 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -770,9 +771,9 @@ func (a *ServiceAccountsAPIService) GetServiceAccountTokensExecute(r ApiGetServi
 }
 
 type ApiPostServiceAccountRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
-	saIdentifier string
+	ctx                       context.Context
+	ApiService                *ServiceAccountsAPIService
+	saIdentifier              string
 	serviceAccountCreateInput *ServiceAccountCreateInput
 }
 
@@ -788,26 +789,27 @@ func (r ApiPostServiceAccountRequest) Execute() (*UserModel, *http.Response, err
 /*
 PostServiceAccount Method for PostServiceAccount
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @return ApiPostServiceAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@return ApiPostServiceAccountRequest
 */
 func (a *ServiceAccountsAPIService) PostServiceAccount(ctx context.Context, saIdentifier string) ApiPostServiceAccountRequest {
 	return ApiPostServiceAccountRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return UserModel
+//
+//	@return UserModel
 func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAccountRequest) (*UserModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.PostServiceAccount")
@@ -887,8 +889,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -898,8 +900,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -909,8 +911,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -920,8 +922,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -931,8 +933,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -942,8 +944,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -953,8 +955,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -972,9 +974,9 @@ func (a *ServiceAccountsAPIService) PostServiceAccountExecute(r ApiPostServiceAc
 }
 
 type ApiPostServiceAccountTokenRequest struct {
-	ctx context.Context
-	ApiService *ServiceAccountsAPIService
-	saIdentifier string
+	ctx                       context.Context
+	ApiService                *ServiceAccountsAPIService
+	saIdentifier              string
 	serviceAccountCreateInput *ServiceAccountCreateInput
 }
 
@@ -990,26 +992,27 @@ func (r ApiPostServiceAccountTokenRequest) Execute() (*ServiceAccountTokenOutput
 /*
 PostServiceAccountToken Method for PostServiceAccountToken
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param saIdentifier Service account UID
- @return ApiPostServiceAccountTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param saIdentifier Service account UID
+	@return ApiPostServiceAccountTokenRequest
 */
 func (a *ServiceAccountsAPIService) PostServiceAccountToken(ctx context.Context, saIdentifier string) ApiPostServiceAccountTokenRequest {
 	return ApiPostServiceAccountTokenRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		saIdentifier: saIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceAccountTokenOutput
+//
+//	@return ServiceAccountTokenOutput
 func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServiceAccountTokenRequest) (*ServiceAccountTokenOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceAccountTokenOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountTokenOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.PostServiceAccountToken")
@@ -1089,8 +1092,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1100,8 +1103,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1111,8 +1114,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1122,8 +1125,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1133,8 +1136,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1144,8 +1147,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1155,8 +1158,8 @@ func (a *ServiceAccountsAPIService) PostServiceAccountTokenExecute(r ApiPostServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PathRefInfo{}
 
 // PathRefInfo struct for PathRefInfo
 type PathRefInfo struct {
-	RefName string `json:"ref_name"`
-	RefType PathRefType `json:"ref_type"`
-	RepoPath string `json:"repo_path"`
+	RefName  string      `json:"ref_name"`
+	RefType  PathRefType `json:"ref_type"`
+	RepoPath string      `json:"repo_path"`
 }
 
 type _PathRefInfo PathRefInfo
@@ -121,7 +121,7 @@ func (o *PathRefInfo) SetRepoPath(v string) {
 }
 
 func (o PathRefInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *PathRefInfo) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullablePathRefInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

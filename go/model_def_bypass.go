@@ -19,8 +19,8 @@ var _ MappedNullable = &DefBypass{}
 
 // DefBypass struct for DefBypass
 type DefBypass struct {
-	RepoOwners *bool `json:"repo_owners,omitempty"`
-	Users []UserModel `json:"users,omitempty"`
+	RepoOwners *bool       `json:"repo_owners,omitempty"`
+	Users      []UserModel `json:"users,omitempty"`
 }
 
 // NewDefBypass instantiates a new DefBypass object
@@ -105,7 +105,7 @@ func (o *DefBypass) SetUsers(v []UserModel) {
 }
 
 func (o DefBypass) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,5 +158,3 @@ func (v *NullableDefBypass) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

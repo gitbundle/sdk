@@ -20,7 +20,7 @@ type PullreqState string
 
 // List of PullreqState
 const (
-	PULLREQSTATE_OPEN PullreqState = "open"
+	PULLREQSTATE_OPEN   PullreqState = "open"
 	PULLREQSTATE_MERGED PullreqState = "merged"
 	PULLREQSTATE_CLOSED PullreqState = "closed"
 )
@@ -110,4 +110,3 @@ func (v *NullablePullreqState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

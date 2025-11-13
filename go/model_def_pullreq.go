@@ -19,9 +19,9 @@ var _ MappedNullable = &DefPullreq{}
 
 // DefPullreq struct for DefPullreq
 type DefPullreq struct {
-	Approvals *DefApprovals `json:"approvals,omitempty"`
-	Comments *DefComments `json:"comments,omitempty"`
-	Merge *DefMerge `json:"merge,omitempty"`
+	Approvals    *DefApprovals    `json:"approvals,omitempty"`
+	Comments     *DefComments     `json:"comments,omitempty"`
+	Merge        *DefMerge        `json:"merge,omitempty"`
 	StatusChecks *DefStatusChecks `json:"status_checks,omitempty"`
 }
 
@@ -171,7 +171,7 @@ func (o *DefPullreq) SetStatusChecks(v DefStatusChecks) {
 }
 
 func (o DefPullreq) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableDefPullreq) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

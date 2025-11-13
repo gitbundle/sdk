@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PullreqActivitySuggestionsMetadata{}
 
 // PullreqActivitySuggestionsMetadata struct for PullreqActivitySuggestionsMetadata
 type PullreqActivitySuggestionsMetadata struct {
-	AppliedCheckSum string `json:"applied_check_sum"`
-	AppliedCommitSha string `json:"applied_commit_sha"`
-	CheckSums []string `json:"check_sums"`
+	AppliedCheckSum  string   `json:"applied_check_sum"`
+	AppliedCommitSha string   `json:"applied_commit_sha"`
+	CheckSums        []string `json:"check_sums"`
 }
 
 type _PullreqActivitySuggestionsMetadata PullreqActivitySuggestionsMetadata
@@ -121,7 +121,7 @@ func (o *PullreqActivitySuggestionsMetadata) SetCheckSums(v []string) {
 }
 
 func (o PullreqActivitySuggestionsMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *PullreqActivitySuggestionsMetadata) UnmarshalJSON(data []byte) (err err
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullablePullreqActivitySuggestionsMetadata) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

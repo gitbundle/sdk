@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &MembershipGroup{}
 
 // MembershipGroup struct for MembershipGroup
 type MembershipGroup struct {
-	Groups []GroupModel `json:"groups"`
-	Model MembershipModel `json:"model"`
+	Groups []GroupModel    `json:"groups"`
+	Model  MembershipModel `json:"model"`
 }
 
 type _MembershipGroup MembershipGroup
@@ -95,7 +95,7 @@ func (o *MembershipGroup) SetModel(v MembershipModel) {
 }
 
 func (o MembershipGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,10 +123,10 @@ func (o *MembershipGroup) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -182,5 +182,3 @@ func (v *NullableMembershipGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

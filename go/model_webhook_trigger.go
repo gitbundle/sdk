@@ -20,19 +20,19 @@ type WebhookTrigger string
 
 // List of WebhookTrigger
 const (
-	WEBHOOKTRIGGER_NOOP WebhookTrigger = "noop"
-	WEBHOOKTRIGGER_BRANCH_CREATED WebhookTrigger = "branch_created"
-	WEBHOOKTRIGGER_BRANCH_UPDATED WebhookTrigger = "branch_updated"
-	WEBHOOKTRIGGER_BRANCH_DELETED WebhookTrigger = "branch_deleted"
-	WEBHOOKTRIGGER_TAG_CREATED WebhookTrigger = "tag_created"
-	WEBHOOKTRIGGER_TAG_UPDATED WebhookTrigger = "tag_updated"
-	WEBHOOKTRIGGER_TAG_DELETED WebhookTrigger = "tag_deleted"
-	WEBHOOKTRIGGER_PULLREQ_CREATED WebhookTrigger = "pullreq_created"
-	WEBHOOKTRIGGER_PULLREQ_REOPENED WebhookTrigger = "pullreq_reopened"
+	WEBHOOKTRIGGER_NOOP                WebhookTrigger = "noop"
+	WEBHOOKTRIGGER_BRANCH_CREATED      WebhookTrigger = "branch_created"
+	WEBHOOKTRIGGER_BRANCH_UPDATED      WebhookTrigger = "branch_updated"
+	WEBHOOKTRIGGER_BRANCH_DELETED      WebhookTrigger = "branch_deleted"
+	WEBHOOKTRIGGER_TAG_CREATED         WebhookTrigger = "tag_created"
+	WEBHOOKTRIGGER_TAG_UPDATED         WebhookTrigger = "tag_updated"
+	WEBHOOKTRIGGER_TAG_DELETED         WebhookTrigger = "tag_deleted"
+	WEBHOOKTRIGGER_PULLREQ_CREATED     WebhookTrigger = "pullreq_created"
+	WEBHOOKTRIGGER_PULLREQ_REOPENED    WebhookTrigger = "pullreq_reopened"
 	WEBHOOKTRIGGER_PULLREQ_SYNCHRONIZE WebhookTrigger = "pullreq_synchronize"
-	WEBHOOKTRIGGER_PULLREQ_CLOSED WebhookTrigger = "pullreq_closed"
-	WEBHOOKTRIGGER_PULLREQ_COMMENTED WebhookTrigger = "pullreq_commented"
-	WEBHOOKTRIGGER_PULLREQ_MERGED WebhookTrigger = "pullreq_merged"
+	WEBHOOKTRIGGER_PULLREQ_CLOSED      WebhookTrigger = "pullreq_closed"
+	WEBHOOKTRIGGER_PULLREQ_COMMENTED   WebhookTrigger = "pullreq_commented"
+	WEBHOOKTRIGGER_PULLREQ_MERGED      WebhookTrigger = "pullreq_merged"
 )
 
 // All allowed values of WebhookTrigger enum
@@ -130,4 +130,3 @@ func (v *NullableWebhookTrigger) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

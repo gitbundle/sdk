@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &RepoStatsOutput{}
 
 // RepoStatsOutput struct for RepoStatsOutput
 type RepoStatsOutput struct {
-	BranchTotalNum int64 `json:"branch_total_num"`
+	BranchTotalNum  int64 `json:"branch_total_num"`
 	PullreqTotalNum int64 `json:"pullreq_total_num"`
 	ReleaseTotalNum int64 `json:"release_total_num"`
-	TagTotalNum int64 `json:"tag_total_num"`
+	TagTotalNum     int64 `json:"tag_total_num"`
 }
 
 type _RepoStatsOutput RepoStatsOutput
@@ -147,7 +147,7 @@ func (o *RepoStatsOutput) SetTagTotalNum(v int64) {
 }
 
 func (o RepoStatsOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,10 +179,10 @@ func (o *RepoStatsOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -238,5 +238,3 @@ func (v *NullableRepoStatsOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

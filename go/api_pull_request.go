@@ -16,19 +16,18 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // PullRequestAPIService PullRequestAPI service
 type PullRequestAPIService service
 
 type ApiDeleteCommentRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx              context.Context
+	ApiService       *PullRequestAPIService
+	repoRef          string
+	pullreqNumber    int64
 	pullreqCommentId int64
 }
 
@@ -39,18 +38,18 @@ func (r ApiDeleteCommentRequest) Execute() (*http.Response, error) {
 /*
 DeleteComment Method for DeleteComment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @param pullreqCommentId Pull request comment id
- @return ApiDeleteCommentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@param pullreqCommentId Pull request comment id
+	@return ApiDeleteCommentRequest
 */
 func (a *PullRequestAPIService) DeleteComment(ctx context.Context, repoRef string, pullreqNumber int64, pullreqCommentId int64) ApiDeleteCommentRequest {
 	return ApiDeleteCommentRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		pullreqNumber: pullreqNumber,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
+		pullreqNumber:    pullreqNumber,
 		pullreqCommentId: pullreqCommentId,
 	}
 }
@@ -58,9 +57,9 @@ func (a *PullRequestAPIService) DeleteComment(ctx context.Context, repoRef strin
 // Execute executes the request
 func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.DeleteComment")
@@ -137,8 +136,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -148,8 +147,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -159,8 +158,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -170,8 +169,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -181,8 +180,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -192,8 +191,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -203,8 +202,8 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -213,11 +212,11 @@ func (a *PullRequestAPIService) DeleteCommentExecute(r ApiDeleteCommentRequest) 
 }
 
 type ApiDeleteFileViewRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
-	path string
+	path          string
 }
 
 func (r ApiDeleteFileViewRequest) Execute() (*http.Response, error) {
@@ -227,28 +226,28 @@ func (r ApiDeleteFileViewRequest) Execute() (*http.Response, error) {
 /*
 DeleteFileView Method for DeleteFileView
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @param path
- @return ApiDeleteFileViewRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@param path
+	@return ApiDeleteFileViewRequest
 */
 func (a *PullRequestAPIService) DeleteFileView(ctx context.Context, repoRef string, pullreqNumber int64, path string) ApiDeleteFileViewRequest {
 	return ApiDeleteFileViewRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
-		path: path,
+		path:          path,
 	}
 }
 
 // Execute executes the request
 func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.DeleteFileView")
@@ -325,8 +324,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -336,8 +335,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -347,8 +346,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -358,8 +357,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -369,8 +368,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -380,8 +379,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -391,8 +390,8 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -401,10 +400,10 @@ func (a *PullRequestAPIService) DeleteFileViewExecute(r ApiDeleteFileViewRequest
 }
 
 type ApiDeleteReviewerRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx               context.Context
+	ApiService        *PullRequestAPIService
+	repoRef           string
+	pullreqNumber     int64
 	pullreqReviewerId int64
 }
 
@@ -415,18 +414,18 @@ func (r ApiDeleteReviewerRequest) Execute() (*http.Response, error) {
 /*
 DeleteReviewer Method for DeleteReviewer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @param pullreqReviewerId Pull request reviewer id
- @return ApiDeleteReviewerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@param pullreqReviewerId Pull request reviewer id
+	@return ApiDeleteReviewerRequest
 */
 func (a *PullRequestAPIService) DeleteReviewer(ctx context.Context, repoRef string, pullreqNumber int64, pullreqReviewerId int64) ApiDeleteReviewerRequest {
 	return ApiDeleteReviewerRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		pullreqNumber: pullreqNumber,
+		ApiService:        a,
+		ctx:               ctx,
+		repoRef:           repoRef,
+		pullreqNumber:     pullreqNumber,
 		pullreqReviewerId: pullreqReviewerId,
 	}
 }
@@ -434,9 +433,9 @@ func (a *PullRequestAPIService) DeleteReviewer(ctx context.Context, repoRef stri
 // Execute executes the request
 func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.DeleteReviewer")
@@ -513,8 +512,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -524,8 +523,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -535,8 +534,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -546,8 +545,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -557,8 +556,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -568,8 +567,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -579,8 +578,8 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -589,17 +588,17 @@ func (a *PullRequestAPIService) DeleteReviewerExecute(r ApiDeleteReviewerRequest
 }
 
 type ApiGetActivitiesRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
-	page *int64
-	size *int64
-	query *string
-	after *int64
-	before *int64
-	types *[]PullreqActivityType
-	kinds *[]PullreqActivityKind
+	page          *int64
+	size          *int64
+	query         *string
+	after         *int64
+	before        *int64
+	types         *[]PullreqActivityType
+	kinds         *[]PullreqActivityKind
 }
 
 func (r ApiGetActivitiesRequest) Page(page int64) ApiGetActivitiesRequest {
@@ -644,28 +643,29 @@ func (r ApiGetActivitiesRequest) Execute() ([]PullreqActivityRelations, *http.Re
 /*
 GetActivities Method for GetActivities
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetActivitiesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetActivitiesRequest
 */
 func (a *PullRequestAPIService) GetActivities(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetActivitiesRequest {
 	return ApiGetActivitiesRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []PullreqActivityRelations
+//
+//	@return []PullreqActivityRelations
 func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) ([]PullreqActivityRelations, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PullreqActivityRelations
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PullreqActivityRelations
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetActivities")
@@ -778,8 +778,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -789,8 +789,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -800,8 +800,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -811,8 +811,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -822,8 +822,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -833,8 +833,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -844,8 +844,8 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -863,9 +863,9 @@ func (a *PullRequestAPIService) GetActivitiesExecute(r ApiGetActivitiesRequest) 
 }
 
 type ApiGetCodeOwnersRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -876,28 +876,29 @@ func (r ApiGetCodeOwnersRequest) Execute() (*CodeOwnerEvaluation, *http.Response
 /*
 GetCodeOwners Method for GetCodeOwners
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetCodeOwnersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetCodeOwnersRequest
 */
 func (a *PullRequestAPIService) GetCodeOwners(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetCodeOwnersRequest {
 	return ApiGetCodeOwnersRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return CodeOwnerEvaluation
+//
+//	@return CodeOwnerEvaluation
 func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) (*CodeOwnerEvaluation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CodeOwnerEvaluation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CodeOwnerEvaluation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetCodeOwners")
@@ -973,8 +974,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -984,8 +985,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -995,8 +996,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1006,8 +1007,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1017,8 +1018,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1028,8 +1029,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1039,8 +1040,8 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1058,9 +1059,9 @@ func (a *PullRequestAPIService) GetCodeOwnersExecute(r ApiGetCodeOwnersRequest) 
 }
 
 type ApiGetFileViewsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -1071,28 +1072,29 @@ func (r ApiGetFileViewsRequest) Execute() ([]PullreqFileViewModel, *http.Respons
 /*
 GetFileViews Method for GetFileViews
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetFileViewsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetFileViewsRequest
 */
 func (a *PullRequestAPIService) GetFileViews(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetFileViewsRequest {
 	return ApiGetFileViewsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []PullreqFileViewModel
+//
+//	@return []PullreqFileViewModel
 func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([]PullreqFileViewModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PullreqFileViewModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PullreqFileViewModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetFileViews")
@@ -1168,8 +1170,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1179,8 +1181,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1190,8 +1192,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1201,8 +1203,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1212,8 +1214,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1223,8 +1225,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1234,8 +1236,8 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1253,9 +1255,9 @@ func (a *PullRequestAPIService) GetFileViewsExecute(r ApiGetFileViewsRequest) ([
 }
 
 type ApiGetMetadataRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -1266,28 +1268,29 @@ func (r ApiGetMetadataRequest) Execute() (*PullreqWithDiffStats, *http.Response,
 /*
 GetMetadata Method for GetMetadata
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetMetadataRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetMetadataRequest
 */
 func (a *PullRequestAPIService) GetMetadata(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetMetadataRequest {
 	return ApiGetMetadataRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqWithDiffStats
+//
+//	@return PullreqWithDiffStats
 func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*PullreqWithDiffStats, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqWithDiffStats
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqWithDiffStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetMetadata")
@@ -1363,8 +1366,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1374,8 +1377,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1385,8 +1388,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1396,8 +1399,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1407,8 +1410,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1418,8 +1421,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1429,8 +1432,8 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1448,9 +1451,9 @@ func (a *PullRequestAPIService) GetMetadataExecute(r ApiGetMetadataRequest) (*Pu
 }
 
 type ApiGetPullRequestChecksRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -1461,28 +1464,29 @@ func (r ApiGetPullRequestChecksRequest) Execute() (*PullreqChecksOutput, *http.R
 /*
 GetPullRequestChecks Method for GetPullRequestChecks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetPullRequestChecksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetPullRequestChecksRequest
 */
 func (a *PullRequestAPIService) GetPullRequestChecks(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetPullRequestChecksRequest {
 	return ApiGetPullRequestChecksRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqChecksOutput
+//
+//	@return PullreqChecksOutput
 func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestChecksRequest) (*PullreqChecksOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqChecksOutput
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqChecksOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetPullRequestChecks")
@@ -1558,8 +1562,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1569,8 +1573,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1580,8 +1584,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1591,8 +1595,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1602,8 +1606,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1613,8 +1617,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1624,8 +1628,8 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1643,12 +1647,12 @@ func (a *PullRequestAPIService) GetPullRequestChecksExecute(r ApiGetPullRequestC
 }
 
 type ApiGetPullRequestCommitsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
-	page *int64
-	size *int64
+	page          *int64
+	size          *int64
 }
 
 func (r ApiGetPullRequestCommitsRequest) Page(page int64) ApiGetPullRequestCommitsRequest {
@@ -1668,28 +1672,29 @@ func (r ApiGetPullRequestCommitsRequest) Execute() ([]Commit, *http.Response, er
 /*
 GetPullRequestCommits Method for GetPullRequestCommits
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetPullRequestCommitsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetPullRequestCommitsRequest
 */
 func (a *PullRequestAPIService) GetPullRequestCommits(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetPullRequestCommitsRequest {
 	return ApiGetPullRequestCommitsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []Commit
+//
+//	@return []Commit
 func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequestCommitsRequest) ([]Commit, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Commit
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Commit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetPullRequestCommits")
@@ -1771,8 +1776,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1782,8 +1787,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1793,8 +1798,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1804,8 +1809,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1815,8 +1820,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1826,8 +1831,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1837,8 +1842,8 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1856,9 +1861,9 @@ func (a *PullRequestAPIService) GetPullRequestCommitsExecute(r ApiGetPullRequest
 }
 
 type ApiGetPullreqRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -1869,28 +1874,29 @@ func (r ApiGetPullreqRequest) Execute() (*PullreqWithDiffStats, *http.Response, 
 /*
 GetPullreq Method for GetPullreq
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetPullreqRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetPullreqRequest
 */
 func (a *PullRequestAPIService) GetPullreq(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetPullreqRequest {
 	return ApiGetPullreqRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqWithDiffStats
+//
+//	@return PullreqWithDiffStats
 func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*PullreqWithDiffStats, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqWithDiffStats
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqWithDiffStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetPullreq")
@@ -1966,8 +1972,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1977,8 +1983,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1988,8 +1994,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1999,8 +2005,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2010,8 +2016,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2021,8 +2027,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2032,8 +2038,8 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2051,21 +2057,21 @@ func (a *PullRequestAPIService) GetPullreqExecute(r ApiGetPullreqRequest) (*Pull
 }
 
 type ApiGetPullreqsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	createdBy *[]int64
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
+	page          *int64
+	size          *int64
+	query         *string
+	createdBy     *[]int64
 	sourceRepoRef *string
-	sourceBranch *string
-	targetBranch *string
-	states *[]PullreqState
-	sort *PullreqSort
-	order *OrderOption
-	createdGt *int64
-	createdLt *int64
+	sourceBranch  *string
+	targetBranch  *string
+	states        *[]PullreqState
+	sort          *PullreqSort
+	order         *OrderOption
+	createdGt     *int64
+	createdLt     *int64
 }
 
 func (r ApiGetPullreqsRequest) Page(page int64) ApiGetPullreqsRequest {
@@ -2135,26 +2141,27 @@ func (r ApiGetPullreqsRequest) Execute() ([]PullreqWithDiffStats, *http.Response
 /*
 GetPullreqs Method for GetPullreqs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetPullreqsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetPullreqsRequest
 */
 func (a *PullRequestAPIService) GetPullreqs(ctx context.Context, repoRef string) ApiGetPullreqsRequest {
 	return ApiGetPullreqsRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []PullreqWithDiffStats
+//
+//	@return []PullreqWithDiffStats
 func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]PullreqWithDiffStats, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PullreqWithDiffStats
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PullreqWithDiffStats
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetPullreqs")
@@ -2281,8 +2288,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2292,8 +2299,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2303,8 +2310,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2314,8 +2321,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2325,8 +2332,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2336,8 +2343,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2347,8 +2354,8 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2366,9 +2373,9 @@ func (a *PullRequestAPIService) GetPullreqsExecute(r ApiGetPullreqsRequest) ([]P
 }
 
 type ApiGetReviewersRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx           context.Context
+	ApiService    *PullRequestAPIService
+	repoRef       string
 	pullreqNumber int64
 }
 
@@ -2379,28 +2386,29 @@ func (r ApiGetReviewersRequest) Execute() ([]PullreqReviewerUser, *http.Response
 /*
 GetReviewers Method for GetReviewers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiGetReviewersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiGetReviewersRequest
 */
 func (a *PullRequestAPIService) GetReviewers(ctx context.Context, repoRef string, pullreqNumber int64) ApiGetReviewersRequest {
 	return ApiGetReviewersRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []PullreqReviewerUser
+//
+//	@return []PullreqReviewerUser
 func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([]PullreqReviewerUser, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PullreqReviewerUser
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PullreqReviewerUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.GetReviewers")
@@ -2476,8 +2484,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2487,8 +2495,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2498,8 +2506,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2509,8 +2517,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2520,8 +2528,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2531,8 +2539,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2542,8 +2550,8 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2561,11 +2569,11 @@ func (a *PullRequestAPIService) GetReviewersExecute(r ApiGetReviewersRequest) ([
 }
 
 type ApiPatchCommentRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
-	pullreqCommentId int64
+	ctx                       context.Context
+	ApiService                *PullRequestAPIService
+	repoRef                   string
+	pullreqNumber             int64
+	pullreqCommentId          int64
 	pullreqCommentUpdateInput *PullreqCommentUpdateInput
 }
 
@@ -2581,30 +2589,31 @@ func (r ApiPatchCommentRequest) Execute() (*PullreqActivityModel, *http.Response
 /*
 PatchComment Method for PatchComment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @param pullreqCommentId Pull request comment id
- @return ApiPatchCommentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@param pullreqCommentId Pull request comment id
+	@return ApiPatchCommentRequest
 */
 func (a *PullRequestAPIService) PatchComment(ctx context.Context, repoRef string, pullreqNumber int64, pullreqCommentId int64) ApiPatchCommentRequest {
 	return ApiPatchCommentRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		pullreqNumber: pullreqNumber,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
+		pullreqNumber:    pullreqNumber,
 		pullreqCommentId: pullreqCommentId,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqActivityModel
+//
+//	@return PullreqActivityModel
 func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*PullreqActivityModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqActivityModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqActivityModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PatchComment")
@@ -2686,8 +2695,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2697,8 +2706,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2708,8 +2717,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2719,8 +2728,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2730,8 +2739,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2741,8 +2750,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2752,8 +2761,8 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2771,10 +2780,10 @@ func (a *PullRequestAPIService) PatchCommentExecute(r ApiPatchCommentRequest) (*
 }
 
 type ApiPatchPullreqRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                context.Context
+	ApiService         *PullRequestAPIService
+	repoRef            string
+	pullreqNumber      int64
 	pullreqUpdateInput *PullreqUpdateInput
 }
 
@@ -2790,28 +2799,29 @@ func (r ApiPatchPullreqRequest) Execute() (*PullreqModel, *http.Response, error)
 /*
 PatchPullreq Method for PatchPullreq
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPatchPullreqRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPatchPullreqRequest
 */
 func (a *PullRequestAPIService) PatchPullreq(ctx context.Context, repoRef string, pullreqNumber int64) ApiPatchPullreqRequest {
 	return ApiPatchPullreqRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqModel
+//
+//	@return PullreqModel
 func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*PullreqModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PatchPullreq")
@@ -2892,8 +2902,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2903,8 +2913,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2914,8 +2924,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2925,8 +2935,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2936,8 +2946,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -2947,8 +2957,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2958,8 +2968,8 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2977,10 +2987,10 @@ func (a *PullRequestAPIService) PatchPullreqExecute(r ApiPatchPullreqRequest) (*
 }
 
 type ApiPostApplySuggestionsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                          context.Context
+	ApiService                   *PullRequestAPIService
+	repoRef                      string
+	pullreqNumber                int64
 	pullreqApplySuggestionsInput *PullreqApplySuggestionsInput
 }
 
@@ -2996,28 +3006,29 @@ func (r ApiPostApplySuggestionsRequest) Execute() (*PullreqApplySuggestionsOutpu
 /*
 PostApplySuggestions Method for PostApplySuggestions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostApplySuggestionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostApplySuggestionsRequest
 */
 func (a *PullRequestAPIService) PostApplySuggestions(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostApplySuggestionsRequest {
 	return ApiPostApplySuggestionsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqApplySuggestionsOutput
+//
+//	@return PullreqApplySuggestionsOutput
 func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySuggestionsRequest) (*PullreqApplySuggestionsOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqApplySuggestionsOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqApplySuggestionsOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostApplySuggestions")
@@ -3098,8 +3109,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3109,8 +3120,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3120,8 +3131,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3131,8 +3142,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3142,8 +3153,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -3153,8 +3164,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3164,8 +3175,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3175,8 +3186,8 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3194,10 +3205,10 @@ func (a *PullRequestAPIService) PostApplySuggestionsExecute(r ApiPostApplySugges
 }
 
 type ApiPostCommentRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                       context.Context
+	ApiService                *PullRequestAPIService
+	repoRef                   string
+	pullreqNumber             int64
 	pullreqCommentCreateInput *PullreqCommentCreateInput
 }
 
@@ -3213,28 +3224,29 @@ func (r ApiPostCommentRequest) Execute() (*PullreqActivityModel, *http.Response,
 /*
 PostComment Method for PostComment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostCommentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostCommentRequest
 */
 func (a *PullRequestAPIService) PostComment(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostCommentRequest {
 	return ApiPostCommentRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqActivityModel
+//
+//	@return PullreqActivityModel
 func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*PullreqActivityModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqActivityModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqActivityModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostComment")
@@ -3315,8 +3327,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3326,8 +3338,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3337,8 +3349,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3348,8 +3360,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3359,8 +3371,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3370,8 +3382,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3381,8 +3393,8 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3400,10 +3412,10 @@ func (a *PullRequestAPIService) PostCommentExecute(r ApiPostCommentRequest) (*Pu
 }
 
 type ApiPostDiffRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx            context.Context
+	ApiService     *PullRequestAPIService
+	repoRef        string
+	pullreqNumber  int64
 	commitDiffFile *[]CommitDiffFile
 }
 
@@ -3419,28 +3431,29 @@ func (r ApiPostDiffRequest) Execute() ([]int32, *http.Response, error) {
 /*
 PostDiff Method for PostDiff
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostDiffRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostDiffRequest
 */
 func (a *PullRequestAPIService) PostDiff(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostDiffRequest {
 	return ApiPostDiffRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return []int32
+//
+//	@return []int32
 func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostDiff")
@@ -3521,8 +3534,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3532,8 +3545,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3543,8 +3556,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3554,8 +3567,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3565,8 +3578,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3576,8 +3589,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3587,8 +3600,8 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3606,10 +3619,10 @@ func (a *PullRequestAPIService) PostDiffExecute(r ApiPostDiffRequest) ([]int32, 
 }
 
 type ApiPostMergeRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx               context.Context
+	ApiService        *PullRequestAPIService
+	repoRef           string
+	pullreqNumber     int64
 	pullreqMergeInput *PullreqMergeInput
 }
 
@@ -3625,28 +3638,29 @@ func (r ApiPostMergeRequest) Execute() (*PullreqMergeOutput, *http.Response, err
 /*
 PostMerge Method for PostMerge
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostMergeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostMergeRequest
 */
 func (a *PullRequestAPIService) PostMerge(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostMergeRequest {
 	return ApiPostMergeRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqMergeOutput
+//
+//	@return PullreqMergeOutput
 func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*PullreqMergeOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqMergeOutput
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqMergeOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostMerge")
@@ -3727,8 +3741,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3738,8 +3752,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3749,8 +3763,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3760,8 +3774,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3771,8 +3785,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -3782,8 +3796,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3793,8 +3807,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3804,8 +3818,8 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3823,9 +3837,9 @@ func (a *PullRequestAPIService) PostMergeExecute(r ApiPostMergeRequest) (*Pullre
 }
 
 type ApiPostPullreqRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
+	ctx                context.Context
+	ApiService         *PullRequestAPIService
+	repoRef            string
 	pullreqCreateInput *PullreqCreateInput
 }
 
@@ -3841,26 +3855,27 @@ func (r ApiPostPullreqRequest) Execute() (*PullreqModel, *http.Response, error) 
 /*
 PostPullreq Method for PostPullreq
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostPullreqRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostPullreqRequest
 */
 func (a *PullRequestAPIService) PostPullreq(ctx context.Context, repoRef string) ApiPostPullreqRequest {
 	return ApiPostPullreqRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqModel
+//
+//	@return PullreqModel
 func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*PullreqModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostPullreq")
@@ -3940,8 +3955,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3951,8 +3966,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3962,8 +3977,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3973,8 +3988,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3984,8 +3999,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -3995,8 +4010,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4006,8 +4021,8 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4025,10 +4040,10 @@ func (a *PullRequestAPIService) PostPullreqExecute(r ApiPostPullreqRequest) (*Pu
 }
 
 type ApiPostReviewsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                      context.Context
+	ApiService               *PullRequestAPIService
+	repoRef                  string
+	pullreqNumber            int64
 	pullreqReviewSubmitInput *PullreqReviewSubmitInput
 }
 
@@ -4044,28 +4059,29 @@ func (r ApiPostReviewsRequest) Execute() (*PullreqReviewModel, *http.Response, e
 /*
 PostReviews Method for PostReviews
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostReviewsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostReviewsRequest
 */
 func (a *PullRequestAPIService) PostReviews(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostReviewsRequest {
 	return ApiPostReviewsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqReviewModel
+//
+//	@return PullreqReviewModel
 func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*PullreqReviewModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqReviewModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqReviewModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostReviews")
@@ -4146,8 +4162,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4157,8 +4173,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4168,8 +4184,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4179,8 +4195,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4190,8 +4206,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4201,8 +4217,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4212,8 +4228,8 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4231,10 +4247,10 @@ func (a *PullRequestAPIService) PostReviewsExecute(r ApiPostReviewsRequest) (*Pu
 }
 
 type ApiPostStateRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                     context.Context
+	ApiService              *PullRequestAPIService
+	repoRef                 string
+	pullreqNumber           int64
 	pullreqStateUpdateInput *PullreqStateUpdateInput
 }
 
@@ -4250,28 +4266,29 @@ func (r ApiPostStateRequest) Execute() (*PullreqModel, *http.Response, error) {
 /*
 PostState Method for PostState
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPostStateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPostStateRequest
 */
 func (a *PullRequestAPIService) PostState(ctx context.Context, repoRef string, pullreqNumber int64) ApiPostStateRequest {
 	return ApiPostStateRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqModel
+//
+//	@return PullreqModel
 func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*PullreqModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PostState")
@@ -4352,8 +4369,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4363,8 +4380,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4374,8 +4391,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4385,8 +4402,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4396,8 +4413,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4407,8 +4424,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4418,8 +4435,8 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4437,11 +4454,11 @@ func (a *PullRequestAPIService) PostStateExecute(r ApiPostStateRequest) (*Pullre
 }
 
 type ApiPutCommentStatusRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
-	pullreqCommentId int64
+	ctx                       context.Context
+	ApiService                *PullRequestAPIService
+	repoRef                   string
+	pullreqNumber             int64
+	pullreqCommentId          int64
 	pullreqCommentStatusInput *PullreqCommentStatusInput
 }
 
@@ -4457,30 +4474,31 @@ func (r ApiPutCommentStatusRequest) Execute() (*PullreqActivityModel, *http.Resp
 /*
 PutCommentStatus Method for PutCommentStatus
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @param pullreqCommentId Pull request comment id
- @return ApiPutCommentStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@param pullreqCommentId Pull request comment id
+	@return ApiPutCommentStatusRequest
 */
 func (a *PullRequestAPIService) PutCommentStatus(ctx context.Context, repoRef string, pullreqNumber int64, pullreqCommentId int64) ApiPutCommentStatusRequest {
 	return ApiPutCommentStatusRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		pullreqNumber: pullreqNumber,
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
+		pullreqNumber:    pullreqNumber,
 		pullreqCommentId: pullreqCommentId,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqActivityModel
+//
+//	@return PullreqActivityModel
 func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusRequest) (*PullreqActivityModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqActivityModel
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqActivityModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PutCommentStatus")
@@ -4562,8 +4580,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4573,8 +4591,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4584,8 +4602,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4595,8 +4613,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4606,8 +4624,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4617,8 +4635,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4628,8 +4646,8 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4647,10 +4665,10 @@ func (a *PullRequestAPIService) PutCommentStatusExecute(r ApiPutCommentStatusReq
 }
 
 type ApiPutFileViewsRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                        context.Context
+	ApiService                 *PullRequestAPIService
+	repoRef                    string
+	pullreqNumber              int64
 	pullreqFileViewCreateInput *PullreqFileViewCreateInput
 }
 
@@ -4666,28 +4684,29 @@ func (r ApiPutFileViewsRequest) Execute() (*PullreqFileViewModel, *http.Response
 /*
 PutFileViews Method for PutFileViews
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPutFileViewsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPutFileViewsRequest
 */
 func (a *PullRequestAPIService) PutFileViews(ctx context.Context, repoRef string, pullreqNumber int64) ApiPutFileViewsRequest {
 	return ApiPutFileViewsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqFileViewModel
+//
+//	@return PullreqFileViewModel
 func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*PullreqFileViewModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqFileViewModel
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqFileViewModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PutFileViews")
@@ -4768,8 +4787,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4779,8 +4798,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4790,8 +4809,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4801,8 +4820,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4812,8 +4831,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -4823,8 +4842,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4834,8 +4853,8 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4853,10 +4872,10 @@ func (a *PullRequestAPIService) PutFileViewsExecute(r ApiPutFileViewsRequest) (*
 }
 
 type ApiPutReviewerRequest struct {
-	ctx context.Context
-	ApiService *PullRequestAPIService
-	repoRef string
-	pullreqNumber int64
+	ctx                     context.Context
+	ApiService              *PullRequestAPIService
+	repoRef                 string
+	pullreqNumber           int64
 	pullreqReviewerAddInput *PullreqReviewerAddInput
 }
 
@@ -4872,28 +4891,29 @@ func (r ApiPutReviewerRequest) Execute() (*PullreqReviewerUser, *http.Response, 
 /*
 PutReviewer Method for PutReviewer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param pullreqNumber Pull request number
- @return ApiPutReviewerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param pullreqNumber Pull request number
+	@return ApiPutReviewerRequest
 */
 func (a *PullRequestAPIService) PutReviewer(ctx context.Context, repoRef string, pullreqNumber int64) ApiPutReviewerRequest {
 	return ApiPutReviewerRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:    a,
+		ctx:           ctx,
+		repoRef:       repoRef,
 		pullreqNumber: pullreqNumber,
 	}
 }
 
 // Execute executes the request
-//  @return PullreqReviewerUser
+//
+//	@return PullreqReviewerUser
 func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*PullreqReviewerUser, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PullreqReviewerUser
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PullreqReviewerUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PullRequestAPIService.PutReviewer")
@@ -4974,8 +4994,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4985,8 +5005,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4996,8 +5016,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5007,8 +5027,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5018,8 +5038,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -5029,8 +5049,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5040,8 +5060,8 @@ func (a *PullRequestAPIService) PutReviewerExecute(r ApiPutReviewerRequest) (*Pu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

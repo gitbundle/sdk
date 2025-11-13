@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &ServiceAccountTokenOutput{}
 
 // ServiceAccountTokenOutput struct for ServiceAccountTokenOutput
 type ServiceAccountTokenOutput struct {
-	AccessToken string `json:"access_token"`
-	ExpiresAt NullableInt64 `json:"expires_at,omitempty"`
+	AccessToken string        `json:"access_token"`
+	ExpiresAt   NullableInt64 `json:"expires_at,omitempty"`
 }
 
 type _ServiceAccountTokenOutput ServiceAccountTokenOutput
@@ -101,6 +101,7 @@ func (o *ServiceAccountTokenOutput) HasExpiresAt() bool {
 func (o *ServiceAccountTokenOutput) SetExpiresAt(v int64) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *ServiceAccountTokenOutput) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -112,7 +113,7 @@ func (o *ServiceAccountTokenOutput) UnsetExpiresAt() {
 }
 
 func (o ServiceAccountTokenOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *ServiceAccountTokenOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullableServiceAccountTokenOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

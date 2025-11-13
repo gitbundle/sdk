@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,14 +21,14 @@ var _ MappedNullable = &RegisterTokenModel{}
 
 // RegisterTokenModel struct for RegisterTokenModel
 type RegisterTokenModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Id int64 `json:"id"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	Scope Scope `json:"scope"`
-	Token string `json:"token"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	Created   int64         `json:"created"`
+	CreatedBy int64         `json:"created_by"`
+	Id        int64         `json:"id"`
+	ParentId  NullableInt64 `json:"parent_id,omitempty"`
+	Scope     Scope         `json:"scope"`
+	Token     string        `json:"token"`
+	Updated   int64         `json:"updated"`
+	Version   int64         `json:"version"`
 }
 
 type _RegisterTokenModel RegisterTokenModel
@@ -161,6 +161,7 @@ func (o *RegisterTokenModel) HasParentId() bool {
 func (o *RegisterTokenModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *RegisterTokenModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -268,7 +269,7 @@ func (o *RegisterTokenModel) SetVersion(v int64) {
 }
 
 func (o RegisterTokenModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -309,10 +310,10 @@ func (o *RegisterTokenModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -368,5 +369,3 @@ func (v *NullableRegisterTokenModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

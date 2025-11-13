@@ -20,11 +20,11 @@ type TokenType string
 
 // List of TokenType
 const (
-	TOKENTYPE_SESSION TokenType = "session"
+	TOKENTYPE_SESSION    TokenType = "session"
 	TOKENTYPE_TWO_FACTOR TokenType = "two_factor"
-	TOKENTYPE_PAT TokenType = "pat"
-	TOKENTYPE_SAT TokenType = "sat"
-	TOKENTYPE_RUNNER TokenType = "runner"
+	TOKENTYPE_PAT        TokenType = "pat"
+	TOKENTYPE_SAT        TokenType = "sat"
+	TOKENTYPE_RUNNER     TokenType = "runner"
 )
 
 // All allowed values of TokenType enum
@@ -114,4 +114,3 @@ func (v *NullableTokenType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

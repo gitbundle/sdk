@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,10 +21,10 @@ var _ MappedNullable = &VariablePatchInput{}
 
 // VariablePatchInput struct for VariablePatchInput
 type VariablePatchInput struct {
-	Data NullableString `json:"data,omitempty"`
+	Data        NullableString `json:"data,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Identifier NullableString `json:"identifier,omitempty"`
-	Type VariableType `json:"type"`
+	Identifier  NullableString `json:"identifier,omitempty"`
+	Type        VariableType   `json:"type"`
 }
 
 type _VariablePatchInput VariablePatchInput
@@ -79,6 +79,7 @@ func (o *VariablePatchInput) HasData() bool {
 func (o *VariablePatchInput) SetData(v string) {
 	o.Data.Set(&v)
 }
+
 // SetDataNil sets the value for Data to be an explicit nil
 func (o *VariablePatchInput) SetDataNil() {
 	o.Data.Set(nil)
@@ -121,6 +122,7 @@ func (o *VariablePatchInput) HasDescription() bool {
 func (o *VariablePatchInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *VariablePatchInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -163,6 +165,7 @@ func (o *VariablePatchInput) HasIdentifier() bool {
 func (o *VariablePatchInput) SetIdentifier(v string) {
 	o.Identifier.Set(&v)
 }
+
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *VariablePatchInput) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -198,7 +201,7 @@ func (o *VariablePatchInput) SetType(v VariableType) {
 }
 
 func (o VariablePatchInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,10 +236,10 @@ func (o *VariablePatchInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -292,5 +295,3 @@ func (v *NullableVariablePatchInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

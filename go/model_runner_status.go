@@ -21,7 +21,7 @@ type RunnerStatus string
 // List of RunnerStatus
 const (
 	RUNNERSTATUS_OFFLINE RunnerStatus = "offline"
-	RUNNERSTATUS_ONLINE RunnerStatus = "online"
+	RUNNERSTATUS_ONLINE  RunnerStatus = "online"
 )
 
 // All allowed values of RunnerStatus enum
@@ -108,4 +108,3 @@ func (v *NullableRunnerStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

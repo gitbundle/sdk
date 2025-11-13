@@ -72,6 +72,7 @@ func (o *CreatedOption) HasCreatedGt() bool {
 func (o *CreatedOption) SetCreatedGt(v int64) {
 	o.CreatedGt.Set(&v)
 }
+
 // SetCreatedGtNil sets the value for CreatedGt to be an explicit nil
 func (o *CreatedOption) SetCreatedGtNil() {
 	o.CreatedGt.Set(nil)
@@ -114,6 +115,7 @@ func (o *CreatedOption) HasCreatedLt() bool {
 func (o *CreatedOption) SetCreatedLt(v int64) {
 	o.CreatedLt.Set(&v)
 }
+
 // SetCreatedLtNil sets the value for CreatedLt to be an explicit nil
 func (o *CreatedOption) SetCreatedLtNil() {
 	o.CreatedLt.Set(nil)
@@ -125,7 +127,7 @@ func (o *CreatedOption) UnsetCreatedLt() {
 }
 
 func (o CreatedOption) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +180,3 @@ func (v *NullableCreatedOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

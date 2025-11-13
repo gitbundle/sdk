@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &SystemConfig{}
 
 // SystemConfig struct for SystemConfig
 type SystemConfig struct {
-	NestedGroupsEnabled bool `json:"nested_groups_enabled"`
+	NestedGroupsEnabled           bool `json:"nested_groups_enabled"`
 	PublicResourceCreationEnabled bool `json:"public_resource_creation_enabled"`
-	UserSignupAllowed bool `json:"user_signup_allowed"`
+	UserSignupAllowed             bool `json:"user_signup_allowed"`
 }
 
 type _SystemConfig SystemConfig
@@ -121,7 +121,7 @@ func (o *SystemConfig) SetUserSignupAllowed(v bool) {
 }
 
 func (o SystemConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *SystemConfig) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullableSystemConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

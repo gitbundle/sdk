@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_ConnectorsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService DeleteConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var connectorRef string
 
@@ -37,7 +37,7 @@ func Test_gitbundlesdk_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService GetConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var connectorRef string
 
@@ -51,7 +51,7 @@ func Test_gitbundlesdk_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService PatchConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var connectorRef string
 
@@ -65,7 +65,7 @@ func Test_gitbundlesdk_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService PostConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ConnectorsAPI.PostConnector(context.Background()).Execute()
 

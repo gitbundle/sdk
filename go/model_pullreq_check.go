@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PullreqCheck{}
 
 // PullreqCheck struct for PullreqCheck
 type PullreqCheck struct {
-	Bypassable bool `json:"bypassable"`
-	Model CheckModel `json:"model"`
-	Required bool `json:"required"`
+	Bypassable bool       `json:"bypassable"`
+	Model      CheckModel `json:"model"`
+	Required   bool       `json:"required"`
 }
 
 type _PullreqCheck PullreqCheck
@@ -121,7 +121,7 @@ func (o *PullreqCheck) SetRequired(v bool) {
 }
 
 func (o PullreqCheck) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +151,10 @@ func (o *PullreqCheck) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -210,5 +210,3 @@ func (v *NullablePullreqCheck) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

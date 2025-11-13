@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // ConnectorsAPIService ConnectorsAPI service
 type ConnectorsAPIService service
 
 type ApiDeleteConnectorRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
+	ctx          context.Context
+	ApiService   *ConnectorsAPIService
 	connectorRef string
 }
 
@@ -36,14 +35,14 @@ func (r ApiDeleteConnectorRequest) Execute() (*http.Response, error) {
 /*
 DeleteConnector Method for DeleteConnector
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param connectorRef
- @return ApiDeleteConnectorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorRef
+	@return ApiDeleteConnectorRequest
 */
 func (a *ConnectorsAPIService) DeleteConnector(ctx context.Context, connectorRef string) ApiDeleteConnectorRequest {
 	return ApiDeleteConnectorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		connectorRef: connectorRef,
 	}
 }
@@ -51,9 +50,9 @@ func (a *ConnectorsAPIService) DeleteConnector(ctx context.Context, connectorRef
 // Execute executes the request
 func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.DeleteConnector")
@@ -128,8 +127,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -139,8 +138,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -150,8 +149,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -161,8 +160,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -172,8 +171,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -183,8 +182,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +193,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -204,8 +203,8 @@ func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 }
 
 type ApiGetConnectorRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
+	ctx          context.Context
+	ApiService   *ConnectorsAPIService
 	connectorRef string
 }
 
@@ -216,26 +215,27 @@ func (r ApiGetConnectorRequest) Execute() (*ConnectorModel, *http.Response, erro
 /*
 GetConnector Method for GetConnector
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param connectorRef
- @return ApiGetConnectorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorRef
+	@return ApiGetConnectorRequest
 */
 func (a *ConnectorsAPIService) GetConnector(ctx context.Context, connectorRef string) ApiGetConnectorRequest {
 	return ApiGetConnectorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		connectorRef: connectorRef,
 	}
 }
 
 // Execute executes the request
-//  @return ConnectorModel
+//
+//	@return ConnectorModel
 func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*ConnectorModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ConnectorModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConnectorModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.GetConnector")
@@ -310,8 +310,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -321,8 +321,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -332,8 +332,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -343,8 +343,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -354,8 +354,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -365,8 +365,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -376,8 +376,8 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -395,9 +395,9 @@ func (a *ConnectorsAPIService) GetConnectorExecute(r ApiGetConnectorRequest) (*C
 }
 
 type ApiPatchConnectorRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
-	connectorRef string
+	ctx                 context.Context
+	ApiService          *ConnectorsAPIService
+	connectorRef        string
 	connectorPatchInput *ConnectorPatchInput
 }
 
@@ -413,26 +413,27 @@ func (r ApiPatchConnectorRequest) Execute() (*ConnectorModel, *http.Response, er
 /*
 PatchConnector Method for PatchConnector
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param connectorRef
- @return ApiPatchConnectorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param connectorRef
+	@return ApiPatchConnectorRequest
 */
 func (a *ConnectorsAPIService) PatchConnector(ctx context.Context, connectorRef string) ApiPatchConnectorRequest {
 	return ApiPatchConnectorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		connectorRef: connectorRef,
 	}
 }
 
 // Execute executes the request
-//  @return ConnectorModel
+//
+//	@return ConnectorModel
 func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest) (*ConnectorModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ConnectorModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConnectorModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PatchConnector")
@@ -512,8 +513,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -523,8 +524,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -534,8 +535,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -545,8 +546,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -556,8 +557,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -567,8 +568,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -578,8 +579,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -597,8 +598,8 @@ func (a *ConnectorsAPIService) PatchConnectorExecute(r ApiPatchConnectorRequest)
 }
 
 type ApiPostConnectorRequest struct {
-	ctx context.Context
-	ApiService *ConnectorsAPIService
+	ctx                  context.Context
+	ApiService           *ConnectorsAPIService
 	connectorCreateInput *ConnectorCreateInput
 }
 
@@ -614,24 +615,25 @@ func (r ApiPostConnectorRequest) Execute() (*ConnectorModel, *http.Response, err
 /*
 PostConnector Method for PostConnector
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostConnectorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPostConnectorRequest
 */
 func (a *ConnectorsAPIService) PostConnector(ctx context.Context) ApiPostConnectorRequest {
 	return ApiPostConnectorRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConnectorModel
+//
+//	@return ConnectorModel
 func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (*ConnectorModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ConnectorModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConnectorModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.PostConnector")
@@ -710,8 +712,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -721,8 +723,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -732,8 +734,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -743,8 +745,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -754,8 +756,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -765,8 +767,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -776,8 +778,8 @@ func (a *ConnectorsAPIService) PostConnectorExecute(r ApiPostConnectorRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

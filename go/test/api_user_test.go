@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_UserAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService DeletePublicKey", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var publicKeyName string
 
@@ -37,7 +37,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService DeleteSession", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionName string
 
@@ -50,7 +50,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService DeleteToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var tokenName string
 
@@ -63,7 +63,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService DeleteTwoFactor", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.UserAPI.DeleteTwoFactor(context.Background()).Execute()
 
@@ -74,7 +74,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetFeeds", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetFeeds(context.Background()).Execute()
 
@@ -86,7 +86,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetHasPerm", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -100,7 +100,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetHeatmap", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetHeatmap(context.Background()).Execute()
 
@@ -112,7 +112,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetMemberships", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetMemberships(context.Background()).Execute()
 
@@ -124,7 +124,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetPublicKeys", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetPublicKeys(context.Background()).Execute()
 
@@ -136,7 +136,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetSessions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetSessions(context.Background()).Execute()
 
@@ -148,7 +148,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetTokens", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetTokens(context.Background()).Execute()
 
@@ -160,7 +160,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetTwoFactor", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetTwoFactor(context.Background()).Execute()
 
@@ -172,7 +172,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetUserGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetUserGroups(context.Background()).Execute()
 
@@ -184,7 +184,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetUserRepos", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetUserRepos(context.Background()).Execute()
 
@@ -196,7 +196,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetUserStars", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetUserStars(context.Background()).Execute()
 
@@ -208,7 +208,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService GetUserUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.GetUserUser(context.Background()).Execute()
 
@@ -220,7 +220,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService PatchTwoFactor", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.PatchTwoFactor(context.Background()).Execute()
 
@@ -232,7 +232,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService PatchUserUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.PatchUserUser(context.Background()).Execute()
 
@@ -244,7 +244,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService PostPublicKey", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.PostPublicKey(context.Background()).Execute()
 
@@ -256,7 +256,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService PostToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.PostToken(context.Background()).Execute()
 
@@ -268,7 +268,7 @@ func Test_gitbundlesdk_UserAPIService(t *testing.T) {
 
 	t.Run("Test UserAPIService PostTwoFactor", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.UserAPI.PostTwoFactor(context.Background()).Execute()
 

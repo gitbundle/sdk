@@ -19,11 +19,11 @@ var _ MappedNullable = &StepUpdateInput{}
 
 // StepUpdateInput struct for StepUpdateInput
 type StepUpdateInput struct {
-	Error NullableString `json:"error,omitempty"`
-	ExitCode NullableInt64 `json:"exit_code,omitempty"`
-	Started NullableInt64 `json:"started,omitempty"`
-	Status NullableCIStatus `json:"status,omitempty"`
-	Stopped NullableInt64 `json:"stopped,omitempty"`
+	Error    NullableString   `json:"error,omitempty"`
+	ExitCode NullableInt64    `json:"exit_code,omitempty"`
+	Started  NullableInt64    `json:"started,omitempty"`
+	Status   NullableCIStatus `json:"status,omitempty"`
+	Stopped  NullableInt64    `json:"stopped,omitempty"`
 }
 
 // NewStepUpdateInput instantiates a new StepUpdateInput object
@@ -75,6 +75,7 @@ func (o *StepUpdateInput) HasError() bool {
 func (o *StepUpdateInput) SetError(v string) {
 	o.Error.Set(&v)
 }
+
 // SetErrorNil sets the value for Error to be an explicit nil
 func (o *StepUpdateInput) SetErrorNil() {
 	o.Error.Set(nil)
@@ -117,6 +118,7 @@ func (o *StepUpdateInput) HasExitCode() bool {
 func (o *StepUpdateInput) SetExitCode(v int64) {
 	o.ExitCode.Set(&v)
 }
+
 // SetExitCodeNil sets the value for ExitCode to be an explicit nil
 func (o *StepUpdateInput) SetExitCodeNil() {
 	o.ExitCode.Set(nil)
@@ -159,6 +161,7 @@ func (o *StepUpdateInput) HasStarted() bool {
 func (o *StepUpdateInput) SetStarted(v int64) {
 	o.Started.Set(&v)
 }
+
 // SetStartedNil sets the value for Started to be an explicit nil
 func (o *StepUpdateInput) SetStartedNil() {
 	o.Started.Set(nil)
@@ -201,6 +204,7 @@ func (o *StepUpdateInput) HasStatus() bool {
 func (o *StepUpdateInput) SetStatus(v CIStatus) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *StepUpdateInput) SetStatusNil() {
 	o.Status.Set(nil)
@@ -243,6 +247,7 @@ func (o *StepUpdateInput) HasStopped() bool {
 func (o *StepUpdateInput) SetStopped(v int64) {
 	o.Stopped.Set(&v)
 }
+
 // SetStoppedNil sets the value for Stopped to be an explicit nil
 func (o *StepUpdateInput) SetStoppedNil() {
 	o.Stopped.Set(nil)
@@ -254,7 +259,7 @@ func (o *StepUpdateInput) UnsetStopped() {
 }
 
 func (o StepUpdateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,5 +321,3 @@ func (v *NullableStepUpdateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

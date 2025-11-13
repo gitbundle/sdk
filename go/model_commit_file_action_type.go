@@ -20,10 +20,10 @@ type CommitFileActionType string
 
 // List of CommitFileActionType
 const (
-	COMMITFILEACTIONTYPE_CREATE CommitFileActionType = "create"
-	COMMITFILEACTIONTYPE_UPDATE CommitFileActionType = "update"
-	COMMITFILEACTIONTYPE_DELETE CommitFileActionType = "delete"
-	COMMITFILEACTIONTYPE_MOVE CommitFileActionType = "move"
+	COMMITFILEACTIONTYPE_CREATE     CommitFileActionType = "create"
+	COMMITFILEACTIONTYPE_UPDATE     CommitFileActionType = "update"
+	COMMITFILEACTIONTYPE_DELETE     CommitFileActionType = "delete"
+	COMMITFILEACTIONTYPE_MOVE       CommitFileActionType = "move"
 	COMMITFILEACTIONTYPE_PATCH_TEXT CommitFileActionType = "patch_text"
 )
 
@@ -114,4 +114,3 @@ func (v *NullableCommitFileActionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

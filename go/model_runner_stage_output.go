@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &RunnerStageOutput{}
 
 // RunnerStageOutput struct for RunnerStageOutput
 type RunnerStageOutput struct {
-	AccessToken string `json:"access_token"`
-	Stage NullableStageModel `json:"stage,omitempty"`
+	AccessToken string             `json:"access_token"`
+	Stage       NullableStageModel `json:"stage,omitempty"`
 }
 
 type _RunnerStageOutput RunnerStageOutput
@@ -101,6 +101,7 @@ func (o *RunnerStageOutput) HasStage() bool {
 func (o *RunnerStageOutput) SetStage(v StageModel) {
 	o.Stage.Set(&v)
 }
+
 // SetStageNil sets the value for Stage to be an explicit nil
 func (o *RunnerStageOutput) SetStageNil() {
 	o.Stage.Set(nil)
@@ -112,7 +113,7 @@ func (o *RunnerStageOutput) UnsetStage() {
 }
 
 func (o RunnerStageOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,10 +142,10 @@ func (o *RunnerStageOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -200,5 +201,3 @@ func (v *NullableRunnerStageOutput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

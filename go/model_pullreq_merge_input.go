@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &PullreqMergeInput{}
 
 // PullreqMergeInput struct for PullreqMergeInput
 type PullreqMergeInput struct {
-	BypassRules bool `json:"bypass_rules"`
-	DeleteSourceBranch *bool `json:"delete_source_branch,omitempty"`
-	DryRun bool `json:"dry_run"`
-	Message string `json:"message"`
-	Method NullablePullreqMergeMethod `json:"method,omitempty"`
-	SourceSha string `json:"source_sha"`
-	Title string `json:"title"`
+	BypassRules        bool                       `json:"bypass_rules"`
+	DeleteSourceBranch *bool                      `json:"delete_source_branch,omitempty"`
+	DryRun             bool                       `json:"dry_run"`
+	Message            string                     `json:"message"`
+	Method             NullablePullreqMergeMethod `json:"method,omitempty"`
+	SourceSha          string                     `json:"source_sha"`
+	Title              string                     `json:"title"`
 }
 
 type _PullreqMergeInput PullreqMergeInput
@@ -190,6 +190,7 @@ func (o *PullreqMergeInput) HasMethod() bool {
 func (o *PullreqMergeInput) SetMethod(v PullreqMergeMethod) {
 	o.Method.Set(&v)
 }
+
 // SetMethodNil sets the value for Method to be an explicit nil
 func (o *PullreqMergeInput) SetMethodNil() {
 	o.Method.Set(nil)
@@ -249,7 +250,7 @@ func (o *PullreqMergeInput) SetTitle(v string) {
 }
 
 func (o PullreqMergeInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,10 +290,10 @@ func (o *PullreqMergeInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -348,5 +349,3 @@ func (v *NullablePullreqMergeInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

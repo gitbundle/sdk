@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
@@ -22,9 +22,37 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test GroupsAPIService DeleteGroupsRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var runnerUuid string
+
+		httpRes, err := apiClient.GroupsAPI.DeleteGroupsRunner(context.Background(), groupRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService DeleteGroupsVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var variableIdentifier string
+
+		httpRes, err := apiClient.GroupsAPI.DeleteGroupsVariable(context.Background(), groupRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService DeleteMember", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 		var userIdentifier string
@@ -38,7 +66,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GetConnectors", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -52,7 +80,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GetEvents", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -66,7 +94,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GetGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -78,9 +106,95 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GroupsAPIService GetGroupsResetedRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsResetedRunnerRegisterToken(context.Background(), groupRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupsRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsRunner(context.Background(), groupRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupsRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsRunnerRegisterToken(context.Background(), groupRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupsRunners", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsRunners(context.Background(), groupRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupsVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsVariable(context.Background(), groupRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GetGroupsVariables", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+
+		resp, httpRes, err := apiClient.GroupsAPI.GetGroupsVariables(context.Background(), groupRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService GetMembers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -94,7 +208,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GetRepos", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -106,23 +220,9 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService GetSecrets", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var groupRef string
-
-		resp, httpRes, err := apiClient.GroupsAPI.GetSecrets(context.Background(), groupRef).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test GroupsAPIService GetServiceAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -136,7 +236,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GetSubGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -150,7 +250,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PatchGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -162,9 +262,39 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GroupsAPIService PatchGroupsRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.GroupsAPI.PatchGroupsRunner(context.Background(), groupRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService PatchGroupsVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.GroupsAPI.PatchGroupsVariable(context.Background(), groupRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService PatchMember", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 		var userIdentifier string
@@ -179,7 +309,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.GroupsAPI.PostGroup(context.Background()).Execute()
 
@@ -189,9 +319,23 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GroupsAPIService PostGroupsVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupRef string
+
+		resp, httpRes, err := apiClient.GroupsAPI.PostGroupsVariable(context.Background(), groupRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService PostImport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.GroupsAPI.PostImport(context.Background()).Execute()
 
@@ -203,7 +347,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostImportRepos", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -217,7 +361,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostMember", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -231,7 +375,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostMove", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -245,7 +389,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostPurge", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -258,7 +402,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService PostRestore", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 
@@ -272,7 +416,7 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService SoftDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var groupRef string
 

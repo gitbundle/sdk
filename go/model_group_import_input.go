@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,12 +21,12 @@ var _ MappedNullable = &GroupImportInput{}
 
 // GroupImportInput struct for GroupImportInput
 type GroupImportInput struct {
-	Description *string `json:"description,omitempty"`
-	Identifier string `json:"identifier"`
-	IsPublic bool `json:"is_public"`
-	ParentRef string `json:"parent_ref"`
-	Provider RepoProvider `json:"provider"`
-	ProviderGroup string `json:"provider_group"`
+	Description   *string      `json:"description,omitempty"`
+	Identifier    string       `json:"identifier"`
+	IsPublic      bool         `json:"is_public"`
+	ParentRef     string       `json:"parent_ref"`
+	Provider      RepoProvider `json:"provider"`
+	ProviderGroup string       `json:"provider_group"`
 }
 
 type _GroupImportInput GroupImportInput
@@ -206,7 +206,7 @@ func (o *GroupImportInput) SetProviderGroup(v string) {
 }
 
 func (o GroupImportInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -243,10 +243,10 @@ func (o *GroupImportInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -302,5 +302,3 @@ func (v *NullableGroupImportInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

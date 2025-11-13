@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,18 +21,18 @@ var _ MappedNullable = &UserModel{}
 
 // UserModel struct for UserModel
 type UserModel struct {
-	Created int64 `json:"created"`
-	DisplayName NullableString `json:"display_name,omitempty"`
-	Email string `json:"email"`
-	Id int64 `json:"id"`
-	IsActive bool `json:"is_active"`
-	IsAdmin bool `json:"is_admin"`
-	IsBlocked bool `json:"is_blocked"`
-	Name string `json:"name"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	ParentType NullableParentResourceType `json:"parent_type,omitempty"`
-	Type UserType `json:"type"`
-	Updated int64 `json:"updated"`
+	Created     int64                      `json:"created"`
+	DisplayName NullableString             `json:"display_name,omitempty"`
+	Email       string                     `json:"email"`
+	Id          int64                      `json:"id"`
+	IsActive    bool                       `json:"is_active"`
+	IsAdmin     bool                       `json:"is_admin"`
+	IsBlocked   bool                       `json:"is_blocked"`
+	Name        string                     `json:"name"`
+	ParentId    NullableInt64              `json:"parent_id,omitempty"`
+	ParentType  NullableParentResourceType `json:"parent_type,omitempty"`
+	Type        UserType                   `json:"type"`
+	Updated     int64                      `json:"updated"`
 }
 
 type _UserModel UserModel
@@ -119,6 +119,7 @@ func (o *UserModel) HasDisplayName() bool {
 func (o *UserModel) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UserModel) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -305,6 +306,7 @@ func (o *UserModel) HasParentId() bool {
 func (o *UserModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *UserModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -347,6 +349,7 @@ func (o *UserModel) HasParentType() bool {
 func (o *UserModel) SetParentType(v ParentResourceType) {
 	o.ParentType.Set(&v)
 }
+
 // SetParentTypeNil sets the value for ParentType to be an explicit nil
 func (o *UserModel) SetParentTypeNil() {
 	o.ParentType.Set(nil)
@@ -406,7 +409,7 @@ func (o *UserModel) SetUpdated(v int64) {
 }
 
 func (o UserModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -457,10 +460,10 @@ func (o *UserModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -516,5 +519,3 @@ func (v *NullableUserModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

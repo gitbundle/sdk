@@ -20,9 +20,9 @@ var _ MappedNullable = &ActionUpdateInput{}
 // ActionUpdateInput struct for ActionUpdateInput
 type ActionUpdateInput struct {
 	Description NullableString `json:"description,omitempty"`
-	Disabled NullableBool `json:"disabled,omitempty"`
-	Identifier NullableString `json:"identifier,omitempty"`
-	YamlPath NullableString `json:"yaml_path,omitempty"`
+	Disabled    NullableBool   `json:"disabled,omitempty"`
+	Identifier  NullableString `json:"identifier,omitempty"`
+	YamlPath    NullableString `json:"yaml_path,omitempty"`
 }
 
 // NewActionUpdateInput instantiates a new ActionUpdateInput object
@@ -74,6 +74,7 @@ func (o *ActionUpdateInput) HasDescription() bool {
 func (o *ActionUpdateInput) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ActionUpdateInput) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -116,6 +117,7 @@ func (o *ActionUpdateInput) HasDisabled() bool {
 func (o *ActionUpdateInput) SetDisabled(v bool) {
 	o.Disabled.Set(&v)
 }
+
 // SetDisabledNil sets the value for Disabled to be an explicit nil
 func (o *ActionUpdateInput) SetDisabledNil() {
 	o.Disabled.Set(nil)
@@ -158,6 +160,7 @@ func (o *ActionUpdateInput) HasIdentifier() bool {
 func (o *ActionUpdateInput) SetIdentifier(v string) {
 	o.Identifier.Set(&v)
 }
+
 // SetIdentifierNil sets the value for Identifier to be an explicit nil
 func (o *ActionUpdateInput) SetIdentifierNil() {
 	o.Identifier.Set(nil)
@@ -200,6 +203,7 @@ func (o *ActionUpdateInput) HasYamlPath() bool {
 func (o *ActionUpdateInput) SetYamlPath(v string) {
 	o.YamlPath.Set(&v)
 }
+
 // SetYamlPathNil sets the value for YamlPath to be an explicit nil
 func (o *ActionUpdateInput) SetYamlPathNil() {
 	o.YamlPath.Set(nil)
@@ -211,7 +215,7 @@ func (o *ActionUpdateInput) UnsetYamlPath() {
 }
 
 func (o ActionUpdateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,5 +274,3 @@ func (v *NullableActionUpdateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

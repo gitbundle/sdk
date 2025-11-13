@@ -19,18 +19,17 @@ import (
 	"strings"
 )
 
-
 // StatusCheckAPIService StatusCheckAPI service
 type StatusCheckAPIService service
 
 type ApiGetChecksRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *StatusCheckAPIService
-	repoRef string
-	commitSha string
-	page *int64
-	size *int64
-	query *string
+	repoRef    string
+	commitSha  string
+	page       *int64
+	size       *int64
+	query      *string
 }
 
 func (r ApiGetChecksRequest) Page(page int64) ApiGetChecksRequest {
@@ -55,28 +54,29 @@ func (r ApiGetChecksRequest) Execute() ([]CheckModel, *http.Response, error) {
 /*
 GetChecks Method for GetChecks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param commitSha
- @return ApiGetChecksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param commitSha
+	@return ApiGetChecksRequest
 */
 func (a *StatusCheckAPIService) GetChecks(ctx context.Context, repoRef string, commitSha string) ApiGetChecksRequest {
 	return ApiGetChecksRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		commitSha: commitSha,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		commitSha:  commitSha,
 	}
 }
 
 // Execute executes the request
-//  @return []CheckModel
+//
+//	@return []CheckModel
 func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]CheckModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CheckModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CheckModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatusCheckAPIService.GetChecks")
@@ -161,8 +161,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -172,8 +172,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -183,8 +183,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -194,8 +194,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -205,8 +205,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -216,8 +216,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -227,8 +227,8 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -246,11 +246,11 @@ func (a *StatusCheckAPIService) GetChecksExecute(r ApiGetChecksRequest) ([]Check
 }
 
 type ApiGetRecentRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *StatusCheckAPIService
-	repoRef string
-	query *string
-	since *int64
+	repoRef    string
+	query      *string
+	since      *int64
 }
 
 func (r ApiGetRecentRequest) Query(query string) ApiGetRecentRequest {
@@ -270,26 +270,27 @@ func (r ApiGetRecentRequest) Execute() ([]string, *http.Response, error) {
 /*
 GetRecent Method for GetRecent
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRecentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRecentRequest
 */
 func (a *StatusCheckAPIService) GetRecent(ctx context.Context, repoRef string) ApiGetRecentRequest {
 	return ApiGetRecentRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatusCheckAPIService.GetRecent")
@@ -370,8 +371,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -381,8 +382,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -392,8 +393,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -403,8 +404,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -414,8 +415,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -425,8 +426,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -436,8 +437,8 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -455,10 +456,10 @@ func (a *StatusCheckAPIService) GetRecentExecute(r ApiGetRecentRequest) ([]strin
 }
 
 type ApiPutCheckReportRequest struct {
-	ctx context.Context
-	ApiService *StatusCheckAPIService
-	repoRef string
-	commitSha string
+	ctx              context.Context
+	ApiService       *StatusCheckAPIService
+	repoRef          string
+	commitSha        string
 	checkReportInput *CheckReportInput
 }
 
@@ -474,28 +475,29 @@ func (r ApiPutCheckReportRequest) Execute() (*CheckModel, *http.Response, error)
 /*
 PutCheckReport Method for PutCheckReport
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param commitSha
- @return ApiPutCheckReportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param commitSha
+	@return ApiPutCheckReportRequest
 */
 func (a *StatusCheckAPIService) PutCheckReport(ctx context.Context, repoRef string, commitSha string) ApiPutCheckReportRequest {
 	return ApiPutCheckReportRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
-		commitSha: commitSha,
+		ctx:        ctx,
+		repoRef:    repoRef,
+		commitSha:  commitSha,
 	}
 }
 
 // Execute executes the request
-//  @return CheckModel
+//
+//	@return CheckModel
 func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest) (*CheckModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CheckModel
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CheckModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StatusCheckAPIService.PutCheckReport")
@@ -576,8 +578,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -587,8 +589,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -598,8 +600,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -609,8 +611,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -620,8 +622,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -631,8 +633,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -642,8 +644,8 @@ func (a *StatusCheckAPIService) PutCheckReportExecute(r ApiPutCheckReportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

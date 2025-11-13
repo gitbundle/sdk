@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,18 +21,18 @@ var _ MappedNullable = &GroupModel{}
 
 // GroupModel struct for GroupModel
 type GroupModel struct {
-	Created int64 `json:"created"`
-	CreatedBy int64 `json:"created_by"`
-	Deleted NullableInt64 `json:"deleted,omitempty"`
+	Created     int64          `json:"created"`
+	CreatedBy   int64          `json:"created_by"`
+	Deleted     NullableInt64  `json:"deleted,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Id int64 `json:"id"`
-	IsPublic bool `json:"is_public"`
-	IsUserHome bool `json:"is_user_home"`
-	Name string `json:"name"`
-	ParentId NullableInt64 `json:"parent_id,omitempty"`
-	Path NullableString `json:"path,omitempty"`
-	Updated int64 `json:"updated"`
-	Version int64 `json:"version"`
+	Id          int64          `json:"id"`
+	IsPublic    bool           `json:"is_public"`
+	IsUserHome  bool           `json:"is_user_home"`
+	Name        string         `json:"name"`
+	ParentId    NullableInt64  `json:"parent_id,omitempty"`
+	Path        NullableString `json:"path,omitempty"`
+	Updated     int64          `json:"updated"`
+	Version     int64          `json:"version"`
 }
 
 type _GroupModel GroupModel
@@ -142,6 +142,7 @@ func (o *GroupModel) HasDeleted() bool {
 func (o *GroupModel) SetDeleted(v int64) {
 	o.Deleted.Set(&v)
 }
+
 // SetDeletedNil sets the value for Deleted to be an explicit nil
 func (o *GroupModel) SetDeletedNil() {
 	o.Deleted.Set(nil)
@@ -184,6 +185,7 @@ func (o *GroupModel) HasDescription() bool {
 func (o *GroupModel) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *GroupModel) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -322,6 +324,7 @@ func (o *GroupModel) HasParentId() bool {
 func (o *GroupModel) SetParentId(v int64) {
 	o.ParentId.Set(&v)
 }
+
 // SetParentIdNil sets the value for ParentId to be an explicit nil
 func (o *GroupModel) SetParentIdNil() {
 	o.ParentId.Set(nil)
@@ -364,6 +367,7 @@ func (o *GroupModel) HasPath() bool {
 func (o *GroupModel) SetPath(v string) {
 	o.Path.Set(&v)
 }
+
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *GroupModel) SetPathNil() {
 	o.Path.Set(nil)
@@ -423,7 +427,7 @@ func (o *GroupModel) SetVersion(v int64) {
 }
 
 func (o GroupModel) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -475,10 +479,10 @@ func (o *GroupModel) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -534,5 +538,3 @@ func (v *NullableGroupModel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

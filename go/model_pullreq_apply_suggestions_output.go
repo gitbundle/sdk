@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &PullreqApplySuggestionsOutput{}
 
 // PullreqApplySuggestionsOutput struct for PullreqApplySuggestionsOutput
 type PullreqApplySuggestionsOutput struct {
-	CommitSha NullableString `json:"commit_sha,omitempty"`
-	DryRunRules bool `json:"dry_run_rules"`
-	RuleChecks []RuleCheckResult `json:"rule_checks"`
+	CommitSha   NullableString    `json:"commit_sha,omitempty"`
+	DryRunRules bool              `json:"dry_run_rules"`
+	RuleChecks  []RuleCheckResult `json:"rule_checks"`
 }
 
 type _PullreqApplySuggestionsOutput PullreqApplySuggestionsOutput
@@ -79,6 +79,7 @@ func (o *PullreqApplySuggestionsOutput) HasCommitSha() bool {
 func (o *PullreqApplySuggestionsOutput) SetCommitSha(v string) {
 	o.CommitSha.Set(&v)
 }
+
 // SetCommitShaNil sets the value for CommitSha to be an explicit nil
 func (o *PullreqApplySuggestionsOutput) SetCommitShaNil() {
 	o.CommitSha.Set(nil)
@@ -138,7 +139,7 @@ func (o *PullreqApplySuggestionsOutput) SetRuleChecks(v []RuleCheckResult) {
 }
 
 func (o PullreqApplySuggestionsOutput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,10 +170,10 @@ func (o *PullreqApplySuggestionsOutput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -228,5 +229,3 @@ func (v *NullablePullreqApplySuggestionsOutput) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

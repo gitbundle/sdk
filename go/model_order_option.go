@@ -20,7 +20,7 @@ type OrderOption string
 
 // List of OrderOption
 const (
-	ORDEROPTION_ASC OrderOption = "asc"
+	ORDEROPTION_ASC  OrderOption = "asc"
 	ORDEROPTION_DESC OrderOption = "desc"
 )
 
@@ -108,4 +108,3 @@ func (v *NullableOrderOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

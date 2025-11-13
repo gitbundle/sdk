@@ -16,18 +16,17 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // RulesAPIService RulesAPI service
 type RulesAPIService service
 
 type ApiDeleteRuleRequest struct {
-	ctx context.Context
-	ApiService *RulesAPIService
-	repoRef string
+	ctx            context.Context
+	ApiService     *RulesAPIService
+	repoRef        string
 	ruleIdentifier string
 }
 
@@ -38,16 +37,16 @@ func (r ApiDeleteRuleRequest) Execute() (*http.Response, error) {
 /*
 DeleteRule Method for DeleteRule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param ruleIdentifier Rule identifier
- @return ApiDeleteRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param ruleIdentifier Rule identifier
+	@return ApiDeleteRuleRequest
 */
 func (a *RulesAPIService) DeleteRule(ctx context.Context, repoRef string, ruleIdentifier string) ApiDeleteRuleRequest {
 	return ApiDeleteRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:     a,
+		ctx:            ctx,
+		repoRef:        repoRef,
 		ruleIdentifier: ruleIdentifier,
 	}
 }
@@ -55,9 +54,9 @@ func (a *RulesAPIService) DeleteRule(ctx context.Context, repoRef string, ruleId
 // Execute executes the request
 func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesAPIService.DeleteRule")
@@ -133,8 +132,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +143,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +154,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +165,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -177,8 +176,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -188,8 +187,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -199,8 +198,8 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -209,9 +208,9 @@ func (a *RulesAPIService) DeleteRuleExecute(r ApiDeleteRuleRequest) (*http.Respo
 }
 
 type ApiGetRuleRequest struct {
-	ctx context.Context
-	ApiService *RulesAPIService
-	repoRef string
+	ctx            context.Context
+	ApiService     *RulesAPIService
+	repoRef        string
 	ruleIdentifier string
 }
 
@@ -222,28 +221,29 @@ func (r ApiGetRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 /*
 GetRule Method for GetRule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param ruleIdentifier Rule identifier
- @return ApiGetRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param ruleIdentifier Rule identifier
+	@return ApiGetRuleRequest
 */
 func (a *RulesAPIService) GetRule(ctx context.Context, repoRef string, ruleIdentifier string) ApiGetRuleRequest {
 	return ApiGetRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:     a,
+		ctx:            ctx,
+		repoRef:        repoRef,
 		ruleIdentifier: ruleIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return RuleModel
+//
+//	@return RuleModel
 func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RuleModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RuleModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesAPIService.GetRule")
@@ -319,8 +319,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -330,8 +330,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -341,8 +341,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -352,8 +352,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -363,8 +363,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -374,8 +374,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -385,8 +385,8 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -404,15 +404,15 @@ func (a *RulesAPIService) GetRuleExecute(r ApiGetRuleRequest) (*RuleModel, *http
 }
 
 type ApiGetRulesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *RulesAPIService
-	repoRef string
-	page *int64
-	size *int64
-	query *string
-	states *[]RuleState
-	sort *RuleSort
-	order *OrderOption
+	repoRef    string
+	page       *int64
+	size       *int64
+	query      *string
+	states     *[]RuleState
+	sort       *RuleSort
+	order      *OrderOption
 }
 
 func (r ApiGetRulesRequest) Page(page int64) ApiGetRulesRequest {
@@ -452,26 +452,27 @@ func (r ApiGetRulesRequest) Execute() ([]RuleModel, *http.Response, error) {
 /*
 GetRules Method for GetRules
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiGetRulesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiGetRulesRequest
 */
 func (a *RulesAPIService) GetRules(ctx context.Context, repoRef string) ApiGetRulesRequest {
 	return ApiGetRulesRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return []RuleModel
+//
+//	@return []RuleModel
 func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []RuleModel
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []RuleModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesAPIService.GetRules")
@@ -572,8 +573,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -583,8 +584,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -594,8 +595,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -605,8 +606,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -616,8 +617,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -627,8 +628,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -638,8 +639,8 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -657,9 +658,9 @@ func (a *RulesAPIService) GetRulesExecute(r ApiGetRulesRequest) ([]RuleModel, *h
 }
 
 type ApiPatchRuleRequest struct {
-	ctx context.Context
-	ApiService *RulesAPIService
-	repoRef string
+	ctx            context.Context
+	ApiService     *RulesAPIService
+	repoRef        string
 	ruleIdentifier string
 	rulePatchInput *RulePatchInput
 }
@@ -676,28 +677,29 @@ func (r ApiPatchRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 /*
 PatchRule Method for PatchRule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @param ruleIdentifier Rule identifier
- @return ApiPatchRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@param ruleIdentifier Rule identifier
+	@return ApiPatchRuleRequest
 */
 func (a *RulesAPIService) PatchRule(ctx context.Context, repoRef string, ruleIdentifier string) ApiPatchRuleRequest {
 	return ApiPatchRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ApiService:     a,
+		ctx:            ctx,
+		repoRef:        repoRef,
 		ruleIdentifier: ruleIdentifier,
 	}
 }
 
 // Execute executes the request
-//  @return RuleModel
+//
+//	@return RuleModel
 func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RuleModel
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RuleModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesAPIService.PatchRule")
@@ -778,8 +780,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -789,8 +791,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -800,8 +802,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -811,8 +813,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -822,8 +824,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -833,8 +835,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -844,8 +846,8 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -863,9 +865,9 @@ func (a *RulesAPIService) PatchRuleExecute(r ApiPatchRuleRequest) (*RuleModel, *
 }
 
 type ApiPostRuleRequest struct {
-	ctx context.Context
-	ApiService *RulesAPIService
-	repoRef string
+	ctx             context.Context
+	ApiService      *RulesAPIService
+	repoRef         string
 	ruleCreateInput *RuleCreateInput
 }
 
@@ -881,26 +883,27 @@ func (r ApiPostRuleRequest) Execute() (*RuleModel, *http.Response, error) {
 /*
 PostRule Method for PostRule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoRef Repository ref
- @return ApiPostRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository ref
+	@return ApiPostRuleRequest
 */
 func (a *RulesAPIService) PostRule(ctx context.Context, repoRef string) ApiPostRuleRequest {
 	return ApiPostRuleRequest{
 		ApiService: a,
-		ctx: ctx,
-		repoRef: repoRef,
+		ctx:        ctx,
+		repoRef:    repoRef,
 	}
 }
 
 // Execute executes the request
-//  @return RuleModel
+//
+//	@return RuleModel
 func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RuleModel
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *RuleModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RulesAPIService.PostRule")
@@ -980,8 +983,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -991,8 +994,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1002,8 +1005,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1013,8 +1016,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1024,8 +1027,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1035,8 +1038,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1046,8 +1049,8 @@ func (a *RulesAPIService) PostRuleExecute(r ApiPostRuleRequest) (*RuleModel, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

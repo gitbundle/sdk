@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &RepoContentInfo{}
 
 // RepoContentInfo struct for RepoContentInfo
 type RepoContentInfo struct {
-	CommitUrl NullableString `json:"commit_url,omitempty"`
-	LatestCommit NullableCommit `json:"latest_commit,omitempty"`
-	Name string `json:"name"`
-	Path string `json:"path"`
-	RepoUrl NullableString `json:"repo_url,omitempty"`
-	Sha string `json:"sha"`
-	Type RepoContentType `json:"type"`
+	CommitUrl    NullableString  `json:"commit_url,omitempty"`
+	LatestCommit NullableCommit  `json:"latest_commit,omitempty"`
+	Name         string          `json:"name"`
+	Path         string          `json:"path"`
+	RepoUrl      NullableString  `json:"repo_url,omitempty"`
+	Sha          string          `json:"sha"`
+	Type         RepoContentType `json:"type"`
 }
 
 type _RepoContentInfo RepoContentInfo
@@ -85,6 +85,7 @@ func (o *RepoContentInfo) HasCommitUrl() bool {
 func (o *RepoContentInfo) SetCommitUrl(v string) {
 	o.CommitUrl.Set(&v)
 }
+
 // SetCommitUrlNil sets the value for CommitUrl to be an explicit nil
 func (o *RepoContentInfo) SetCommitUrlNil() {
 	o.CommitUrl.Set(nil)
@@ -127,6 +128,7 @@ func (o *RepoContentInfo) HasLatestCommit() bool {
 func (o *RepoContentInfo) SetLatestCommit(v Commit) {
 	o.LatestCommit.Set(&v)
 }
+
 // SetLatestCommitNil sets the value for LatestCommit to be an explicit nil
 func (o *RepoContentInfo) SetLatestCommitNil() {
 	o.LatestCommit.Set(nil)
@@ -217,6 +219,7 @@ func (o *RepoContentInfo) HasRepoUrl() bool {
 func (o *RepoContentInfo) SetRepoUrl(v string) {
 	o.RepoUrl.Set(&v)
 }
+
 // SetRepoUrlNil sets the value for RepoUrl to be an explicit nil
 func (o *RepoContentInfo) SetRepoUrlNil() {
 	o.RepoUrl.Set(nil)
@@ -276,7 +279,7 @@ func (o *RepoContentInfo) SetType(v RepoContentType) {
 }
 
 func (o RepoContentInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -317,10 +320,10 @@ func (o *RepoContentInfo) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -376,5 +379,3 @@ func (v *NullableRepoContentInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

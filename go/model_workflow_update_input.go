@@ -19,11 +19,11 @@ var _ MappedNullable = &WorkflowUpdateInput{}
 
 // WorkflowUpdateInput struct for WorkflowUpdateInput
 type WorkflowUpdateInput struct {
-	After NullableString `json:"after,omitempty"`
-	Error NullableString `json:"error,omitempty"`
-	Finished NullableInt64 `json:"finished,omitempty"`
-	Started NullableInt64 `json:"started,omitempty"`
-	Status NullableCIStatus `json:"status,omitempty"`
+	After    NullableString   `json:"after,omitempty"`
+	Error    NullableString   `json:"error,omitempty"`
+	Finished NullableInt64    `json:"finished,omitempty"`
+	Started  NullableInt64    `json:"started,omitempty"`
+	Status   NullableCIStatus `json:"status,omitempty"`
 }
 
 // NewWorkflowUpdateInput instantiates a new WorkflowUpdateInput object
@@ -75,6 +75,7 @@ func (o *WorkflowUpdateInput) HasAfter() bool {
 func (o *WorkflowUpdateInput) SetAfter(v string) {
 	o.After.Set(&v)
 }
+
 // SetAfterNil sets the value for After to be an explicit nil
 func (o *WorkflowUpdateInput) SetAfterNil() {
 	o.After.Set(nil)
@@ -117,6 +118,7 @@ func (o *WorkflowUpdateInput) HasError() bool {
 func (o *WorkflowUpdateInput) SetError(v string) {
 	o.Error.Set(&v)
 }
+
 // SetErrorNil sets the value for Error to be an explicit nil
 func (o *WorkflowUpdateInput) SetErrorNil() {
 	o.Error.Set(nil)
@@ -159,6 +161,7 @@ func (o *WorkflowUpdateInput) HasFinished() bool {
 func (o *WorkflowUpdateInput) SetFinished(v int64) {
 	o.Finished.Set(&v)
 }
+
 // SetFinishedNil sets the value for Finished to be an explicit nil
 func (o *WorkflowUpdateInput) SetFinishedNil() {
 	o.Finished.Set(nil)
@@ -201,6 +204,7 @@ func (o *WorkflowUpdateInput) HasStarted() bool {
 func (o *WorkflowUpdateInput) SetStarted(v int64) {
 	o.Started.Set(&v)
 }
+
 // SetStartedNil sets the value for Started to be an explicit nil
 func (o *WorkflowUpdateInput) SetStartedNil() {
 	o.Started.Set(nil)
@@ -243,6 +247,7 @@ func (o *WorkflowUpdateInput) HasStatus() bool {
 func (o *WorkflowUpdateInput) SetStatus(v CIStatus) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *WorkflowUpdateInput) SetStatusNil() {
 	o.Status.Set(nil)
@@ -254,7 +259,7 @@ func (o *WorkflowUpdateInput) UnsetStatus() {
 }
 
 func (o WorkflowUpdateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,5 +321,3 @@ func (v *NullableWorkflowUpdateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

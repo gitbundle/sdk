@@ -20,13 +20,13 @@ type SseType string
 
 // List of SseType
 const (
-	SSETYPE_NOOP SseType = "noop"
-	SSETYPE_WORKFLOW_UPDATED SseType = "workflow_updated"
-	SSETYPE_WORKFLOW_RUNNING SseType = "workflow_running"
-	SSETYPE_WORKFLOW_COMPLETED SseType = "workflow_completed"
-	SSETYPE_WORKFLOW_CANCELED SseType = "workflow_canceled"
+	SSETYPE_NOOP                        SseType = "noop"
+	SSETYPE_WORKFLOW_UPDATED            SseType = "workflow_updated"
+	SSETYPE_WORKFLOW_RUNNING            SseType = "workflow_running"
+	SSETYPE_WORKFLOW_COMPLETED          SseType = "workflow_completed"
+	SSETYPE_WORKFLOW_CANCELED           SseType = "workflow_canceled"
 	SSETYPE_REPOSITORY_IMPORT_COMPLETED SseType = "repository_import_completed"
-	SSETYPE_PULLREQ_UPDATED SseType = "pullreq_updated"
+	SSETYPE_PULLREQ_UPDATED             SseType = "pullreq_updated"
 )
 
 // All allowed values of SseType enum
@@ -118,4 +118,3 @@ func (v *NullableSseType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

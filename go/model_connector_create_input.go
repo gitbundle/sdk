@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,11 +21,11 @@ var _ MappedNullable = &ConnectorCreateInput{}
 
 // ConnectorCreateInput struct for ConnectorCreateInput
 type ConnectorCreateInput struct {
-	Data string `json:"data"`
+	Data        string `json:"data"`
 	Description string `json:"description"`
-	GroupRef string `json:"group_ref"`
-	Name string `json:"name"`
-	Type string `json:"type"`
+	GroupRef    string `json:"group_ref"`
+	Name        string `json:"name"`
+	Type        string `json:"type"`
 }
 
 type _ConnectorCreateInput ConnectorCreateInput
@@ -173,7 +173,7 @@ func (o *ConnectorCreateInput) SetType(v string) {
 }
 
 func (o ConnectorCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,10 +207,10 @@ func (o *ConnectorCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -266,5 +266,3 @@ func (v *NullableConnectorCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

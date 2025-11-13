@@ -11,8 +11,8 @@ API version: 3.0.0
 package gitbundlesdk
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -21,30 +21,30 @@ var _ MappedNullable = &StageCreateInput{}
 
 // StageCreateInput struct for StageCreateInput
 type StageCreateInput struct {
-	Arch string `json:"arch"`
-	Errignore bool `json:"errignore"`
-	Error string `json:"error"`
-	ExitCode int64 `json:"exit_code"`
-	Kernel string `json:"kernel"`
-	Kind string `json:"kind"`
-	Labels []string `json:"labels"`
-	Limit int64 `json:"limit"`
-	LimitRepo int64 `json:"limit_repo"`
-	Machine string `json:"machine"`
-	Name string `json:"name"`
-	Needs interface{} `json:"needs"`
-	Number int64 `json:"number"`
-	OnFailure bool `json:"on_failure"`
-	OnSuccess bool `json:"on_success"`
-	Os string `json:"os"`
-	ParentGroupId int64 `json:"parent_group_id"`
-	Started NullableInt64 `json:"started,omitempty"`
-	Status CIStatus `json:"status"`
-	Stopped NullableInt64 `json:"stopped,omitempty"`
-	Type string `json:"type"`
-	Variant string `json:"variant"`
-	YamlProvider YamlProvider `json:"yaml_provider"`
-	YamlResolved string `json:"yaml_resolved"`
+	Arch          string        `json:"arch"`
+	Errignore     bool          `json:"errignore"`
+	Error         string        `json:"error"`
+	ExitCode      int64         `json:"exit_code"`
+	Kernel        string        `json:"kernel"`
+	Kind          string        `json:"kind"`
+	Labels        []string      `json:"labels"`
+	Limit         int64         `json:"limit"`
+	LimitRepo     int64         `json:"limit_repo"`
+	Machine       string        `json:"machine"`
+	Name          string        `json:"name"`
+	Needs         interface{}   `json:"needs"`
+	Number        int64         `json:"number"`
+	OnFailure     bool          `json:"on_failure"`
+	OnSuccess     bool          `json:"on_success"`
+	Os            string        `json:"os"`
+	ParentGroupId int64         `json:"parent_group_id"`
+	Started       NullableInt64 `json:"started,omitempty"`
+	Status        CIStatus      `json:"status"`
+	Stopped       NullableInt64 `json:"stopped,omitempty"`
+	Type          string        `json:"type"`
+	Variant       string        `json:"variant"`
+	YamlProvider  YamlProvider  `json:"yaml_provider"`
+	YamlResolved  string        `json:"yaml_resolved"`
 }
 
 type _StageCreateInput StageCreateInput
@@ -530,6 +530,7 @@ func (o *StageCreateInput) HasStarted() bool {
 func (o *StageCreateInput) SetStarted(v int64) {
 	o.Started.Set(&v)
 }
+
 // SetStartedNil sets the value for Started to be an explicit nil
 func (o *StageCreateInput) SetStartedNil() {
 	o.Started.Set(nil)
@@ -596,6 +597,7 @@ func (o *StageCreateInput) HasStopped() bool {
 func (o *StageCreateInput) SetStopped(v int64) {
 	o.Stopped.Set(&v)
 }
+
 // SetStoppedNil sets the value for Stopped to be an explicit nil
 func (o *StageCreateInput) SetStoppedNil() {
 	o.Stopped.Set(nil)
@@ -703,7 +705,7 @@ func (o *StageCreateInput) SetYamlResolved(v string) {
 }
 
 func (o StageCreateInput) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -779,10 +781,10 @@ func (o *StageCreateInput) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -838,5 +840,3 @@ func (v *NullableStageCreateInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

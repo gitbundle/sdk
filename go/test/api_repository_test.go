@@ -11,10 +11,10 @@ package gitbundlesdk
 
 import (
 	"context"
+	openapiclient "github.com/gitbundle/sdk-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/gitbundle/sdk-go"
 )
 
 func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService CommitFiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -38,7 +38,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService CommitsCalculateDivergence", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -52,7 +52,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService DeleteBranch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var branchName string
@@ -66,7 +66,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService DeleteRelease", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -78,9 +78,37 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService DeleteRepositoryRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var runnerUuid string
+
+		httpRes, err := apiClient.RepositoryAPI.DeleteRepositoryRunner(context.Background(), repoRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService DeleteRepositoryVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var variableIdentifier string
+
+		httpRes, err := apiClient.RepositoryAPI.DeleteRepositoryVariable(context.Background(), repoRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService DeleteTag", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagName string
@@ -94,7 +122,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GeneralUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -108,7 +136,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetArchive", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var archiveRef string
@@ -123,7 +151,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetBlame", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -138,7 +166,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetBranch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var branchName string
@@ -153,7 +181,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetBranches", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -167,7 +195,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetCodeownersValidate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -181,7 +209,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetCommit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var commitSha string
@@ -196,7 +224,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetCommitDiff", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var commitSha string
@@ -211,7 +239,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetCommitFileContent", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var commitSha string
@@ -226,7 +254,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetCommits", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -240,7 +268,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetContent", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -255,7 +283,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetContributors", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -269,7 +297,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetDiffStats", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -284,7 +312,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetDiffs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -299,7 +327,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetForks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -313,7 +341,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetGeneral", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -327,7 +355,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetHasStarred", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -341,7 +369,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetImportProgress", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -355,7 +383,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetPaths", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -369,7 +397,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetRaw", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -384,7 +412,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetRelease", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var tagRef string
@@ -399,7 +427,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetReleases", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -413,7 +441,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetRepo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -425,9 +453,66 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService GetRepositoryResetedRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryResetedRunnerRegisterToken(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetRepositoryRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryRunner(context.Background(), repoRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetRepositoryRunnerRegisterToken", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryRunnerRegisterToken(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetRepositoryRunners", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryRunners(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService GetRepositoryServiceAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -441,7 +526,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetRepositoryStats", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -453,9 +538,38 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService GetRepositoryVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryVariable(context.Background(), repoRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetRepositoryVariables", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetRepositoryVariables(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService GetSecurity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -469,7 +583,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetStars", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -483,7 +597,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService GetTags", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -497,7 +611,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PatchRepo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -509,9 +623,39 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService PatchRepositoryRunner", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var runnerUuid string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.PatchRepositoryRunner(context.Background(), repoRef, runnerUuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService PatchRepositoryVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var variableIdentifier string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.PatchRepositoryVariable(context.Background(), repoRef, variableIdentifier).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService PatchSecurity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -525,7 +669,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PatchStars", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -539,7 +683,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostBranch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -553,7 +697,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostDefaultBranch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -567,7 +711,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostDiffs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path2 string
@@ -582,7 +726,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostMergeCheck", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 		var path string
@@ -597,7 +741,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostPathDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -611,7 +755,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostRelease", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -625,7 +769,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostRepo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RepositoryAPI.PostRepo(context.Background()).Execute()
 
@@ -637,7 +781,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostRepositoryImport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RepositoryAPI.PostRepositoryImport(context.Background()).Execute()
 
@@ -649,7 +793,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostRepositoryMove", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -663,7 +807,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService PostRepositoryPurge", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -674,9 +818,23 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService PostRepositoryVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.PostRepositoryVariable(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService PostTag", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -690,7 +848,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService RenameBranch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -704,7 +862,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService RepoRestore", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 
@@ -718,7 +876,7 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	t.Run("Test RepositoryAPIService SoftRepositoryDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var repoRef string
 

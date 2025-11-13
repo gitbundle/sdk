@@ -19,7 +19,7 @@ var _ MappedNullable = &ProtectionPattern{}
 
 // ProtectionPattern struct for ProtectionPattern
 type ProtectionPattern struct {
-	Default *bool `json:"default,omitempty"`
+	Default *bool    `json:"default,omitempty"`
 	Exclude []string `json:"exclude,omitempty"`
 	Include []string `json:"include,omitempty"`
 }
@@ -138,7 +138,7 @@ func (o *ProtectionPattern) SetInclude(v []string) {
 }
 
 func (o ProtectionPattern) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,5 +194,3 @@ func (v *NullableProtectionPattern) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

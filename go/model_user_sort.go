@@ -20,11 +20,11 @@ type UserSort string
 
 // List of UserSort
 const (
-	USERSORT_NOOP UserSort = "noop"
-	USERSORT_ID UserSort = "id"
-	USERSORT_NAME UserSort = "name"
-	USERSORT_EMAIL UserSort = "email"
-	USERSORT_ADMIN UserSort = "admin"
+	USERSORT_NOOP    UserSort = "noop"
+	USERSORT_ID      UserSort = "id"
+	USERSORT_NAME    UserSort = "name"
+	USERSORT_EMAIL   UserSort = "email"
+	USERSORT_ADMIN   UserSort = "admin"
 	USERSORT_CREATED UserSort = "created"
 	USERSORT_UPDATED UserSort = "updated"
 )
@@ -118,4 +118,3 @@ func (v *NullableUserSort) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
