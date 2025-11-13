@@ -39,7 +39,7 @@ func (r ApiDeleteCommentRequest) Execute() (*http.Response, error) {
 DeleteComment Method for DeleteComment
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@param pullreqCommentId Pull request comment id
 	@return ApiDeleteCommentRequest
@@ -227,7 +227,7 @@ func (r ApiDeleteFileViewRequest) Execute() (*http.Response, error) {
 DeleteFileView Method for DeleteFileView
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@param path
 	@return ApiDeleteFileViewRequest
@@ -415,7 +415,7 @@ func (r ApiDeleteReviewerRequest) Execute() (*http.Response, error) {
 DeleteReviewer Method for DeleteReviewer
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@param pullreqReviewerId Pull request reviewer id
 	@return ApiDeleteReviewerRequest
@@ -644,7 +644,7 @@ func (r ApiGetActivitiesRequest) Execute() ([]PullreqActivityRelations, *http.Re
 GetActivities Method for GetActivities
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetActivitiesRequest
 */
@@ -877,7 +877,7 @@ func (r ApiGetCodeOwnersRequest) Execute() (*CodeOwnerEvaluation, *http.Response
 GetCodeOwners Method for GetCodeOwners
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetCodeOwnersRequest
 */
@@ -1073,7 +1073,7 @@ func (r ApiGetFileViewsRequest) Execute() ([]PullreqFileViewModel, *http.Respons
 GetFileViews Method for GetFileViews
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetFileViewsRequest
 */
@@ -1269,7 +1269,7 @@ func (r ApiGetMetadataRequest) Execute() (*PullreqWithDiffStats, *http.Response,
 GetMetadata Method for GetMetadata
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetMetadataRequest
 */
@@ -1465,7 +1465,7 @@ func (r ApiGetPullRequestChecksRequest) Execute() (*PullreqChecksOutput, *http.R
 GetPullRequestChecks Method for GetPullRequestChecks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetPullRequestChecksRequest
 */
@@ -1673,7 +1673,7 @@ func (r ApiGetPullRequestCommitsRequest) Execute() ([]Commit, *http.Response, er
 GetPullRequestCommits Method for GetPullRequestCommits
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetPullRequestCommitsRequest
 */
@@ -1875,7 +1875,7 @@ func (r ApiGetPullreqRequest) Execute() (*PullreqWithDiffStats, *http.Response, 
 GetPullreq Method for GetPullreq
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetPullreqRequest
 */
@@ -2142,7 +2142,7 @@ func (r ApiGetPullreqsRequest) Execute() ([]PullreqWithDiffStats, *http.Response
 GetPullreqs Method for GetPullreqs
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetPullreqsRequest
 */
 func (a *PullRequestAPIService) GetPullreqs(ctx context.Context, repoRef string) ApiGetPullreqsRequest {
@@ -2387,7 +2387,7 @@ func (r ApiGetReviewersRequest) Execute() ([]PullreqReviewerUser, *http.Response
 GetReviewers Method for GetReviewers
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiGetReviewersRequest
 */
@@ -2590,7 +2590,7 @@ func (r ApiPatchCommentRequest) Execute() (*PullreqActivityModel, *http.Response
 PatchComment Method for PatchComment
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@param pullreqCommentId Pull request comment id
 	@return ApiPatchCommentRequest
@@ -2800,7 +2800,7 @@ func (r ApiPatchPullreqRequest) Execute() (*PullreqModel, *http.Response, error)
 PatchPullreq Method for PatchPullreq
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPatchPullreqRequest
 */
@@ -3007,7 +3007,7 @@ func (r ApiPostApplySuggestionsRequest) Execute() (*PullreqApplySuggestionsOutpu
 PostApplySuggestions Method for PostApplySuggestions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostApplySuggestionsRequest
 */
@@ -3225,7 +3225,7 @@ func (r ApiPostCommentRequest) Execute() (*PullreqActivityModel, *http.Response,
 PostComment Method for PostComment
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostCommentRequest
 */
@@ -3432,7 +3432,7 @@ func (r ApiPostDiffRequest) Execute() ([]int32, *http.Response, error) {
 PostDiff Method for PostDiff
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostDiffRequest
 */
@@ -3639,7 +3639,7 @@ func (r ApiPostMergeRequest) Execute() (*PullreqMergeOutput, *http.Response, err
 PostMerge Method for PostMerge
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostMergeRequest
 */
@@ -3856,7 +3856,7 @@ func (r ApiPostPullreqRequest) Execute() (*PullreqModel, *http.Response, error) 
 PostPullreq Method for PostPullreq
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostPullreqRequest
 */
 func (a *PullRequestAPIService) PostPullreq(ctx context.Context, repoRef string) ApiPostPullreqRequest {
@@ -4060,7 +4060,7 @@ func (r ApiPostReviewsRequest) Execute() (*PullreqReviewModel, *http.Response, e
 PostReviews Method for PostReviews
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostReviewsRequest
 */
@@ -4267,7 +4267,7 @@ func (r ApiPostStateRequest) Execute() (*PullreqModel, *http.Response, error) {
 PostState Method for PostState
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPostStateRequest
 */
@@ -4475,7 +4475,7 @@ func (r ApiPutCommentStatusRequest) Execute() (*PullreqActivityModel, *http.Resp
 PutCommentStatus Method for PutCommentStatus
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@param pullreqCommentId Pull request comment id
 	@return ApiPutCommentStatusRequest
@@ -4685,7 +4685,7 @@ func (r ApiPutFileViewsRequest) Execute() (*PullreqFileViewModel, *http.Response
 PutFileViews Method for PutFileViews
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPutFileViewsRequest
 */
@@ -4892,7 +4892,7 @@ func (r ApiPutReviewerRequest) Execute() (*PullreqReviewerUser, *http.Response, 
 PutReviewer Method for PutReviewer
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param pullreqNumber Pull request number
 	@return ApiPutReviewerRequest
 */

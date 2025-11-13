@@ -13,6 +13,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StageModel {
+    #[serde(rename = "action_id")]
+    pub action_id: i64,
     #[serde(rename = "arch")]
     pub arch: String,
     #[serde(rename = "created")]
@@ -94,6 +96,7 @@ pub struct StageModel {
 
 impl StageModel {
     pub fn new(
+        action_id: i64,
         arch: String,
         created: i64,
         errignore: bool,
@@ -124,6 +127,7 @@ impl StageModel {
         yaml_resolved: String,
     ) -> StageModel {
         StageModel {
+            action_id,
             arch,
             created,
             errignore,

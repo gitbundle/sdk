@@ -6081,6 +6081,12 @@ export interface StageCreateInput {
 export interface StageModel {
     /**
      * 
+     * @type {number}
+     * @memberof StageModel
+     */
+    'action_id': number;
+    /**
+     * 
      * @type {string}
      * @memberof StageModel
      */
@@ -8386,23 +8392,23 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        cancelWorkflow: async (repoRef: string, actionIdentifier: string, workflowIdn: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('cancelWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('cancelWorkflow', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('cancelWorkflow', 'workflowNumber', workflowNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/cancel`
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('cancelWorkflow', 'workflowIdn', workflowIdn)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/cancel`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8438,8 +8444,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8486,23 +8492,23 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteWorkflow: async (repoRef: string, actionIdentifier: string, workflowIdn: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('deleteWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('deleteWorkflow', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('deleteWorkflow', 'workflowNumber', workflowNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('deleteWorkflow', 'workflowIdn', workflowIdn)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8538,8 +8544,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -8586,7 +8592,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -8650,29 +8656,29 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogStream: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogStream: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogStream', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('getStepLogStream', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('getStepLogStream', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('getStepLogStream', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}/stream`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8710,29 +8716,29 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogs: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogs: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogs', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('getStepLogs', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('getStepLogs', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('getStepLogs', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/logs/{stage_number}/{step_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8770,23 +8776,23 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getWorkflow: async (repoRef: string, actionIdentifier: string, workflowIdn: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('getWorkflow', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('getWorkflow', 'workflowNumber', workflowNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('getWorkflow', 'workflowIdn', workflowIdn)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -8822,8 +8828,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
@@ -8880,8 +8886,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {ActionUpdateInput} actionUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8934,29 +8940,29 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStage: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchStage: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('patchStage', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('patchStage', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('patchStage', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('patchStage', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('patchStage', 'stageNumber', stageNumber)
             // verify required parameter 'stageUpdateInput' is not null or undefined
             assertParamExists('patchStage', 'stageUpdateInput', stageUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8996,32 +9002,32 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStep: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchStep: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('patchStep', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('patchStep', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('patchStep', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('patchStep', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('patchStep', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('patchStep', 'stepNumber', stepNumber)
             // verify required parameter 'stepUpdateInput' is not null or undefined
             assertParamExists('patchStep', 'stepUpdateInput', stepUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9062,26 +9068,26 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchWorkflow: async (repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        patchWorkflow: async (repoRef: string, actionIdentifier: string, workflowIdn: number, workflowUpdateInput: WorkflowUpdateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('patchWorkflow', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('patchWorkflow', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('patchWorkflow', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('patchWorkflow', 'workflowIdn', workflowIdn)
             // verify required parameter 'workflowUpdateInput' is not null or undefined
             assertParamExists('patchWorkflow', 'workflowUpdateInput', workflowUpdateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9120,7 +9126,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ActionCreateInput} actionCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9170,26 +9176,26 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStage: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStage: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStage', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStage', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('postStage', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('postStage', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageCreateInput' is not null or undefined
             assertParamExists('postStage', 'stageCreateInput', stageCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)));
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -9228,29 +9234,29 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStep: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStep: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStep', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStep', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('postStep', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('postStep', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('postStep', 'stageNumber', stageNumber)
             // verify required parameter 'stepCreateInput' is not null or undefined
             assertParamExists('postStep', 'stepCreateInput', stepCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9290,29 +9296,29 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog: async (repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStepLog: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStepLog', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
             assertParamExists('postStepLog', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowNumber' is not null or undefined
-            assertParamExists('postStepLog', 'workflowNumber', workflowNumber)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('postStepLog', 'workflowIdn', workflowIdn)
             // verify required parameter 'stageNumber' is not null or undefined
             assertParamExists('postStepLog', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('postStepLog', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_number}/stages/{stage_number}/{step_number}/logs`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_number"}}`, encodeURIComponent(String(workflowNumber)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
                 .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
                 .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9350,8 +9356,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9414,22 +9420,22 @@ export const ActionsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options);
+        async cancelWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelWorkflow(repoRef, actionIdentifier, workflowIdn, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.cancelWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9441,22 +9447,22 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options);
+        async deleteWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteWorkflow(repoRef, actionIdentifier, workflowIdn, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.deleteWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9468,7 +9474,7 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -9484,54 +9490,54 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
+        async getStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogStream']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
+        async getStepLogs(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getWorkflow(repoRef, actionIdentifier, workflowNumber, options);
+        async getWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowStages>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWorkflow(repoRef, actionIdentifier, workflowIdn, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
@@ -9545,8 +9551,8 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {ActionUpdateInput} actionUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9559,55 +9565,55 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options);
+        async patchStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStage(repoRef, actionIdentifier, workflowIdn, stageNumber, stageUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchStage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options);
+        async patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchStep']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options);
+        async patchWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchWorkflow(repoRef, actionIdentifier, workflowIdn, workflowUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchWorkflow']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ActionCreateInput} actionCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9620,55 +9626,55 @@ export const ActionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options);
+        async postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options);
+        async postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStep']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options);
+        async postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStepLog']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9691,19 +9697,19 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
-            return localVarFp.cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
+        cancelWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
+            return localVarFp.cancelWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9712,19 +9718,19 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
+        deleteWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -9733,7 +9739,7 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -9746,45 +9752,45 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        getStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
+            return localVarFp.getStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        getStepLogs(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
+            return localVarFp.getStepLogs(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
-            return localVarFp.getWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(axios, basePath));
+        getWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowStages> {
+            return localVarFp.getWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {*} [options] Override http request option.
@@ -9795,8 +9801,8 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {ActionUpdateInput} actionUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9806,46 +9812,46 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StageUpdateInput} stageUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options).then((request) => request(axios, basePath));
+        patchStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.patchStage(repoRef, actionIdentifier, workflowIdn, stageNumber, stageUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {StepUpdateInput} stepUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(axios, basePath));
+        patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {WorkflowUpdateInput} workflowUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowModel> {
-            return localVarFp.patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options).then((request) => request(axios, basePath));
+        patchWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowModel> {
+            return localVarFp.patchWorkflow(repoRef, actionIdentifier, workflowIdn, workflowUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ActionCreateInput} actionCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9855,46 +9861,46 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {StageCreateInput} stageCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options).then((request) => request(axios, basePath));
+        postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
+        postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+            return localVarFp.postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action id or action name
-         * @param {number} workflowNumber Workflow number
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
-         * @param {string} actionIdentifier Action identifier
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
          * @param {WorkflowCreateInput} workflowCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -9914,21 +9920,21 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
 export class ActionsApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public cancelWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).cancelWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
+    public cancelWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).cancelWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
@@ -9939,21 +9945,21 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public deleteWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).deleteWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
+    public deleteWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).deleteWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
@@ -9964,7 +9970,7 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -9979,51 +9985,51 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public getStepLogStream(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public getStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public getStepLogs(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public getStepLogs(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public getWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getWorkflow(repoRef, actionIdentifier, workflowNumber, options).then((request) => request(this.axios, this.basePath));
+    public getWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
@@ -10036,8 +10042,8 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
      * @param {ActionUpdateInput} actionUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -10049,24 +10055,24 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {StageUpdateInput} stageUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchStage(repoRef, actionIdentifier, workflowNumber, stageNumber, stageUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    public patchStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchStage(repoRef, actionIdentifier, workflowIdn, stageNumber, stageUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {StepUpdateInput} stepUpdateInput 
@@ -10074,27 +10080,27 @@ export class ActionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    public patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {WorkflowUpdateInput} workflowUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public patchWorkflow(repoRef: string, actionIdentifier: string, workflowNumber: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).patchWorkflow(repoRef, actionIdentifier, workflowNumber, workflowUpdateInput, options).then((request) => request(this.axios, this.basePath));
+    public patchWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).patchWorkflow(repoRef, actionIdentifier, workflowIdn, workflowUpdateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {ActionCreateInput} actionCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -10106,52 +10112,52 @@ export class ActionsApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {StageCreateInput} stageCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStage(repoRef: string, actionIdentifier: string, workflowNumber: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStage(repoRef, actionIdentifier, workflowNumber, stageCreateInput, options).then((request) => request(this.axios, this.basePath));
+    public postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {StepCreateInput} stepCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStep(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStep(repoRef, actionIdentifier, workflowNumber, stageNumber, stepCreateInput, options).then((request) => request(this.axios, this.basePath));
+    public postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action id or action name
-     * @param {number} workflowNumber Workflow number
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStepLog(repoRef: string, actionIdentifier: string, workflowNumber: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowNumber, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} repoRef Repository ref
-     * @param {string} actionIdentifier Action identifier
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
      * @param {WorkflowCreateInput} workflowCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -15065,7 +15071,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {*} [options] Override http request option.
@@ -15117,7 +15123,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {string} path 
          * @param {*} [options] Override http request option.
@@ -15169,7 +15175,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqReviewerId Pull request reviewer id
          * @param {*} [options] Override http request option.
@@ -15221,7 +15227,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -15304,7 +15310,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15352,7 +15358,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15400,7 +15406,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15448,7 +15454,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15496,7 +15502,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -15554,7 +15560,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15602,7 +15608,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -15706,7 +15712,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -15754,7 +15760,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentUpdateInput} pullreqCommentUpdateInput 
@@ -15812,7 +15818,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqUpdateInput} pullreqUpdateInput 
          * @param {*} [options] Override http request option.
@@ -15866,7 +15872,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqApplySuggestionsInput} pullreqApplySuggestionsInput 
          * @param {*} [options] Override http request option.
@@ -15920,7 +15926,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqCommentCreateInput} pullreqCommentCreateInput 
          * @param {*} [options] Override http request option.
@@ -15974,7 +15980,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {Array<CommitDiffFile>} commitDiffFile 
          * @param {*} [options] Override http request option.
@@ -16028,7 +16034,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqMergeInput} pullreqMergeInput 
          * @param {*} [options] Override http request option.
@@ -16082,7 +16088,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {PullreqCreateInput} pullreqCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16132,7 +16138,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewSubmitInput} pullreqReviewSubmitInput 
          * @param {*} [options] Override http request option.
@@ -16186,7 +16192,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqStateUpdateInput} pullreqStateUpdateInput 
          * @param {*} [options] Override http request option.
@@ -16240,7 +16246,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentStatusInput} pullreqCommentStatusInput 
@@ -16298,7 +16304,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqFileViewCreateInput} pullreqFileViewCreateInput 
          * @param {*} [options] Override http request option.
@@ -16352,7 +16358,7 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewerAddInput} pullreqReviewerAddInput 
          * @param {*} [options] Override http request option.
@@ -16416,7 +16422,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {*} [options] Override http request option.
@@ -16430,7 +16436,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {string} path 
          * @param {*} [options] Override http request option.
@@ -16444,7 +16450,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqReviewerId Pull request reviewer id
          * @param {*} [options] Override http request option.
@@ -16458,7 +16464,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -16478,7 +16484,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16491,7 +16497,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16504,7 +16510,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16517,7 +16523,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16530,7 +16536,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -16545,7 +16551,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16558,7 +16564,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -16582,7 +16588,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16595,7 +16601,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentUpdateInput} pullreqCommentUpdateInput 
@@ -16610,7 +16616,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqUpdateInput} pullreqUpdateInput 
          * @param {*} [options] Override http request option.
@@ -16624,7 +16630,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqApplySuggestionsInput} pullreqApplySuggestionsInput 
          * @param {*} [options] Override http request option.
@@ -16638,7 +16644,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqCommentCreateInput} pullreqCommentCreateInput 
          * @param {*} [options] Override http request option.
@@ -16652,7 +16658,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {Array<CommitDiffFile>} commitDiffFile 
          * @param {*} [options] Override http request option.
@@ -16666,7 +16672,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqMergeInput} pullreqMergeInput 
          * @param {*} [options] Override http request option.
@@ -16680,7 +16686,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {PullreqCreateInput} pullreqCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16693,7 +16699,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewSubmitInput} pullreqReviewSubmitInput 
          * @param {*} [options] Override http request option.
@@ -16707,7 +16713,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqStateUpdateInput} pullreqStateUpdateInput 
          * @param {*} [options] Override http request option.
@@ -16721,7 +16727,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentStatusInput} pullreqCommentStatusInput 
@@ -16736,7 +16742,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqFileViewCreateInput} pullreqFileViewCreateInput 
          * @param {*} [options] Override http request option.
@@ -16750,7 +16756,7 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewerAddInput} pullreqReviewerAddInput 
          * @param {*} [options] Override http request option.
@@ -16774,7 +16780,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {*} [options] Override http request option.
@@ -16785,7 +16791,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {string} path 
          * @param {*} [options] Override http request option.
@@ -16796,7 +16802,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqReviewerId Pull request reviewer id
          * @param {*} [options] Override http request option.
@@ -16807,7 +16813,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -16824,7 +16830,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16834,7 +16840,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16844,7 +16850,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16854,7 +16860,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16864,7 +16870,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} [page] 
          * @param {number} [size] 
@@ -16876,7 +16882,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16886,7 +16892,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -16907,7 +16913,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16917,7 +16923,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentUpdateInput} pullreqCommentUpdateInput 
@@ -16929,7 +16935,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqUpdateInput} pullreqUpdateInput 
          * @param {*} [options] Override http request option.
@@ -16940,7 +16946,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqApplySuggestionsInput} pullreqApplySuggestionsInput 
          * @param {*} [options] Override http request option.
@@ -16951,7 +16957,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqCommentCreateInput} pullreqCommentCreateInput 
          * @param {*} [options] Override http request option.
@@ -16962,7 +16968,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {Array<CommitDiffFile>} commitDiffFile 
          * @param {*} [options] Override http request option.
@@ -16973,7 +16979,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqMergeInput} pullreqMergeInput 
          * @param {*} [options] Override http request option.
@@ -16984,7 +16990,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {PullreqCreateInput} pullreqCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -16994,7 +17000,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewSubmitInput} pullreqReviewSubmitInput 
          * @param {*} [options] Override http request option.
@@ -17005,7 +17011,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqStateUpdateInput} pullreqStateUpdateInput 
          * @param {*} [options] Override http request option.
@@ -17016,7 +17022,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {number} pullreqCommentId Pull request comment id
          * @param {PullreqCommentStatusInput} pullreqCommentStatusInput 
@@ -17028,7 +17034,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqFileViewCreateInput} pullreqFileViewCreateInput 
          * @param {*} [options] Override http request option.
@@ -17039,7 +17045,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} pullreqNumber Pull request number
          * @param {PullreqReviewerAddInput} pullreqReviewerAddInput 
          * @param {*} [options] Override http request option.
@@ -17060,7 +17066,7 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
 export class PullRequestApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} pullreqCommentId Pull request comment id
      * @param {*} [options] Override http request option.
@@ -17073,7 +17079,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {string} path 
      * @param {*} [options] Override http request option.
@@ -17086,7 +17092,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} pullreqReviewerId Pull request reviewer id
      * @param {*} [options] Override http request option.
@@ -17099,7 +17105,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} [page] 
      * @param {number} [size] 
@@ -17118,7 +17124,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17130,7 +17136,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17142,7 +17148,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17154,7 +17160,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17166,7 +17172,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} [page] 
      * @param {number} [size] 
@@ -17180,7 +17186,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17192,7 +17198,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -17215,7 +17221,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17227,7 +17233,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} pullreqCommentId Pull request comment id
      * @param {PullreqCommentUpdateInput} pullreqCommentUpdateInput 
@@ -17241,7 +17247,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqUpdateInput} pullreqUpdateInput 
      * @param {*} [options] Override http request option.
@@ -17254,7 +17260,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqApplySuggestionsInput} pullreqApplySuggestionsInput 
      * @param {*} [options] Override http request option.
@@ -17267,7 +17273,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqCommentCreateInput} pullreqCommentCreateInput 
      * @param {*} [options] Override http request option.
@@ -17280,7 +17286,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {Array<CommitDiffFile>} commitDiffFile 
      * @param {*} [options] Override http request option.
@@ -17293,7 +17299,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqMergeInput} pullreqMergeInput 
      * @param {*} [options] Override http request option.
@@ -17306,7 +17312,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {PullreqCreateInput} pullreqCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17318,7 +17324,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqReviewSubmitInput} pullreqReviewSubmitInput 
      * @param {*} [options] Override http request option.
@@ -17331,7 +17337,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqStateUpdateInput} pullreqStateUpdateInput 
      * @param {*} [options] Override http request option.
@@ -17344,7 +17350,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {number} pullreqCommentId Pull request comment id
      * @param {PullreqCommentStatusInput} pullreqCommentStatusInput 
@@ -17358,7 +17364,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqFileViewCreateInput} pullreqFileViewCreateInput 
      * @param {*} [options] Override http request option.
@@ -17371,7 +17377,7 @@ export class PullRequestApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} pullreqNumber Pull request number
      * @param {PullreqReviewerAddInput} pullreqReviewerAddInput 
      * @param {*} [options] Override http request option.
@@ -17393,7 +17399,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17441,7 +17447,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17489,7 +17495,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17537,7 +17543,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17585,7 +17591,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -17629,7 +17635,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17677,7 +17683,7 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17735,7 +17741,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17748,7 +17754,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17761,7 +17767,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17774,7 +17780,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17787,7 +17793,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -17799,7 +17805,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17812,7 +17818,7 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17835,7 +17841,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17845,7 +17851,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17855,7 +17861,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17865,7 +17871,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17875,7 +17881,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -17884,7 +17890,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17894,7 +17900,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -17914,7 +17920,7 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
 export class ReleaseUploadApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17926,7 +17932,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17938,7 +17944,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17950,7 +17956,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17962,7 +17968,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReleaseUploadApi
@@ -17973,7 +17979,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -17985,7 +17991,7 @@ export class ReleaseUploadApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -18006,7 +18012,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {CommitFilesInput} commitFilesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18056,7 +18062,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoCommitDivergencesInput} repoCommitDivergencesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18106,7 +18112,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -18159,7 +18165,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -18212,7 +18218,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18260,7 +18266,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18308,7 +18314,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -18361,7 +18367,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {GeneralSettings} generalSettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18411,7 +18417,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} archiveRef 
          * @param {string} [prefix] 
          * @param {ArchiveAttribute} [attributes] 
@@ -18484,7 +18490,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
          * @param {number} [lineFrom] 
@@ -18547,7 +18553,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18595,7 +18601,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -18659,7 +18665,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18708,7 +18714,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18756,7 +18762,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -18804,7 +18810,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {string} filePath 
          * @param {string} hunkHeader 
@@ -18878,7 +18884,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -18967,7 +18973,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {boolean} [includeCommit] 
@@ -19025,7 +19031,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -19084,7 +19090,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19132,7 +19138,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19180,7 +19186,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -19249,7 +19255,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19293,7 +19299,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19337,7 +19343,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19381,7 +19387,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {boolean} [includeDirectories] 
          * @param {*} [options] Override http request option.
@@ -19435,7 +19441,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -19488,7 +19494,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19536,7 +19542,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -19605,7 +19611,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19649,7 +19655,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19693,7 +19699,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19741,7 +19747,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19785,7 +19791,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -19844,7 +19850,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19888,7 +19894,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -19932,7 +19938,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -19980,7 +19986,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -20054,7 +20060,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -20098,7 +20104,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -20167,7 +20173,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -20231,7 +20237,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateInput} repoUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20281,7 +20287,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {RunnerPatchInput} runnerPatchInput 
          * @param {*} [options] Override http request option.
@@ -20335,7 +20341,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {VariablePatchInput} variablePatchInput 
          * @param {*} [options] Override http request option.
@@ -20389,7 +20395,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20439,7 +20445,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoStarsInput} repoStarsInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20489,7 +20495,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchCreateInput} branchCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20539,7 +20545,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateDefaultBranchInput} repoUpdateDefaultBranchInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20589,7 +20595,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} path2 
          * @param {Array<CommitDiffFile>} commitDiffFile 
@@ -20650,7 +20656,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
@@ -20704,7 +20710,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {Array<string>} requestBody 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -20759,7 +20765,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ReleaseCreateInput} releaseCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20901,7 +20907,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoMoveInput} repoMoveInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -20951,7 +20957,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -20995,7 +21001,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {VariableCreateInput} variableCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21045,7 +21051,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {TagCreateInput} tagCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21095,7 +21101,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchRenameInput} branchRenameInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21145,7 +21151,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoRestoreInput} repoRestoreInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21195,7 +21201,7 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21249,7 +21255,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {CommitFilesInput} commitFilesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21262,7 +21268,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoCommitDivergencesInput} repoCommitDivergencesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21275,7 +21281,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -21289,7 +21295,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -21303,7 +21309,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21316,7 +21322,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21329,7 +21335,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -21343,7 +21349,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {GeneralSettings} generalSettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21356,7 +21362,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} archiveRef 
          * @param {string} [prefix] 
          * @param {ArchiveAttribute} [attributes] 
@@ -21374,7 +21380,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
          * @param {number} [lineFrom] 
@@ -21390,7 +21396,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21403,7 +21409,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21419,7 +21425,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21432,7 +21438,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21445,7 +21451,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21458,7 +21464,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {string} filePath 
          * @param {string} hunkHeader 
@@ -21475,7 +21481,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -21496,7 +21502,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {boolean} [includeCommit] 
@@ -21511,7 +21517,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -21526,7 +21532,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21539,7 +21545,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21552,7 +21558,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21569,7 +21575,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21581,7 +21587,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21593,7 +21599,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21605,7 +21611,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {boolean} [includeDirectories] 
          * @param {*} [options] Override http request option.
@@ -21619,7 +21625,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -21633,7 +21639,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21646,7 +21652,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21663,7 +21669,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21675,7 +21681,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21687,7 +21693,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21700,7 +21706,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21712,7 +21718,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21727,7 +21733,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21739,7 +21745,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21751,7 +21757,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21764,7 +21770,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21782,7 +21788,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -21794,7 +21800,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21811,7 +21817,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -21827,7 +21833,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateInput} repoUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21840,7 +21846,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {RunnerPatchInput} runnerPatchInput 
          * @param {*} [options] Override http request option.
@@ -21854,7 +21860,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {VariablePatchInput} variablePatchInput 
          * @param {*} [options] Override http request option.
@@ -21868,7 +21874,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21881,7 +21887,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoStarsInput} repoStarsInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21894,7 +21900,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchCreateInput} branchCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21907,7 +21913,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateDefaultBranchInput} repoUpdateDefaultBranchInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -21920,7 +21926,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} path2 
          * @param {Array<CommitDiffFile>} commitDiffFile 
@@ -21935,7 +21941,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
@@ -21949,7 +21955,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {Array<string>} requestBody 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -21963,7 +21969,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ReleaseCreateInput} releaseCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22000,7 +22006,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoMoveInput} repoMoveInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22013,7 +22019,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22025,7 +22031,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {VariableCreateInput} variableCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22038,7 +22044,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {TagCreateInput} tagCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22051,7 +22057,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchRenameInput} branchRenameInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22064,7 +22070,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoRestoreInput} repoRestoreInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22077,7 +22083,7 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22099,7 +22105,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {CommitFilesInput} commitFilesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22109,7 +22115,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoCommitDivergencesInput} repoCommitDivergencesInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22119,7 +22125,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -22130,7 +22136,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -22141,7 +22147,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22151,7 +22157,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22161,7 +22167,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagName 
          * @param {boolean} [bypassRules] 
          * @param {*} [options] Override http request option.
@@ -22172,7 +22178,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {GeneralSettings} generalSettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22182,7 +22188,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} archiveRef 
          * @param {string} [prefix] 
          * @param {ArchiveAttribute} [attributes] 
@@ -22197,7 +22203,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
          * @param {number} [lineFrom] 
@@ -22210,7 +22216,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} branchName 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22220,7 +22226,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22233,7 +22239,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22243,7 +22249,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22253,7 +22259,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22263,7 +22269,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {string} filePath 
          * @param {string} hunkHeader 
@@ -22277,7 +22283,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -22295,7 +22301,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {boolean} [includeCommit] 
@@ -22307,7 +22313,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {number} [since] 
          * @param {number} [until] 
@@ -22319,7 +22325,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22329,7 +22335,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22339,7 +22345,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22353,7 +22359,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22362,7 +22368,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22371,7 +22377,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22380,7 +22386,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [gitRef] 
          * @param {boolean} [includeDirectories] 
          * @param {*} [options] Override http request option.
@@ -22391,7 +22397,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -22402,7 +22408,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} tagRef 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22412,7 +22418,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22426,7 +22432,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22435,7 +22441,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22444,7 +22450,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22454,7 +22460,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22463,7 +22469,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22475,7 +22481,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22484,7 +22490,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22493,7 +22499,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22503,7 +22509,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22518,7 +22524,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22527,7 +22533,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22541,7 +22547,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -22554,7 +22560,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateInput} repoUpdateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22564,7 +22570,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} runnerUuid 
          * @param {RunnerPatchInput} runnerPatchInput 
          * @param {*} [options] Override http request option.
@@ -22575,7 +22581,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} variableIdentifier 
          * @param {VariablePatchInput} variablePatchInput 
          * @param {*} [options] Override http request option.
@@ -22586,7 +22592,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {SecuritySettings} securitySettings 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22596,7 +22602,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoStarsInput} repoStarsInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22606,7 +22612,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchCreateInput} branchCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22616,7 +22622,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoUpdateDefaultBranchInput} repoUpdateDefaultBranchInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22626,7 +22632,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {string} path2 
          * @param {Array<CommitDiffFile>} commitDiffFile 
@@ -22638,7 +22644,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} path 
          * @param {RepoMergeCheckInput} repoMergeCheckInput 
          * @param {*} [options] Override http request option.
@@ -22649,7 +22655,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {Array<string>} requestBody 
          * @param {string} [gitRef] 
          * @param {*} [options] Override http request option.
@@ -22660,7 +22666,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {ReleaseCreateInput} releaseCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22688,7 +22694,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoMoveInput} repoMoveInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22698,7 +22704,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22707,7 +22713,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {VariableCreateInput} variableCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22717,7 +22723,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {TagCreateInput} tagCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22727,7 +22733,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {BranchRenameInput} branchRenameInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22737,7 +22743,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RepoRestoreInput} repoRestoreInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -22747,7 +22753,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -22766,7 +22772,7 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
 export class RepositoryApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {CommitFilesInput} commitFilesInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22778,7 +22784,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoCommitDivergencesInput} repoCommitDivergencesInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22790,7 +22796,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} branchName 
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
@@ -22803,7 +22809,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
@@ -22816,7 +22822,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22828,7 +22834,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22840,7 +22846,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagName 
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
@@ -22853,7 +22859,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {GeneralSettings} generalSettings 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22865,7 +22871,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} archiveRef 
      * @param {string} [prefix] 
      * @param {ArchiveAttribute} [attributes] 
@@ -22882,7 +22888,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {string} [gitRef] The git reference (branch / tag / commitID) that will be used to retrieve the data. If no value is provided the default branch of the repository is used.         Default value : {Repository Default Branch}
      * @param {number} [lineFrom] 
@@ -22897,7 +22903,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} branchName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22909,7 +22915,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -22924,7 +22930,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22936,7 +22942,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} commitSha 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22948,7 +22954,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} commitSha 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -22960,7 +22966,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} commitSha 
      * @param {string} filePath 
      * @param {string} hunkHeader 
@@ -22976,7 +22982,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} [gitRef] 
      * @param {number} [page] 
      * @param {number} [size] 
@@ -22996,7 +23002,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {string} [gitRef] 
      * @param {boolean} [includeCommit] 
@@ -23010,7 +23016,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} [gitRef] 
      * @param {number} [since] 
      * @param {number} [until] 
@@ -23024,7 +23030,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23036,7 +23042,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23048,7 +23054,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23064,7 +23070,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23075,7 +23081,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23086,7 +23092,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23097,7 +23103,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} [gitRef] 
      * @param {boolean} [includeDirectories] 
      * @param {*} [options] Override http request option.
@@ -23110,7 +23116,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
@@ -23123,7 +23129,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23135,7 +23141,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23151,7 +23157,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23162,7 +23168,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23173,7 +23179,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23185,7 +23191,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23196,7 +23202,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23210,7 +23216,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23221,7 +23227,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23232,7 +23238,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23244,7 +23250,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23261,7 +23267,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23272,7 +23278,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23288,7 +23294,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -23303,7 +23309,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoUpdateInput} repoUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23315,7 +23321,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} runnerUuid 
      * @param {RunnerPatchInput} runnerPatchInput 
      * @param {*} [options] Override http request option.
@@ -23328,7 +23334,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} variableIdentifier 
      * @param {VariablePatchInput} variablePatchInput 
      * @param {*} [options] Override http request option.
@@ -23341,7 +23347,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {SecuritySettings} securitySettings 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23353,7 +23359,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoStarsInput} repoStarsInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23365,7 +23371,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {BranchCreateInput} branchCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23377,7 +23383,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoUpdateDefaultBranchInput} repoUpdateDefaultBranchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23389,7 +23395,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {string} path2 
      * @param {Array<CommitDiffFile>} commitDiffFile 
@@ -23403,7 +23409,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} path 
      * @param {RepoMergeCheckInput} repoMergeCheckInput 
      * @param {*} [options] Override http request option.
@@ -23416,7 +23422,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {Array<string>} requestBody 
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
@@ -23429,7 +23435,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {ReleaseCreateInput} releaseCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23463,7 +23469,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoMoveInput} repoMoveInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23475,7 +23481,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23486,7 +23492,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {VariableCreateInput} variableCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23498,7 +23504,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {TagCreateInput} tagCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23510,7 +23516,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {BranchRenameInput} branchRenameInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23522,7 +23528,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RepoRestoreInput} repoRestoreInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -23534,7 +23540,7 @@ export class RepositoryApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RepositoryApi
@@ -23709,7 +23715,7 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23757,7 +23763,7 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23805,7 +23811,7 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -23879,7 +23885,7 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {RulePatchInput} rulePatchInput 
          * @param {*} [options] Override http request option.
@@ -23933,7 +23939,7 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RuleCreateInput} ruleCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -23993,7 +23999,7 @@ export const RulesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24006,7 +24012,7 @@ export const RulesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24019,7 +24025,7 @@ export const RulesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -24037,7 +24043,7 @@ export const RulesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {RulePatchInput} rulePatchInput 
          * @param {*} [options] Override http request option.
@@ -24051,7 +24057,7 @@ export const RulesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RuleCreateInput} ruleCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24074,7 +24080,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24084,7 +24090,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24094,7 +24100,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -24109,7 +24115,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} ruleIdentifier Rule identifier
          * @param {RulePatchInput} rulePatchInput 
          * @param {*} [options] Override http request option.
@@ -24120,7 +24126,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {RuleCreateInput} ruleCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -24140,7 +24146,7 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
 export class RulesApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} ruleIdentifier Rule identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -24152,7 +24158,7 @@ export class RulesApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} ruleIdentifier Rule identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -24164,7 +24170,7 @@ export class RulesApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -24181,7 +24187,7 @@ export class RulesApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} ruleIdentifier Rule identifier
      * @param {RulePatchInput} rulePatchInput 
      * @param {*} [options] Override http request option.
@@ -24194,7 +24200,7 @@ export class RulesApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {RuleCreateInput} ruleCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -24910,7 +24916,7 @@ export const StatusCheckApiAxiosParamCreator = function (configuration?: Configu
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -24973,7 +24979,7 @@ export const StatusCheckApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [query] 
          * @param {number} [since] 
          * @param {*} [options] Override http request option.
@@ -25027,7 +25033,7 @@ export const StatusCheckApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {CheckReportInput} checkReportInput 
          * @param {*} [options] Override http request option.
@@ -25091,7 +25097,7 @@ export const StatusCheckApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -25107,7 +25113,7 @@ export const StatusCheckApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [query] 
          * @param {number} [since] 
          * @param {*} [options] Override http request option.
@@ -25121,7 +25127,7 @@ export const StatusCheckApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {CheckReportInput} checkReportInput 
          * @param {*} [options] Override http request option.
@@ -25145,7 +25151,7 @@ export const StatusCheckApiFactory = function (configuration?: Configuration, ba
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {number} [page] 
          * @param {number} [size] 
@@ -25158,7 +25164,7 @@ export const StatusCheckApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} [query] 
          * @param {number} [since] 
          * @param {*} [options] Override http request option.
@@ -25169,7 +25175,7 @@ export const StatusCheckApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} commitSha 
          * @param {CheckReportInput} checkReportInput 
          * @param {*} [options] Override http request option.
@@ -25190,7 +25196,7 @@ export const StatusCheckApiFactory = function (configuration?: Configuration, ba
 export class StatusCheckApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} commitSha 
      * @param {number} [page] 
      * @param {number} [size] 
@@ -25205,7 +25211,7 @@ export class StatusCheckApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} [query] 
      * @param {number} [since] 
      * @param {*} [options] Override http request option.
@@ -25218,7 +25224,7 @@ export class StatusCheckApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} commitSha 
      * @param {CheckReportInput} checkReportInput 
      * @param {*} [options] Override http request option.
@@ -28099,7 +28105,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28147,7 +28153,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28199,7 +28205,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28247,7 +28253,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28295,7 +28301,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -28364,7 +28370,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {WebhookPatchInput} webhookPatchInput 
          * @param {*} [options] Override http request option.
@@ -28418,7 +28424,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28470,7 +28476,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {WebhookCreateInput} webhookCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28530,7 +28536,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28543,7 +28549,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28557,7 +28563,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28570,7 +28576,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28583,7 +28589,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -28600,7 +28606,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {WebhookPatchInput} webhookPatchInput 
          * @param {*} [options] Override http request option.
@@ -28614,7 +28620,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28628,7 +28634,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {WebhookCreateInput} webhookCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28651,7 +28657,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28661,7 +28667,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28672,7 +28678,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28682,7 +28688,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28692,7 +28698,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {number} [page] 
          * @param {number} [size] 
          * @param {string} [query] 
@@ -28706,7 +28712,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {WebhookPatchInput} webhookPatchInput 
          * @param {*} [options] Override http request option.
@@ -28717,7 +28723,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {string} webhookIdentifier Webhook identifier
          * @param {number} webhookExecutionId Webhook execution id
          * @param {*} [options] Override http request option.
@@ -28728,7 +28734,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
-         * @param {string} repoRef Repository ref
+         * @param {string} repoRef Repository id or ref
          * @param {WebhookCreateInput} webhookCreateInput 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -28748,7 +28754,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
 export class WebhooksApi extends BaseAPI {
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -28760,7 +28766,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {number} webhookExecutionId Webhook execution id
      * @param {*} [options] Override http request option.
@@ -28773,7 +28779,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -28785,7 +28791,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -28797,7 +28803,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {number} [page] 
      * @param {number} [size] 
      * @param {string} [query] 
@@ -28813,7 +28819,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {WebhookPatchInput} webhookPatchInput 
      * @param {*} [options] Override http request option.
@@ -28826,7 +28832,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {string} webhookIdentifier Webhook identifier
      * @param {number} webhookExecutionId Webhook execution id
      * @param {*} [options] Override http request option.
@@ -28839,7 +28845,7 @@ export class WebhooksApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} repoRef Repository ref
+     * @param {string} repoRef Repository id or ref
      * @param {WebhookCreateInput} webhookCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

@@ -37,7 +37,7 @@ func (r ApiDeleteUploadRequest) Execute() (*http.Response, error) {
 DeleteUpload Method for DeleteUpload
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiDeleteUploadRequest
 */
@@ -221,7 +221,7 @@ func (r ApiGetAssetsRequest) Execute() ([]string, *http.Response, error) {
 GetAssets Method for GetAssets
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiGetAssetsRequest
 */
@@ -417,7 +417,7 @@ func (r ApiGetDownloadRequest) Execute() ([]int32, *http.Response, error) {
 GetDownload Method for GetDownload
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiGetDownloadRequest
 */
@@ -613,7 +613,7 @@ func (r ApiGetRestoreRequest) Execute() ([]int32, *http.Response, error) {
 GetRestore Method for GetRestore
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiGetRestoreRequest
 */
@@ -808,7 +808,7 @@ func (r ApiHeadOffsetRequest) Execute() (*http.Response, error) {
 HeadOffset Method for HeadOffset
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiHeadOffsetRequest
 */
 func (a *ReleaseUploadAPIService) HeadOffset(ctx context.Context, repoRef string) ApiHeadOffsetRequest {
@@ -989,7 +989,7 @@ func (r ApiPatchChunksRequest) Execute() (string, *http.Response, error) {
 PatchChunks Method for PatchChunks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiPatchChunksRequest
 */
@@ -1185,7 +1185,7 @@ func (r ApiPostUploadRequest) Execute() (string, *http.Response, error) {
 PostUpload Method for PostUpload
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param tagRef
 	@return ApiPostUploadRequest
 */

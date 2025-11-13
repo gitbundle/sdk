@@ -37,7 +37,7 @@ func (r ApiDeleteWebhookRequest) Execute() (*http.Response, error) {
 DeleteWebhook Method for DeleteWebhook
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@return ApiDeleteWebhookRequest
 */
@@ -222,7 +222,7 @@ func (r ApiGetExecutionRequest) Execute() (*WebhookExecutionModel, *http.Respons
 GetExecution Method for GetExecution
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@param webhookExecutionId Webhook execution id
 	@return ApiGetExecutionRequest
@@ -421,7 +421,7 @@ func (r ApiGetExecutionsRequest) Execute() ([]WebhookExecutionModel, *http.Respo
 GetExecutions Method for GetExecutions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@return ApiGetExecutionsRequest
 */
@@ -617,7 +617,7 @@ func (r ApiGetWebhookRequest) Execute() (*WebhookModel, *http.Response, error) {
 GetWebhook Method for GetWebhook
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@return ApiGetWebhookRequest
 */
@@ -842,7 +842,7 @@ func (r ApiGetWebhooksRequest) Execute() ([]WebhookModel, *http.Response, error)
 GetWebhooks Method for GetWebhooks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetWebhooksRequest
 */
 func (a *WebhooksAPIService) GetWebhooks(ctx context.Context, repoRef string) ApiGetWebhooksRequest {
@@ -1056,7 +1056,7 @@ func (r ApiPatchWebhookRequest) Execute() (*WebhookModel, *http.Response, error)
 PatchWebhook Method for PatchWebhook
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@return ApiPatchWebhookRequest
 */
@@ -1258,7 +1258,7 @@ func (r ApiPostRetriggerRequest) Execute() (*WebhookExecutionModel, *http.Respon
 PostRetrigger Method for PostRetrigger
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param webhookIdentifier Webhook identifier
 	@param webhookExecutionId Webhook execution id
 	@return ApiPostRetriggerRequest
@@ -1462,7 +1462,7 @@ func (r ApiPostWebhookRequest) Execute() (*WebhookModel, *http.Response, error) 
 PostWebhook Method for PostWebhook
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiPostWebhookRequest
 */
 func (a *WebhooksAPIService) PostWebhook(ctx context.Context, repoRef string) ApiPostWebhookRequest {

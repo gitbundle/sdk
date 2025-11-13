@@ -55,7 +55,7 @@ func (r ApiGetChecksRequest) Execute() ([]CheckModel, *http.Response, error) {
 GetChecks Method for GetChecks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param commitSha
 	@return ApiGetChecksRequest
 */
@@ -271,7 +271,7 @@ func (r ApiGetRecentRequest) Execute() ([]string, *http.Response, error) {
 GetRecent Method for GetRecent
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@return ApiGetRecentRequest
 */
 func (a *StatusCheckAPIService) GetRecent(ctx context.Context, repoRef string) ApiGetRecentRequest {
@@ -476,7 +476,7 @@ func (r ApiPutCheckReportRequest) Execute() (*CheckModel, *http.Response, error)
 PutCheckReport Method for PutCheckReport
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param repoRef Repository ref
+	@param repoRef Repository id or ref
 	@param commitSha
 	@return ApiPutCheckReportRequest
 */
