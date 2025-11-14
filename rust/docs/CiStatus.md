@@ -5,10 +5,10 @@
 | Name | Value |
 |---- | -----|
 | Pending | pending |
+| Initializing | initializing |
 | Skipped | skipped |
 | Blocked | blocked |
 | Declined | declined |
-| WaitingOnDependencies | waiting_on_dependencies |
 | Running | running |
 | Success | success |
 | Failure | failure |

@@ -20,25 +20,25 @@ type CIStatus string
 
 // List of CIStatus
 const (
-	CISTATUS_PENDING                 CIStatus = "pending"
-	CISTATUS_SKIPPED                 CIStatus = "skipped"
-	CISTATUS_BLOCKED                 CIStatus = "blocked"
-	CISTATUS_DECLINED                CIStatus = "declined"
-	CISTATUS_WAITING_ON_DEPENDENCIES CIStatus = "waiting_on_dependencies"
-	CISTATUS_RUNNING                 CIStatus = "running"
-	CISTATUS_SUCCESS                 CIStatus = "success"
-	CISTATUS_FAILURE                 CIStatus = "failure"
-	CISTATUS_KILLED                  CIStatus = "killed"
-	CISTATUS_ERROR                   CIStatus = "error"
+	CISTATUS_PENDING      CIStatus = "pending"
+	CISTATUS_INITIALIZING CIStatus = "initializing"
+	CISTATUS_SKIPPED      CIStatus = "skipped"
+	CISTATUS_BLOCKED      CIStatus = "blocked"
+	CISTATUS_DECLINED     CIStatus = "declined"
+	CISTATUS_RUNNING      CIStatus = "running"
+	CISTATUS_SUCCESS      CIStatus = "success"
+	CISTATUS_FAILURE      CIStatus = "failure"
+	CISTATUS_KILLED       CIStatus = "killed"
+	CISTATUS_ERROR        CIStatus = "error"
 )
 
 // All allowed values of CIStatus enum
 var AllowedCIStatusEnumValues = []CIStatus{
 	"pending",
+	"initializing",
 	"skipped",
 	"blocked",
 	"declined",
-	"waiting_on_dependencies",
 	"running",
 	"success",
 	"failure",

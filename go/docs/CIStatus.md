@@ -5,13 +5,13 @@
 
 * `PENDING` (value: `"pending"`)
 
+* `INITIALIZING` (value: `"initializing"`)
+
 * `SKIPPED` (value: `"skipped"`)
 
 * `BLOCKED` (value: `"blocked"`)
 
 * `DECLINED` (value: `"declined"`)
-
-* `WAITING_ON_DEPENDENCIES` (value: `"waiting_on_dependencies"`)
 
 * `RUNNING` (value: `"running"`)
 

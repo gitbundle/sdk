@@ -19904,10 +19904,10 @@ components:
     CIStatus:
       enum:
       - pending
+      - initializing
       - skipped
       - blocked
       - declined
-      - waiting_on_dependencies
       - running
       - success
       - failure
