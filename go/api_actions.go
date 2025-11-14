@@ -2286,7 +2286,7 @@ func (r ApiPatchStepRequest) StepUpdateInput(stepUpdateInput StepUpdateInput) Ap
 	return r
 }
 
-func (r ApiPatchStepRequest) Execute() (*StageModel, *http.Response, error) {
+func (r ApiPatchStepRequest) Execute() (*StepModel, *http.Response, error) {
 	return r.ApiService.PatchStepExecute(r)
 }
 
@@ -2315,13 +2315,13 @@ func (a *ActionsAPIService) PatchStep(ctx context.Context, repoRef string, actio
 
 // Execute executes the request
 //
-//	@return StageModel
-func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StageModel, *http.Response, error) {
+//	@return StepModel
+func (a *ActionsAPIService) PatchStepExecute(r ApiPatchStepRequest) (*StepModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StageModel
+		localVarReturnValue *StepModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PatchStep")
@@ -3129,7 +3129,7 @@ func (r ApiPostStepRequest) StepCreateInput(stepCreateInput StepCreateInput) Api
 	return r
 }
 
-func (r ApiPostStepRequest) Execute() (*StageModel, *http.Response, error) {
+func (r ApiPostStepRequest) Execute() (*StepModel, *http.Response, error) {
 	return r.ApiService.PostStepExecute(r)
 }
 
@@ -3156,13 +3156,13 @@ func (a *ActionsAPIService) PostStep(ctx context.Context, repoRef string, action
 
 // Execute executes the request
 //
-//	@return StageModel
-func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StageModel, *http.Response, error) {
+//	@return StepModel
+func (a *ActionsAPIService) PostStepExecute(r ApiPostStepRequest) (*StepModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *StageModel
+		localVarReturnValue *StepModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostStep")

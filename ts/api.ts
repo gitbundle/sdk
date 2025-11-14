@@ -9590,7 +9590,7 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+        async patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StepModel>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.patchStep']?.[localVarOperationServerIndex]?.url;
@@ -9649,7 +9649,7 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
+        async postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StepModel>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStep']?.[localVarOperationServerIndex]?.url;
@@ -9834,7 +9834,7 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+        patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig): AxiosPromise<StepModel> {
             return localVarFp.patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9881,7 +9881,7 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
+        postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StepModel> {
             return localVarFp.postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
         },
         /**

@@ -1008,7 +1008,7 @@ pub async fn patch_step(
     stage_number: i64,
     step_number: i64,
     step_update_input: models::StepUpdateInput,
-) -> Result<models::StageModel, Error<PatchStepError>> {
+) -> Result<models::StepModel, Error<PatchStepError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
@@ -1056,8 +1056,8 @@ pub async fn patch_step(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StageModel`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StageModel`")))),
+            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StepModel`"))),
+            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StepModel`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -1287,7 +1287,7 @@ pub async fn post_step(
     workflow_idn: i64,
     stage_number: i64,
     step_create_input: models::StepCreateInput,
-) -> Result<models::StageModel, Error<PostStepError>> {
+) -> Result<models::StepModel, Error<PostStepError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
@@ -1334,8 +1334,8 @@ pub async fn post_step(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StageModel`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StageModel`")))),
+            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StepModel`"))),
+            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StepModel`")))),
         }
     } else {
         let content = resp.text().await?;
