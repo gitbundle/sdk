@@ -18,14 +18,14 @@ pub enum CiStatus {
     #[serde(rename = "pending")]
     #[default]
     Pending,
+    #[serde(rename = "initializing")]
+    Initializing,
     #[serde(rename = "skipped")]
     Skipped,
     #[serde(rename = "blocked")]
     Blocked,
     #[serde(rename = "declined")]
     Declined,
-    #[serde(rename = "waiting_on_dependencies")]
-    WaitingOnDependencies,
     #[serde(rename = "running")]
     Running,
     #[serde(rename = "success")]
@@ -42,10 +42,10 @@ impl std::fmt::Display for CiStatus {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::Pending => write!(f, "pending"),
+            Self::Initializing => write!(f, "initializing"),
             Self::Skipped => write!(f, "skipped"),
             Self::Blocked => write!(f, "blocked"),
             Self::Declined => write!(f, "declined"),
-            Self::WaitingOnDependencies => write!(f, "waiting_on_dependencies"),
             Self::Running => write!(f, "running"),
             Self::Success => write!(f, "success"),
             Self::Failure => write!(f, "failure"),
