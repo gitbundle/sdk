@@ -6635,7 +6635,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StageModel"
+                $ref: "#/components/schemas/StepModel"
           description: Create action workflow step
         "400":
           content:
@@ -6743,7 +6743,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StageModel"
+                $ref: "#/components/schemas/StepModel"
           description: Update action workflow step
         "400":
           content:

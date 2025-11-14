@@ -364,7 +364,7 @@ Name | Type | Description  | Required | Notes
 
 ## patch_step
 
-> models::StageModel patch_step(repo_ref, action_identifier, workflow_idn, stage_number, step_number, step_update_input)
+> models::StepModel patch_step(repo_ref, action_identifier, workflow_idn, stage_number, step_number, step_update_input)
 
 
 ### Parameters
@@ -381,7 +381,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::StageModel**](StageModel.md)
+[**models::StepModel**](StepModel.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_step
 
-> models::StageModel post_step(repo_ref, action_identifier, workflow_idn, stage_number, step_create_input)
+> models::StepModel post_step(repo_ref, action_identifier, workflow_idn, stage_number, step_create_input)
 
 
 ### Parameters
@@ -504,7 +504,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::StageModel**](StageModel.md)
+[**models::StepModel**](StepModel.md)
 
 ### Authorization
 

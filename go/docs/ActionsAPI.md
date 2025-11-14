@@ -850,7 +850,7 @@ Name | Type | Description  | Notes
 
 ## PatchStep
 
-> StageModel PatchStep(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
+> StepModel PatchStep(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).StepUpdateInput(stepUpdateInput).Execute()
 
 
 
@@ -881,7 +881,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PatchStep``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchStep`: StageModel
+	// response from `PatchStep`: StepModel
 	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PatchStep`: %v\n", resp)
 }
 ```
@@ -914,7 +914,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StageModel**](StageModel.md)
+[**StepModel**](StepModel.md)
 
 ### Authorization
 
@@ -1154,7 +1154,7 @@ Name | Type | Description  | Notes
 
 ## PostStep
 
-> StageModel PostStep(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber).StepCreateInput(stepCreateInput).Execute()
+> StepModel PostStep(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber).StepCreateInput(stepCreateInput).Execute()
 
 
 
@@ -1184,7 +1184,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStep``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostStep`: StageModel
+	// response from `PostStep`: StepModel
 	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PostStep`: %v\n", resp)
 }
 ```
@@ -1215,7 +1215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StageModel**](StageModel.md)
+[**StepModel**](StepModel.md)
 
 ### Authorization
 

@@ -740,7 +740,7 @@ const { status, data } = await apiInstance.patchStage(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchStep**
-> StageModel patchStep(stepUpdateInput)
+> StepModel patchStep(stepUpdateInput)
 
 
 ### Example
@@ -786,7 +786,7 @@ const { status, data } = await apiInstance.patchStep(
 
 ### Return type
 
-**StageModel**
+**StepModel**
 
 ### Authorization
 
@@ -1008,7 +1008,7 @@ const { status, data } = await apiInstance.postStage(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postStep**
-> StageModel postStep(stepCreateInput)
+> StepModel postStep(stepCreateInput)
 
 
 ### Example
@@ -1051,7 +1051,7 @@ const { status, data } = await apiInstance.postStep(
 
 ### Return type
 
-**StageModel**
+**StepModel**
 
 ### Authorization
 
