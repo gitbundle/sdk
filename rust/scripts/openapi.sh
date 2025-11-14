@@ -14,4 +14,12 @@ done
 
 cargo clippy --fix --allow-dirty --allow-staged
 
-cargo fmt --all
+# cargo binstall cargo-sort
+# cargo sort -w
+# cargo fmt --all
+cargo +nightly fmt
+
+# cargo binstall taplo-cli
+# taplo format Cargo.toml
+# find . -name "Cargo.toml" -exec taplo format {} \;
+find . -name "Cargo.toml"|xargs taplo format {}
