@@ -20,7 +20,8 @@ Method | HTTP request | Description
 [**PostAction**](ActionsAPI.md#PostAction) | **Post** /repos/{repo_ref}/+/actions | 
 [**PostStage**](ActionsAPI.md#PostStage) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 [**PostStep**](ActionsAPI.md#PostStep) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
-[**PostStepLog**](ActionsAPI.md#PostStepLog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs | 
+[**PostStepLog**](ActionsAPI.md#PostStepLog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
+[**PostStepLogStream**](ActionsAPI.md#PostStepLogStream) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
 [**PostWorkflow**](ActionsAPI.md#PostWorkflow) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 
 
@@ -1233,7 +1234,9 @@ Name | Type | Description  | Notes
 
 ## PostStepLog
 
-> PostStepLog(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
+> PostStepLog(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).LiveLogLine(liveLogLine).Execute()
+
+Upload step log
 
 
 
@@ -1255,11 +1258,11 @@ func main() {
 	workflowIdn := int64(789) // int64 | Workflow number or id
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
-	requestBody := []int32{int32(123)} // []int32 | 
+	liveLogLine := *openapiclient.NewLiveLogLine("Out_example", int64(123), int64(123)) // LiveLogLine | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
+	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).LiveLogLine(liveLogLine).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStepLog``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1291,7 +1294,89 @@ Name | Type | Description  | Notes
 
 
 
- **requestBody** | **[]int32** |  | 
+ **liveLogLine** | [**LiveLogLine**](LiveLogLine.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostStepLogStream
+
+> PostStepLogStream(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
+
+Upload step logstream
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/gitbundle/sdk-go"
+)
+
+func main() {
+	repoRef := "repoRef_example" // string | Repository id or ref
+	actionIdentifier := "actionIdentifier_example" // string | Action id or name
+	workflowIdn := int64(789) // int64 | Workflow number or id
+	stageNumber := int64(789) // int64 | Stage number
+	stepNumber := int64(789) // int64 | Step number
+	requestBody := []int32{int32(123)} // []int32 | Raw bytes
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ActionsAPI.PostStepLogStream(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStepLogStream``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**repoRef** | **string** | Repository id or ref | 
+**actionIdentifier** | **string** | Action id or name | 
+**workflowIdn** | **int64** | Workflow number or id | 
+**stageNumber** | **int64** | Stage number | 
+**stepNumber** | **int64** | Step number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostStepLogStreamRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+ **requestBody** | **[]int32** | Raw bytes | 
 
 ### Return type
 

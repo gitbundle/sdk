@@ -48,7 +48,8 @@ Class | Method | HTTP request | Description
 *ActionsApi* | [**post_action**](docs/ActionsApi.md#post_action) | **POST** /repos/{repo_ref}/+/actions | 
 *ActionsApi* | [**post_stage**](docs/ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 *ActionsApi* | [**post_step**](docs/ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
-*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs | 
+*ActionsApi* | [**post_step_log**](docs/ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
+*ActionsApi* | [**post_step_log_stream**](docs/ActionsApi.md#post_step_log_stream) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
 *ActionsApi* | [**post_workflow**](docs/ActionsApi.md#post_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *AdminApi* | [**delete_group**](docs/AdminApi.md#delete_group) | **DELETE** /admin/groups/{group_ref} | 
 *AdminApi* | [**delete_runner**](docs/AdminApi.md#delete_runner) | **DELETE** /admin/runners/{runner_uuid} | 

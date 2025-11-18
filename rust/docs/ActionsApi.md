@@ -20,7 +20,8 @@ Method | HTTP request | Description
 [**post_action**](ActionsApi.md#post_action) | **POST** /repos/{repo_ref}/+/actions | 
 [**post_stage**](ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 [**post_step**](ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
-[**post_step_log**](ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs | 
+[**post_step_log**](ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
+[**post_step_log_stream**](ActionsApi.md#post_step_log_stream) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
 [**post_workflow**](ActionsApi.md#post_workflow) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 
 
@@ -520,8 +521,10 @@ Name | Type | Description  | Required | Notes
 
 ## post_step_log
 
-> post_step_log(repo_ref, action_identifier, workflow_idn, stage_number, step_number, request_body)
+> post_step_log(repo_ref, action_identifier, workflow_idn, stage_number, step_number, live_log_line)
+Upload step log
 
+Upload workflow step json log
 
 ### Parameters
 
@@ -533,7 +536,42 @@ Name | Type | Description  | Required | Notes
 **workflow_idn** | **i64** | Workflow number or id | [required] |
 **stage_number** | **i64** | Stage number | [required] |
 **step_number** | **i64** | Step number | [required] |
-**request_body** | [**Vec<i32>**](i32.md) |  | [required] |
+**live_log_line** | [**LiveLogLine**](LiveLogLine.md) |  | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## post_step_log_stream
+
+> post_step_log_stream(repo_ref, action_identifier, workflow_idn, stage_number, step_number, request_body)
+Upload step logstream
+
+Upload workflow step json log by stream, unsupported yet.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**repo_ref** | **String** | Repository id or ref | [required] |
+**action_identifier** | **String** | Action id or name | [required] |
+**workflow_idn** | **i64** | Workflow number or id | [required] |
+**stage_number** | **i64** | Stage number | [required] |
+**step_number** | **i64** | Step number | [required] |
+**request_body** | [**Vec<i32>**](i32.md) | Raw bytes | [required] |
 
 ### Return type
 

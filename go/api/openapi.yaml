@@ -6793,9 +6793,116 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs:
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log:
     post:
+      description: Upload workflow step json log
       operationId: post_step_log
+      parameters:
+      - description: Repository id or ref
+        explode: false
+        in: path
+        name: repo_ref
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Action id or name
+        explode: false
+        in: path
+        name: action_identifier
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Workflow number or id
+        explode: false
+        in: path
+        name: workflow_idn
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Stage number
+        explode: false
+        in: path
+        name: stage_number
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: Step number
+        explode: false
+        in: path
+        name: step_number
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LiveLogLine"
+        required: true
+      responses:
+        "201":
+          description: Upload action workflow step log successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      summary: Upload step log
+      tags:
+      - actions
+  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream:
+    post:
+      description: "Upload workflow step json log by stream, unsupported yet."
+      operationId: post_step_log_stream
       parameters:
       - description: Repository id or ref
         explode: false
@@ -6849,10 +6956,11 @@ paths:
                 minimum: 0
                 type: integer
               type: array
+        description: Raw bytes
         required: true
       responses:
         "201":
-          description: Upload action workflow step logs
+          description: Upload action workflow step logstream successfully
         "400":
           content:
             application/json:
@@ -6899,6 +7007,7 @@ paths:
       - bearer_auth: []
       - basic_auth: []
       - access_token_query: []
+      summary: Upload step logstream
       tags:
       - actions
   /repos/{repo_ref}/+/archive/{archive_ref}:

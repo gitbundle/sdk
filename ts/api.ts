@@ -9301,17 +9301,18 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
+         * Upload workflow step json log
+         * @summary Upload step log
          * @param {string} repoRef Repository id or ref
          * @param {string} actionIdentifier Action id or name
          * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
-         * @param {Array<number>} requestBody 
+         * @param {LiveLogLine} liveLogLine 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        postStepLog: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, liveLogLine: LiveLogLine, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('postStepLog', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
@@ -9322,9 +9323,76 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('postStepLog', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('postStepLog', 'stepNumber', stepNumber)
+            // verify required parameter 'liveLogLine' is not null or undefined
+            assertParamExists('postStepLog', 'liveLogLine', liveLogLine)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log`
+                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
+                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
+                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
+                .replace(`{${"stage_number"}}`, encodeURIComponent(String(stageNumber)))
+                .replace(`{${"step_number"}}`, encodeURIComponent(String(stepNumber)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basic_auth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication bearer_auth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            // authentication access_token_query required
+            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(liveLogLine, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Upload workflow step json log by stream, unsupported yet.
+         * @summary Upload step logstream
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
+         * @param {number} stageNumber Stage number
+         * @param {number} stepNumber Step number
+         * @param {Array<number>} requestBody Raw bytes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postStepLogStream: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'repoRef' is not null or undefined
+            assertParamExists('postStepLogStream', 'repoRef', repoRef)
+            // verify required parameter 'actionIdentifier' is not null or undefined
+            assertParamExists('postStepLogStream', 'actionIdentifier', actionIdentifier)
+            // verify required parameter 'workflowIdn' is not null or undefined
+            assertParamExists('postStepLogStream', 'workflowIdn', workflowIdn)
+            // verify required parameter 'stageNumber' is not null or undefined
+            assertParamExists('postStepLogStream', 'stageNumber', stageNumber)
+            // verify required parameter 'stepNumber' is not null or undefined
+            assertParamExists('postStepLogStream', 'stepNumber', stepNumber)
             // verify required parameter 'requestBody' is not null or undefined
-            assertParamExists('postStepLog', 'requestBody', requestBody)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs`
+            assertParamExists('postStepLogStream', 'requestBody', requestBody)
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
                 .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
@@ -9668,20 +9736,39 @@ export const ActionsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
+         * Upload workflow step json log
+         * @summary Upload step log
          * @param {string} repoRef Repository id or ref
          * @param {string} actionIdentifier Action id or name
          * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
-         * @param {Array<number>} requestBody 
+         * @param {LiveLogLine} liveLogLine 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options);
+        async postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, liveLogLine: LiveLogLine, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, liveLogLine, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStepLog']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Upload workflow step json log by stream, unsupported yet.
+         * @summary Upload step logstream
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
+         * @param {number} stageNumber Stage number
+         * @param {number} stepNumber Step number
+         * @param {Array<number>} requestBody Raw bytes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStepLogStream']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9898,18 +9985,34 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Upload workflow step json log
+         * @summary Upload step log
          * @param {string} repoRef Repository id or ref
          * @param {string} actionIdentifier Action id or name
          * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
-         * @param {Array<number>} requestBody 
+         * @param {LiveLogLine} liveLogLine 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options).then((request) => request(axios, basePath));
+        postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, liveLogLine: LiveLogLine, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, liveLogLine, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Upload workflow step json log by stream, unsupported yet.
+         * @summary Upload step logstream
+         * @param {string} repoRef Repository id or ref
+         * @param {string} actionIdentifier Action id or name
+         * @param {number} workflowIdn Workflow number or id
+         * @param {number} stageNumber Stage number
+         * @param {number} stepNumber Step number
+         * @param {Array<number>} requestBody Raw bytes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.postStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10154,19 +10257,37 @@ export class ActionsApi extends BaseAPI {
     }
 
     /**
-     * 
+     * Upload workflow step json log
+     * @summary Upload step log
      * @param {string} repoRef Repository id or ref
      * @param {string} actionIdentifier Action id or name
      * @param {number} workflowIdn Workflow number or id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
-     * @param {Array<number>} requestBody 
+     * @param {LiveLogLine} liveLogLine 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options).then((request) => request(this.axios, this.basePath));
+    public postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, liveLogLine: LiveLogLine, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, liveLogLine, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Upload workflow step json log by stream, unsupported yet.
+     * @summary Upload step logstream
+     * @param {string} repoRef Repository id or ref
+     * @param {string} actionIdentifier Action id or name
+     * @param {number} workflowIdn Workflow number or id
+     * @param {number} stageNumber Stage number
+     * @param {number} stepNumber Step number
+     * @param {Array<number>} requestBody Raw bytes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionsApi
+     */
+    public postStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).postStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

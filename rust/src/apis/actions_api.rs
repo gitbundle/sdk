@@ -250,6 +250,20 @@ pub enum PostStepLogError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`post_step_log_stream`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum PostStepLogStreamError {
+    Status400(models::JsonErrorResponseNull),
+    Status401(models::JsonErrorResponseNull),
+    Status403(models::JsonErrorResponseNull),
+    Status404(models::JsonErrorResponseNull),
+    Status409(models::JsonErrorResponseNull),
+    Status429(models::JsonErrorResponseNull),
+    Status500(models::JsonErrorResponseNull),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`post_workflow`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1347,6 +1361,7 @@ pub async fn post_step(
     }
 }
 
+/// Upload workflow step json log
 pub async fn post_step_log(
     configuration: &configuration::Configuration,
     repo_ref: &str,
@@ -1354,8 +1369,68 @@ pub async fn post_step_log(
     workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
-    request_body: Vec<i32>,
+    live_log_line: models::LiveLogLine,
 ) -> Result<(), Error<PostStepLogError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_repo_ref = repo_ref;
+    let p_action_identifier = action_identifier;
+    let p_workflow_idn = workflow_idn;
+    let p_stage_number = stage_number;
+    let p_step_number = step_number;
+    let p_live_log_line = live_log_line;
+
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
+
+    if let Some(ref apikey) = configuration.api_key {
+        let key = apikey.key.clone();
+        let value = match apikey.prefix {
+            Some(ref prefix) => format!("{} {}", prefix, key),
+            None => key,
+        };
+        req_builder = req_builder.query(&[("access_token", value)]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref auth_conf) = configuration.basic_auth {
+        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
+    };
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_live_log_line);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+
+    if !status.is_client_error() && !status.is_server_error() {
+        Ok(())
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<PostStepLogError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Upload workflow step json log by stream, unsupported yet.
+pub async fn post_step_log_stream(
+    configuration: &configuration::Configuration,
+    repo_ref: &str,
+    action_identifier: &str,
+    workflow_idn: i64,
+    stage_number: i64,
+    step_number: i64,
+    request_body: Vec<i32>,
+) -> Result<(), Error<PostStepLogStreamError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
     let p_action_identifier = action_identifier;
@@ -1364,7 +1439,7 @@ pub async fn post_step_log(
     let p_step_number = step_number;
     let p_request_body = request_body;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
@@ -1397,7 +1472,7 @@ pub async fn post_step_log(
         Ok(())
     } else {
         let content = resp.text().await?;
-        let entity: Option<PostStepLogError> = serde_json::from_str(&content).ok();
+        let entity: Option<PostStepLogStreamError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
