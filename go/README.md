@@ -100,7 +100,8 @@ Class | Method | HTTP request | Description
 *ActionsAPI* | [**PostAction**](docs/ActionsAPI.md#postaction) | **Post** /repos/{repo_ref}/+/actions | 
 *ActionsAPI* | [**PostStage**](docs/ActionsAPI.md#poststage) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 *ActionsAPI* | [**PostStep**](docs/ActionsAPI.md#poststep) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
-*ActionsAPI* | [**PostStepLog**](docs/ActionsAPI.md#poststeplog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs | 
+*ActionsAPI* | [**PostStepLog**](docs/ActionsAPI.md#poststeplog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
+*ActionsAPI* | [**PostStepLogStream**](docs/ActionsAPI.md#poststeplogstream) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
 *ActionsAPI* | [**PostWorkflow**](docs/ActionsAPI.md#postworkflow) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows | 
 *AdminAPI* | [**DeleteGroup**](docs/AdminAPI.md#deletegroup) | **Delete** /admin/groups/{group_ref} | 
 *AdminAPI* | [**DeleteRunner**](docs/AdminAPI.md#deleterunner) | **Delete** /admin/runners/{runner_uuid} | 

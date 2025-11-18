@@ -3337,11 +3337,11 @@ type ApiPostStepLogRequest struct {
 	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
-	requestBody      *[]int32
+	liveLogLine      *LiveLogLine
 }
 
-func (r ApiPostStepLogRequest) RequestBody(requestBody []int32) ApiPostStepLogRequest {
-	r.requestBody = &requestBody
+func (r ApiPostStepLogRequest) LiveLogLine(liveLogLine LiveLogLine) ApiPostStepLogRequest {
+	r.liveLogLine = &liveLogLine
 	return r
 }
 
@@ -3350,7 +3350,9 @@ func (r ApiPostStepLogRequest) Execute() (*http.Response, error) {
 }
 
 /*
-PostStepLog Method for PostStepLog
+PostStepLog Upload step log
+
+Upload workflow step json log
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param repoRef Repository id or ref
@@ -3385,7 +3387,217 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log"
+	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stage_number"+"}", url.PathEscape(parameterValueToString(r.stageNumber, "stageNumber")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"step_number"+"}", url.PathEscape(parameterValueToString(r.stepNumber, "stepNumber")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.liveLogLine == nil {
+		return nil, reportError("liveLogLine is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.liveLogLine
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["access_token_query"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarQueryParams.Add("access_token", key)
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v JsonErrorResponseNull
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPostStepLogStreamRequest struct {
+	ctx              context.Context
+	ApiService       *ActionsAPIService
+	repoRef          string
+	actionIdentifier string
+	workflowIdn      int64
+	stageNumber      int64
+	stepNumber       int64
+	requestBody      *[]int32
+}
+
+// Raw bytes
+func (r ApiPostStepLogStreamRequest) RequestBody(requestBody []int32) ApiPostStepLogStreamRequest {
+	r.requestBody = &requestBody
+	return r
+}
+
+func (r ApiPostStepLogStreamRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PostStepLogStreamExecute(r)
+}
+
+/*
+PostStepLogStream Upload step logstream
+
+Upload workflow step json log by stream, unsupported yet.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoRef Repository id or ref
+	@param actionIdentifier Action id or name
+	@param workflowIdn Workflow number or id
+	@param stageNumber Stage number
+	@param stepNumber Step number
+	@return ApiPostStepLogStreamRequest
+*/
+func (a *ActionsAPIService) PostStepLogStream(ctx context.Context, repoRef string, actionIdentifier string, workflowIdn int64, stageNumber int64, stepNumber int64) ApiPostStepLogStreamRequest {
+	return ApiPostStepLogStreamRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		repoRef:          repoRef,
+		actionIdentifier: actionIdentifier,
+		workflowIdn:      workflowIdn,
+		stageNumber:      stageNumber,
+		stepNumber:       stepNumber,
+	}
+}
+
+// Execute executes the request
+func (a *ActionsAPIService) PostStepLogStreamExecute(r ApiPostStepLogStreamRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.PostStepLogStream")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
