@@ -21,9 +21,10 @@ var _ MappedNullable = &LiveLogLine{}
 
 // LiveLogLine struct for LiveLogLine
 type LiveLogLine struct {
-	Out  string `json:"out"`
-	Pos  int64  `json:"pos"`
-	Time int64  `json:"time"`
+	Command NullableString `json:"command,omitempty"`
+	Out     string         `json:"out"`
+	Pos     int64          `json:"pos"`
+	Time    int64          `json:"time"`
 }
 
 type _LiveLogLine LiveLogLine
@@ -46,6 +47,49 @@ func NewLiveLogLine(out string, pos int64, time int64) *LiveLogLine {
 func NewLiveLogLineWithDefaults() *LiveLogLine {
 	this := LiveLogLine{}
 	return &this
+}
+
+// GetCommand returns the Command field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LiveLogLine) GetCommand() string {
+	if o == nil || IsNil(o.Command.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Command.Get()
+}
+
+// GetCommandOk returns a tuple with the Command field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LiveLogLine) GetCommandOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Command.Get(), o.Command.IsSet()
+}
+
+// HasCommand returns a boolean if a field has been set.
+func (o *LiveLogLine) HasCommand() bool {
+	if o != nil && o.Command.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCommand gets a reference to the given NullableString and assigns it to the Command field.
+func (o *LiveLogLine) SetCommand(v string) {
+	o.Command.Set(&v)
+}
+
+// SetCommandNil sets the value for Command to be an explicit nil
+func (o *LiveLogLine) SetCommandNil() {
+	o.Command.Set(nil)
+}
+
+// UnsetCommand ensures that no value is present for Command, not even an explicit nil
+func (o *LiveLogLine) UnsetCommand() {
+	o.Command.Unset()
 }
 
 // GetOut returns the Out field value
@@ -130,6 +174,9 @@ func (o LiveLogLine) MarshalJSON() ([]byte, error) {
 
 func (o LiveLogLine) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Command.IsSet() {
+		toSerialize["command"] = o.Command.Get()
+	}
 	toSerialize["out"] = o.Out
 	toSerialize["pos"] = o.Pos
 	toSerialize["time"] = o.Time

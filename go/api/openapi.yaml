@@ -6840,6 +6840,16 @@ paths:
           format: int64
           type: integer
         style: simple
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              items:
+                format: int32
+                minimum: 0
+                type: integer
+              type: array
+        required: true
       responses:
         "201":
           description: Upload action workflow step logs
@@ -21845,8 +21855,12 @@ components:
       example:
         pos: 0
         time: 6
+        command: command
         out: out
       properties:
+        command:
+          nullable: true
+          type: string
         out:
           type: string
         pos:

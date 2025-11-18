@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] [default to undefined]
 **out** | **string** |  | [default to undefined]
 **pos** | **number** |  | [default to undefined]
 **time** | **number** |  | [default to undefined]
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 import { LiveLogLine } from 'gitbundle-sdk';
 
 const instance: LiveLogLine = {
+    command,
     out,
     pos,
     time,

@@ -1078,7 +1078,7 @@ const { status, data } = await apiInstance.postStep(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postStepLog**
-> postStepLog()
+> postStepLog(requestBody)
 
 
 ### Example
@@ -1097,13 +1097,15 @@ let actionIdentifier: string; //Action id or name (default to undefined)
 let workflowIdn: number; //Workflow number or id (default to undefined)
 let stageNumber: number; //Stage number (default to undefined)
 let stepNumber: number; //Step number (default to undefined)
+let requestBody: Array<number>; //
 
 const { status, data } = await apiInstance.postStepLog(
     repoRef,
     actionIdentifier,
     workflowIdn,
     stageNumber,
-    stepNumber
+    stepNumber,
+    requestBody
 );
 ```
 
@@ -1111,6 +1113,7 @@ const { status, data } = await apiInstance.postStepLog(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
+| **requestBody** | **Array<number>**|  | |
 | **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
 | **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
 | **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
@@ -1128,7 +1131,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 

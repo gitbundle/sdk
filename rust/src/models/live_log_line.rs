@@ -12,6 +12,13 @@ use crate::models;
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LiveLogLine {
+    #[serde(
+        rename = "command",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub command: Option<Option<String>>,
     #[serde(rename = "out")]
     pub out: String,
     #[serde(rename = "pos")]
@@ -22,6 +29,11 @@ pub struct LiveLogLine {
 
 impl LiveLogLine {
     pub fn new(out: String, pos: i64, time: i64) -> LiveLogLine {
-        LiveLogLine { out, pos, time }
+        LiveLogLine {
+            command: None,
+            out,
+            pos,
+            time,
+        }
     }
 }

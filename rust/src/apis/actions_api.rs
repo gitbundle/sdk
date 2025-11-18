@@ -1354,6 +1354,7 @@ pub async fn post_step_log(
     workflow_idn: i64,
     stage_number: i64,
     step_number: i64,
+    request_body: Vec<i32>,
 ) -> Result<(), Error<PostStepLogError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_repo_ref = repo_ref;
@@ -1361,6 +1362,7 @@ pub async fn post_step_log(
     let p_workflow_idn = workflow_idn;
     let p_stage_number = stage_number;
     let p_step_number = step_number;
+    let p_request_body = request_body;
 
     let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), action_identifier=crate::apis::urlencode(p_action_identifier), workflow_idn=p_workflow_idn, stage_number=p_stage_number, step_number=p_step_number);
     let mut req_builder = configuration
@@ -1384,6 +1386,7 @@ pub async fn post_step_log(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
+    req_builder = req_builder.json(&p_request_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

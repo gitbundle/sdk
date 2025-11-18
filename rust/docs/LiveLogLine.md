@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | Option<**String**> |  | [optional]
 **out** | **String** |  | 
 **pos** | **i64** |  | 
 **time** | **i64** |  | 

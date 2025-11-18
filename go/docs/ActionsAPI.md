@@ -1233,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ## PostStepLog
 
-> PostStepLog(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
+> PostStepLog(ctx, repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
 
 
 
@@ -1255,10 +1255,11 @@ func main() {
 	workflowIdn := int64(789) // int64 | Workflow number or id
 	stageNumber := int64(789) // int64 | Stage number
 	stepNumber := int64(789) // int64 | Step number
+	requestBody := []int32{int32(123)} // []int32 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).Execute()
+	r, err := apiClient.ActionsAPI.PostStepLog(context.Background(), repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber).RequestBody(requestBody).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStepLog``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1290,6 +1291,7 @@ Name | Type | Description  | Notes
 
 
 
+ **requestBody** | **[]int32** |  | 
 
 ### Return type
 
@@ -1301,7 +1303,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/octet-stream
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

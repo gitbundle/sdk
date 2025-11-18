@@ -520,7 +520,7 @@ Name | Type | Description  | Required | Notes
 
 ## post_step_log
 
-> post_step_log(repo_ref, action_identifier, workflow_idn, stage_number, step_number)
+> post_step_log(repo_ref, action_identifier, workflow_idn, stage_number, step_number, request_body)
 
 
 ### Parameters
@@ -533,6 +533,7 @@ Name | Type | Description  | Required | Notes
 **workflow_idn** | **i64** | Workflow number or id | [required] |
 **stage_number** | **i64** | Stage number | [required] |
 **step_number** | **i64** | Step number | [required] |
+**request_body** | [**Vec<i32>**](i32.md) |  | [required] |
 
 ### Return type
 
@@ -544,7 +545,7 @@ Name | Type | Description  | Required | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/octet-stream
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Command** | Pointer to **NullableString** |  | [optional] 
 **Out** | **string** |  | 
 **Pos** | **int64** |  | 
 **Time** | **int64** |  | 
@@ -27,6 +28,41 @@ NewLiveLogLineWithDefaults instantiates a new LiveLogLine object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetCommand
+
+`func (o *LiveLogLine) GetCommand() string`
+
+GetCommand returns the Command field if non-nil, zero value otherwise.
+
+### GetCommandOk
+
+`func (o *LiveLogLine) GetCommandOk() (*string, bool)`
+
+GetCommandOk returns a tuple with the Command field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommand
+
+`func (o *LiveLogLine) SetCommand(v string)`
+
+SetCommand sets Command field to given value.
+
+### HasCommand
+
+`func (o *LiveLogLine) HasCommand() bool`
+
+HasCommand returns a boolean if a field has been set.
+
+### SetCommandNil
+
+`func (o *LiveLogLine) SetCommandNil(b bool)`
+
+ SetCommandNil sets the value for Command to be an explicit nil
+
+### UnsetCommand
+`func (o *LiveLogLine) UnsetCommand()`
+
+UnsetCommand ensures that no value is present for Command, not even an explicit nil
 ### GetOut
 
 `func (o *LiveLogLine) GetOut() string`
