@@ -3337,6 +3337,12 @@ type ApiPostStepLogRequest struct {
 	workflowIdn      int64
 	stageNumber      int64
 	stepNumber       int64
+	requestBody      *[]int32
+}
+
+func (r ApiPostStepLogRequest) RequestBody(requestBody []int32) ApiPostStepLogRequest {
+	r.requestBody = &requestBody
+	return r
 }
 
 func (r ApiPostStepLogRequest) Execute() (*http.Response, error) {
@@ -3389,9 +3395,12 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/octet-stream"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3407,6 +3416,8 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.requestBody
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
