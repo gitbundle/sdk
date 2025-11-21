@@ -21,8 +21,8 @@ var _ MappedNullable = &RunnerStageOutput{}
 
 // RunnerStageOutput struct for RunnerStageOutput
 type RunnerStageOutput struct {
-	AccessToken string             `json:"access_token"`
-	Stage       NullableStageModel `json:"stage,omitempty"`
+	AccessToken   string                `json:"access_token"`
+	StageMetadata NullableStageMetadata `json:"stage_metadata,omitempty"`
 }
 
 type _RunnerStageOutput RunnerStageOutput
@@ -69,47 +69,47 @@ func (o *RunnerStageOutput) SetAccessToken(v string) {
 	o.AccessToken = v
 }
 
-// GetStage returns the Stage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RunnerStageOutput) GetStage() StageModel {
-	if o == nil || IsNil(o.Stage.Get()) {
-		var ret StageModel
+// GetStageMetadata returns the StageMetadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RunnerStageOutput) GetStageMetadata() StageMetadata {
+	if o == nil || IsNil(o.StageMetadata.Get()) {
+		var ret StageMetadata
 		return ret
 	}
-	return *o.Stage.Get()
+	return *o.StageMetadata.Get()
 }
 
-// GetStageOk returns a tuple with the Stage field value if set, nil otherwise
+// GetStageMetadataOk returns a tuple with the StageMetadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RunnerStageOutput) GetStageOk() (*StageModel, bool) {
+func (o *RunnerStageOutput) GetStageMetadataOk() (*StageMetadata, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Stage.Get(), o.Stage.IsSet()
+	return o.StageMetadata.Get(), o.StageMetadata.IsSet()
 }
 
-// HasStage returns a boolean if a field has been set.
-func (o *RunnerStageOutput) HasStage() bool {
-	if o != nil && o.Stage.IsSet() {
+// HasStageMetadata returns a boolean if a field has been set.
+func (o *RunnerStageOutput) HasStageMetadata() bool {
+	if o != nil && o.StageMetadata.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStage gets a reference to the given NullableStageModel and assigns it to the Stage field.
-func (o *RunnerStageOutput) SetStage(v StageModel) {
-	o.Stage.Set(&v)
+// SetStageMetadata gets a reference to the given NullableStageMetadata and assigns it to the StageMetadata field.
+func (o *RunnerStageOutput) SetStageMetadata(v StageMetadata) {
+	o.StageMetadata.Set(&v)
 }
 
-// SetStageNil sets the value for Stage to be an explicit nil
-func (o *RunnerStageOutput) SetStageNil() {
-	o.Stage.Set(nil)
+// SetStageMetadataNil sets the value for StageMetadata to be an explicit nil
+func (o *RunnerStageOutput) SetStageMetadataNil() {
+	o.StageMetadata.Set(nil)
 }
 
-// UnsetStage ensures that no value is present for Stage, not even an explicit nil
-func (o *RunnerStageOutput) UnsetStage() {
-	o.Stage.Unset()
+// UnsetStageMetadata ensures that no value is present for StageMetadata, not even an explicit nil
+func (o *RunnerStageOutput) UnsetStageMetadata() {
+	o.StageMetadata.Unset()
 }
 
 func (o RunnerStageOutput) MarshalJSON() ([]byte, error) {
@@ -123,8 +123,8 @@ func (o RunnerStageOutput) MarshalJSON() ([]byte, error) {
 func (o RunnerStageOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access_token"] = o.AccessToken
-	if o.Stage.IsSet() {
-		toSerialize["stage"] = o.Stage.Get()
+	if o.StageMetadata.IsSet() {
+		toSerialize["stage_metadata"] = o.StageMetadata.Get()
 	}
 	return toSerialize, nil
 }

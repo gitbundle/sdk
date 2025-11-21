@@ -243,22 +243,6 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ActionsAPIService PostStage", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var repoRef string
-		var actionIdentifier string
-		var workflowIdn int64
-
-		resp, httpRes, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ActionsAPIService PostStep", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

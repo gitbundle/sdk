@@ -15,19 +15,19 @@ pub struct RunnerStageOutput {
     #[serde(rename = "access_token")]
     pub access_token: String,
     #[serde(
-        rename = "stage",
+        rename = "stage_metadata",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub stage: Option<Option<Box<models::StageModel>>>,
+    pub stage_metadata: Option<Option<Box<models::StageMetadata>>>,
 }
 
 impl RunnerStageOutput {
     pub fn new(access_token: String) -> RunnerStageOutput {
         RunnerStageOutput {
             access_token,
-            stage: None,
+            stage_metadata: None,
         }
     }
 }

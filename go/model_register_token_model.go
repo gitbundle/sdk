@@ -21,14 +21,14 @@ var _ MappedNullable = &RegisterTokenModel{}
 
 // RegisterTokenModel struct for RegisterTokenModel
 type RegisterTokenModel struct {
-	Created   int64         `json:"created"`
-	CreatedBy int64         `json:"created_by"`
-	Id        int64         `json:"id"`
-	ParentId  NullableInt64 `json:"parent_id,omitempty"`
-	Scope     Scope         `json:"scope"`
-	Token     string        `json:"token"`
-	Updated   int64         `json:"updated"`
-	Version   int64         `json:"version"`
+	Created   int64  `json:"created"`
+	CreatedBy int64  `json:"created_by"`
+	Id        int64  `json:"id"`
+	ParentId  int64  `json:"parent_id"`
+	Scope     Scope  `json:"scope"`
+	Token     string `json:"token"`
+	Updated   int64  `json:"updated"`
+	Version   int64  `json:"version"`
 }
 
 type _RegisterTokenModel RegisterTokenModel
@@ -37,11 +37,12 @@ type _RegisterTokenModel RegisterTokenModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope Scope, token string, updated int64, version int64) *RegisterTokenModel {
+func NewRegisterTokenModel(created int64, createdBy int64, id int64, parentId int64, scope Scope, token string, updated int64, version int64) *RegisterTokenModel {
 	this := RegisterTokenModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
 	this.Id = id
+	this.ParentId = parentId
 	this.Scope = scope
 	this.Token = token
 	this.Updated = updated
@@ -129,47 +130,28 @@ func (o *RegisterTokenModel) SetId(v int64) {
 	o.Id = v
 }
 
-// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetParentId returns the ParentId field value
 func (o *RegisterTokenModel) GetParentId() int64 {
-	if o == nil || IsNil(o.ParentId.Get()) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ParentId.Get()
+
+	return o.ParentId
 }
 
-// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// GetParentIdOk returns a tuple with the ParentId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RegisterTokenModel) GetParentIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ParentId.Get(), o.ParentId.IsSet()
+	return &o.ParentId, true
 }
 
-// HasParentId returns a boolean if a field has been set.
-func (o *RegisterTokenModel) HasParentId() bool {
-	if o != nil && o.ParentId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetParentId gets a reference to the given NullableInt64 and assigns it to the ParentId field.
+// SetParentId sets field value
 func (o *RegisterTokenModel) SetParentId(v int64) {
-	o.ParentId.Set(&v)
-}
-
-// SetParentIdNil sets the value for ParentId to be an explicit nil
-func (o *RegisterTokenModel) SetParentIdNil() {
-	o.ParentId.Set(nil)
-}
-
-// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
-func (o *RegisterTokenModel) UnsetParentId() {
-	o.ParentId.Unset()
+	o.ParentId = v
 }
 
 // GetScope returns the Scope field value
@@ -281,9 +263,7 @@ func (o RegisterTokenModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["created"] = o.Created
 	toSerialize["created_by"] = o.CreatedBy
 	toSerialize["id"] = o.Id
-	if o.ParentId.IsSet() {
-		toSerialize["parent_id"] = o.ParentId.Get()
-	}
+	toSerialize["parent_id"] = o.ParentId
 	toSerialize["scope"] = o.Scope
 	toSerialize["token"] = o.Token
 	toSerialize["updated"] = o.Updated
@@ -299,6 +279,7 @@ func (o *RegisterTokenModel) UnmarshalJSON(data []byte) (err error) {
 		"created",
 		"created_by",
 		"id",
+		"parent_id",
 		"scope",
 		"token",
 		"updated",

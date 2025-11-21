@@ -21,21 +21,21 @@ var _ MappedNullable = &RunnerModel{}
 
 // RunnerModel struct for RunnerModel
 type RunnerModel struct {
-	Created     int64         `json:"created"`
-	CreatedBy   int64         `json:"created_by"`
-	Description string        `json:"description"`
-	Id          int64         `json:"id"`
-	Labels      []string      `json:"labels"`
-	LastOnline  int64         `json:"last_online"`
-	Name        string        `json:"name"`
-	ParentId    NullableInt64 `json:"parent_id,omitempty"`
-	Release     string        `json:"release"`
-	Scope       Scope         `json:"scope"`
-	Status      RunnerStatus  `json:"status"`
-	TokenId     int64         `json:"token_id"`
-	Updated     int64         `json:"updated"`
-	Uuid        string        `json:"uuid"`
-	Version     int64         `json:"version"`
+	Created     int64        `json:"created"`
+	CreatedBy   int64        `json:"created_by"`
+	Description string       `json:"description"`
+	Id          int64        `json:"id"`
+	Labels      []string     `json:"labels"`
+	LastOnline  int64        `json:"last_online"`
+	Name        string       `json:"name"`
+	ParentId    int64        `json:"parent_id"`
+	Release     string       `json:"release"`
+	Scope       Scope        `json:"scope"`
+	Status      RunnerStatus `json:"status"`
+	TokenId     int64        `json:"token_id"`
+	Updated     int64        `json:"updated"`
+	Uuid        string       `json:"uuid"`
+	Version     int64        `json:"version"`
 }
 
 type _RunnerModel RunnerModel
@@ -44,7 +44,7 @@ type _RunnerModel RunnerModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64) *RunnerModel {
+func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, parentId int64, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64) *RunnerModel {
 	this := RunnerModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
@@ -53,6 +53,7 @@ func NewRunnerModel(created int64, createdBy int64, description string, id int64
 	this.Labels = labels
 	this.LastOnline = lastOnline
 	this.Name = name
+	this.ParentId = parentId
 	this.Release = release
 	this.Scope = scope
 	this.Status = status
@@ -239,47 +240,28 @@ func (o *RunnerModel) SetName(v string) {
 	o.Name = v
 }
 
-// GetParentId returns the ParentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetParentId returns the ParentId field value
 func (o *RunnerModel) GetParentId() int64 {
-	if o == nil || IsNil(o.ParentId.Get()) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ParentId.Get()
+
+	return o.ParentId
 }
 
-// GetParentIdOk returns a tuple with the ParentId field value if set, nil otherwise
+// GetParentIdOk returns a tuple with the ParentId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RunnerModel) GetParentIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ParentId.Get(), o.ParentId.IsSet()
+	return &o.ParentId, true
 }
 
-// HasParentId returns a boolean if a field has been set.
-func (o *RunnerModel) HasParentId() bool {
-	if o != nil && o.ParentId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetParentId gets a reference to the given NullableInt64 and assigns it to the ParentId field.
+// SetParentId sets field value
 func (o *RunnerModel) SetParentId(v int64) {
-	o.ParentId.Set(&v)
-}
-
-// SetParentIdNil sets the value for ParentId to be an explicit nil
-func (o *RunnerModel) SetParentIdNil() {
-	o.ParentId.Set(nil)
-}
-
-// UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
-func (o *RunnerModel) UnsetParentId() {
-	o.ParentId.Unset()
+	o.ParentId = v
 }
 
 // GetRelease returns the Release field value
@@ -467,9 +449,7 @@ func (o RunnerModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["labels"] = o.Labels
 	toSerialize["last_online"] = o.LastOnline
 	toSerialize["name"] = o.Name
-	if o.ParentId.IsSet() {
-		toSerialize["parent_id"] = o.ParentId.Get()
-	}
+	toSerialize["parent_id"] = o.ParentId
 	toSerialize["release"] = o.Release
 	toSerialize["scope"] = o.Scope
 	toSerialize["status"] = o.Status
@@ -492,6 +472,7 @@ func (o *RunnerModel) UnmarshalJSON(data []byte) (err error) {
 		"labels",
 		"last_online",
 		"name",
+		"parent_id",
 		"release",
 		"scope",
 		"status",

@@ -26,6 +26,8 @@ pub struct StepUpdateInput {
         skip_serializing_if = "Option::is_none"
     )]
     pub exit_code: Option<Option<i64>>,
+    #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
+    pub outputs: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(
         rename = "started",
         default,
@@ -40,6 +42,24 @@ pub struct StepUpdateInput {
         skip_serializing_if = "Option::is_none"
     )]
     pub status: Option<Option<models::CiStatus>>,
+    /// The step result status after the yaml is executed
+    #[serde(
+        rename = "stepconclusion",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub stepconclusion: Option<Option<models::StatusContext>>,
+    #[serde(rename = "stepid", skip_serializing_if = "Option::is_none")]
+    pub stepid: Option<String>,
+    /// The step result status after the yaml is executed.
+    #[serde(
+        rename = "stepoutcome",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub stepoutcome: Option<Option<models::StatusContext>>,
     #[serde(
         rename = "stopped",
         default,
@@ -54,8 +74,12 @@ impl StepUpdateInput {
         StepUpdateInput {
             error: None,
             exit_code: None,
+            outputs: None,
             started: None,
             status: None,
+            stepconclusion: None,
+            stepid: None,
+            stepoutcome: None,
             stopped: None,
         }
     }

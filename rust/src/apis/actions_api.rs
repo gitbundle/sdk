@@ -208,20 +208,6 @@ pub enum PostActionError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`post_stage`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum PostStageError {
-    Status400(models::JsonErrorResponseNull),
-    Status401(models::JsonErrorResponseNull),
-    Status403(models::JsonErrorResponseNull),
-    Status404(models::JsonErrorResponseNull),
-    Status409(models::JsonErrorResponseNull),
-    Status429(models::JsonErrorResponseNull),
-    Status500(models::JsonErrorResponseNull),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`post_step`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1213,78 +1199,6 @@ pub async fn post_action(
     } else {
         let content = resp.text().await?;
         let entity: Option<PostActionError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-pub async fn post_stage(
-    configuration: &configuration::Configuration,
-    repo_ref: &str,
-    action_identifier: &str,
-    workflow_idn: i64,
-    stage_create_input: models::StageCreateInput,
-) -> Result<models::StageModel, Error<PostStageError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_action_identifier = action_identifier;
-    let p_workflow_idn = workflow_idn;
-    let p_stage_create_input = stage_create_input;
-
-    let uri_str = format!(
-        "{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages",
-        configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        action_identifier = crate::apis::urlencode(p_action_identifier),
-        workflow_idn = p_workflow_idn
-    );
-    let mut req_builder = configuration
-        .client
-        .request(reqwest::Method::POST, &uri_str);
-
-    if let Some(ref apikey) = configuration.api_key {
-        let key = apikey.key.clone();
-        let value = match apikey.prefix {
-            Some(ref prefix) => format!("{} {}", prefix, key),
-            None => key,
-        };
-        req_builder = req_builder.query(&[("access_token", value)]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref auth_conf) = configuration.basic_auth {
-        req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
-    };
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-    req_builder = req_builder.json(&p_stage_create_input);
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StageModel`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StageModel`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<PostStageError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

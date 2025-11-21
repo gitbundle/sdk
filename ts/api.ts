@@ -4176,7 +4176,7 @@ export interface RegisterTokenModel {
      * @type {number}
      * @memberof RegisterTokenModel
      */
-    'parent_id'?: number | null;
+    'parent_id': number;
     /**
      * 
      * @type {Scope}
@@ -5635,6 +5635,79 @@ export interface RuleViolation {
 /**
  * 
  * @export
+ * @enum {string}
+ */
+
+export const RunnerArchContext = {
+    X86: 'x86',
+    X64: 'x64',
+    Arm: 'arm',
+    Arm64: 'arm64'
+} as const;
+
+export type RunnerArchContext = typeof RunnerArchContext[keyof typeof RunnerArchContext];
+
+
+/**
+ * 
+ * @export
+ * @interface RunnerContext
+ */
+export interface RunnerContext {
+    /**
+     * 
+     * @type {RunnerArchContext}
+     * @memberof RunnerContext
+     */
+    'arch': RunnerArchContext;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunnerContext
+     */
+    'debug': string;
+    /**
+     * 
+     * @type {RunnerEnvironmentContext}
+     * @memberof RunnerContext
+     */
+    'environment': RunnerEnvironmentContext;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunnerContext
+     */
+    'name': string;
+    /**
+     * 
+     * @type {RunnerOsContext}
+     * @memberof RunnerContext
+     */
+    'os': RunnerOsContext;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunnerContext
+     */
+    'temp': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunnerContext
+     */
+    'tool_cache': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RunnerContext
+     */
+    'uuid': string;
+}
+
+
+/**
+ * 
+ * @export
  * @interface RunnerCreator
  */
 export interface RunnerCreator {
@@ -5651,6 +5724,19 @@ export interface RunnerCreator {
      */
     'model': RunnerModel;
 }
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const RunnerEnvironmentContext = {
+    SelfHosted: 'self-hosted'
+} as const;
+
+export type RunnerEnvironmentContext = typeof RunnerEnvironmentContext[keyof typeof RunnerEnvironmentContext];
+
+
 /**
  * 
  * @export
@@ -5704,7 +5790,7 @@ export interface RunnerModel {
      * @type {number}
      * @memberof RunnerModel
      */
-    'parent_id'?: number | null;
+    'parent_id': number;
     /**
      * 
      * @type {string}
@@ -5748,6 +5834,21 @@ export interface RunnerModel {
      */
     'version': number;
 }
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const RunnerOsContext = {
+    Linux: 'Linux',
+    Windows: 'Windows',
+    MacOs: 'macOS'
+} as const;
+
+export type RunnerOsContext = typeof RunnerOsContext[keyof typeof RunnerOsContext];
 
 
 /**
@@ -5808,10 +5909,10 @@ export interface RunnerStageOutput {
     'access_token': string;
     /**
      * 
-     * @type {StageModel}
+     * @type {StageMetadata}
      * @memberof RunnerStageOutput
      */
-    'stage'?: StageModel | null;
+    'stage_metadata'?: StageMetadata | null;
 }
 /**
  * 
@@ -5929,156 +6030,107 @@ export type SseType = typeof SseType[keyof typeof SseType];
 /**
  * 
  * @export
- * @interface StageCreateInput
+ * @interface StageContext
  */
-export interface StageCreateInput {
+export interface StageContext {
     /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
+     * including all vars, priority from low to high, higher priority key could override lower priority key 1. The predefined variables for github/gitlab. 2. The web ui configured vars or envs, exclude secrets.
+     * @type {{ [key: string]: string; }}
+     * @memberof StageContext
      */
-    'arch': string;
+    'all': { [key: string]: string; };
     /**
-     * 
-     * @type {boolean}
-     * @memberof StageCreateInput
+     * Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME
+     * @type {{ [key: string]: string; }}
+     * @memberof StageContext
      */
-    'errignore': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
-     */
-    'exit_code': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'kernel': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'kind': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof StageCreateInput
-     */
-    'labels': Array<string>;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
-     */
-    'limit': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
-     */
-    'limit_repo': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'machine': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'name': string;
+    'env': { [key: string]: string; };
     /**
      * 
      * @type {any}
-     * @memberof StageCreateInput
+     * @memberof StageContext
      */
-    'needs': any;
+    'github': any;
+    /**
+     * Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
+     * @type {{ [key: string]: any; }}
+     * @memberof StageContext
+     */
+    'inputs': { [key: string]: any; };
     /**
      * 
-     * @type {number}
-     * @memberof StageCreateInput
+     * @type {any}
+     * @memberof StageContext
      */
-    'number': number;
+    'job': any;
+    /**
+     * For reusable workflows only, contains outputs of jobs from the reusable workflow. Runtime data Initialized when stage is pushed into queue. Updated when stage is updated by api or else. key: job name or stage name value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
+     * @type {{ [key: string]: any; }}
+     * @memberof StageContext
+     */
+    'jobs': { [key: string]: any; };
     /**
      * 
-     * @type {boolean}
-     * @memberof StageCreateInput
+     * @type {{ [key: string]: string; }}
+     * @memberof StageContext
      */
-    'on_failure': boolean;
+    'matrix': { [key: string]: string; };
+    /**
+     * Contains the outputs of all jobs that are defined as a dependency of the current job. Runtime data key: job name value: JobsContext. Converted to serde_json::Value for recursively inject variables.
+     * @type {{ [key: string]: any; }}
+     * @memberof StageContext
+     */
+    'needs': { [key: string]: any; };
     /**
      * 
-     * @type {boolean}
-     * @memberof StageCreateInput
+     * @type {any}
+     * @memberof StageContext
      */
-    'on_success': boolean;
+    'runner': any;
+    /**
+     * Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be running. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME
+     * @type {{ [key: string]: string; }}
+     * @memberof StageContext
+     */
+    'secrets': { [key: string]: string; };
+    /**
+     * Information about the steps that have been run in the current job. Runtime data key:   step id (set in step yaml) value: refer to StepsContext. Converted to serde_json::Value for recursively inject variables.
+     * @type {{ [key: string]: any; }}
+     * @memberof StageContext
+     */
+    'steps': { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof StageCreateInput
+     * @type {any}
+     * @memberof StageContext
      */
-    'os': string;
+    'strategy': any;
     /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
+     * Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME
+     * @type {{ [key: string]: string; }}
+     * @memberof StageContext
      */
-    'parent_group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
-     */
-    'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StageCreateInput
-     */
-    'status': CIStatus;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageCreateInput
-     */
-    'stopped'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'type': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'variant': string;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof StageCreateInput
-     */
-    'yaml_provider': YamlProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageCreateInput
-     */
-    'yaml_resolved': string;
+    'vars': { [key: string]: string; };
 }
-
-
+/**
+ * 
+ * @export
+ * @interface StageMetadata
+ */
+export interface StageMetadata {
+    /**
+     * 
+     * @type {StageContext}
+     * @memberof StageMetadata
+     */
+    'context': StageContext;
+    /**
+     * 
+     * @type {StageModel}
+     * @memberof StageMetadata
+     */
+    'stage': StageModel;
+}
 /**
  * 
  * @export
@@ -6129,6 +6181,12 @@ export interface StageModel {
     'id': number;
     /**
      * 
+     * @type {boolean}
+     * @memberof StageModel
+     */
+    'is_reusable': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof StageModel
      */
@@ -6171,10 +6229,10 @@ export interface StageModel {
     'name': string;
     /**
      * 
-     * @type {any}
+     * @type {Array<string>}
      * @memberof StageModel
      */
-    'needs': any;
+    'needs': Array<string>;
     /**
      * 
      * @type {number}
@@ -6199,6 +6257,12 @@ export interface StageModel {
      * @memberof StageModel
      */
     'os': string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof StageModel
+     */
+    'outputs'?: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -6318,6 +6382,18 @@ export interface StageUpdateInput {
      */
     'exit_code'?: number | null;
     /**
+     * Used for storing the result of the yaml decoded stage.
+     * @type {StatusContext}
+     * @memberof StageUpdateInput
+     */
+    'jobstatus'?: StatusContext | null;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof StageUpdateInput
+     */
+    'outputs'?: { [key: string]: any; };
+    /**
      * 
      * @type {number}
      * @memberof StageUpdateInput
@@ -6336,6 +6412,23 @@ export interface StageUpdateInput {
      */
     'stopped'?: number | null;
 }
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const StatusContext = {
+    Noop: 'noop',
+    Success: 'success',
+    Failure: 'failure',
+    Cancelled: 'cancelled',
+    Skipped: 'skipped'
+} as const;
+
+export type StatusContext = typeof StatusContext[keyof typeof StatusContext];
 
 
 /**
@@ -6404,6 +6497,12 @@ export interface StepCreateInput {
      * @memberof StepCreateInput
      */
     'status': CIStatus;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepCreateInput
+     */
+    'stepid'?: string;
     /**
      * 
      * @type {YamlProvider}
@@ -6481,6 +6580,12 @@ export interface StepModel {
     'number': number;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof StepModel
+     */
+    'outputs'?: { [key: string]: any; };
+    /**
+     * 
      * @type {number}
      * @memberof StepModel
      */
@@ -6550,6 +6655,12 @@ export interface StepUpdateInput {
     'exit_code'?: number | null;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof StepUpdateInput
+     */
+    'outputs'?: { [key: string]: any; };
+    /**
+     * 
      * @type {number}
      * @memberof StepUpdateInput
      */
@@ -6560,6 +6671,24 @@ export interface StepUpdateInput {
      * @memberof StepUpdateInput
      */
     'status'?: CIStatus | null;
+    /**
+     * The step result status after the yaml is executed
+     * @type {StatusContext}
+     * @memberof StepUpdateInput
+     */
+    'stepconclusion'?: StatusContext | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepUpdateInput
+     */
+    'stepid'?: string;
+    /**
+     * The step result status after the yaml is executed.
+     * @type {StatusContext}
+     * @memberof StepUpdateInput
+     */
+    'stepoutcome'?: StatusContext | null;
     /**
      * 
      * @type {number}
@@ -7694,10 +7823,10 @@ export interface WorkflowCreateInput {
     'deploy_id'?: number | null;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof WorkflowCreateInput
      */
-    'params'?: { [key: string]: string; };
+    'params'?: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -7845,10 +7974,10 @@ export interface WorkflowModel {
     'number': number;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof WorkflowModel
      */
-    'params': { [key: string]: string; };
+    'params': { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -9185,64 +9314,6 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} repoRef Repository id or ref
          * @param {string} actionIdentifier Action id or name
          * @param {number} workflowIdn Workflow number or id
-         * @param {StageCreateInput} stageCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postStage: async (repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'repoRef' is not null or undefined
-            assertParamExists('postStage', 'repoRef', repoRef)
-            // verify required parameter 'actionIdentifier' is not null or undefined
-            assertParamExists('postStage', 'actionIdentifier', actionIdentifier)
-            // verify required parameter 'workflowIdn' is not null or undefined
-            assertParamExists('postStage', 'workflowIdn', workflowIdn)
-            // verify required parameter 'stageCreateInput' is not null or undefined
-            assertParamExists('postStage', 'stageCreateInput', stageCreateInput)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages`
-                .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
-                .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
-                .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basic_auth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication bearer_auth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            // authentication access_token_query required
-            await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(stageCreateInput, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository id or ref
-         * @param {string} actionIdentifier Action id or name
-         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
@@ -9709,21 +9780,6 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {string} repoRef Repository id or ref
          * @param {string} actionIdentifier Action id or name
          * @param {number} workflowIdn Workflow number or id
-         * @param {StageCreateInput} stageCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ActionsApi.postStage']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository id or ref
-         * @param {string} actionIdentifier Action id or name
-         * @param {number} workflowIdn Workflow number or id
          * @param {number} stageNumber Stage number
          * @param {StepCreateInput} stepCreateInput 
          * @param {*} [options] Override http request option.
@@ -9958,18 +10014,6 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          */
         postAction(repoRef: string, actionCreateInput: ActionCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<ActionModel> {
             return localVarFp.postAction(repoRef, actionCreateInput, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} repoRef Repository id or ref
-         * @param {string} actionIdentifier Action id or name
-         * @param {number} workflowIdn Workflow number or id
-         * @param {StageCreateInput} stageCreateInput 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig): AxiosPromise<StageModel> {
-            return localVarFp.postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -10225,20 +10269,6 @@ export class ActionsApi extends BaseAPI {
      */
     public postAction(repoRef: string, actionCreateInput: ActionCreateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postAction(repoRef, actionCreateInput, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} repoRef Repository id or ref
-     * @param {string} actionIdentifier Action id or name
-     * @param {number} workflowIdn Workflow number or id
-     * @param {StageCreateInput} stageCreateInput 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ActionsApi
-     */
-    public postStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageCreateInput: StageCreateInput, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).postStage(repoRef, actionIdentifier, workflowIdn, stageCreateInput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -24357,11 +24387,14 @@ export const RunnersApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
+         * @param {RunnerContext} runnerContext 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStage: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/runners/stage`;
+        pollStage: async (runnerContext: RunnerContext, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'runnerContext' is not null or undefined
+            assertParamExists('pollStage', 'runnerContext', runnerContext)
+            const localVarPath = `/runners/poll_stage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -24369,7 +24402,7 @@ export const RunnersApiAxiosParamCreator = function (configuration?: Configurati
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -24386,9 +24419,12 @@ export const RunnersApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(runnerContext, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -24442,13 +24478,14 @@ export const RunnersApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {RunnerContext} runnerContext 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStage(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RunnerStageOutput>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStage(options);
+        async pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RunnerStageOutput>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.pollStage(runnerContext, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['RunnersApi.getStage']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['RunnersApi.pollStage']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -24475,11 +24512,12 @@ export const RunnersApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
+         * @param {RunnerContext} runnerContext 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStage(options?: RawAxiosRequestConfig): AxiosPromise<RunnerStageOutput> {
-            return localVarFp.getStage(options).then((request) => request(axios, basePath));
+        pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): AxiosPromise<RunnerStageOutput> {
+            return localVarFp.pollStage(runnerContext, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -24502,12 +24540,13 @@ export const RunnersApiFactory = function (configuration?: Configuration, basePa
 export class RunnersApi extends BaseAPI {
     /**
      * 
+     * @param {RunnerContext} runnerContext 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunnersApi
      */
-    public getStage(options?: RawAxiosRequestConfig) {
-        return RunnersApiFp(this.configuration).getStage(options).then((request) => request(this.axios, this.basePath));
+    public pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig) {
+        return RunnersApiFp(this.configuration).pollStage(runnerContext, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

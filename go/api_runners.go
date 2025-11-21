@@ -21,23 +21,29 @@ import (
 // RunnersAPIService RunnersAPI service
 type RunnersAPIService service
 
-type ApiGetStageRequest struct {
-	ctx        context.Context
-	ApiService *RunnersAPIService
+type ApiPollStageRequest struct {
+	ctx           context.Context
+	ApiService    *RunnersAPIService
+	runnerContext *RunnerContext
 }
 
-func (r ApiGetStageRequest) Execute() (*RunnerStageOutput, *http.Response, error) {
-	return r.ApiService.GetStageExecute(r)
+func (r ApiPollStageRequest) RunnerContext(runnerContext RunnerContext) ApiPollStageRequest {
+	r.runnerContext = &runnerContext
+	return r
+}
+
+func (r ApiPollStageRequest) Execute() (*RunnerStageOutput, *http.Response, error) {
+	return r.ApiService.PollStageExecute(r)
 }
 
 /*
-GetStage Method for GetStage
+PollStage Method for PollStage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetStageRequest
+	@return ApiPollStageRequest
 */
-func (a *RunnersAPIService) GetStage(ctx context.Context) ApiGetStageRequest {
-	return ApiGetStageRequest{
+func (a *RunnersAPIService) PollStage(ctx context.Context) ApiPollStageRequest {
+	return ApiPollStageRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -46,27 +52,30 @@ func (a *RunnersAPIService) GetStage(ctx context.Context) ApiGetStageRequest {
 // Execute executes the request
 //
 //	@return RunnerStageOutput
-func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageOutput, *http.Response, error) {
+func (a *RunnersAPIService) PollStageExecute(r ApiPollStageRequest) (*RunnerStageOutput, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
 		localVarReturnValue *RunnerStageOutput
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnersAPIService.GetStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnersAPIService.PollStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/runners/stage"
+	localVarPath := localBasePath + "/runners/poll_stage"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.runnerContext == nil {
+		return localVarReturnValue, nil, reportError("runnerContext is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -82,6 +91,8 @@ func (a *RunnersAPIService) GetStageExecute(r ApiGetStageRequest) (*RunnerStageO
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.runnerContext
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

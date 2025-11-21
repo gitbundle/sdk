@@ -22,11 +22,11 @@ func Test_gitbundlesdk_RunnersAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RunnersAPIService GetStage", func(t *testing.T) {
+	t.Run("Test RunnersAPIService PollStage", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RunnersAPI.GetStage(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RunnersAPI.PollStage(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -26,6 +26,16 @@ pub struct StageUpdateInput {
         skip_serializing_if = "Option::is_none"
     )]
     pub exit_code: Option<Option<i64>>,
+    /// Used for storing the result of the yaml decoded stage.
+    #[serde(
+        rename = "jobstatus",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub jobstatus: Option<Option<models::StatusContext>>,
+    #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
+    pub outputs: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(
         rename = "started",
         default,
@@ -54,6 +64,8 @@ impl StageUpdateInput {
         StageUpdateInput {
             error: None,
             exit_code: None,
+            jobstatus: None,
+            outputs: None,
             started: None,
             status: None,
             stopped: None,

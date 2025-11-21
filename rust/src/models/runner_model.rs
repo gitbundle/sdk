@@ -26,13 +26,8 @@ pub struct RunnerModel {
     pub last_online: i64,
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(
-        rename = "parent_id",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub parent_id: Option<Option<i64>>,
+    #[serde(rename = "parent_id")]
+    pub parent_id: i64,
     #[serde(rename = "release")]
     pub release: String,
     #[serde(rename = "scope")]
@@ -58,6 +53,7 @@ impl RunnerModel {
         labels: Vec<String>,
         last_online: i64,
         name: String,
+        parent_id: i64,
         release: String,
         scope: models::Scope,
         status: models::RunnerStatus,
@@ -74,7 +70,7 @@ impl RunnerModel {
             labels,
             last_online,
             name,
-            parent_id: None,
+            parent_id,
             release,
             scope,
             status,

@@ -19,11 +19,17 @@ var _ MappedNullable = &StepUpdateInput{}
 
 // StepUpdateInput struct for StepUpdateInput
 type StepUpdateInput struct {
-	Error    NullableString   `json:"error,omitempty"`
-	ExitCode NullableInt64    `json:"exit_code,omitempty"`
-	Started  NullableInt64    `json:"started,omitempty"`
-	Status   NullableCIStatus `json:"status,omitempty"`
-	Stopped  NullableInt64    `json:"stopped,omitempty"`
+	Error    NullableString         `json:"error,omitempty"`
+	ExitCode NullableInt64          `json:"exit_code,omitempty"`
+	Outputs  map[string]interface{} `json:"outputs,omitempty"`
+	Started  NullableInt64          `json:"started,omitempty"`
+	Status   NullableCIStatus       `json:"status,omitempty"`
+	// The step result status after the yaml is executed
+	Stepconclusion NullableStatusContext `json:"stepconclusion,omitempty"`
+	Stepid         *string               `json:"stepid,omitempty"`
+	// The step result status after the yaml is executed.
+	Stepoutcome NullableStatusContext `json:"stepoutcome,omitempty"`
+	Stopped     NullableInt64         `json:"stopped,omitempty"`
 }
 
 // NewStepUpdateInput instantiates a new StepUpdateInput object
@@ -129,6 +135,38 @@ func (o *StepUpdateInput) UnsetExitCode() {
 	o.ExitCode.Unset()
 }
 
+// GetOutputs returns the Outputs field value if set, zero value otherwise.
+func (o *StepUpdateInput) GetOutputs() map[string]interface{} {
+	if o == nil || IsNil(o.Outputs) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Outputs
+}
+
+// GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StepUpdateInput) GetOutputsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Outputs) {
+		return map[string]interface{}{}, false
+	}
+	return o.Outputs, true
+}
+
+// HasOutputs returns a boolean if a field has been set.
+func (o *StepUpdateInput) HasOutputs() bool {
+	if o != nil && !IsNil(o.Outputs) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputs gets a reference to the given map[string]interface{} and assigns it to the Outputs field.
+func (o *StepUpdateInput) SetOutputs(v map[string]interface{}) {
+	o.Outputs = v
+}
+
 // GetStarted returns the Started field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StepUpdateInput) GetStarted() int64 {
 	if o == nil || IsNil(o.Started.Get()) {
@@ -215,6 +253,124 @@ func (o *StepUpdateInput) UnsetStatus() {
 	o.Status.Unset()
 }
 
+// GetStepconclusion returns the Stepconclusion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StepUpdateInput) GetStepconclusion() StatusContext {
+	if o == nil || IsNil(o.Stepconclusion.Get()) {
+		var ret StatusContext
+		return ret
+	}
+	return *o.Stepconclusion.Get()
+}
+
+// GetStepconclusionOk returns a tuple with the Stepconclusion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StepUpdateInput) GetStepconclusionOk() (*StatusContext, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Stepconclusion.Get(), o.Stepconclusion.IsSet()
+}
+
+// HasStepconclusion returns a boolean if a field has been set.
+func (o *StepUpdateInput) HasStepconclusion() bool {
+	if o != nil && o.Stepconclusion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStepconclusion gets a reference to the given NullableStatusContext and assigns it to the Stepconclusion field.
+func (o *StepUpdateInput) SetStepconclusion(v StatusContext) {
+	o.Stepconclusion.Set(&v)
+}
+
+// SetStepconclusionNil sets the value for Stepconclusion to be an explicit nil
+func (o *StepUpdateInput) SetStepconclusionNil() {
+	o.Stepconclusion.Set(nil)
+}
+
+// UnsetStepconclusion ensures that no value is present for Stepconclusion, not even an explicit nil
+func (o *StepUpdateInput) UnsetStepconclusion() {
+	o.Stepconclusion.Unset()
+}
+
+// GetStepid returns the Stepid field value if set, zero value otherwise.
+func (o *StepUpdateInput) GetStepid() string {
+	if o == nil || IsNil(o.Stepid) {
+		var ret string
+		return ret
+	}
+	return *o.Stepid
+}
+
+// GetStepidOk returns a tuple with the Stepid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StepUpdateInput) GetStepidOk() (*string, bool) {
+	if o == nil || IsNil(o.Stepid) {
+		return nil, false
+	}
+	return o.Stepid, true
+}
+
+// HasStepid returns a boolean if a field has been set.
+func (o *StepUpdateInput) HasStepid() bool {
+	if o != nil && !IsNil(o.Stepid) {
+		return true
+	}
+
+	return false
+}
+
+// SetStepid gets a reference to the given string and assigns it to the Stepid field.
+func (o *StepUpdateInput) SetStepid(v string) {
+	o.Stepid = &v
+}
+
+// GetStepoutcome returns the Stepoutcome field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StepUpdateInput) GetStepoutcome() StatusContext {
+	if o == nil || IsNil(o.Stepoutcome.Get()) {
+		var ret StatusContext
+		return ret
+	}
+	return *o.Stepoutcome.Get()
+}
+
+// GetStepoutcomeOk returns a tuple with the Stepoutcome field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StepUpdateInput) GetStepoutcomeOk() (*StatusContext, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Stepoutcome.Get(), o.Stepoutcome.IsSet()
+}
+
+// HasStepoutcome returns a boolean if a field has been set.
+func (o *StepUpdateInput) HasStepoutcome() bool {
+	if o != nil && o.Stepoutcome.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStepoutcome gets a reference to the given NullableStatusContext and assigns it to the Stepoutcome field.
+func (o *StepUpdateInput) SetStepoutcome(v StatusContext) {
+	o.Stepoutcome.Set(&v)
+}
+
+// SetStepoutcomeNil sets the value for Stepoutcome to be an explicit nil
+func (o *StepUpdateInput) SetStepoutcomeNil() {
+	o.Stepoutcome.Set(nil)
+}
+
+// UnsetStepoutcome ensures that no value is present for Stepoutcome, not even an explicit nil
+func (o *StepUpdateInput) UnsetStepoutcome() {
+	o.Stepoutcome.Unset()
+}
+
 // GetStopped returns the Stopped field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StepUpdateInput) GetStopped() int64 {
 	if o == nil || IsNil(o.Stopped.Get()) {
@@ -274,11 +430,23 @@ func (o StepUpdateInput) ToMap() (map[string]interface{}, error) {
 	if o.ExitCode.IsSet() {
 		toSerialize["exit_code"] = o.ExitCode.Get()
 	}
+	if !IsNil(o.Outputs) {
+		toSerialize["outputs"] = o.Outputs
+	}
 	if o.Started.IsSet() {
 		toSerialize["started"] = o.Started.Get()
 	}
 	if o.Status.IsSet() {
 		toSerialize["status"] = o.Status.Get()
+	}
+	if o.Stepconclusion.IsSet() {
+		toSerialize["stepconclusion"] = o.Stepconclusion.Get()
+	}
+	if !IsNil(o.Stepid) {
+		toSerialize["stepid"] = o.Stepid
+	}
+	if o.Stepoutcome.IsSet() {
+		toSerialize["stepoutcome"] = o.Stepoutcome.Get()
 	}
 	if o.Stopped.IsSet() {
 		toSerialize["stopped"] = o.Stopped.Get()

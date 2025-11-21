@@ -31,6 +31,7 @@ type StepCreateInput struct {
 	Number        int64        `json:"number"`
 	ParentGroupId int64        `json:"parent_group_id"`
 	Status        CIStatus     `json:"status"`
+	Stepid        *string      `json:"stepid,omitempty"`
 	YamlProvider  YamlProvider `json:"yaml_provider"`
 	YamlResolved  string       `json:"yaml_resolved"`
 }
@@ -308,6 +309,38 @@ func (o *StepCreateInput) SetStatus(v CIStatus) {
 	o.Status = v
 }
 
+// GetStepid returns the Stepid field value if set, zero value otherwise.
+func (o *StepCreateInput) GetStepid() string {
+	if o == nil || IsNil(o.Stepid) {
+		var ret string
+		return ret
+	}
+	return *o.Stepid
+}
+
+// GetStepidOk returns a tuple with the Stepid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StepCreateInput) GetStepidOk() (*string, bool) {
+	if o == nil || IsNil(o.Stepid) {
+		return nil, false
+	}
+	return o.Stepid, true
+}
+
+// HasStepid returns a boolean if a field has been set.
+func (o *StepCreateInput) HasStepid() bool {
+	if o != nil && !IsNil(o.Stepid) {
+		return true
+	}
+
+	return false
+}
+
+// SetStepid gets a reference to the given string and assigns it to the Stepid field.
+func (o *StepCreateInput) SetStepid(v string) {
+	o.Stepid = &v
+}
+
 // GetYamlProvider returns the YamlProvider field value
 func (o *StepCreateInput) GetYamlProvider() YamlProvider {
 	if o == nil {
@@ -378,6 +411,9 @@ func (o StepCreateInput) ToMap() (map[string]interface{}, error) {
 	toSerialize["number"] = o.Number
 	toSerialize["parent_group_id"] = o.ParentGroupId
 	toSerialize["status"] = o.Status
+	if !IsNil(o.Stepid) {
+		toSerialize["stepid"] = o.Stepid
+	}
 	toSerialize["yaml_provider"] = o.YamlProvider
 	toSerialize["yaml_resolved"] = o.YamlResolved
 	return toSerialize, nil

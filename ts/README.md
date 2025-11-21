@@ -70,7 +70,6 @@ Class | Method | HTTP request | Description
 *ActionsApi* | [**patchStep**](docs/ActionsApi.md#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number} | 
 *ActionsApi* | [**patchWorkflow**](docs/ActionsApi.md#patchworkflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | 
 *ActionsApi* | [**postAction**](docs/ActionsApi.md#postaction) | **POST** /repos/{repo_ref}/+/actions | 
-*ActionsApi* | [**postStage**](docs/ActionsApi.md#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 *ActionsApi* | [**postStep**](docs/ActionsApi.md#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
 *ActionsApi* | [**postStepLog**](docs/ActionsApi.md#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
 *ActionsApi* | [**postStepLogStream**](docs/ActionsApi.md#poststeplogstream) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
@@ -229,7 +228,7 @@ Class | Method | HTTP request | Description
 *RulesApi* | [**getRules**](docs/RulesApi.md#getrules) | **GET** /repos/{repo_ref}/+/rules | 
 *RulesApi* | [**patchRule**](docs/RulesApi.md#patchrule) | **PATCH** /repos/{repo_ref}/+/rules/{rule_identifier} | 
 *RulesApi* | [**postRule**](docs/RulesApi.md#postrule) | **POST** /repos/{repo_ref}/+/rules | 
-*RunnersApi* | [**getStage**](docs/RunnersApi.md#getstage) | **GET** /runners/stage | 
+*RunnersApi* | [**pollStage**](docs/RunnersApi.md#pollstage) | **POST** /runners/poll_stage | 
 *RunnersApi* | [**postRunnersRegister**](docs/RunnersApi.md#postrunnersregister) | **POST** /runners/register | 
 *ServiceAccountsApi* | [**deleteServiceAccount**](docs/ServiceAccountsApi.md#deleteserviceaccount) | **DELETE** /service-accounts/{sa_identifier} | 
 *ServiceAccountsApi* | [**deleteServiceAccountToken**](docs/ServiceAccountsApi.md#deleteserviceaccounttoken) | **DELETE** /service-accounts/{sa_identifier}/tokens/{token_name} | 
@@ -464,8 +463,12 @@ Class | Method | HTTP request | Description
  - [RuleState](docs/RuleState.md)
  - [RuleType](docs/RuleType.md)
  - [RuleViolation](docs/RuleViolation.md)
+ - [RunnerArchContext](docs/RunnerArchContext.md)
+ - [RunnerContext](docs/RunnerContext.md)
  - [RunnerCreator](docs/RunnerCreator.md)
+ - [RunnerEnvironmentContext](docs/RunnerEnvironmentContext.md)
  - [RunnerModel](docs/RunnerModel.md)
+ - [RunnerOsContext](docs/RunnerOsContext.md)
  - [RunnerPatchInput](docs/RunnerPatchInput.md)
  - [RunnerPostInput](docs/RunnerPostInput.md)
  - [RunnerStageOutput](docs/RunnerStageOutput.md)
@@ -475,10 +478,12 @@ Class | Method | HTTP request | Description
  - [ServiceAccountCreateInput](docs/ServiceAccountCreateInput.md)
  - [ServiceAccountTokenOutput](docs/ServiceAccountTokenOutput.md)
  - [SseType](docs/SseType.md)
- - [StageCreateInput](docs/StageCreateInput.md)
+ - [StageContext](docs/StageContext.md)
+ - [StageMetadata](docs/StageMetadata.md)
  - [StageModel](docs/StageModel.md)
  - [StageSteps](docs/StageSteps.md)
  - [StageUpdateInput](docs/StageUpdateInput.md)
+ - [StatusContext](docs/StatusContext.md)
  - [StepCreateInput](docs/StepCreateInput.md)
  - [StepModel](docs/StepModel.md)
  - [StepUpdateInput](docs/StepUpdateInput.md)

@@ -70,7 +70,7 @@ pub struct WorkflowModel {
     #[serde(rename = "number")]
     pub number: i64,
     #[serde(rename = "params")]
-    pub params: std::collections::HashMap<String, String>,
+    pub params: std::collections::HashMap<String, serde_json::Value>,
     #[serde(rename = "repo_id")]
     pub repo_id: i64,
     #[serde(
@@ -125,7 +125,7 @@ impl WorkflowModel {
         message: String,
         name: String,
         number: i64,
-        params: std::collections::HashMap<String, String>,
+        params: std::collections::HashMap<String, serde_json::Value>,
         repo_id: i64,
         started: i64,
         status: models::CiStatus,
