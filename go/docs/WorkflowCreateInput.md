@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Debug** | **bool** |  | 
 **Deploy** | Pointer to **NullableString** |  | [optional] 
 **DeployId** | Pointer to **NullableInt64** |  | [optional] 
-**Params** | Pointer to **map[string]string** |  | [optional] 
+**Params** | Pointer to **map[string]interface{}** |  | [optional] 
 **SourceRepoId** | Pointer to **NullableInt64** |  | [optional] 
 **SourceSha** | Pointer to **NullableString** |  | [optional] 
 
@@ -122,20 +122,20 @@ HasDeployId returns a boolean if a field has been set.
 UnsetDeployId ensures that no value is present for DeployId, not even an explicit nil
 ### GetParams
 
-`func (o *WorkflowCreateInput) GetParams() map[string]string`
+`func (o *WorkflowCreateInput) GetParams() map[string]interface{}`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *WorkflowCreateInput) GetParamsOk() (*map[string]string, bool)`
+`func (o *WorkflowCreateInput) GetParamsOk() (*map[string]interface{}, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *WorkflowCreateInput) SetParams(v map[string]string)`
+`func (o *WorkflowCreateInput) SetParams(v map[string]interface{})`
 
 SetParams sets Params field to given value.
 

@@ -21,12 +21,12 @@ var _ MappedNullable = &WorkflowCreateInput{}
 
 // WorkflowCreateInput struct for WorkflowCreateInput
 type WorkflowCreateInput struct {
-	Debug        bool              `json:"debug"`
-	Deploy       NullableString    `json:"deploy,omitempty"`
-	DeployId     NullableInt64     `json:"deploy_id,omitempty"`
-	Params       map[string]string `json:"params,omitempty"`
-	SourceRepoId NullableInt64     `json:"source_repo_id,omitempty"`
-	SourceSha    NullableString    `json:"source_sha,omitempty"`
+	Debug        bool                   `json:"debug"`
+	Deploy       NullableString         `json:"deploy,omitempty"`
+	DeployId     NullableInt64          `json:"deploy_id,omitempty"`
+	Params       map[string]interface{} `json:"params,omitempty"`
+	SourceRepoId NullableInt64          `json:"source_repo_id,omitempty"`
+	SourceSha    NullableString         `json:"source_sha,omitempty"`
 }
 
 type _WorkflowCreateInput WorkflowCreateInput
@@ -160,9 +160,9 @@ func (o *WorkflowCreateInput) UnsetDeployId() {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *WorkflowCreateInput) GetParams() map[string]string {
+func (o *WorkflowCreateInput) GetParams() map[string]interface{} {
 	if o == nil || IsNil(o.Params) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Params
@@ -170,9 +170,9 @@ func (o *WorkflowCreateInput) GetParams() map[string]string {
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowCreateInput) GetParamsOk() (map[string]string, bool) {
+func (o *WorkflowCreateInput) GetParamsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Params) {
-		return map[string]string{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Params, true
 }
@@ -186,8 +186,8 @@ func (o *WorkflowCreateInput) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given map[string]string and assigns it to the Params field.
-func (o *WorkflowCreateInput) SetParams(v map[string]string) {
+// SetParams gets a reference to the given map[string]interface{} and assigns it to the Params field.
+func (o *WorkflowCreateInput) SetParams(v map[string]interface{}) {
 	o.Params = v
 }
 

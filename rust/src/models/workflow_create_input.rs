@@ -29,7 +29,7 @@ pub struct WorkflowCreateInput {
     )]
     pub deploy_id: Option<Option<i64>>,
     #[serde(rename = "params", skip_serializing_if = "Option::is_none")]
-    pub params: Option<std::collections::HashMap<String, String>>,
+    pub params: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(
         rename = "source_repo_id",
         default,

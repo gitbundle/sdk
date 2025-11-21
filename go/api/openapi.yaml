@@ -6398,96 +6398,6 @@ paths:
       - access_token_query: []
       tags:
       - actions
-  /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages:
-    post:
-      operationId: post_stage
-      parameters:
-      - description: Repository id or ref
-        explode: false
-        in: path
-        name: repo_ref
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Action id or name
-        explode: false
-        in: path
-        name: action_identifier
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Workflow number or id
-        explode: false
-        in: path
-        name: workflow_idn
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/StageCreateInput"
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StageModel"
-          description: Create action workflow stage
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Bad request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Conflict
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Too Many Requests
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Internal server error
-      security:
-      - bearer_auth: []
-      - basic_auth: []
-      - access_token_query: []
-      tags:
-      - actions
   /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}:
     patch:
       operationId: patch_stage
@@ -16147,6 +16057,70 @@ paths:
           description: Internal server error
       tags:
       - resources
+  /runners/poll_stage:
+    post:
+      operationId: poll_stage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RunnerContext"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RunnerStageOutput"
+          description: Get a workflow job
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Bad request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Conflict
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Too Many Requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonErrorResponseNull"
+          description: Internal server error
+      security:
+      - bearer_auth: []
+      - basic_auth: []
+      - access_token_query: []
+      tags:
+      - runners
   /runners/register:
     post:
       operationId: post_runners_register
@@ -16205,64 +16179,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/JsonErrorResponseNull"
           description: Internal server error
-      tags:
-      - runners
-  /runners/stage:
-    get:
-      operationId: get_stage
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RunnerStageOutput"
-          description: Get a workflow job
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Bad request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Conflict
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Too Many Requests
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/JsonErrorResponseNull"
-          description: Internal server error
-      security:
-      - bearer_auth: []
-      - basic_auth: []
-      - access_token_query: []
       tags:
       - runners
   /search:
@@ -19781,7 +19697,7 @@ components:
           yaml_provider: null
           message: message
           params:
-            key: params
+            key: ""
           created_by: 4
           version: 5
           target_rev: target_rev
@@ -22012,8 +21928,7 @@ components:
       required:
       - access_token
     Map:
-      additionalProperties:
-        type: string
+      additionalProperties: {}
     MembershipGroup:
       example:
         groups:
@@ -24004,7 +23919,6 @@ components:
           type: integer
         parent_id:
           format: int64
-          nullable: true
           type: integer
         scope:
           $ref: "#/components/schemas/Scope"
@@ -24020,6 +23934,7 @@ components:
       - created
       - created_by
       - id
+      - parent_id
       - scope
       - token
       - updated
@@ -25549,6 +25464,49 @@ components:
       - code
       - message
       - params
+    RunnerArchContext:
+      enum:
+      - x86
+      - x64
+      - arm
+      - arm64
+      type: string
+    RunnerContext:
+      example:
+        environment: self-hosted
+        temp: temp
+        debug: debug
+        os: Linux
+        name: name
+        tool_cache: tool_cache
+        arch: x86
+        uuid: uuid
+      properties:
+        arch:
+          $ref: "#/components/schemas/RunnerArchContext"
+        debug:
+          type: string
+        environment:
+          $ref: "#/components/schemas/RunnerEnvironmentContext"
+        name:
+          type: string
+        os:
+          $ref: "#/components/schemas/RunnerOsContext"
+        temp:
+          type: string
+        tool_cache:
+          type: string
+        uuid:
+          type: string
+      required:
+      - arch
+      - debug
+      - environment
+      - name
+      - os
+      - temp
+      - tool_cache
+      - uuid
     RunnerCreator:
       example:
         creator:
@@ -25589,6 +25547,10 @@ components:
           $ref: "#/components/schemas/RunnerModel"
       required:
       - model
+    RunnerEnvironmentContext:
+      enum:
+      - self-hosted
+      type: string
     RunnerModel:
       example:
         created: 0
@@ -25631,7 +25593,6 @@ components:
           type: string
         parent_id:
           format: int64
-          nullable: true
           type: integer
         release:
           type: string
@@ -25658,6 +25619,7 @@ components:
       - labels
       - last_online
       - name
+      - parent_id
       - release
       - scope
       - status
@@ -25665,6 +25627,12 @@ components:
       - updated
       - uuid
       - version
+    RunnerOsContext:
+      enum:
+      - Linux
+      - Windows
+      - macOS
+      type: string
     RunnerPatchInput:
       example:
         description: description
@@ -25700,46 +25668,75 @@ components:
     RunnerStageOutput:
       example:
         access_token: access_token
-        stage:
-          workflow_id: 1
-          parent_group_id: 9
-          limit_repo: 2
-          error: error
-          type: type
-          number: 7
-          action_id: 0
-          limit: 5
-          variant: variant
-          id: 5
-          needs: ""
-          on_failure: true
-          stopped: 7
-          os: os
-          created: 6
-          kernel: kernel
-          kind: kind
-          on_success: true
-          started: 4
-          yaml_provider: unknown
-          version: 1
-          errignore: true
-          labels:
-          - labels
-          - labels
-          machine: machine
-          parent_id: 3
-          repo_id: 2
-          yaml_resolved: yaml_resolved
-          exit_code: 1
-          name: name
-          arch: arch
-          updated: 1
-          status: pending
+        stage_metadata:
+          stage:
+            outputs:
+              key: ""
+            workflow_id: 1
+            parent_group_id: 9
+            limit_repo: 2
+            error: error
+            type: type
+            number: 7
+            is_reusable: true
+            action_id: 0
+            limit: 5
+            variant: variant
+            id: 5
+            needs:
+            - needs
+            - needs
+            on_failure: true
+            stopped: 7
+            os: os
+            created: 6
+            kernel: kernel
+            kind: kind
+            on_success: true
+            started: 4
+            yaml_provider: unknown
+            version: 1
+            errignore: true
+            labels:
+            - labels
+            - labels
+            machine: machine
+            parent_id: 3
+            repo_id: 2
+            yaml_resolved: yaml_resolved
+            exit_code: 1
+            name: name
+            arch: arch
+            updated: 1
+            status: pending
+          context:
+            all:
+              key: all
+            needs:
+              key: ""
+            github: ""
+            inputs:
+              key: ""
+            jobs:
+              key: ""
+            env:
+              key: env
+            matrix:
+              key: matrix
+            secrets:
+              key: secrets
+            steps:
+              key: ""
+            vars:
+              key: vars
+            job: ""
+            runner: ""
+            strategy: ""
       properties:
         access_token:
           type: string
-        stage:
-          $ref: "#/components/schemas/StageModel"
+        stage_metadata:
+          $ref: "#/components/schemas/StageMetadata"
       required:
       - access_token
     RunnerStatus:
@@ -25807,129 +25804,209 @@ components:
       - repository_import_completed
       - pullreq_updated
       type: string
-    StageCreateInput:
+    StageContext:
       example:
-        needs: ""
-        on_failure: true
-        stopped: 7
-        os: os
-        kernel: kernel
-        kind: kind
-        parent_group_id: 5
-        on_success: true
-        started: 2
-        limit_repo: 1
-        yaml_provider: unknown
-        error: error
-        type: type
-        errignore: true
-        labels:
-        - labels
-        - labels
-        number: 5
-        machine: machine
-        yaml_resolved: yaml_resolved
-        exit_code: 0
-        limit: 6
-        name: name
-        variant: variant
-        arch: arch
-        status: pending
+        all:
+          key: all
+        needs:
+          key: ""
+        github: ""
+        inputs:
+          key: ""
+        jobs:
+          key: ""
+        env:
+          key: env
+        matrix:
+          key: matrix
+        secrets:
+          key: secrets
+        steps:
+          key: ""
+        vars:
+          key: vars
+        job: ""
+        runner: ""
+        strategy: ""
       properties:
-        arch:
-          type: string
-        errignore:
-          type: boolean
-        error:
-          type: string
-        exit_code:
-          format: int64
-          type: integer
-        kernel:
-          type: string
-        kind:
-          type: string
-        labels:
-          items:
+        all:
+          additionalProperties:
             type: string
-          type: array
-        limit:
-          format: int64
-          type: integer
-        limit_repo:
-          format: int64
-          type: integer
-        machine:
-          type: string
-        name:
-          type: string
-        needs: {}
-        number:
-          format: int64
-          type: integer
-        on_failure:
-          type: boolean
-        on_success:
-          type: boolean
-        os:
-          type: string
-        parent_group_id:
-          format: int64
-          type: integer
-        started:
-          format: int64
-          nullable: true
-          type: integer
-        status:
-          $ref: "#/components/schemas/CIStatus"
-        stopped:
-          format: int64
-          nullable: true
-          type: integer
-        type:
-          type: string
-        variant:
-          type: string
-        yaml_provider:
-          $ref: "#/components/schemas/YamlProvider"
-        yaml_resolved:
-          type: string
+          description: |-
+            including all vars, priority from low to high, higher priority key could
+            override lower priority key
+            1. The predefined variables for github/gitlab.
+            2. The web ui configured vars or envs, exclude secrets.
+        env:
+          additionalProperties:
+            type: string
+          description: |-
+            Contains variables set in a workflow, job, or step.
+            Static data
+            eg: env.ENV_NAME
+        github: {}
+        inputs:
+          additionalProperties: {}
+          description: |-
+            Contains the inputs of a reusable or manually triggered workflow.
+            Runtime data
+            eg: ${{inputs.INPUT_NAME}}
+            value is jobs.<job_id>.with
+            ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
+        job: {}
+        jobs:
+          additionalProperties: {}
+          description: |-
+            For reusable workflows only, contains outputs of jobs from the reusable
+            workflow. Runtime data
+            Initialized when stage is pushed into queue.
+            Updated when stage is updated by api or else.
+            key: job name or stage name
+            value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
+        matrix:
+          additionalProperties:
+            type: string
+        needs:
+          additionalProperties: {}
+          description: |-
+            Contains the outputs of all jobs that are defined as a dependency of the
+            current job. Runtime data
+            key: job name
+            value: JobsContext. Converted to serde_json::Value for recursively
+            inject variables.
+        runner: {}
+        secrets:
+          additionalProperties:
+            type: string
+          description: |-
+            Contains the names and values of secrets that are available to a
+            workflow run. Sensitive data, only available to the job that will be
+            running. eg:
+            github: secrets.SECRET_NAME
+            gitlab: $SECRET_NAME, secret.SECRET_NAME
+        steps:
+          additionalProperties: {}
+          description: |-
+            Information about the steps that have been run in the current job.
+            Runtime data
+            key:   step id (set in step yaml)
+            value: refer to StepsContext. Converted to serde_json::Value for
+            recursively inject variables.
+        strategy: {}
+        vars:
+          additionalProperties:
+            type: string
+          description: |-
+            Contains variables set at the repository, organization, or environment
+            levels. Static data
+            eg:
+            gitlab: variables.VAR_NAME
+            github: vars.VAR_NAME
       required:
-      - arch
-      - errignore
-      - error
-      - exit_code
-      - kernel
-      - kind
-      - labels
-      - limit
-      - limit_repo
-      - machine
-      - name
+      - all
+      - env
+      - github
+      - inputs
+      - job
+      - jobs
+      - matrix
       - needs
-      - number
-      - on_failure
-      - on_success
-      - os
-      - parent_group_id
-      - status
-      - type
-      - variant
-      - yaml_provider
-      - yaml_resolved
+      - runner
+      - secrets
+      - steps
+      - strategy
+      - vars
+    StageMetadata:
+      example:
+        stage:
+          outputs:
+            key: ""
+          workflow_id: 1
+          parent_group_id: 9
+          limit_repo: 2
+          error: error
+          type: type
+          number: 7
+          is_reusable: true
+          action_id: 0
+          limit: 5
+          variant: variant
+          id: 5
+          needs:
+          - needs
+          - needs
+          on_failure: true
+          stopped: 7
+          os: os
+          created: 6
+          kernel: kernel
+          kind: kind
+          on_success: true
+          started: 4
+          yaml_provider: unknown
+          version: 1
+          errignore: true
+          labels:
+          - labels
+          - labels
+          machine: machine
+          parent_id: 3
+          repo_id: 2
+          yaml_resolved: yaml_resolved
+          exit_code: 1
+          name: name
+          arch: arch
+          updated: 1
+          status: pending
+        context:
+          all:
+            key: all
+          needs:
+            key: ""
+          github: ""
+          inputs:
+            key: ""
+          jobs:
+            key: ""
+          env:
+            key: env
+          matrix:
+            key: matrix
+          secrets:
+            key: secrets
+          steps:
+            key: ""
+          vars:
+            key: vars
+          job: ""
+          runner: ""
+          strategy: ""
+      properties:
+        context:
+          $ref: "#/components/schemas/StageContext"
+        stage:
+          $ref: "#/components/schemas/StageModel"
+      required:
+      - context
+      - stage
     StageModel:
       example:
+        outputs:
+          key: ""
         workflow_id: 1
         parent_group_id: 9
         limit_repo: 2
         error: error
         type: type
         number: 7
+        is_reusable: true
         action_id: 0
         limit: 5
         variant: variant
         id: 5
-        needs: ""
+        needs:
+        - needs
+        - needs
         on_failure: true
         stopped: 7
         os: os
@@ -25972,6 +26049,8 @@ components:
         id:
           format: int64
           type: integer
+        is_reusable:
+          type: boolean
         kernel:
           type: string
         kind:
@@ -25990,7 +26069,10 @@ components:
           type: string
         name:
           type: string
-        needs: {}
+        needs:
+          items:
+            type: string
+          type: array
         number:
           format: int64
           type: integer
@@ -26000,6 +26082,8 @@ components:
           type: boolean
         os:
           type: string
+        outputs:
+          additionalProperties: {}
         parent_group_id:
           format: int64
           type: integer
@@ -26045,6 +26129,7 @@ components:
       - error
       - exit_code
       - id
+      - is_reusable
       - kernel
       - kind
       - labels
@@ -26070,17 +26155,22 @@ components:
     StageSteps:
       example:
         model:
+          outputs:
+            key: ""
           workflow_id: 1
           parent_group_id: 9
           limit_repo: 2
           error: error
           type: type
           number: 7
+          is_reusable: true
           action_id: 0
           limit: 5
           variant: variant
           id: 5
-          needs: ""
+          needs:
+          - needs
+          - needs
           on_failure: true
           stopped: 7
           os: os
@@ -26105,7 +26195,9 @@ components:
           updated: 1
           status: pending
         steps:
-        - image: image
+        - outputs:
+            key: ""
+          image: image
           stopped: 9
           depends_on: ""
           parent_group_id: 4
@@ -26122,7 +26214,9 @@ components:
           name: name
           id: 7
           status: null
-        - image: image
+        - outputs:
+            key: ""
+          image: image
           stopped: 9
           depends_on: ""
           parent_group_id: 4
@@ -26151,7 +26245,10 @@ components:
       - steps
     StageUpdateInput:
       example:
+        outputs:
+          key: ""
         stopped: 1
+        jobstatus: noop
         exit_code: 0
         started: 6
         error: error
@@ -26164,6 +26261,10 @@ components:
           format: int64
           nullable: true
           type: integer
+        jobstatus:
+          $ref: "#/components/schemas/StatusContext"
+        outputs:
+          additionalProperties: {}
         started:
           format: int64
           nullable: true
@@ -26174,19 +26275,28 @@ components:
           format: int64
           nullable: true
           type: integer
+    StatusContext:
+      enum:
+      - noop
+      - success
+      - failure
+      - cancelled
+      - skipped
+      type: string
     StepCreateInput:
       example:
-        detached: true
         image: image
-        number: 6
         depends_on: ""
         parent_group_id: 1
-        yaml_resolved: yaml_resolved
-        exit_code: 0
-        name: name
+        stepid: stepid
         yaml_provider: unknown
         error: error
         errignore: true
+        detached: true
+        number: 6
+        yaml_resolved: yaml_resolved
+        exit_code: 0
+        name: name
         status: pending
       properties:
         depends_on: {}
@@ -26211,6 +26321,8 @@ components:
           type: integer
         status:
           $ref: "#/components/schemas/CIStatus"
+        stepid:
+          type: string
         yaml_provider:
           $ref: "#/components/schemas/YamlProvider"
         yaml_resolved:
@@ -26230,6 +26342,8 @@ components:
       - yaml_resolved
     StepModel:
       example:
+        outputs:
+          key: ""
         image: image
         stopped: 9
         depends_on: ""
@@ -26268,6 +26382,8 @@ components:
         number:
           format: int64
           type: integer
+        outputs:
+          additionalProperties: {}
         parent_group_id:
           format: int64
           type: integer
@@ -26309,11 +26425,16 @@ components:
       - yaml_resolved
     StepUpdateInput:
       example:
+        outputs:
+          key: ""
         stopped: 1
+        stepoutcome: null
         exit_code: 0
+        stepid: stepid
         started: 6
         error: error
         status: pending
+        stepconclusion: noop
       properties:
         error:
           nullable: true
@@ -26322,16 +26443,26 @@ components:
           format: int64
           nullable: true
           type: integer
+        outputs:
+          additionalProperties: {}
         started:
           format: int64
           nullable: true
           type: integer
         status:
           $ref: "#/components/schemas/CIStatus"
+        stepconclusion:
+          $ref: "#/components/schemas/StatusContext"
+        stepid:
+          type: string
+        stepoutcome:
+          $ref: "#/components/schemas/StatusContext"
         stopped:
           format: int64
           nullable: true
           type: integer
+    String:
+      type: string
     SystemConfig:
       example:
         public_resource_creation_enabled: true
@@ -27143,7 +27274,7 @@ components:
         debug: true
         source_repo_id: 6
         params:
-          key: params
+          key: ""
         source_sha: source_sha
         deploy: deploy
         deploy_id: 0
@@ -27158,8 +27289,7 @@ components:
           nullable: true
           type: integer
         params:
-          additionalProperties:
-            type: string
+          additionalProperties: {}
         source_repo_id:
           format: int64
           nullable: true
@@ -27194,7 +27324,7 @@ components:
         yaml_provider: null
         message: message
         params:
-          key: params
+          key: ""
         created_by: 4
         version: 5
         target_rev: target_rev
@@ -27260,8 +27390,7 @@ components:
           format: int64
           type: integer
         params:
-          additionalProperties:
-            type: string
+          additionalProperties: {}
         repo_id:
           format: int64
           type: integer
@@ -27324,17 +27453,22 @@ components:
       example:
         stages:
         - model:
+            outputs:
+              key: ""
             workflow_id: 1
             parent_group_id: 9
             limit_repo: 2
             error: error
             type: type
             number: 7
+            is_reusable: true
             action_id: 0
             limit: 5
             variant: variant
             id: 5
-            needs: ""
+            needs:
+            - needs
+            - needs
             on_failure: true
             stopped: 7
             os: os
@@ -27359,7 +27493,9 @@ components:
             updated: 1
             status: pending
           steps:
-          - image: image
+          - outputs:
+              key: ""
+            image: image
             stopped: 9
             depends_on: ""
             parent_group_id: 4
@@ -27376,7 +27512,9 @@ components:
             name: name
             id: 7
             status: null
-          - image: image
+          - outputs:
+              key: ""
+            image: image
             stopped: 9
             depends_on: ""
             parent_group_id: 4
@@ -27394,17 +27532,22 @@ components:
             id: 7
             status: null
         - model:
+            outputs:
+              key: ""
             workflow_id: 1
             parent_group_id: 9
             limit_repo: 2
             error: error
             type: type
             number: 7
+            is_reusable: true
             action_id: 0
             limit: 5
             variant: variant
             id: 5
-            needs: ""
+            needs:
+            - needs
+            - needs
             on_failure: true
             stopped: 7
             os: os
@@ -27429,7 +27572,9 @@ components:
             updated: 1
             status: pending
           steps:
-          - image: image
+          - outputs:
+              key: ""
+            image: image
             stopped: 9
             depends_on: ""
             parent_group_id: 4
@@ -27446,7 +27591,9 @@ components:
             name: name
             id: 7
             status: null
-          - image: image
+          - outputs:
+              key: ""
+            image: image
             stopped: 9
             depends_on: ""
             parent_group_id: 4
@@ -27487,7 +27634,7 @@ components:
           yaml_provider: null
           message: message
           params:
-            key: params
+            key: ""
           created_by: 4
           version: 5
           target_rev: target_rev

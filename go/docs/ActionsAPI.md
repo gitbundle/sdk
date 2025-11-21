@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**PatchStep**](ActionsAPI.md#PatchStep) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number} | 
 [**PatchWorkflow**](ActionsAPI.md#PatchWorkflow) | **Patch** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | 
 [**PostAction**](ActionsAPI.md#PostAction) | **Post** /repos/{repo_ref}/+/actions | 
-[**PostStage**](ActionsAPI.md#PostStage) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 [**PostStep**](ActionsAPI.md#PostStep) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
 [**PostStepLog**](ActionsAPI.md#PostStepLog) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
 [**PostStepLogStream**](ActionsAPI.md#PostStepLogStream) | **Post** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
@@ -1062,82 +1061,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ActionModel**](ActionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PostStage
-
-> StageModel PostStage(ctx, repoRef, actionIdentifier, workflowIdn).StageCreateInput(stageCreateInput).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/gitbundle/sdk-go"
-)
-
-func main() {
-	repoRef := "repoRef_example" // string | Repository id or ref
-	actionIdentifier := "actionIdentifier_example" // string | Action id or name
-	workflowIdn := int64(789) // int64 | Workflow number or id
-	stageCreateInput := *openapiclient.NewStageCreateInput("Arch_example", false, "Error_example", int64(123), "Kernel_example", "Kind_example", []string{"Labels_example"}, int64(123), int64(123), "Machine_example", "Name_example", interface{}(123), int64(123), false, false, "Os_example", int64(123), openapiclient.CIStatus("pending"), "Type_example", "Variant_example", openapiclient.YamlProvider("unknown"), "YamlResolved_example") // StageCreateInput | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ActionsAPI.PostStage(context.Background(), repoRef, actionIdentifier, workflowIdn).StageCreateInput(stageCreateInput).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsAPI.PostStage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostStage`: StageModel
-	fmt.Fprintf(os.Stdout, "Response from `ActionsAPI.PostStage`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**repoRef** | **string** | Repository id or ref | 
-**actionIdentifier** | **string** | Action id or name | 
-**workflowIdn** | **int64** | Workflow number or id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostStageRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **stageCreateInput** | [**StageCreateInput**](StageCreateInput.md) |  | 
-
-### Return type
-
-[**StageModel**](StageModel.md)
 
 ### Authorization
 

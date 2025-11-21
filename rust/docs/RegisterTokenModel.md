@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **created** | **i64** |  | 
 **created_by** | **i64** |  | 
 **id** | **i64** |  | 
-**parent_id** | Option<**i64**> |  | [optional]
+**parent_id** | **i64** |  | 
 **scope** | [**models::Scope**](Scope.md) |  | 
 **token** | **String** |  | 
 **updated** | **i64** |  | 

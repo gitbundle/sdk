@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **error** | **String** |  | 
 **exit_code** | **i64** |  | 
 **id** | **i64** |  | 
+**is_reusable** | **bool** |  | 
 **kernel** | **String** |  | 
 **kind** | **String** |  | 
 **labels** | **Vec<String>** |  | 
@@ -18,11 +19,12 @@ Name | Type | Description | Notes
 **limit_repo** | **i64** |  | 
 **machine** | **String** |  | 
 **name** | **String** |  | 
-**needs** | Option<[**serde_json::Value**](.md)> |  | 
+**needs** | **Vec<String>** |  | 
 **number** | **i64** |  | 
 **on_failure** | **bool** |  | 
 **on_success** | **bool** |  | 
 **os** | **String** |  | 
+**outputs** | Option<[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> |  | [optional]
 **parent_group_id** | **i64** |  | 
 **parent_id** | Option<**i64**> |  | [optional]
 **repo_id** | **i64** |  | 

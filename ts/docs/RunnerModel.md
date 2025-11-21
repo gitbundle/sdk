@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **labels** | **Array&lt;string&gt;** |  | [default to undefined]
 **last_online** | **number** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**parent_id** | **number** |  | [optional] [default to undefined]
+**parent_id** | **number** |  | [default to undefined]
 **release** | **string** |  | [default to undefined]
 **scope** | [**Scope**](Scope.md) |  | [default to undefined]
 **status** | [**RunnerStatus**](RunnerStatus.md) |  | [default to undefined]

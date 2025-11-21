@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessToken** | **string** |  | 
-**Stage** | Pointer to [**NullableStageModel**](StageModel.md) |  | [optional] 
+**StageMetadata** | Pointer to [**NullableStageMetadata**](StageMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -46,41 +46,41 @@ and a boolean to check if the value has been set.
 SetAccessToken sets AccessToken field to given value.
 
 
-### GetStage
+### GetStageMetadata
 
-`func (o *RunnerStageOutput) GetStage() StageModel`
+`func (o *RunnerStageOutput) GetStageMetadata() StageMetadata`
 
-GetStage returns the Stage field if non-nil, zero value otherwise.
+GetStageMetadata returns the StageMetadata field if non-nil, zero value otherwise.
 
-### GetStageOk
+### GetStageMetadataOk
 
-`func (o *RunnerStageOutput) GetStageOk() (*StageModel, bool)`
+`func (o *RunnerStageOutput) GetStageMetadataOk() (*StageMetadata, bool)`
 
-GetStageOk returns a tuple with the Stage field if it's non-nil, zero value otherwise
+GetStageMetadataOk returns a tuple with the StageMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStage
+### SetStageMetadata
 
-`func (o *RunnerStageOutput) SetStage(v StageModel)`
+`func (o *RunnerStageOutput) SetStageMetadata(v StageMetadata)`
 
-SetStage sets Stage field to given value.
+SetStageMetadata sets StageMetadata field to given value.
 
-### HasStage
+### HasStageMetadata
 
-`func (o *RunnerStageOutput) HasStage() bool`
+`func (o *RunnerStageOutput) HasStageMetadata() bool`
 
-HasStage returns a boolean if a field has been set.
+HasStageMetadata returns a boolean if a field has been set.
 
-### SetStageNil
+### SetStageMetadataNil
 
-`func (o *RunnerStageOutput) SetStageNil(b bool)`
+`func (o *RunnerStageOutput) SetStageMetadataNil(b bool)`
 
- SetStageNil sets the value for Stage to be an explicit nil
+ SetStageMetadataNil sets the value for StageMetadata to be an explicit nil
 
-### UnsetStage
-`func (o *RunnerStageOutput) UnsetStage()`
+### UnsetStageMetadata
+`func (o *RunnerStageOutput) UnsetStageMetadata()`
 
-UnsetStage ensures that no value is present for Stage, not even an explicit nil
+UnsetStageMetadata ensures that no value is present for StageMetadata, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

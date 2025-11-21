@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **Message** | **string** |  | 
 **Name** | **string** |  | 
 **Number** | **int64** |  | 
-**Params** | **map[string]string** |  | 
+**Params** | **map[string]interface{}** |  | 
 **RepoId** | **int64** |  | 
 **SourceRepoId** | Pointer to **NullableInt64** |  | [optional] 
 **SourceRev** | Pointer to **NullableString** |  | [optional] 
@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 
 ### NewWorkflowModel
 
-`func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
+`func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
 
 NewWorkflowModel instantiates a new WorkflowModel object
 This constructor will assign default values to properties that have it defined,
@@ -524,20 +524,20 @@ SetNumber sets Number field to given value.
 
 ### GetParams
 
-`func (o *WorkflowModel) GetParams() map[string]string`
+`func (o *WorkflowModel) GetParams() map[string]interface{}`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *WorkflowModel) GetParamsOk() (*map[string]string, bool)`
+`func (o *WorkflowModel) GetParamsOk() (*map[string]interface{}, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *WorkflowModel) SetParams(v map[string]string)`
+`func (o *WorkflowModel) SetParams(v map[string]interface{})`
 
 SetParams sets Params field to given value.
 

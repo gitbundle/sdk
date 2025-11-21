@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Created** | **int64** |  | 
 **CreatedBy** | **int64** |  | 
 **Id** | **int64** |  | 
-**ParentId** | Pointer to **NullableInt64** |  | [optional] 
+**ParentId** | **int64** |  | 
 **Scope** | [**Scope**](Scope.md) |  | 
 **Token** | **string** |  | 
 **Updated** | **int64** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewRegisterTokenModel
 
-`func NewRegisterTokenModel(created int64, createdBy int64, id int64, scope Scope, token string, updated int64, version int64, ) *RegisterTokenModel`
+`func NewRegisterTokenModel(created int64, createdBy int64, id int64, parentId int64, scope Scope, token string, updated int64, version int64, ) *RegisterTokenModel`
 
 NewRegisterTokenModel instantiates a new RegisterTokenModel object
 This constructor will assign default values to properties that have it defined,
@@ -111,22 +111,7 @@ and a boolean to check if the value has been set.
 
 SetParentId sets ParentId field to given value.
 
-### HasParentId
 
-`func (o *RegisterTokenModel) HasParentId() bool`
-
-HasParentId returns a boolean if a field has been set.
-
-### SetParentIdNil
-
-`func (o *RegisterTokenModel) SetParentIdNil(b bool)`
-
- SetParentIdNil sets the value for ParentId to be an explicit nil
-
-### UnsetParentId
-`func (o *RegisterTokenModel) UnsetParentId()`
-
-UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetScope
 
 `func (o *RegisterTokenModel) GetScope() Scope`

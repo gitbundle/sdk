@@ -4,11 +4,11 @@ All URIs are relative to */api/v3*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**getStage**](#getstage) | **GET** /runners/stage | |
+|[**pollStage**](#pollstage) | **POST** /runners/poll_stage | |
 |[**postRunnersRegister**](#postrunnersregister) | **POST** /runners/register | |
 
-# **getStage**
-> RunnerStageOutput getStage()
+# **pollStage**
+> RunnerStageOutput pollStage(runnerContext)
 
 
 ### Example
@@ -16,17 +16,25 @@ All URIs are relative to */api/v3*
 ```typescript
 import {
     RunnersApi,
-    Configuration
+    Configuration,
+    RunnerContext
 } from 'gitbundle-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new RunnersApi(configuration);
 
-const { status, data } = await apiInstance.getStage();
+let runnerContext: RunnerContext; //
+
+const { status, data } = await apiInstance.pollStage(
+    runnerContext
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **runnerContext** | **RunnerContext**|  | |
 
 
 ### Return type
@@ -39,7 +47,7 @@ This endpoint does not have any parameters.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

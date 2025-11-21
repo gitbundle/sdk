@@ -30,6 +30,8 @@ pub struct StepModel {
     pub name: String,
     #[serde(rename = "number")]
     pub number: i64,
+    #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
+    pub outputs: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
     #[serde(rename = "stage_id")]
@@ -86,6 +88,7 @@ impl StepModel {
             image,
             name,
             number,
+            outputs: None,
             parent_group_id,
             stage_id,
             started: None,

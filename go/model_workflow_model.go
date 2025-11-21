@@ -21,39 +21,39 @@ var _ MappedNullable = &WorkflowModel{}
 
 // WorkflowModel struct for WorkflowModel
 type WorkflowModel struct {
-	Action       NullableString    `json:"action,omitempty"`
-	ActionId     int64             `json:"action_id"`
-	AfterSha     NullableString    `json:"after_sha,omitempty"`
-	AuthorEmail  string            `json:"author_email"`
-	AuthorId     NullableInt64     `json:"author_id,omitempty"`
-	AuthorName   string            `json:"author_name"`
-	BeforeSha    string            `json:"before_sha"`
-	Created      int64             `json:"created"`
-	CreatedBy    int64             `json:"created_by"`
-	Cron         string            `json:"cron"`
-	Debug        bool              `json:"debug"`
-	Deploy       string            `json:"deploy"`
-	DeployId     int64             `json:"deploy_id"`
-	Error        string            `json:"error"`
-	Event        TriggerEvent      `json:"event"`
-	Finished     int64             `json:"finished"`
-	Id           int64             `json:"id"`
-	Link         string            `json:"link"`
-	Message      string            `json:"message"`
-	Name         string            `json:"name"`
-	Number       int64             `json:"number"`
-	Params       map[string]string `json:"params"`
-	RepoId       int64             `json:"repo_id"`
-	SourceRepoId NullableInt64     `json:"source_repo_id,omitempty"`
-	SourceRev    NullableString    `json:"source_rev,omitempty"`
-	Started      int64             `json:"started"`
-	Status       CIStatus          `json:"status"`
-	TargetRev    string            `json:"target_rev"`
-	Title        string            `json:"title"`
-	Updated      int64             `json:"updated"`
-	Version      int64             `json:"version"`
-	YamlProvider YamlProvider      `json:"yaml_provider"`
-	YamlResolved string            `json:"yaml_resolved"`
+	Action       NullableString         `json:"action,omitempty"`
+	ActionId     int64                  `json:"action_id"`
+	AfterSha     NullableString         `json:"after_sha,omitempty"`
+	AuthorEmail  string                 `json:"author_email"`
+	AuthorId     NullableInt64          `json:"author_id,omitempty"`
+	AuthorName   string                 `json:"author_name"`
+	BeforeSha    string                 `json:"before_sha"`
+	Created      int64                  `json:"created"`
+	CreatedBy    int64                  `json:"created_by"`
+	Cron         string                 `json:"cron"`
+	Debug        bool                   `json:"debug"`
+	Deploy       string                 `json:"deploy"`
+	DeployId     int64                  `json:"deploy_id"`
+	Error        string                 `json:"error"`
+	Event        TriggerEvent           `json:"event"`
+	Finished     int64                  `json:"finished"`
+	Id           int64                  `json:"id"`
+	Link         string                 `json:"link"`
+	Message      string                 `json:"message"`
+	Name         string                 `json:"name"`
+	Number       int64                  `json:"number"`
+	Params       map[string]interface{} `json:"params"`
+	RepoId       int64                  `json:"repo_id"`
+	SourceRepoId NullableInt64          `json:"source_repo_id,omitempty"`
+	SourceRev    NullableString         `json:"source_rev,omitempty"`
+	Started      int64                  `json:"started"`
+	Status       CIStatus               `json:"status"`
+	TargetRev    string                 `json:"target_rev"`
+	Title        string                 `json:"title"`
+	Updated      int64                  `json:"updated"`
+	Version      int64                  `json:"version"`
+	YamlProvider YamlProvider           `json:"yaml_provider"`
+	YamlResolved string                 `json:"yaml_resolved"`
 }
 
 type _WorkflowModel WorkflowModel
@@ -62,7 +62,7 @@ type _WorkflowModel WorkflowModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]string, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
+func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
 	this := WorkflowModel{}
 	this.ActionId = actionId
 	this.AuthorEmail = authorEmail
@@ -665,9 +665,9 @@ func (o *WorkflowModel) SetNumber(v int64) {
 }
 
 // GetParams returns the Params field value
-func (o *WorkflowModel) GetParams() map[string]string {
+func (o *WorkflowModel) GetParams() map[string]interface{} {
 	if o == nil {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -676,15 +676,15 @@ func (o *WorkflowModel) GetParams() map[string]string {
 
 // GetParamsOk returns a tuple with the Params field value
 // and a boolean to check if the value has been set.
-func (o *WorkflowModel) GetParamsOk() (map[string]string, bool) {
+func (o *WorkflowModel) GetParamsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]string{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Params, true
 }
 
 // SetParams sets field value
-func (o *WorkflowModel) SetParams(v map[string]string) {
+func (o *WorkflowModel) SetParams(v map[string]interface{}) {
 	o.Params = v
 }
 

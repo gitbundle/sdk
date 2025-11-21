@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Labels** | **[]string** |  | 
 **LastOnline** | **int64** |  | 
 **Name** | **string** |  | 
-**ParentId** | Pointer to **NullableInt64** |  | [optional] 
+**ParentId** | **int64** |  | 
 **Release** | **string** |  | 
 **Scope** | [**Scope**](Scope.md) |  | 
 **Status** | [**RunnerStatus**](RunnerStatus.md) |  | 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewRunnerModel
 
-`func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64, ) *RunnerModel`
+`func NewRunnerModel(created int64, createdBy int64, description string, id int64, labels []string, lastOnline int64, name string, parentId int64, release string, scope Scope, status RunnerStatus, tokenId int64, updated int64, uuid string, version int64, ) *RunnerModel`
 
 NewRunnerModel instantiates a new RunnerModel object
 This constructor will assign default values to properties that have it defined,
@@ -198,22 +198,7 @@ and a boolean to check if the value has been set.
 
 SetParentId sets ParentId field to given value.
 
-### HasParentId
 
-`func (o *RunnerModel) HasParentId() bool`
-
-HasParentId returns a boolean if a field has been set.
-
-### SetParentIdNil
-
-`func (o *RunnerModel) SetParentIdNil(b bool)`
-
- SetParentIdNil sets the value for ParentId to be an explicit nil
-
-### UnsetParentId
-`func (o *RunnerModel) UnsetParentId()`
-
-UnsetParentId ensures that no value is present for ParentId, not even an explicit nil
 ### GetRelease
 
 `func (o *RunnerModel) GetRelease() string`

@@ -18,13 +18,8 @@ pub struct RegisterTokenModel {
     pub created_by: i64,
     #[serde(rename = "id")]
     pub id: i64,
-    #[serde(
-        rename = "parent_id",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub parent_id: Option<Option<i64>>,
+    #[serde(rename = "parent_id")]
+    pub parent_id: i64,
     #[serde(rename = "scope")]
     pub scope: models::Scope,
     #[serde(rename = "token")]
@@ -40,6 +35,7 @@ impl RegisterTokenModel {
         created: i64,
         created_by: i64,
         id: i64,
+        parent_id: i64,
         scope: models::Scope,
         token: String,
         updated: i64,
@@ -49,7 +45,7 @@ impl RegisterTokenModel {
             created,
             created_by,
             id,
-            parent_id: None,
+            parent_id,
             scope,
             token,
             updated,

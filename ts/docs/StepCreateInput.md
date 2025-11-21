@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **number** | **number** |  | [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
 **status** | [**CIStatus**](CIStatus.md) |  | [default to undefined]
+**stepid** | **string** |  | [optional] [default to undefined]
 **yaml_provider** | [**YamlProvider**](YamlProvider.md) |  | [default to undefined]
 **yaml_resolved** | **string** |  | [default to undefined]
 
@@ -34,6 +35,7 @@ const instance: StepCreateInput = {
     number,
     parent_group_id,
     status,
+    stepid,
     yaml_provider,
     yaml_resolved,
 };

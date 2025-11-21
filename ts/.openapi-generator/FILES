@@ -197,8 +197,12 @@ docs/RuleState.md
 docs/RuleType.md
 docs/RuleViolation.md
 docs/RulesApi.md
+docs/RunnerArchContext.md
+docs/RunnerContext.md
 docs/RunnerCreator.md
+docs/RunnerEnvironmentContext.md
 docs/RunnerModel.md
+docs/RunnerOsContext.md
 docs/RunnerPatchInput.md
 docs/RunnerPostInput.md
 docs/RunnerStageOutput.md
@@ -210,11 +214,13 @@ docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
 docs/ServiceAccountsApi.md
 docs/SseType.md
-docs/StageCreateInput.md
+docs/StageContext.md
+docs/StageMetadata.md
 docs/StageModel.md
 docs/StageSteps.md
 docs/StageUpdateInput.md
 docs/StatusCheckApi.md
+docs/StatusContext.md
 docs/StepCreateInput.md
 docs/StepModel.md
 docs/StepUpdateInput.md

@@ -4,19 +4,22 @@ All URIs are relative to */api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_stage**](RunnersApi.md#get_stage) | **GET** /runners/stage | 
+[**poll_stage**](RunnersApi.md#poll_stage) | **POST** /runners/poll_stage | 
 [**post_runners_register**](RunnersApi.md#post_runners_register) | **POST** /runners/register | 
 
 
 
-## get_stage
+## poll_stage
 
-> models::RunnerStageOutput get_stage()
+> models::RunnerStageOutput poll_stage(runner_context)
 
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**runner_context** | [**RunnerContext**](RunnerContext.md) |  | [required] |
 
 ### Return type
 
@@ -28,7 +31,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

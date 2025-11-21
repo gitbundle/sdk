@@ -4,14 +4,14 @@ All URIs are relative to */api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetStage**](RunnersAPI.md#GetStage) | **Get** /runners/stage | 
+[**PollStage**](RunnersAPI.md#PollStage) | **Post** /runners/poll_stage | 
 [**PostRunnersRegister**](RunnersAPI.md#PostRunnersRegister) | **Post** /runners/register | 
 
 
 
-## GetStage
+## PollStage
 
-> RunnerStageOutput GetStage(ctx).Execute()
+> RunnerStageOutput PollStage(ctx).RunnerContext(runnerContext).Execute()
 
 
 
@@ -28,27 +28,32 @@ import (
 )
 
 func main() {
+	runnerContext := *openapiclient.NewRunnerContext(openapiclient.RunnerArchContext("x86"), "Debug_example", openapiclient.RunnerEnvironmentContext("self-hosted"), "Name_example", openapiclient.RunnerOsContext("Linux"), "Temp_example", "ToolCache_example", "Uuid_example") // RunnerContext | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RunnersAPI.GetStage(context.Background()).Execute()
+	resp, r, err := apiClient.RunnersAPI.PollStage(context.Background()).RunnerContext(runnerContext).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RunnersAPI.GetStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `RunnersAPI.PollStage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetStage`: RunnerStageOutput
-	fmt.Fprintf(os.Stdout, "Response from `RunnersAPI.GetStage`: %v\n", resp)
+	// response from `PollStage`: RunnerStageOutput
+	fmt.Fprintf(os.Stdout, "Response from `RunnersAPI.PollStage`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetStageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPollStageRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **runnerContext** | [**RunnerContext**](RunnerContext.md) |  | 
 
 ### Return type
 
@@ -60,7 +65,7 @@ Other parameters are passed through a pointer to a apiGetStageRequest struct via
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

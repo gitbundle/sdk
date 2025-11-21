@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **message** | **String** |  | 
 **name** | **String** |  | 
 **number** | **i64** |  | 
-**params** | **std::collections::HashMap<String, String>** |  | 
+**params** | [**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md) |  | 
 **repo_id** | **i64** |  | 
 **source_repo_id** | Option<**i64**> |  | [optional]
 **source_rev** | Option<**String**> |  | [optional]

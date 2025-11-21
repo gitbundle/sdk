@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **number** | **i64** |  | 
 **parent_group_id** | **i64** |  | 
 **status** | [**models::CiStatus**](CIStatus.md) |  | 
+**stepid** | Option<**String**> |  | [optional]
 **yaml_provider** | [**models::YamlProvider**](YamlProvider.md) |  | 
 **yaml_resolved** | **String** |  | 
 

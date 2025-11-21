@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Error** | Pointer to **NullableString** |  | [optional] 
 **ExitCode** | Pointer to **NullableInt64** |  | [optional] 
+**Jobstatus** | Pointer to [**NullableStatusContext**](StatusContext.md) | Used for storing the result of the yaml decoded stage. | [optional] 
+**Outputs** | Pointer to **map[string]interface{}** |  | [optional] 
 **Started** | Pointer to **NullableInt64** |  | [optional] 
 **Status** | Pointer to [**NullableCIStatus**](CIStatus.md) |  | [optional] 
 **Stopped** | Pointer to **NullableInt64** |  | [optional] 
@@ -99,6 +101,66 @@ HasExitCode returns a boolean if a field has been set.
 `func (o *StageUpdateInput) UnsetExitCode()`
 
 UnsetExitCode ensures that no value is present for ExitCode, not even an explicit nil
+### GetJobstatus
+
+`func (o *StageUpdateInput) GetJobstatus() StatusContext`
+
+GetJobstatus returns the Jobstatus field if non-nil, zero value otherwise.
+
+### GetJobstatusOk
+
+`func (o *StageUpdateInput) GetJobstatusOk() (*StatusContext, bool)`
+
+GetJobstatusOk returns a tuple with the Jobstatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobstatus
+
+`func (o *StageUpdateInput) SetJobstatus(v StatusContext)`
+
+SetJobstatus sets Jobstatus field to given value.
+
+### HasJobstatus
+
+`func (o *StageUpdateInput) HasJobstatus() bool`
+
+HasJobstatus returns a boolean if a field has been set.
+
+### SetJobstatusNil
+
+`func (o *StageUpdateInput) SetJobstatusNil(b bool)`
+
+ SetJobstatusNil sets the value for Jobstatus to be an explicit nil
+
+### UnsetJobstatus
+`func (o *StageUpdateInput) UnsetJobstatus()`
+
+UnsetJobstatus ensures that no value is present for Jobstatus, not even an explicit nil
+### GetOutputs
+
+`func (o *StageUpdateInput) GetOutputs() map[string]interface{}`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *StageUpdateInput) GetOutputsOk() (*map[string]interface{}, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *StageUpdateInput) SetOutputs(v map[string]interface{})`
+
+SetOutputs sets Outputs field to given value.
+
+### HasOutputs
+
+`func (o *StageUpdateInput) HasOutputs() bool`
+
+HasOutputs returns a boolean if a field has been set.
+
 ### GetStarted
 
 `func (o *StageUpdateInput) GetStarted() int64`

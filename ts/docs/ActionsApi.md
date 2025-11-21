@@ -18,7 +18,6 @@ All URIs are relative to */api/v3*
 |[**patchStep**](#patchstep) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number} | |
 |[**patchWorkflow**](#patchworkflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | |
 |[**postAction**](#postaction) | **POST** /repos/{repo_ref}/+/actions | |
-|[**postStage**](#poststage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | |
 |[**postStep**](#poststep) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | |
 |[**postStepLog**](#poststeplog) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log|
 |[**postStepLogStream**](#poststeplogstream) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream|
@@ -931,73 +930,6 @@ const { status, data } = await apiInstance.postAction(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**201** | Post action creation in a repo |  -  |
-|**400** | Bad request |  -  |
-|**401** | Unauthorized |  -  |
-|**403** | Forbidden |  -  |
-|**404** | Not Found |  -  |
-|**409** | Conflict |  -  |
-|**429** | Too Many Requests |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **postStage**
-> StageModel postStage(stageCreateInput)
-
-
-### Example
-
-```typescript
-import {
-    ActionsApi,
-    Configuration,
-    StageCreateInput
-} from 'gitbundle-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ActionsApi(configuration);
-
-let repoRef: string; //Repository id or ref (default to undefined)
-let actionIdentifier: string; //Action id or name (default to undefined)
-let workflowIdn: number; //Workflow number or id (default to undefined)
-let stageCreateInput: StageCreateInput; //
-
-const { status, data } = await apiInstance.postStage(
-    repoRef,
-    actionIdentifier,
-    workflowIdn,
-    stageCreateInput
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **stageCreateInput** | **StageCreateInput**|  | |
-| **repoRef** | [**string**] | Repository id or ref | defaults to undefined|
-| **actionIdentifier** | [**string**] | Action id or name | defaults to undefined|
-| **workflowIdn** | [**number**] | Workflow number or id | defaults to undefined|
-
-
-### Return type
-
-**StageModel**
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Create action workflow stage |  -  |
 |**400** | Bad request |  -  |
 |**401** | Unauthorized |  -  |
 |**403** | Forbidden |  -  |

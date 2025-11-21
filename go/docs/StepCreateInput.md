@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Number** | **int64** |  | 
 **ParentGroupId** | **int64** |  | 
 **Status** | [**CIStatus**](CIStatus.md) |  | 
+**Stepid** | Pointer to **string** |  | [optional] 
 **YamlProvider** | [**YamlProvider**](YamlProvider.md) |  | 
 **YamlResolved** | **string** |  | 
 
@@ -245,6 +246,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetStepid
+
+`func (o *StepCreateInput) GetStepid() string`
+
+GetStepid returns the Stepid field if non-nil, zero value otherwise.
+
+### GetStepidOk
+
+`func (o *StepCreateInput) GetStepidOk() (*string, bool)`
+
+GetStepidOk returns a tuple with the Stepid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepid
+
+`func (o *StepCreateInput) SetStepid(v string)`
+
+SetStepid sets Stepid field to given value.
+
+### HasStepid
+
+`func (o *StepCreateInput) HasStepid() bool`
+
+HasStepid returns a boolean if a field has been set.
 
 ### GetYamlProvider
 

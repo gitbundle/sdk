@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **labels** | **Vec<String>** |  | 
 **last_online** | **i64** |  | 
 **name** | **String** |  | 
-**parent_id** | Option<**i64**> |  | [optional]
+**parent_id** | **i64** |  | 
 **release** | **String** |  | 
 **scope** | [**models::Scope**](Scope.md) |  | 
 **status** | [**models::RunnerStatus**](RunnerStatus.md) |  | 

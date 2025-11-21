@@ -6,8 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Error** | Pointer to **NullableString** |  | [optional] 
 **ExitCode** | Pointer to **NullableInt64** |  | [optional] 
+**Outputs** | Pointer to **map[string]interface{}** |  | [optional] 
 **Started** | Pointer to **NullableInt64** |  | [optional] 
 **Status** | Pointer to [**NullableCIStatus**](CIStatus.md) |  | [optional] 
+**Stepconclusion** | Pointer to [**NullableStatusContext**](StatusContext.md) | The step result status after the yaml is executed | [optional] 
+**Stepid** | Pointer to **string** |  | [optional] 
+**Stepoutcome** | Pointer to [**NullableStatusContext**](StatusContext.md) | The step result status after the yaml is executed. | [optional] 
 **Stopped** | Pointer to **NullableInt64** |  | [optional] 
 
 ## Methods
@@ -99,6 +103,31 @@ HasExitCode returns a boolean if a field has been set.
 `func (o *StepUpdateInput) UnsetExitCode()`
 
 UnsetExitCode ensures that no value is present for ExitCode, not even an explicit nil
+### GetOutputs
+
+`func (o *StepUpdateInput) GetOutputs() map[string]interface{}`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *StepUpdateInput) GetOutputsOk() (*map[string]interface{}, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *StepUpdateInput) SetOutputs(v map[string]interface{})`
+
+SetOutputs sets Outputs field to given value.
+
+### HasOutputs
+
+`func (o *StepUpdateInput) HasOutputs() bool`
+
+HasOutputs returns a boolean if a field has been set.
+
 ### GetStarted
 
 `func (o *StepUpdateInput) GetStarted() int64`
@@ -169,6 +198,101 @@ HasStatus returns a boolean if a field has been set.
 `func (o *StepUpdateInput) UnsetStatus()`
 
 UnsetStatus ensures that no value is present for Status, not even an explicit nil
+### GetStepconclusion
+
+`func (o *StepUpdateInput) GetStepconclusion() StatusContext`
+
+GetStepconclusion returns the Stepconclusion field if non-nil, zero value otherwise.
+
+### GetStepconclusionOk
+
+`func (o *StepUpdateInput) GetStepconclusionOk() (*StatusContext, bool)`
+
+GetStepconclusionOk returns a tuple with the Stepconclusion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepconclusion
+
+`func (o *StepUpdateInput) SetStepconclusion(v StatusContext)`
+
+SetStepconclusion sets Stepconclusion field to given value.
+
+### HasStepconclusion
+
+`func (o *StepUpdateInput) HasStepconclusion() bool`
+
+HasStepconclusion returns a boolean if a field has been set.
+
+### SetStepconclusionNil
+
+`func (o *StepUpdateInput) SetStepconclusionNil(b bool)`
+
+ SetStepconclusionNil sets the value for Stepconclusion to be an explicit nil
+
+### UnsetStepconclusion
+`func (o *StepUpdateInput) UnsetStepconclusion()`
+
+UnsetStepconclusion ensures that no value is present for Stepconclusion, not even an explicit nil
+### GetStepid
+
+`func (o *StepUpdateInput) GetStepid() string`
+
+GetStepid returns the Stepid field if non-nil, zero value otherwise.
+
+### GetStepidOk
+
+`func (o *StepUpdateInput) GetStepidOk() (*string, bool)`
+
+GetStepidOk returns a tuple with the Stepid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepid
+
+`func (o *StepUpdateInput) SetStepid(v string)`
+
+SetStepid sets Stepid field to given value.
+
+### HasStepid
+
+`func (o *StepUpdateInput) HasStepid() bool`
+
+HasStepid returns a boolean if a field has been set.
+
+### GetStepoutcome
+
+`func (o *StepUpdateInput) GetStepoutcome() StatusContext`
+
+GetStepoutcome returns the Stepoutcome field if non-nil, zero value otherwise.
+
+### GetStepoutcomeOk
+
+`func (o *StepUpdateInput) GetStepoutcomeOk() (*StatusContext, bool)`
+
+GetStepoutcomeOk returns a tuple with the Stepoutcome field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepoutcome
+
+`func (o *StepUpdateInput) SetStepoutcome(v StatusContext)`
+
+SetStepoutcome sets Stepoutcome field to given value.
+
+### HasStepoutcome
+
+`func (o *StepUpdateInput) HasStepoutcome() bool`
+
+HasStepoutcome returns a boolean if a field has been set.
+
+### SetStepoutcomeNil
+
+`func (o *StepUpdateInput) SetStepoutcomeNil(b bool)`
+
+ SetStepoutcomeNil sets the value for Stepoutcome to be an explicit nil
+
+### UnsetStepoutcome
+`func (o *StepUpdateInput) UnsetStepoutcome()`
+
+UnsetStepoutcome ensures that no value is present for Stepoutcome, not even an explicit nil
 ### GetStopped
 
 `func (o *StepUpdateInput) GetStopped() int64`

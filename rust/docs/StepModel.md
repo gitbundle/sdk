@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **image** | **String** |  | 
 **name** | **String** |  | 
 **number** | **i64** |  | 
+**outputs** | Option<[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> |  | [optional]
 **parent_group_id** | **i64** |  | 
 **stage_id** | **i64** |  | 
 **started** | Option<**i64**> |  | [optional]

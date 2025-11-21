@@ -26,6 +26,8 @@ pub struct StageModel {
     pub exit_code: i64,
     #[serde(rename = "id")]
     pub id: i64,
+    #[serde(rename = "is_reusable")]
+    pub is_reusable: bool,
     #[serde(rename = "kernel")]
     pub kernel: String,
     #[serde(rename = "kind")]
@@ -40,8 +42,8 @@ pub struct StageModel {
     pub machine: String,
     #[serde(rename = "name")]
     pub name: String,
-    #[serde(rename = "needs", deserialize_with = "Option::deserialize")]
-    pub needs: Option<serde_json::Value>,
+    #[serde(rename = "needs")]
+    pub needs: Vec<String>,
     #[serde(rename = "number")]
     pub number: i64,
     #[serde(rename = "on_failure")]
@@ -50,6 +52,8 @@ pub struct StageModel {
     pub on_success: bool,
     #[serde(rename = "os")]
     pub os: String,
+    #[serde(rename = "outputs", skip_serializing_if = "Option::is_none")]
+    pub outputs: Option<std::collections::HashMap<String, serde_json::Value>>,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
     #[serde(
@@ -102,6 +106,7 @@ impl StageModel {
         error: String,
         exit_code: i64,
         id: i64,
+        is_reusable: bool,
         kernel: String,
         kind: String,
         labels: Vec<String>,
@@ -109,7 +114,7 @@ impl StageModel {
         limit_repo: i64,
         machine: String,
         name: String,
-        needs: Option<serde_json::Value>,
+        needs: Vec<String>,
         number: i64,
         on_failure: bool,
         on_success: bool,
@@ -133,6 +138,7 @@ impl StageModel {
             error,
             exit_code,
             id,
+            is_reusable,
             kernel,
             kind,
             labels,
@@ -145,6 +151,7 @@ impl StageModel {
             on_failure,
             on_success,
             os,
+            outputs: None,
             parent_group_id,
             parent_id: None,
             repo_id,

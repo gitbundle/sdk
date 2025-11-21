@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **debug** | **boolean** |  | [default to undefined]
 **deploy** | **string** |  | [optional] [default to undefined]
 **deploy_id** | **number** |  | [optional] [default to undefined]
-**params** | **{ [key: string]: string; }** |  | [optional] [default to undefined]
+**params** | **{ [key: string]: any; }** |  | [optional] [default to undefined]
 **source_repo_id** | **number** |  | [optional] [default to undefined]
 **source_sha** | **string** |  | [optional] [default to undefined]
 

@@ -19,11 +19,14 @@ var _ MappedNullable = &StageUpdateInput{}
 
 // StageUpdateInput struct for StageUpdateInput
 type StageUpdateInput struct {
-	Error    NullableString   `json:"error,omitempty"`
-	ExitCode NullableInt64    `json:"exit_code,omitempty"`
-	Started  NullableInt64    `json:"started,omitempty"`
-	Status   NullableCIStatus `json:"status,omitempty"`
-	Stopped  NullableInt64    `json:"stopped,omitempty"`
+	Error    NullableString `json:"error,omitempty"`
+	ExitCode NullableInt64  `json:"exit_code,omitempty"`
+	// Used for storing the result of the yaml decoded stage.
+	Jobstatus NullableStatusContext  `json:"jobstatus,omitempty"`
+	Outputs   map[string]interface{} `json:"outputs,omitempty"`
+	Started   NullableInt64          `json:"started,omitempty"`
+	Status    NullableCIStatus       `json:"status,omitempty"`
+	Stopped   NullableInt64          `json:"stopped,omitempty"`
 }
 
 // NewStageUpdateInput instantiates a new StageUpdateInput object
@@ -127,6 +130,81 @@ func (o *StageUpdateInput) SetExitCodeNil() {
 // UnsetExitCode ensures that no value is present for ExitCode, not even an explicit nil
 func (o *StageUpdateInput) UnsetExitCode() {
 	o.ExitCode.Unset()
+}
+
+// GetJobstatus returns the Jobstatus field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StageUpdateInput) GetJobstatus() StatusContext {
+	if o == nil || IsNil(o.Jobstatus.Get()) {
+		var ret StatusContext
+		return ret
+	}
+	return *o.Jobstatus.Get()
+}
+
+// GetJobstatusOk returns a tuple with the Jobstatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StageUpdateInput) GetJobstatusOk() (*StatusContext, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Jobstatus.Get(), o.Jobstatus.IsSet()
+}
+
+// HasJobstatus returns a boolean if a field has been set.
+func (o *StageUpdateInput) HasJobstatus() bool {
+	if o != nil && o.Jobstatus.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetJobstatus gets a reference to the given NullableStatusContext and assigns it to the Jobstatus field.
+func (o *StageUpdateInput) SetJobstatus(v StatusContext) {
+	o.Jobstatus.Set(&v)
+}
+
+// SetJobstatusNil sets the value for Jobstatus to be an explicit nil
+func (o *StageUpdateInput) SetJobstatusNil() {
+	o.Jobstatus.Set(nil)
+}
+
+// UnsetJobstatus ensures that no value is present for Jobstatus, not even an explicit nil
+func (o *StageUpdateInput) UnsetJobstatus() {
+	o.Jobstatus.Unset()
+}
+
+// GetOutputs returns the Outputs field value if set, zero value otherwise.
+func (o *StageUpdateInput) GetOutputs() map[string]interface{} {
+	if o == nil || IsNil(o.Outputs) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Outputs
+}
+
+// GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StageUpdateInput) GetOutputsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Outputs) {
+		return map[string]interface{}{}, false
+	}
+	return o.Outputs, true
+}
+
+// HasOutputs returns a boolean if a field has been set.
+func (o *StageUpdateInput) HasOutputs() bool {
+	if o != nil && !IsNil(o.Outputs) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputs gets a reference to the given map[string]interface{} and assigns it to the Outputs field.
+func (o *StageUpdateInput) SetOutputs(v map[string]interface{}) {
+	o.Outputs = v
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -273,6 +351,12 @@ func (o StageUpdateInput) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ExitCode.IsSet() {
 		toSerialize["exit_code"] = o.ExitCode.Get()
+	}
+	if o.Jobstatus.IsSet() {
+		toSerialize["jobstatus"] = o.Jobstatus.Get()
+	}
+	if !IsNil(o.Outputs) {
+		toSerialize["outputs"] = o.Outputs
 	}
 	if o.Started.IsSet() {
 		toSerialize["started"] = o.Started.Get()

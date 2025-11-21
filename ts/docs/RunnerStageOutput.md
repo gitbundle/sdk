@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_token** | **string** |  | [default to undefined]
-**stage** | [**StageModel**](StageModel.md) |  | [optional] [default to undefined]
+**stage_metadata** | [**StageMetadata**](StageMetadata.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -15,7 +15,7 @@ import { RunnerStageOutput } from 'gitbundle-sdk';
 
 const instance: RunnerStageOutput = {
     access_token,
-    stage,
+    stage_metadata,
 };
 ```
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **error** | **string** |  | [default to undefined]
 **exit_code** | **number** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
+**is_reusable** | **boolean** |  | [default to undefined]
 **kernel** | **string** |  | [default to undefined]
 **kind** | **string** |  | [default to undefined]
 **labels** | **Array&lt;string&gt;** |  | [default to undefined]
@@ -19,11 +20,12 @@ Name | Type | Description | Notes
 **limit_repo** | **number** |  | [default to undefined]
 **machine** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
-**needs** | **any** |  | [default to undefined]
+**needs** | **Array&lt;string&gt;** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
 **on_failure** | **boolean** |  | [default to undefined]
 **on_success** | **boolean** |  | [default to undefined]
 **os** | **string** |  | [default to undefined]
+**outputs** | **{ [key: string]: any; }** |  | [optional] [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
 **parent_id** | **number** |  | [optional] [default to undefined]
 **repo_id** | **number** |  | [default to undefined]
@@ -51,6 +53,7 @@ const instance: StageModel = {
     error,
     exit_code,
     id,
+    is_reusable,
     kernel,
     kind,
     labels,
@@ -63,6 +66,7 @@ const instance: StageModel = {
     on_failure,
     on_success,
     os,
+    outputs,
     parent_group_id,
     parent_id,
     repo_id,

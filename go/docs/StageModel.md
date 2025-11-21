@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Error** | **string** |  | 
 **ExitCode** | **int64** |  | 
 **Id** | **int64** |  | 
+**IsReusable** | **bool** |  | 
 **Kernel** | **string** |  | 
 **Kind** | **string** |  | 
 **Labels** | **[]string** |  | 
@@ -18,11 +19,12 @@ Name | Type | Description | Notes
 **LimitRepo** | **int64** |  | 
 **Machine** | **string** |  | 
 **Name** | **string** |  | 
-**Needs** | **interface{}** |  | 
+**Needs** | **[]string** |  | 
 **Number** | **int64** |  | 
 **OnFailure** | **bool** |  | 
 **OnSuccess** | **bool** |  | 
 **Os** | **string** |  | 
+**Outputs** | Pointer to **map[string]interface{}** |  | [optional] 
 **ParentGroupId** | **int64** |  | 
 **ParentId** | Pointer to **NullableInt64** |  | [optional] 
 **RepoId** | **int64** |  | 
@@ -41,7 +43,7 @@ Name | Type | Description | Notes
 
 ### NewStageModel
 
-`func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs interface{}, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
+`func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, isReusable bool, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs []string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string, ) *StageModel`
 
 NewStageModel instantiates a new StageModel object
 This constructor will assign default values to properties that have it defined,
@@ -196,6 +198,26 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
+### GetIsReusable
+
+`func (o *StageModel) GetIsReusable() bool`
+
+GetIsReusable returns the IsReusable field if non-nil, zero value otherwise.
+
+### GetIsReusableOk
+
+`func (o *StageModel) GetIsReusableOk() (*bool, bool)`
+
+GetIsReusableOk returns a tuple with the IsReusable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsReusable
+
+`func (o *StageModel) SetIsReusable(v bool)`
+
+SetIsReusable sets IsReusable field to given value.
+
+
 ### GetKernel
 
 `func (o *StageModel) GetKernel() string`
@@ -338,34 +360,24 @@ SetName sets Name field to given value.
 
 ### GetNeeds
 
-`func (o *StageModel) GetNeeds() interface{}`
+`func (o *StageModel) GetNeeds() []string`
 
 GetNeeds returns the Needs field if non-nil, zero value otherwise.
 
 ### GetNeedsOk
 
-`func (o *StageModel) GetNeedsOk() (*interface{}, bool)`
+`func (o *StageModel) GetNeedsOk() (*[]string, bool)`
 
 GetNeedsOk returns a tuple with the Needs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNeeds
 
-`func (o *StageModel) SetNeeds(v interface{})`
+`func (o *StageModel) SetNeeds(v []string)`
 
 SetNeeds sets Needs field to given value.
 
 
-### SetNeedsNil
-
-`func (o *StageModel) SetNeedsNil(b bool)`
-
- SetNeedsNil sets the value for Needs to be an explicit nil
-
-### UnsetNeeds
-`func (o *StageModel) UnsetNeeds()`
-
-UnsetNeeds ensures that no value is present for Needs, not even an explicit nil
 ### GetNumber
 
 `func (o *StageModel) GetNumber() int64`
@@ -445,6 +457,31 @@ and a boolean to check if the value has been set.
 
 SetOs sets Os field to given value.
 
+
+### GetOutputs
+
+`func (o *StageModel) GetOutputs() map[string]interface{}`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *StageModel) GetOutputsOk() (*map[string]interface{}, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *StageModel) SetOutputs(v map[string]interface{})`
+
+SetOutputs sets Outputs field to given value.
+
+### HasOutputs
+
+`func (o *StageModel) HasOutputs() bool`
+
+HasOutputs returns a boolean if a field has been set.
 
 ### GetParentGroupId
 

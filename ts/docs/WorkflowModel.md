@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **message** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
-**params** | **{ [key: string]: string; }** |  | [default to undefined]
+**params** | **{ [key: string]: any; }** |  | [default to undefined]
 **repo_id** | **number** |  | [default to undefined]
 **source_repo_id** | **number** |  | [optional] [default to undefined]
 **source_rev** | **string** |  | [optional] [default to undefined]

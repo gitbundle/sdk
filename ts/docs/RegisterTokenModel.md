@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created** | **number** |  | [default to undefined]
 **created_by** | **number** |  | [default to undefined]
 **id** | **number** |  | [default to undefined]
-**parent_id** | **number** |  | [optional] [default to undefined]
+**parent_id** | **number** |  | [default to undefined]
 **scope** | [**Scope**](Scope.md) |  | [default to undefined]
 **token** | **string** |  | [default to undefined]
 **updated** | **number** |  | [default to undefined]

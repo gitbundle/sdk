@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **image** | **string** |  | [default to undefined]
 **name** | **string** |  | [default to undefined]
 **number** | **number** |  | [default to undefined]
+**outputs** | **{ [key: string]: any; }** |  | [optional] [default to undefined]
 **parent_group_id** | **number** |  | [default to undefined]
 **stage_id** | **number** |  | [default to undefined]
 **started** | **number** |  | [optional] [default to undefined]
@@ -38,6 +39,7 @@ const instance: StepModel = {
     image,
     name,
     number,
+    outputs,
     parent_group_id,
     stage_id,
     started,

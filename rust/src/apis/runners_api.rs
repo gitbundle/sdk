@@ -12,10 +12,10 @@ use serde::{de::Error as _, Deserialize, Serialize};
 use super::{configuration, ContentType, Error};
 use crate::{apis::ResponseContent, models};
 
-/// struct for typed errors of method [`get_stage`]
+/// struct for typed errors of method [`poll_stage`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum GetStageError {
+pub enum PollStageError {
     Status400(models::JsonErrorResponseNull),
     Status401(models::JsonErrorResponseNull),
     Status403(models::JsonErrorResponseNull),
@@ -40,11 +40,17 @@ pub enum PostRunnersRegisterError {
     UnknownValue(serde_json::Value),
 }
 
-pub async fn get_stage(
+pub async fn poll_stage(
     configuration: &configuration::Configuration,
-) -> Result<models::RunnerStageOutput, Error<GetStageError>> {
-    let uri_str = format!("{}/runners/stage", configuration.base_path);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+    runner_context: models::RunnerContext,
+) -> Result<models::RunnerStageOutput, Error<PollStageError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_runner_context = runner_context;
+
+    let uri_str = format!("{}/runners/poll_stage", configuration.base_path);
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
@@ -63,6 +69,7 @@ pub async fn get_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
+    req_builder = req_builder.json(&p_runner_context);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -84,7 +91,7 @@ pub async fn get_stage(
         }
     } else {
         let content = resp.text().await?;
-        let entity: Option<GetStageError> = serde_json::from_str(&content).ok();
+        let entity: Option<PollStageError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

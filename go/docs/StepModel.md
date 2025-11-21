@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Image** | **string** |  | 
 **Name** | **string** |  | 
 **Number** | **int64** |  | 
+**Outputs** | Pointer to **map[string]interface{}** |  | [optional] 
 **ParentGroupId** | **int64** |  | 
 **StageId** | **int64** |  | 
 **Started** | Pointer to **NullableInt64** |  | [optional] 
@@ -230,6 +231,31 @@ and a boolean to check if the value has been set.
 
 SetNumber sets Number field to given value.
 
+
+### GetOutputs
+
+`func (o *StepModel) GetOutputs() map[string]interface{}`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *StepModel) GetOutputsOk() (*map[string]interface{}, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *StepModel) SetOutputs(v map[string]interface{})`
+
+SetOutputs sets Outputs field to given value.
+
+### HasOutputs
+
+`func (o *StepModel) HasOutputs() bool`
+
+HasOutputs returns a boolean if a field has been set.
 
 ### GetParentGroupId
 

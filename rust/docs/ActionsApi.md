@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**patch_step**](ActionsApi.md#patch_step) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number} | 
 [**patch_workflow**](ActionsApi.md#patch_workflow) | **PATCH** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn} | 
 [**post_action**](ActionsApi.md#post_action) | **POST** /repos/{repo_ref}/+/actions | 
-[**post_stage**](ActionsApi.md#post_stage) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages | 
 [**post_step**](ActionsApi.md#post_step) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number} | 
 [**post_step_log**](ActionsApi.md#post_step_log) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log | Upload step log
 [**post_step_log_stream**](ActionsApi.md#post_step_log_stream) | **POST** /repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream | Upload step logstream
@@ -443,37 +442,6 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::ActionModel**](ActionModel.md)
-
-### Authorization
-
-[basic_auth](../README.md#basic_auth), [bearer_auth](../README.md#bearer_auth), [access_token_query](../README.md#access_token_query)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
-## post_stage
-
-> models::StageModel post_stage(repo_ref, action_identifier, workflow_idn, stage_create_input)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**repo_ref** | **String** | Repository id or ref | [required] |
-**action_identifier** | **String** | Action id or name | [required] |
-**workflow_idn** | **i64** | Workflow number or id | [required] |
-**stage_create_input** | [**StageCreateInput**](StageCreateInput.md) |  | [required] |
-
-### Return type
-
-[**models::StageModel**](StageModel.md)
 
 ### Authorization
 
