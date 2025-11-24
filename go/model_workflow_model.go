@@ -28,6 +28,7 @@ type WorkflowModel struct {
 	AuthorId     NullableInt64          `json:"author_id,omitempty"`
 	AuthorName   string                 `json:"author_name"`
 	BeforeSha    string                 `json:"before_sha"`
+	Context      map[string]interface{} `json:"context"`
 	Created      int64                  `json:"created"`
 	CreatedBy    int64                  `json:"created_by"`
 	Cron         string                 `json:"cron"`
@@ -62,12 +63,13 @@ type _WorkflowModel WorkflowModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
+func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, context map[string]interface{}, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
 	this := WorkflowModel{}
 	this.ActionId = actionId
 	this.AuthorEmail = authorEmail
 	this.AuthorName = authorName
 	this.BeforeSha = beforeSha
+	this.Context = context
 	this.Created = created
 	this.CreatedBy = createdBy
 	this.Cron = cron
@@ -326,6 +328,32 @@ func (o *WorkflowModel) GetBeforeShaOk() (*string, bool) {
 // SetBeforeSha sets field value
 func (o *WorkflowModel) SetBeforeSha(v string) {
 	o.BeforeSha = v
+}
+
+// GetContext returns the Context field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *WorkflowModel) GetContext() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Context
+}
+
+// GetContextOk returns a tuple with the Context field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WorkflowModel) GetContextOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Context) {
+		return map[string]interface{}{}, false
+	}
+	return o.Context, true
+}
+
+// SetContext sets field value
+func (o *WorkflowModel) SetContext(v map[string]interface{}) {
+	o.Context = v
 }
 
 // GetCreated returns the Created field value
@@ -1013,6 +1041,9 @@ func (o WorkflowModel) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["author_name"] = o.AuthorName
 	toSerialize["before_sha"] = o.BeforeSha
+	if o.Context != nil {
+		toSerialize["context"] = o.Context
+	}
 	toSerialize["created"] = o.Created
 	toSerialize["created_by"] = o.CreatedBy
 	toSerialize["cron"] = o.Cron
@@ -1055,6 +1086,7 @@ func (o *WorkflowModel) UnmarshalJSON(data []byte) (err error) {
 		"author_email",
 		"author_name",
 		"before_sha",
+		"context",
 		"created",
 		"created_by",
 		"cron",
