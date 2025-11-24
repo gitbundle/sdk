@@ -1161,6 +1161,25 @@ export interface ConnectorPatchInput {
 /**
  * 
  * @export
+ * @interface ContainerContext
+ */
+export interface ContainerContext {
+    /**
+     * 
+     * @type {string}
+     * @memberof ContainerContext
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ContainerContext
+     */
+    'network': string;
+}
+/**
+ * 
+ * @export
  * @interface Contributor
  */
 export interface Contributor {
@@ -1619,6 +1638,247 @@ export interface GeneralSettings {
 /**
  * 
  * @export
+ * @interface GithubContext
+ */
+export interface GithubContext {
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'action': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'action_path': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'action_ref': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'action_repository': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'action_status': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'actor': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'actor_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'api_url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'base_ref': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'env': string;
+    /**
+     * 
+     * @type {any}
+     * @memberof GithubContext
+     */
+    'event': any;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'event_name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'event_path': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'graphql_url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'head_ref': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'job': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'path': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'ref': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'ref_name': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GithubContext
+     */
+    'ref_protected': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'ref_type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'repository': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'repositoryUrl': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'repository_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'repository_owner': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'repository_owner_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'retention_days': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'run_attempt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'run_id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'run_number': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'secret_source': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'server_url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'sha': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'token': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'triggering_actor': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'workflow': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'workflow_ref': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'workflow_sha': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubContext
+     */
+    'workspace': string;
+}
+/**
+ * 
+ * @export
  * @interface GroupCreateInput
  */
 export interface GroupCreateInput {
@@ -2020,6 +2280,39 @@ export interface Identity {
 /**
  * 
  * @export
+ * @interface JobContext
+ */
+export interface JobContext {
+    /**
+     * 
+     * @type {number}
+     * @memberof JobContext
+     */
+    'check_run_id': number;
+    /**
+     * 
+     * @type {ContainerContext}
+     * @memberof JobContext
+     */
+    'container': ContainerContext;
+    /**
+     * 
+     * @type {{ [key: string]: ServiceContext; }}
+     * @memberof JobContext
+     */
+    'services': { [key: string]: ServiceContext; };
+    /**
+     * 
+     * @type {StatusContext}
+     * @memberof JobContext
+     */
+    'status': StatusContext;
+}
+
+
+/**
+ * 
+ * @export
  * @interface JobProgress
  */
 export interface JobProgress {
@@ -2066,6 +2359,27 @@ export const JobState = {
 } as const;
 
 export type JobState = typeof JobState[keyof typeof JobState];
+
+
+/**
+ * 
+ * @export
+ * @interface JobsContext
+ */
+export interface JobsContext {
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof JobsContext
+     */
+    'outputs': { [key: string]: any; };
+    /**
+     * 
+     * @type {StatusContext}
+     * @memberof JobsContext
+     */
+    'result': StatusContext;
+}
 
 
 /**
@@ -6011,6 +6325,31 @@ export interface ServiceAccountTokenOutput {
 /**
  * 
  * @export
+ * @interface ServiceContext
+ */
+export interface ServiceContext {
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceContext
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceContext
+     */
+    'network': string;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof ServiceContext
+     */
+    'ports': { [key: string]: string; };
+}
+/**
+ * 
+ * @export
  * @enum {string}
  */
 
@@ -6695,6 +7034,33 @@ export interface StepUpdateInput {
      * @memberof StepUpdateInput
      */
     'stopped'?: number | null;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface StepsContext
+ */
+export interface StepsContext {
+    /**
+     * 
+     * @type {StatusContext}
+     * @memberof StepsContext
+     */
+    'conclusion': StatusContext;
+    /**
+     * 
+     * @type {StatusContext}
+     * @memberof StepsContext
+     */
+    'outcome': StatusContext;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof StepsContext
+     */
+    'outputs': { [key: string]: any; };
 }
 
 

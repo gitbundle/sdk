@@ -44,6 +44,7 @@ docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
 docs/ConnectorsApi.md
+docs/ContainerContext.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -60,6 +61,7 @@ docs/FeedRelations.md
 docs/FeedType.md
 docs/FileDiffStatus.md
 docs/GeneralSettings.md
+docs/GithubContext.md
 docs/GroupCreateInput.md
 docs/GroupImportInput.md
 docs/GroupImportReposInput.md
@@ -76,8 +78,10 @@ docs/GroupsApi.md
 docs/Heatmap.md
 docs/HunkHeader.md
 docs/Identity.md
+docs/JobContext.md
 docs/JobProgress.md
 docs/JobState.md
+docs/JobsContext.md
 docs/JsonErrorResponseNull.md
 docs/KeywordSearchApi.md
 docs/License.md
@@ -210,6 +214,7 @@ docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
 docs/ServiceAccountsApi.md
+docs/ServiceContext.md
 docs/SseType.md
 docs/StageContext.md
 docs/StageMetadata.md
@@ -221,6 +226,7 @@ docs/StatusContext.md
 docs/StepCreateInput.md
 docs/StepModel.md
 docs/StepUpdateInput.md
+docs/StepsContext.md
 docs/SystemApi.md
 docs/SystemConfig.md
 docs/TagCreateInput.md
@@ -321,6 +327,7 @@ src/models/commit_with_path_rename_details.rs
 src/models/connector_create_input.rs
 src/models/connector_model.rs
 src/models/connector_patch_input.rs
+src/models/container_context.rs
 src/models/contributor.rs
 src/models/created_option.rs
 src/models/def_approvals.rs
@@ -337,6 +344,7 @@ src/models/feed_relations.rs
 src/models/feed_type.rs
 src/models/file_diff_status.rs
 src/models/general_settings.rs
+src/models/github_context.rs
 src/models/group_create_input.rs
 src/models/group_import_input.rs
 src/models/group_import_repos_input.rs
@@ -352,8 +360,10 @@ src/models/group_sort.rs
 src/models/heatmap.rs
 src/models/hunk_header.rs
 src/models/identity.rs
+src/models/job_context.rs
 src/models/job_progress.rs
 src/models/job_state.rs
+src/models/jobs_context.rs
 src/models/json_error_response_null.rs
 src/models/license.rs
 src/models/live_log_line.rs
@@ -479,6 +489,7 @@ src/models/scope.rs
 src/models/security_settings.rs
 src/models/service_account_create_input.rs
 src/models/service_account_token_output.rs
+src/models/service_context.rs
 src/models/sse_type.rs
 src/models/stage_context.rs
 src/models/stage_metadata.rs
@@ -489,6 +500,7 @@ src/models/status_context.rs
 src/models/step_create_input.rs
 src/models/step_model.rs
 src/models/step_update_input.rs
+src/models/steps_context.rs
 src/models/system_config.rs
 src/models/tag_create_input.rs
 src/models/token_create_input.rs

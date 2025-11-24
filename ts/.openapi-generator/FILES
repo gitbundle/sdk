@@ -47,6 +47,7 @@ docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
 docs/ConnectorsApi.md
+docs/ContainerContext.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -63,6 +64,7 @@ docs/FeedRelations.md
 docs/FeedType.md
 docs/FileDiffStatus.md
 docs/GeneralSettings.md
+docs/GithubContext.md
 docs/GroupCreateInput.md
 docs/GroupImportInput.md
 docs/GroupImportReposInput.md
@@ -79,8 +81,10 @@ docs/GroupsApi.md
 docs/Heatmap.md
 docs/HunkHeader.md
 docs/Identity.md
+docs/JobContext.md
 docs/JobProgress.md
 docs/JobState.md
+docs/JobsContext.md
 docs/JsonErrorResponseNull.md
 docs/KeywordSearchApi.md
 docs/License.md
@@ -213,6 +217,7 @@ docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
 docs/ServiceAccountsApi.md
+docs/ServiceContext.md
 docs/SseType.md
 docs/StageContext.md
 docs/StageMetadata.md
@@ -224,6 +229,7 @@ docs/StatusContext.md
 docs/StepCreateInput.md
 docs/StepModel.md
 docs/StepUpdateInput.md
+docs/StepsContext.md
 docs/SystemApi.md
 docs/SystemConfig.md
 docs/TagCreateInput.md
