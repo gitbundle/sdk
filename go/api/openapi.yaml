@@ -20957,6 +20957,15 @@ components:
         name:
           nullable: true
           type: string
+    ContainerContext:
+      properties:
+        id:
+          type: string
+        network:
+          type: string
+      required:
+      - id
+      - network
     Contributor:
       example:
         name: name
@@ -21500,6 +21509,125 @@ components:
           type: integer
       required:
       - file_size_limit
+    GithubContext:
+      properties:
+        action:
+          type: string
+        action_path:
+          type: string
+        action_ref:
+          type: string
+        action_repository:
+          type: string
+        action_status:
+          type: string
+        actor:
+          type: string
+        actor_id:
+          type: string
+        api_url:
+          type: string
+        base_ref:
+          type: string
+        env:
+          type: string
+        event: {}
+        event_name:
+          type: string
+        event_path:
+          type: string
+        graphql_url:
+          type: string
+        head_ref:
+          type: string
+        job:
+          type: string
+        path:
+          type: string
+        ref:
+          type: string
+        ref_name:
+          type: string
+        ref_protected:
+          type: boolean
+        ref_type:
+          type: string
+        repository:
+          type: string
+        repositoryUrl:
+          type: string
+        repository_id:
+          type: string
+        repository_owner:
+          type: string
+        repository_owner_id:
+          type: string
+        retention_days:
+          type: string
+        run_attempt:
+          type: string
+        run_id:
+          type: string
+        run_number:
+          type: string
+        secret_source:
+          type: string
+        server_url:
+          type: string
+        sha:
+          type: string
+        token:
+          type: string
+        triggering_actor:
+          type: string
+        workflow:
+          type: string
+        workflow_ref:
+          type: string
+        workflow_sha:
+          type: string
+        workspace:
+          type: string
+      required:
+      - action
+      - action_path
+      - action_ref
+      - action_repository
+      - action_status
+      - actor
+      - actor_id
+      - api_url
+      - base_ref
+      - env
+      - event
+      - event_name
+      - event_path
+      - graphql_url
+      - head_ref
+      - job
+      - path
+      - ref
+      - ref_name
+      - ref_protected
+      - ref_type
+      - repository
+      - repositoryUrl
+      - repository_id
+      - repository_owner
+      - repository_owner_id
+      - retention_days
+      - run_attempt
+      - run_id
+      - run_number
+      - secret_source
+      - server_url
+      - sha
+      - token
+      - triggering_actor
+      - workflow
+      - workflow_ref
+      - workflow_sha
+      - workspace
     GroupCreateInput:
       example:
         identifier: identifier
@@ -21819,6 +21947,23 @@ components:
       required:
       - email
       - name
+    JobContext:
+      properties:
+        check_run_id:
+          format: int64
+          type: integer
+        container:
+          $ref: "#/components/schemas/ContainerContext"
+        services:
+          additionalProperties:
+            $ref: "#/components/schemas/ServiceContext"
+        status:
+          $ref: "#/components/schemas/StatusContext"
+      required:
+      - check_run_id
+      - container
+      - services
+      - status
     JobProgress:
       example:
         result: result
@@ -21849,6 +21994,15 @@ components:
       - failed
       - canceled
       type: string
+    JobsContext:
+      properties:
+        outputs:
+          additionalProperties: {}
+        result:
+          $ref: "#/components/schemas/StatusContext"
+      required:
+      - outputs
+      - result
     JsonErrorResponseNull:
       example:
         code: 0
@@ -25791,6 +25945,19 @@ components:
           type: integer
       required:
       - access_token
+    ServiceContext:
+      properties:
+        id:
+          type: string
+        network:
+          type: string
+        ports:
+          additionalProperties:
+            type: string
+      required:
+      - id
+      - network
+      - ports
     Slice:
       items:
         type: string
@@ -26465,6 +26632,18 @@ components:
           format: int64
           nullable: true
           type: integer
+    StepsContext:
+      properties:
+        conclusion:
+          $ref: "#/components/schemas/StatusContext"
+        outcome:
+          $ref: "#/components/schemas/StatusContext"
+        outputs:
+          additionalProperties: {}
+      required:
+      - conclusion
+      - outcome
+      - outputs
     String:
       type: string
     SystemConfig:

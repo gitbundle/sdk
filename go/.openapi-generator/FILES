@@ -65,6 +65,7 @@ docs/ConnectorCreateInput.md
 docs/ConnectorModel.md
 docs/ConnectorPatchInput.md
 docs/ConnectorsAPI.md
+docs/ContainerContext.md
 docs/Contributor.md
 docs/CreatedOption.md
 docs/DefApprovals.md
@@ -81,6 +82,7 @@ docs/FeedRelations.md
 docs/FeedType.md
 docs/FileDiffStatus.md
 docs/GeneralSettings.md
+docs/GithubContext.md
 docs/GroupCreateInput.md
 docs/GroupImportInput.md
 docs/GroupImportReposInput.md
@@ -97,8 +99,10 @@ docs/GroupsAPI.md
 docs/Heatmap.md
 docs/HunkHeader.md
 docs/Identity.md
+docs/JobContext.md
 docs/JobProgress.md
 docs/JobState.md
+docs/JobsContext.md
 docs/JsonErrorResponseNull.md
 docs/KeywordSearchAPI.md
 docs/License.md
@@ -231,6 +235,7 @@ docs/SecuritySettings.md
 docs/ServiceAccountCreateInput.md
 docs/ServiceAccountTokenOutput.md
 docs/ServiceAccountsAPI.md
+docs/ServiceContext.md
 docs/SseType.md
 docs/StageContext.md
 docs/StageMetadata.md
@@ -242,6 +247,7 @@ docs/StatusContext.md
 docs/StepCreateInput.md
 docs/StepModel.md
 docs/StepUpdateInput.md
+docs/StepsContext.md
 docs/SystemAPI.md
 docs/SystemConfig.md
 docs/TagCreateInput.md
@@ -322,6 +328,7 @@ model_commit_with_path_rename_details.go
 model_connector_create_input.go
 model_connector_model.go
 model_connector_patch_input.go
+model_container_context.go
 model_contributor.go
 model_created_option.go
 model_def_approvals.go
@@ -338,6 +345,7 @@ model_feed_relations.go
 model_feed_type.go
 model_file_diff_status.go
 model_general_settings.go
+model_github_context.go
 model_group_create_input.go
 model_group_import_input.go
 model_group_import_repos_input.go
@@ -353,8 +361,10 @@ model_group_sort.go
 model_heatmap.go
 model_hunk_header.go
 model_identity.go
+model_job_context.go
 model_job_progress.go
 model_job_state.go
+model_jobs_context.go
 model_json_error_response_null.go
 model_license.go
 model_live_log_line.go
@@ -479,6 +489,7 @@ model_scope.go
 model_security_settings.go
 model_service_account_create_input.go
 model_service_account_token_output.go
+model_service_context.go
 model_sse_type.go
 model_stage_context.go
 model_stage_metadata.go
@@ -489,6 +500,7 @@ model_status_context.go
 model_step_create_input.go
 model_step_model.go
 model_step_update_input.go
+model_steps_context.go
 model_system_config.go
 model_tag_create_input.go
 model_token_create_input.go
