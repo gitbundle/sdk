@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **author_id** | Option<**i64**> |  | [optional]
 **author_name** | **String** |  | 
 **before_sha** | **String** |  | 
+**context** | Option<[**serde_json::Value**](.md)> |  | 
 **created** | **i64** |  | 
 **created_by** | **i64** |  | 
 **cron** | **String** |  | 

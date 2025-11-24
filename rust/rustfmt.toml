@@ -1,7 +1,7 @@
 edition = "2024"
 newline_style = "Unix"
-normalize_comments = true
-wrap_comments = true
+normalize_comments = false
+wrap_comments = false
 
 group_imports = "StdExternalCrate"
 imports_granularity = "Crate"

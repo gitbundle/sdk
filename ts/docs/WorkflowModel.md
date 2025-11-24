@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **author_id** | **number** |  | [optional] [default to undefined]
 **author_name** | **string** |  | [default to undefined]
 **before_sha** | **string** |  | [default to undefined]
+**context** | **object** |  | [default to undefined]
 **created** | **number** |  | [default to undefined]
 **created_by** | **number** |  | [default to undefined]
 **cron** | **string** |  | [default to undefined]
@@ -52,6 +53,7 @@ const instance: WorkflowModel = {
     author_id,
     author_name,
     before_sha,
+    context,
     created,
     created_by,
     cron,

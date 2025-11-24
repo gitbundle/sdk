@@ -6034,13 +6034,13 @@ export type SseType = typeof SseType[keyof typeof SseType];
  */
 export interface StageContext {
     /**
-     * including all vars, priority from low to high, higher priority key could override lower priority key 1. The predefined variables for github/gitlab. 2. The web ui configured vars or envs, exclude secrets.
+     * Including all vars, priority from low to high, higher priority key could override lower priority key 1. The predefined variables for github/gitlab. 2. The web ui configured vars or envs, exclude secrets.
      * @type {{ [key: string]: string; }}
      * @memberof StageContext
      */
     'all': { [key: string]: string; };
     /**
-     * Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME
+     * Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME Value is encoded with base64 standard
      * @type {{ [key: string]: string; }}
      * @memberof StageContext
      */
@@ -6088,7 +6088,7 @@ export interface StageContext {
      */
     'runner': any;
     /**
-     * Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be running. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME
+     * Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be running. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME Value is encoded with base64 standard
      * @type {{ [key: string]: string; }}
      * @memberof StageContext
      */
@@ -6106,7 +6106,7 @@ export interface StageContext {
      */
     'strategy': any;
     /**
-     * Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME
+     * Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME Value is encoded with base64 standard
      * @type {{ [key: string]: string; }}
      * @memberof StageContext
      */
@@ -7888,6 +7888,12 @@ export interface WorkflowModel {
      * @memberof WorkflowModel
      */
     'before_sha': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof WorkflowModel
+     */
+    'context': object | null;
     /**
      * 
      * @type {number}

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AuthorId** | Pointer to **NullableInt64** |  | [optional] 
 **AuthorName** | **string** |  | 
 **BeforeSha** | **string** |  | 
+**Context** | **map[string]interface{}** |  | 
 **Created** | **int64** |  | 
 **CreatedBy** | **int64** |  | 
 **Cron** | **string** |  | 
@@ -42,7 +43,7 @@ Name | Type | Description | Notes
 
 ### NewWorkflowModel
 
-`func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
+`func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, context map[string]interface{}, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string, ) *WorkflowModel`
 
 NewWorkflowModel instantiates a new WorkflowModel object
 This constructor will assign default values to properties that have it defined,
@@ -242,6 +243,36 @@ and a boolean to check if the value has been set.
 SetBeforeSha sets BeforeSha field to given value.
 
 
+### GetContext
+
+`func (o *WorkflowModel) GetContext() map[string]interface{}`
+
+GetContext returns the Context field if non-nil, zero value otherwise.
+
+### GetContextOk
+
+`func (o *WorkflowModel) GetContextOk() (*map[string]interface{}, bool)`
+
+GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContext
+
+`func (o *WorkflowModel) SetContext(v map[string]interface{})`
+
+SetContext sets Context field to given value.
+
+
+### SetContextNil
+
+`func (o *WorkflowModel) SetContextNil(b bool)`
+
+ SetContextNil sets the value for Context to be an explicit nil
+
+### UnsetContext
+`func (o *WorkflowModel) UnsetContext()`
+
+UnsetContext ensures that no value is present for Context, not even an explicit nil
 ### GetCreated
 
 `func (o *WorkflowModel) GetCreated() int64`
