@@ -426,14 +426,14 @@ pub async fn delete_groups_runner(
     runner_uuid: &str,
 ) -> Result<(), Error<DeleteGroupsRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_runner_uuid = runner_uuid;
+    let p_path_group_ref = group_ref;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -481,14 +481,14 @@ pub async fn delete_groups_variable(
     variable_identifier: &str,
 ) -> Result<(), Error<DeleteGroupsVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_variable_identifier = variable_identifier;
+    let p_path_group_ref = group_ref;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -536,14 +536,14 @@ pub async fn delete_member(
     user_identifier: &str,
 ) -> Result<(), Error<DeleteMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_user_identifier = user_identifier;
+    let p_path_group_ref = group_ref;
+    let p_path_user_identifier = user_identifier;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/members/{user_identifier}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -593,25 +593,25 @@ pub async fn get_connectors(
     query: Option<&str>,
 ) -> Result<Vec<models::ConnectorModel>, Error<GetConnectorsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/connectors",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -666,12 +666,12 @@ pub async fn get_events(
     group_ref: &str,
 ) -> Result<Vec<i32>, Error<GetEventsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/events",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -727,12 +727,12 @@ pub async fn get_group(
     group_ref: &str,
 ) -> Result<models::GroupModel, Error<GetGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -788,12 +788,12 @@ pub async fn get_groups_reseted_runner_register_token(
     group_ref: &str,
 ) -> Result<models::RegisterTokenModel, Error<GetGroupsResetedRunnerRegisterTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners/register_token/reseted",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -851,14 +851,14 @@ pub async fn get_groups_runner(
     runner_uuid: &str,
 ) -> Result<models::RunnerModel, Error<GetGroupsRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_runner_uuid = runner_uuid;
+    let p_path_group_ref = group_ref;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -914,12 +914,12 @@ pub async fn get_groups_runner_register_token(
     group_ref: &str,
 ) -> Result<models::RegisterTokenModel, Error<GetGroupsRunnerRegisterTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners/register_token",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -978,25 +978,25 @@ pub async fn get_groups_runners(
     query: Option<&str>,
 ) -> Result<Vec<models::RunnerCreator>, Error<GetGroupsRunnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1052,14 +1052,14 @@ pub async fn get_groups_variable(
     variable_identifier: &str,
 ) -> Result<models::VariableModel, Error<GetGroupsVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_variable_identifier = variable_identifier;
+    let p_path_group_ref = group_ref;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1121,31 +1121,31 @@ pub async fn get_groups_variables(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::VariableGroup>, Error<GetGroupsVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_types = types;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_types = types;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/variables",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_types {
+    if let Some(ref param_value) = p_query_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -1164,10 +1164,10 @@ pub async fn get_groups_variables(
             )]),
         };
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1227,33 +1227,33 @@ pub async fn get_members(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::MembershipUserGroup>, Error<GetMembersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/members",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1313,33 +1313,33 @@ pub async fn get_repos(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepoParent>, Error<GetReposError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/repos",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1399,33 +1399,33 @@ pub async fn get_service_accounts(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::UserModel>, Error<GetServiceAccountsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/service-accounts",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1485,33 +1485,33 @@ pub async fn get_sub_groups(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::GroupModel>, Error<GetSubGroupsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_group_ref = group_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/groups",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1567,13 +1567,13 @@ pub async fn patch_group(
     group_patch_input: models::GroupPatchInput,
 ) -> Result<models::GroupModel, Error<PatchGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_group_patch_input = group_patch_input;
+    let p_path_group_ref = group_ref;
+    let p_body_group_patch_input = group_patch_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -1596,7 +1596,7 @@ pub async fn patch_group(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_patch_input);
+    req_builder = req_builder.json(&p_body_group_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1634,15 +1634,15 @@ pub async fn patch_groups_runner(
     runner_patch_input: models::RunnerPatchInput,
 ) -> Result<models::RunnerModel, Error<PatchGroupsRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_runner_uuid = runner_uuid;
-    let p_runner_patch_input = runner_patch_input;
+    let p_path_group_ref = group_ref;
+    let p_path_runner_uuid = runner_uuid;
+    let p_body_runner_patch_input = runner_patch_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -1665,7 +1665,7 @@ pub async fn patch_groups_runner(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_runner_patch_input);
+    req_builder = req_builder.json(&p_body_runner_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1703,15 +1703,15 @@ pub async fn patch_groups_variable(
     variable_patch_input: models::VariablePatchInput,
 ) -> Result<models::VariableModel, Error<PatchGroupsVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_variable_identifier = variable_identifier;
-    let p_variable_patch_input = variable_patch_input;
+    let p_path_group_ref = group_ref;
+    let p_path_variable_identifier = variable_identifier;
+    let p_body_variable_patch_input = variable_patch_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1734,7 +1734,7 @@ pub async fn patch_groups_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_patch_input);
+    req_builder = req_builder.json(&p_body_variable_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1772,15 +1772,15 @@ pub async fn patch_member(
     group_member_update_input: models::GroupMemberUpdateInput,
 ) -> Result<models::MembershipModel, Error<PatchMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_user_identifier = user_identifier;
-    let p_group_member_update_input = group_member_update_input;
+    let p_path_group_ref = group_ref;
+    let p_path_user_identifier = user_identifier;
+    let p_body_group_member_update_input = group_member_update_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/members/{user_identifier}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref),
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        group_ref = crate::apis::urlencode(p_path_group_ref),
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1803,7 +1803,7 @@ pub async fn patch_member(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_member_update_input);
+    req_builder = req_builder.json(&p_body_group_member_update_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1839,7 +1839,7 @@ pub async fn post_group(
     group_create_input: models::GroupCreateInput,
 ) -> Result<models::GroupModel, Error<PostGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_create_input = group_create_input;
+    let p_body_group_create_input = group_create_input;
 
     let uri_str = format!("{}/groups", configuration.base_path);
     let mut req_builder = configuration
@@ -1849,7 +1849,7 @@ pub async fn post_group(
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_group_create_input);
+    req_builder = req_builder.json(&p_body_group_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1886,13 +1886,13 @@ pub async fn post_groups_variable(
     variable_create_input: models::VariableCreateInput,
 ) -> Result<models::VariableModel, Error<PostGroupsVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_variable_create_input = variable_create_input;
+    let p_path_group_ref = group_ref;
+    let p_body_variable_create_input = variable_create_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/variables",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -1915,7 +1915,7 @@ pub async fn post_groups_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_create_input);
+    req_builder = req_builder.json(&p_body_variable_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1951,7 +1951,7 @@ pub async fn post_import(
     group_import_input: models::GroupImportInput,
 ) -> Result<models::GroupModel, Error<PostImportError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_import_input = group_import_input;
+    let p_body_group_import_input = group_import_input;
 
     let uri_str = format!("{}/groups/import", configuration.base_path);
     let mut req_builder = configuration
@@ -1961,7 +1961,7 @@ pub async fn post_import(
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_group_import_input);
+    req_builder = req_builder.json(&p_body_group_import_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1998,13 +1998,13 @@ pub async fn post_import_repos(
     group_import_repos_input: models::GroupImportReposInput,
 ) -> Result<models::GroupImportReposOutput, Error<PostImportReposError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_group_import_repos_input = group_import_repos_input;
+    let p_path_group_ref = group_ref;
+    let p_body_group_import_repos_input = group_import_repos_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/import",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -2027,7 +2027,7 @@ pub async fn post_import_repos(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_import_repos_input);
+    req_builder = req_builder.json(&p_body_group_import_repos_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2064,13 +2064,13 @@ pub async fn post_member(
     group_member_add_input: models::GroupMemberAddInput,
 ) -> Result<models::MembershipUserGroup, Error<PostMemberError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_group_member_add_input = group_member_add_input;
+    let p_path_group_ref = group_ref;
+    let p_body_group_member_add_input = group_member_add_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/members",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -2093,7 +2093,7 @@ pub async fn post_member(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_member_add_input);
+    req_builder = req_builder.json(&p_body_group_member_add_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2130,13 +2130,13 @@ pub async fn post_move(
     group_move_input: models::GroupMoveInput,
 ) -> Result<models::GroupModel, Error<PostMoveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_group_move_input = group_move_input;
+    let p_path_group_ref = group_ref;
+    let p_body_group_move_input = group_move_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/move",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -2159,7 +2159,7 @@ pub async fn post_move(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_move_input);
+    req_builder = req_builder.json(&p_body_group_move_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2195,12 +2195,12 @@ pub async fn post_purge(
     group_ref: &str,
 ) -> Result<(), Error<PostPurgeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/purge",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -2248,13 +2248,13 @@ pub async fn post_restore(
     group_restore_input: models::GroupRestoreInput,
 ) -> Result<models::GroupModel, Error<PostRestoreError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
-    let p_group_restore_input = group_restore_input;
+    let p_path_group_ref = group_ref;
+    let p_body_group_restore_input = group_restore_input;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+/restore",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -2277,7 +2277,7 @@ pub async fn post_restore(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_group_restore_input);
+    req_builder = req_builder.json(&p_body_group_restore_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -2313,12 +2313,12 @@ pub async fn soft_delete(
     group_ref: &str,
 ) -> Result<(), Error<SoftDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/groups/{group_ref}/+",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client

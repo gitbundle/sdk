@@ -89,7 +89,7 @@ pub async fn post_login(
     login_input: models::LoginInput,
 ) -> Result<models::LoginOutput, Error<PostLoginError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_login_input = login_input;
+    let p_body_login_input = login_input;
 
     let uri_str = format!("{}/account/login", configuration.base_path);
     let mut req_builder = configuration
@@ -99,7 +99,7 @@ pub async fn post_login(
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_login_input);
+    req_builder = req_builder.json(&p_body_login_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -179,7 +179,7 @@ pub async fn post_register(
     register_input: models::RegisterInput,
 ) -> Result<models::UserModel, Error<PostRegisterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_register_input = register_input;
+    let p_body_register_input = register_input;
 
     let uri_str = format!("{}/account/register", configuration.base_path);
     let mut req_builder = configuration
@@ -189,7 +189,7 @@ pub async fn post_register(
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_register_input);
+    req_builder = req_builder.json(&p_body_register_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -225,7 +225,7 @@ pub async fn post_two_factor_passcode(
     two_factor_passcode_input: models::TwoFactorPasscodeInput,
 ) -> Result<models::LoginOutput, Error<PostTwoFactorPasscodeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_two_factor_passcode_input = two_factor_passcode_input;
+    let p_body_two_factor_passcode_input = two_factor_passcode_input;
 
     let uri_str = format!("{}/account/two_factor", configuration.base_path);
     let mut req_builder = configuration
@@ -249,7 +249,7 @@ pub async fn post_two_factor_passcode(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_two_factor_passcode_input);
+    req_builder = req_builder.json(&p_body_two_factor_passcode_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -285,7 +285,7 @@ pub async fn post_two_factor_scratch_token(
     two_factor_scratch_token_input: models::TwoFactorScratchTokenInput,
 ) -> Result<models::LoginOutput, Error<PostTwoFactorScratchTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_two_factor_scratch_token_input = two_factor_scratch_token_input;
+    let p_body_two_factor_scratch_token_input = two_factor_scratch_token_input;
 
     let uri_str = format!("{}/account/two_factor/scratch", configuration.base_path);
     let mut req_builder = configuration
@@ -309,7 +309,7 @@ pub async fn post_two_factor_scratch_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_two_factor_scratch_token_input);
+    req_builder = req_builder.json(&p_body_two_factor_scratch_token_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

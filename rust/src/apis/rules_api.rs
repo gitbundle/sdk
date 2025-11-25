@@ -90,14 +90,14 @@ pub async fn delete_rule(
     rule_identifier: &str,
 ) -> Result<(), Error<DeleteRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_rule_identifier = rule_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_rule_identifier = rule_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/rules/{rule_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        rule_identifier = crate::apis::urlencode(p_rule_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        rule_identifier = crate::apis::urlencode(p_path_rule_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -145,14 +145,14 @@ pub async fn get_rule(
     rule_identifier: &str,
 ) -> Result<models::RuleModel, Error<GetRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_rule_identifier = rule_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_rule_identifier = rule_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/rules/{rule_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        rule_identifier = crate::apis::urlencode(p_rule_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        rule_identifier = crate::apis::urlencode(p_path_rule_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -214,31 +214,31 @@ pub async fn get_rules(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RuleModel>, Error<GetRulesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_states = states;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_states = states;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/rules",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_states {
+    if let Some(ref param_value) = p_query_states {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -257,10 +257,10 @@ pub async fn get_rules(
             )]),
         };
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -317,15 +317,15 @@ pub async fn patch_rule(
     rule_patch_input: models::RulePatchInput,
 ) -> Result<models::RuleModel, Error<PatchRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_rule_identifier = rule_identifier;
-    let p_rule_patch_input = rule_patch_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_rule_identifier = rule_identifier;
+    let p_body_rule_patch_input = rule_patch_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/rules/{rule_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        rule_identifier = crate::apis::urlencode(p_rule_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        rule_identifier = crate::apis::urlencode(p_path_rule_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -348,7 +348,7 @@ pub async fn patch_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_rule_patch_input);
+    req_builder = req_builder.json(&p_body_rule_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -385,13 +385,13 @@ pub async fn post_rule(
     rule_create_input: models::RuleCreateInput,
 ) -> Result<models::RuleModel, Error<PostRuleError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_rule_create_input = rule_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_rule_create_input = rule_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/rules",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -414,7 +414,7 @@ pub async fn post_rule(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_rule_create_input);
+    req_builder = req_builder.json(&p_body_rule_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm openapitools.json
 rm -rf *.go
 rm -rf test
 

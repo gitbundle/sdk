@@ -882,13 +882,13 @@ pub async fn commit_files(
     commit_files_input: models::CommitFilesInput,
 ) -> Result<models::CommitFilesOutput, Error<CommitFilesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_files_input = commit_files_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_commit_files_input = commit_files_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -911,7 +911,7 @@ pub async fn commit_files(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_commit_files_input);
+    req_builder = req_builder.json(&p_body_commit_files_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -948,13 +948,13 @@ pub async fn commits_calculate_divergence(
     repo_commit_divergences_input: models::RepoCommitDivergencesInput,
 ) -> Result<Vec<models::CommitDivergence>, Error<CommitsCalculateDivergenceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_commit_divergences_input = repo_commit_divergences_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_commit_divergences_input = repo_commit_divergences_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits/calculate-divergence",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -977,7 +977,7 @@ pub async fn commits_calculate_divergence(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_commit_divergences_input);
+    req_builder = req_builder.json(&p_body_repo_commit_divergences_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1015,21 +1015,21 @@ pub async fn delete_branch(
     bypass_rules: Option<bool>,
 ) -> Result<(), Error<DeleteBranchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_branch_name = branch_name;
-    let p_bypass_rules = bypass_rules;
+    let p_path_repo_ref = repo_ref;
+    let p_path_branch_name = branch_name;
+    let p_query_bypass_rules = bypass_rules;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/branches/{branch_name}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        branch_name = crate::apis::urlencode(p_branch_name)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        branch_name = crate::apis::urlencode(p_path_branch_name)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_bypass_rules {
+    if let Some(ref param_value) = p_query_bypass_rules {
         req_builder = req_builder.query(&[("bypass_rules", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1075,21 +1075,21 @@ pub async fn delete_release(
     bypass_rules: Option<bool>,
 ) -> Result<(), Error<DeleteReleaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
-    let p_bypass_rules = bypass_rules;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
+    let p_query_bypass_rules = bypass_rules;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_bypass_rules {
+    if let Some(ref param_value) = p_query_bypass_rules {
         req_builder = req_builder.query(&[("bypass_rules", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1134,14 +1134,14 @@ pub async fn delete_repository_runner(
     runner_uuid: &str,
 ) -> Result<(), Error<DeleteRepositoryRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_runner_uuid = runner_uuid;
+    let p_path_repo_ref = repo_ref;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -1189,14 +1189,14 @@ pub async fn delete_repository_variable(
     variable_identifier: &str,
 ) -> Result<(), Error<DeleteRepositoryVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_variable_identifier = variable_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1245,21 +1245,21 @@ pub async fn delete_tag(
     bypass_rules: Option<bool>,
 ) -> Result<(), Error<DeleteTagError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_name = tag_name;
-    let p_bypass_rules = bypass_rules;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_name = tag_name;
+    let p_query_bypass_rules = bypass_rules;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/tags/{tag_name}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_name = crate::apis::urlencode(p_tag_name)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_name = crate::apis::urlencode(p_path_tag_name)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_bypass_rules {
+    if let Some(ref param_value) = p_query_bypass_rules {
         req_builder = req_builder.query(&[("bypass_rules", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1304,13 +1304,13 @@ pub async fn general_update(
     general_settings: models::GeneralSettings,
 ) -> Result<models::GeneralSettings, Error<GeneralUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_general_settings = general_settings;
+    let p_path_repo_ref = repo_ref;
+    let p_body_general_settings = general_settings;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/settings/general",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -1333,7 +1333,7 @@ pub async fn general_update(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_general_settings);
+    req_builder = req_builder.json(&p_body_general_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1375,29 +1375,29 @@ pub async fn get_archive(
     compression: Option<i32>,
 ) -> Result<Vec<i32>, Error<GetArchiveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_archive_ref = archive_ref;
-    let p_prefix = prefix;
-    let p_attributes = attributes;
-    let p_paths = paths;
-    let p_timestamp = timestamp;
-    let p_compression = compression;
+    let p_path_repo_ref = repo_ref;
+    let p_path_archive_ref = archive_ref;
+    let p_query_prefix = prefix;
+    let p_query_attributes = attributes;
+    let p_query_paths = paths;
+    let p_query_timestamp = timestamp;
+    let p_query_compression = compression;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/archive/{archive_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        archive_ref = crate::apis::urlencode(p_archive_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        archive_ref = crate::apis::urlencode(p_path_archive_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_prefix {
+    if let Some(ref param_value) = p_query_prefix {
         req_builder = req_builder.query(&[("prefix", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_attributes {
+    if let Some(ref param_value) = p_query_attributes {
         req_builder = req_builder.query(&[("attributes", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_paths {
+    if let Some(ref param_value) = p_query_paths {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -1416,10 +1416,10 @@ pub async fn get_archive(
             )]),
         };
     }
-    if let Some(ref param_value) = p_timestamp {
+    if let Some(ref param_value) = p_query_timestamp {
         req_builder = req_builder.query(&[("timestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_compression {
+    if let Some(ref param_value) = p_query_compression {
         req_builder = req_builder.query(&[("compression", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1478,27 +1478,27 @@ pub async fn get_blame(
     line_to: Option<i64>,
 ) -> Result<Vec<models::BlamePart>, Error<GetBlameError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_git_ref = git_ref;
-    let p_line_from = line_from;
-    let p_line_to = line_to;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
+    let p_query_git_ref = git_ref;
+    let p_query_line_from = line_from;
+    let p_query_line_to = line_to;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/blame/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_line_from {
+    if let Some(ref param_value) = p_query_line_from {
         req_builder = req_builder.query(&[("line_from", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_line_to {
+    if let Some(ref param_value) = p_query_line_to {
         req_builder = req_builder.query(&[("line_to", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1554,14 +1554,14 @@ pub async fn get_branch(
     branch_name: &str,
 ) -> Result<models::CommitBranch, Error<GetBranchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_branch_name = branch_name;
+    let p_path_repo_ref = repo_ref;
+    let p_path_branch_name = branch_name;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/branches/{branch_name}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        branch_name = crate::apis::urlencode(p_branch_name)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        branch_name = crate::apis::urlencode(p_path_branch_name)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1621,29 +1621,29 @@ pub async fn get_branches(
     include_commit: Option<bool>,
 ) -> Result<Vec<models::CommitBranch>, Error<GetBranchesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_include_commit = include_commit;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_include_commit = include_commit;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/branches",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_commit {
+    if let Some(ref param_value) = p_query_include_commit {
         req_builder = req_builder.query(&[("include_commit", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1699,17 +1699,17 @@ pub async fn get_codeowners_validate(
     git_ref: Option<&str>,
 ) -> Result<models::CodeOwnersValidation, Error<GetCodeownersValidateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_git_ref = git_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_query_git_ref = git_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/codeowners/validate",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1765,14 +1765,14 @@ pub async fn get_commit(
     commit_sha: &str,
 ) -> Result<models::Commit, Error<GetCommitError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_sha = commit_sha;
+    let p_path_repo_ref = repo_ref;
+    let p_path_commit_sha = commit_sha;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits/{commit_sha}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        commit_sha = crate::apis::urlencode(p_commit_sha)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        commit_sha = crate::apis::urlencode(p_path_commit_sha)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1829,14 +1829,14 @@ pub async fn get_commit_diff(
     commit_sha: &str,
 ) -> Result<String, Error<GetCommitDiffError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_sha = commit_sha;
+    let p_path_repo_ref = repo_ref;
+    let p_path_commit_sha = commit_sha;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits/{commit_sha}/diff",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        commit_sha = crate::apis::urlencode(p_commit_sha)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        commit_sha = crate::apis::urlencode(p_path_commit_sha)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1897,27 +1897,27 @@ pub async fn get_commit_file_content(
     size: Option<i32>,
 ) -> Result<models::DiffFileContent, Error<GetCommitFileContentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_sha = commit_sha;
-    let p_file_path = file_path;
-    let p_hunk_header = hunk_header;
-    let p_expand_up = expand_up;
-    let p_size = size;
+    let p_path_repo_ref = repo_ref;
+    let p_path_commit_sha = commit_sha;
+    let p_query_file_path = file_path;
+    let p_query_hunk_header = hunk_header;
+    let p_query_expand_up = expand_up;
+    let p_query_size = size;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits/{commit_sha}/content",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        commit_sha = crate::apis::urlencode(p_commit_sha)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        commit_sha = crate::apis::urlencode(p_path_commit_sha)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("file_path", &p_file_path.to_string())]);
-    req_builder = req_builder.query(&[("hunk_header", &p_hunk_header.to_string())]);
-    if let Some(ref param_value) = p_size {
+    req_builder = req_builder.query(&[("file_path", &p_query_file_path.to_string())]);
+    req_builder = req_builder.query(&[("hunk_header", &p_query_hunk_header.to_string())]);
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("expand_up", &p_expand_up.to_string())]);
+    req_builder = req_builder.query(&[("expand_up", &p_query_expand_up.to_string())]);
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -1979,49 +1979,49 @@ pub async fn get_commits(
     include_stats: Option<bool>,
 ) -> Result<Vec<models::CommitWithPathRenameDetails>, Error<GetCommitsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_git_ref = git_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_after = after;
-    let p_path = path;
-    let p_since = since;
-    let p_until = until;
-    let p_author = author;
-    let p_include_stats = include_stats;
+    let p_path_repo_ref = repo_ref;
+    let p_query_git_ref = git_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_after = after;
+    let p_query_path = path;
+    let p_query_since = since;
+    let p_query_until = until;
+    let p_query_author = author;
+    let p_query_include_stats = include_stats;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/commits",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_after {
+    if let Some(ref param_value) = p_query_after {
         req_builder = req_builder.query(&[("after", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_path {
+    if let Some(ref param_value) = p_query_path {
         req_builder = req_builder.query(&[("path", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_since {
+    if let Some(ref param_value) = p_query_since {
         req_builder = req_builder.query(&[("since", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_until {
+    if let Some(ref param_value) = p_query_until {
         req_builder = req_builder.query(&[("until", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_author {
+    if let Some(ref param_value) = p_query_author {
         req_builder = req_builder.query(&[("author", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_stats {
+    if let Some(ref param_value) = p_query_include_stats {
         req_builder = req_builder.query(&[("include_stats", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2079,23 +2079,23 @@ pub async fn get_content(
     include_commit: Option<bool>,
 ) -> Result<models::RepoContentOutput, Error<GetContentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_git_ref = git_ref;
-    let p_include_commit = include_commit;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
+    let p_query_git_ref = git_ref;
+    let p_query_include_commit = include_commit;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/content/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_commit {
+    if let Some(ref param_value) = p_query_include_commit {
         req_builder = req_builder.query(&[("include_commit", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2153,25 +2153,25 @@ pub async fn get_contributors(
     until: Option<i64>,
 ) -> Result<Vec<models::Contributor>, Error<GetContributorsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_git_ref = git_ref;
-    let p_since = since;
-    let p_until = until;
+    let p_path_repo_ref = repo_ref;
+    let p_query_git_ref = git_ref;
+    let p_query_since = since;
+    let p_query_until = until;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/contributors",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_since {
+    if let Some(ref param_value) = p_query_since {
         req_builder = req_builder.query(&[("since", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_until {
+    if let Some(ref param_value) = p_query_until {
         req_builder = req_builder.query(&[("until", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2227,14 +2227,14 @@ pub async fn get_diff_stats(
     path: &str,
 ) -> Result<models::DiffStats, Error<GetDiffStatsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/diff-stats/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2291,14 +2291,14 @@ pub async fn get_diffs(
     path: &str,
 ) -> Result<String, Error<GetDiffsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/diff/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2359,33 +2359,33 @@ pub async fn get_forks(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepositoryModel>, Error<GetForksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/forks",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2440,12 +2440,12 @@ pub async fn get_general(
     repo_ref: &str,
 ) -> Result<models::GeneralSettings, Error<GetGeneralError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/settings/general",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2501,12 +2501,12 @@ pub async fn get_has_starred(
     repo_ref: &str,
 ) -> Result<models::RepositoryStarModel, Error<GetHasStarredError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/stars/has_starred",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2562,12 +2562,12 @@ pub async fn get_import_progress(
     repo_ref: &str,
 ) -> Result<models::JobProgress, Error<GetImportProgressError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/import-progress",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2625,21 +2625,21 @@ pub async fn get_paths(
     include_directories: Option<bool>,
 ) -> Result<models::RepoPathsOutput, Error<GetPathsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_git_ref = git_ref;
-    let p_include_directories = include_directories;
+    let p_path_repo_ref = repo_ref;
+    let p_query_git_ref = git_ref;
+    let p_query_include_directories = include_directories;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/paths",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_directories {
+    if let Some(ref param_value) = p_query_include_directories {
         req_builder = req_builder.query(&[("include_directories", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2696,19 +2696,19 @@ pub async fn get_raw(
     git_ref: Option<&str>,
 ) -> Result<Vec<i32>, Error<GetRawError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_git_ref = git_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
+    let p_query_git_ref = git_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/raw/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2764,14 +2764,14 @@ pub async fn get_release(
     tag_ref: &str,
 ) -> Result<models::ReleaseCreator, Error<GetReleaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2832,33 +2832,33 @@ pub async fn get_releases(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::ReleaseCreator>, Error<GetReleasesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/releases",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -2913,12 +2913,12 @@ pub async fn get_repo(
     repo_ref: &str,
 ) -> Result<models::RepoParent, Error<GetRepoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -2974,12 +2974,12 @@ pub async fn get_repository_reseted_runner_register_token(
     repo_ref: &str,
 ) -> Result<models::RegisterTokenModel, Error<GetRepositoryResetedRunnerRegisterTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners/register_token/reseted",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3037,14 +3037,14 @@ pub async fn get_repository_runner(
     runner_uuid: &str,
 ) -> Result<models::RunnerModel, Error<GetRepositoryRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_runner_uuid = runner_uuid;
+    let p_path_repo_ref = repo_ref;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3100,12 +3100,12 @@ pub async fn get_repository_runner_register_token(
     repo_ref: &str,
 ) -> Result<models::RegisterTokenModel, Error<GetRepositoryRunnerRegisterTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners/register_token",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3165,25 +3165,25 @@ pub async fn get_repository_runners(
     query: Option<&str>,
 ) -> Result<Vec<models::RunnerCreator>, Error<GetRepositoryRunnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -3238,12 +3238,12 @@ pub async fn get_repository_service_accounts(
     repo_ref: &str,
 ) -> Result<Vec<models::UserModel>, Error<GetRepositoryServiceAccountsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/service-accounts",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3299,12 +3299,12 @@ pub async fn get_repository_stats(
     repo_ref: &str,
 ) -> Result<models::RepoStatsOutput, Error<GetRepositoryStatsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/stats",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3361,14 +3361,14 @@ pub async fn get_repository_variable(
     variable_identifier: &str,
 ) -> Result<models::VariableModel, Error<GetRepositoryVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_variable_identifier = variable_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3430,31 +3430,31 @@ pub async fn get_repository_variables(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::VariableGroup>, Error<GetRepositoryVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_types = types;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_types = types;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/variables",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_types {
+    if let Some(ref param_value) = p_query_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -3473,10 +3473,10 @@ pub async fn get_repository_variables(
             )]),
         };
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -3531,12 +3531,12 @@ pub async fn get_security(
     repo_ref: &str,
 ) -> Result<models::SecuritySettings, Error<GetSecurityError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/settings/security",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -3597,33 +3597,33 @@ pub async fn get_stars(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::UserModel>, Error<GetStarsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/stars",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -3682,29 +3682,29 @@ pub async fn get_tags(
     include_commit: Option<bool>,
 ) -> Result<Vec<models::CommitTag>, Error<GetTagsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_include_commit = include_commit;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_include_commit = include_commit;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/tags",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_commit {
+    if let Some(ref param_value) = p_query_include_commit {
         req_builder = req_builder.query(&[("include_commit", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -3760,13 +3760,13 @@ pub async fn patch_repo(
     repo_update_input: models::RepoUpdateInput,
 ) -> Result<models::RepositoryModel, Error<PatchRepoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_update_input = repo_update_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_update_input = repo_update_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -3789,7 +3789,7 @@ pub async fn patch_repo(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_update_input);
+    req_builder = req_builder.json(&p_body_repo_update_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3827,15 +3827,15 @@ pub async fn patch_repository_runner(
     runner_patch_input: models::RunnerPatchInput,
 ) -> Result<models::RunnerModel, Error<PatchRepositoryRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_runner_uuid = runner_uuid;
-    let p_runner_patch_input = runner_patch_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_runner_uuid = runner_uuid;
+    let p_body_runner_patch_input = runner_patch_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/runners/{runner_uuid}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -3858,7 +3858,7 @@ pub async fn patch_repository_runner(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_runner_patch_input);
+    req_builder = req_builder.json(&p_body_runner_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3896,15 +3896,15 @@ pub async fn patch_repository_variable(
     variable_patch_input: models::VariablePatchInput,
 ) -> Result<models::VariableModel, Error<PatchRepositoryVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_variable_identifier = variable_identifier;
-    let p_variable_patch_input = variable_patch_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_variable_identifier = variable_identifier;
+    let p_body_variable_patch_input = variable_patch_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/variables/{variable_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -3927,7 +3927,7 @@ pub async fn patch_repository_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_patch_input);
+    req_builder = req_builder.json(&p_body_variable_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -3964,13 +3964,13 @@ pub async fn patch_security(
     security_settings: models::SecuritySettings,
 ) -> Result<models::SecuritySettings, Error<PatchSecurityError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_security_settings = security_settings;
+    let p_path_repo_ref = repo_ref;
+    let p_body_security_settings = security_settings;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/settings/security",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -3993,7 +3993,7 @@ pub async fn patch_security(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_security_settings);
+    req_builder = req_builder.json(&p_body_security_settings);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4030,13 +4030,13 @@ pub async fn patch_stars(
     repo_stars_input: models::RepoStarsInput,
 ) -> Result<models::RepositoryModel, Error<PatchStarsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_stars_input = repo_stars_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_stars_input = repo_stars_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/stars",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4059,7 +4059,7 @@ pub async fn patch_stars(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_stars_input);
+    req_builder = req_builder.json(&p_body_repo_stars_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4096,13 +4096,13 @@ pub async fn post_branch(
     branch_create_input: models::BranchCreateInput,
 ) -> Result<models::CommitBranch, Error<PostBranchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_branch_create_input = branch_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_branch_create_input = branch_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/branches",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4125,7 +4125,7 @@ pub async fn post_branch(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_branch_create_input);
+    req_builder = req_builder.json(&p_body_branch_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4162,13 +4162,13 @@ pub async fn post_default_branch(
     repo_update_default_branch_input: models::RepoUpdateDefaultBranchInput,
 ) -> Result<models::RepositoryModel, Error<PostDefaultBranchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_update_default_branch_input = repo_update_default_branch_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_update_default_branch_input = repo_update_default_branch_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/default-branch",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4191,7 +4191,7 @@ pub async fn post_default_branch(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_update_default_branch_input);
+    req_builder = req_builder.json(&p_body_repo_update_default_branch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4230,22 +4230,22 @@ pub async fn post_diffs(
     commit_diff_file: Vec<models::CommitDiffFile>,
 ) -> Result<Vec<i32>, Error<PostDiffsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_path = path2;
-    let p_commit_diff_file = commit_diff_file;
+    let p_path_repo_ref = repo_ref;
+    let p_query_path = path;
+    let p_path_path = path2;
+    let p_body_commit_diff_file = commit_diff_file;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/diff/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    req_builder = req_builder.query(&[("path", &p_path.to_string())]);
+    req_builder = req_builder.query(&[("path", &p_query_path.to_string())]);
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -4263,7 +4263,7 @@ pub async fn post_diffs(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_commit_diff_file);
+    req_builder = req_builder.json(&p_body_commit_diff_file);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4301,15 +4301,15 @@ pub async fn post_merge_check(
     repo_merge_check_input: models::RepoMergeCheckInput,
 ) -> Result<models::RepoMergeCheckOutput, Error<PostMergeCheckError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_path = path;
-    let p_repo_merge_check_input = repo_merge_check_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_path = path;
+    let p_body_repo_merge_check_input = repo_merge_check_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/merge-check/{path}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        path = crate::apis::urlencode(p_path)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        path = crate::apis::urlencode(p_path_path)
     );
     let mut req_builder = configuration
         .client
@@ -4332,7 +4332,7 @@ pub async fn post_merge_check(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_merge_check_input);
+    req_builder = req_builder.json(&p_body_repo_merge_check_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4370,20 +4370,20 @@ pub async fn post_path_details(
     git_ref: Option<&str>,
 ) -> Result<Vec<models::PathDetails>, Error<PostPathDetailsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_request_body = request_body;
-    let p_git_ref = git_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_body_request_body = request_body;
+    let p_query_git_ref = git_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/path-details",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_git_ref {
+    if let Some(ref param_value) = p_query_git_ref {
         req_builder = req_builder.query(&[("git_ref", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -4403,7 +4403,7 @@ pub async fn post_path_details(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_request_body);
+    req_builder = req_builder.json(&p_body_request_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4440,13 +4440,13 @@ pub async fn post_release(
     release_create_input: models::ReleaseCreateInput,
 ) -> Result<models::ReleaseModel, Error<PostReleaseError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_release_create_input = release_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_release_create_input = release_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/releases",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4469,7 +4469,7 @@ pub async fn post_release(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_release_create_input);
+    req_builder = req_builder.json(&p_body_release_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4505,7 +4505,7 @@ pub async fn post_repo(
     repo_create_input: models::RepoCreateInput,
 ) -> Result<models::RepositoryModel, Error<PostRepoError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_create_input = repo_create_input;
+    let p_body_repo_create_input = repo_create_input;
 
     let uri_str = format!("{}/repos", configuration.base_path);
     let mut req_builder = configuration
@@ -4529,7 +4529,7 @@ pub async fn post_repo(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_create_input);
+    req_builder = req_builder.json(&p_body_repo_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4565,7 +4565,7 @@ pub async fn post_repository_import(
     repo_import_input: models::RepoImportInput,
 ) -> Result<models::RepositoryModel, Error<PostRepositoryImportError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_import_input = repo_import_input;
+    let p_body_repo_import_input = repo_import_input;
 
     let uri_str = format!("{}/repos/import", configuration.base_path);
     let mut req_builder = configuration
@@ -4589,7 +4589,7 @@ pub async fn post_repository_import(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_import_input);
+    req_builder = req_builder.json(&p_body_repo_import_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4626,13 +4626,13 @@ pub async fn post_repository_move(
     repo_move_input: models::RepoMoveInput,
 ) -> Result<models::RepositoryModel, Error<PostRepositoryMoveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_move_input = repo_move_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_move_input = repo_move_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/move",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4655,7 +4655,7 @@ pub async fn post_repository_move(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_move_input);
+    req_builder = req_builder.json(&p_body_repo_move_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4691,12 +4691,12 @@ pub async fn post_repository_purge(
     repo_ref: &str,
 ) -> Result<(), Error<PostRepositoryPurgeError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/purge",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4744,13 +4744,13 @@ pub async fn post_repository_variable(
     variable_create_input: models::VariableCreateInput,
 ) -> Result<models::VariableModel, Error<PostRepositoryVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_variable_create_input = variable_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_variable_create_input = variable_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/variables",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4773,7 +4773,7 @@ pub async fn post_repository_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_create_input);
+    req_builder = req_builder.json(&p_body_variable_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4810,13 +4810,13 @@ pub async fn post_tag(
     tag_create_input: models::TagCreateInput,
 ) -> Result<models::CommitTag, Error<PostTagError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_create_input = tag_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_tag_create_input = tag_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/tags",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4839,7 +4839,7 @@ pub async fn post_tag(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_tag_create_input);
+    req_builder = req_builder.json(&p_body_tag_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4876,13 +4876,13 @@ pub async fn rename_branch(
     branch_rename_input: models::BranchRenameInput,
 ) -> Result<models::CommitBranch, Error<RenameBranchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_branch_rename_input = branch_rename_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_branch_rename_input = branch_rename_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/branches",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4905,7 +4905,7 @@ pub async fn rename_branch(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_branch_rename_input);
+    req_builder = req_builder.json(&p_body_branch_rename_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -4942,13 +4942,13 @@ pub async fn repo_restore(
     repo_restore_input: models::RepoRestoreInput,
 ) -> Result<models::RepositoryModel, Error<RepoRestoreError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_repo_restore_input = repo_restore_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_repo_restore_input = repo_restore_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/restore",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -4971,7 +4971,7 @@ pub async fn repo_restore(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_repo_restore_input);
+    req_builder = req_builder.json(&p_body_repo_restore_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -5007,12 +5007,12 @@ pub async fn soft_repository_delete(
     repo_ref: &str,
 ) -> Result<(), Error<SoftRepositoryDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client

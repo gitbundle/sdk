@@ -132,14 +132,14 @@ pub async fn delete_webhook(
     webhook_identifier: &str,
 ) -> Result<(), Error<DeleteWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        webhook_identifier = crate::apis::urlencode(p_webhook_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        webhook_identifier = crate::apis::urlencode(p_path_webhook_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -188,16 +188,16 @@ pub async fn get_execution(
     webhook_execution_id: i64,
 ) -> Result<models::WebhookExecutionModel, Error<GetExecutionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
-    let p_webhook_execution_id = webhook_execution_id;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
+    let p_path_webhook_execution_id = webhook_execution_id;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        webhook_identifier = crate::apis::urlencode(p_webhook_identifier),
-        webhook_execution_id = p_webhook_execution_id
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        webhook_identifier = crate::apis::urlencode(p_path_webhook_identifier),
+        webhook_execution_id = p_path_webhook_execution_id
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -254,14 +254,14 @@ pub async fn get_executions(
     webhook_identifier: &str,
 ) -> Result<Vec<models::WebhookExecutionModel>, Error<GetExecutionsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        webhook_identifier = crate::apis::urlencode(p_webhook_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        webhook_identifier = crate::apis::urlencode(p_path_webhook_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -318,14 +318,14 @@ pub async fn get_webhook(
     webhook_identifier: &str,
 ) -> Result<models::WebhookModel, Error<GetWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        webhook_identifier = crate::apis::urlencode(p_webhook_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        webhook_identifier = crate::apis::urlencode(p_path_webhook_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -386,33 +386,33 @@ pub async fn get_webhooks(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::WebhookModel>, Error<GetWebhooksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_repo_ref = repo_ref;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -469,15 +469,15 @@ pub async fn patch_webhook(
     webhook_patch_input: models::WebhookPatchInput,
 ) -> Result<models::WebhookModel, Error<PatchWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
-    let p_webhook_patch_input = webhook_patch_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
+    let p_body_webhook_patch_input = webhook_patch_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        webhook_identifier = crate::apis::urlencode(p_webhook_identifier)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        webhook_identifier = crate::apis::urlencode(p_path_webhook_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -500,7 +500,7 @@ pub async fn patch_webhook(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_webhook_patch_input);
+    req_builder = req_builder.json(&p_body_webhook_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -538,11 +538,11 @@ pub async fn post_retrigger(
     webhook_execution_id: i64,
 ) -> Result<models::WebhookExecutionModel, Error<PostRetriggerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_identifier = webhook_identifier;
-    let p_webhook_execution_id = webhook_execution_id;
+    let p_path_repo_ref = repo_ref;
+    let p_path_webhook_identifier = webhook_identifier;
+    let p_path_webhook_execution_id = webhook_execution_id;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}/retrigger", configuration.base_path, repo_ref=crate::apis::urlencode(p_repo_ref), webhook_identifier=crate::apis::urlencode(p_webhook_identifier), webhook_execution_id=p_webhook_execution_id);
+    let uri_str = format!("{}/repos/{repo_ref}/+/webhooks/{webhook_identifier}/executions/{webhook_execution_id}/retrigger", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), webhook_identifier=crate::apis::urlencode(p_path_webhook_identifier), webhook_execution_id=p_path_webhook_execution_id);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);
@@ -600,13 +600,13 @@ pub async fn post_webhook(
     webhook_create_input: models::WebhookCreateInput,
 ) -> Result<models::WebhookModel, Error<PostWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_webhook_create_input = webhook_create_input;
+    let p_path_repo_ref = repo_ref;
+    let p_body_webhook_create_input = webhook_create_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/webhooks",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -629,7 +629,7 @@ pub async fn post_webhook(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_webhook_create_input);
+    req_builder = req_builder.json(&p_body_webhook_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

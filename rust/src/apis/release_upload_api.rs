@@ -118,14 +118,14 @@ pub async fn delete_upload(
     tag_ref: &str,
 ) -> Result<(), Error<DeleteUploadError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration
         .client
@@ -173,14 +173,14 @@ pub async fn get_assets(
     tag_ref: &str,
 ) -> Result<Vec<String>, Error<GetAssetsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases/assets/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -237,14 +237,14 @@ pub async fn get_download(
     tag_ref: &str,
 ) -> Result<Vec<i32>, Error<GetDownloadError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/download/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -301,14 +301,14 @@ pub async fn get_restore(
     tag_ref: &str,
 ) -> Result<Vec<i32>, Error<GetRestoreError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -364,12 +364,12 @@ pub async fn head_offset(
     repo_ref: &str,
 ) -> Result<(), Error<HeadOffsetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
+    let p_path_repo_ref = repo_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration
         .client
@@ -417,14 +417,14 @@ pub async fn patch_chunks(
     tag_ref: &str,
 ) -> Result<String, Error<PatchChunksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration
         .client
@@ -483,14 +483,14 @@ pub async fn post_upload(
     tag_ref: &str,
 ) -> Result<String, Error<PostUploadError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_tag_ref = tag_ref;
+    let p_path_repo_ref = repo_ref;
+    let p_path_tag_ref = tag_ref;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/uploads/releases/{tag_ref}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        tag_ref = crate::apis::urlencode(p_tag_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        tag_ref = crate::apis::urlencode(p_path_tag_ref)
     );
     let mut req_builder = configuration
         .client

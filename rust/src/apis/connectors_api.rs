@@ -75,12 +75,12 @@ pub async fn delete_connector(
     connector_ref: &str,
 ) -> Result<(), Error<DeleteConnectorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_connector_ref = connector_ref;
+    let p_path_connector_ref = connector_ref;
 
     let uri_str = format!(
         "{}/connectors/{connector_ref}",
         configuration.base_path,
-        connector_ref = crate::apis::urlencode(p_connector_ref)
+        connector_ref = crate::apis::urlencode(p_path_connector_ref)
     );
     let mut req_builder = configuration
         .client
@@ -127,12 +127,12 @@ pub async fn get_connector(
     connector_ref: &str,
 ) -> Result<models::ConnectorModel, Error<GetConnectorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_connector_ref = connector_ref;
+    let p_path_connector_ref = connector_ref;
 
     let uri_str = format!(
         "{}/connectors/{connector_ref}",
         configuration.base_path,
-        connector_ref = crate::apis::urlencode(p_connector_ref)
+        connector_ref = crate::apis::urlencode(p_path_connector_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -189,13 +189,13 @@ pub async fn patch_connector(
     connector_patch_input: models::ConnectorPatchInput,
 ) -> Result<models::ConnectorModel, Error<PatchConnectorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_connector_ref = connector_ref;
-    let p_connector_patch_input = connector_patch_input;
+    let p_path_connector_ref = connector_ref;
+    let p_body_connector_patch_input = connector_patch_input;
 
     let uri_str = format!(
         "{}/connectors/{connector_ref}",
         configuration.base_path,
-        connector_ref = crate::apis::urlencode(p_connector_ref)
+        connector_ref = crate::apis::urlencode(p_path_connector_ref)
     );
     let mut req_builder = configuration
         .client
@@ -218,7 +218,7 @@ pub async fn patch_connector(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_connector_patch_input);
+    req_builder = req_builder.json(&p_body_connector_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -254,7 +254,7 @@ pub async fn post_connector(
     connector_create_input: models::ConnectorCreateInput,
 ) -> Result<models::ConnectorModel, Error<PostConnectorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_connector_create_input = connector_create_input;
+    let p_body_connector_create_input = connector_create_input;
 
     let uri_str = format!("{}/connectors", configuration.base_path);
     let mut req_builder = configuration
@@ -278,7 +278,7 @@ pub async fn post_connector(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_connector_create_input);
+    req_builder = req_builder.json(&p_body_connector_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

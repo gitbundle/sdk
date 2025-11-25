@@ -313,12 +313,12 @@ pub async fn delete_public_key(
     public_key_name: &str,
 ) -> Result<(), Error<DeletePublicKeyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_public_key_name = public_key_name;
+    let p_path_public_key_name = public_key_name;
 
     let uri_str = format!(
         "{}/user/keys/{public_key_name}",
         configuration.base_path,
-        public_key_name = crate::apis::urlencode(p_public_key_name)
+        public_key_name = crate::apis::urlencode(p_path_public_key_name)
     );
     let mut req_builder = configuration
         .client
@@ -365,12 +365,12 @@ pub async fn delete_session(
     session_name: &str,
 ) -> Result<(), Error<DeleteSessionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_session_name = session_name;
+    let p_path_session_name = session_name;
 
     let uri_str = format!(
         "{}/user/sessions/{session_name}",
         configuration.base_path,
-        session_name = crate::apis::urlencode(p_session_name)
+        session_name = crate::apis::urlencode(p_path_session_name)
     );
     let mut req_builder = configuration
         .client
@@ -417,12 +417,12 @@ pub async fn delete_token(
     token_name: &str,
 ) -> Result<(), Error<DeleteTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_token_name = token_name;
+    let p_path_token_name = token_name;
 
     let uri_str = format!(
         "{}/user/tokens/{token_name}",
         configuration.base_path,
-        token_name = crate::apis::urlencode(p_token_name)
+        token_name = crate::apis::urlencode(p_path_token_name)
     );
     let mut req_builder = configuration
         .client
@@ -518,32 +518,32 @@ pub async fn get_feeds(
     after: Option<i64>,
 ) -> Result<Vec<models::FeedRelations>, Error<GetFeedsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_order = order;
-    let p_type = r#type;
-    let p_before = before;
-    let p_after = after;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_order = order;
+    let p_query_type = r#type;
+    let p_query_before = before;
+    let p_query_after = after;
 
     let uri_str = format!("{}/user/feeds", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_type {
+    if let Some(ref param_value) = p_query_type {
         req_builder = req_builder.query(&[("type", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_before {
+    if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_after {
+    if let Some(ref param_value) = p_query_after {
         req_builder = req_builder.query(&[("after", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -599,17 +599,17 @@ pub async fn get_has_perm(
     perm: models::Permission,
 ) -> Result<bool, Error<GetHasPermError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_perm = perm;
+    let p_path_repo_ref = repo_ref;
+    let p_query_perm = perm;
 
     let uri_str = format!(
         "{}/user/{repo_ref}/+/has_perm",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("perm", &p_perm.to_string())]);
+    req_builder = req_builder.query(&[("perm", &p_query_perm.to_string())]);
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -663,16 +663,16 @@ pub async fn get_heatmap(
     after: Option<i64>,
 ) -> Result<models::Heatmap, Error<GetHeatmapError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_before = before;
-    let p_after = after;
+    let p_query_before = before;
+    let p_query_after = after;
 
     let uri_str = format!("{}/user/heatmap", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_before {
+    if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_after {
+    if let Some(ref param_value) = p_query_after {
         req_builder = req_builder.query(&[("after", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -731,28 +731,28 @@ pub async fn get_memberships(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::MembershipGroup>, Error<GetMembershipsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/user/memberships", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -811,28 +811,28 @@ pub async fn get_public_keys(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::PublicKeyModel>, Error<GetPublicKeysError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/user/keys", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1050,28 +1050,28 @@ pub async fn get_user_groups(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::GroupModel>, Error<GetUserGroupsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/user/groups", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1130,28 +1130,28 @@ pub async fn get_user_repos(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepoParent>, Error<GetUserReposError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/user/repos", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1210,28 +1210,28 @@ pub async fn get_user_stars(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepoParent>, Error<GetUserStarsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/user/stars", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1394,7 +1394,7 @@ pub async fn patch_user_user(
     user_patch_input: models::UserPatchInput,
 ) -> Result<models::UserModel, Error<PatchUserUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_patch_input = user_patch_input;
+    let p_body_user_patch_input = user_patch_input;
 
     let uri_str = format!("{}/user", configuration.base_path);
     let mut req_builder = configuration
@@ -1418,7 +1418,7 @@ pub async fn patch_user_user(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_user_patch_input);
+    req_builder = req_builder.json(&p_body_user_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1454,7 +1454,7 @@ pub async fn post_public_key(
     public_key_create_input: models::PublicKeyCreateInput,
 ) -> Result<models::PublicKeyModel, Error<PostPublicKeyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_public_key_create_input = public_key_create_input;
+    let p_body_public_key_create_input = public_key_create_input;
 
     let uri_str = format!("{}/user/keys", configuration.base_path);
     let mut req_builder = configuration
@@ -1478,7 +1478,7 @@ pub async fn post_public_key(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_public_key_create_input);
+    req_builder = req_builder.json(&p_body_public_key_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1514,7 +1514,7 @@ pub async fn post_token(
     token_create_input: models::TokenCreateInput,
 ) -> Result<models::TokenCreateOutput, Error<PostTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_token_create_input = token_create_input;
+    let p_body_token_create_input = token_create_input;
 
     let uri_str = format!("{}/user/tokens", configuration.base_path);
     let mut req_builder = configuration
@@ -1538,7 +1538,7 @@ pub async fn post_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_token_create_input);
+    req_builder = req_builder.json(&p_body_token_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1574,7 +1574,7 @@ pub async fn post_two_factor(
     two_factor_create_input: models::TwoFactorCreateInput,
 ) -> Result<String, Error<PostTwoFactorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_two_factor_create_input = two_factor_create_input;
+    let p_body_two_factor_create_input = two_factor_create_input;
 
     let uri_str = format!("{}/user/security/two_factor", configuration.base_path);
     let mut req_builder = configuration
@@ -1598,7 +1598,7 @@ pub async fn post_two_factor(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_two_factor_create_input);
+    req_builder = req_builder.json(&p_body_two_factor_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

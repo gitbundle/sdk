@@ -103,12 +103,12 @@ pub async fn delete_service_account(
     sa_identifier: &str,
 ) -> Result<(), Error<DeleteServiceAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
+    let p_path_sa_identifier = sa_identifier;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -156,14 +156,14 @@ pub async fn delete_service_account_token(
     token_name: &str,
 ) -> Result<(), Error<DeleteServiceAccountTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
-    let p_token_name = token_name;
+    let p_path_sa_identifier = sa_identifier;
+    let p_path_token_name = token_name;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}/tokens/{token_name}",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier),
-        token_name = crate::apis::urlencode(p_token_name)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier),
+        token_name = crate::apis::urlencode(p_path_token_name)
     );
     let mut req_builder = configuration
         .client
@@ -210,12 +210,12 @@ pub async fn get_service_account(
     sa_identifier: &str,
 ) -> Result<models::UserModel, Error<GetServiceAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
+    let p_path_sa_identifier = sa_identifier;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -271,12 +271,12 @@ pub async fn get_service_account_tokens(
     sa_identifier: &str,
 ) -> Result<Vec<models::TokenModel>, Error<GetServiceAccountTokensError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
+    let p_path_sa_identifier = sa_identifier;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}/tokens",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -333,13 +333,13 @@ pub async fn post_service_account(
     service_account_create_input: models::ServiceAccountCreateInput,
 ) -> Result<models::UserModel, Error<PostServiceAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
-    let p_service_account_create_input = service_account_create_input;
+    let p_path_sa_identifier = sa_identifier;
+    let p_body_service_account_create_input = service_account_create_input;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -362,7 +362,7 @@ pub async fn post_service_account(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_service_account_create_input);
+    req_builder = req_builder.json(&p_body_service_account_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -399,13 +399,13 @@ pub async fn post_service_account_token(
     service_account_create_input: models::ServiceAccountCreateInput,
 ) -> Result<models::ServiceAccountTokenOutput, Error<PostServiceAccountTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_sa_identifier = sa_identifier;
-    let p_service_account_create_input = service_account_create_input;
+    let p_path_sa_identifier = sa_identifier;
+    let p_body_service_account_create_input = service_account_create_input;
 
     let uri_str = format!(
         "{}/service-accounts/{sa_identifier}/tokens",
         configuration.base_path,
-        sa_identifier = crate::apis::urlencode(p_sa_identifier)
+        sa_identifier = crate::apis::urlencode(p_path_sa_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -428,7 +428,7 @@ pub async fn post_service_account_token(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_service_account_create_input);
+    req_builder = req_builder.json(&p_body_service_account_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -136,33 +136,33 @@ pub async fn get_profile_groups(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::GroupModel>, Error<GetProfileGroupsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_identifier = identifier;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/users/{identifier}/groups",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -208,33 +208,33 @@ pub async fn get_profile_repos(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepoParent>, Error<GetProfileReposError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_identifier = identifier;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/users/{identifier}/repos",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -281,37 +281,37 @@ pub async fn get_users_feeds(
     after: Option<i64>,
 ) -> Result<Vec<models::FeedRelations>, Error<GetUsersFeedsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_page = page;
-    let p_size = size;
-    let p_order = order;
-    let p_type = r#type;
-    let p_before = before;
-    let p_after = after;
+    let p_path_identifier = identifier;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_order = order;
+    let p_query_type = r#type;
+    let p_query_before = before;
+    let p_query_after = after;
 
     let uri_str = format!(
         "{}/users/{identifier}/feeds",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_type {
+    if let Some(ref param_value) = p_query_type {
         req_builder = req_builder.query(&[("type", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_before {
+    if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_after {
+    if let Some(ref param_value) = p_query_after {
         req_builder = req_builder.query(&[("after", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -354,19 +354,19 @@ pub async fn get_users_has_perm(
     perm: models::Permission,
 ) -> Result<bool, Error<GetUsersHasPermError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_repo_ref = repo_ref;
-    let p_perm = perm;
+    let p_path_identifier = identifier;
+    let p_path_repo_ref = repo_ref;
+    let p_query_perm = perm;
 
     let uri_str = format!(
         "{}/users/{identifier}/{repo_ref}/+/has_perm",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier),
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        identifier = crate::apis::urlencode(p_path_identifier),
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("perm", &p_perm.to_string())]);
+    req_builder = req_builder.query(&[("perm", &p_query_perm.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -407,21 +407,21 @@ pub async fn get_users_heatmap(
     after: Option<i64>,
 ) -> Result<models::Heatmap, Error<GetUsersHeatmapError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_before = before;
-    let p_after = after;
+    let p_path_identifier = identifier;
+    let p_query_before = before;
+    let p_query_after = after;
 
     let uri_str = format!(
         "{}/users/{identifier}/heatmap",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_before {
+    if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_after {
+    if let Some(ref param_value) = p_query_after {
         req_builder = req_builder.query(&[("after", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -467,33 +467,33 @@ pub async fn get_users_stars(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::RepoParent>, Error<GetUsersStarsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_path_identifier = identifier;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!(
         "{}/users/{identifier}/stars",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -534,12 +534,12 @@ pub async fn get_users_user(
     identifier: &str,
 ) -> Result<models::UserModel, Error<GetUsersUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_identifier = identifier;
+    let p_path_identifier = identifier;
 
     let uri_str = format!(
         "{}/users/{identifier}",
         configuration.base_path,
-        identifier = crate::apis::urlencode(p_identifier)
+        identifier = crate::apis::urlencode(p_path_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -587,27 +587,27 @@ pub async fn get_users_users(
     admin: Option<bool>,
 ) -> Result<Vec<models::UserModel>, Error<GetUsersUsersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_types = types;
-    let p_sort = sort;
-    let p_order = order;
-    let p_admin = admin;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_types = types;
+    let p_query_sort = sort;
+    let p_query_order = order;
+    let p_query_admin = admin;
 
     let uri_str = format!("{}/users", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_types {
+    if let Some(ref param_value) = p_query_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -626,13 +626,13 @@ pub async fn get_users_users(
             )]),
         };
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_admin {
+    if let Some(ref param_value) = p_query_admin {
         req_builder = req_builder.query(&[("admin", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {

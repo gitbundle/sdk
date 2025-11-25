@@ -6,4 +6,16 @@ packageVersion: 3.0.0
 gitUserId: gitbundle
 gitRepoId: sdk-rust
 
+library: reqwest
 mockall: true
+
+additionalProperties:
+  authors: "RenovZ <cgsixv@gmail.com>"
+
+# templateDir: template
+# files:
+#   api.mustache:
+#     templateType: API
+#   api_client_default.mustache:
+#     templateType: API
+#     destinationFilename: default.rs

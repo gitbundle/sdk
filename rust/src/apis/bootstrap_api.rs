@@ -34,14 +34,14 @@ pub async fn get_bootstrap(
     path: Option<&str>,
 ) -> Result<models::BootstrapMetadata, Error<GetBootstrapError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bootstrap_ref = bootstrap_ref;
-    let p_path = path;
+    let p_path_bootstrap_ref = bootstrap_ref;
+    let p_path_path = path;
 
     let uri_str = format!(
         "{}/bootstrap/{bootstrap_ref}/+/{path}",
         configuration.base_path,
-        bootstrap_ref = crate::apis::urlencode(p_bootstrap_ref),
-        path = crate::apis::urlencode(p_path.unwrap())
+        bootstrap_ref = crate::apis::urlencode(p_path_bootstrap_ref),
+        path = crate::apis::urlencode(p_path_path.unwrap())
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 

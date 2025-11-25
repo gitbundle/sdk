@@ -47,7 +47,7 @@ pub async fn poll_stage(
     runner_context: models::RunnerContext,
 ) -> Result<models::RunnerStageOutput, Error<PollStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_runner_context = runner_context;
+    let p_body_runner_context = runner_context;
 
     let uri_str = format!("{}/runners/poll_stage", configuration.base_path);
     let mut req_builder = configuration
@@ -71,7 +71,7 @@ pub async fn poll_stage(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_runner_context);
+    req_builder = req_builder.json(&p_body_runner_context);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -107,7 +107,7 @@ pub async fn post_runners_register(
     runner_post_input: models::RunnerPostInput,
 ) -> Result<models::TokenCreateOutput, Error<PostRunnersRegisterError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_runner_post_input = runner_post_input;
+    let p_body_runner_post_input = runner_post_input;
 
     let uri_str = format!("{}/runners/register", configuration.base_path);
     let mut req_builder = configuration
@@ -117,7 +117,7 @@ pub async fn post_runners_register(
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    req_builder = req_builder.json(&p_runner_post_input);
+    req_builder = req_builder.json(&p_body_runner_post_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

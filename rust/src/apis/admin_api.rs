@@ -299,12 +299,12 @@ pub async fn delete_group(
     group_ref: &str,
 ) -> Result<(), Error<DeleteGroupError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_group_ref = group_ref;
+    let p_path_group_ref = group_ref;
 
     let uri_str = format!(
         "{}/admin/groups/{group_ref}",
         configuration.base_path,
-        group_ref = crate::apis::urlencode(p_group_ref)
+        group_ref = crate::apis::urlencode(p_path_group_ref)
     );
     let mut req_builder = configuration
         .client
@@ -351,12 +351,12 @@ pub async fn delete_runner(
     runner_uuid: &str,
 ) -> Result<(), Error<DeleteRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_runner_uuid = runner_uuid;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/admin/runners/{runner_uuid}",
         configuration.base_path,
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -403,12 +403,12 @@ pub async fn delete_user(
     user_identifier: &str,
 ) -> Result<(), Error<DeleteUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_identifier = user_identifier;
+    let p_path_user_identifier = user_identifier;
 
     let uri_str = format!(
         "{}/admin/users/{user_identifier}",
         configuration.base_path,
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -455,12 +455,12 @@ pub async fn delete_variable(
     variable_identifier: &str,
 ) -> Result<(), Error<DeleteVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_identifier = variable_identifier;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/admin/variables/{variable_identifier}",
         configuration.base_path,
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -511,28 +511,28 @@ pub async fn get_groups(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::GroupModel>, Error<GetGroupsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/admin/groups", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -644,12 +644,12 @@ pub async fn get_runner(
     runner_uuid: &str,
 ) -> Result<models::RunnerModel, Error<GetRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_runner_uuid = runner_uuid;
+    let p_path_runner_uuid = runner_uuid;
 
     let uri_str = format!(
         "{}/admin/runners/{runner_uuid}",
         configuration.base_path,
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -760,20 +760,20 @@ pub async fn get_runners(
     query: Option<&str>,
 ) -> Result<Vec<models::RunnerCreator>, Error<GetRunnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
 
     let uri_str = format!("{}/admin/runners", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -881,12 +881,12 @@ pub async fn get_user(
     user_identifier: &str,
 ) -> Result<models::UserModel, Error<GetUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_identifier = user_identifier;
+    let p_path_user_identifier = user_identifier;
 
     let uri_str = format!(
         "{}/admin/users/{user_identifier}",
         configuration.base_path,
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -946,28 +946,28 @@ pub async fn get_users(
     sort: Option<models::UserSort>,
 ) -> Result<Vec<models::UserModel>, Error<GetUsersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_order = order;
-    let p_sort = sort;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_order = order;
+    let p_query_sort = sort;
 
     let uri_str = format!("{}/admin/users", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1022,12 +1022,12 @@ pub async fn get_variable(
     variable_identifier: &str,
 ) -> Result<models::VariableModel, Error<GetVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_identifier = variable_identifier;
+    let p_path_variable_identifier = variable_identifier;
 
     let uri_str = format!(
         "{}/admin/variables/{variable_identifier}",
         configuration.base_path,
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
@@ -1088,26 +1088,26 @@ pub async fn get_variables(
     order: Option<models::OrderOption>,
 ) -> Result<Vec<models::VariableGroup>, Error<GetVariablesError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
-    let p_types = types;
-    let p_sort = sort;
-    let p_order = order;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
+    let p_query_types = types;
+    let p_query_sort = sort;
+    let p_query_order = order;
 
     let uri_str = format!("{}/admin/variables", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_types {
+    if let Some(ref param_value) = p_query_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(
                 &param_value
@@ -1126,10 +1126,10 @@ pub async fn get_variables(
             )]),
         };
     }
-    if let Some(ref param_value) = p_sort {
+    if let Some(ref param_value) = p_query_sort {
         req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
+    if let Some(ref param_value) = p_query_order {
         req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -1185,13 +1185,13 @@ pub async fn patch_runner(
     runner_patch_input: models::RunnerPatchInput,
 ) -> Result<models::RunnerModel, Error<PatchRunnerError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_runner_uuid = runner_uuid;
-    let p_runner_patch_input = runner_patch_input;
+    let p_path_runner_uuid = runner_uuid;
+    let p_body_runner_patch_input = runner_patch_input;
 
     let uri_str = format!(
         "{}/admin/runners/{runner_uuid}",
         configuration.base_path,
-        runner_uuid = crate::apis::urlencode(p_runner_uuid)
+        runner_uuid = crate::apis::urlencode(p_path_runner_uuid)
     );
     let mut req_builder = configuration
         .client
@@ -1214,7 +1214,7 @@ pub async fn patch_runner(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_runner_patch_input);
+    req_builder = req_builder.json(&p_body_runner_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1251,13 +1251,13 @@ pub async fn patch_user(
     user_patch_input: models::UserPatchInput,
 ) -> Result<models::UserModel, Error<PatchUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_identifier = user_identifier;
-    let p_user_patch_input = user_patch_input;
+    let p_path_user_identifier = user_identifier;
+    let p_body_user_patch_input = user_patch_input;
 
     let uri_str = format!(
         "{}/admin/users/{user_identifier}",
         configuration.base_path,
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1280,7 +1280,7 @@ pub async fn patch_user(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_user_patch_input);
+    req_builder = req_builder.json(&p_body_user_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1317,13 +1317,13 @@ pub async fn patch_user_admin(
     admin_patch_input: models::AdminPatchInput,
 ) -> Result<models::UserModel, Error<PatchUserAdminError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_identifier = user_identifier;
-    let p_admin_patch_input = admin_patch_input;
+    let p_path_user_identifier = user_identifier;
+    let p_body_admin_patch_input = admin_patch_input;
 
     let uri_str = format!(
         "{}/admin/users/{user_identifier}/admin",
         configuration.base_path,
-        user_identifier = crate::apis::urlencode(p_user_identifier)
+        user_identifier = crate::apis::urlencode(p_path_user_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1346,7 +1346,7 @@ pub async fn patch_user_admin(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_admin_patch_input);
+    req_builder = req_builder.json(&p_body_admin_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1383,13 +1383,13 @@ pub async fn patch_variable(
     variable_patch_input: models::VariablePatchInput,
 ) -> Result<models::VariableModel, Error<PatchVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_identifier = variable_identifier;
-    let p_variable_patch_input = variable_patch_input;
+    let p_path_variable_identifier = variable_identifier;
+    let p_body_variable_patch_input = variable_patch_input;
 
     let uri_str = format!(
         "{}/admin/variables/{variable_identifier}",
         configuration.base_path,
-        variable_identifier = crate::apis::urlencode(p_variable_identifier)
+        variable_identifier = crate::apis::urlencode(p_path_variable_identifier)
     );
     let mut req_builder = configuration
         .client
@@ -1412,7 +1412,7 @@ pub async fn patch_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_patch_input);
+    req_builder = req_builder.json(&p_body_variable_patch_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1448,7 +1448,7 @@ pub async fn post_user(
     user_create_input: models::UserCreateInput,
 ) -> Result<models::UserModel, Error<PostUserError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_user_create_input = user_create_input;
+    let p_body_user_create_input = user_create_input;
 
     let uri_str = format!("{}/admin/users", configuration.base_path);
     let mut req_builder = configuration
@@ -1472,7 +1472,7 @@ pub async fn post_user(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_user_create_input);
+    req_builder = req_builder.json(&p_body_user_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1508,7 +1508,7 @@ pub async fn post_variable(
     variable_create_input: models::VariableCreateInput,
 ) -> Result<models::VariableModel, Error<PostVariableError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_variable_create_input = variable_create_input;
+    let p_body_variable_create_input = variable_create_input;
 
     let uri_str = format!("{}/admin/variables", configuration.base_path);
     let mut req_builder = configuration
@@ -1532,7 +1532,7 @@ pub async fn post_variable(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_variable_create_input);
+    req_builder = req_builder.json(&p_body_variable_create_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -23,211 +23,46 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-/**
- * 
- * @export
- * @interface ActionCreateInput
- */
 export interface ActionCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ActionCreateInput
-     */
     'disabled': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionCreateInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionCreateInput
-     */
     'yaml_path': string;
 }
-/**
- * 
- * @export
- * @interface ActionModel
- */
 export interface ActionModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ActionModel
-     */
     'disabled': boolean;
-    /**
-     * 
-     * @type {TriggerEvent}
-     * @memberof ActionModel
-     */
     'event'?: TriggerEvent | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'seq': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ActionModel
-     */
     'version': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionModel
-     */
     'yaml_path': string;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof ActionModel
-     */
     'yaml_provider': YamlProvider;
 }
 
 
-/**
- * 
- * @export
- * @interface ActionUpdateInput
- */
 export interface ActionUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionUpdateInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ActionUpdateInput
-     */
     'disabled'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionUpdateInput
-     */
     'identifier'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActionUpdateInput
-     */
     'yaml_path'?: string | null;
 }
-/**
- * 
- * @export
- * @interface ActionWorkflow
- */
 export interface ActionWorkflow {
-    /**
-     * 
-     * @type {ActionModel}
-     * @memberof ActionWorkflow
-     */
     'model': ActionModel;
-    /**
-     * 
-     * @type {WorkflowModel}
-     * @memberof ActionWorkflow
-     */
     'workflow'?: WorkflowModel | null;
 }
-/**
- * 
- * @export
- * @interface AdminPatchInput
- */
 export interface AdminPatchInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AdminPatchInput
-     */
     'admin': boolean;
 }
-/**
- * 
- * @export
- * @interface AdminStats
- */
 export interface AdminStats {
-    /**
-     * 
-     * @type {number}
-     * @memberof AdminStats
-     */
     'total_groups': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof AdminStats
-     */
     'total_users': number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const ArchiveAttribute = {
     ExportIgnore: 'export_ignore',
@@ -237,111 +72,26 @@ export const ArchiveAttribute = {
 export type ArchiveAttribute = typeof ArchiveAttribute[keyof typeof ArchiveAttribute];
 
 
-/**
- * 
- * @export
- * @interface BlamePart
- */
 export interface BlamePart {
-    /**
-     * 
-     * @type {Commit}
-     * @memberof BlamePart
-     */
     'commit': Commit;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof BlamePart
-     */
     'lines': Array<string>;
 }
-/**
- * 
- * @export
- * @interface BootstrapMetadata
- */
 export interface BootstrapMetadata {
-    /**
-     * 
-     * @type {GroupModel}
-     * @memberof BootstrapMetadata
-     */
     'group'?: GroupModel | null;
-    /**
-     * 
-     * @type {PathRefInfo}
-     * @memberof BootstrapMetadata
-     */
     'path_ref'?: PathRefInfo | null;
-    /**
-     * 
-     * @type {RepoParent}
-     * @memberof BootstrapMetadata
-     */
     'repo'?: RepoParent | null;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof BootstrapMetadata
-     */
     'user'?: UserModel | null;
 }
-/**
- * 
- * @export
- * @interface BranchCreateInput
- */
 export interface BranchCreateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BranchCreateInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof BranchCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BranchCreateInput
-     */
     'target'?: string | null;
 }
-/**
- * 
- * @export
- * @interface BranchRenameInput
- */
 export interface BranchRenameInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BranchRenameInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof BranchRenameInput
-     */
     'new_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BranchRenameInput
-     */
     'old_name': string;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CIStatus = {
     Pending: 'pending',
@@ -359,143 +109,33 @@ export const CIStatus = {
 export type CIStatus = typeof CIStatus[keyof typeof CIStatus];
 
 
-/**
- * 
- * @export
- * @interface CheckModel
- */
 export interface CheckModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckModel
-     */
     'commit_sha': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'ended': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckModel
-     */
     'link': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof CheckModel
-     */
     'metadata': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {CheckPayload}
-     * @memberof CheckModel
-     */
     'payload': CheckPayload;
-    /**
-     * 
-     * @type {CheckPayloadKind}
-     * @memberof CheckModel
-     */
     'payload_kind': CheckPayloadKind;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckModel
-     */
     'payload_version': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'started': number;
-    /**
-     * 
-     * @type {CheckStatus}
-     * @memberof CheckModel
-     */
     'status': CheckStatus;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckModel
-     */
     'summary': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckModel
-     */
     'updated': number;
 }
 
 
-/**
- * 
- * @export
- * @interface CheckPayload
- */
 export interface CheckPayload {
-    /**
-     * 
-     * @type {any}
-     * @memberof CheckPayload
-     */
     'data': any;
-    /**
-     * 
-     * @type {CheckPayloadKind}
-     * @memberof CheckPayload
-     */
     'kind': CheckPayloadKind;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckPayload
-     */
     'version': string;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CheckPayloadKind = {
     Empty: 'empty',
@@ -507,62 +147,17 @@ export const CheckPayloadKind = {
 export type CheckPayloadKind = typeof CheckPayloadKind[keyof typeof CheckPayloadKind];
 
 
-/**
- * 
- * @export
- * @interface CheckReportInput
- */
 export interface CheckReportInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckReportInput
-     */
     'ended': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckReportInput
-     */
     'link': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckReportInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {CheckPayload}
-     * @memberof CheckReportInput
-     */
     'payload': CheckPayload;
-    /**
-     * 
-     * @type {number}
-     * @memberof CheckReportInput
-     */
     'started': number;
-    /**
-     * 
-     * @type {CheckStatus}
-     * @memberof CheckReportInput
-     */
     'status': CheckStatus;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckReportInput
-     */
     'summary': string;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CheckStatus = {
     Pending: 'pending',
@@ -575,55 +170,15 @@ export const CheckStatus = {
 export type CheckStatus = typeof CheckStatus[keyof typeof CheckStatus];
 
 
-/**
- * 
- * @export
- * @interface CodeOwnerEvaluation
- */
 export interface CodeOwnerEvaluation {
-    /**
-     * 
-     * @type {Array<CodeOwnerEvaluationEntry>}
-     * @memberof CodeOwnerEvaluation
-     */
     'evaluation_entries': Array<CodeOwnerEvaluationEntry>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CodeOwnerEvaluation
-     */
     'file_sha': string;
 }
-/**
- * 
- * @export
- * @interface CodeOwnerEvaluationEntry
- */
 export interface CodeOwnerEvaluationEntry {
-    /**
-     * 
-     * @type {Array<OwnerEvaluation>}
-     * @memberof CodeOwnerEvaluationEntry
-     */
     'owner_evaluations': Array<OwnerEvaluation>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CodeOwnerEvaluationEntry
-     */
     'pattern': string;
-    /**
-     * 
-     * @type {Array<UserGroupOwnerEvaluation>}
-     * @memberof CodeOwnerEvaluationEntry
-     */
     'usergroup_owner_evaluations': Array<UserGroupOwnerEvaluation>;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CodeOwnerViolationCode = {
     Noop: 'noop',
@@ -635,194 +190,44 @@ export const CodeOwnerViolationCode = {
 export type CodeOwnerViolationCode = typeof CodeOwnerViolationCode[keyof typeof CodeOwnerViolationCode];
 
 
-/**
- * 
- * @export
- * @interface CodeOwnersValidation
- */
 export interface CodeOwnersValidation {
-    /**
-     * 
-     * @type {Array<CodeOwnersViolation>}
-     * @memberof CodeOwnersValidation
-     */
     'violations': Array<CodeOwnersViolation>;
 }
-/**
- * 
- * @export
- * @interface CodeOwnersViolation
- */
 export interface CodeOwnersViolation {
-    /**
-     * 
-     * @type {CodeOwnerViolationCode}
-     * @memberof CodeOwnersViolation
-     */
     'code': CodeOwnerViolationCode;
-    /**
-     * 
-     * @type {string}
-     * @memberof CodeOwnersViolation
-     */
     'message': string;
-    /**
-     * 
-     * @type {Array<any>}
-     * @memberof CodeOwnersViolation
-     */
     'params': Array<any>;
 }
 
 
-/**
- * 
- * @export
- * @interface Commit
- */
 export interface Commit {
-    /**
-     * 
-     * @type {Identity}
-     * @memberof Commit
-     */
     'author': Identity;
-    /**
-     * 
-     * @type {Identity}
-     * @memberof Commit
-     */
     'committer': Identity;
-    /**
-     * 
-     * @type {Array<CommitFileStats>}
-     * @memberof Commit
-     */
     'file_stats': Array<CommitFileStats>;
-    /**
-     * 
-     * @type {string}
-     * @memberof Commit
-     */
     'message': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof Commit
-     */
     'parent_shas': Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof Commit
-     */
     'sha': string;
-    /**
-     * 
-     * @type {CommitGPGSignature}
-     * @memberof Commit
-     */
     'signature'?: CommitGPGSignature | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Commit
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface CommitBranch
- */
 export interface CommitBranch {
-    /**
-     * 
-     * @type {Commit}
-     * @memberof CommitBranch
-     */
     'commit'?: Commit | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitBranch
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitBranch
-     */
     'sha': string;
 }
-/**
- * 
- * @export
- * @interface CommitDiffFile
- */
 export interface CommitDiffFile {
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitDiffFile
-     */
     'end_line'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitDiffFile
-     */
     'path'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitDiffFile
-     */
     'start_line'?: number;
 }
-/**
- * 
- * @export
- * @interface CommitDivergence
- */
 export interface CommitDivergence {
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitDivergence
-     */
     'ahead': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitDivergence
-     */
     'behind': number;
 }
-/**
- * 
- * @export
- * @interface CommitDivergenceRequest
- */
 export interface CommitDivergenceRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitDivergenceRequest
-     */
     'from': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitDivergenceRequest
-     */
     'to': string;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CommitFileActionType = {
     Create: 'create',
@@ -835,746 +240,151 @@ export const CommitFileActionType = {
 export type CommitFileActionType = typeof CommitFileActionType[keyof typeof CommitFileActionType];
 
 
-/**
- * 
- * @export
- * @interface CommitFileStats
- */
 export interface CommitFileStats {
-    /**
-     * 
-     * @type {FileDiffStatus}
-     * @memberof CommitFileStats
-     */
     'change_type': FileDiffStatus;
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitFileStats
-     */
     'deletions': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CommitFileStats
-     */
     'insertions': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFileStats
-     */
     'old_path'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFileStats
-     */
     'path': string;
 }
 
 
-/**
- * 
- * @export
- * @interface CommitFilesInput
- */
 export interface CommitFilesInput {
-    /**
-     * 
-     * @type {Array<RepoCommitFileAction>}
-     * @memberof CommitFilesInput
-     */
     'actions': Array<RepoCommitFileAction>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFilesInput
-     */
     'branch': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CommitFilesInput
-     */
     'bypass_rules'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CommitFilesInput
-     */
     'dry_run_rules'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFilesInput
-     */
     'message': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFilesInput
-     */
     'new_branch': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFilesInput
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface CommitFilesOutput
- */
 export interface CommitFilesOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitFilesOutput
-     */
     'commit_sha': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CommitFilesOutput
-     */
     'dry_run_rules': boolean;
-    /**
-     * 
-     * @type {Array<RuleCheckResult>}
-     * @memberof CommitFilesOutput
-     */
     'rule_checks': Array<RuleCheckResult>;
 }
-/**
- * 
- * @export
- * @interface CommitGPGSignature
- */
 export interface CommitGPGSignature {
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitGPGSignature
-     */
     'payload': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitGPGSignature
-     */
     'signature': string;
 }
-/**
- * 
- * @export
- * @interface CommitTag
- */
 export interface CommitTag {
-    /**
-     * 
-     * @type {Commit}
-     * @memberof CommitTag
-     */
     'commit'?: Commit | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CommitTag
-     */
     'is_annotated': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitTag
-     */
     'message'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitTag
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitTag
-     */
     'sha': string;
-    /**
-     * 
-     * @type {Identity}
-     * @memberof CommitTag
-     */
     'tagger'?: Identity | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CommitTag
-     */
     'title'?: string | null;
 }
-/**
- * 
- * @export
- * @interface CommitWithPathRenameDetails
- */
 export interface CommitWithPathRenameDetails {
-    /**
-     * 
-     * @type {Commit}
-     * @memberof CommitWithPathRenameDetails
-     */
     'commit': Commit;
-    /**
-     * 
-     * @type {PathRenameDetails}
-     * @memberof CommitWithPathRenameDetails
-     */
     'path_rename_details'?: PathRenameDetails | null;
 }
-/**
- * 
- * @export
- * @interface ConnectorCreateInput
- */
 export interface ConnectorCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorCreateInput
-     */
     'data': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorCreateInput
-     */
     'group_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorCreateInput
-     */
     'type': string;
 }
-/**
- * 
- * @export
- * @interface ConnectorModel
- */
 export interface ConnectorModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof ConnectorModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorModel
-     */
     'data': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ConnectorModel
-     */
     'group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ConnectorModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorModel
-     */
     'type': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ConnectorModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ConnectorModel
-     */
     'version': number;
 }
-/**
- * 
- * @export
- * @interface ConnectorPatchInput
- */
 export interface ConnectorPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorPatchInput
-     */
     'data'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorPatchInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorPatchInput
-     */
     'name'?: string | null;
 }
-/**
- * 
- * @export
- * @interface ContainerContext
- */
 export interface ContainerContext {
-    /**
-     * 
-     * @type {string}
-     * @memberof ContainerContext
-     */
     'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ContainerContext
-     */
     'network': string;
 }
-/**
- * 
- * @export
- * @interface Contributor
- */
 export interface Contributor {
-    /**
-     * 
-     * @type {string}
-     * @memberof Contributor
-     */
     'display_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Contributor
-     */
     'email': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Contributor
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof Contributor
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Contributor
-     */
     'num_commits': number;
 }
-/**
- * 
- * @export
- * @interface CreatedOption
- */
 export interface CreatedOption {
-    /**
-     * 
-     * @type {number}
-     * @memberof CreatedOption
-     */
     'created_gt'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreatedOption
-     */
     'created_lt'?: number | null;
 }
-/**
- * 
- * @export
- * @interface DefApprovals
- */
 export interface DefApprovals {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefApprovals
-     */
     'require_code_owners'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefApprovals
-     */
     'require_latest_commit'?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof DefApprovals
-     */
     'require_minimum_count'?: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefApprovals
-     */
     'require_no_change_request'?: boolean;
 }
-/**
- * 
- * @export
- * @interface DefBypass
- */
 export interface DefBypass {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefBypass
-     */
     'repo_owners'?: boolean;
-    /**
-     * 
-     * @type {Array<UserModel>}
-     * @memberof DefBypass
-     */
     'users'?: Array<UserModel>;
 }
-/**
- * 
- * @export
- * @interface DefComments
- */
 export interface DefComments {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefComments
-     */
     'require_resolve_all'?: boolean;
 }
-/**
- * 
- * @export
- * @interface DefLifecycle
- */
 export interface DefLifecycle {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefLifecycle
-     */
     'create_forbidden'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefLifecycle
-     */
     'delete_forbidden'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefLifecycle
-     */
     'update_forbidden'?: boolean;
 }
-/**
- * 
- * @export
- * @interface DefMerge
- */
 export interface DefMerge {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DefMerge
-     */
     'delete_branch'?: boolean;
-    /**
-     * 
-     * @type {Array<PullreqMergeMethod>}
-     * @memberof DefMerge
-     */
     'strategies_allowed'?: Array<PullreqMergeMethod>;
 }
-/**
- * 
- * @export
- * @interface DefPullreq
- */
 export interface DefPullreq {
-    /**
-     * 
-     * @type {DefApprovals}
-     * @memberof DefPullreq
-     */
     'approvals'?: DefApprovals;
-    /**
-     * 
-     * @type {DefComments}
-     * @memberof DefPullreq
-     */
     'comments'?: DefComments;
-    /**
-     * 
-     * @type {DefMerge}
-     * @memberof DefPullreq
-     */
     'merge'?: DefMerge;
-    /**
-     * 
-     * @type {DefStatusChecks}
-     * @memberof DefPullreq
-     */
     'status_checks'?: DefStatusChecks;
 }
-/**
- * 
- * @export
- * @interface DefStatusChecks
- */
 export interface DefStatusChecks {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof DefStatusChecks
-     */
     'require_uids'?: Array<string>;
 }
-/**
- * 
- * @export
- * @interface DiffFileContent
- */
 export interface DiffFileContent {
-    /**
-     * 
-     * @type {string}
-     * @memberof DiffFileContent
-     */
     'header'?: string | null;
-    /**
-     * 
-     * @type {HunkHeader}
-     * @memberof DiffFileContent
-     */
     'hunk'?: HunkHeader | null;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof DiffFileContent
-     */
     'lines': Array<string>;
 }
-/**
- * 
- * @export
- * @interface DiffStats
- */
 export interface DiffStats {
-    /**
-     * 
-     * @type {number}
-     * @memberof DiffStats
-     */
     'commits'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof DiffStats
-     */
     'files_changed'?: number;
 }
-/**
- * 
- * @export
- * @interface FeedModel
- */
 export interface FeedModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'date_contribution'?: number | null;
-    /**
-     * 
-     * @type {FeedType}
-     * @memberof FeedModel
-     */
     'feed_type': FeedType;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof FeedModel
-     */
     'is_private': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'num_contributions'?: number | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof FeedModel
-     */
     'payload': any;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'pullreq_activity_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'pullreq_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'pullreq_review_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'release_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof FeedModel
-     */
     'updated': number;
 }
 
 
-/**
- * 
- * @export
- * @interface FeedRelations
- */
 export interface FeedRelations {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof FeedRelations
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {FeedModel}
-     * @memberof FeedRelations
-     */
     'model': FeedModel;
-    /**
-     * 
-     * @type {PullreqAuthor}
-     * @memberof FeedRelations
-     */
     'pullreq'?: PullreqAuthor | null;
-    /**
-     * 
-     * @type {PullreqActivityCreator}
-     * @memberof FeedRelations
-     */
     'pullreq_activity'?: PullreqActivityCreator | null;
-    /**
-     * 
-     * @type {PullreqReviewCreator}
-     * @memberof FeedRelations
-     */
     'pullreq_review'?: PullreqReviewCreator | null;
-    /**
-     * 
-     * @type {ReleaseCreator}
-     * @memberof FeedRelations
-     */
     'release'?: ReleaseCreator | null;
-    /**
-     * 
-     * @type {RepositoryModel}
-     * @memberof FeedRelations
-     */
     'repo'?: RepositoryModel | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const FeedType = {
     Noop: 'noop',
@@ -1604,11 +414,6 @@ export const FeedType = {
 export type FeedType = typeof FeedType[keyof typeof FeedType];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const FileDiffStatus = {
     Undefined: 'undefined',
@@ -1622,562 +427,112 @@ export const FileDiffStatus = {
 export type FileDiffStatus = typeof FileDiffStatus[keyof typeof FileDiffStatus];
 
 
-/**
- * 
- * @export
- * @interface GeneralSettings
- */
 export interface GeneralSettings {
-    /**
-     * 
-     * @type {number}
-     * @memberof GeneralSettings
-     */
     'file_size_limit': number;
 }
-/**
- * 
- * @export
- * @interface GithubContext
- */
 export interface GithubContext {
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'action': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'action_path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'action_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'action_repository': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'action_status': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'actor': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'actor_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'api_url': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'base_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'env': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof GithubContext
-     */
     'event': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'event_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'event_path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'graphql_url': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'head_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'job': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'ref_name': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GithubContext
-     */
     'ref_protected': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'ref_type': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'repository': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'repositoryUrl': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'repository_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'repository_owner': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'repository_owner_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'retention_days': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'run_attempt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'run_id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'run_number': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'secret_source': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'server_url': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'token': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'triggering_actor': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'workflow': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'workflow_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'workflow_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GithubContext
-     */
     'workspace': string;
 }
-/**
- * 
- * @export
- * @interface GroupCreateInput
- */
 export interface GroupCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupCreateInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupCreateInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupCreateInput
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupCreateInput
-     */
     'parent_ref': string;
 }
-/**
- * 
- * @export
- * @interface GroupImportInput
- */
 export interface GroupImportInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupImportInput
-     */
     'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupImportInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupImportInput
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupImportInput
-     */
     'parent_ref': string;
-    /**
-     * 
-     * @type {RepoProvider}
-     * @memberof GroupImportInput
-     */
     'provider': RepoProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupImportInput
-     */
     'provider_group': string;
 }
-/**
- * 
- * @export
- * @interface GroupImportReposInput
- */
 export interface GroupImportReposInput {
-    /**
-     * 
-     * @type {RepoProvider}
-     * @memberof GroupImportReposInput
-     */
     'provider': RepoProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupImportReposInput
-     */
     'provider_group': string;
 }
-/**
- * 
- * @export
- * @interface GroupImportReposOutput
- */
 export interface GroupImportReposOutput {
-    /**
-     * 
-     * @type {Array<Array<any>>}
-     * @memberof GroupImportReposOutput
-     */
     'failed_repos': Array<Array<any>>;
-    /**
-     * 
-     * @type {Array<RepositoryModel>}
-     * @memberof GroupImportReposOutput
-     */
     'succeed_repos': Array<RepositoryModel>;
 }
-/**
- * 
- * @export
- * @interface GroupMemberAddInput
- */
 export interface GroupMemberAddInput {
-    /**
-     * 
-     * @type {MembershipRole}
-     * @memberof GroupMemberAddInput
-     */
     'role': MembershipRole;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupMemberAddInput
-     */
     'user_identifier': string;
 }
 
 
-/**
- * 
- * @export
- * @interface GroupMemberUpdateInput
- */
 export interface GroupMemberUpdateInput {
-    /**
-     * 
-     * @type {MembershipRole}
-     * @memberof GroupMemberUpdateInput
-     */
     'role': MembershipRole;
 }
 
 
-/**
- * 
- * @export
- * @interface GroupModel
- */
 export interface GroupModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'deleted'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupModel
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupModel
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupModel
-     */
     'is_user_home': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'parent_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupModel
-     */
     'path'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GroupModel
-     */
     'version': number;
 }
-/**
- * 
- * @export
- * @interface GroupMoveInput
- */
 export interface GroupMoveInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupMoveInput
-     */
     'name'?: string | null;
 }
-/**
- * 
- * @export
- * @interface GroupPatchInput
- */
 export interface GroupPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupPatchInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof GroupPatchInput
-     */
     'is_public'?: boolean | null;
 }
-/**
- * 
- * @export
- * @interface GroupProviderInput
- */
 export interface GroupProviderInput {
-    /**
-     * 
-     * @type {RepoProvider}
-     * @memberof GroupProviderInput
-     */
     'provider': RepoProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupProviderInput
-     */
     'provider_group': string;
 }
-/**
- * 
- * @export
- * @interface GroupRestoreInput
- */
 export interface GroupRestoreInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupRestoreInput
-     */
     'new_identifier'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupRestoreInput
-     */
     'new_parent_ref'?: string | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const GroupSort = {
     Noop: 'noop',
@@ -2190,164 +545,39 @@ export const GroupSort = {
 export type GroupSort = typeof GroupSort[keyof typeof GroupSort];
 
 
-/**
- * 
- * @export
- * @interface Heatmap
- */
 export interface Heatmap {
-    /**
-     * 
-     * @type {Array<NumContributonWithDate>}
-     * @memberof Heatmap
-     */
     'contributions': Array<NumContributonWithDate>;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof Heatmap
-     */
     'years': Array<number>;
 }
-/**
- * 
- * @export
- * @interface HunkHeader
- */
 export interface HunkHeader {
-    /**
-     * 
-     * @type {number}
-     * @memberof HunkHeader
-     */
     'new_line': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof HunkHeader
-     */
     'new_span': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof HunkHeader
-     */
     'old_line': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof HunkHeader
-     */
     'old_span': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof HunkHeader
-     */
     'text': string;
 }
-/**
- * 
- * @export
- * @interface Identity
- */
 export interface Identity {
-    /**
-     * 
-     * @type {string}
-     * @memberof Identity
-     */
     'email': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Identity
-     */
     'existing'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Identity
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof Identity
-     */
     'when'?: number | null;
 }
-/**
- * 
- * @export
- * @interface JobContext
- */
 export interface JobContext {
-    /**
-     * 
-     * @type {number}
-     * @memberof JobContext
-     */
     'check_run_id': number;
-    /**
-     * 
-     * @type {ContainerContext}
-     * @memberof JobContext
-     */
     'container': ContainerContext;
-    /**
-     * 
-     * @type {{ [key: string]: ServiceContext; }}
-     * @memberof JobContext
-     */
     'services': { [key: string]: ServiceContext; };
-    /**
-     * 
-     * @type {StatusContext}
-     * @memberof JobContext
-     */
     'status': StatusContext;
 }
 
 
-/**
- * 
- * @export
- * @interface JobProgress
- */
 export interface JobProgress {
-    /**
-     * 
-     * @type {string}
-     * @memberof JobProgress
-     */
     'failure': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof JobProgress
-     */
     'progress': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof JobProgress
-     */
     'result': string;
-    /**
-     * 
-     * @type {JobState}
-     * @memberof JobProgress
-     */
     'state': JobState;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const JobState = {
     Pending: 'pending',
@@ -2361,227 +591,52 @@ export const JobState = {
 export type JobState = typeof JobState[keyof typeof JobState];
 
 
-/**
- * 
- * @export
- * @interface JobsContext
- */
 export interface JobsContext {
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof JobsContext
-     */
     'outputs': { [key: string]: any; };
-    /**
-     * 
-     * @type {StatusContext}
-     * @memberof JobsContext
-     */
     'result': StatusContext;
 }
 
 
-/**
- * 
- * @export
- * @interface JsonErrorResponseNull
- */
 export interface JsonErrorResponseNull {
-    /**
-     * 
-     * @type {number}
-     * @memberof JsonErrorResponseNull
-     */
     'code': number;
-    /**
-     * 
-     * @type {any}
-     * @memberof JsonErrorResponseNull
-     */
     'data'?: any;
-    /**
-     * 
-     * @type {string}
-     * @memberof JsonErrorResponseNull
-     */
     'message': string;
 }
-/**
- * 
- * @export
- * @interface License
- */
 export interface License {
-    /**
-     * 
-     * @type {string}
-     * @memberof License
-     */
     'label': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof License
-     */
     'value': string;
 }
-/**
- * 
- * @export
- * @interface LiveLogLine
- */
 export interface LiveLogLine {
-    /**
-     * 
-     * @type {string}
-     * @memberof LiveLogLine
-     */
     'command'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof LiveLogLine
-     */
     'out': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof LiveLogLine
-     */
     'pos': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof LiveLogLine
-     */
     'time': number;
 }
-/**
- * 
- * @export
- * @interface LoginInput
- */
 export interface LoginInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginInput
-     */
     'password': string;
 }
-/**
- * 
- * @export
- * @interface LoginOutput
- */
 export interface LoginOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof LoginOutput
-     */
     'access_token': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof LoginOutput
-     */
     'expires_at'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof LoginOutput
-     */
     'two_factor_enabled'?: boolean | null;
 }
-/**
- * 
- * @export
- * @interface MembershipGroup
- */
 export interface MembershipGroup {
-    /**
-     * 
-     * @type {Array<GroupModel>}
-     * @memberof MembershipGroup
-     */
     'groups': Array<GroupModel>;
-    /**
-     * 
-     * @type {MembershipModel}
-     * @memberof MembershipGroup
-     */
     'model': MembershipModel;
 }
-/**
- * 
- * @export
- * @interface MembershipModel
- */
 export interface MembershipModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof MembershipModel
-     */
     'removeable': boolean;
-    /**
-     * 
-     * @type {MembershipRole}
-     * @memberof MembershipModel
-     */
     'role': MembershipRole;
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MembershipModel
-     */
     'user_id': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const MembershipRole = {
     Reader: 'reader',
@@ -2593,11 +648,6 @@ export const MembershipRole = {
 export type MembershipRole = typeof MembershipRole[keyof typeof MembershipRole];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const MembershipSort = {
     Noop: 'noop',
@@ -2608,55 +658,15 @@ export const MembershipSort = {
 export type MembershipSort = typeof MembershipSort[keyof typeof MembershipSort];
 
 
-/**
- * 
- * @export
- * @interface MembershipUserGroup
- */
 export interface MembershipUserGroup {
-    /**
-     * 
-     * @type {GroupModel}
-     * @memberof MembershipUserGroup
-     */
     'group'?: GroupModel | null;
-    /**
-     * 
-     * @type {MembershipModel}
-     * @memberof MembershipUserGroup
-     */
     'model': MembershipModel;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof MembershipUserGroup
-     */
     'user'?: UserModel | null;
 }
-/**
- * 
- * @export
- * @interface NumContributonWithDate
- */
 export interface NumContributonWithDate {
-    /**
-     * 
-     * @type {number}
-     * @memberof NumContributonWithDate
-     */
     'date_contribution': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof NumContributonWithDate
-     */
     'num_contributions': number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const OrderOption = {
     Asc: 'asc',
@@ -2666,57 +676,17 @@ export const OrderOption = {
 export type OrderOption = typeof OrderOption[keyof typeof OrderOption];
 
 
-/**
- * 
- * @export
- * @interface OwnerEvaluation
- */
 export interface OwnerEvaluation {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof OwnerEvaluation
-     */
     'owner'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqReviewDecision}
-     * @memberof OwnerEvaluation
-     */
     'review_decision': PullreqReviewDecision;
-    /**
-     * 
-     * @type {string}
-     * @memberof OwnerEvaluation
-     */
     'review_sha': string;
 }
 
 
-/**
- * 
- * @export
- * @interface PageOption
- */
 export interface PageOption {
-    /**
-     * 
-     * @type {number}
-     * @memberof PageOption
-     */
     'page'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PageOption
-     */
     'size'?: number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const ParentResourceType = {
     Group: 'group',
@@ -2726,57 +696,17 @@ export const ParentResourceType = {
 export type ParentResourceType = typeof ParentResourceType[keyof typeof ParentResourceType];
 
 
-/**
- * 
- * @export
- * @interface PathDetails
- */
 export interface PathDetails {
-    /**
-     * 
-     * @type {Commit}
-     * @memberof PathDetails
-     */
     'last_commit': Commit;
-    /**
-     * 
-     * @type {string}
-     * @memberof PathDetails
-     */
     'path': string;
 }
-/**
- * 
- * @export
- * @interface PathRefInfo
- */
 export interface PathRefInfo {
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRefInfo
-     */
     'ref_name': string;
-    /**
-     * 
-     * @type {PathRefType}
-     * @memberof PathRefInfo
-     */
     'ref_type': PathRefType;
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRefInfo
-     */
     'repo_path': string;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PathRefType = {
     Branch: 'branch',
@@ -2787,41 +717,14 @@ export const PathRefType = {
 export type PathRefType = typeof PathRefType[keyof typeof PathRefType];
 
 
-/**
- * 
- * @export
- * @interface PathRenameDetails
- */
 export interface PathRenameDetails {
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRenameDetails
-     */
     'commit_sha_after'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRenameDetails
-     */
     'commit_sha_before'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRenameDetails
-     */
     'old_path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PathRenameDetails
-     */
     'path': string;
 }
 /**
  * Permission represents the different types of permissions a principal can have.
- * @export
- * @enum {string}
  */
 
 export const Permission = {
@@ -2870,170 +773,40 @@ export const Permission = {
 export type Permission = typeof Permission[keyof typeof Permission];
 
 
-/**
- * 
- * @export
- * @interface ProtectionBranch
- */
 export interface ProtectionBranch {
-    /**
-     * 
-     * @type {DefBypass}
-     * @memberof ProtectionBranch
-     */
     'bypass'?: DefBypass;
-    /**
-     * 
-     * @type {DefLifecycle}
-     * @memberof ProtectionBranch
-     */
     'lifecycle'?: DefLifecycle;
-    /**
-     * 
-     * @type {DefPullreq}
-     * @memberof ProtectionBranch
-     */
     'pullreq'?: DefPullreq;
 }
-/**
- * 
- * @export
- * @interface ProtectionDefinition
- */
 export interface ProtectionDefinition {
-    /**
-     * 
-     * @type {ProtectionBranch}
-     * @memberof ProtectionDefinition
-     */
     'branch': ProtectionBranch;
 }
-/**
- * 
- * @export
- * @interface ProtectionPattern
- */
 export interface ProtectionPattern {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ProtectionPattern
-     */
     'default'?: boolean;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ProtectionPattern
-     */
     'exclude'?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ProtectionPattern
-     */
     'include'?: Array<string>;
 }
-/**
- * 
- * @export
- * @interface PublicKeyCreateInput
- */
 export interface PublicKeyCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyCreateInput
-     */
     'content': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyCreateInput
-     */
     'name'?: string | null;
-    /**
-     * 
-     * @type {PublicKeyUsage}
-     * @memberof PublicKeyCreateInput
-     */
     'usage': PublicKeyUsage;
 }
 
 
-/**
- * 
- * @export
- * @interface PublicKeyModel
- */
 export interface PublicKeyModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyModel
-     */
     'comment': string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof PublicKeyModel
-     */
     'content': Array<number>;
-    /**
-     * 
-     * @type {number}
-     * @memberof PublicKeyModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PublicKeyModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyModel
-     */
     'fingerprint': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PublicKeyModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyModel
-     */
     'type': string;
-    /**
-     * 
-     * @type {PublicKeyUsage}
-     * @memberof PublicKeyModel
-     */
     'usage': PublicKeyUsage;
-    /**
-     * 
-     * @type {number}
-     * @memberof PublicKeyModel
-     */
     'verified'?: number | null;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PublicKeySort = {
     Noop: 'noop',
@@ -3045,11 +818,6 @@ export const PublicKeySort = {
 export type PublicKeySort = typeof PublicKeySort[keyof typeof PublicKeySort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PublicKeyUsage = {
     Auth: 'auth',
@@ -3059,30 +827,10 @@ export const PublicKeyUsage = {
 export type PublicKeyUsage = typeof PublicKeyUsage[keyof typeof PublicKeyUsage];
 
 
-/**
- * 
- * @export
- * @interface PullreqActivityCreator
- */
 export interface PullreqActivityCreator {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqActivityCreator
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqActivityModel}
-     * @memberof PullreqActivityCreator
-     */
     'model': PullreqActivityModel;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqActivityKind = {
     System: 'system',
@@ -3093,232 +841,47 @@ export const PullreqActivityKind = {
 export type PullreqActivityKind = typeof PullreqActivityKind[keyof typeof PullreqActivityKind];
 
 
-/**
- * 
- * @export
- * @interface PullreqActivityMetadata
- */
 export interface PullreqActivityMetadata {
-    /**
-     * 
-     * @type {PullreqActivitySuggestionsMetadata}
-     * @memberof PullreqActivityMetadata
-     */
     'suggestions'?: PullreqActivitySuggestionsMetadata | null;
 }
-/**
- * 
- * @export
- * @interface PullreqActivityModel
- */
 export interface PullreqActivityModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_line_new'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_line_old'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_merge_base_sha'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_path'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_source_sha'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_span_new'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'code_comment_span_old'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'deleted'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'edited': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {PullreqActivityKind}
-     * @memberof PullreqActivityModel
-     */
     'kind': PullreqActivityKind;
-    /**
-     * 
-     * @type {PullreqActivityMetadata}
-     * @memberof PullreqActivityModel
-     */
     'metadata'?: PullreqActivityMetadata | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'order': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqActivityModel
-     */
     'outdated'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'parent_id'?: number | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof PullreqActivityModel
-     */
     'payload': any;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'pullreq_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'reply_seq': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'resolved'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'resolved_by'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'sub_order': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivityModel
-     */
     'text': string;
-    /**
-     * 
-     * @type {PullreqActivityType}
-     * @memberof PullreqActivityModel
-     */
     'type': PullreqActivityType;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqActivityModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqActivityRelations
- */
 export interface PullreqActivityRelations {
-    /**
-     * 
-     * @type {Array<PullreqActivityModel>}
-     * @memberof PullreqActivityRelations
-     */
     'children': Array<PullreqActivityModel>;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqActivityRelations
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqActivityModel}
-     * @memberof PullreqActivityRelations
-     */
     'model': PullreqActivityModel;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqActivityRelations
-     */
     'resolver'?: UserModel | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqActivityStatus = {
     Active: 'active',
@@ -3328,36 +891,11 @@ export const PullreqActivityStatus = {
 export type PullreqActivityStatus = typeof PullreqActivityStatus[keyof typeof PullreqActivityStatus];
 
 
-/**
- * 
- * @export
- * @interface PullreqActivitySuggestionsMetadata
- */
 export interface PullreqActivitySuggestionsMetadata {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivitySuggestionsMetadata
-     */
     'applied_check_sum': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqActivitySuggestionsMetadata
-     */
     'applied_commit_sha': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PullreqActivitySuggestionsMetadata
-     */
     'check_sums': Array<string>;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqActivityType = {
     Comment: 'comment',
@@ -3373,342 +911,72 @@ export const PullreqActivityType = {
 export type PullreqActivityType = typeof PullreqActivityType[keyof typeof PullreqActivityType];
 
 
-/**
- * 
- * @export
- * @interface PullreqApplySuggestionsInput
- */
 export interface PullreqApplySuggestionsInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqApplySuggestionsInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqApplySuggestionsInput
-     */
     'dry_run_rules': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqApplySuggestionsInput
-     */
     'message': string;
-    /**
-     * 
-     * @type {Array<PullreqSuggestionReference>}
-     * @memberof PullreqApplySuggestionsInput
-     */
     'suggestions': Array<PullreqSuggestionReference>;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqApplySuggestionsInput
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface PullreqApplySuggestionsOutput
- */
 export interface PullreqApplySuggestionsOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqApplySuggestionsOutput
-     */
     'commit_sha'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqApplySuggestionsOutput
-     */
     'dry_run_rules': boolean;
-    /**
-     * 
-     * @type {Array<RuleCheckResult>}
-     * @memberof PullreqApplySuggestionsOutput
-     */
     'rule_checks': Array<RuleCheckResult>;
 }
-/**
- * 
- * @export
- * @interface PullreqAuthor
- */
 export interface PullreqAuthor {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqAuthor
-     */
     'author'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqModel}
-     * @memberof PullreqAuthor
-     */
     'model': PullreqModel;
 }
-/**
- * 
- * @export
- * @interface PullreqCheck
- */
 export interface PullreqCheck {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqCheck
-     */
     'bypassable': boolean;
-    /**
-     * 
-     * @type {CheckModel}
-     * @memberof PullreqCheck
-     */
     'model': CheckModel;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqCheck
-     */
     'required': boolean;
 }
-/**
- * 
- * @export
- * @interface PullreqChecksOutput
- */
 export interface PullreqChecksOutput {
-    /**
-     * 
-     * @type {Array<PullreqCheck>}
-     * @memberof PullreqChecksOutput
-     */
     'checks': Array<PullreqCheck>;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqChecksOutput
-     */
     'commit_sha': string;
 }
-/**
- * 
- * @export
- * @interface PullreqCommentCreateInput
- */
 export interface PullreqCommentCreateInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqCommentCreateInput
-     */
     'line_end': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqCommentCreateInput
-     */
     'line_end_new': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqCommentCreateInput
-     */
     'line_start': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqCommentCreateInput
-     */
     'line_start_new': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqCommentCreateInput
-     */
     'parent_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCommentCreateInput
-     */
     'path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCommentCreateInput
-     */
     'source_commit_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCommentCreateInput
-     */
     'target_commit_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCommentCreateInput
-     */
     'text': string;
 }
-/**
- * 
- * @export
- * @interface PullreqCommentStatusInput
- */
 export interface PullreqCommentStatusInput {
-    /**
-     * 
-     * @type {PullreqActivityStatus}
-     * @memberof PullreqCommentStatusInput
-     */
     'status': PullreqActivityStatus;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqCommentUpdateInput
- */
 export interface PullreqCommentUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCommentUpdateInput
-     */
     'text': string;
 }
-/**
- * 
- * @export
- * @interface PullreqCreateInput
- */
 export interface PullreqCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqCreateInput
-     */
     'is_draft': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCreateInput
-     */
     'source_branch': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCreateInput
-     */
     'source_repo_ref': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCreateInput
-     */
     'target_branch': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqCreateInput
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface PullreqFileViewCreateInput
- */
 export interface PullreqFileViewCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqFileViewCreateInput
-     */
     'commit_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqFileViewCreateInput
-     */
     'path': string;
 }
-/**
- * 
- * @export
- * @interface PullreqFileViewModel
- */
 export interface PullreqFileViewModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqFileViewModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqFileViewModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqFileViewModel
-     */
     'obsolete': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqFileViewModel
-     */
     'path': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqFileViewModel
-     */
     'pullreq_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqFileViewModel
-     */
     'sha': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqFileViewModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqFileViewModel
-     */
     'user_id': number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqMergeCheckStatus = {
     Unchecked: 'unchecked',
@@ -3719,62 +987,17 @@ export const PullreqMergeCheckStatus = {
 export type PullreqMergeCheckStatus = typeof PullreqMergeCheckStatus[keyof typeof PullreqMergeCheckStatus];
 
 
-/**
- * 
- * @export
- * @interface PullreqMergeInput
- */
 export interface PullreqMergeInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeInput
-     */
     'delete_source_branch'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeInput
-     */
     'dry_run': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqMergeInput
-     */
     'message': string;
-    /**
-     * 
-     * @type {PullreqMergeMethod}
-     * @memberof PullreqMergeInput
-     */
     'method'?: PullreqMergeMethod | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqMergeInput
-     */
     'source_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqMergeInput
-     */
     'title': string;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqMergeMethod = {
     Merge: 'merge',
@@ -3785,298 +1008,58 @@ export const PullreqMergeMethod = {
 export type PullreqMergeMethod = typeof PullreqMergeMethod[keyof typeof PullreqMergeMethod];
 
 
-/**
- * 
- * @export
- * @interface PullreqMergeOutput
- */
 export interface PullreqMergeOutput {
-    /**
-     * 
-     * @type {Array<PullreqMergeMethod>}
-     * @memberof PullreqMergeOutput
-     */
     'allowed_methods'?: Array<PullreqMergeMethod> | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'branch_deleted'?: boolean | null;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PullreqMergeOutput
-     */
     'conflict_files': Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'dry_run'?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqMergeOutput
-     */
     'minimum_required_approvals_count'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqMergeOutput
-     */
     'minimum_required_approvals_count_latest'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'requires_code_owners_approval'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'requires_code_owners_approval_latest'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'requires_comment_resolution'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqMergeOutput
-     */
     'requires_no_change_requests'?: boolean | null;
-    /**
-     * 
-     * @type {Array<RuleCheckResult>}
-     * @memberof PullreqMergeOutput
-     */
     'rule_checks': Array<RuleCheckResult>;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqMergeOutput
-     */
     'sha'?: string | null;
 }
-/**
- * 
- * @export
- * @interface PullreqModel
- */
 export interface PullreqModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'activity_seq'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'closed'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'comment_count': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'commit_count'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'edited': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'file_count'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqModel
-     */
     'is_draft': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'merge_base_sha': string;
-    /**
-     * 
-     * @type {PullreqMergeCheckStatus}
-     * @memberof PullreqModel
-     */
     'merge_check_status': PullreqMergeCheckStatus;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof PullreqModel
-     */
     'merge_conflicts'?: Array<string>;
-    /**
-     * 
-     * @type {PullreqMergeMethod}
-     * @memberof PullreqModel
-     */
     'merge_method'?: PullreqMergeMethod | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'merge_sha'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'merge_target_sha'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'merged'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'merged_by'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'number': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'source_branch': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'source_repo_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'source_sha': string;
-    /**
-     * 
-     * @type {PullreqState}
-     * @memberof PullreqModel
-     */
     'state': PullreqState;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'target_branch': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'target_repo_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqModel
-     */
     'title': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'unresolved_count': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqReviewCreator
- */
 export interface PullreqReviewCreator {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqReviewCreator
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqReviewModel}
-     * @memberof PullreqReviewCreator
-     */
     'model': PullreqReviewModel;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqReviewDecision = {
     Pending: 'pending',
@@ -4088,171 +1071,41 @@ export const PullreqReviewDecision = {
 export type PullreqReviewDecision = typeof PullreqReviewDecision[keyof typeof PullreqReviewDecision];
 
 
-/**
- * 
- * @export
- * @interface PullreqReviewModel
- */
 export interface PullreqReviewModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {PullreqReviewDecision}
-     * @memberof PullreqReviewModel
-     */
     'decision': PullreqReviewDecision;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewModel
-     */
     'pullreq_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqReviewModel
-     */
     'sha': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewModel
-     */
     'updated': number;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqReviewSubmitInput
- */
 export interface PullreqReviewSubmitInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqReviewSubmitInput
-     */
     'commit_sha': string;
-    /**
-     * 
-     * @type {PullreqReviewDecision}
-     * @memberof PullreqReviewSubmitInput
-     */
     'decision': PullreqReviewDecision;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqReviewerAddInput
- */
 export interface PullreqReviewerAddInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerAddInput
-     */
     'reviewer_id': number;
 }
-/**
- * 
- * @export
- * @interface PullreqReviewerModel
- */
 export interface PullreqReviewerModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'latest_review_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'pullreq_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {PullreqReviewDecision}
-     * @memberof PullreqReviewerModel
-     */
     'review_decision': PullreqReviewDecision;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqReviewerModel
-     */
     'sha': string;
-    /**
-     * 
-     * @type {PullreqReviewerType}
-     * @memberof PullreqReviewerModel
-     */
     'type': PullreqReviewerType;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqReviewerModel
-     */
     'user_id': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqReviewerType = {
     SelfAssigned: 'self_assigned',
@@ -4263,30 +1116,10 @@ export const PullreqReviewerType = {
 export type PullreqReviewerType = typeof PullreqReviewerType[keyof typeof PullreqReviewerType];
 
 
-/**
- * 
- * @export
- * @interface PullreqReviewerUser
- */
 export interface PullreqReviewerUser {
-    /**
-     * 
-     * @type {PullreqReviewerModel}
-     * @memberof PullreqReviewerUser
-     */
     'model': PullreqReviewerModel;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqReviewerUser
-     */
     'user'?: UserModel | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqSort = {
     Noop: 'noop',
@@ -4300,11 +1133,6 @@ export const PullreqSort = {
 export type PullreqSort = typeof PullreqSort[keyof typeof PullreqSort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const PullreqState = {
     Open: 'open',
@@ -4315,403 +1143,83 @@ export const PullreqState = {
 export type PullreqState = typeof PullreqState[keyof typeof PullreqState];
 
 
-/**
- * 
- * @export
- * @interface PullreqStateUpdateInput
- */
 export interface PullreqStateUpdateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PullreqStateUpdateInput
-     */
     'is_draft': boolean;
-    /**
-     * 
-     * @type {PullreqState}
-     * @memberof PullreqStateUpdateInput
-     */
     'state': PullreqState;
 }
 
 
-/**
- * 
- * @export
- * @interface PullreqSuggestionReference
- */
 export interface PullreqSuggestionReference {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqSuggestionReference
-     */
     'check_sum': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof PullreqSuggestionReference
-     */
     'comment_id': number;
 }
-/**
- * 
- * @export
- * @interface PullreqUpdateInput
- */
 export interface PullreqUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqUpdateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PullreqUpdateInput
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface PullreqWithDiffStats
- */
 export interface PullreqWithDiffStats {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqWithDiffStats
-     */
     'author'?: UserModel | null;
-    /**
-     * 
-     * @type {DiffStats}
-     * @memberof PullreqWithDiffStats
-     */
     'diff_stats': DiffStats;
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof PullreqWithDiffStats
-     */
     'merger'?: UserModel | null;
-    /**
-     * 
-     * @type {PullreqModel}
-     * @memberof PullreqWithDiffStats
-     */
     'model': PullreqModel;
 }
-/**
- * 
- * @export
- * @interface QueryOption
- */
 export interface QueryOption {
-    /**
-     * 
-     * @type {number}
-     * @memberof QueryOption
-     */
     'page'?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof QueryOption
-     */
     'size'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof QueryOption
-     */
     'query'?: string;
 }
-/**
- * 
- * @export
- * @interface RegisterInput
- */
 export interface RegisterInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterInput
-     */
     'display_name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterInput
-     */
     'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterInput
-     */
     'password': string;
 }
-/**
- * 
- * @export
- * @interface RegisterTokenModel
- */
 export interface RegisterTokenModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'parent_id': number;
-    /**
-     * 
-     * @type {Scope}
-     * @memberof RegisterTokenModel
-     */
     'scope': Scope;
-    /**
-     * 
-     * @type {string}
-     * @memberof RegisterTokenModel
-     */
     'token': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RegisterTokenModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @interface ReleaseCreateInput
- */
 export interface ReleaseCreateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseCreateInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseCreateInput
-     */
     'is_draft': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseCreateInput
-     */
     'is_prerelease': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseCreateInput
-     */
     'tag_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseCreateInput
-     */
     'target': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseCreateInput
-     */
     'title': string;
 }
-/**
- * 
- * @export
- * @interface ReleaseCreator
- */
 export interface ReleaseCreator {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof ReleaseCreator
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {ReleaseModel}
-     * @memberof ReleaseCreator
-     */
     'model': ReleaseModel;
 }
-/**
- * 
- * @export
- * @interface ReleaseModel
- */
 export interface ReleaseModel {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof ReleaseModel
-     */
     'assets'?: Array<string>;
-    /**
-     * 
-     * @type {Array<Contributor>}
-     * @memberof ReleaseModel
-     */
     'contributors'?: Array<Contributor>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'deleted'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseModel
-     */
     'is_draft': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseModel
-     */
     'is_latest'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ReleaseModel
-     */
     'is_prerelease': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'num_commits': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseModel
-     */
     'origin_author'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'origin_author_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseModel
-     */
     'sha1': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseModel
-     */
     'tag_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReleaseModel
-     */
     'title': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ReleaseModel
-     */
     'version': number;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const ReleaseSort = {
     Noop: 'noop',
@@ -4723,214 +1231,49 @@ export const ReleaseSort = {
 export type ReleaseSort = typeof ReleaseSort[keyof typeof ReleaseSort];
 
 
-/**
- * 
- * @export
- * @interface RepoCommitDivergencesInput
- */
 export interface RepoCommitDivergencesInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoCommitDivergencesInput
-     */
     'max_count': number;
-    /**
-     * 
-     * @type {Array<CommitDivergenceRequest>}
-     * @memberof RepoCommitDivergencesInput
-     */
     'requests': Array<CommitDivergenceRequest>;
 }
-/**
- * 
- * @export
- * @interface RepoCommitFileAction
- */
 export interface RepoCommitFileAction {
-    /**
-     * 
-     * @type {CommitFileActionType}
-     * @memberof RepoCommitFileAction
-     */
     'action': CommitFileActionType;
-    /**
-     * 
-     * @type {RepoFileContentEncodingType}
-     * @memberof RepoCommitFileAction
-     */
     'encoding'?: RepoFileContentEncodingType;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCommitFileAction
-     */
     'path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCommitFileAction
-     */
     'payload': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCommitFileAction
-     */
     'sha': string;
 }
 
 
-/**
- * 
- * @export
- * @interface RepoContent
- */
 export interface RepoContent {
-    /**
-     * 
-     * @type {RepoDirContent}
-     * @memberof RepoContent
-     */
     'dir'?: RepoDirContent | null;
-    /**
-     * 
-     * @type {RepoFileContent}
-     * @memberof RepoContent
-     */
     'file'?: RepoFileContent | null;
-    /**
-     * 
-     * @type {RepoSubmoduleContent}
-     * @memberof RepoContent
-     */
     'submodule'?: RepoSubmoduleContent | null;
-    /**
-     * 
-     * @type {RepoSymlinkContent}
-     * @memberof RepoContent
-     */
     'symlink'?: RepoSymlinkContent | null;
 }
-/**
- * 
- * @export
- * @interface RepoContentInfo
- */
 export interface RepoContentInfo {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentInfo
-     */
     'commit_url'?: string | null;
-    /**
-     * 
-     * @type {Commit}
-     * @memberof RepoContentInfo
-     */
     'latest_commit'?: Commit | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentInfo
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentInfo
-     */
     'path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentInfo
-     */
     'repo_url'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentInfo
-     */
     'sha': string;
-    /**
-     * 
-     * @type {RepoContentType}
-     * @memberof RepoContentInfo
-     */
     'type': RepoContentType;
 }
 
 
-/**
- * 
- * @export
- * @interface RepoContentOutput
- */
 export interface RepoContentOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentOutput
-     */
     'commit_url'?: string;
-    /**
-     * 
-     * @type {Commit}
-     * @memberof RepoContentOutput
-     */
     'latest_commit'?: Commit;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentOutput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentOutput
-     */
     'path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentOutput
-     */
     'repo_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoContentOutput
-     */
     'sha': string;
-    /**
-     * 
-     * @type {RepoContentType}
-     * @memberof RepoContentOutput
-     */
     'type': RepoContentType;
-    /**
-     * 
-     * @type {RepoContent}
-     * @memberof RepoContentOutput
-     */
     'content': RepoContent;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoContentOutput
-     */
     'total_commits': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RepoContentType = {
     File: 'file',
@@ -4942,118 +1285,28 @@ export const RepoContentType = {
 export type RepoContentType = typeof RepoContentType[keyof typeof RepoContentType];
 
 
-/**
- * 
- * @export
- * @interface RepoCreateInput
- */
 export interface RepoCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'default_branch'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoCreateInput
-     */
     'fork_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'git_ignore': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoCreateInput
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'license': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'parent_ref': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoCreateInput
-     */
     'readme': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoCreateInput
-     */
     'single_branch': string;
 }
-/**
- * 
- * @export
- * @interface RepoDirContent
- */
 export interface RepoDirContent {
-    /**
-     * 
-     * @type {Array<RepoContentInfo>}
-     * @memberof RepoDirContent
-     */
     'entries': Array<RepoContentInfo>;
 }
-/**
- * 
- * @export
- * @interface RepoFileContent
- */
 export interface RepoFileContent {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoFileContent
-     */
     'data': string;
-    /**
-     * 
-     * @type {RepoFileContentEncodingType}
-     * @memberof RepoFileContent
-     */
     'encoding': RepoFileContentEncodingType;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoFileContent
-     */
     'size': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RepoFileContentEncodingType = {
     Utf8: 'utf8',
@@ -5063,170 +1316,40 @@ export const RepoFileContentEncodingType = {
 export type RepoFileContentEncodingType = typeof RepoFileContentEncodingType[keyof typeof RepoFileContentEncodingType];
 
 
-/**
- * 
- * @export
- * @interface RepoImportInput
- */
 export interface RepoImportInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoImportInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoImportInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoImportInput
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoImportInput
-     */
     'parent_ref': string;
-    /**
-     * 
-     * @type {RepoProvider}
-     * @memberof RepoImportInput
-     */
     'provider': RepoProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoImportInput
-     */
     'provider_repo': string;
 }
-/**
- * 
- * @export
- * @interface RepoMergeCheckInput
- */
 export interface RepoMergeCheckInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoMergeCheckInput
-     */
     'head_repo_ref'?: string;
 }
-/**
- * 
- * @export
- * @interface RepoMergeCheckOutput
- */
 export interface RepoMergeCheckOutput {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RepoMergeCheckOutput
-     */
     'conflict_files': Array<string>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoMergeCheckOutput
-     */
     'mergeable': boolean;
 }
-/**
- * 
- * @export
- * @interface RepoMoveInput
- */
 export interface RepoMoveInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoMoveInput
-     */
     'identifier'?: string | null;
 }
-/**
- * 
- * @export
- * @interface RepoParent
- */
 export interface RepoParent {
-    /**
-     * 
-     * @type {RepositoryModel}
-     * @memberof RepoParent
-     */
     'model': RepositoryModel;
-    /**
-     * 
-     * @type {RepositoryModel}
-     * @memberof RepoParent
-     */
     'parent'?: RepositoryModel | null;
 }
-/**
- * 
- * @export
- * @interface RepoPathsOutput
- */
 export interface RepoPathsOutput {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RepoPathsOutput
-     */
     'dirs': Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RepoPathsOutput
-     */
     'files': Array<string>;
 }
-/**
- * 
- * @export
- * @interface RepoProvider
- */
 export interface RepoProvider {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoProvider
-     */
     'origin'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoProvider
-     */
     'password'?: string | null;
-    /**
-     * 
-     * @type {RepoProviderType}
-     * @memberof RepoProvider
-     */
     'type': RepoProviderType;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoProvider
-     */
     'username'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RepoProviderType = {
     Github: 'github',
@@ -5236,30 +1359,10 @@ export const RepoProviderType = {
 export type RepoProviderType = typeof RepoProviderType[keyof typeof RepoProviderType];
 
 
-/**
- * 
- * @export
- * @interface RepoRestoreInput
- */
 export interface RepoRestoreInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoRestoreInput
-     */
     'new_identifier'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoRestoreInput
-     */
     'new_parent_ref'?: string | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RepoSort = {
     Noop: 'noop',
@@ -5272,615 +1375,125 @@ export const RepoSort = {
 export type RepoSort = typeof RepoSort[keyof typeof RepoSort];
 
 
-/**
- * 
- * @export
- * @interface RepoStarsInput
- */
 export interface RepoStarsInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoStarsInput
-     */
     'star': boolean;
 }
-/**
- * 
- * @export
- * @interface RepoStatsOutput
- */
 export interface RepoStatsOutput {
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoStatsOutput
-     */
     'branch_total_num': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoStatsOutput
-     */
     'pullreq_total_num': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoStatsOutput
-     */
     'release_total_num': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoStatsOutput
-     */
     'tag_total_num': number;
 }
-/**
- * 
- * @export
- * @interface RepoSubmoduleContent
- */
 export interface RepoSubmoduleContent {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoSubmoduleContent
-     */
     'commit_sha': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoSubmoduleContent
-     */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface RepoSymlinkContent
- */
 export interface RepoSymlinkContent {
-    /**
-     * 
-     * @type {number}
-     * @memberof RepoSymlinkContent
-     */
     'size': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoSymlinkContent
-     */
     'target': string;
 }
-/**
- * 
- * @export
- * @interface RepoUpdateDefaultBranchInput
- */
 export interface RepoUpdateDefaultBranchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoUpdateDefaultBranchInput
-     */
     'name': string;
 }
-/**
- * 
- * @export
- * @interface RepoUpdateInput
- */
 export interface RepoUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RepoUpdateInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepoUpdateInput
-     */
     'is_public'?: boolean | null;
 }
-/**
- * 
- * @export
- * @interface RepositoryModel
- */
 export interface RepositoryModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'default_branch': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'deleted'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'display_name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'fork_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'git_ssh_url'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'git_uid': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'git_url'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepositoryModel
-     */
     'importing': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepositoryModel
-     */
     'is_empty': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RepositoryModel
-     */
     'is_public': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_closed_pulls': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_forks': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_merged_pulls': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_open_pulls': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_pulls': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'num_stars': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RepositoryModel
-     */
     'path'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'pullreq_seq': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'size': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'size_updated'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryModel
-     */
     'version': number;
 }
-/**
- * 
- * @export
- * @interface RepositoryStarModel
- */
 export interface RepositoryStarModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RepositoryStarModel
-     */
     'updated': number;
 }
-/**
- * 
- * @export
- * @interface RuleCheckOutput
- */
 export interface RuleCheckOutput {
-    /**
-     * 
-     * @type {Array<RuleCheckResult>}
-     * @memberof RuleCheckOutput
-     */
     'rule_checks': Array<RuleCheckResult>;
 }
-/**
- * 
- * @export
- * @interface RuleCheckResult
- */
 export interface RuleCheckResult {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RuleCheckResult
-     */
     'bypassable': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof RuleCheckResult
-     */
     'bypassed': boolean;
-    /**
-     * 
-     * @type {RuleMetadata}
-     * @memberof RuleCheckResult
-     */
     'rule': RuleMetadata;
-    /**
-     * 
-     * @type {Array<RuleViolation>}
-     * @memberof RuleCheckResult
-     */
     'violations': Array<RuleViolation>;
 }
-/**
- * 
- * @export
- * @interface RuleCreateInput
- */
 export interface RuleCreateInput {
-    /**
-     * 
-     * @type {ProtectionDefinition}
-     * @memberof RuleCreateInput
-     */
     'definition'?: ProtectionDefinition | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {ProtectionPattern}
-     * @memberof RuleCreateInput
-     */
     'pattern': ProtectionPattern;
-    /**
-     * 
-     * @type {RuleState}
-     * @memberof RuleCreateInput
-     */
     'state': RuleState;
-    /**
-     * 
-     * @type {RuleType}
-     * @memberof RuleCreateInput
-     */
     'type': RuleType;
 }
 
 
-/**
- * 
- * @export
- * @interface RuleMetadata
- */
 export interface RuleMetadata {
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleMetadata
-     */
     'group_path': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleMetadata
-     */
     'repo_path': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof RuleMetadata
-     */
     'rule_definition': any;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleMetadata
-     */
     'rule_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleMetadata
-     */
     'rule_name': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof RuleMetadata
-     */
     'rule_pattern': any;
-    /**
-     * 
-     * @type {RuleState}
-     * @memberof RuleMetadata
-     */
     'rule_state': RuleState;
-    /**
-     * 
-     * @type {RuleType}
-     * @memberof RuleMetadata
-     */
     'rule_type': RuleType;
 }
 
 
-/**
- * 
- * @export
- * @interface RuleModel
- */
 export interface RuleModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {any}
-     * @memberof RuleModel
-     */
     'definition': any;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'group_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {any}
-     * @memberof RuleModel
-     */
     'pattern': any;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'repo_id'?: number | null;
-    /**
-     * 
-     * @type {RuleState}
-     * @memberof RuleModel
-     */
     'state': RuleState;
-    /**
-     * 
-     * @type {RuleType}
-     * @memberof RuleModel
-     */
     'type': RuleType;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RuleModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @interface RulePatchInput
- */
 export interface RulePatchInput {
-    /**
-     * 
-     * @type {ProtectionDefinition}
-     * @memberof RulePatchInput
-     */
     'definition'?: ProtectionDefinition | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RulePatchInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof RulePatchInput
-     */
     'name'?: string | null;
-    /**
-     * 
-     * @type {ProtectionPattern}
-     * @memberof RulePatchInput
-     */
     'pattern'?: ProtectionPattern | null;
-    /**
-     * 
-     * @type {RuleState}
-     * @memberof RulePatchInput
-     */
     'state'?: RuleState | null;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RuleSort = {
     Noop: 'noop',
@@ -5893,11 +1506,6 @@ export const RuleSort = {
 export type RuleSort = typeof RuleSort[keyof typeof RuleSort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RuleState = {
     Disabled: 'disabled',
@@ -5908,11 +1516,6 @@ export const RuleState = {
 export type RuleState = typeof RuleState[keyof typeof RuleState];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RuleType = {
     Branch: 'branch'
@@ -5921,36 +1524,11 @@ export const RuleType = {
 export type RuleType = typeof RuleType[keyof typeof RuleType];
 
 
-/**
- * 
- * @export
- * @interface RuleViolation
- */
 export interface RuleViolation {
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleViolation
-     */
     'code': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RuleViolation
-     */
     'message': string;
-    /**
-     * 
-     * @type {Array<any>}
-     * @memberof RuleViolation
-     */
     'params': Array<any>;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RunnerArchContext = {
     X86: 'x86',
@@ -5962,87 +1540,22 @@ export const RunnerArchContext = {
 export type RunnerArchContext = typeof RunnerArchContext[keyof typeof RunnerArchContext];
 
 
-/**
- * 
- * @export
- * @interface RunnerContext
- */
 export interface RunnerContext {
-    /**
-     * 
-     * @type {RunnerArchContext}
-     * @memberof RunnerContext
-     */
     'arch': RunnerArchContext;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerContext
-     */
     'debug': string;
-    /**
-     * 
-     * @type {RunnerEnvironmentContext}
-     * @memberof RunnerContext
-     */
     'environment': RunnerEnvironmentContext;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerContext
-     */
     'name': string;
-    /**
-     * 
-     * @type {RunnerOsContext}
-     * @memberof RunnerContext
-     */
     'os': RunnerOsContext;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerContext
-     */
     'temp': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerContext
-     */
     'tool_cache': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerContext
-     */
     'uuid': string;
 }
 
 
-/**
- * 
- * @export
- * @interface RunnerCreator
- */
 export interface RunnerCreator {
-    /**
-     * 
-     * @type {UserModel}
-     * @memberof RunnerCreator
-     */
     'creator'?: UserModel | null;
-    /**
-     * 
-     * @type {RunnerModel}
-     * @memberof RunnerCreator
-     */
     'model': RunnerModel;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RunnerEnvironmentContext = {
     SelfHosted: 'self-hosted'
@@ -6051,110 +1564,25 @@ export const RunnerEnvironmentContext = {
 export type RunnerEnvironmentContext = typeof RunnerEnvironmentContext[keyof typeof RunnerEnvironmentContext];
 
 
-/**
- * 
- * @export
- * @interface RunnerModel
- */
 export interface RunnerModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RunnerModel
-     */
     'labels': Array<string>;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'last_online': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'parent_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerModel
-     */
     'release': string;
-    /**
-     * 
-     * @type {Scope}
-     * @memberof RunnerModel
-     */
     'scope': Scope;
-    /**
-     * 
-     * @type {RunnerStatus}
-     * @memberof RunnerModel
-     */
     'status': RunnerStatus;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'token_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerModel
-     */
     'uuid': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof RunnerModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RunnerOsContext = {
     Linux: 'Linux',
@@ -6165,74 +1593,19 @@ export const RunnerOsContext = {
 export type RunnerOsContext = typeof RunnerOsContext[keyof typeof RunnerOsContext];
 
 
-/**
- * 
- * @export
- * @interface RunnerPatchInput
- */
 export interface RunnerPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerPatchInput
-     */
     'description': string;
 }
-/**
- * 
- * @export
- * @interface RunnerPostInput
- */
 export interface RunnerPostInput {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof RunnerPostInput
-     */
     'labels': Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerPostInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerPostInput
-     */
     'release': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerPostInput
-     */
     'token': string;
 }
-/**
- * 
- * @export
- * @interface RunnerStageOutput
- */
 export interface RunnerStageOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof RunnerStageOutput
-     */
     'access_token': string;
-    /**
-     * 
-     * @type {StageMetadata}
-     * @memberof RunnerStageOutput
-     */
     'stage_metadata'?: StageMetadata | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const RunnerStatus = {
     Offline: 'offline',
@@ -6242,11 +1615,6 @@ export const RunnerStatus = {
 export type RunnerStatus = typeof RunnerStatus[keyof typeof RunnerStatus];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const Scope = {
     System: 'system',
@@ -6257,101 +1625,26 @@ export const Scope = {
 export type Scope = typeof Scope[keyof typeof Scope];
 
 
-/**
- * 
- * @export
- * @interface SecuritySettings
- */
 export interface SecuritySettings {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SecuritySettings
-     */
     'secret_scanning_enabled'?: boolean;
 }
-/**
- * 
- * @export
- * @interface ServiceAccountCreateInput
- */
 export interface ServiceAccountCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ServiceAccountCreateInput
-     */
     'display_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ServiceAccountCreateInput
-     */
     'email': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ServiceAccountCreateInput
-     */
     'parent_id': number;
-    /**
-     * 
-     * @type {ParentResourceType}
-     * @memberof ServiceAccountCreateInput
-     */
     'parent_type': ParentResourceType;
 }
 
 
-/**
- * 
- * @export
- * @interface ServiceAccountTokenOutput
- */
 export interface ServiceAccountTokenOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof ServiceAccountTokenOutput
-     */
     'access_token': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof ServiceAccountTokenOutput
-     */
     'expires_at'?: number | null;
 }
-/**
- * 
- * @export
- * @interface ServiceContext
- */
 export interface ServiceContext {
-    /**
-     * 
-     * @type {string}
-     * @memberof ServiceContext
-     */
     'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ServiceContext
-     */
     'network': string;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof ServiceContext
-     */
     'ports': { [key: string]: string; };
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const SseType = {
     Noop: 'noop',
@@ -6366,398 +1659,105 @@ export const SseType = {
 export type SseType = typeof SseType[keyof typeof SseType];
 
 
-/**
- * 
- * @export
- * @interface StageContext
- */
 export interface StageContext {
     /**
      * Including all vars, priority from low to high, higher priority key could override lower priority key 1. The predefined variables for github/gitlab. 2. The web ui configured vars or envs, exclude secrets.
-     * @type {{ [key: string]: string; }}
-     * @memberof StageContext
      */
     'all': { [key: string]: string; };
     /**
      * Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME Value is encoded with base64 standard
-     * @type {{ [key: string]: string; }}
-     * @memberof StageContext
      */
     'env': { [key: string]: string; };
-    /**
-     * 
-     * @type {any}
-     * @memberof StageContext
-     */
     'github': any;
     /**
      * Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
-     * @type {{ [key: string]: any; }}
-     * @memberof StageContext
      */
     'inputs': { [key: string]: any; };
-    /**
-     * 
-     * @type {any}
-     * @memberof StageContext
-     */
     'job': any;
     /**
      * For reusable workflows only, contains outputs of jobs from the reusable workflow. Runtime data Initialized when stage is pushed into queue. Updated when stage is updated by api or else. key: job name or stage name value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
-     * @type {{ [key: string]: any; }}
-     * @memberof StageContext
      */
     'jobs': { [key: string]: any; };
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof StageContext
-     */
     'matrix': { [key: string]: string; };
     /**
      * Contains the outputs of all jobs that are defined as a dependency of the current job. Runtime data key: job name value: JobsContext. Converted to serde_json::Value for recursively inject variables.
-     * @type {{ [key: string]: any; }}
-     * @memberof StageContext
      */
     'needs': { [key: string]: any; };
-    /**
-     * 
-     * @type {any}
-     * @memberof StageContext
-     */
     'runner': any;
     /**
      * Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be running. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME Value is encoded with base64 standard
-     * @type {{ [key: string]: string; }}
-     * @memberof StageContext
      */
     'secrets': { [key: string]: string; };
     /**
      * Information about the steps that have been run in the current job. Runtime data key:   step id (set in step yaml) value: refer to StepsContext. Converted to serde_json::Value for recursively inject variables.
-     * @type {{ [key: string]: any; }}
-     * @memberof StageContext
      */
     'steps': { [key: string]: any; };
-    /**
-     * 
-     * @type {any}
-     * @memberof StageContext
-     */
     'strategy': any;
     /**
      * Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME Value is encoded with base64 standard
-     * @type {{ [key: string]: string; }}
-     * @memberof StageContext
      */
     'vars': { [key: string]: string; };
 }
-/**
- * 
- * @export
- * @interface StageMetadata
- */
 export interface StageMetadata {
-    /**
-     * 
-     * @type {StageContext}
-     * @memberof StageMetadata
-     */
     'context': StageContext;
-    /**
-     * 
-     * @type {StageModel}
-     * @memberof StageMetadata
-     */
     'stage': StageModel;
 }
-/**
- * 
- * @export
- * @interface StageModel
- */
 export interface StageModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'action_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'arch': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StageModel
-     */
     'errignore': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'exit_code': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StageModel
-     */
     'is_reusable': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'kernel': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'kind': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof StageModel
-     */
     'labels': Array<string>;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'limit': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'limit_repo': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'machine': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof StageModel
-     */
     'needs': Array<string>;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'number': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StageModel
-     */
     'on_failure': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StageModel
-     */
     'on_success': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'os': string;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof StageModel
-     */
     'outputs'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'parent_group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'parent_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StageModel
-     */
     'status': CIStatus;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'stopped'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'type': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'variant': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'version': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageModel
-     */
     'workflow_id': number;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof StageModel
-     */
     'yaml_provider': YamlProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof StageModel
-     */
     'yaml_resolved': string;
 }
 
 
-/**
- * 
- * @export
- * @interface StageSteps
- */
 export interface StageSteps {
-    /**
-     * 
-     * @type {StageModel}
-     * @memberof StageSteps
-     */
     'model': StageModel;
-    /**
-     * 
-     * @type {Array<StepModel>}
-     * @memberof StageSteps
-     */
     'steps': Array<StepModel>;
 }
-/**
- * 
- * @export
- * @interface StageUpdateInput
- */
 export interface StageUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof StageUpdateInput
-     */
     'error'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageUpdateInput
-     */
     'exit_code'?: number | null;
     /**
      * Used for storing the result of the yaml decoded stage.
-     * @type {StatusContext}
-     * @memberof StageUpdateInput
      */
     'jobstatus'?: StatusContext | null;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof StageUpdateInput
-     */
     'outputs'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof StageUpdateInput
-     */
     'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StageUpdateInput
-     */
     'status'?: CIStatus | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StageUpdateInput
-     */
     'stopped'?: number | null;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const StatusContext = {
     Noop: 'noop',
@@ -6770,468 +1770,104 @@ export const StatusContext = {
 export type StatusContext = typeof StatusContext[keyof typeof StatusContext];
 
 
-/**
- * 
- * @export
- * @interface StepCreateInput
- */
 export interface StepCreateInput {
-    /**
-     * 
-     * @type {any}
-     * @memberof StepCreateInput
-     */
     'depends_on': any;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StepCreateInput
-     */
     'detached': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StepCreateInput
-     */
     'errignore': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
     'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepCreateInput
-     */
     'exit_code': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
     'image': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepCreateInput
-     */
     'number': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepCreateInput
-     */
     'parent_group_id': number;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StepCreateInput
-     */
     'status': CIStatus;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
     'stepid'?: string;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof StepCreateInput
-     */
     'yaml_provider': YamlProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepCreateInput
-     */
     'yaml_resolved': string;
 }
 
 
-/**
- * 
- * @export
- * @interface StepModel
- */
 export interface StepModel {
-    /**
-     * 
-     * @type {any}
-     * @memberof StepModel
-     */
     'depends_on': any;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StepModel
-     */
     'detached': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof StepModel
-     */
     'errignore': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepModel
-     */
     'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'exit_code': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepModel
-     */
     'image': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'number': number;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof StepModel
-     */
     'outputs'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'parent_group_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'stage_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StepModel
-     */
     'status': CIStatus;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'stopped'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepModel
-     */
     'version': number;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof StepModel
-     */
     'yaml_provider': YamlProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepModel
-     */
     'yaml_resolved': string;
 }
 
 
-/**
- * 
- * @export
- * @interface StepUpdateInput
- */
 export interface StepUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof StepUpdateInput
-     */
     'error'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepUpdateInput
-     */
     'exit_code'?: number | null;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof StepUpdateInput
-     */
     'outputs'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof StepUpdateInput
-     */
     'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof StepUpdateInput
-     */
     'status'?: CIStatus | null;
     /**
      * The step result status after the yaml is executed
-     * @type {StatusContext}
-     * @memberof StepUpdateInput
      */
     'stepconclusion'?: StatusContext | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StepUpdateInput
-     */
     'stepid'?: string;
     /**
      * The step result status after the yaml is executed.
-     * @type {StatusContext}
-     * @memberof StepUpdateInput
      */
     'stepoutcome'?: StatusContext | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StepUpdateInput
-     */
     'stopped'?: number | null;
 }
 
 
-/**
- * 
- * @export
- * @interface StepsContext
- */
 export interface StepsContext {
-    /**
-     * 
-     * @type {StatusContext}
-     * @memberof StepsContext
-     */
     'conclusion': StatusContext;
-    /**
-     * 
-     * @type {StatusContext}
-     * @memberof StepsContext
-     */
     'outcome': StatusContext;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof StepsContext
-     */
     'outputs': { [key: string]: any; };
 }
 
 
-/**
- * 
- * @export
- * @interface SystemConfig
- */
 export interface SystemConfig {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SystemConfig
-     */
     'nested_groups_enabled': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SystemConfig
-     */
     'public_resource_creation_enabled': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SystemConfig
-     */
     'user_signup_allowed': boolean;
 }
-/**
- * 
- * @export
- * @interface TagCreateInput
- */
 export interface TagCreateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TagCreateInput
-     */
     'bypass_rules': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof TagCreateInput
-     */
     'message': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TagCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TagCreateInput
-     */
     'target': string;
 }
-/**
- * 
- * @export
- * @interface TokenCreateInput
- */
 export interface TokenCreateInput {
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenCreateInput
-     */
     'lifetime_ms'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof TokenCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {Array<Permission>}
-     * @memberof TokenCreateInput
-     */
     'permissions'?: Array<Permission>;
 }
-/**
- * 
- * @export
- * @interface TokenCreateOutput
- */
 export interface TokenCreateOutput {
-    /**
-     * 
-     * @type {string}
-     * @memberof TokenCreateOutput
-     */
     'access_token': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenCreateOutput
-     */
     'expires_at'?: number | null;
-    /**
-     * 
-     * @type {TokenModel}
-     * @memberof TokenCreateOutput
-     */
     'model': TokenModel;
 }
-/**
- * 
- * @export
- * @interface TokenModel
- */
 export interface TokenModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenModel
-     */
     'expires_at'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenModel
-     */
     'issued_at': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof TokenModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {Array<Permission>}
-     * @memberof TokenModel
-     */
     'permissions'?: Array<Permission>;
-    /**
-     * 
-     * @type {TokenType}
-     * @memberof TokenModel
-     */
     'type': TokenType;
-    /**
-     * 
-     * @type {number}
-     * @memberof TokenModel
-     */
     'user_id': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const TokenType = {
     Session: 'session',
@@ -7244,11 +1880,6 @@ export const TokenType = {
 export type TokenType = typeof TokenType[keyof typeof TokenType];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const TriggerEvent = {
     Noop: 'noop',
@@ -7269,255 +1900,55 @@ export const TriggerEvent = {
 export type TriggerEvent = typeof TriggerEvent[keyof typeof TriggerEvent];
 
 
-/**
- * 
- * @export
- * @interface TwoFactorCreateInput
- */
 export interface TwoFactorCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorCreateInput
-     */
     'passcode': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorCreateInput
-     */
     'secret': string;
 }
-/**
- * 
- * @export
- * @interface TwoFactorGetOutput
- */
 export interface TwoFactorGetOutput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TwoFactorGetOutput
-     */
     'enabled': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorGetOutput
-     */
     'qr_uri': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorGetOutput
-     */
     'secret': string;
 }
-/**
- * 
- * @export
- * @interface TwoFactorPasscodeInput
- */
 export interface TwoFactorPasscodeInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorPasscodeInput
-     */
     'passcode': string;
 }
-/**
- * 
- * @export
- * @interface TwoFactorScratchTokenInput
- */
 export interface TwoFactorScratchTokenInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof TwoFactorScratchTokenInput
-     */
     'token': string;
 }
-/**
- * 
- * @export
- * @interface UserCreateInput
- */
 export interface UserCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserCreateInput
-     */
     'display_name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserCreateInput
-     */
     'email': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserCreateInput
-     */
     'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserCreateInput
-     */
     'password'?: string | null;
 }
-/**
- * 
- * @export
- * @interface UserGroupOwnerEvaluation
- */
 export interface UserGroupOwnerEvaluation {
-    /**
-     * 
-     * @type {Array<OwnerEvaluation>}
-     * @memberof UserGroupOwnerEvaluation
-     */
     'evaluations': Array<OwnerEvaluation>;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserGroupOwnerEvaluation
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserGroupOwnerEvaluation
-     */
     'name': string;
 }
-/**
- * 
- * @export
- * @interface UserModel
- */
 export interface UserModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof UserModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserModel
-     */
     'display_name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserModel
-     */
     'email': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserModel
-     */
     'is_active': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserModel
-     */
     'is_admin': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserModel
-     */
     'is_blocked': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserModel
-     */
     'parent_id'?: number | null;
-    /**
-     * 
-     * @type {ParentResourceType}
-     * @memberof UserModel
-     */
     'parent_type'?: ParentResourceType | null;
-    /**
-     * 
-     * @type {UserType}
-     * @memberof UserModel
-     */
     'type': UserType;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserModel
-     */
     'updated': number;
 }
 
 
-/**
- * 
- * @export
- * @interface UserPatchInput
- */
 export interface UserPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserPatchInput
-     */
     'display_name'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserPatchInput
-     */
     'email'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserPatchInput
-     */
     'is_active'?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserPatchInput
-     */
     'is_blocked'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserPatchInput
-     */
     'password'?: string | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const UserSort = {
     Noop: 'noop',
@@ -7532,11 +1963,6 @@ export const UserSort = {
 export type UserSort = typeof UserSort[keyof typeof UserSort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const UserType = {
     User: 'user',
@@ -7546,177 +1972,42 @@ export const UserType = {
 export type UserType = typeof UserType[keyof typeof UserType];
 
 
-/**
- * 
- * @export
- * @interface VariableCreateInput
- */
 export interface VariableCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableCreateInput
-     */
     'data': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableCreateInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableCreateInput
-     */
     'parent_ref': string;
-    /**
-     * 
-     * @type {VariableType}
-     * @memberof VariableCreateInput
-     */
     'type': VariableType;
 }
 
 
-/**
- * 
- * @export
- * @interface VariableGroup
- */
 export interface VariableGroup {
-    /**
-     * 
-     * @type {GroupModel}
-     * @memberof VariableGroup
-     */
     'group'?: GroupModel | null;
-    /**
-     * 
-     * @type {VariableModel}
-     * @memberof VariableGroup
-     */
     'model': VariableModel;
 }
-/**
- * 
- * @export
- * @interface VariableModel
- */
 export interface VariableModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof VariableModel
-     */
     'data': Array<number>;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariableModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'parent_id': number;
-    /**
-     * 
-     * @type {Scope}
-     * @memberof VariableModel
-     */
     'scope': Scope;
-    /**
-     * 
-     * @type {VariableType}
-     * @memberof VariableModel
-     */
     'type': VariableType;
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof VariableModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @interface VariablePatchInput
- */
 export interface VariablePatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof VariablePatchInput
-     */
     'data'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariablePatchInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VariablePatchInput
-     */
     'identifier'?: string | null;
-    /**
-     * 
-     * @type {VariableType}
-     * @memberof VariablePatchInput
-     */
     'type': VariableType;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const VariableSort = {
     Noop: 'noop',
@@ -7730,11 +2021,6 @@ export const VariableSort = {
 export type VariableSort = typeof VariableSort[keyof typeof VariableSort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const VariableType = {
     PlainText: 'plain_text',
@@ -7746,183 +2032,38 @@ export const VariableType = {
 export type VariableType = typeof VariableType[keyof typeof VariableType];
 
 
-/**
- * 
- * @export
- * @interface WebhookCreateInput
- */
 export interface WebhookCreateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookCreateInput
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookCreateInput
-     */
     'display_name': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookCreateInput
-     */
     'enabled': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookCreateInput
-     */
     'identifier': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookCreateInput
-     */
     'insecure': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookCreateInput
-     */
     'secret': string;
-    /**
-     * 
-     * @type {Array<WebhookTrigger>}
-     * @memberof WebhookCreateInput
-     */
     'triggers': Array<WebhookTrigger>;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookCreateInput
-     */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface WebhookExecutionModel
- */
 export interface WebhookExecutionModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'duration': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'error': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'request_body': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'request_headers': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'request_url': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'response_body': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'response_headers': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'response_status': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'response_status_code': number;
-    /**
-     * 
-     * @type {WebhookExecutionResult}
-     * @memberof WebhookExecutionModel
-     */
     'result': WebhookExecutionResult;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'retrigger_of'?: number | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookExecutionModel
-     */
     'retriggerable': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookExecutionModel
-     */
     'trigger_id': string;
-    /**
-     * 
-     * @type {WebhookTrigger}
-     * @memberof WebhookExecutionModel
-     */
     'trigger_type': WebhookTrigger;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookExecutionModel
-     */
     'webhook_id': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookExecutionResult = {
     Unknown: 'unknown',
@@ -7934,128 +2075,28 @@ export const WebhookExecutionResult = {
 export type WebhookExecutionResult = typeof WebhookExecutionResult[keyof typeof WebhookExecutionResult];
 
 
-/**
- * 
- * @export
- * @interface WebhookModel
- */
 export interface WebhookModel {
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookModel
-     */
     'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookModel
-     */
     'display_name': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookModel
-     */
     'enabled': boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'group_id'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookModel
-     */
     'insecure': boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookModel
-     */
     'internal': boolean;
-    /**
-     * 
-     * @type {WebhookExecutionResult}
-     * @memberof WebhookModel
-     */
     'latest_execution_result'?: WebhookExecutionResult | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {WebhookParentType}
-     * @memberof WebhookModel
-     */
     'parent_type': WebhookParentType;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'repo_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookModel
-     */
     'secret': string;
-    /**
-     * 
-     * @type {Array<WebhookTrigger>}
-     * @memberof WebhookModel
-     */
     'triggers': Array<WebhookTrigger>;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookModel
-     */
     'url': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WebhookModel
-     */
     'version': number;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookParentType = {
     Repository: 'repository',
@@ -8065,66 +2106,16 @@ export const WebhookParentType = {
 export type WebhookParentType = typeof WebhookParentType[keyof typeof WebhookParentType];
 
 
-/**
- * 
- * @export
- * @interface WebhookPatchInput
- */
 export interface WebhookPatchInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookPatchInput
-     */
     'description'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookPatchInput
-     */
     'display_name'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookPatchInput
-     */
     'enabled'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookPatchInput
-     */
     'identifier'?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WebhookPatchInput
-     */
     'insecure'?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookPatchInput
-     */
     'secret'?: string | null;
-    /**
-     * 
-     * @type {Array<WebhookTrigger>}
-     * @memberof WebhookPatchInput
-     */
     'triggers'?: Array<WebhookTrigger> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookPatchInput
-     */
     'url'?: string | null;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookSort = {
     Noop: 'noop',
@@ -8138,11 +2129,6 @@ export const WebhookSort = {
 export type WebhookSort = typeof WebhookSort[keyof typeof WebhookSort];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookTrigger = {
     Noop: 'noop',
@@ -8163,325 +2149,65 @@ export const WebhookTrigger = {
 export type WebhookTrigger = typeof WebhookTrigger[keyof typeof WebhookTrigger];
 
 
-/**
- * 
- * @export
- * @interface WorkflowCreateInput
- */
 export interface WorkflowCreateInput {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WorkflowCreateInput
-     */
     'debug': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowCreateInput
-     */
     'deploy'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowCreateInput
-     */
     'deploy_id'?: number | null;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof WorkflowCreateInput
-     */
     'params'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowCreateInput
-     */
     'source_repo_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowCreateInput
-     */
     'source_sha'?: string | null;
 }
-/**
- * 
- * @export
- * @interface WorkflowModel
- */
 export interface WorkflowModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'action'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'action_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'after_sha'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'author_email': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'author_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'author_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'before_sha': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof WorkflowModel
-     */
     'context': object | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'created': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'created_by': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'cron': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof WorkflowModel
-     */
     'debug': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'deploy': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'deploy_id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'error': string;
-    /**
-     * 
-     * @type {TriggerEvent}
-     * @memberof WorkflowModel
-     */
     'event': TriggerEvent;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'finished': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'id': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'link': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'message': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'name': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'number': number;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof WorkflowModel
-     */
     'params': { [key: string]: any; };
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'repo_id': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'source_repo_id'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'source_rev'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'started': number;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof WorkflowModel
-     */
     'status': CIStatus;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'target_rev': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'title': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'updated': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowModel
-     */
     'version': number;
-    /**
-     * 
-     * @type {YamlProvider}
-     * @memberof WorkflowModel
-     */
     'yaml_provider': YamlProvider;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowModel
-     */
     'yaml_resolved': string;
 }
 
 
-/**
- * 
- * @export
- * @interface WorkflowStages
- */
 export interface WorkflowStages {
-    /**
-     * 
-     * @type {WorkflowModel}
-     * @memberof WorkflowStages
-     */
     'model': WorkflowModel;
-    /**
-     * 
-     * @type {Array<StageSteps>}
-     * @memberof WorkflowStages
-     */
     'stages': Array<StageSteps>;
 }
-/**
- * 
- * @export
- * @interface WorkflowUpdateInput
- */
 export interface WorkflowUpdateInput {
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowUpdateInput
-     */
     'after'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkflowUpdateInput
-     */
     'error'?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowUpdateInput
-     */
     'finished'?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof WorkflowUpdateInput
-     */
     'started'?: number | null;
-    /**
-     * 
-     * @type {CIStatus}
-     * @memberof WorkflowUpdateInput
-     */
     'status'?: CIStatus | null;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const YamlProvider = {
     Unknown: 'unknown',
@@ -8495,7 +2221,6 @@ export type YamlProvider = typeof YamlProvider[keyof typeof YamlProvider];
 
 /**
  * AccountsApi - axios parameter creator
- * @export
  */
 export const AccountsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -8706,7 +2431,6 @@ export const AccountsApiAxiosParamCreator = function (configuration?: Configurat
 
 /**
  * AccountsApi - functional programming interface
- * @export
  */
 export const AccountsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AccountsApiAxiosParamCreator(configuration)
@@ -8775,7 +2499,6 @@ export const AccountsApiFp = function(configuration?: Configuration) {
 
 /**
  * AccountsApi - factory interface
- * @export
  */
 export const AccountsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = AccountsApiFp(configuration)
@@ -8829,9 +2552,6 @@ export const AccountsApiFactory = function (configuration?: Configuration, baseP
 
 /**
  * AccountsApi - object-oriented interface
- * @export
- * @class AccountsApi
- * @extends {BaseAPI}
  */
 export class AccountsApi extends BaseAPI {
     /**
@@ -8839,7 +2559,6 @@ export class AccountsApi extends BaseAPI {
      * @param {LoginInput} loginInput Login input
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AccountsApi
      */
     public postLogin(loginInput: LoginInput, options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).postLogin(loginInput, options).then((request) => request(this.axios, this.basePath));
@@ -8849,7 +2568,6 @@ export class AccountsApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AccountsApi
      */
     public postLogout(options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).postLogout(options).then((request) => request(this.axios, this.basePath));
@@ -8860,7 +2578,6 @@ export class AccountsApi extends BaseAPI {
      * @param {RegisterInput} registerInput Register a new user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AccountsApi
      */
     public postRegister(registerInput: RegisterInput, options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).postRegister(registerInput, options).then((request) => request(this.axios, this.basePath));
@@ -8871,7 +2588,6 @@ export class AccountsApi extends BaseAPI {
      * @param {TwoFactorPasscodeInput} twoFactorPasscodeInput Login with two factor passcode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AccountsApi
      */
     public postTwoFactorPasscode(twoFactorPasscodeInput: TwoFactorPasscodeInput, options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).postTwoFactorPasscode(twoFactorPasscodeInput, options).then((request) => request(this.axios, this.basePath));
@@ -8882,7 +2598,6 @@ export class AccountsApi extends BaseAPI {
      * @param {TwoFactorScratchTokenInput} twoFactorScratchTokenInput Login with two scratch token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AccountsApi
      */
     public postTwoFactorScratchToken(twoFactorScratchTokenInput: TwoFactorScratchTokenInput, options?: RawAxiosRequestConfig) {
         return AccountsApiFp(this.configuration).postTwoFactorScratchToken(twoFactorScratchTokenInput, options).then((request) => request(this.axios, this.basePath));
@@ -8893,7 +2608,6 @@ export class AccountsApi extends BaseAPI {
 
 /**
  * ActionsApi - axios parameter creator
- * @export
  */
 export const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -9936,7 +3650,6 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
 
 /**
  * ActionsApi - functional programming interface
- * @export
  */
 export const ActionsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ActionsApiAxiosParamCreator(configuration)
@@ -10218,7 +3931,6 @@ export const ActionsApiFp = function(configuration?: Configuration) {
 
 /**
  * ActionsApi - factory interface
- * @export
  */
 export const ActionsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ActionsApiFp(configuration)
@@ -10446,9 +4158,6 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
 
 /**
  * ActionsApi - object-oriented interface
- * @export
- * @class ActionsApi
- * @extends {BaseAPI}
  */
 export class ActionsApi extends BaseAPI {
     /**
@@ -10458,7 +4167,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public cancelWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).cancelWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
@@ -10470,7 +4178,6 @@ export class ActionsApi extends BaseAPI {
      * @param {string} actionIdentifier Action id or name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public deleteAction(repoRef: string, actionIdentifier: string, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).deleteAction(repoRef, actionIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -10483,7 +4190,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public deleteWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).deleteWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
@@ -10495,7 +4201,6 @@ export class ActionsApi extends BaseAPI {
      * @param {string} actionIdentifier Action id or name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getAction(repoRef: string, actionIdentifier: string, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getAction(repoRef, actionIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -10510,7 +4215,6 @@ export class ActionsApi extends BaseAPI {
      * @param {boolean} [latest] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getActions(repoRef: string, page?: number, size?: number, query?: string, latest?: boolean, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getActions(repoRef, page, size, query, latest, options).then((request) => request(this.axios, this.basePath));
@@ -10525,7 +4229,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
@@ -10540,7 +4243,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} stepNumber Step number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getStepLogs(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
@@ -10553,7 +4255,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} workflowIdn Workflow number or id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getWorkflow(repoRef, actionIdentifier, workflowIdn, options).then((request) => request(this.axios, this.basePath));
@@ -10567,7 +4268,6 @@ export class ActionsApi extends BaseAPI {
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public getWorkflows(repoRef: string, actionIdentifier: string, page?: number, size?: number, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).getWorkflows(repoRef, actionIdentifier, page, size, options).then((request) => request(this.axios, this.basePath));
@@ -10580,7 +4280,6 @@ export class ActionsApi extends BaseAPI {
      * @param {ActionUpdateInput} actionUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public patchAction(repoRef: string, actionIdentifier: string, actionUpdateInput: ActionUpdateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).patchAction(repoRef, actionIdentifier, actionUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10595,7 +4294,6 @@ export class ActionsApi extends BaseAPI {
      * @param {StageUpdateInput} stageUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public patchStage(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stageUpdateInput: StageUpdateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).patchStage(repoRef, actionIdentifier, workflowIdn, stageNumber, stageUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10611,7 +4309,6 @@ export class ActionsApi extends BaseAPI {
      * @param {StepUpdateInput} stepUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public patchStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, stepUpdateInput: StepUpdateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).patchStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, stepUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10625,7 +4322,6 @@ export class ActionsApi extends BaseAPI {
      * @param {WorkflowUpdateInput} workflowUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public patchWorkflow(repoRef: string, actionIdentifier: string, workflowIdn: number, workflowUpdateInput: WorkflowUpdateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).patchWorkflow(repoRef, actionIdentifier, workflowIdn, workflowUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10637,7 +4333,6 @@ export class ActionsApi extends BaseAPI {
      * @param {ActionCreateInput} actionCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public postAction(repoRef: string, actionCreateInput: ActionCreateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postAction(repoRef, actionCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10652,7 +4347,6 @@ export class ActionsApi extends BaseAPI {
      * @param {StepCreateInput} stepCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public postStep(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepCreateInput: StepCreateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postStep(repoRef, actionIdentifier, workflowIdn, stageNumber, stepCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10669,7 +4363,6 @@ export class ActionsApi extends BaseAPI {
      * @param {LiveLogLine} liveLogLine 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public postStepLog(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, liveLogLine: LiveLogLine, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postStepLog(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, liveLogLine, options).then((request) => request(this.axios, this.basePath));
@@ -10686,7 +4379,6 @@ export class ActionsApi extends BaseAPI {
      * @param {Array<number>} requestBody Raw bytes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public postStepLogStream(repoRef: string, actionIdentifier: string, workflowIdn: number, stageNumber: number, stepNumber: number, requestBody: Array<number>, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postStepLogStream(repoRef, actionIdentifier, workflowIdn, stageNumber, stepNumber, requestBody, options).then((request) => request(this.axios, this.basePath));
@@ -10699,7 +4391,6 @@ export class ActionsApi extends BaseAPI {
      * @param {WorkflowCreateInput} workflowCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ActionsApi
      */
     public postWorkflow(repoRef: string, actionIdentifier: string, workflowCreateInput: WorkflowCreateInput, options?: RawAxiosRequestConfig) {
         return ActionsApiFp(this.configuration).postWorkflow(repoRef, actionIdentifier, workflowCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -10710,7 +4401,6 @@ export class ActionsApi extends BaseAPI {
 
 /**
  * AdminApi - axios parameter creator
- * @export
  */
 export const AdminApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -11694,7 +5384,6 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 /**
  * AdminApi - functional programming interface
- * @export
  */
 export const AdminApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AdminApiAxiosParamCreator(configuration)
@@ -11960,7 +5649,6 @@ export const AdminApiFp = function(configuration?: Configuration) {
 
 /**
  * AdminApi - factory interface
- * @export
  */
 export const AdminApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = AdminApiFp(configuration)
@@ -12166,9 +5854,6 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
 
 /**
  * AdminApi - object-oriented interface
- * @export
- * @class AdminApi
- * @extends {BaseAPI}
  */
 export class AdminApi extends BaseAPI {
     /**
@@ -12176,7 +5861,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} groupRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public deleteGroup(groupRef: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteGroup(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -12187,7 +5871,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public deleteRunner(runnerUuid: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteRunner(runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -12198,7 +5881,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} userIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public deleteUser(userIdentifier: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteUser(userIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -12209,7 +5891,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public deleteVariable(variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteVariable(variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -12224,7 +5905,6 @@ export class AdminApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getGroups(page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getGroups(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -12234,7 +5914,6 @@ export class AdminApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getResetedRunnerRegisterToken(options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getResetedRunnerRegisterToken(options).then((request) => request(this.axios, this.basePath));
@@ -12245,7 +5924,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getRunner(runnerUuid: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getRunner(runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -12255,7 +5933,6 @@ export class AdminApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getRunnerRegisterToken(options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getRunnerRegisterToken(options).then((request) => request(this.axios, this.basePath));
@@ -12268,7 +5945,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} [query] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getRunners(page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getRunners(page, size, query, options).then((request) => request(this.axios, this.basePath));
@@ -12278,7 +5954,6 @@ export class AdminApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getStats(options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getStats(options).then((request) => request(this.axios, this.basePath));
@@ -12289,7 +5964,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} userIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getUser(userIdentifier: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getUser(userIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -12304,7 +5978,6 @@ export class AdminApi extends BaseAPI {
      * @param {UserSort} [sort] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getUsers(page?: number, size?: number, query?: string, order?: OrderOption, sort?: UserSort, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getUsers(page, size, query, order, sort, options).then((request) => request(this.axios, this.basePath));
@@ -12315,7 +5988,6 @@ export class AdminApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getVariable(variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getVariable(variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -12331,7 +6003,6 @@ export class AdminApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public getVariables(page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).getVariables(page, size, query, types, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -12343,7 +6014,6 @@ export class AdminApi extends BaseAPI {
      * @param {RunnerPatchInput} runnerPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public patchRunner(runnerUuid: string, runnerPatchInput: RunnerPatchInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).patchRunner(runnerUuid, runnerPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -12355,7 +6025,6 @@ export class AdminApi extends BaseAPI {
      * @param {UserPatchInput} userPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public patchUser(userIdentifier: string, userPatchInput: UserPatchInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).patchUser(userIdentifier, userPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -12367,7 +6036,6 @@ export class AdminApi extends BaseAPI {
      * @param {AdminPatchInput} adminPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public patchUserAdmin(userIdentifier: string, adminPatchInput: AdminPatchInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).patchUserAdmin(userIdentifier, adminPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -12379,7 +6047,6 @@ export class AdminApi extends BaseAPI {
      * @param {VariablePatchInput} variablePatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public patchVariable(variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).patchVariable(variableIdentifier, variablePatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -12390,7 +6057,6 @@ export class AdminApi extends BaseAPI {
      * @param {UserCreateInput} userCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public postUser(userCreateInput: UserCreateInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).postUser(userCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -12401,7 +6067,6 @@ export class AdminApi extends BaseAPI {
      * @param {VariableCreateInput} variableCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof AdminApi
      */
     public postVariable(variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig) {
         return AdminApiFp(this.configuration).postVariable(variableCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -12412,7 +6077,6 @@ export class AdminApi extends BaseAPI {
 
 /**
  * BootstrapApi - axios parameter creator
- * @export
  */
 export const BootstrapApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -12469,7 +6133,6 @@ export const BootstrapApiAxiosParamCreator = function (configuration?: Configura
 
 /**
  * BootstrapApi - functional programming interface
- * @export
  */
 export const BootstrapApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BootstrapApiAxiosParamCreator(configuration)
@@ -12492,7 +6155,6 @@ export const BootstrapApiFp = function(configuration?: Configuration) {
 
 /**
  * BootstrapApi - factory interface
- * @export
  */
 export const BootstrapApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = BootstrapApiFp(configuration)
@@ -12512,9 +6174,6 @@ export const BootstrapApiFactory = function (configuration?: Configuration, base
 
 /**
  * BootstrapApi - object-oriented interface
- * @export
- * @class BootstrapApi
- * @extends {BaseAPI}
  */
 export class BootstrapApi extends BaseAPI {
     /**
@@ -12523,7 +6182,6 @@ export class BootstrapApi extends BaseAPI {
      * @param {string | null} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof BootstrapApi
      */
     public getBootstrap(bootstrapRef: string, path: string | null, options?: RawAxiosRequestConfig) {
         return BootstrapApiFp(this.configuration).getBootstrap(bootstrapRef, path, options).then((request) => request(this.axios, this.basePath));
@@ -12534,7 +6192,6 @@ export class BootstrapApi extends BaseAPI {
 
 /**
  * ConnectorsApi - axios parameter creator
- * @export
  */
 export const ConnectorsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -12727,7 +6384,6 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
 
 /**
  * ConnectorsApi - functional programming interface
- * @export
  */
 export const ConnectorsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ConnectorsApiAxiosParamCreator(configuration)
@@ -12786,7 +6442,6 @@ export const ConnectorsApiFp = function(configuration?: Configuration) {
 
 /**
  * ConnectorsApi - factory interface
- * @export
  */
 export const ConnectorsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ConnectorsApiFp(configuration)
@@ -12833,9 +6488,6 @@ export const ConnectorsApiFactory = function (configuration?: Configuration, bas
 
 /**
  * ConnectorsApi - object-oriented interface
- * @export
- * @class ConnectorsApi
- * @extends {BaseAPI}
  */
 export class ConnectorsApi extends BaseAPI {
     /**
@@ -12843,7 +6495,6 @@ export class ConnectorsApi extends BaseAPI {
      * @param {string} connectorRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ConnectorsApi
      */
     public deleteConnector(connectorRef: string, options?: RawAxiosRequestConfig) {
         return ConnectorsApiFp(this.configuration).deleteConnector(connectorRef, options).then((request) => request(this.axios, this.basePath));
@@ -12854,7 +6505,6 @@ export class ConnectorsApi extends BaseAPI {
      * @param {string} connectorRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ConnectorsApi
      */
     public getConnector(connectorRef: string, options?: RawAxiosRequestConfig) {
         return ConnectorsApiFp(this.configuration).getConnector(connectorRef, options).then((request) => request(this.axios, this.basePath));
@@ -12866,7 +6516,6 @@ export class ConnectorsApi extends BaseAPI {
      * @param {ConnectorPatchInput} connectorPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ConnectorsApi
      */
     public patchConnector(connectorRef: string, connectorPatchInput: ConnectorPatchInput, options?: RawAxiosRequestConfig) {
         return ConnectorsApiFp(this.configuration).patchConnector(connectorRef, connectorPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -12877,7 +6526,6 @@ export class ConnectorsApi extends BaseAPI {
      * @param {ConnectorCreateInput} connectorCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ConnectorsApi
      */
     public postConnector(connectorCreateInput: ConnectorCreateInput, options?: RawAxiosRequestConfig) {
         return ConnectorsApiFp(this.configuration).postConnector(connectorCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -12888,7 +6536,6 @@ export class ConnectorsApi extends BaseAPI {
 
 /**
  * GroupsApi - axios parameter creator
- * @export
  */
 export const GroupsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -14401,7 +8048,6 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
 
 /**
  * GroupsApi - functional programming interface
- * @export
  */
 export const GroupsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = GroupsApiAxiosParamCreator(configuration)
@@ -14808,7 +8454,6 @@ export const GroupsApiFp = function(configuration?: Configuration) {
 
 /**
  * GroupsApi - factory interface
- * @export
  */
 export const GroupsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = GroupsApiFp(configuration)
@@ -15128,9 +8773,6 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
 
 /**
  * GroupsApi - object-oriented interface
- * @export
- * @class GroupsApi
- * @extends {BaseAPI}
  */
 export class GroupsApi extends BaseAPI {
     /**
@@ -15139,7 +8781,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public deleteGroupsRunner(groupRef: string, runnerUuid: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).deleteGroupsRunner(groupRef, runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -15151,7 +8792,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public deleteGroupsVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).deleteGroupsVariable(groupRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -15163,7 +8803,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} userIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public deleteMember(groupRef: string, userIdentifier: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).deleteMember(groupRef, userIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -15177,7 +8816,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} [query] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getConnectors(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getConnectors(groupRef, page, size, query, options).then((request) => request(this.axios, this.basePath));
@@ -15188,7 +8826,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getEvents(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getEvents(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15199,7 +8836,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroup(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroup(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15210,7 +8846,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsResetedRunnerRegisterToken(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsResetedRunnerRegisterToken(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15222,7 +8857,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsRunner(groupRef: string, runnerUuid: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsRunner(groupRef, runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -15233,7 +8867,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsRunnerRegisterToken(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsRunnerRegisterToken(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15247,7 +8880,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} [query] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsRunners(groupRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsRunners(groupRef, page, size, query, options).then((request) => request(this.axios, this.basePath));
@@ -15259,7 +8891,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsVariable(groupRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsVariable(groupRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -15276,7 +8907,6 @@ export class GroupsApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getGroupsVariables(groupRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getGroupsVariables(groupRef, page, size, query, types, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -15292,7 +8922,6 @@ export class GroupsApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getMembers(groupRef: string, page?: number, size?: number, query?: string, sort?: MembershipSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getMembers(groupRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -15308,7 +8937,6 @@ export class GroupsApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getRepos(groupRef: string, page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getRepos(groupRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -15324,7 +8952,6 @@ export class GroupsApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getServiceAccounts(groupRef: string, page?: number, size?: number, query?: string, sort?: UserSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getServiceAccounts(groupRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -15340,7 +8967,6 @@ export class GroupsApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public getSubGroups(groupRef: string, page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getSubGroups(groupRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -15352,7 +8978,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupPatchInput} groupPatchInput Group update request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public patchGroup(groupRef: string, groupPatchInput: GroupPatchInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).patchGroup(groupRef, groupPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -15365,7 +8990,6 @@ export class GroupsApi extends BaseAPI {
      * @param {RunnerPatchInput} runnerPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public patchGroupsRunner(groupRef: string, runnerUuid: string, runnerPatchInput: RunnerPatchInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).patchGroupsRunner(groupRef, runnerUuid, runnerPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -15378,7 +9002,6 @@ export class GroupsApi extends BaseAPI {
      * @param {VariablePatchInput} variablePatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public patchGroupsVariable(groupRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).patchGroupsVariable(groupRef, variableIdentifier, variablePatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -15391,7 +9014,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupMemberUpdateInput} groupMemberUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public patchMember(groupRef: string, userIdentifier: string, groupMemberUpdateInput: GroupMemberUpdateInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).patchMember(groupRef, userIdentifier, groupMemberUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -15402,7 +9024,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupCreateInput} groupCreateInput Group creation request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postGroup(groupCreateInput: GroupCreateInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postGroup(groupCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -15414,7 +9035,6 @@ export class GroupsApi extends BaseAPI {
      * @param {VariableCreateInput} variableCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postGroupsVariable(groupRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postGroupsVariable(groupRef, variableCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -15425,7 +9045,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupImportInput} groupImportInput Group import request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postImport(groupImportInput: GroupImportInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postImport(groupImportInput, options).then((request) => request(this.axios, this.basePath));
@@ -15437,7 +9056,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupImportReposInput} groupImportReposInput Group import repositories request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postImportRepos(groupRef: string, groupImportReposInput: GroupImportReposInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postImportRepos(groupRef, groupImportReposInput, options).then((request) => request(this.axios, this.basePath));
@@ -15449,7 +9067,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupMemberAddInput} groupMemberAddInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postMember(groupRef: string, groupMemberAddInput: GroupMemberAddInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postMember(groupRef, groupMemberAddInput, options).then((request) => request(this.axios, this.basePath));
@@ -15461,7 +9078,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupMoveInput} groupMoveInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postMove(groupRef: string, groupMoveInput: GroupMoveInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postMove(groupRef, groupMoveInput, options).then((request) => request(this.axios, this.basePath));
@@ -15472,7 +9088,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postPurge(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postPurge(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15484,7 +9099,6 @@ export class GroupsApi extends BaseAPI {
      * @param {GroupRestoreInput} groupRestoreInput Group restore request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public postRestore(groupRef: string, groupRestoreInput: GroupRestoreInput, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).postRestore(groupRef, groupRestoreInput, options).then((request) => request(this.axios, this.basePath));
@@ -15495,7 +9109,6 @@ export class GroupsApi extends BaseAPI {
      * @param {string} groupRef Group ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof GroupsApi
      */
     public softDelete(groupRef: string, options?: RawAxiosRequestConfig) {
         return GroupsApiFp(this.configuration).softDelete(groupRef, options).then((request) => request(this.axios, this.basePath));
@@ -15506,7 +9119,6 @@ export class GroupsApi extends BaseAPI {
 
 /**
  * KeywordSearchApi - axios parameter creator
- * @export
  */
 export const KeywordSearchApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -15544,7 +9156,6 @@ export const KeywordSearchApiAxiosParamCreator = function (configuration?: Confi
 
 /**
  * KeywordSearchApi - functional programming interface
- * @export
  */
 export const KeywordSearchApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = KeywordSearchApiAxiosParamCreator(configuration)
@@ -15565,7 +9176,6 @@ export const KeywordSearchApiFp = function(configuration?: Configuration) {
 
 /**
  * KeywordSearchApi - factory interface
- * @export
  */
 export const KeywordSearchApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = KeywordSearchApiFp(configuration)
@@ -15583,16 +9193,12 @@ export const KeywordSearchApiFactory = function (configuration?: Configuration, 
 
 /**
  * KeywordSearchApi - object-oriented interface
- * @export
- * @class KeywordSearchApi
- * @extends {BaseAPI}
  */
 export class KeywordSearchApi extends BaseAPI {
     /**
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof KeywordSearchApi
      */
     public search(options?: RawAxiosRequestConfig) {
         return KeywordSearchApiFp(this.configuration).search(options).then((request) => request(this.axios, this.basePath));
@@ -15603,7 +9209,6 @@ export class KeywordSearchApi extends BaseAPI {
 
 /**
  * PullRequestApi - axios parameter creator
- * @export
  */
 export const PullRequestApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -16953,7 +10558,6 @@ export const PullRequestApiAxiosParamCreator = function (configuration?: Configu
 
 /**
  * PullRequestApi - functional programming interface
- * @export
  */
 export const PullRequestApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PullRequestApiAxiosParamCreator(configuration)
@@ -17311,7 +10915,6 @@ export const PullRequestApiFp = function(configuration?: Configuration) {
 
 /**
  * PullRequestApi - factory interface
- * @export
  */
 export const PullRequestApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = PullRequestApiFp(configuration)
@@ -17597,9 +11200,6 @@ export const PullRequestApiFactory = function (configuration?: Configuration, ba
 
 /**
  * PullRequestApi - object-oriented interface
- * @export
- * @class PullRequestApi
- * @extends {BaseAPI}
  */
 export class PullRequestApi extends BaseAPI {
     /**
@@ -17609,7 +11209,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqCommentId Pull request comment id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public deleteComment(repoRef: string, pullreqNumber: number, pullreqCommentId: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).deleteComment(repoRef, pullreqNumber, pullreqCommentId, options).then((request) => request(this.axios, this.basePath));
@@ -17622,7 +11221,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {string} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public deleteFileView(repoRef: string, pullreqNumber: number, path: string, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).deleteFileView(repoRef, pullreqNumber, path, options).then((request) => request(this.axios, this.basePath));
@@ -17635,7 +11233,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqReviewerId Pull request reviewer id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public deleteReviewer(repoRef: string, pullreqNumber: number, pullreqReviewerId: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).deleteReviewer(repoRef, pullreqNumber, pullreqReviewerId, options).then((request) => request(this.axios, this.basePath));
@@ -17654,7 +11251,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {Array<PullreqActivityKind>} [kinds] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getActivities(repoRef: string, pullreqNumber: number, page?: number, size?: number, query?: string, after?: number, before?: number, types?: Array<PullreqActivityType>, kinds?: Array<PullreqActivityKind>, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getActivities(repoRef, pullreqNumber, page, size, query, after, before, types, kinds, options).then((request) => request(this.axios, this.basePath));
@@ -17666,7 +11262,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getCodeOwners(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getCodeOwners(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17678,7 +11273,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getFileViews(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getFileViews(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17690,7 +11284,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getMetadata(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getMetadata(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17702,7 +11295,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getPullRequestChecks(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getPullRequestChecks(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17716,7 +11308,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getPullRequestCommits(repoRef: string, pullreqNumber: number, page?: number, size?: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getPullRequestCommits(repoRef, pullreqNumber, page, size, options).then((request) => request(this.axios, this.basePath));
@@ -17728,7 +11319,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getPullreq(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getPullreq(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17751,7 +11341,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} [createdLt] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getPullreqs(repoRef: string, page?: number, size?: number, query?: string, createdBy?: Array<number>, sourceRepoRef?: string, sourceBranch?: string, targetBranch?: string, states?: Array<PullreqState>, sort?: PullreqSort, order?: OrderOption, createdGt?: number, createdLt?: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getPullreqs(repoRef, page, size, query, createdBy, sourceRepoRef, sourceBranch, targetBranch, states, sort, order, createdGt, createdLt, options).then((request) => request(this.axios, this.basePath));
@@ -17763,7 +11352,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {number} pullreqNumber Pull request number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public getReviewers(repoRef: string, pullreqNumber: number, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).getReviewers(repoRef, pullreqNumber, options).then((request) => request(this.axios, this.basePath));
@@ -17777,7 +11365,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqCommentUpdateInput} pullreqCommentUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public patchComment(repoRef: string, pullreqNumber: number, pullreqCommentId: number, pullreqCommentUpdateInput: PullreqCommentUpdateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).patchComment(repoRef, pullreqNumber, pullreqCommentId, pullreqCommentUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17790,7 +11377,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqUpdateInput} pullreqUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public patchPullreq(repoRef: string, pullreqNumber: number, pullreqUpdateInput: PullreqUpdateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).patchPullreq(repoRef, pullreqNumber, pullreqUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17803,7 +11389,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqApplySuggestionsInput} pullreqApplySuggestionsInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postApplySuggestions(repoRef: string, pullreqNumber: number, pullreqApplySuggestionsInput: PullreqApplySuggestionsInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postApplySuggestions(repoRef, pullreqNumber, pullreqApplySuggestionsInput, options).then((request) => request(this.axios, this.basePath));
@@ -17816,7 +11401,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqCommentCreateInput} pullreqCommentCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postComment(repoRef: string, pullreqNumber: number, pullreqCommentCreateInput: PullreqCommentCreateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postComment(repoRef, pullreqNumber, pullreqCommentCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17829,7 +11413,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {Array<CommitDiffFile>} commitDiffFile 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postDiff(repoRef: string, pullreqNumber: number, commitDiffFile: Array<CommitDiffFile>, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postDiff(repoRef, pullreqNumber, commitDiffFile, options).then((request) => request(this.axios, this.basePath));
@@ -17842,7 +11425,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqMergeInput} pullreqMergeInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postMerge(repoRef: string, pullreqNumber: number, pullreqMergeInput: PullreqMergeInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postMerge(repoRef, pullreqNumber, pullreqMergeInput, options).then((request) => request(this.axios, this.basePath));
@@ -17854,7 +11436,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqCreateInput} pullreqCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postPullreq(repoRef: string, pullreqCreateInput: PullreqCreateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postPullreq(repoRef, pullreqCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17867,7 +11448,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqReviewSubmitInput} pullreqReviewSubmitInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postReviews(repoRef: string, pullreqNumber: number, pullreqReviewSubmitInput: PullreqReviewSubmitInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postReviews(repoRef, pullreqNumber, pullreqReviewSubmitInput, options).then((request) => request(this.axios, this.basePath));
@@ -17880,7 +11460,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqStateUpdateInput} pullreqStateUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public postState(repoRef: string, pullreqNumber: number, pullreqStateUpdateInput: PullreqStateUpdateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).postState(repoRef, pullreqNumber, pullreqStateUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17894,7 +11473,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqCommentStatusInput} pullreqCommentStatusInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public putCommentStatus(repoRef: string, pullreqNumber: number, pullreqCommentId: number, pullreqCommentStatusInput: PullreqCommentStatusInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).putCommentStatus(repoRef, pullreqNumber, pullreqCommentId, pullreqCommentStatusInput, options).then((request) => request(this.axios, this.basePath));
@@ -17907,7 +11485,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqFileViewCreateInput} pullreqFileViewCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public putFileViews(repoRef: string, pullreqNumber: number, pullreqFileViewCreateInput: PullreqFileViewCreateInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).putFileViews(repoRef, pullreqNumber, pullreqFileViewCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -17920,7 +11497,6 @@ export class PullRequestApi extends BaseAPI {
      * @param {PullreqReviewerAddInput} pullreqReviewerAddInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PullRequestApi
      */
     public putReviewer(repoRef: string, pullreqNumber: number, pullreqReviewerAddInput: PullreqReviewerAddInput, options?: RawAxiosRequestConfig) {
         return PullRequestApiFp(this.configuration).putReviewer(repoRef, pullreqNumber, pullreqReviewerAddInput, options).then((request) => request(this.axios, this.basePath));
@@ -17931,7 +11507,6 @@ export class PullRequestApi extends BaseAPI {
 
 /**
  * ReleaseUploadApi - axios parameter creator
- * @export
  */
 export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -18272,7 +11847,6 @@ export const ReleaseUploadApiAxiosParamCreator = function (configuration?: Confi
 
 /**
  * ReleaseUploadApi - functional programming interface
- * @export
  */
 export const ReleaseUploadApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ReleaseUploadApiAxiosParamCreator(configuration)
@@ -18372,7 +11946,6 @@ export const ReleaseUploadApiFp = function(configuration?: Configuration) {
 
 /**
  * ReleaseUploadApi - factory interface
- * @export
  */
 export const ReleaseUploadApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ReleaseUploadApiFp(configuration)
@@ -18451,9 +12024,6 @@ export const ReleaseUploadApiFactory = function (configuration?: Configuration, 
 
 /**
  * ReleaseUploadApi - object-oriented interface
- * @export
- * @class ReleaseUploadApi
- * @extends {BaseAPI}
  */
 export class ReleaseUploadApi extends BaseAPI {
     /**
@@ -18462,7 +12032,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public deleteUpload(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).deleteUpload(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18474,7 +12043,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public getAssets(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).getAssets(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18486,7 +12054,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public getDownload(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).getDownload(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18498,7 +12065,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public getRestore(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).getRestore(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18509,7 +12075,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public headOffset(repoRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).headOffset(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -18521,7 +12086,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public patchChunks(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).patchChunks(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18533,7 +12097,6 @@ export class ReleaseUploadApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ReleaseUploadApi
      */
     public postUpload(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return ReleaseUploadApiFp(this.configuration).postUpload(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -18544,7 +12107,6 @@ export class ReleaseUploadApi extends BaseAPI {
 
 /**
  * RepositoryApi - axios parameter creator
- * @export
  */
 export const RepositoryApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -21786,7 +15348,6 @@ export const RepositoryApiAxiosParamCreator = function (configuration?: Configur
 
 /**
  * RepositoryApi - functional programming interface
- * @export
  */
 export const RepositoryApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RepositoryApiAxiosParamCreator(configuration)
@@ -22636,7 +16197,6 @@ export const RepositoryApiFp = function(configuration?: Configuration) {
 
 /**
  * RepositoryApi - factory interface
- * @export
  */
 export const RepositoryApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = RepositoryApiFp(configuration)
@@ -23303,9 +16863,6 @@ export const RepositoryApiFactory = function (configuration?: Configuration, bas
 
 /**
  * RepositoryApi - object-oriented interface
- * @export
- * @class RepositoryApi
- * @extends {BaseAPI}
  */
 export class RepositoryApi extends BaseAPI {
     /**
@@ -23314,7 +16871,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {CommitFilesInput} commitFilesInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public commitFiles(repoRef: string, commitFilesInput: CommitFilesInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).commitFiles(repoRef, commitFilesInput, options).then((request) => request(this.axios, this.basePath));
@@ -23326,7 +16882,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoCommitDivergencesInput} repoCommitDivergencesInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public commitsCalculateDivergence(repoRef: string, repoCommitDivergencesInput: RepoCommitDivergencesInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).commitsCalculateDivergence(repoRef, repoCommitDivergencesInput, options).then((request) => request(this.axios, this.basePath));
@@ -23339,7 +16894,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public deleteBranch(repoRef: string, branchName: string, bypassRules?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).deleteBranch(repoRef, branchName, bypassRules, options).then((request) => request(this.axios, this.basePath));
@@ -23352,7 +16906,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public deleteRelease(repoRef: string, tagRef: string, bypassRules?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).deleteRelease(repoRef, tagRef, bypassRules, options).then((request) => request(this.axios, this.basePath));
@@ -23364,7 +16917,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public deleteRepositoryRunner(repoRef: string, runnerUuid: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).deleteRepositoryRunner(repoRef, runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -23376,7 +16928,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public deleteRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).deleteRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -23389,7 +16940,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [bypassRules] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public deleteTag(repoRef: string, tagName: string, bypassRules?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).deleteTag(repoRef, tagName, bypassRules, options).then((request) => request(this.axios, this.basePath));
@@ -23401,7 +16951,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {GeneralSettings} generalSettings 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public generalUpdate(repoRef: string, generalSettings: GeneralSettings, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).generalUpdate(repoRef, generalSettings, options).then((request) => request(this.axios, this.basePath));
@@ -23418,7 +16967,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {number} [compression] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getArchive(repoRef: string, archiveRef: string, prefix?: string, attributes?: ArchiveAttribute, paths?: Array<string>, timestamp?: number, compression?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getArchive(repoRef, archiveRef, prefix, attributes, paths, timestamp, compression, options).then((request) => request(this.axios, this.basePath));
@@ -23433,7 +16981,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {number} [lineTo] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getBlame(repoRef: string, path: string, gitRef?: string, lineFrom?: number, lineTo?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getBlame(repoRef, path, gitRef, lineFrom, lineTo, options).then((request) => request(this.axios, this.basePath));
@@ -23445,7 +16992,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} branchName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getBranch(repoRef: string, branchName: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getBranch(repoRef, branchName, options).then((request) => request(this.axios, this.basePath));
@@ -23460,7 +17006,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [includeCommit] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getBranches(repoRef: string, page?: number, size?: number, query?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getBranches(repoRef, page, size, query, includeCommit, options).then((request) => request(this.axios, this.basePath));
@@ -23472,7 +17017,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getCodeownersValidate(repoRef: string, gitRef?: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getCodeownersValidate(repoRef, gitRef, options).then((request) => request(this.axios, this.basePath));
@@ -23484,7 +17028,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} commitSha 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getCommit(repoRef: string, commitSha: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getCommit(repoRef, commitSha, options).then((request) => request(this.axios, this.basePath));
@@ -23496,7 +17039,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} commitSha 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getCommitDiff(repoRef: string, commitSha: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getCommitDiff(repoRef, commitSha, options).then((request) => request(this.axios, this.basePath));
@@ -23512,7 +17054,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {number} [size] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getCommitFileContent(repoRef: string, commitSha: string, filePath: string, hunkHeader: string, expandUp: boolean, size?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getCommitFileContent(repoRef, commitSha, filePath, hunkHeader, expandUp, size, options).then((request) => request(this.axios, this.basePath));
@@ -23532,7 +17073,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [includeStats] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getCommits(repoRef: string, gitRef?: string, page?: number, size?: number, after?: string, path?: string, since?: number, until?: number, author?: string, includeStats?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getCommits(repoRef, gitRef, page, size, after, path, since, until, author, includeStats, options).then((request) => request(this.axios, this.basePath));
@@ -23546,7 +17086,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [includeCommit] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getContent(repoRef: string, path: string, gitRef?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getContent(repoRef, path, gitRef, includeCommit, options).then((request) => request(this.axios, this.basePath));
@@ -23560,7 +17099,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {number} [until] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getContributors(repoRef: string, gitRef?: string, since?: number, until?: number, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getContributors(repoRef, gitRef, since, until, options).then((request) => request(this.axios, this.basePath));
@@ -23572,7 +17110,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getDiffStats(repoRef: string, path: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getDiffStats(repoRef, path, options).then((request) => request(this.axios, this.basePath));
@@ -23584,7 +17121,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} path 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getDiffs(repoRef: string, path: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getDiffs(repoRef, path, options).then((request) => request(this.axios, this.basePath));
@@ -23600,7 +17136,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getForks(repoRef: string, page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getForks(repoRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -23611,7 +17146,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getGeneral(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getGeneral(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23622,7 +17156,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getHasStarred(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getHasStarred(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23633,7 +17166,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getImportProgress(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getImportProgress(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23646,7 +17178,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [includeDirectories] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getPaths(repoRef: string, gitRef?: string, includeDirectories?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getPaths(repoRef, gitRef, includeDirectories, options).then((request) => request(this.axios, this.basePath));
@@ -23659,7 +17190,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRaw(repoRef: string, path: string, gitRef?: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRaw(repoRef, path, gitRef, options).then((request) => request(this.axios, this.basePath));
@@ -23671,7 +17201,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} tagRef 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRelease(repoRef: string, tagRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRelease(repoRef, tagRef, options).then((request) => request(this.axios, this.basePath));
@@ -23687,7 +17216,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getReleases(repoRef: string, page?: number, size?: number, query?: string, sort?: ReleaseSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getReleases(repoRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -23698,7 +17226,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepo(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepo(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23709,7 +17236,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryResetedRunnerRegisterToken(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryResetedRunnerRegisterToken(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23721,7 +17247,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} runnerUuid 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryRunner(repoRef: string, runnerUuid: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryRunner(repoRef, runnerUuid, options).then((request) => request(this.axios, this.basePath));
@@ -23732,7 +17257,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryRunnerRegisterToken(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryRunnerRegisterToken(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23746,7 +17270,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} [query] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryRunners(repoRef: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryRunners(repoRef, page, size, query, options).then((request) => request(this.axios, this.basePath));
@@ -23757,7 +17280,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryServiceAccounts(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryServiceAccounts(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23768,7 +17290,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryStats(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryStats(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23780,7 +17301,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} variableIdentifier 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryVariable(repoRef: string, variableIdentifier: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryVariable(repoRef, variableIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -23797,7 +17317,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getRepositoryVariables(repoRef: string, page?: number, size?: number, query?: string, types?: Array<VariableType>, sort?: VariableSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getRepositoryVariables(repoRef, page, size, query, types, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -23808,7 +17327,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getSecurity(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getSecurity(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -23824,7 +17342,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getStars(repoRef: string, page?: number, size?: number, query?: string, sort?: UserSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getStars(repoRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -23839,7 +17356,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {boolean} [includeCommit] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public getTags(repoRef: string, page?: number, size?: number, query?: string, includeCommit?: boolean, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).getTags(repoRef, page, size, query, includeCommit, options).then((request) => request(this.axios, this.basePath));
@@ -23851,7 +17367,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoUpdateInput} repoUpdateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public patchRepo(repoRef: string, repoUpdateInput: RepoUpdateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).patchRepo(repoRef, repoUpdateInput, options).then((request) => request(this.axios, this.basePath));
@@ -23864,7 +17379,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RunnerPatchInput} runnerPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public patchRepositoryRunner(repoRef: string, runnerUuid: string, runnerPatchInput: RunnerPatchInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).patchRepositoryRunner(repoRef, runnerUuid, runnerPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -23877,7 +17391,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {VariablePatchInput} variablePatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public patchRepositoryVariable(repoRef: string, variableIdentifier: string, variablePatchInput: VariablePatchInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).patchRepositoryVariable(repoRef, variableIdentifier, variablePatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -23889,7 +17402,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {SecuritySettings} securitySettings 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public patchSecurity(repoRef: string, securitySettings: SecuritySettings, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).patchSecurity(repoRef, securitySettings, options).then((request) => request(this.axios, this.basePath));
@@ -23901,7 +17413,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoStarsInput} repoStarsInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public patchStars(repoRef: string, repoStarsInput: RepoStarsInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).patchStars(repoRef, repoStarsInput, options).then((request) => request(this.axios, this.basePath));
@@ -23913,7 +17424,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {BranchCreateInput} branchCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postBranch(repoRef: string, branchCreateInput: BranchCreateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postBranch(repoRef, branchCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -23925,7 +17435,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoUpdateDefaultBranchInput} repoUpdateDefaultBranchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postDefaultBranch(repoRef: string, repoUpdateDefaultBranchInput: RepoUpdateDefaultBranchInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postDefaultBranch(repoRef, repoUpdateDefaultBranchInput, options).then((request) => request(this.axios, this.basePath));
@@ -23939,7 +17448,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {Array<CommitDiffFile>} commitDiffFile 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postDiffs(repoRef: string, path: string, path2: string, commitDiffFile: Array<CommitDiffFile>, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postDiffs(repoRef, path, path2, commitDiffFile, options).then((request) => request(this.axios, this.basePath));
@@ -23952,7 +17460,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoMergeCheckInput} repoMergeCheckInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postMergeCheck(repoRef: string, path: string, repoMergeCheckInput: RepoMergeCheckInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postMergeCheck(repoRef, path, repoMergeCheckInput, options).then((request) => request(this.axios, this.basePath));
@@ -23965,7 +17472,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} [gitRef] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postPathDetails(repoRef: string, requestBody: Array<string>, gitRef?: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postPathDetails(repoRef, requestBody, gitRef, options).then((request) => request(this.axios, this.basePath));
@@ -23977,7 +17483,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {ReleaseCreateInput} releaseCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRelease(repoRef: string, releaseCreateInput: ReleaseCreateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRelease(repoRef, releaseCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -23988,7 +17493,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoCreateInput} repoCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRepo(repoCreateInput: RepoCreateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepo(repoCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -23999,7 +17503,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoImportInput} repoImportInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRepositoryImport(repoImportInput: RepoImportInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepositoryImport(repoImportInput, options).then((request) => request(this.axios, this.basePath));
@@ -24011,7 +17514,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoMoveInput} repoMoveInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRepositoryMove(repoRef: string, repoMoveInput: RepoMoveInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepositoryMove(repoRef, repoMoveInput, options).then((request) => request(this.axios, this.basePath));
@@ -24022,7 +17524,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRepositoryPurge(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepositoryPurge(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -24034,7 +17535,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {VariableCreateInput} variableCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postRepositoryVariable(repoRef: string, variableCreateInput: VariableCreateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postRepositoryVariable(repoRef, variableCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -24046,7 +17546,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {TagCreateInput} tagCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public postTag(repoRef: string, tagCreateInput: TagCreateInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).postTag(repoRef, tagCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -24058,7 +17557,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {BranchRenameInput} branchRenameInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public renameBranch(repoRef: string, branchRenameInput: BranchRenameInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).renameBranch(repoRef, branchRenameInput, options).then((request) => request(this.axios, this.basePath));
@@ -24070,7 +17568,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {RepoRestoreInput} repoRestoreInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public repoRestore(repoRef: string, repoRestoreInput: RepoRestoreInput, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).repoRestore(repoRef, repoRestoreInput, options).then((request) => request(this.axios, this.basePath));
@@ -24081,7 +17578,6 @@ export class RepositoryApi extends BaseAPI {
      * @param {string} repoRef Repository id or ref
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RepositoryApi
      */
     public softRepositoryDelete(repoRef: string, options?: RawAxiosRequestConfig) {
         return RepositoryApiFp(this.configuration).softRepositoryDelete(repoRef, options).then((request) => request(this.axios, this.basePath));
@@ -24092,7 +17588,6 @@ export class RepositoryApi extends BaseAPI {
 
 /**
  * ResourcesApi - axios parameter creator
- * @export
  */
 export const ResourcesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -24159,7 +17654,6 @@ export const ResourcesApiAxiosParamCreator = function (configuration?: Configura
 
 /**
  * ResourcesApi - functional programming interface
- * @export
  */
 export const ResourcesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ResourcesApiAxiosParamCreator(configuration)
@@ -24191,7 +17685,6 @@ export const ResourcesApiFp = function(configuration?: Configuration) {
 
 /**
  * ResourcesApi - factory interface
- * @export
  */
 export const ResourcesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ResourcesApiFp(configuration)
@@ -24217,16 +17710,12 @@ export const ResourcesApiFactory = function (configuration?: Configuration, base
 
 /**
  * ResourcesApi - object-oriented interface
- * @export
- * @class ResourcesApi
- * @extends {BaseAPI}
  */
 export class ResourcesApi extends BaseAPI {
     /**
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ResourcesApi
      */
     public getGitignores(options?: RawAxiosRequestConfig) {
         return ResourcesApiFp(this.configuration).getGitignores(options).then((request) => request(this.axios, this.basePath));
@@ -24236,7 +17725,6 @@ export class ResourcesApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ResourcesApi
      */
     public getLicenses(options?: RawAxiosRequestConfig) {
         return ResourcesApiFp(this.configuration).getLicenses(options).then((request) => request(this.axios, this.basePath));
@@ -24247,7 +17735,6 @@ export class ResourcesApi extends BaseAPI {
 
 /**
  * RulesApi - axios parameter creator
- * @export
  */
 export const RulesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -24530,7 +18017,6 @@ export const RulesApiAxiosParamCreator = function (configuration?: Configuration
 
 /**
  * RulesApi - functional programming interface
- * @export
  */
 export const RulesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RulesApiAxiosParamCreator(configuration)
@@ -24611,7 +18097,6 @@ export const RulesApiFp = function(configuration?: Configuration) {
 
 /**
  * RulesApi - factory interface
- * @export
  */
 export const RulesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = RulesApiFp(configuration)
@@ -24677,9 +18162,6 @@ export const RulesApiFactory = function (configuration?: Configuration, basePath
 
 /**
  * RulesApi - object-oriented interface
- * @export
- * @class RulesApi
- * @extends {BaseAPI}
  */
 export class RulesApi extends BaseAPI {
     /**
@@ -24688,7 +18170,6 @@ export class RulesApi extends BaseAPI {
      * @param {string} ruleIdentifier Rule identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RulesApi
      */
     public deleteRule(repoRef: string, ruleIdentifier: string, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).deleteRule(repoRef, ruleIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -24700,7 +18181,6 @@ export class RulesApi extends BaseAPI {
      * @param {string} ruleIdentifier Rule identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RulesApi
      */
     public getRule(repoRef: string, ruleIdentifier: string, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).getRule(repoRef, ruleIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -24717,7 +18197,6 @@ export class RulesApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RulesApi
      */
     public getRules(repoRef: string, page?: number, size?: number, query?: string, states?: Array<RuleState>, sort?: RuleSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).getRules(repoRef, page, size, query, states, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -24730,7 +18209,6 @@ export class RulesApi extends BaseAPI {
      * @param {RulePatchInput} rulePatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RulesApi
      */
     public patchRule(repoRef: string, ruleIdentifier: string, rulePatchInput: RulePatchInput, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).patchRule(repoRef, ruleIdentifier, rulePatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -24742,7 +18220,6 @@ export class RulesApi extends BaseAPI {
      * @param {RuleCreateInput} ruleCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RulesApi
      */
     public postRule(repoRef: string, ruleCreateInput: RuleCreateInput, options?: RawAxiosRequestConfig) {
         return RulesApiFp(this.configuration).postRule(repoRef, ruleCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -24753,7 +18230,6 @@ export class RulesApi extends BaseAPI {
 
 /**
  * RunnersApi - axios parameter creator
- * @export
  */
 export const RunnersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -24843,7 +18319,6 @@ export const RunnersApiAxiosParamCreator = function (configuration?: Configurati
 
 /**
  * RunnersApi - functional programming interface
- * @export
  */
 export const RunnersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RunnersApiAxiosParamCreator(configuration)
@@ -24877,7 +18352,6 @@ export const RunnersApiFp = function(configuration?: Configuration) {
 
 /**
  * RunnersApi - factory interface
- * @export
  */
 export const RunnersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = RunnersApiFp(configuration)
@@ -24905,9 +18379,6 @@ export const RunnersApiFactory = function (configuration?: Configuration, basePa
 
 /**
  * RunnersApi - object-oriented interface
- * @export
- * @class RunnersApi
- * @extends {BaseAPI}
  */
 export class RunnersApi extends BaseAPI {
     /**
@@ -24915,7 +18386,6 @@ export class RunnersApi extends BaseAPI {
      * @param {RunnerContext} runnerContext 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RunnersApi
      */
     public pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig) {
         return RunnersApiFp(this.configuration).pollStage(runnerContext, options).then((request) => request(this.axios, this.basePath));
@@ -24926,7 +18396,6 @@ export class RunnersApi extends BaseAPI {
      * @param {RunnerPostInput} runnerPostInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RunnersApi
      */
     public postRunnersRegister(runnerPostInput: RunnerPostInput, options?: RawAxiosRequestConfig) {
         return RunnersApiFp(this.configuration).postRunnersRegister(runnerPostInput, options).then((request) => request(this.axios, this.basePath));
@@ -24937,7 +18406,6 @@ export class RunnersApi extends BaseAPI {
 
 /**
  * ServiceAccountsApi - axios parameter creator
- * @export
  */
 export const ServiceAccountsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -25226,7 +18694,6 @@ export const ServiceAccountsApiAxiosParamCreator = function (configuration?: Con
 
 /**
  * ServiceAccountsApi - functional programming interface
- * @export
  */
 export const ServiceAccountsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ServiceAccountsApiAxiosParamCreator(configuration)
@@ -25311,7 +18778,6 @@ export const ServiceAccountsApiFp = function(configuration?: Configuration) {
 
 /**
  * ServiceAccountsApi - factory interface
- * @export
  */
 export const ServiceAccountsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = ServiceAccountsApiFp(configuration)
@@ -25378,9 +18844,6 @@ export const ServiceAccountsApiFactory = function (configuration?: Configuration
 
 /**
  * ServiceAccountsApi - object-oriented interface
- * @export
- * @class ServiceAccountsApi
- * @extends {BaseAPI}
  */
 export class ServiceAccountsApi extends BaseAPI {
     /**
@@ -25388,7 +18851,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {string} saIdentifier Service account UID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public deleteServiceAccount(saIdentifier: string, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).deleteServiceAccount(saIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -25400,7 +18862,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {string} tokenName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public deleteServiceAccountToken(saIdentifier: string, tokenName: string, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).deleteServiceAccountToken(saIdentifier, tokenName, options).then((request) => request(this.axios, this.basePath));
@@ -25411,7 +18872,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {string} saIdentifier Service account UID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public getServiceAccount(saIdentifier: string, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).getServiceAccount(saIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -25422,7 +18882,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {string} saIdentifier Service account UID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public getServiceAccountTokens(saIdentifier: string, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).getServiceAccountTokens(saIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -25434,7 +18893,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {ServiceAccountCreateInput} serviceAccountCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public postServiceAccount(saIdentifier: string, serviceAccountCreateInput: ServiceAccountCreateInput, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).postServiceAccount(saIdentifier, serviceAccountCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -25446,7 +18904,6 @@ export class ServiceAccountsApi extends BaseAPI {
      * @param {ServiceAccountCreateInput} serviceAccountCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof ServiceAccountsApi
      */
     public postServiceAccountToken(saIdentifier: string, serviceAccountCreateInput: ServiceAccountCreateInput, options?: RawAxiosRequestConfig) {
         return ServiceAccountsApiFp(this.configuration).postServiceAccountToken(saIdentifier, serviceAccountCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -25457,7 +18914,6 @@ export class ServiceAccountsApi extends BaseAPI {
 
 /**
  * StatusCheckApi - axios parameter creator
- * @export
  */
 export const StatusCheckApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -25637,7 +19093,6 @@ export const StatusCheckApiAxiosParamCreator = function (configuration?: Configu
 
 /**
  * StatusCheckApi - functional programming interface
- * @export
  */
 export const StatusCheckApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = StatusCheckApiAxiosParamCreator(configuration)
@@ -25691,7 +19146,6 @@ export const StatusCheckApiFp = function(configuration?: Configuration) {
 
 /**
  * StatusCheckApi - factory interface
- * @export
  */
 export const StatusCheckApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = StatusCheckApiFp(configuration)
@@ -25736,9 +19190,6 @@ export const StatusCheckApiFactory = function (configuration?: Configuration, ba
 
 /**
  * StatusCheckApi - object-oriented interface
- * @export
- * @class StatusCheckApi
- * @extends {BaseAPI}
  */
 export class StatusCheckApi extends BaseAPI {
     /**
@@ -25750,7 +19201,6 @@ export class StatusCheckApi extends BaseAPI {
      * @param {string} [query] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof StatusCheckApi
      */
     public getChecks(repoRef: string, commitSha: string, page?: number, size?: number, query?: string, options?: RawAxiosRequestConfig) {
         return StatusCheckApiFp(this.configuration).getChecks(repoRef, commitSha, page, size, query, options).then((request) => request(this.axios, this.basePath));
@@ -25763,7 +19213,6 @@ export class StatusCheckApi extends BaseAPI {
      * @param {number} [since] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof StatusCheckApi
      */
     public getRecent(repoRef: string, query?: string, since?: number, options?: RawAxiosRequestConfig) {
         return StatusCheckApiFp(this.configuration).getRecent(repoRef, query, since, options).then((request) => request(this.axios, this.basePath));
@@ -25776,7 +19225,6 @@ export class StatusCheckApi extends BaseAPI {
      * @param {CheckReportInput} checkReportInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof StatusCheckApi
      */
     public putCheckReport(repoRef: string, commitSha: string, checkReportInput: CheckReportInput, options?: RawAxiosRequestConfig) {
         return StatusCheckApiFp(this.configuration).putCheckReport(repoRef, commitSha, checkReportInput, options).then((request) => request(this.axios, this.basePath));
@@ -25787,7 +19235,6 @@ export class StatusCheckApi extends BaseAPI {
 
 /**
  * SystemApi - axios parameter creator
- * @export
  */
 export const SystemApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -25883,7 +19330,6 @@ export const SystemApiAxiosParamCreator = function (configuration?: Configuratio
 
 /**
  * SystemApi - functional programming interface
- * @export
  */
 export const SystemApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SystemApiAxiosParamCreator(configuration)
@@ -25926,7 +19372,6 @@ export const SystemApiFp = function(configuration?: Configuration) {
 
 /**
  * SystemApi - factory interface
- * @export
  */
 export const SystemApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = SystemApiFp(configuration)
@@ -25960,16 +19405,12 @@ export const SystemApiFactory = function (configuration?: Configuration, basePat
 
 /**
  * SystemApi - object-oriented interface
- * @export
- * @class SystemApi
- * @extends {BaseAPI}
  */
 export class SystemApi extends BaseAPI {
     /**
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SystemApi
      */
     public getConfig(options?: RawAxiosRequestConfig) {
         return SystemApiFp(this.configuration).getConfig(options).then((request) => request(this.axios, this.basePath));
@@ -25979,7 +19420,6 @@ export class SystemApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SystemApi
      */
     public getHealth(options?: RawAxiosRequestConfig) {
         return SystemApiFp(this.configuration).getHealth(options).then((request) => request(this.axios, this.basePath));
@@ -25989,7 +19429,6 @@ export class SystemApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof SystemApi
      */
     public getVersion(options?: RawAxiosRequestConfig) {
         return SystemApiFp(this.configuration).getVersion(options).then((request) => request(this.axios, this.basePath));
@@ -26000,7 +19439,6 @@ export class SystemApi extends BaseAPI {
 
 /**
  * UserApi - axios parameter creator
- * @export
  */
 export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -27061,7 +20499,6 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 
 /**
  * UserApi - functional programming interface
- * @export
  */
 export const UserApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
@@ -27344,7 +20781,6 @@ export const UserApiFp = function(configuration?: Configuration) {
 
 /**
  * UserApi - factory interface
- * @export
  */
 export const UserApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = UserApiFp(configuration)
@@ -27564,9 +21000,6 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
 
 /**
  * UserApi - object-oriented interface
- * @export
- * @class UserApi
- * @extends {BaseAPI}
  */
 export class UserApi extends BaseAPI {
     /**
@@ -27574,7 +21007,6 @@ export class UserApi extends BaseAPI {
      * @param {string} publicKeyName Public key name
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public deletePublicKey(publicKeyName: string, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).deletePublicKey(publicKeyName, options).then((request) => request(this.axios, this.basePath));
@@ -27585,7 +21017,6 @@ export class UserApi extends BaseAPI {
      * @param {string} sessionName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public deleteSession(sessionName: string, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).deleteSession(sessionName, options).then((request) => request(this.axios, this.basePath));
@@ -27596,7 +21027,6 @@ export class UserApi extends BaseAPI {
      * @param {string} tokenName 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public deleteToken(tokenName: string, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).deleteToken(tokenName, options).then((request) => request(this.axios, this.basePath));
@@ -27606,7 +21036,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public deleteTwoFactor(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).deleteTwoFactor(options).then((request) => request(this.axios, this.basePath));
@@ -27622,7 +21051,6 @@ export class UserApi extends BaseAPI {
      * @param {number} [after] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getFeeds(page?: number, size?: number, order?: OrderOption, type?: FeedType, before?: number, after?: number, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getFeeds(page, size, order, type, before, after, options).then((request) => request(this.axios, this.basePath));
@@ -27634,7 +21062,6 @@ export class UserApi extends BaseAPI {
      * @param {Permission} perm 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getHasPerm(repoRef: string, perm: Permission, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getHasPerm(repoRef, perm, options).then((request) => request(this.axios, this.basePath));
@@ -27646,7 +21073,6 @@ export class UserApi extends BaseAPI {
      * @param {number} [after] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getHeatmap(before?: number, after?: number, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getHeatmap(before, after, options).then((request) => request(this.axios, this.basePath));
@@ -27661,7 +21087,6 @@ export class UserApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getMemberships(page?: number, size?: number, query?: string, sort?: MembershipSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getMemberships(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -27676,7 +21101,6 @@ export class UserApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getPublicKeys(page?: number, size?: number, query?: string, sort?: PublicKeySort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getPublicKeys(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -27686,7 +21110,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getSessions(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getSessions(options).then((request) => request(this.axios, this.basePath));
@@ -27696,7 +21119,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getTokens(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getTokens(options).then((request) => request(this.axios, this.basePath));
@@ -27706,7 +21128,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getTwoFactor(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getTwoFactor(options).then((request) => request(this.axios, this.basePath));
@@ -27721,7 +21142,6 @@ export class UserApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getUserGroups(page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getUserGroups(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -27736,7 +21156,6 @@ export class UserApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getUserRepos(page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getUserRepos(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -27751,7 +21170,6 @@ export class UserApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getUserStars(page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getUserStars(page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -27761,7 +21179,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public getUserUser(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).getUserUser(options).then((request) => request(this.axios, this.basePath));
@@ -27771,7 +21188,6 @@ export class UserApi extends BaseAPI {
      * 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public patchTwoFactor(options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).patchTwoFactor(options).then((request) => request(this.axios, this.basePath));
@@ -27782,7 +21198,6 @@ export class UserApi extends BaseAPI {
      * @param {UserPatchInput} userPatchInput Update user infomation
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public patchUserUser(userPatchInput: UserPatchInput, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).patchUserUser(userPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -27793,7 +21208,6 @@ export class UserApi extends BaseAPI {
      * @param {PublicKeyCreateInput} publicKeyCreateInput Create a new SSH public key for the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public postPublicKey(publicKeyCreateInput: PublicKeyCreateInput, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).postPublicKey(publicKeyCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -27804,7 +21218,6 @@ export class UserApi extends BaseAPI {
      * @param {TokenCreateInput} tokenCreateInput User access token
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public postToken(tokenCreateInput: TokenCreateInput, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).postToken(tokenCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -27815,7 +21228,6 @@ export class UserApi extends BaseAPI {
      * @param {TwoFactorCreateInput} twoFactorCreateInput Two-factor creation request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
      */
     public postTwoFactor(twoFactorCreateInput: TwoFactorCreateInput, options?: RawAxiosRequestConfig) {
         return UserApiFp(this.configuration).postTwoFactor(twoFactorCreateInput, options).then((request) => request(this.axios, this.basePath));
@@ -27826,7 +21238,6 @@ export class UserApi extends BaseAPI {
 
 /**
  * UsersApi - axios parameter creator
- * @export
  */
 export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -28267,7 +21678,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
 /**
  * UsersApi - functional programming interface
- * @export
  */
 export const UsersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
@@ -28404,7 +21814,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
 
 /**
  * UsersApi - factory interface
- * @export
  */
 export const UsersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = UsersApiFp(configuration)
@@ -28517,9 +21926,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
 
 /**
  * UsersApi - object-oriented interface
- * @export
- * @class UsersApi
- * @extends {BaseAPI}
  */
 export class UsersApi extends BaseAPI {
     /**
@@ -28532,7 +21938,6 @@ export class UsersApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getProfileGroups(identifier: string, page?: number, size?: number, query?: string, sort?: GroupSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getProfileGroups(identifier, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -28548,7 +21953,6 @@ export class UsersApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getProfileRepos(identifier: string, page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getProfileRepos(identifier, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -28565,7 +21969,6 @@ export class UsersApi extends BaseAPI {
      * @param {number} [after] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersFeeds(identifier: string, page?: number, size?: number, order?: OrderOption, type?: FeedType, before?: number, after?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersFeeds(identifier, page, size, order, type, before, after, options).then((request) => request(this.axios, this.basePath));
@@ -28578,7 +21981,6 @@ export class UsersApi extends BaseAPI {
      * @param {Permission} perm 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersHasPerm(identifier: string, repoRef: string, perm: Permission, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersHasPerm(identifier, repoRef, perm, options).then((request) => request(this.axios, this.basePath));
@@ -28591,7 +21993,6 @@ export class UsersApi extends BaseAPI {
      * @param {number} [after] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersHeatmap(identifier: string, before?: number, after?: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersHeatmap(identifier, before, after, options).then((request) => request(this.axios, this.basePath));
@@ -28607,7 +22008,6 @@ export class UsersApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersStars(identifier: string, page?: number, size?: number, query?: string, sort?: RepoSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersStars(identifier, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -28618,7 +22018,6 @@ export class UsersApi extends BaseAPI {
      * @param {string} identifier GitBundle user id of the user to get
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersUser(identifier: string, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersUser(identifier, options).then((request) => request(this.axios, this.basePath));
@@ -28635,7 +22034,6 @@ export class UsersApi extends BaseAPI {
      * @param {boolean} [admin] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UsersApi
      */
     public getUsersUsers(page?: number, size?: number, query?: string, types?: Array<UserType>, sort?: UserSort, order?: OrderOption, admin?: boolean, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration).getUsersUsers(page, size, query, types, sort, order, admin, options).then((request) => request(this.axios, this.basePath));
@@ -28646,7 +22044,6 @@ export class UsersApi extends BaseAPI {
 
 /**
  * WebhooksApi - axios parameter creator
- * @export
  */
 export const WebhooksApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -29076,7 +22473,6 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
 
 /**
  * WebhooksApi - functional programming interface
- * @export
  */
 export const WebhooksApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WebhooksApiAxiosParamCreator(configuration)
@@ -29197,7 +22593,6 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
 
 /**
  * WebhooksApi - factory interface
- * @export
  */
 export const WebhooksApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = WebhooksApiFp(configuration)
@@ -29294,9 +22689,6 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
 
 /**
  * WebhooksApi - object-oriented interface
- * @export
- * @class WebhooksApi
- * @extends {BaseAPI}
  */
 export class WebhooksApi extends BaseAPI {
     /**
@@ -29305,7 +22697,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public deleteWebhook(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).deleteWebhook(repoRef, webhookIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -29318,7 +22709,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {number} webhookExecutionId Webhook execution id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public getExecution(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).getExecution(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(this.axios, this.basePath));
@@ -29330,7 +22720,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public getExecutions(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).getExecutions(repoRef, webhookIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -29342,7 +22731,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {string} webhookIdentifier Webhook identifier
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public getWebhook(repoRef: string, webhookIdentifier: string, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).getWebhook(repoRef, webhookIdentifier, options).then((request) => request(this.axios, this.basePath));
@@ -29358,7 +22746,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {OrderOption} [order] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public getWebhooks(repoRef: string, page?: number, size?: number, query?: string, sort?: WebhookSort, order?: OrderOption, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).getWebhooks(repoRef, page, size, query, sort, order, options).then((request) => request(this.axios, this.basePath));
@@ -29371,7 +22758,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {WebhookPatchInput} webhookPatchInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public patchWebhook(repoRef: string, webhookIdentifier: string, webhookPatchInput: WebhookPatchInput, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).patchWebhook(repoRef, webhookIdentifier, webhookPatchInput, options).then((request) => request(this.axios, this.basePath));
@@ -29384,7 +22770,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {number} webhookExecutionId Webhook execution id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public postRetrigger(repoRef: string, webhookIdentifier: string, webhookExecutionId: number, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).postRetrigger(repoRef, webhookIdentifier, webhookExecutionId, options).then((request) => request(this.axios, this.basePath));
@@ -29396,7 +22781,6 @@ export class WebhooksApi extends BaseAPI {
      * @param {WebhookCreateInput} webhookCreateInput 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof WebhooksApi
      */
     public postWebhook(repoRef: string, webhookCreateInput: WebhookCreateInput, options?: RawAxiosRequestConfig) {
         return WebhooksApiFp(this.configuration).postWebhook(repoRef, webhookCreateInput, options).then((request) => request(this.axios, this.basePath));

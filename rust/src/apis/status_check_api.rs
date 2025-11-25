@@ -65,27 +65,27 @@ pub async fn get_checks(
     query: Option<&str>,
 ) -> Result<Vec<models::CheckModel>, Error<GetChecksError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_sha = commit_sha;
-    let p_page = page;
-    let p_size = size;
-    let p_query = query;
+    let p_path_repo_ref = repo_ref;
+    let p_path_commit_sha = commit_sha;
+    let p_query_page = page;
+    let p_query_size = size;
+    let p_query_query = query;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/checks/commits/{commit_sha}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        commit_sha = crate::apis::urlencode(p_commit_sha)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        commit_sha = crate::apis::urlencode(p_path_commit_sha)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page {
+    if let Some(ref param_value) = p_query_page {
         req_builder = req_builder.query(&[("page", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_size {
+    if let Some(ref param_value) = p_query_size {
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -142,21 +142,21 @@ pub async fn get_recent(
     since: Option<i64>,
 ) -> Result<Vec<String>, Error<GetRecentError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_query = query;
-    let p_since = since;
+    let p_path_repo_ref = repo_ref;
+    let p_query_query = query;
+    let p_query_since = since;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/checks/recent",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_since {
+    if let Some(ref param_value) = p_query_since {
         req_builder = req_builder.query(&[("since", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -213,15 +213,15 @@ pub async fn put_check_report(
     check_report_input: models::CheckReportInput,
 ) -> Result<models::CheckModel, Error<PutCheckReportError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_repo_ref = repo_ref;
-    let p_commit_sha = commit_sha;
-    let p_check_report_input = check_report_input;
+    let p_path_repo_ref = repo_ref;
+    let p_path_commit_sha = commit_sha;
+    let p_body_check_report_input = check_report_input;
 
     let uri_str = format!(
         "{}/repos/{repo_ref}/+/checks/commits/{commit_sha}",
         configuration.base_path,
-        repo_ref = crate::apis::urlencode(p_repo_ref),
-        commit_sha = crate::apis::urlencode(p_commit_sha)
+        repo_ref = crate::apis::urlencode(p_path_repo_ref),
+        commit_sha = crate::apis::urlencode(p_path_commit_sha)
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
@@ -242,7 +242,7 @@ pub async fn put_check_report(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_check_report_input);
+    req_builder = req_builder.json(&p_body_check_report_input);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
