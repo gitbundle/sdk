@@ -2896,7 +2896,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getStepLogStream', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
                 .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
@@ -2956,7 +2956,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getStepLogs', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stepNumber', stepNumber)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
                 .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))
@@ -3482,7 +3482,7 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('postStepLog', 'stepNumber', stepNumber)
             // verify required parameter 'liveLogLine' is not null or undefined
             assertParamExists('postStepLog', 'liveLogLine', liveLogLine)
-            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log`
+            const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs`
                 .replace(`{${"repo_ref"}}`, encodeURIComponent(String(repoRef)))
                 .replace(`{${"action_identifier"}}`, encodeURIComponent(String(actionIdentifier)))
                 .replace(`{${"workflow_idn"}}`, encodeURIComponent(String(workflowIdn)))

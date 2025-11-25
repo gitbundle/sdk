@@ -608,7 +608,7 @@ pub async fn get_step_log_stream(
     let p_path_stage_number = stage_number;
     let p_path_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -673,7 +673,7 @@ pub async fn get_step_logs(
     let p_path_stage_number = stage_number;
     let p_path_step_number = step_number;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -1295,7 +1295,7 @@ pub async fn post_step_log(
     let p_path_step_number = step_number;
     let p_body_live_log_line = live_log_line;
 
-    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
+    let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_idn=p_path_workflow_idn, stage_number=p_path_stage_number, step_number=p_path_step_number);
     let mut req_builder = configuration
         .client
         .request(reqwest::Method::POST, &uri_str);

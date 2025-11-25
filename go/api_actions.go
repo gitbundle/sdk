@@ -1071,7 +1071,7 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}/stream"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logstream"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
@@ -1279,7 +1279,7 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/logs/{stage_number}/{step_number}"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
@@ -3176,7 +3176,7 @@ func (a *ActionsAPIService) PostStepLogExecute(r ApiPostStepLogRequest) (*http.R
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/log"
+	localVarPath := localBasePath + "/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_idn}/stages/{stage_number}/{step_number}/logs"
 	localVarPath = strings.Replace(localVarPath, "{"+"repo_ref"+"}", url.PathEscape(parameterValueToString(r.repoRef, "repoRef")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"action_identifier"+"}", url.PathEscape(parameterValueToString(r.actionIdentifier, "actionIdentifier")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"workflow_idn"+"}", url.PathEscape(parameterValueToString(r.workflowIdn, "workflowIdn")), -1)
