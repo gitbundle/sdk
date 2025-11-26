@@ -27,6 +27,20 @@ pub enum SseType {
     WorkflowCompleted,
     #[serde(rename = "workflow_canceled")]
     WorkflowCanceled,
+    #[serde(rename = "stage_updated")]
+    StageUpdated,
+    #[serde(rename = "stage_running")]
+    StageRunning,
+    #[serde(rename = "stage_completed")]
+    StageCompleted,
+    #[serde(rename = "step_created")]
+    StepCreated,
+    #[serde(rename = "step_updated")]
+    StepUpdated,
+    #[serde(rename = "step_running")]
+    StepRunning,
+    #[serde(rename = "step_completed")]
+    StepCompleted,
     #[serde(rename = "repository_import_completed")]
     RepositoryImportCompleted,
     #[serde(rename = "pullreq_updated")]
@@ -41,6 +55,13 @@ impl std::fmt::Display for SseType {
             Self::WorkflowRunning => write!(f, "workflow_running"),
             Self::WorkflowCompleted => write!(f, "workflow_completed"),
             Self::WorkflowCanceled => write!(f, "workflow_canceled"),
+            Self::StageUpdated => write!(f, "stage_updated"),
+            Self::StageRunning => write!(f, "stage_running"),
+            Self::StageCompleted => write!(f, "stage_completed"),
+            Self::StepCreated => write!(f, "step_created"),
+            Self::StepUpdated => write!(f, "step_updated"),
+            Self::StepRunning => write!(f, "step_running"),
+            Self::StepCompleted => write!(f, "step_completed"),
             Self::RepositoryImportCompleted => write!(f, "repository_import_completed"),
             Self::PullreqUpdated => write!(f, "pullreq_updated"),
         }

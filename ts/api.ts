@@ -1652,6 +1652,13 @@ export const SseType = {
     WorkflowRunning: 'workflow_running',
     WorkflowCompleted: 'workflow_completed',
     WorkflowCanceled: 'workflow_canceled',
+    StageUpdated: 'stage_updated',
+    StageRunning: 'stage_running',
+    StageCompleted: 'stage_completed',
+    StepCreated: 'step_created',
+    StepUpdated: 'step_updated',
+    StepRunning: 'step_running',
+    StepCompleted: 'step_completed',
     RepositoryImportCompleted: 'repository_import_completed',
     PullreqUpdated: 'pullreq_updated'
 } as const;

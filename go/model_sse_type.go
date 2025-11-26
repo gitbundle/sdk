@@ -25,6 +25,13 @@ const (
 	SSETYPE_WORKFLOW_RUNNING            SseType = "workflow_running"
 	SSETYPE_WORKFLOW_COMPLETED          SseType = "workflow_completed"
 	SSETYPE_WORKFLOW_CANCELED           SseType = "workflow_canceled"
+	SSETYPE_STAGE_UPDATED               SseType = "stage_updated"
+	SSETYPE_STAGE_RUNNING               SseType = "stage_running"
+	SSETYPE_STAGE_COMPLETED             SseType = "stage_completed"
+	SSETYPE_STEP_CREATED                SseType = "step_created"
+	SSETYPE_STEP_UPDATED                SseType = "step_updated"
+	SSETYPE_STEP_RUNNING                SseType = "step_running"
+	SSETYPE_STEP_COMPLETED              SseType = "step_completed"
 	SSETYPE_REPOSITORY_IMPORT_COMPLETED SseType = "repository_import_completed"
 	SSETYPE_PULLREQ_UPDATED             SseType = "pullreq_updated"
 )
@@ -36,6 +43,13 @@ var AllowedSseTypeEnumValues = []SseType{
 	"workflow_running",
 	"workflow_completed",
 	"workflow_canceled",
+	"stage_updated",
+	"stage_running",
+	"stage_completed",
+	"step_created",
+	"step_updated",
+	"step_running",
+	"step_completed",
 	"repository_import_completed",
 	"pullreq_updated",
 }
