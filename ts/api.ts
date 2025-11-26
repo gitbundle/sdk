@@ -608,6 +608,7 @@ export interface License {
 }
 export interface LiveLogLine {
     'command'?: string | null;
+    'index': number;
     'out': string;
     'pos': number;
     'time': number;

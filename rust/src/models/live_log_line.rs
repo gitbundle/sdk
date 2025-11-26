@@ -21,6 +21,8 @@ pub struct LiveLogLine {
         skip_serializing_if = "Option::is_none"
     )]
     pub command: Option<Option<String>>,
+    #[serde(rename = "index")]
+    pub index: i64,
     #[serde(rename = "out")]
     pub out: String,
     #[serde(rename = "pos")]
@@ -30,9 +32,10 @@ pub struct LiveLogLine {
 }
 
 impl LiveLogLine {
-    pub fn new(out: String, pos: i64, time: i64) -> LiveLogLine {
+    pub fn new(index: i64, out: String, pos: i64, time: i64) -> LiveLogLine {
         LiveLogLine {
             command: None,
+            index,
             out,
             pos,
             time,

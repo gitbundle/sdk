@@ -22,6 +22,7 @@ var _ MappedNullable = &LiveLogLine{}
 // LiveLogLine struct for LiveLogLine
 type LiveLogLine struct {
 	Command NullableString `json:"command,omitempty"`
+	Index   int64          `json:"index"`
 	Out     string         `json:"out"`
 	Pos     int64          `json:"pos"`
 	Time    int64          `json:"time"`
@@ -33,8 +34,9 @@ type _LiveLogLine LiveLogLine
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLiveLogLine(out string, pos int64, time int64) *LiveLogLine {
+func NewLiveLogLine(index int64, out string, pos int64, time int64) *LiveLogLine {
 	this := LiveLogLine{}
+	this.Index = index
 	this.Out = out
 	this.Pos = pos
 	this.Time = time
@@ -90,6 +92,30 @@ func (o *LiveLogLine) SetCommandNil() {
 // UnsetCommand ensures that no value is present for Command, not even an explicit nil
 func (o *LiveLogLine) UnsetCommand() {
 	o.Command.Unset()
+}
+
+// GetIndex returns the Index field value
+func (o *LiveLogLine) GetIndex() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Index
+}
+
+// GetIndexOk returns a tuple with the Index field value
+// and a boolean to check if the value has been set.
+func (o *LiveLogLine) GetIndexOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Index, true
+}
+
+// SetIndex sets field value
+func (o *LiveLogLine) SetIndex(v int64) {
+	o.Index = v
 }
 
 // GetOut returns the Out field value
@@ -177,6 +203,7 @@ func (o LiveLogLine) ToMap() (map[string]interface{}, error) {
 	if o.Command.IsSet() {
 		toSerialize["command"] = o.Command.Get()
 	}
+	toSerialize["index"] = o.Index
 	toSerialize["out"] = o.Out
 	toSerialize["pos"] = o.Pos
 	toSerialize["time"] = o.Time
@@ -188,6 +215,7 @@ func (o *LiveLogLine) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"index",
 		"out",
 		"pos",
 		"time",
