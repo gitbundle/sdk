@@ -37,7 +37,7 @@ type StepModel struct {
 	Status        CIStatus               `json:"status"`
 	Stopped       NullableInt64          `json:"stopped,omitempty"`
 	Version       int64                  `json:"version"`
-	YamlProvider  YamlProvider           `json:"yaml_provider"`
+	YamlProvider  WorkflowProvider       `json:"yaml_provider"`
 	YamlResolved  string                 `json:"yaml_resolved"`
 }
 
@@ -47,7 +47,7 @@ type _StepModel StepModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, stageId int64, status CIStatus, version int64, yamlProvider YamlProvider, yamlResolved string) *StepModel {
+func NewStepModel(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, id int64, image string, name string, number int64, parentGroupId int64, stageId int64, status CIStatus, version int64, yamlProvider WorkflowProvider, yamlResolved string) *StepModel {
 	this := StepModel{}
 	this.DependsOn = dependsOn
 	this.Detached = detached
@@ -508,9 +508,9 @@ func (o *StepModel) SetVersion(v int64) {
 }
 
 // GetYamlProvider returns the YamlProvider field value
-func (o *StepModel) GetYamlProvider() YamlProvider {
+func (o *StepModel) GetYamlProvider() WorkflowProvider {
 	if o == nil {
-		var ret YamlProvider
+		var ret WorkflowProvider
 		return ret
 	}
 
@@ -519,7 +519,7 @@ func (o *StepModel) GetYamlProvider() YamlProvider {
 
 // GetYamlProviderOk returns a tuple with the YamlProvider field value
 // and a boolean to check if the value has been set.
-func (o *StepModel) GetYamlProviderOk() (*YamlProvider, bool) {
+func (o *StepModel) GetYamlProviderOk() (*WorkflowProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -527,7 +527,7 @@ func (o *StepModel) GetYamlProviderOk() (*YamlProvider, bool) {
 }
 
 // SetYamlProvider sets field value
-func (o *StepModel) SetYamlProvider(v YamlProvider) {
+func (o *StepModel) SetYamlProvider(v WorkflowProvider) {
 	o.YamlProvider = v
 }
 

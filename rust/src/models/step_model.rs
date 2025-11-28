@@ -57,7 +57,7 @@ pub struct StepModel {
     #[serde(rename = "version")]
     pub version: i64,
     #[serde(rename = "yaml_provider")]
-    pub yaml_provider: models::YamlProvider,
+    pub yaml_provider: models::WorkflowProvider,
     #[serde(rename = "yaml_resolved")]
     pub yaml_resolved: String,
 }
@@ -77,7 +77,7 @@ impl StepModel {
         stage_id: i64,
         status: models::CiStatus,
         version: i64,
-        yaml_provider: models::YamlProvider,
+        yaml_provider: models::WorkflowProvider,
         yaml_resolved: String,
     ) -> StepModel {
         StepModel {

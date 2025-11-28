@@ -53,7 +53,7 @@ type StageModel struct {
 	Variant       string                 `json:"variant"`
 	Version       int64                  `json:"version"`
 	WorkflowId    int64                  `json:"workflow_id"`
-	YamlProvider  YamlProvider           `json:"yaml_provider"`
+	YamlProvider  WorkflowProvider       `json:"yaml_provider"`
 	YamlResolved  string                 `json:"yaml_resolved"`
 }
 
@@ -63,7 +63,7 @@ type _StageModel StageModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, isReusable bool, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs []string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider YamlProvider, yamlResolved string) *StageModel {
+func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, isReusable bool, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs []string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider WorkflowProvider, yamlResolved string) *StageModel {
 	this := StageModel{}
 	this.ActionId = actionId
 	this.Arch = arch
@@ -940,9 +940,9 @@ func (o *StageModel) SetWorkflowId(v int64) {
 }
 
 // GetYamlProvider returns the YamlProvider field value
-func (o *StageModel) GetYamlProvider() YamlProvider {
+func (o *StageModel) GetYamlProvider() WorkflowProvider {
 	if o == nil {
-		var ret YamlProvider
+		var ret WorkflowProvider
 		return ret
 	}
 
@@ -951,7 +951,7 @@ func (o *StageModel) GetYamlProvider() YamlProvider {
 
 // GetYamlProviderOk returns a tuple with the YamlProvider field value
 // and a boolean to check if the value has been set.
-func (o *StageModel) GetYamlProviderOk() (*YamlProvider, bool) {
+func (o *StageModel) GetYamlProviderOk() (*WorkflowProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -959,7 +959,7 @@ func (o *StageModel) GetYamlProviderOk() (*YamlProvider, bool) {
 }
 
 // SetYamlProvider sets field value
-func (o *StageModel) SetYamlProvider(v YamlProvider) {
+func (o *StageModel) SetYamlProvider(v WorkflowProvider) {
 	o.YamlProvider = v
 }
 

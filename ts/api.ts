@@ -42,7 +42,7 @@ export interface ActionModel {
     'updated': number;
     'version': number;
     'yaml_path': string;
-    'yaml_provider': YamlProvider;
+    'yaml_provider': WorkflowProvider;
 }
 
 
@@ -1743,7 +1743,7 @@ export interface StageModel {
     'variant': string;
     'version': number;
     'workflow_id': number;
-    'yaml_provider': YamlProvider;
+    'yaml_provider': WorkflowProvider;
     'yaml_resolved': string;
 }
 
@@ -1790,7 +1790,7 @@ export interface StepCreateInput {
     'parent_group_id': number;
     'status': CIStatus;
     'stepid'?: string;
-    'yaml_provider': YamlProvider;
+    'yaml_provider': WorkflowProvider;
     'yaml_resolved': string;
 }
 
@@ -1812,7 +1812,7 @@ export interface StepModel {
     'status': CIStatus;
     'stopped'?: number | null;
     'version': number;
-    'yaml_provider': YamlProvider;
+    'yaml_provider': WorkflowProvider;
     'yaml_resolved': string;
 }
 
@@ -2198,9 +2198,19 @@ export interface WorkflowModel {
     'title': string;
     'updated': number;
     'version': number;
-    'yaml_provider': YamlProvider;
+    'yaml_provider': WorkflowProvider;
     'yaml_resolved': string;
 }
+
+
+
+export const WorkflowProvider = {
+    Unknown: 'unknown',
+    Github: 'github',
+    Gitlab: 'gitlab'
+} as const;
+
+export type WorkflowProvider = typeof WorkflowProvider[keyof typeof WorkflowProvider];
 
 
 export interface WorkflowStages {
@@ -2214,16 +2224,6 @@ export interface WorkflowUpdateInput {
     'started'?: number | null;
     'status'?: CIStatus | null;
 }
-
-
-
-export const YamlProvider = {
-    Unknown: 'unknown',
-    Github: 'github',
-    Gitlab: 'gitlab'
-} as const;
-
-export type YamlProvider = typeof YamlProvider[keyof typeof YamlProvider];
 
 
 

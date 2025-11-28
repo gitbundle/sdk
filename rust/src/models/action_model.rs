@@ -44,7 +44,7 @@ pub struct ActionModel {
     #[serde(rename = "yaml_path")]
     pub yaml_path: String,
     #[serde(rename = "yaml_provider")]
-    pub yaml_provider: models::YamlProvider,
+    pub yaml_provider: models::WorkflowProvider,
 }
 
 impl ActionModel {
@@ -60,7 +60,7 @@ impl ActionModel {
         updated: i64,
         version: i64,
         yaml_path: String,
-        yaml_provider: models::YamlProvider,
+        yaml_provider: models::WorkflowProvider,
     ) -> ActionModel {
         ActionModel {
             created,

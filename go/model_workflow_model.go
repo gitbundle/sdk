@@ -53,7 +53,7 @@ type WorkflowModel struct {
 	Title        string                 `json:"title"`
 	Updated      int64                  `json:"updated"`
 	Version      int64                  `json:"version"`
-	YamlProvider YamlProvider           `json:"yaml_provider"`
+	YamlProvider WorkflowProvider       `json:"yaml_provider"`
 	YamlResolved string                 `json:"yaml_resolved"`
 }
 
@@ -63,7 +63,7 @@ type _WorkflowModel WorkflowModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, context map[string]interface{}, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider YamlProvider, yamlResolved string) *WorkflowModel {
+func NewWorkflowModel(actionId int64, authorEmail string, authorName string, beforeSha string, context map[string]interface{}, created int64, createdBy int64, cron string, debug bool, deploy string, deployId int64, error_ string, event TriggerEvent, finished int64, id int64, link string, message string, name string, number int64, params map[string]interface{}, repoId int64, started int64, status CIStatus, targetRev string, title string, updated int64, version int64, yamlProvider WorkflowProvider, yamlResolved string) *WorkflowModel {
 	this := WorkflowModel{}
 	this.ActionId = actionId
 	this.AuthorEmail = authorEmail
@@ -971,9 +971,9 @@ func (o *WorkflowModel) SetVersion(v int64) {
 }
 
 // GetYamlProvider returns the YamlProvider field value
-func (o *WorkflowModel) GetYamlProvider() YamlProvider {
+func (o *WorkflowModel) GetYamlProvider() WorkflowProvider {
 	if o == nil {
-		var ret YamlProvider
+		var ret WorkflowProvider
 		return ret
 	}
 
@@ -982,7 +982,7 @@ func (o *WorkflowModel) GetYamlProvider() YamlProvider {
 
 // GetYamlProviderOk returns a tuple with the YamlProvider field value
 // and a boolean to check if the value has been set.
-func (o *WorkflowModel) GetYamlProviderOk() (*YamlProvider, bool) {
+func (o *WorkflowModel) GetYamlProviderOk() (*WorkflowProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -990,7 +990,7 @@ func (o *WorkflowModel) GetYamlProviderOk() (*YamlProvider, bool) {
 }
 
 // SetYamlProvider sets field value
-func (o *WorkflowModel) SetYamlProvider(v YamlProvider) {
+func (o *WorkflowModel) SetYamlProvider(v WorkflowProvider) {
 	o.YamlProvider = v
 }
 

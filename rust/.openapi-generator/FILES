@@ -267,6 +267,6 @@ src/models/webhook_sort.rs
 src/models/webhook_trigger.rs
 src/models/workflow_create_input.rs
 src/models/workflow_model.rs
+src/models/workflow_provider.rs
 src/models/workflow_stages.rs
 src/models/workflow_update_input.rs
-src/models/yaml_provider.rs

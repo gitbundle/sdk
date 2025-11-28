@@ -21,19 +21,19 @@ var _ MappedNullable = &StepCreateInput{}
 
 // StepCreateInput struct for StepCreateInput
 type StepCreateInput struct {
-	DependsOn     interface{}  `json:"depends_on"`
-	Detached      bool         `json:"detached"`
-	Errignore     bool         `json:"errignore"`
-	Error         string       `json:"error"`
-	ExitCode      int64        `json:"exit_code"`
-	Image         string       `json:"image"`
-	Name          string       `json:"name"`
-	Number        int64        `json:"number"`
-	ParentGroupId int64        `json:"parent_group_id"`
-	Status        CIStatus     `json:"status"`
-	Stepid        *string      `json:"stepid,omitempty"`
-	YamlProvider  YamlProvider `json:"yaml_provider"`
-	YamlResolved  string       `json:"yaml_resolved"`
+	DependsOn     interface{}      `json:"depends_on"`
+	Detached      bool             `json:"detached"`
+	Errignore     bool             `json:"errignore"`
+	Error         string           `json:"error"`
+	ExitCode      int64            `json:"exit_code"`
+	Image         string           `json:"image"`
+	Name          string           `json:"name"`
+	Number        int64            `json:"number"`
+	ParentGroupId int64            `json:"parent_group_id"`
+	Status        CIStatus         `json:"status"`
+	Stepid        *string          `json:"stepid,omitempty"`
+	YamlProvider  WorkflowProvider `json:"yaml_provider"`
+	YamlResolved  string           `json:"yaml_resolved"`
 }
 
 type _StepCreateInput StepCreateInput
@@ -42,7 +42,7 @@ type _StepCreateInput StepCreateInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, status CIStatus, yamlProvider YamlProvider, yamlResolved string) *StepCreateInput {
+func NewStepCreateInput(dependsOn interface{}, detached bool, errignore bool, error_ string, exitCode int64, image string, name string, number int64, parentGroupId int64, status CIStatus, yamlProvider WorkflowProvider, yamlResolved string) *StepCreateInput {
 	this := StepCreateInput{}
 	this.DependsOn = dependsOn
 	this.Detached = detached
@@ -342,9 +342,9 @@ func (o *StepCreateInput) SetStepid(v string) {
 }
 
 // GetYamlProvider returns the YamlProvider field value
-func (o *StepCreateInput) GetYamlProvider() YamlProvider {
+func (o *StepCreateInput) GetYamlProvider() WorkflowProvider {
 	if o == nil {
-		var ret YamlProvider
+		var ret WorkflowProvider
 		return ret
 	}
 
@@ -353,7 +353,7 @@ func (o *StepCreateInput) GetYamlProvider() YamlProvider {
 
 // GetYamlProviderOk returns a tuple with the YamlProvider field value
 // and a boolean to check if the value has been set.
-func (o *StepCreateInput) GetYamlProviderOk() (*YamlProvider, bool) {
+func (o *StepCreateInput) GetYamlProviderOk() (*WorkflowProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -361,7 +361,7 @@ func (o *StepCreateInput) GetYamlProviderOk() (*YamlProvider, bool) {
 }
 
 // SetYamlProvider sets field value
-func (o *StepCreateInput) SetYamlProvider(v YamlProvider) {
+func (o *StepCreateInput) SetYamlProvider(v WorkflowProvider) {
 	o.YamlProvider = v
 }
 

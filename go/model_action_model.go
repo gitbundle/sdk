@@ -33,7 +33,7 @@ type ActionModel struct {
 	Updated      int64                `json:"updated"`
 	Version      int64                `json:"version"`
 	YamlPath     string               `json:"yaml_path"`
-	YamlProvider YamlProvider         `json:"yaml_provider"`
+	YamlProvider WorkflowProvider     `json:"yaml_provider"`
 }
 
 type _ActionModel ActionModel
@@ -42,7 +42,7 @@ type _ActionModel ActionModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewActionModel(created int64, createdBy int64, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64, yamlPath string, yamlProvider YamlProvider) *ActionModel {
+func NewActionModel(created int64, createdBy int64, description string, disabled bool, id int64, name string, repoId int64, seq int64, updated int64, version int64, yamlPath string, yamlProvider WorkflowProvider) *ActionModel {
 	this := ActionModel{}
 	this.Created = created
 	this.CreatedBy = createdBy
@@ -375,9 +375,9 @@ func (o *ActionModel) SetYamlPath(v string) {
 }
 
 // GetYamlProvider returns the YamlProvider field value
-func (o *ActionModel) GetYamlProvider() YamlProvider {
+func (o *ActionModel) GetYamlProvider() WorkflowProvider {
 	if o == nil {
-		var ret YamlProvider
+		var ret WorkflowProvider
 		return ret
 	}
 
@@ -386,7 +386,7 @@ func (o *ActionModel) GetYamlProvider() YamlProvider {
 
 // GetYamlProviderOk returns a tuple with the YamlProvider field value
 // and a boolean to check if the value has been set.
-func (o *ActionModel) GetYamlProviderOk() (*YamlProvider, bool) {
+func (o *ActionModel) GetYamlProviderOk() (*WorkflowProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -394,7 +394,7 @@ func (o *ActionModel) GetYamlProviderOk() (*YamlProvider, bool) {
 }
 
 // SetYamlProvider sets field value
-func (o *ActionModel) SetYamlProvider(v YamlProvider) {
+func (o *ActionModel) SetYamlProvider(v WorkflowProvider) {
 	o.YamlProvider = v
 }
 

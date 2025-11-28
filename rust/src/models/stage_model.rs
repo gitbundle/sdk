@@ -94,7 +94,7 @@ pub struct StageModel {
     #[serde(rename = "workflow_id")]
     pub workflow_id: i64,
     #[serde(rename = "yaml_provider")]
-    pub yaml_provider: models::YamlProvider,
+    pub yaml_provider: models::WorkflowProvider,
     #[serde(rename = "yaml_resolved")]
     pub yaml_resolved: String,
 }
@@ -129,7 +129,7 @@ impl StageModel {
         variant: String,
         version: i64,
         workflow_id: i64,
-        yaml_provider: models::YamlProvider,
+        yaml_provider: models::WorkflowProvider,
         yaml_resolved: String,
     ) -> StageModel {
         StageModel {

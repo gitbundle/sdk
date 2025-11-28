@@ -37,7 +37,7 @@ pub struct StepCreateInput {
     #[serde(rename = "stepid", skip_serializing_if = "Option::is_none")]
     pub stepid: Option<String>,
     #[serde(rename = "yaml_provider")]
-    pub yaml_provider: models::YamlProvider,
+    pub yaml_provider: models::WorkflowProvider,
     #[serde(rename = "yaml_resolved")]
     pub yaml_resolved: String,
 }
@@ -54,7 +54,7 @@ impl StepCreateInput {
         number: i64,
         parent_group_id: i64,
         status: models::CiStatus,
-        yaml_provider: models::YamlProvider,
+        yaml_provider: models::WorkflowProvider,
         yaml_resolved: String,
     ) -> StepCreateInput {
         StepCreateInput {

@@ -104,7 +104,7 @@ pub struct WorkflowModel {
     #[serde(rename = "version")]
     pub version: i64,
     #[serde(rename = "yaml_provider")]
-    pub yaml_provider: models::YamlProvider,
+    pub yaml_provider: models::WorkflowProvider,
     #[serde(rename = "yaml_resolved")]
     pub yaml_resolved: String,
 }
@@ -138,7 +138,7 @@ impl WorkflowModel {
         title: String,
         updated: i64,
         version: i64,
-        yaml_provider: models::YamlProvider,
+        yaml_provider: models::WorkflowProvider,
         yaml_resolved: String,
     ) -> WorkflowModel {
         WorkflowModel {
