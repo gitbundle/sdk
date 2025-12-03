@@ -6,6 +6,8 @@ description = "GitBundle API documentation."
 # Override this license by providing a License Object in the OpenAPI.
 license = "Unlicense"
 edition = "2021"
+repository = "https://github.com/gitbundle/sdk"
+keywords = ["gitbundle", "sdk"]
 
 [dependencies]
 serde = { version = "^1.0", features = ["derive"] }
