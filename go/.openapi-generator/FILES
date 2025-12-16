@@ -112,6 +112,8 @@ model_order_option.go
 model_owner_evaluation.go
 model_page_option.go
 model_parent_resource_type.go
+model_password_forgot_input.go
+model_password_reset_input.go
 model_path_details.go
 model_path_ref_info.go
 model_path_ref_type.go
@@ -256,6 +258,8 @@ model_variable_model.go
 model_variable_patch_input.go
 model_variable_sort.go
 model_variable_type.go
+model_verify_link_input.go
+model_verify_link_status.go
 model_webhook_create_input.go
 model_webhook_execution_model.go
 model_webhook_execution_result.go

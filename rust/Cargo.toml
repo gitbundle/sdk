@@ -1,13 +1,11 @@
 [package]
 name = "gitbundle-sdk"
-version = "3.1.0"
+version = "3.2.0"
 authors = ["OpenAPI Generator team and contributors"]
 description = "GitBundle API documentation."
 # Override this license by providing a License Object in the OpenAPI.
 license = "Unlicense"
 edition = "2021"
-repository = "https://github.com/gitbundle/sdk"
-keywords = ["gitbundle", "sdk"]
 
 [dependencies]
 serde = { version = "^1.0", features = ["derive"] }

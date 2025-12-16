@@ -1,4 +1,8 @@
-## gitbundle-sdk@3.0.0
+## gitbundle-sdk
+
+GitBundle API documentation.
+
+For more information, please visit [https://gitbundle.com/gitbundle](https://gitbundle.com/gitbundle)
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +40,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install gitbundle-sdk@3.0.0 --save
+npm install gitbundle-sdk@3.2.0 --save
 ```
 
 _unPublished (not recommended):_

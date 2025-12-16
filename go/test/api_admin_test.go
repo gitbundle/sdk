@@ -280,4 +280,17 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService PostVerifySend", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var userIdentifier string
+
+		httpRes, err := apiClient.AdminAPI.PostVerifySend(context.Background(), userIdentifier).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

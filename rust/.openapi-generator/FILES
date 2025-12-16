@@ -113,6 +113,8 @@ src/models/order_option.rs
 src/models/owner_evaluation.rs
 src/models/page_option.rs
 src/models/parent_resource_type.rs
+src/models/password_forgot_input.rs
+src/models/password_reset_input.rs
 src/models/path_details.rs
 src/models/path_ref_info.rs
 src/models/path_ref_type.rs
@@ -257,6 +259,8 @@ src/models/variable_model.rs
 src/models/variable_patch_input.rs
 src/models/variable_sort.rs
 src/models/variable_type.rs
+src/models/verify_link_input.rs
+src/models/verify_link_status.rs
 src/models/webhook_create_input.rs
 src/models/webhook_execution_model.rs
 src/models/webhook_execution_result.rs
