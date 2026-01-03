@@ -269,7 +269,8 @@ src/models/webhook_parent_type.rs
 src/models/webhook_patch_input.rs
 src/models/webhook_sort.rs
 src/models/webhook_trigger.rs
-src/models/workflow_create_input.rs
+src/models/workflow_dispatch_input.rs
+src/models/workflow_dispatch_input_type.rs
 src/models/workflow_model.rs
 src/models/workflow_provider.rs
 src/models/workflow_stages.rs

@@ -268,7 +268,8 @@ model_webhook_parent_type.go
 model_webhook_patch_input.go
 model_webhook_sort.go
 model_webhook_trigger.go
-model_workflow_create_input.go
+model_workflow_dispatch_input.go
+model_workflow_dispatch_input_type.go
 model_workflow_model.go
 model_workflow_provider.go
 model_workflow_stages.go
