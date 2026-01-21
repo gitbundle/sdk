@@ -21,8 +21,9 @@ var _ MappedNullable = &StageMetadata{}
 
 // StageMetadata struct for StageMetadata
 type StageMetadata struct {
-	Context StageContext `json:"context"`
-	Stage   StageModel   `json:"stage"`
+	ArtifactServerUrl string       `json:"artifact_server_url"`
+	Context           StageContext `json:"context"`
+	Stage             StageModel   `json:"stage"`
 }
 
 type _StageMetadata StageMetadata
@@ -31,8 +32,9 @@ type _StageMetadata StageMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageMetadata(context StageContext, stage StageModel) *StageMetadata {
+func NewStageMetadata(artifactServerUrl string, context StageContext, stage StageModel) *StageMetadata {
 	this := StageMetadata{}
+	this.ArtifactServerUrl = artifactServerUrl
 	this.Context = context
 	this.Stage = stage
 	return &this
@@ -44,6 +46,30 @@ func NewStageMetadata(context StageContext, stage StageModel) *StageMetadata {
 func NewStageMetadataWithDefaults() *StageMetadata {
 	this := StageMetadata{}
 	return &this
+}
+
+// GetArtifactServerUrl returns the ArtifactServerUrl field value
+func (o *StageMetadata) GetArtifactServerUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ArtifactServerUrl
+}
+
+// GetArtifactServerUrlOk returns a tuple with the ArtifactServerUrl field value
+// and a boolean to check if the value has been set.
+func (o *StageMetadata) GetArtifactServerUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ArtifactServerUrl, true
+}
+
+// SetArtifactServerUrl sets field value
+func (o *StageMetadata) SetArtifactServerUrl(v string) {
+	o.ArtifactServerUrl = v
 }
 
 // GetContext returns the Context field value
@@ -104,6 +130,7 @@ func (o StageMetadata) MarshalJSON() ([]byte, error) {
 
 func (o StageMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["artifact_server_url"] = o.ArtifactServerUrl
 	toSerialize["context"] = o.Context
 	toSerialize["stage"] = o.Stage
 	return toSerialize, nil
@@ -114,6 +141,7 @@ func (o *StageMetadata) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"artifact_server_url",
 		"context",
 		"stage",
 	}

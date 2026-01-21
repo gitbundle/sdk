@@ -1395,7 +1395,7 @@ pub async fn get_archive(
         req_builder = req_builder.query(&[("prefix", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_attributes {
-        req_builder = req_builder.query(&[("attributes", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("attributes", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_paths {
         req_builder = match "multi" {
@@ -2383,10 +2383,10 @@ pub async fn get_forks(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
@@ -2856,10 +2856,10 @@ pub async fn get_releases(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
@@ -3474,10 +3474,10 @@ pub async fn get_repository_variables(
         };
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
@@ -3621,10 +3621,10 @@ pub async fn get_stars(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();

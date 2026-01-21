@@ -195,10 +195,10 @@ pub async fn get_all_feeds(
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_type {
-        req_builder = req_builder.query(&[("type", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("type", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
@@ -267,10 +267,10 @@ pub async fn get_all_groups(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -333,10 +333,10 @@ pub async fn get_all_repos(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -422,10 +422,10 @@ pub async fn get_all_users(
         };
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_admin {
         req_builder = req_builder.query(&[("admin", &param_value.to_string())]);
@@ -511,10 +511,10 @@ pub async fn get_profile_groups(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -583,10 +583,10 @@ pub async fn get_profile_repos(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -654,10 +654,10 @@ pub async fn get_users_feeds(
         req_builder = req_builder.query(&[("size", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_type {
-        req_builder = req_builder.query(&[("type", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("type", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_before {
         req_builder = req_builder.query(&[("before", &param_value.to_string())]);
@@ -842,10 +842,10 @@ pub async fn get_users_stars(
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort {
-        req_builder = req_builder.query(&[("sort", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sort", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_order {
-        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

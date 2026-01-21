@@ -14,6 +14,8 @@ use crate::models;
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct StageMetadata {
+    #[serde(rename = "artifact_server_url")]
+    pub artifact_server_url: String,
     #[serde(rename = "context")]
     pub context: Box<models::StageContext>,
     #[serde(rename = "stage")]
@@ -21,8 +23,13 @@ pub struct StageMetadata {
 }
 
 impl StageMetadata {
-    pub fn new(context: models::StageContext, stage: models::StageModel) -> StageMetadata {
+    pub fn new(
+        artifact_server_url: String,
+        context: models::StageContext,
+        stage: models::StageModel,
+    ) -> StageMetadata {
         StageMetadata {
+            artifact_server_url,
             context: Box::new(context),
             stage: Box::new(stage),
         }
