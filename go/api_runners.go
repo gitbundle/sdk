@@ -32,7 +32,7 @@ func (r ApiPollStageRequest) RunnerContext(runnerContext RunnerContext) ApiPollS
 	return r
 }
 
-func (r ApiPollStageRequest) Execute() (*RunnerStageOutput, *http.Response, error) {
+func (r ApiPollStageRequest) Execute() (*StageMetadata, *http.Response, error) {
 	return r.ApiService.PollStageExecute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *RunnersAPIService) PollStage(ctx context.Context) ApiPollStageRequest {
 
 // Execute executes the request
 //
-//	@return RunnerStageOutput
-func (a *RunnersAPIService) PollStageExecute(r ApiPollStageRequest) (*RunnerStageOutput, *http.Response, error) {
+//	@return StageMetadata
+func (a *RunnersAPIService) PollStageExecute(r ApiPollStageRequest) (*StageMetadata, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RunnerStageOutput
+		localVarReturnValue *StageMetadata
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnersAPIService.PollStage")

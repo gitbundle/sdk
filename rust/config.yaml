@@ -2,7 +2,7 @@ generatorName: rust
 inputSpec: openapi.json
 
 packageName: gitbundle-sdk
-packageVersion: 3.3.0
+packageVersion: 3.3.3
 gitUserId: gitbundle
 gitRepoId: sdk-rust
 

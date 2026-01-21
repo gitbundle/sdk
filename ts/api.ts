@@ -592,7 +592,7 @@ export type JobState = typeof JobState[keyof typeof JobState];
 
 
 export interface JobsContext {
-    'outputs': { [key: string]: any; };
+    'outputs': { [key: string]: string; };
     'result': StatusContext;
 }
 
@@ -1555,7 +1555,6 @@ export interface RunnerContext {
     'environment': RunnerEnvironmentContext;
     'name': string;
     'os': RunnerOsContext;
-    'release_version': string;
     'temp': string;
     'tool_cache': string;
     'uuid': string;
@@ -1611,10 +1610,7 @@ export interface RunnerPostInput {
     'name': string;
     'release': string;
     'token': string;
-}
-export interface RunnerStageOutput {
-    'access_token': string;
-    'stage_metadata'?: StageMetadata | null;
+    'uuid': string;
 }
 
 export const RunnerStatus = {
@@ -1685,22 +1681,28 @@ export interface StageContext {
      * Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME Value is encoded with base64 standard
      */
     'env'?: { [key: string]: string; };
-    'github'?: any;
+    'github'?: GithubContext | null;
     /**
-     * Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
+     * Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith) TODO: the value need specific type?
      */
     'inputs'?: { [key: string]: any; };
-    'job'?: any;
+    /**
+     * Information about the currently running job. Runtime data refer to JobContext. Converted to serde_json::Value for recursively inject variables
+     */
+    'job'?: JobContext | null;
     /**
      * For reusable workflows only, contains outputs of jobs from the reusable workflow. Runtime data Initialized when stage is pushed into queue. Updated when stage is updated by api or else. key: job name or stage name value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
      */
-    'jobs'?: { [key: string]: any; };
+    'jobs'?: { [key: string]: JobsContext; };
     'matrix'?: { [key: string]: string; };
     /**
      * Contains the outputs of all jobs that are defined as a dependency of the current job. Runtime data key: job name value: JobsContext. Converted to serde_json::Value for recursively inject variables.
      */
-    'needs'?: { [key: string]: any; };
-    'runner'?: any;
+    'needs'?: { [key: string]: JobsContext; };
+    /**
+     * Information about the runner that is running the current job. Runtime data Refer to RunnerContext. Converted to serde_json::Value for recursively inject variables.
+     */
+    'runner'?: RunnerContext;
     /**
      * Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be scheduling. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME Value is encoded with base64 standard
      */
@@ -1708,8 +1710,8 @@ export interface StageContext {
     /**
      * Information about the steps that have been run in the current job. Runtime data key:   step id (set in step yaml) value: refer to StepsContext. Converted to serde_json::Value for recursively inject variables.
      */
-    'steps'?: { [key: string]: any; };
-    'strategy'?: any;
+    'steps'?: { [key: string]: StepsContext; };
+    'strategy'?: StrategyContext;
     /**
      * Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME Value is encoded with base64 standard
      */
@@ -1731,6 +1733,7 @@ export interface StageModel {
     'is_matrix': boolean;
     'is_resolved': boolean;
     'is_reusable': boolean;
+    'job_key': string;
     'kernel': string;
     'kind': string;
     'labels': Array<string>;
@@ -1743,7 +1746,7 @@ export interface StageModel {
     'on_failure': boolean;
     'on_success': boolean;
     'os': string;
-    'outputs'?: { [key: string]: any; } | null;
+    'outputs'?: { [key: string]: string; } | null;
     'parent_group_id': number;
     'parent_id'?: number | null;
     'repo_id': number;
@@ -1772,7 +1775,7 @@ export interface StageUpdateInput {
      * Used for storing the result of the yaml decoded stage.
      */
     'jobstatus'?: StatusContext | null;
-    'outputs'?: { [key: string]: any; } | null;
+    'outputs'?: { [key: string]: string; } | null;
     'started'?: number | null;
     'status'?: CIStatus | null;
     'stopped'?: number | null;
@@ -1821,7 +1824,7 @@ export interface StepModel {
     'image': string;
     'name': string;
     'number': number;
-    'outputs'?: { [key: string]: any; } | null;
+    'outputs'?: { [key: string]: string; } | null;
     'parent_group_id': number;
     'stage_id': number;
     'started'?: number | null;
@@ -1836,7 +1839,7 @@ export interface StepModel {
 export interface StepUpdateInput {
     'error'?: string | null;
     'exit_code'?: number | null;
-    'outputs'?: { [key: string]: any; } | null;
+    'outputs'?: { [key: string]: string; } | null;
     'started'?: number | null;
     'status'?: CIStatus | null;
     /**
@@ -1858,10 +1861,16 @@ export interface StepUpdateInput {
 export interface StepsContext {
     'conclusion': StatusContext;
     'outcome': StatusContext;
-    'outputs': { [key: string]: any; };
+    'outputs': { [key: string]: string; };
 }
 
 
+export interface StrategyContext {
+    'fail-fast': boolean;
+    'job-index': number;
+    'job-total': number;
+    'max-parallel': number;
+}
 export interface SystemConfig {
     'nested_groups_enabled': boolean;
     'public_resource_creation_enabled': boolean;
@@ -18831,7 +18840,7 @@ export const RunnersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RunnerStageOutput>> {
+        async pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StageMetadata>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.pollStage(runnerContext, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RunnersApi.pollStage']?.[localVarOperationServerIndex]?.url;
@@ -18864,7 +18873,7 @@ export const RunnersApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): AxiosPromise<RunnerStageOutput> {
+        pollStage(runnerContext: RunnerContext, options?: RawAxiosRequestConfig): AxiosPromise<StageMetadata> {
             return localVarFp.pollStage(runnerContext, options).then((request) => request(axios, basePath));
         },
         /**

@@ -36,6 +36,8 @@ pub struct StageModel {
     pub is_resolved: bool,
     #[serde(rename = "is_reusable")]
     pub is_reusable: bool,
+    #[serde(rename = "job_key")]
+    pub job_key: String,
     #[serde(rename = "kernel")]
     pub kernel: String,
     #[serde(rename = "kind")]
@@ -66,7 +68,7 @@ pub struct StageModel {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub outputs: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    pub outputs: Option<Option<std::collections::HashMap<String, String>>>,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
     #[serde(
@@ -130,6 +132,7 @@ impl StageModel {
         is_matrix: bool,
         is_resolved: bool,
         is_reusable: bool,
+        job_key: String,
         kernel: String,
         kind: String,
         labels: Vec<String>,
@@ -165,6 +168,7 @@ impl StageModel {
             is_matrix,
             is_resolved,
             is_reusable,
+            job_key,
             kernel,
             kind,
             labels,

@@ -15,14 +15,14 @@ use crate::models;
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct JobsContext {
     #[serde(rename = "outputs")]
-    pub outputs: std::collections::HashMap<String, serde_json::Value>,
+    pub outputs: std::collections::HashMap<String, String>,
     #[serde(rename = "result")]
     pub result: models::StatusContext,
 }
 
 impl JobsContext {
     pub fn new(
-        outputs: std::collections::HashMap<String, serde_json::Value>,
+        outputs: std::collections::HashMap<String, String>,
         result: models::StatusContext,
     ) -> JobsContext {
         JobsContext { outputs, result }

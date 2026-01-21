@@ -19,14 +19,14 @@ pub struct StepsContext {
     #[serde(rename = "outcome")]
     pub outcome: models::StatusContext,
     #[serde(rename = "outputs")]
-    pub outputs: std::collections::HashMap<String, serde_json::Value>,
+    pub outputs: std::collections::HashMap<String, String>,
 }
 
 impl StepsContext {
     pub fn new(
         conclusion: models::StatusContext,
         outcome: models::StatusContext,
-        outputs: std::collections::HashMap<String, serde_json::Value>,
+        outputs: std::collections::HashMap<String, String>,
     ) -> StepsContext {
         StepsContext {
             conclusion,

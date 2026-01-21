@@ -26,45 +26,37 @@ pub struct StageContext {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub github: Option<Option<serde_json::Value>>,
-    /// Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
+    pub github: Option<Option<Box<models::GithubContext>>>,
+    /// Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith) TODO: the value need specific type?
     #[serde(rename = "inputs", skip_serializing_if = "Option::is_none")]
     pub inputs: Option<std::collections::HashMap<String, serde_json::Value>>,
+    /// Information about the currently running job. Runtime data refer to JobContext. Converted to serde_json::Value for recursively inject variables
     #[serde(
         rename = "job",
         default,
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub job: Option<Option<serde_json::Value>>,
+    pub job: Option<Option<Box<models::JobContext>>>,
     /// For reusable workflows only, contains outputs of jobs from the reusable workflow. Runtime data Initialized when stage is pushed into queue. Updated when stage is updated by api or else. key: job name or stage name value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
     #[serde(rename = "jobs", skip_serializing_if = "Option::is_none")]
-    pub jobs: Option<std::collections::HashMap<String, serde_json::Value>>,
+    pub jobs: Option<std::collections::HashMap<String, models::JobsContext>>,
     #[serde(rename = "matrix", skip_serializing_if = "Option::is_none")]
     pub matrix: Option<std::collections::HashMap<String, String>>,
     /// Contains the outputs of all jobs that are defined as a dependency of the current job. Runtime data key: job name value: JobsContext. Converted to serde_json::Value for recursively inject variables.
     #[serde(rename = "needs", skip_serializing_if = "Option::is_none")]
-    pub needs: Option<std::collections::HashMap<String, serde_json::Value>>,
-    #[serde(
-        rename = "runner",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub runner: Option<Option<serde_json::Value>>,
+    pub needs: Option<std::collections::HashMap<String, models::JobsContext>>,
+    /// Information about the runner that is running the current job. Runtime data Refer to RunnerContext. Converted to serde_json::Value for recursively inject variables.
+    #[serde(rename = "runner", skip_serializing_if = "Option::is_none")]
+    pub runner: Option<Box<models::RunnerContext>>,
     /// Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be scheduling. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME Value is encoded with base64 standard
     #[serde(rename = "secrets", skip_serializing_if = "Option::is_none")]
     pub secrets: Option<std::collections::HashMap<String, String>>,
     /// Information about the steps that have been run in the current job. Runtime data key:   step id (set in step yaml) value: refer to StepsContext. Converted to serde_json::Value for recursively inject variables.
     #[serde(rename = "steps", skip_serializing_if = "Option::is_none")]
-    pub steps: Option<std::collections::HashMap<String, serde_json::Value>>,
-    #[serde(
-        rename = "strategy",
-        default,
-        with = "::serde_with::rust::double_option",
-        skip_serializing_if = "Option::is_none"
-    )]
-    pub strategy: Option<Option<serde_json::Value>>,
+    pub steps: Option<std::collections::HashMap<String, models::StepsContext>>,
+    #[serde(rename = "strategy", skip_serializing_if = "Option::is_none")]
+    pub strategy: Option<Box<models::StrategyContext>>,
     /// Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME Value is encoded with base64 standard
     #[serde(rename = "vars", skip_serializing_if = "Option::is_none")]
     pub vars: Option<std::collections::HashMap<String, String>>,

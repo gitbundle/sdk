@@ -218,7 +218,6 @@ src/models/runner_model.rs
 src/models/runner_os_context.rs
 src/models/runner_patch_input.rs
 src/models/runner_post_input.rs
-src/models/runner_stage_output.rs
 src/models/runner_status.rs
 src/models/scope.rs
 src/models/security_settings.rs
@@ -236,6 +235,7 @@ src/models/step_create_input.rs
 src/models/step_model.rs
 src/models/step_update_input.rs
 src/models/steps_context.rs
+src/models/strategy_context.rs
 src/models/system_config.rs
 src/models/tag_create_input.rs
 src/models/token_create_input.rs

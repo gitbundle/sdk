@@ -217,7 +217,6 @@ model_runner_model.go
 model_runner_os_context.go
 model_runner_patch_input.go
 model_runner_post_input.go
-model_runner_stage_output.go
 model_runner_status.go
 model_scope.go
 model_security_settings.go
@@ -235,6 +234,7 @@ model_step_create_input.go
 model_step_model.go
 model_step_update_input.go
 model_steps_context.go
+model_strategy_context.go
 model_system_config.go
 model_tag_create_input.go
 model_token_create_input.go

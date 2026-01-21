@@ -21,15 +21,14 @@ var _ MappedNullable = &RunnerContext{}
 
 // RunnerContext struct for RunnerContext
 type RunnerContext struct {
-	Arch           RunnerArchContext        `json:"arch"`
-	Debug          string                   `json:"debug"`
-	Environment    RunnerEnvironmentContext `json:"environment"`
-	Name           string                   `json:"name"`
-	Os             RunnerOsContext          `json:"os"`
-	ReleaseVersion string                   `json:"release_version"`
-	Temp           string                   `json:"temp"`
-	ToolCache      string                   `json:"tool_cache"`
-	Uuid           string                   `json:"uuid"`
+	Arch        RunnerArchContext        `json:"arch"`
+	Debug       string                   `json:"debug"`
+	Environment RunnerEnvironmentContext `json:"environment"`
+	Name        string                   `json:"name"`
+	Os          RunnerOsContext          `json:"os"`
+	Temp        string                   `json:"temp"`
+	ToolCache   string                   `json:"tool_cache"`
+	Uuid        string                   `json:"uuid"`
 }
 
 type _RunnerContext RunnerContext
@@ -38,14 +37,13 @@ type _RunnerContext RunnerContext
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRunnerContext(arch RunnerArchContext, debug string, environment RunnerEnvironmentContext, name string, os RunnerOsContext, releaseVersion string, temp string, toolCache string, uuid string) *RunnerContext {
+func NewRunnerContext(arch RunnerArchContext, debug string, environment RunnerEnvironmentContext, name string, os RunnerOsContext, temp string, toolCache string, uuid string) *RunnerContext {
 	this := RunnerContext{}
 	this.Arch = arch
 	this.Debug = debug
 	this.Environment = environment
 	this.Name = name
 	this.Os = os
-	this.ReleaseVersion = releaseVersion
 	this.Temp = temp
 	this.ToolCache = toolCache
 	this.Uuid = uuid
@@ -180,30 +178,6 @@ func (o *RunnerContext) SetOs(v RunnerOsContext) {
 	o.Os = v
 }
 
-// GetReleaseVersion returns the ReleaseVersion field value
-func (o *RunnerContext) GetReleaseVersion() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ReleaseVersion
-}
-
-// GetReleaseVersionOk returns a tuple with the ReleaseVersion field value
-// and a boolean to check if the value has been set.
-func (o *RunnerContext) GetReleaseVersionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ReleaseVersion, true
-}
-
-// SetReleaseVersion sets field value
-func (o *RunnerContext) SetReleaseVersion(v string) {
-	o.ReleaseVersion = v
-}
-
 // GetTemp returns the Temp field value
 func (o *RunnerContext) GetTemp() string {
 	if o == nil {
@@ -291,7 +265,6 @@ func (o RunnerContext) ToMap() (map[string]interface{}, error) {
 	toSerialize["environment"] = o.Environment
 	toSerialize["name"] = o.Name
 	toSerialize["os"] = o.Os
-	toSerialize["release_version"] = o.ReleaseVersion
 	toSerialize["temp"] = o.Temp
 	toSerialize["tool_cache"] = o.ToolCache
 	toSerialize["uuid"] = o.Uuid
@@ -308,7 +281,6 @@ func (o *RunnerContext) UnmarshalJSON(data []byte) (err error) {
 		"environment",
 		"name",
 		"os",
-		"release_version",
 		"temp",
 		"tool_cache",
 		"uuid",

@@ -22,22 +22,24 @@ type StageContext struct {
 	// Including all vars, priority from low to high, higher priority key could override lower priority key 1. The predefined variables for github/gitlab. 2. The web ui configured vars or envs, exclude secrets.
 	All map[string]string `json:"all,omitempty"`
 	// Contains variables set in a workflow, job, or step. Static data eg: env.ENV_NAME Value is encoded with base64 standard
-	Env    map[string]string `json:"env,omitempty"`
-	Github interface{}       `json:"github,omitempty"`
-	// Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith)
+	Env    map[string]string     `json:"env,omitempty"`
+	Github NullableGithubContext `json:"github,omitempty"`
+	// Contains the inputs of a reusable or manually triggered workflow. Runtime data eg: ${{inputs.INPUT_NAME}} value is jobs.<job_id>.with ![github: jobs.<job_id>.with](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idwith) TODO: the value need specific type?
 	Inputs map[string]interface{} `json:"inputs,omitempty"`
-	Job    interface{}            `json:"job,omitempty"`
+	// Information about the currently running job. Runtime data refer to JobContext. Converted to serde_json::Value for recursively inject variables
+	Job NullableJobContext `json:"job,omitempty"`
 	// For reusable workflows only, contains outputs of jobs from the reusable workflow. Runtime data Initialized when stage is pushed into queue. Updated when stage is updated by api or else. key: job name or stage name value: JobsContext, refer to [Github docs](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#jobs-context). Converted to serde_json::Value for recursively inject variables
-	Jobs   map[string]interface{} `json:"jobs,omitempty"`
+	Jobs   map[string]JobsContext `json:"jobs,omitempty"`
 	Matrix map[string]string      `json:"matrix,omitempty"`
 	// Contains the outputs of all jobs that are defined as a dependency of the current job. Runtime data key: job name value: JobsContext. Converted to serde_json::Value for recursively inject variables.
-	Needs  map[string]interface{} `json:"needs,omitempty"`
-	Runner interface{}            `json:"runner,omitempty"`
+	Needs map[string]JobsContext `json:"needs,omitempty"`
+	// Information about the runner that is running the current job. Runtime data Refer to RunnerContext. Converted to serde_json::Value for recursively inject variables.
+	Runner *RunnerContext `json:"runner,omitempty"`
 	// Contains the names and values of secrets that are available to a workflow run. Sensitive data, only available to the job that will be scheduling. eg: github: secrets.SECRET_NAME gitlab: $SECRET_NAME, secret.SECRET_NAME Value is encoded with base64 standard
 	Secrets map[string]string `json:"secrets,omitempty"`
 	// Information about the steps that have been run in the current job. Runtime data key:   step id (set in step yaml) value: refer to StepsContext. Converted to serde_json::Value for recursively inject variables.
-	Steps    map[string]interface{} `json:"steps,omitempty"`
-	Strategy interface{}            `json:"strategy,omitempty"`
+	Steps    map[string]StepsContext `json:"steps,omitempty"`
+	Strategy *StrategyContext        `json:"strategy,omitempty"`
 	// Contains variables set at the repository, organization, or environment levels. Static data eg: gitlab: variables.VAR_NAME github: vars.VAR_NAME Value is encoded with base64 standard
 	Vars map[string]string `json:"vars,omitempty"`
 }
@@ -124,36 +126,46 @@ func (o *StageContext) SetEnv(v map[string]string) {
 }
 
 // GetGithub returns the Github field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageContext) GetGithub() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *StageContext) GetGithub() GithubContext {
+	if o == nil || IsNil(o.Github.Get()) {
+		var ret GithubContext
 		return ret
 	}
-	return o.Github
+	return *o.Github.Get()
 }
 
 // GetGithubOk returns a tuple with the Github field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageContext) GetGithubOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Github) {
+func (o *StageContext) GetGithubOk() (*GithubContext, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Github, true
+	return o.Github.Get(), o.Github.IsSet()
 }
 
 // HasGithub returns a boolean if a field has been set.
 func (o *StageContext) HasGithub() bool {
-	if o != nil && !IsNil(o.Github) {
+	if o != nil && o.Github.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGithub gets a reference to the given interface{} and assigns it to the Github field.
-func (o *StageContext) SetGithub(v interface{}) {
-	o.Github = v
+// SetGithub gets a reference to the given NullableGithubContext and assigns it to the Github field.
+func (o *StageContext) SetGithub(v GithubContext) {
+	o.Github.Set(&v)
+}
+
+// SetGithubNil sets the value for Github to be an explicit nil
+func (o *StageContext) SetGithubNil() {
+	o.Github.Set(nil)
+}
+
+// UnsetGithub ensures that no value is present for Github, not even an explicit nil
+func (o *StageContext) UnsetGithub() {
+	o.Github.Unset()
 }
 
 // GetInputs returns the Inputs field value if set, zero value otherwise.
@@ -189,42 +201,52 @@ func (o *StageContext) SetInputs(v map[string]interface{}) {
 }
 
 // GetJob returns the Job field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageContext) GetJob() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *StageContext) GetJob() JobContext {
+	if o == nil || IsNil(o.Job.Get()) {
+		var ret JobContext
 		return ret
 	}
-	return o.Job
+	return *o.Job.Get()
 }
 
 // GetJobOk returns a tuple with the Job field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageContext) GetJobOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Job) {
+func (o *StageContext) GetJobOk() (*JobContext, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.Job, true
+	return o.Job.Get(), o.Job.IsSet()
 }
 
 // HasJob returns a boolean if a field has been set.
 func (o *StageContext) HasJob() bool {
-	if o != nil && !IsNil(o.Job) {
+	if o != nil && o.Job.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetJob gets a reference to the given interface{} and assigns it to the Job field.
-func (o *StageContext) SetJob(v interface{}) {
-	o.Job = v
+// SetJob gets a reference to the given NullableJobContext and assigns it to the Job field.
+func (o *StageContext) SetJob(v JobContext) {
+	o.Job.Set(&v)
+}
+
+// SetJobNil sets the value for Job to be an explicit nil
+func (o *StageContext) SetJobNil() {
+	o.Job.Set(nil)
+}
+
+// UnsetJob ensures that no value is present for Job, not even an explicit nil
+func (o *StageContext) UnsetJob() {
+	o.Job.Unset()
 }
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
-func (o *StageContext) GetJobs() map[string]interface{} {
+func (o *StageContext) GetJobs() map[string]JobsContext {
 	if o == nil || IsNil(o.Jobs) {
-		var ret map[string]interface{}
+		var ret map[string]JobsContext
 		return ret
 	}
 	return o.Jobs
@@ -232,9 +254,9 @@ func (o *StageContext) GetJobs() map[string]interface{} {
 
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StageContext) GetJobsOk() (map[string]interface{}, bool) {
+func (o *StageContext) GetJobsOk() (map[string]JobsContext, bool) {
 	if o == nil || IsNil(o.Jobs) {
-		return map[string]interface{}{}, false
+		return map[string]JobsContext{}, false
 	}
 	return o.Jobs, true
 }
@@ -248,8 +270,8 @@ func (o *StageContext) HasJobs() bool {
 	return false
 }
 
-// SetJobs gets a reference to the given map[string]interface{} and assigns it to the Jobs field.
-func (o *StageContext) SetJobs(v map[string]interface{}) {
+// SetJobs gets a reference to the given map[string]JobsContext and assigns it to the Jobs field.
+func (o *StageContext) SetJobs(v map[string]JobsContext) {
 	o.Jobs = v
 }
 
@@ -286,9 +308,9 @@ func (o *StageContext) SetMatrix(v map[string]string) {
 }
 
 // GetNeeds returns the Needs field value if set, zero value otherwise.
-func (o *StageContext) GetNeeds() map[string]interface{} {
+func (o *StageContext) GetNeeds() map[string]JobsContext {
 	if o == nil || IsNil(o.Needs) {
-		var ret map[string]interface{}
+		var ret map[string]JobsContext
 		return ret
 	}
 	return o.Needs
@@ -296,9 +318,9 @@ func (o *StageContext) GetNeeds() map[string]interface{} {
 
 // GetNeedsOk returns a tuple with the Needs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StageContext) GetNeedsOk() (map[string]interface{}, bool) {
+func (o *StageContext) GetNeedsOk() (map[string]JobsContext, bool) {
 	if o == nil || IsNil(o.Needs) {
-		return map[string]interface{}{}, false
+		return map[string]JobsContext{}, false
 	}
 	return o.Needs, true
 }
@@ -312,28 +334,27 @@ func (o *StageContext) HasNeeds() bool {
 	return false
 }
 
-// SetNeeds gets a reference to the given map[string]interface{} and assigns it to the Needs field.
-func (o *StageContext) SetNeeds(v map[string]interface{}) {
+// SetNeeds gets a reference to the given map[string]JobsContext and assigns it to the Needs field.
+func (o *StageContext) SetNeeds(v map[string]JobsContext) {
 	o.Needs = v
 }
 
-// GetRunner returns the Runner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageContext) GetRunner() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetRunner returns the Runner field value if set, zero value otherwise.
+func (o *StageContext) GetRunner() RunnerContext {
+	if o == nil || IsNil(o.Runner) {
+		var ret RunnerContext
 		return ret
 	}
-	return o.Runner
+	return *o.Runner
 }
 
 // GetRunnerOk returns a tuple with the Runner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageContext) GetRunnerOk() (*interface{}, bool) {
+func (o *StageContext) GetRunnerOk() (*RunnerContext, bool) {
 	if o == nil || IsNil(o.Runner) {
 		return nil, false
 	}
-	return &o.Runner, true
+	return o.Runner, true
 }
 
 // HasRunner returns a boolean if a field has been set.
@@ -345,9 +366,9 @@ func (o *StageContext) HasRunner() bool {
 	return false
 }
 
-// SetRunner gets a reference to the given interface{} and assigns it to the Runner field.
-func (o *StageContext) SetRunner(v interface{}) {
-	o.Runner = v
+// SetRunner gets a reference to the given RunnerContext and assigns it to the Runner field.
+func (o *StageContext) SetRunner(v RunnerContext) {
+	o.Runner = &v
 }
 
 // GetSecrets returns the Secrets field value if set, zero value otherwise.
@@ -383,9 +404,9 @@ func (o *StageContext) SetSecrets(v map[string]string) {
 }
 
 // GetSteps returns the Steps field value if set, zero value otherwise.
-func (o *StageContext) GetSteps() map[string]interface{} {
+func (o *StageContext) GetSteps() map[string]StepsContext {
 	if o == nil || IsNil(o.Steps) {
-		var ret map[string]interface{}
+		var ret map[string]StepsContext
 		return ret
 	}
 	return o.Steps
@@ -393,9 +414,9 @@ func (o *StageContext) GetSteps() map[string]interface{} {
 
 // GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StageContext) GetStepsOk() (map[string]interface{}, bool) {
+func (o *StageContext) GetStepsOk() (map[string]StepsContext, bool) {
 	if o == nil || IsNil(o.Steps) {
-		return map[string]interface{}{}, false
+		return map[string]StepsContext{}, false
 	}
 	return o.Steps, true
 }
@@ -409,28 +430,27 @@ func (o *StageContext) HasSteps() bool {
 	return false
 }
 
-// SetSteps gets a reference to the given map[string]interface{} and assigns it to the Steps field.
-func (o *StageContext) SetSteps(v map[string]interface{}) {
+// SetSteps gets a reference to the given map[string]StepsContext and assigns it to the Steps field.
+func (o *StageContext) SetSteps(v map[string]StepsContext) {
 	o.Steps = v
 }
 
-// GetStrategy returns the Strategy field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageContext) GetStrategy() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetStrategy returns the Strategy field value if set, zero value otherwise.
+func (o *StageContext) GetStrategy() StrategyContext {
+	if o == nil || IsNil(o.Strategy) {
+		var ret StrategyContext
 		return ret
 	}
-	return o.Strategy
+	return *o.Strategy
 }
 
 // GetStrategyOk returns a tuple with the Strategy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageContext) GetStrategyOk() (*interface{}, bool) {
+func (o *StageContext) GetStrategyOk() (*StrategyContext, bool) {
 	if o == nil || IsNil(o.Strategy) {
 		return nil, false
 	}
-	return &o.Strategy, true
+	return o.Strategy, true
 }
 
 // HasStrategy returns a boolean if a field has been set.
@@ -442,9 +462,9 @@ func (o *StageContext) HasStrategy() bool {
 	return false
 }
 
-// SetStrategy gets a reference to the given interface{} and assigns it to the Strategy field.
-func (o *StageContext) SetStrategy(v interface{}) {
-	o.Strategy = v
+// SetStrategy gets a reference to the given StrategyContext and assigns it to the Strategy field.
+func (o *StageContext) SetStrategy(v StrategyContext) {
+	o.Strategy = &v
 }
 
 // GetVars returns the Vars field value if set, zero value otherwise.
@@ -495,14 +515,14 @@ func (o StageContext) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Env) {
 		toSerialize["env"] = o.Env
 	}
-	if o.Github != nil {
-		toSerialize["github"] = o.Github
+	if o.Github.IsSet() {
+		toSerialize["github"] = o.Github.Get()
 	}
 	if !IsNil(o.Inputs) {
 		toSerialize["inputs"] = o.Inputs
 	}
-	if o.Job != nil {
-		toSerialize["job"] = o.Job
+	if o.Job.IsSet() {
+		toSerialize["job"] = o.Job.Get()
 	}
 	if !IsNil(o.Jobs) {
 		toSerialize["jobs"] = o.Jobs
@@ -513,7 +533,7 @@ func (o StageContext) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Needs) {
 		toSerialize["needs"] = o.Needs
 	}
-	if o.Runner != nil {
+	if !IsNil(o.Runner) {
 		toSerialize["runner"] = o.Runner
 	}
 	if !IsNil(o.Secrets) {
@@ -522,7 +542,7 @@ func (o StageContext) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
 	}
-	if o.Strategy != nil {
+	if !IsNil(o.Strategy) {
 		toSerialize["strategy"] = o.Strategy
 	}
 	if !IsNil(o.Vars) {

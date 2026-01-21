@@ -22,6 +22,8 @@ pub struct RunnerPostInput {
     pub release: String,
     #[serde(rename = "token")]
     pub token: String,
+    #[serde(rename = "uuid")]
+    pub uuid: String,
 }
 
 impl RunnerPostInput {
@@ -30,12 +32,14 @@ impl RunnerPostInput {
         name: String,
         release: String,
         token: String,
+        uuid: String,
     ) -> RunnerPostInput {
         RunnerPostInput {
             labels,
             name,
             release,
             token,
+            uuid,
         }
     }
 }

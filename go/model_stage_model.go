@@ -21,44 +21,45 @@ var _ MappedNullable = &StageModel{}
 
 // StageModel struct for StageModel
 type StageModel struct {
-	ActionId      int64                  `json:"action_id"`
-	Arch          string                 `json:"arch"`
-	Created       int64                  `json:"created"`
-	Errignore     bool                   `json:"errignore"`
-	Error         string                 `json:"error"`
-	ExitCode      int64                  `json:"exit_code"`
-	Id            int64                  `json:"id"`
-	IsConcurrent  bool                   `json:"is_concurrent"`
-	IsMatrix      bool                   `json:"is_matrix"`
-	IsResolved    bool                   `json:"is_resolved"`
-	IsReusable    bool                   `json:"is_reusable"`
-	Kernel        string                 `json:"kernel"`
-	Kind          string                 `json:"kind"`
-	Labels        []string               `json:"labels"`
-	Limit         int64                  `json:"limit"`
-	LimitRepo     int64                  `json:"limit_repo"`
-	Machine       string                 `json:"machine"`
-	Name          string                 `json:"name"`
-	Needs         []string               `json:"needs"`
-	Number        int64                  `json:"number"`
-	OnFailure     bool                   `json:"on_failure"`
-	OnSuccess     bool                   `json:"on_success"`
-	Os            string                 `json:"os"`
-	Outputs       map[string]interface{} `json:"outputs,omitempty"`
-	ParentGroupId int64                  `json:"parent_group_id"`
-	ParentId      NullableInt64          `json:"parent_id,omitempty"`
-	RepoId        int64                  `json:"repo_id"`
-	Started       NullableInt64          `json:"started,omitempty"`
-	Status        CIStatus               `json:"status"`
-	Stopped       NullableInt64          `json:"stopped,omitempty"`
-	Type          string                 `json:"type"`
-	Updated       int64                  `json:"updated"`
-	Variant       string                 `json:"variant"`
-	Version       int64                  `json:"version"`
-	WorkflowId    int64                  `json:"workflow_id"`
-	YamlProvider  WorkflowProvider       `json:"yaml_provider"`
-	YamlResolved  string                 `json:"yaml_resolved"`
-	YamlUses      NullableString         `json:"yaml_uses,omitempty"`
+	ActionId      int64             `json:"action_id"`
+	Arch          string            `json:"arch"`
+	Created       int64             `json:"created"`
+	Errignore     bool              `json:"errignore"`
+	Error         string            `json:"error"`
+	ExitCode      int64             `json:"exit_code"`
+	Id            int64             `json:"id"`
+	IsConcurrent  bool              `json:"is_concurrent"`
+	IsMatrix      bool              `json:"is_matrix"`
+	IsResolved    bool              `json:"is_resolved"`
+	IsReusable    bool              `json:"is_reusable"`
+	JobKey        string            `json:"job_key"`
+	Kernel        string            `json:"kernel"`
+	Kind          string            `json:"kind"`
+	Labels        []string          `json:"labels"`
+	Limit         int64             `json:"limit"`
+	LimitRepo     int64             `json:"limit_repo"`
+	Machine       string            `json:"machine"`
+	Name          string            `json:"name"`
+	Needs         []string          `json:"needs"`
+	Number        int64             `json:"number"`
+	OnFailure     bool              `json:"on_failure"`
+	OnSuccess     bool              `json:"on_success"`
+	Os            string            `json:"os"`
+	Outputs       map[string]string `json:"outputs,omitempty"`
+	ParentGroupId int64             `json:"parent_group_id"`
+	ParentId      NullableInt64     `json:"parent_id,omitempty"`
+	RepoId        int64             `json:"repo_id"`
+	Started       NullableInt64     `json:"started,omitempty"`
+	Status        CIStatus          `json:"status"`
+	Stopped       NullableInt64     `json:"stopped,omitempty"`
+	Type          string            `json:"type"`
+	Updated       int64             `json:"updated"`
+	Variant       string            `json:"variant"`
+	Version       int64             `json:"version"`
+	WorkflowId    int64             `json:"workflow_id"`
+	YamlProvider  WorkflowProvider  `json:"yaml_provider"`
+	YamlResolved  string            `json:"yaml_resolved"`
+	YamlUses      NullableString    `json:"yaml_uses,omitempty"`
 }
 
 type _StageModel StageModel
@@ -67,7 +68,7 @@ type _StageModel StageModel
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, isConcurrent bool, isMatrix bool, isResolved bool, isReusable bool, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs []string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider WorkflowProvider, yamlResolved string) *StageModel {
+func NewStageModel(actionId int64, arch string, created int64, errignore bool, error_ string, exitCode int64, id int64, isConcurrent bool, isMatrix bool, isResolved bool, isReusable bool, jobKey string, kernel string, kind string, labels []string, limit int64, limitRepo int64, machine string, name string, needs []string, number int64, onFailure bool, onSuccess bool, os string, parentGroupId int64, repoId int64, status CIStatus, type_ string, updated int64, variant string, version int64, workflowId int64, yamlProvider WorkflowProvider, yamlResolved string) *StageModel {
 	this := StageModel{}
 	this.ActionId = actionId
 	this.Arch = arch
@@ -80,6 +81,7 @@ func NewStageModel(actionId int64, arch string, created int64, errignore bool, e
 	this.IsMatrix = isMatrix
 	this.IsResolved = isResolved
 	this.IsReusable = isReusable
+	this.JobKey = jobKey
 	this.Kernel = kernel
 	this.Kind = kind
 	this.Labels = labels
@@ -377,6 +379,30 @@ func (o *StageModel) SetIsReusable(v bool) {
 	o.IsReusable = v
 }
 
+// GetJobKey returns the JobKey field value
+func (o *StageModel) GetJobKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.JobKey
+}
+
+// GetJobKeyOk returns a tuple with the JobKey field value
+// and a boolean to check if the value has been set.
+func (o *StageModel) GetJobKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.JobKey, true
+}
+
+// SetJobKey sets field value
+func (o *StageModel) SetJobKey(v string) {
+	o.JobKey = v
+}
+
 // GetKernel returns the Kernel field value
 func (o *StageModel) GetKernel() string {
 	if o == nil {
@@ -666,9 +692,9 @@ func (o *StageModel) SetOs(v string) {
 }
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageModel) GetOutputs() map[string]interface{} {
+func (o *StageModel) GetOutputs() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
 	return o.Outputs
@@ -677,9 +703,9 @@ func (o *StageModel) GetOutputs() map[string]interface{} {
 // GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageModel) GetOutputsOk() (map[string]interface{}, bool) {
+func (o *StageModel) GetOutputsOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.Outputs) {
-		return map[string]interface{}{}, false
+		return map[string]string{}, false
 	}
 	return o.Outputs, true
 }
@@ -693,8 +719,8 @@ func (o *StageModel) HasOutputs() bool {
 	return false
 }
 
-// SetOutputs gets a reference to the given map[string]interface{} and assigns it to the Outputs field.
-func (o *StageModel) SetOutputs(v map[string]interface{}) {
+// SetOutputs gets a reference to the given map[string]string and assigns it to the Outputs field.
+func (o *StageModel) SetOutputs(v map[string]string) {
 	o.Outputs = v
 }
 
@@ -1131,6 +1157,7 @@ func (o StageModel) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_matrix"] = o.IsMatrix
 	toSerialize["is_resolved"] = o.IsResolved
 	toSerialize["is_reusable"] = o.IsReusable
+	toSerialize["job_key"] = o.JobKey
 	toSerialize["kernel"] = o.Kernel
 	toSerialize["kind"] = o.Kind
 	toSerialize["labels"] = o.Labels
@@ -1187,6 +1214,7 @@ func (o *StageModel) UnmarshalJSON(data []byte) (err error) {
 		"is_matrix",
 		"is_resolved",
 		"is_reusable",
+		"job_key",
 		"kernel",
 		"kind",
 		"labels",

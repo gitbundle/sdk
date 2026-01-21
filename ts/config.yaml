@@ -2,6 +2,6 @@ generatorName: typescript-axios
 inputSpec: openapi.json
 
 npmName: gitbundle-sdk
-npmVersion: 3.3.0
+npmVersion: 3.3.3
 gitUserId: gitbundle
 gitRepoId: sdk-ts

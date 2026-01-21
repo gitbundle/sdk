@@ -2,7 +2,7 @@ generatorName: go
 inputSpec: openapi.json
 
 packageName: gitbundlesdk
-packageVersion: 3.3.0
+packageVersion: 3.3.3
 gitUserId: gitbundle
 gitRepoId: sdk-go
 

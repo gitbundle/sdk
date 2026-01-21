@@ -21,9 +21,9 @@ var _ MappedNullable = &StepsContext{}
 
 // StepsContext struct for StepsContext
 type StepsContext struct {
-	Conclusion StatusContext          `json:"conclusion"`
-	Outcome    StatusContext          `json:"outcome"`
-	Outputs    map[string]interface{} `json:"outputs"`
+	Conclusion StatusContext     `json:"conclusion"`
+	Outcome    StatusContext     `json:"outcome"`
+	Outputs    map[string]string `json:"outputs"`
 }
 
 type _StepsContext StepsContext
@@ -32,7 +32,7 @@ type _StepsContext StepsContext
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStepsContext(conclusion StatusContext, outcome StatusContext, outputs map[string]interface{}) *StepsContext {
+func NewStepsContext(conclusion StatusContext, outcome StatusContext, outputs map[string]string) *StepsContext {
 	this := StepsContext{}
 	this.Conclusion = conclusion
 	this.Outcome = outcome
@@ -97,9 +97,9 @@ func (o *StepsContext) SetOutcome(v StatusContext) {
 }
 
 // GetOutputs returns the Outputs field value
-func (o *StepsContext) GetOutputs() map[string]interface{} {
+func (o *StepsContext) GetOutputs() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
 
@@ -108,15 +108,15 @@ func (o *StepsContext) GetOutputs() map[string]interface{} {
 
 // GetOutputsOk returns a tuple with the Outputs field value
 // and a boolean to check if the value has been set.
-func (o *StepsContext) GetOutputsOk() (map[string]interface{}, bool) {
+func (o *StepsContext) GetOutputsOk() (map[string]string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return map[string]string{}, false
 	}
 	return o.Outputs, true
 }
 
 // SetOutputs sets field value
-func (o *StepsContext) SetOutputs(v map[string]interface{}) {
+func (o *StepsContext) SetOutputs(v map[string]string) {
 	o.Outputs = v
 }
 

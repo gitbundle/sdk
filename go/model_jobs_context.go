@@ -21,8 +21,8 @@ var _ MappedNullable = &JobsContext{}
 
 // JobsContext struct for JobsContext
 type JobsContext struct {
-	Outputs map[string]interface{} `json:"outputs"`
-	Result  StatusContext          `json:"result"`
+	Outputs map[string]string `json:"outputs"`
+	Result  StatusContext     `json:"result"`
 }
 
 type _JobsContext JobsContext
@@ -31,7 +31,7 @@ type _JobsContext JobsContext
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobsContext(outputs map[string]interface{}, result StatusContext) *JobsContext {
+func NewJobsContext(outputs map[string]string, result StatusContext) *JobsContext {
 	this := JobsContext{}
 	this.Outputs = outputs
 	this.Result = result
@@ -47,9 +47,9 @@ func NewJobsContextWithDefaults() *JobsContext {
 }
 
 // GetOutputs returns the Outputs field value
-func (o *JobsContext) GetOutputs() map[string]interface{} {
+func (o *JobsContext) GetOutputs() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
 
@@ -58,15 +58,15 @@ func (o *JobsContext) GetOutputs() map[string]interface{} {
 
 // GetOutputsOk returns a tuple with the Outputs field value
 // and a boolean to check if the value has been set.
-func (o *JobsContext) GetOutputsOk() (map[string]interface{}, bool) {
+func (o *JobsContext) GetOutputsOk() (map[string]string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return map[string]string{}, false
 	}
 	return o.Outputs, true
 }
 
 // SetOutputs sets field value
-func (o *JobsContext) SetOutputs(v map[string]interface{}) {
+func (o *JobsContext) SetOutputs(v map[string]string) {
 	o.Outputs = v
 }
 

@@ -38,7 +38,7 @@ pub struct StepModel {
         with = "::serde_with::rust::double_option",
         skip_serializing_if = "Option::is_none"
     )]
-    pub outputs: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    pub outputs: Option<Option<std::collections::HashMap<String, String>>>,
     #[serde(rename = "parent_group_id")]
     pub parent_group_id: i64,
     #[serde(rename = "stage_id")]

@@ -21,24 +21,24 @@ var _ MappedNullable = &StepModel{}
 
 // StepModel struct for StepModel
 type StepModel struct {
-	DependsOn     interface{}            `json:"depends_on"`
-	Detached      bool                   `json:"detached"`
-	Errignore     bool                   `json:"errignore"`
-	Error         string                 `json:"error"`
-	ExitCode      int64                  `json:"exit_code"`
-	Id            int64                  `json:"id"`
-	Image         string                 `json:"image"`
-	Name          string                 `json:"name"`
-	Number        int64                  `json:"number"`
-	Outputs       map[string]interface{} `json:"outputs,omitempty"`
-	ParentGroupId int64                  `json:"parent_group_id"`
-	StageId       int64                  `json:"stage_id"`
-	Started       NullableInt64          `json:"started,omitempty"`
-	Status        CIStatus               `json:"status"`
-	Stopped       NullableInt64          `json:"stopped,omitempty"`
-	Version       int64                  `json:"version"`
-	YamlProvider  WorkflowProvider       `json:"yaml_provider"`
-	YamlResolved  string                 `json:"yaml_resolved"`
+	DependsOn     interface{}       `json:"depends_on"`
+	Detached      bool              `json:"detached"`
+	Errignore     bool              `json:"errignore"`
+	Error         string            `json:"error"`
+	ExitCode      int64             `json:"exit_code"`
+	Id            int64             `json:"id"`
+	Image         string            `json:"image"`
+	Name          string            `json:"name"`
+	Number        int64             `json:"number"`
+	Outputs       map[string]string `json:"outputs,omitempty"`
+	ParentGroupId int64             `json:"parent_group_id"`
+	StageId       int64             `json:"stage_id"`
+	Started       NullableInt64     `json:"started,omitempty"`
+	Status        CIStatus          `json:"status"`
+	Stopped       NullableInt64     `json:"stopped,omitempty"`
+	Version       int64             `json:"version"`
+	YamlProvider  WorkflowProvider  `json:"yaml_provider"`
+	YamlResolved  string            `json:"yaml_resolved"`
 }
 
 type _StepModel StepModel
@@ -294,9 +294,9 @@ func (o *StepModel) SetNumber(v int64) {
 }
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StepModel) GetOutputs() map[string]interface{} {
+func (o *StepModel) GetOutputs() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
 	return o.Outputs
@@ -305,9 +305,9 @@ func (o *StepModel) GetOutputs() map[string]interface{} {
 // GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StepModel) GetOutputsOk() (map[string]interface{}, bool) {
+func (o *StepModel) GetOutputsOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.Outputs) {
-		return map[string]interface{}{}, false
+		return map[string]string{}, false
 	}
 	return o.Outputs, true
 }
@@ -321,8 +321,8 @@ func (o *StepModel) HasOutputs() bool {
 	return false
 }
 
-// SetOutputs gets a reference to the given map[string]interface{} and assigns it to the Outputs field.
-func (o *StepModel) SetOutputs(v map[string]interface{}) {
+// SetOutputs gets a reference to the given map[string]string and assigns it to the Outputs field.
+func (o *StepModel) SetOutputs(v map[string]string) {
 	o.Outputs = v
 }
 

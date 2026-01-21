@@ -24,8 +24,6 @@ pub struct RunnerContext {
     pub name: String,
     #[serde(rename = "os")]
     pub os: models::RunnerOsContext,
-    #[serde(rename = "release_version")]
-    pub release_version: String,
     #[serde(rename = "temp")]
     pub temp: String,
     #[serde(rename = "tool_cache")]
@@ -41,7 +39,6 @@ impl RunnerContext {
         environment: models::RunnerEnvironmentContext,
         name: String,
         os: models::RunnerOsContext,
-        release_version: String,
         temp: String,
         tool_cache: String,
         uuid: String,
@@ -52,7 +49,6 @@ impl RunnerContext {
             environment,
             name,
             os,
-            release_version,
             temp,
             tool_cache,
             uuid,

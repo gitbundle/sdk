@@ -45,7 +45,7 @@ pub enum PostRunnersRegisterError {
 pub async fn poll_stage(
     configuration: &configuration::Configuration,
     runner_context: models::RunnerContext,
-) -> Result<models::RunnerStageOutput, Error<PollStageError>> {
+) -> Result<models::StageMetadata, Error<PollStageError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_body_runner_context = runner_context;
 
@@ -88,8 +88,8 @@ pub async fn poll_stage(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::RunnerStageOutput`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::RunnerStageOutput`")))),
+            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::StageMetadata`"))),
+            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::StageMetadata`")))),
         }
     } else {
         let content = resp.text().await?;

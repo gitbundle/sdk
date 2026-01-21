@@ -22,11 +22,11 @@ type StageUpdateInput struct {
 	Error    NullableString `json:"error,omitempty"`
 	ExitCode NullableInt64  `json:"exit_code,omitempty"`
 	// Used for storing the result of the yaml decoded stage.
-	Jobstatus NullableStatusContext  `json:"jobstatus,omitempty"`
-	Outputs   map[string]interface{} `json:"outputs,omitempty"`
-	Started   NullableInt64          `json:"started,omitempty"`
-	Status    NullableCIStatus       `json:"status,omitempty"`
-	Stopped   NullableInt64          `json:"stopped,omitempty"`
+	Jobstatus NullableStatusContext `json:"jobstatus,omitempty"`
+	Outputs   map[string]string     `json:"outputs,omitempty"`
+	Started   NullableInt64         `json:"started,omitempty"`
+	Status    NullableCIStatus      `json:"status,omitempty"`
+	Stopped   NullableInt64         `json:"stopped,omitempty"`
 }
 
 // NewStageUpdateInput instantiates a new StageUpdateInput object
@@ -176,9 +176,9 @@ func (o *StageUpdateInput) UnsetJobstatus() {
 }
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StageUpdateInput) GetOutputs() map[string]interface{} {
+func (o *StageUpdateInput) GetOutputs() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
 	return o.Outputs
@@ -187,9 +187,9 @@ func (o *StageUpdateInput) GetOutputs() map[string]interface{} {
 // GetOutputsOk returns a tuple with the Outputs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StageUpdateInput) GetOutputsOk() (map[string]interface{}, bool) {
+func (o *StageUpdateInput) GetOutputsOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.Outputs) {
-		return map[string]interface{}{}, false
+		return map[string]string{}, false
 	}
 	return o.Outputs, true
 }
@@ -203,8 +203,8 @@ func (o *StageUpdateInput) HasOutputs() bool {
 	return false
 }
 
-// SetOutputs gets a reference to the given map[string]interface{} and assigns it to the Outputs field.
-func (o *StageUpdateInput) SetOutputs(v map[string]interface{}) {
+// SetOutputs gets a reference to the given map[string]string and assigns it to the Outputs field.
+func (o *StageUpdateInput) SetOutputs(v map[string]string) {
 	o.Outputs = v
 }
 

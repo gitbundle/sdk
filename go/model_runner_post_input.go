@@ -25,6 +25,7 @@ type RunnerPostInput struct {
 	Name    string   `json:"name"`
 	Release string   `json:"release"`
 	Token   string   `json:"token"`
+	Uuid    string   `json:"uuid"`
 }
 
 type _RunnerPostInput RunnerPostInput
@@ -33,12 +34,13 @@ type _RunnerPostInput RunnerPostInput
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRunnerPostInput(labels []string, name string, release string, token string) *RunnerPostInput {
+func NewRunnerPostInput(labels []string, name string, release string, token string, uuid string) *RunnerPostInput {
 	this := RunnerPostInput{}
 	this.Labels = labels
 	this.Name = name
 	this.Release = release
 	this.Token = token
+	this.Uuid = uuid
 	return &this
 }
 
@@ -146,6 +148,30 @@ func (o *RunnerPostInput) SetToken(v string) {
 	o.Token = v
 }
 
+// GetUuid returns the Uuid field value
+func (o *RunnerPostInput) GetUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *RunnerPostInput) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *RunnerPostInput) SetUuid(v string) {
+	o.Uuid = v
+}
+
 func (o RunnerPostInput) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -160,6 +186,7 @@ func (o RunnerPostInput) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["release"] = o.Release
 	toSerialize["token"] = o.Token
+	toSerialize["uuid"] = o.Uuid
 	return toSerialize, nil
 }
 
@@ -172,6 +199,7 @@ func (o *RunnerPostInput) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"release",
 		"token",
+		"uuid",
 	}
 
 	allProperties := make(map[string]interface{})
