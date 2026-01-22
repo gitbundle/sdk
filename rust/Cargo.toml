@@ -1,6 +1,6 @@
 [package]
 name = "gitbundle-sdk"
-version = "3.3.4"
+version = "3.3.5"
 authors = ["OpenAPI Generator team and contributors"]
 description = "GitBundle API documentation."
 # Override this license by providing a License Object in the OpenAPI.

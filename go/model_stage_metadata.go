@@ -21,9 +21,10 @@ var _ MappedNullable = &StageMetadata{}
 
 // StageMetadata struct for StageMetadata
 type StageMetadata struct {
-	ArtifactServerUrl string       `json:"artifact_server_url"`
-	Context           StageContext `json:"context"`
-	Stage             StageModel   `json:"stage"`
+	ArtifactServerUrl      string       `json:"artifact_server_url"`
+	ArtifactcacheServerUrl string       `json:"artifactcache_server_url"`
+	Context                StageContext `json:"context"`
+	Stage                  StageModel   `json:"stage"`
 }
 
 type _StageMetadata StageMetadata
@@ -32,9 +33,10 @@ type _StageMetadata StageMetadata
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStageMetadata(artifactServerUrl string, context StageContext, stage StageModel) *StageMetadata {
+func NewStageMetadata(artifactServerUrl string, artifactcacheServerUrl string, context StageContext, stage StageModel) *StageMetadata {
 	this := StageMetadata{}
 	this.ArtifactServerUrl = artifactServerUrl
+	this.ArtifactcacheServerUrl = artifactcacheServerUrl
 	this.Context = context
 	this.Stage = stage
 	return &this
@@ -70,6 +72,30 @@ func (o *StageMetadata) GetArtifactServerUrlOk() (*string, bool) {
 // SetArtifactServerUrl sets field value
 func (o *StageMetadata) SetArtifactServerUrl(v string) {
 	o.ArtifactServerUrl = v
+}
+
+// GetArtifactcacheServerUrl returns the ArtifactcacheServerUrl field value
+func (o *StageMetadata) GetArtifactcacheServerUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ArtifactcacheServerUrl
+}
+
+// GetArtifactcacheServerUrlOk returns a tuple with the ArtifactcacheServerUrl field value
+// and a boolean to check if the value has been set.
+func (o *StageMetadata) GetArtifactcacheServerUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ArtifactcacheServerUrl, true
+}
+
+// SetArtifactcacheServerUrl sets field value
+func (o *StageMetadata) SetArtifactcacheServerUrl(v string) {
+	o.ArtifactcacheServerUrl = v
 }
 
 // GetContext returns the Context field value
@@ -131,6 +157,7 @@ func (o StageMetadata) MarshalJSON() ([]byte, error) {
 func (o StageMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["artifact_server_url"] = o.ArtifactServerUrl
+	toSerialize["artifactcache_server_url"] = o.ArtifactcacheServerUrl
 	toSerialize["context"] = o.Context
 	toSerialize["stage"] = o.Stage
 	return toSerialize, nil
@@ -142,6 +169,7 @@ func (o *StageMetadata) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"artifact_server_url",
+		"artifactcache_server_url",
 		"context",
 		"stage",
 	}

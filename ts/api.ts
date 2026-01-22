@@ -1719,6 +1719,7 @@ export interface StageContext {
 }
 export interface StageMetadata {
     'artifact_server_url': string;
+    'artifactcache_server_url': string;
     'context': StageContext;
     'stage': StageModel;
 }
