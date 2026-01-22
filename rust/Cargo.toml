@@ -3,6 +3,7 @@ name = "gitbundle-sdk"
 version = "3.3.5"
 authors = ["OpenAPI Generator team and contributors"]
 description = "GitBundle API documentation."
+homepage = "https://github.com/gitbundle"
 # Override this license by providing a License Object in the OpenAPI.
 license = "Unlicense"
 edition = "2021"

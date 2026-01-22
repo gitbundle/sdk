@@ -2,7 +2,7 @@
 
 GitBundle API documentation.
 
-For more information, please visit [https://gitbundle.com/gitbundle](https://gitbundle.com/gitbundle)
+For more information, please visit [https://github.com/gitbundle](https://github.com/gitbundle)
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
