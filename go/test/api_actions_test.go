@@ -323,4 +323,19 @@ func Test_gitbundlesdk_ActionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ActionsAPIService RerunWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var actionIdentifier string
+		var workflowIdn int64
+
+		httpRes, err := apiClient.ActionsAPI.RerunWorkflow(context.Background(), repoRef, actionIdentifier, workflowIdn).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

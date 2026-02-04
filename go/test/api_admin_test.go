@@ -22,19 +22,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AdminAPIService DeleteGroup", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var groupRef string
-
-		httpRes, err := apiClient.AdminAPI.DeleteGroup(context.Background(), groupRef).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AdminAPIService DeleteRunner", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -42,19 +29,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 		var runnerUuid string
 
 		httpRes, err := apiClient.AdminAPI.DeleteRunner(context.Background(), runnerUuid).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminAPIService DeleteUser", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var userIdentifier string
-
-		httpRes, err := apiClient.AdminAPI.DeleteUser(context.Background(), userIdentifier).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -70,18 +44,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 		httpRes, err := apiClient.AdminAPI.DeleteVariable(context.Background(), variableIdentifier).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminAPIService GetGroups", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.AdminAPI.GetGroups(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -136,18 +98,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdminAPIService GetStats", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.AdminAPI.GetStats(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AdminAPIService GetUser", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -155,18 +105,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 		var userIdentifier string
 
 		resp, httpRes, err := apiClient.AdminAPI.GetUser(context.Background(), userIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminAPIService GetUsers", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.AdminAPI.GetUsers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -214,34 +152,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdminAPIService PatchUser", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var userIdentifier string
-
-		resp, httpRes, err := apiClient.AdminAPI.PatchUser(context.Background(), userIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminAPIService PatchUserAdmin", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var userIdentifier string
-
-		resp, httpRes, err := apiClient.AdminAPI.PatchUserAdmin(context.Background(), userIdentifier).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AdminAPIService PatchVariable", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -276,19 +186,6 @@ func Test_gitbundlesdk_AdminAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdminAPIService PostVerifySend", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var userIdentifier string
-
-		httpRes, err := apiClient.AdminAPI.PostVerifySend(context.Background(), userIdentifier).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

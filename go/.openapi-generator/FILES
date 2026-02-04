@@ -2,8 +2,6 @@
 api_accounts.go
 api_actions.go
 api_admin.go
-api_bootstrap.go
-api_connectors.go
 api_groups.go
 api_keyword_search.go
 api_pull_request.go
@@ -272,14 +270,14 @@ model_workflow_dispatch_input.go
 model_workflow_dispatch_input_type.go
 model_workflow_model.go
 model_workflow_provider.go
+model_workflow_rerun_input.go
+model_workflow_rerun_scope.go
 model_workflow_stages.go
 model_workflow_update_input.go
 response.go
 test/api_accounts_test.go
 test/api_actions_test.go
 test/api_admin_test.go
-test/api_bootstrap_test.go
-test/api_connectors_test.go
 test/api_groups_test.go
 test/api_keyword_search_test.go
 test/api_pull_request_test.go

@@ -1,11 +1,11 @@
 {
   "name": "gitbundle-sdk",
-  "version": "3.3.5",
+  "version": "3.4.2",
   "description": "OpenAPI client for gitbundle-sdk",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gitbundle/sdk.git"
+    "url": "https://github.com/gitbundle/sdk-ts.git"
   },
   "keywords": [
     "axios",

@@ -40,7 +40,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install gitbundle-sdk@3.2.0 --save
+npm install gitbundle-sdk@3.4.2 --save
 ```
 
 _unPublished (not recommended):_

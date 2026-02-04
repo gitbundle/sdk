@@ -78,20 +78,6 @@ func Test_gitbundlesdk_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService GetEvents", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var groupRef string
-
-		resp, httpRes, err := apiClient.GroupsAPI.GetEvents(context.Background(), groupRef).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test GroupsAPIService GetGroup", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

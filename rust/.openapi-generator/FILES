@@ -4,9 +4,7 @@ git_push.sh
 src/apis/accounts_api.rs
 src/apis/actions_api.rs
 src/apis/admin_api.rs
-src/apis/bootstrap_api.rs
 src/apis/configuration.rs
-src/apis/connectors_api.rs
 src/apis/groups_api.rs
 src/apis/keyword_search_api.rs
 src/apis/mod.rs
@@ -273,5 +271,7 @@ src/models/workflow_dispatch_input.rs
 src/models/workflow_dispatch_input_type.rs
 src/models/workflow_model.rs
 src/models/workflow_provider.rs
+src/models/workflow_rerun_input.rs
+src/models/workflow_rerun_scope.rs
 src/models/workflow_stages.rs
 src/models/workflow_update_input.rs
