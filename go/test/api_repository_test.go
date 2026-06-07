@@ -149,6 +149,21 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService GetBlame", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var path string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetBlame(context.Background(), repoRef, path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService GetBranch", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -251,6 +266,21 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService GetContent", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var path string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetContent(context.Background(), repoRef, path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService GetContributors", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -258,6 +288,36 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 		var repoRef string
 
 		resp, httpRes, err := apiClient.RepositoryAPI.GetContributors(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetDiffStats", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var path string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetDiffStats(context.Background(), repoRef, path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetDiffs", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var path string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetDiffs(context.Background(), repoRef, path).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -314,6 +374,20 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 		var repoRef string
 
 		resp, httpRes, err := apiClient.RepositoryAPI.GetImportProgress(context.Background(), repoRef).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService GetPaths", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.GetPaths(context.Background(), repoRef).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -635,6 +709,21 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RepositoryAPIService PostDiffs", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+		var path2 string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.PostDiffs(context.Background(), repoRef, path2).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RepositoryAPIService PostMergeCheck", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -643,6 +732,20 @@ func Test_gitbundlesdk_RepositoryAPIService(t *testing.T) {
 		var path string
 
 		resp, httpRes, err := apiClient.RepositoryAPI.PostMergeCheck(context.Background(), repoRef, path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RepositoryAPIService PostPathDetails", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var repoRef string
+
+		resp, httpRes, err := apiClient.RepositoryAPI.PostPathDetails(context.Background(), repoRef).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

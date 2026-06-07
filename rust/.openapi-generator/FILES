@@ -4,7 +4,9 @@ git_push.sh
 src/apis/accounts_api.rs
 src/apis/actions_api.rs
 src/apis/admin_api.rs
+src/apis/bootstrap_api.rs
 src/apis/configuration.rs
+src/apis/connectors_api.rs
 src/apis/groups_api.rs
 src/apis/keyword_search_api.rs
 src/apis/mod.rs
