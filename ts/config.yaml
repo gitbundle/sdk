@@ -4,4 +4,4 @@ inputSpec: openapi.json
 npmName: gitbundle-sdk
 npmVersion: 3.5.0
 gitUserId: gitbundle
-gitRepoId: sdk-ts
+gitRepoId: sdk

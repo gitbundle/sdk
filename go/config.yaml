@@ -10,5 +10,5 @@ additionalProperties:
   enumClassPrefix: true
   useOneOfDiscriminatorLookup: true
   withGoCodegenComment: false
-  # gitRepoBaseURL: https://github.com/gitbundle/sdk-go
-  # gitRepoBranch: main
+  gitRepoBaseURL: https://github.com/gitbundle/sdk-go
+  gitRepoBranch: main

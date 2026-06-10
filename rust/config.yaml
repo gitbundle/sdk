@@ -4,12 +4,13 @@ inputSpec: openapi.json
 packageName: gitbundle-sdk
 packageVersion: 3.5.0
 gitUserId: gitbundle
-gitRepoId: sdk-rust
+gitRepoId: sdk
 
 library: reqwest
 mockall: true
 
 additionalProperties:
+  repositoryUrl: https://github.com/gitbundle/sdk
   authors: "RenovZ <cgsixv@gmail.com>"
 
 # templateDir: template
