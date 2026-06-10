@@ -1,4 +1,4 @@
-module github.com/gitbundle/sdk-go
+module github.com/gitbundle/sdk/go
 
 go 1.23
 

@@ -11,7 +11,7 @@ package gitbundlesdk
 
 import (
 	"context"
-	openapiclient "github.com/gitbundle/sdk-go"
+	openapiclient "github.com/gitbundle/sdk/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

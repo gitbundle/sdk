@@ -4,11 +4,11 @@ inputSpec: openapi.json
 packageName: gitbundlesdk
 packageVersion: 3.5.0
 gitUserId: gitbundle
-gitRepoId: sdk-go
+gitRepoId: sdk
 
 additionalProperties:
   enumClassPrefix: true
   useOneOfDiscriminatorLookup: true
   withGoCodegenComment: false
-  gitRepoBaseURL: https://github.com/gitbundle/sdk-go
+  gitRepoBaseURL: https://github.com/gitbundle/sdk/go
   gitRepoBranch: main
