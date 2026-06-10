@@ -1222,9 +1222,16 @@ type ApiGetStepLogStreamRequest struct {
 	workflowId       int64
 	stageNumber      int64
 	stepNumber       int64
+	after            *int64
 }
 
-func (r ApiGetStepLogStreamRequest) Execute() ([]LiveLogLine, *http.Response, error) {
+// Only replay history with pos &gt; after; -1 means all
+func (r ApiGetStepLogStreamRequest) After(after int64) ApiGetStepLogStreamRequest {
+	r.after = &after
+	return r
+}
+
+func (r ApiGetStepLogStreamRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.GetStepLogStreamExecute(r)
 }
 
@@ -1253,13 +1260,13 @@ func (a *ActionsAPIService) GetStepLogStream(ctx context.Context, repoRef string
 
 // Execute executes the request
 //
-//	@return []LiveLogLine
-func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest) ([]LiveLogLine, *http.Response, error) {
+//	@return string
+func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []LiveLogLine
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetStepLogStream")
@@ -1277,7 +1284,11 @@ func (a *ActionsAPIService) GetStepLogStreamExecute(r ApiGetStepLogStreamRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.after == nil {
+		return localVarReturnValue, nil, reportError("after is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "after", r.after, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1430,9 +1441,23 @@ type ApiGetStepLogsRequest struct {
 	workflowId       int64
 	stageNumber      int64
 	stepNumber       int64
+	cursor           *int64
+	limit            *int64
 }
 
-func (r ApiGetStepLogsRequest) Execute() ([]LiveLogLine, *http.Response, error) {
+// Cursor (last seen pos, 0 means from beginning)
+func (r ApiGetStepLogsRequest) Cursor(cursor int64) ApiGetStepLogsRequest {
+	r.cursor = &cursor
+	return r
+}
+
+// Maximum rows to return, default 1000
+func (r ApiGetStepLogsRequest) Limit(limit int64) ApiGetStepLogsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiGetStepLogsRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.GetStepLogsExecute(r)
 }
 
@@ -1461,13 +1486,13 @@ func (a *ActionsAPIService) GetStepLogs(ctx context.Context, repoRef string, act
 
 // Execute executes the request
 //
-//	@return []LiveLogLine
-func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveLogLine, *http.Response, error) {
+//	@return string
+func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []LiveLogLine
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActionsAPIService.GetStepLogs")
@@ -1485,7 +1510,14 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.cursor == nil {
+		return localVarReturnValue, nil, reportError("cursor is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1496,7 +1528,7 @@ func (a *ActionsAPIService) GetStepLogsExecute(r ApiGetStepLogsRequest) ([]LiveL
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/x-ndjson", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

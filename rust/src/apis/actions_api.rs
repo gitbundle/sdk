@@ -692,17 +692,20 @@ pub async fn get_step_log_stream(
     workflow_id: i64,
     stage_number: i64,
     step_number: i64,
-) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogStreamError>> {
+    after: i64,
+) -> Result<String, Error<GetStepLogStreamError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_repo_ref = repo_ref;
     let p_path_action_identifier = action_identifier;
     let p_path_workflow_id = workflow_id;
     let p_path_stage_number = stage_number;
     let p_path_step_number = step_number;
+    let p_query_after = after;
 
     let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logstream", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_id=p_path_workflow_id, stage_number=p_path_stage_number, step_number=p_path_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    req_builder = req_builder.query(&[("after", &p_query_after.to_string())]);
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -736,8 +739,8 @@ pub async fn get_step_log_stream(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::LiveLogLine&gt;`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::LiveLogLine&gt;`")))),
+            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `String`"))),
+            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `String`")))),
         }
     } else {
         let content = resp.text().await?;
@@ -757,17 +760,25 @@ pub async fn get_step_logs(
     workflow_id: i64,
     stage_number: i64,
     step_number: i64,
-) -> Result<Vec<models::LiveLogLine>, Error<GetStepLogsError>> {
+    cursor: i64,
+    limit: Option<i64>,
+) -> Result<String, Error<GetStepLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_repo_ref = repo_ref;
     let p_path_action_identifier = action_identifier;
     let p_path_workflow_id = workflow_id;
     let p_path_stage_number = stage_number;
     let p_path_step_number = step_number;
+    let p_query_cursor = cursor;
+    let p_query_limit = limit;
 
     let uri_str = format!("{}/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs", configuration.base_path, repo_ref=crate::apis::urlencode(p_path_repo_ref), action_identifier=crate::apis::urlencode(p_path_action_identifier), workflow_id=p_path_workflow_id, stage_number=p_path_stage_number, step_number=p_path_step_number);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    req_builder = req_builder.query(&[("cursor", &p_query_cursor.to_string())]);
+    if let Some(ref param_value) = p_query_limit {
+        req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
+    }
     if let Some(ref apikey) = configuration.api_key {
         let key = apikey.key.clone();
         let value = match apikey.prefix {
@@ -801,8 +812,8 @@ pub async fn get_step_logs(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;models::LiveLogLine&gt;`"))),
-            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;models::LiveLogLine&gt;`")))),
+            ContentType::Text => Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `String`"))),
+            ContentType::Unsupported(unknown_type) => Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `String`")))),
         }
     } else {
         let content = resp.text().await?;

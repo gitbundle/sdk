@@ -3367,10 +3367,11 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} after Only replay history with pos &gt; after; -1 means all
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogStream: async (repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogStream: async (repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, after: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogStream', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
@@ -3381,6 +3382,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getStepLogStream', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogStream', 'stepNumber', stepNumber)
+            // verify required parameter 'after' is not null or undefined
+            assertParamExists('getStepLogStream', 'after', after)
             const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logstream`
                 .replace('{repo_ref}', encodeURIComponent(String(repoRef)))
                 .replace('{action_identifier}', encodeURIComponent(String(actionIdentifier)))
@@ -3409,6 +3412,10 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             // authentication access_token_query required
             await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
 
+            if (after !== undefined) {
+                localVarQueryParameter['after'] = after;
+            }
+
             localVarHeaderParameter['Accept'] = 'text/event-stream,application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -3427,10 +3434,12 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} cursor Cursor (last seen pos, 0 means from beginning)
+         * @param {number} [limit] Maximum rows to return, default 1000
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogs: async (repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getStepLogs: async (repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, cursor: number, limit?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'repoRef' is not null or undefined
             assertParamExists('getStepLogs', 'repoRef', repoRef)
             // verify required parameter 'actionIdentifier' is not null or undefined
@@ -3441,6 +3450,8 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('getStepLogs', 'stageNumber', stageNumber)
             // verify required parameter 'stepNumber' is not null or undefined
             assertParamExists('getStepLogs', 'stepNumber', stepNumber)
+            // verify required parameter 'cursor' is not null or undefined
+            assertParamExists('getStepLogs', 'cursor', cursor)
             const localVarPath = `/repos/{repo_ref}/+/actions/{action_identifier}/workflows/{workflow_id}/stages/{stage_number}/{step_number}/logs`
                 .replace('{repo_ref}', encodeURIComponent(String(repoRef)))
                 .replace('{action_identifier}', encodeURIComponent(String(actionIdentifier)))
@@ -3469,7 +3480,15 @@ export const ActionsApiAxiosParamCreator = function (configuration?: Configurati
             // authentication access_token_query required
             await setApiKeyToObject(localVarQueryParameter, "access_token", configuration)
 
-            localVarHeaderParameter['Accept'] = 'application/json';
+            if (cursor !== undefined) {
+                localVarQueryParameter['cursor'] = cursor;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            localVarHeaderParameter['Accept'] = 'application/x-ndjson,application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -4278,11 +4297,12 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} after Only replay history with pos &gt; after; -1 means all
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options);
+        async getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, after: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, after, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogStream']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4294,11 +4314,13 @@ export const ActionsApiFp = function(configuration?: Configuration) {
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} cursor Cursor (last seen pos, 0 means from beginning)
+         * @param {number} [limit] Maximum rows to return, default 1000
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LiveLogLine>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options);
+        async getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, cursor: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, cursor, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ActionsApi.getStepLogs']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4570,11 +4592,12 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} after Only replay history with pos &gt; after; -1 means all
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, after: number, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, after, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4583,11 +4606,13 @@ export const ActionsApiFactory = function (configuration?: Configuration, basePa
          * @param {number} workflowId Workflow id
          * @param {number} stageNumber Stage number
          * @param {number} stepNumber Step number
+         * @param {number} cursor Cursor (last seen pos, 0 means from beginning)
+         * @param {number} [limit] Maximum rows to return, default 1000
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<LiveLogLine>> {
-            return localVarFp.getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options).then((request) => request(axios, basePath));
+        getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, cursor: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, cursor, limit, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4824,11 +4849,12 @@ export class ActionsApi extends BaseAPI {
      * @param {number} workflowId Workflow id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
+     * @param {number} after Only replay history with pos &gt; after; -1 means all
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public getStepLogStream(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, after: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogStream(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, after, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4838,11 +4864,13 @@ export class ActionsApi extends BaseAPI {
      * @param {number} workflowId Workflow id
      * @param {number} stageNumber Stage number
      * @param {number} stepNumber Step number
+     * @param {number} cursor Cursor (last seen pos, 0 means from beginning)
+     * @param {number} [limit] Maximum rows to return, default 1000
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, options?: RawAxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, options).then((request) => request(this.axios, this.basePath));
+    public getStepLogs(repoRef: string, actionIdentifier: string, workflowId: number, stageNumber: number, stepNumber: number, cursor: number, limit?: number, options?: RawAxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).getStepLogs(repoRef, actionIdentifier, workflowId, stageNumber, stepNumber, cursor, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
